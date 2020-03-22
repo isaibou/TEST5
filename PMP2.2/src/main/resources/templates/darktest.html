@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link href="https://fonts.googleapis.com/css?family=Bungee" rel="stylesheet">
+    <style media="screen">
+      h1{
+        text-align: center;
+      font-size: 200px;
+        font-family: 'Bungee', cursive;
+      }
+    button{
+      text-align:center;
+      background-color: hide;
+      height: 50px;
+      width: 300px;
+      transform:translate(400px, -200px);
+      background-color: inherit;
+     border: none;
+      color: red;
+      font-size: 30px;
+      font-family: 'Bungee', cursive;
+    }
+    </style>
+  </head>
+  <body id="hi">
+    <script type="text/javascript">
+  function changecolor() {
+        var body = document.getElementById('hi');
+        body.style.background = "rgb(0,0,0)";
+        var text = document.getElementById('b');
+        b.style.color = "rgb(255,255,255)";
+      };
+    function changecolor1() {
+        var  body = document.getElementById('hi');
+          body.style.background = "rgb(255,255,255)";
+        var  text = document.getElementById('b');
+          b.style.color = "rgb(0,0,0)";
+
+        };
+    </script>
+    <h1 id="b">SUBSCRIBE</h1>
+    <button type="button" name="button"  onclick="changecolor()" id="btn" > dark-theme</button>
+    <button type="button" name="button" onclick ="changecolor1()" id="btn1" >light-theme</button>
+  </body>
+</html>

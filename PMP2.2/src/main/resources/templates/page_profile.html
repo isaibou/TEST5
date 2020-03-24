@@ -2,7 +2,7 @@
 <html lang="en" class="">
 	<head>
 		<meta charset="utf-8" />
-		<title>Html version | Angulr</title>
+		<title>Profile</title>
 		<meta name="description" content="app, web app, responsive, responsive layout, admin, admin panel, admin dashboard, flat, flat ui, ui kit, AngularJS, ui route, charts, widgets, components" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 		<link rel="stylesheet" href="../libs/assets/animate.css/animate.css" type="text/css" />
@@ -20,162 +20,157 @@
 
 			<!-- header -->
 			<header id="header" class="app-header navbar" role="menu">
-				<!-- navbar header -->
-				<div class="navbar-header bg-dark">
-					<button class="pull-right visible-xs dk" ui-toggle-class="show" target=".navbar-collapse">
-						<i class="glyphicon glyphicon-cog"></i>
-					</button>
-					<button class="pull-right visible-xs" ui-toggle-class="off-screen" target=".app-aside" ui-scroll="app">
-						<i class="glyphicon glyphicon-align-justify"></i>
-					</button>
-					<!-- brand -->
-					<a href="#/" class="navbar-brand text-lt">
-						<i class="fa fa-power-off"></i>
-						<span class="hidden-folded m-l-xs">PowerM</span>
-					</a>
-					<!-- / brand -->
-				</div>
-				<!-- / navbar header -->
+        <!-- navbar header -->
+        <div class="navbar-header bg-dark">
+          <button class="pull-right visible-xs dk" ui-toggle-class="show" target=".navbar-collapse">
+            <i class="glyphicon glyphicon-cog"></i>
+          </button>
+          <button class="pull-right visible-xs" ui-toggle-class="off-screen" target=".app-aside" ui-scroll="app">
+            <i class="glyphicon glyphicon-align-justify"></i>
+          </button>
+          <!-- brand -->
+          <a href="#/" class="navbar-brand text-lt">
+            <i class="fa fa-power-off"></i>
+            <span class="hidden-folded m-l-xs">PowerM</span>
+          </a>
+          <!-- / brand -->
+        </div>
+        <!-- / navbar header -->
 
-				<!-- navbar collapse -->
-				<div class="collapse pos-rlt navbar-collapse box-shadow bg-white-only">
-					<!-- buttons -->
-					<div class="nav navbar-nav hidden-xs">
-						<a href="#" class="btn no-shadow navbar-btn" ui-toggle-class="app-aside-folded" target=".app">
-							<i class="fa fa-dedent fa-fw text"></i>
-							<i class="fa fa-indent fa-fw text-active"></i>
-						</a>
-						<a href="#" class="btn no-shadow navbar-btn" ui-toggle-class="show" target="#aside-user">
-							<i class="icon-user fa-fw"></i>
-						</a>
-					</div>
-					<!-- / buttons -->
+        <!-- navbar collapse -->
+        <div class="collapse pos-rlt navbar-collapse box-shadow bg-white-only">
+          <!-- buttons -->
+          <div class="nav navbar-nav hidden-xs">
+            <a href="#" class="btn no-shadow navbar-btn" ui-toggle-class="app-aside-folded" target=".app">
+              <i class="fa fa-dedent fa-fw text"></i>
+              <i class="fa fa-indent fa-fw text-active"></i>
+            </a>
+            <a href="#" class="btn no-shadow navbar-btn" ui-toggle-class="show" target="#aside-user">
+              <i class="icon-user fa-fw"></i>
+            </a>
+          </div>
+          <!-- / buttons -->
 
-					<!-- link and dropdown -->
-					<ul class="nav navbar-nav hidden-sm">
-						<li class="dropdown">
-							<a href="#" data-toggle="dropdown" class="dropdown-toggle">
-								<i class="fa fa-fw fa-plus visible-xs-inline-block"></i>
-								<span translate="header.navbar.new.NEW">New</span> <span class="caret"></span>
-							</a>
-							<ul class="dropdown-menu" role="menu">
-								<li><a href="#" translate="header.navbar.new.PROJECT">Projects</a></li>
-								<li>
-									<a href>
-										<span class="badge bg-info pull-right">5</span>
-										<span translate="header.navbar.new.TASK">Task</span>
-									</a>
-								</li>
-								<li><a href translate="header.navbar.new.USER">User</a></li>
-								<li class="divider"></li>
-								<li>
-									<a href>
-										<span class="badge bg-danger pull-right">4</span>
-										<span translate="header.navbar.new.EMAIL">Email</span>
-									</a>
-								</li>
-							</ul>
-						</li>
-					</ul>
-					<!-- / link and dropdown -->
+          <!-- link and dropdown -->
+          <ul class="nav navbar-nav hidden-sm">
+            <li class="dropdown">
+              <a href="#" data-toggle="dropdown" class="dropdown-toggle">
+                <span translate="header.navbar.new.NEW"></span> <span class="fa fa-moon-o lb-warning"></span> 
+              </a>
+              <ul class="dropdown-menu" role="menu">
+                <li>
+                  <button type="button" name="button" id="darkmode" onclick="changecolor()">
+                    <span translate="header.navbar.new.TASK">ON</span>
+                  </button>
+                </li>
+                <li>
+                  <button  type="button" name="button" id="lightmode" onclick="lightmode()">
+                    <span translate="header.navbar.new.TASK">OFF</span>
+                  </button>
+                </li>
+                
+              </ul>
+            </li>
+          </ul>
+          <!-- / link and dropdown -->
 
-					<!-- search form -->
-					<form class="navbar-form navbar-form-sm navbar-left shift" ui-shift="prependTo" data-target=".navbar-collapse" role="search" ng-controller="TypeaheadDemoCtrl">
-						<div class="form-group">
-							<div class="input-group">
-								<input type="text" ng-model="selected" typeahead="state for state in states | filter:$viewValue | limitTo:8" class="form-control input-sm bg-light no-border rounded padder" placeholder="Search projects...">
-									<span class="input-group-btn">
-										<button type="submit" class="btn btn-sm bg-light rounded"><i class="fa fa-search"></i></button>
-									</span>
-								</div>
-							</div>
-						</form>
-						<!-- / search form -->
+          <!-- search form -->
+          <form class="navbar-form navbar-form-sm navbar-left shift" ui-shift="prependTo" data-target=".navbar-collapse" role="search" ng-controller="TypeaheadDemoCtrl">
+            <div class="form-group">
+              <div class="input-group">
+                <input type="text" ng-model="selected" typeahead="state for state in states | filter:$viewValue | limitTo:8" class="form-control input-sm bg-light no-border rounded padder" placeholder="Search projects...">
+                  <span class="input-group-btn">
+                    <button type="submit" class="btn btn-sm bg-light rounded"><i class="fa fa-search"></i></button>
+                  </span>
+                </div>
+              </div>
+            </form>
+            <!-- / search form -->
 
-						<!-- nabar right -->
-						<ul class="nav navbar-nav navbar-right">
-							<li class="dropdown">
-								<a href="#" data-toggle="dropdown" class="dropdown-toggle">
-									<i class="icon-bell fa-fw"></i>
-									<span class="visible-xs-inline">Notifications</span>
-									<span class="badge badge-sm up bg-danger pull-right-xs">2</span>
-								</a>
-								<!-- dropdown -->
-								<div class="dropdown-menu w-xl animated fadeInUp">
-									<div class="panel bg-white">
-										<div class="panel-heading b-light bg-light">
-											<strong>You have <span>2</span> notifications</strong>
-										</div>
-										<div class="list-group">
-											<a href class="list-group-item">
-												<span class="pull-left m-r thumb-sm">
-													<img src="img/a0.jpg" alt="..." class="img-circle">
-													</span>
-													<span class="clear block m-b-none">
+            <!-- nabar right -->
+            <ul class="nav navbar-nav navbar-right">
+              <li class="dropdown">
+                <a href="#" data-toggle="dropdown" class="dropdown-toggle">
+                  <i class="icon-bell fa-fw"></i>
+                  <span class="visible-xs-inline">Notifications</span>
+                  <span class="badge badge-sm up bg-danger pull-right-xs">2</span>
+                </a>
+                <!-- dropdown -->
+                <div class="dropdown-menu w-xl animated fadeInUp">
+                  <div class="panel bg-white">
+                    <div class="panel-heading b-light bg-light">
+                      <strong>You have <span>2</span> notifications</strong>
+                    </div>
+                    <div class="list-group">
+                      <a href class="list-group-item">
+                        <span class="pull-left m-r thumb-sm">
+                          <img src="img/a0.jpg" alt="..." class="img-circle">
+                          </span>
+                          <span class="clear block m-b-none">
                       Use awesome animate.css<br>
-															<small class="text-muted">10 minutes ago</small>
-														</span>
-													</a>
-													<a href class="list-group-item">
-														<span class="clear block m-b-none">
+                              <small class="text-muted">10 minutes ago</small>
+                            </span>
+                          </a>
+                          <a href class="list-group-item">
+                            <span class="clear block m-b-none">
                       1.0 initial released<br>
-																<small class="text-muted">1 hour ago</small>
-															</span>
-														</a>
-													</div>
-													<div class="panel-footer text-sm">
-														<a href class="pull-right"><i class="fa fa-cog"></i></a>
-														<a href="#notes" data-toggle="class:show animated fadeInRight">See all the notifications</a>
-													</div>
-												</div>
-											</div>
-											<!-- / dropdown -->
-										</li>
-										<li class="dropdown">
-											<a href="#" data-toggle="dropdown" class="dropdown-toggle clear" data-toggle="dropdown">
-												<span class="thumb-sm avatar pull-right m-t-n-sm m-b-n-sm m-l-sm">
-													<img src="img/user.png" alt="...">
-														<i class="on md b-white bottom"></i>
-													</span>
-													<span class="hidden-sm hidden-md">Walid.largou</span> <b class="caret"></b>
-												</a>
-												<!-- dropdown -->
-												<ul class="dropdown-menu animated fadeInRight w">
-													<li class="wrapper b-b m-b-sm bg-light m-t-n-xs">
-														<div>
-															<p>300mb of 500mb used</p>
-														</div>
-														<div class="progress progress-xs m-b-none dker">
-															<div class="progress-bar progress-bar-info" data-toggle="tooltip" data-original-title="50%" style="width: 50%"></div>
-														</div>
-													</li>
-													<li>
-														<a href>
-															<span class="badge bg-danger pull-right">30%</span>
-															<span>Settings</span>
-														</a>
-													</li>
-													<li>
-														<a ui-sref="app.page.profile">Profile</a>
-													</li>
-													<li>
-														<a ui-sref="app.docs">
-															<span class="label bg-info pull-right">new</span>
+                                <small class="text-muted">1 hour ago</small>
+                              </span>
+                            </a>
+                          </div>
+                          <div class="panel-footer text-sm">
+                            <a href class="pull-right"><i class="fa fa-cog"></i></a>
+                            <a href="#notes" data-toggle="class:show animated fadeInRight">See all the notifications</a>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- / dropdown -->
+                    </li>
+                    <li class="dropdown">
+                      <a href="#" data-toggle="dropdown" class="dropdown-toggle clear" data-toggle="dropdown">
+                        <span class="thumb-sm avatar pull-right m-t-n-sm m-b-n-sm m-l-sm">
+                          <img src="img/user.png" alt="...">
+                            <i class="on md b-white bottom"></i>
+                          </span>
+                          <span class="hidden-sm hidden-md">Walid.largou</span> <b class="caret"></b>
+                        </a>
+                        <!-- dropdown -->
+                        <ul class="dropdown-menu animated fadeInRight w">
+                          <li class="wrapper b-b m-b-sm bg-light m-t-n-xs">
+                            <div>
+                              <p>300mb of 500mb used</p>
+                            </div>
+                            <div class="progress progress-xs m-b-none dker">
+                              <div class="progress-bar progress-bar-info" data-toggle="tooltip" data-original-title="50%" style="width: 50%"></div>
+                            </div>
+                          </li>
+                          <li>
+                            <a href>
+                              <span class="badge bg-danger pull-right">30%</span>
+                              <span>Settings</span>
+                            </a>
+                          </li>
+                          <li>
+                            <a ui-sref="app.page.profile">Profile</a>
+                          </li>
+                          <li>
+                            <a ui-sref="app.docs">
+                              <span class="label bg-info pull-right">new</span>
                   Help
-														</a>
-													</li>
-													<li class="divider"></li>
-													<li>
-														<a ui-sref="access.signin">Logout</a>
-													</li>
-												</ul>
-												<!-- / dropdown -->
-											</li>
-										</ul>
-										<!-- / navbar right -->
-									</div>
-									<!-- / navbar collapse -->
-								</header>
+                            </a>
+                          </li>
+                          <li class="divider"></li>
+                          <li>
+                            <a ui-sref="access.signin">Logout</a>
+                          </li>
+                        </ul>
+                        <!-- / dropdown -->
+                      </li>
+                    </ul>
+                    <!-- / navbar right -->
+                  </div>
+                  <!-- / navbar collapse -->
+                </header>
 								<!-- / header -->
 
 
@@ -235,157 +230,209 @@
 												<!-- / user -->
 
 												<!-- nav -->
-												<nav ui-nav class="navi clearfix">
-													<ul class="nav">
-														<li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
-															<span>Main</span>
-														</li>
-														<li>
-															<a href="index.html" class="auto">      
-																<i class="glyphicon glyphicon-stats icon text-primary-dker"></i>
-																<span class="font-bold">Dashboard</span>
-															</a>
+          <nav ui-nav class="navi clearfix">
+            <ul class="nav">
+              <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
+                <span>Main</span>
+              </li>
+              <li>
+                <a href="index.html" class="auto">      
+                  <i class="glyphicon glyphicon-stats icon text-primary-dker"></i>
+                  <span class="font-bold">Dashboard</span>
+                </a>
+               
+              </li>
+              <li>
+                <a href="mail.html">
+                  <b class="badge bg-info pull-right">9</b>
+                  <i class="glyphicon glyphicon-envelope icon text-info-lter"></i>
+                  <span class="font-bold">Email</span>
+                </a>
+              </li>
+              <li class="line dk"></li>
 
-														</li>
-														<li>
-															<a href="mail.html">
-																<b class="badge bg-info pull-right">9</b>
-																<i class="glyphicon glyphicon-envelope icon text-info-lter"></i>
-																<span class="font-bold">Email</span>
-															</a>
-														</li>
-														<li class="line dk"></li>
+              <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
+                <span>Management</span>
+              </li>
+              <li>
+                <a href class="auto">      
+                  <span class="pull-right text-muted">
+                    <i class="fa fa-fw fa-angle-right text"></i>
+                    <i class="fa fa-fw fa-angle-down text-active"></i>
+                  </span>
+                  <b class="badge bg-info pull-right">3</b>
+                  <i class="glyphicon glyphicon-briefcase"></i>
+                  <span>Customers</span>
+                </a>
+                <ul class="nav nav-sub dk">
+               
+                  <li>
+                    <a href="customer_manage.html">
+                      <span>Manage customer</span>
+                    </a>
+                  </li>
+				  
+				  <li>
+                    <a href="purchasing_customer_manage.html">
+                      <span>Puchasing contact</span>
+                    </a>
+                  </li>
+                    
+                </ul>
+              </li>
+			     <li>
+                <a href class="auto">      
+                  <span class="pull-right text-muted">
+                    <i class="fa fa-fw fa-angle-right text"></i>
+                    <i class="fa fa-fw fa-angle-down text-active"></i>
+                  </span>
+                  <b class="badge bg-info pull-right">3</b>
+                  <i class="glyphicon glyphicon-user"></i>
+                  <span>Users</span>
+                </a>
+                <ul class="nav nav-sub dk">
+               
+                  <li>
+                    <a href="users.html">
+                      <span>Manage users</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="TypeUsers.html">
+                      <span>Manage Type users</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <a href="timesheets.html" class="auto">
+                  <i class="glyphicon glyphicon-calendar icon"></i>
+                  <span>TimeSheet</span>
+                </a>
 
-														<li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
-															<span>Management</span>
-														</li>
-														<li>
-															<a href class="auto">      
-																<span class="pull-right text-muted">
-																	<i class="fa fa-fw fa-angle-right text"></i>
-																	<i class="fa fa-fw fa-angle-down text-active"></i>
-																</span>
-																<b class="badge bg-info pull-right">3</b>
-																<i class="glyphicon glyphicon-briefcase"></i>
-																<span>Customers</span>
-															</a>
-															<ul class="nav nav-sub dk">
+              </li>
+              <li>
+                <a href class="auto">
+                  <span class="pull-right text-muted">
+                    <i class="fa fa-fw fa-angle-right text"></i>
+                    <i class="fa fa-fw fa-angle-down text-active"></i>
+                  </span>
+                  <b class="label bg-primary pull-right">2</b>
+                  <i class="glyphicon glyphicon-list"></i>
+                  <span>Projects</span>
+                </a>
+                <ul class="nav nav-sub dk">
+                  <li class="s">
+                    <a href="projects_manage.html">
+                      <span>Manage Project</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="deliverable_manage.html">
+                      <span>Manage Deliverable</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="reference_manage.html">
+                      <span>Manage Reference</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <a href class="auto">
+                  <span class="pull-right text-muted">
+                    <i class="fa fa-fw fa-angle-right text"></i>
+                    <i class="fa fa-fw fa-angle-down text-active"></i>
+                  </span>
+                  <i class="glyphicon  glyphicon-th"></i>
+                  <span>Assets</span>
+                </a>
+                <ul class="nav nav-sub dk">
+                  <li class="">
+                    <a href="assets_manage.html">
+                      <span>Manage Assets</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="assetstype_manage.html">
+                      <span>Manage Assets Type</span>
+                    </a>
+                  </li>
+				  <li>
+                    <a href="firmware.html">
+                      <span>Firmware</span>
+                    </a>
+                  </li>
+          <li>
+                    <a href="vendor.html">
+                      <span>Vendor</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <a href="tickets_manage.html">
+                  <i class="glyphicon glyphicon-tag"></i>
+                  <span>Tickets</span>
+                </a>
+              </li>
+			  <li>
+                <a href="contract_manage.html">
+                  <i class="fa fa-legal"></i></i>
+                  <span>Contrats</span>
+                </a>
+              </li>
+			  <li>
+                <a href="expense.html">
+                  <i class="glyphicon  glyphicon-usd"></i></i>
+                  <span>Expenses</span>
+                </a>
+              </li>
+              <li>
+                <a href="request_manage.html" class="auto">
+				<span class="pull-right text-muted">
+                    <i class="fa fa-fw fa-angle-right text"></i>
+                    <i class="fa fa-fw fa-angle-down text-active"></i>
+                  </span>
+                  <i class="glyphicon  glyphicon-save icon"></i>
+                  <span>Request</span>
+                </a>
+                 <ul class="nav nav-sub dk">
+                  <li class="s">
+                    <a href="internal_request_manage.html">
+                      <span>Internal Request</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="external_request_manage.html">
+                      <span>External Request</span>
+                    </a>
+                  </li>
+                </ul>
 
-																<li>
-																	<a href="customer_manage.html">
-																		<span>Manage customer</span>
-																	</a>
-																</li>
+               
+              </li>
+              <li class="line dk hidden-folded"></li>
 
-															</ul>
-														</li>
-														<li>
-															<a href="timesheets.html" class="auto">
-																<i class="glyphicon glyphicon-calendar icon"></i>
-																<span>TimeSheet</span>
-															</a>
-
-														</li>
-														<li>
-															<a href class="auto">
-																<span class="pull-right text-muted">
-																	<i class="fa fa-fw fa-angle-right text"></i>
-																	<i class="fa fa-fw fa-angle-down text-active"></i>
-																</span>
-																<b class="label bg-primary pull-right">2</b>
-																<i class="glyphicon glyphicon-list"></i>
-																<span>Projects</span>
-															</a>
-															<ul class="nav nav-sub dk">
-																<li class="s">
-																	<a href="projects_manage.html">
-																		<span>Manage Project</span>
-																	</a>
-																</li>
-																<li>
-																	<a href="projet_delivreble_manage.html">
-																		<span>Manage Delivreble</span>
-																	</a>
-																</li>
-																<li>
-																	<a href="projects_reference_manage.html">
-																		<span>Manage Reference</span>
-																	</a>
-																</li>
-															</ul>
-														</li>
-														<li>
-															<a href class="auto">
-																<span class="pull-right text-muted">
-																	<i class="fa fa-fw fa-angle-right text"></i>
-																	<i class="fa fa-fw fa-angle-down text-active"></i>
-																</span>
-																<i class="glyphicon  glyphicon-th"></i>
-																<span>Assets</span>
-															</a>
-															<ul class="nav nav-sub dk">
-																<li class="">
-																	<a href="assets_manage.html">
-																		<span>Manage Assets</span>
-																	</a>
-																</li>
-																<li>
-																	<a href="assetstype_manage.html">
-																		<span>Manage Assets Type</span>
-																	</a>
-																</li>
-															</ul>
-														</li>
-														<li>
-															<a href="tickets_manage.html">
-																<i class="glyphicon glyphicon-tag"></i>
-																<span>Tickets</span>
-															</a>
-														</li>
-														<li>
-															<a href="request_manage.html" class="auto">
-																<span class="pull-right text-muted">
-																	<i class="fa fa-fw fa-angle-right text"></i>
-																	<i class="fa fa-fw fa-angle-down text-active"></i>
-																</span>
-																<i class="glyphicon  glyphicon-save icon"></i>
-																<span>Request</span>
-															</a>
-															<ul class="nav nav-sub dk">
-																<li class="s">
-																	<a href="internal_request_manage.html">
-																		<span>Internal Request</span>
-																	</a>
-																</li>
-																<li>
-																	<a href="external_request_manage.html">
-																		<span>External Request</span>
-																	</a>
-																</li>
-															</ul>
-
-
-														</li>
-														<li class="line dk hidden-folded"></li>
-
-														<li class="hidden-folded padder m-t m-b-sm text-muted text-xs">          
-															<span>Your Stuff</span>
-														</li>  
-														<li>
-															<a href="page_profile.html">
-																<i class="icon-user icon text-success-lter"></i>
-																<b class="badge bg-success pull-right">30%</b>
-																<span>Profile</span>
-															</a>
-														</li>
-														<li>
-															<a href>
-																<i class="icon-question icon"></i>
-																<span>Documents</span>
-															</a>
-														</li>
-													</ul>
-												</nav>
+              <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">          
+                <span>Your Stuff</span>
+              </li>  
+              <li>
+                <a href="page_profile.html">
+                  <i class="icon-user icon text-success-lter"></i>
+                  <b class="badge bg-success pull-right">30%</b>
+                  <span>Profile</span>
+                </a>
+              </li>
+              <li>
+                <a href>
+                  <i class="icon-question icon"></i>
+                  <span>Documents</span>
+                </a>
+              </li>
+            </ul>
+          </nav>
 												<!-- nav -->
 
 												<!-- aside footer -->
@@ -537,6 +584,67 @@
 														
 															});
 														</script>
+<script type="text/javascript">
+  function changecolor() {
+       $('body,.wrapper,.content,.panel-default,.panel-heading,#content-h,#header,.modal-content').css("background-color", "#3a3f51");
+       $('.wrapper,.content,.panel-default,.panel-heading,#content-h').css("border-color", "#313639");
+    $('.h3,.h5,.wrapper,panel-default,#content-b,.panel-heading').css("color", "white");
+              $('.panel-default,#content-b').css("background-color", "#3a3f51");
+
+  google.charts.load('current', {packages: ['corechart']});
+    google.charts.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+      // Define the chart to be drawn.
+      var data = new google.visualization.DataTable();
+      data.addColumn('string', 'Element');
+      data.addColumn('number', 'Percentage');
+      data.addRows([
+        ['Configuration', 0.68],
+        ['Documentation', 0.11],
+        ['Maintenance', 0.11],
+        ['Installation', 0.10]
+      ]);
+
+      // Instantiate and draw the chart.
+      var chart = new google.visualization.PieChart(document.getElementById('myPieChart'));
+    var options = {backgroundColor: '#3a3f51', colors: ['#6254b2', '#3289c8', '#27c24c','#ffbb3b'],legendTextStyle: { color: '#FFF' },is3D: true};
+      chart.draw(data, options);
+    }
+
+      };
+    
+      function lightmode() {
+       $('.wrapper,.content,.panel-heading,#content-h,#header,.modal-content').css("background-color", "#f0f3f4");
+          $('.panel-default,#content-b').css("background-color", "#f0f3f4");
+       $('.wrapper,.content,.panel-default,.panel-heading,#content-h').css("border-color", "#dee5e7");
+    $('.h3,.h5,.wrapper,panel-default,#content-b,.panel-heading').css("color", "#58666e");
+
+  google.charts.load('current', {packages: ['corechart']});
+    google.charts.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+      // Define the chart to be drawn.
+      var data = new google.visualization.DataTable();
+      data.addColumn('string', 'Element');
+      data.addColumn('number', 'Percentage');
+      data.addRows([
+        ['Configuration', 0.68],
+        ['Documentation', 0.11],
+        ['Maintenance', 0.11],
+        ['Installation', 0.10]
+      ]);
+
+      // Instantiate and draw the chart.
+      var chart = new google.visualization.PieChart(document.getElementById('myPieChart'));
+    var options = {backgroundColor: '#f0f3f4', colors: ['#6254b2', '#3289c8', '#27c24c','#ffbb3b'],legendTextStyle: { color: 'black' },is3D: true};
+      chart.draw(data, options);
+    }
+
+      };
+    
+ 
+    </script>
 														</body>
 													</html>
 													

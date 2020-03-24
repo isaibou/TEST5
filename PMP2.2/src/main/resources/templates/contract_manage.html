@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en" class="">
 	<head>
@@ -233,6 +232,7 @@ document.addEventListener('DOMContentLoaded', function() {
 											<!-- / dropdown -->
 										</li>
 										<li class="dropdown">
+											<a href="#" data-toggle="dropdown" class="dropdown-toggle clear" data-toggle="dropdown">
 												<span class="thumb-sm avatar pull-right m-t-n-sm m-b-n-sm m-l-sm">
 													<img src="img/user.png" alt="...">
 														<i class="on md b-white bottom"></i>
@@ -291,14 +291,14 @@ document.addEventListener('DOMContentLoaded', function() {
                 <span>Main</span>
               </li>
               <li>
-                <a th:href="index" class="auto">      
+                <a href="index.html" class="auto">      
                   <i class="glyphicon glyphicon-stats icon text-primary-dker"></i>
                   <span class="font-bold">Dashboard</span>
                 </a>
                
               </li>
               <li>
-                <a th:href="mail">
+                <a href="mail.html">
                   <b class="badge bg-info pull-right">9</b>
                   <i class="glyphicon glyphicon-envelope icon text-info-lter"></i>
                   <span class="font-bold">Email</span>
@@ -322,13 +322,13 @@ document.addEventListener('DOMContentLoaded', function() {
                 <ul class="nav nav-sub dk">
                
                   <li>
-                    <a th:href="customer_manage">
+                    <a href="customer_manage.html">
                       <span>Manage customer</span>
                     </a>
                   </li>
           
           <li>
-                    <a th:href="purchasing_customer_manage">
+                    <a href="purchasing_customer_manage.html">
                       <span>Puchasing contact</span>
                     </a>
                   </li>
@@ -348,15 +348,19 @@ document.addEventListener('DOMContentLoaded', function() {
                 <ul class="nav nav-sub dk">
                
                   <li>
-                    <a th:href="users">
+                    <a href="users.html">
                       <span>Manage users</span>
                     </a>
                   </li>
-                    
+                                     <li>
+                    <a href="TypeUsers.html">
+                      <span>Manage Type users</span>
+                    </a>
+                  </li> 
                 </ul>
               </li>
               <li>
-                <a th:href="timesheets" class="auto">
+                <a href="timesheets.html" class="auto">
                   <i class="glyphicon glyphicon-calendar icon"></i>
                   <span>TimeSheet</span>
                 </a>
@@ -374,17 +378,17 @@ document.addEventListener('DOMContentLoaded', function() {
                 </a>
                 <ul class="nav nav-sub dk">
                   <li class="s">
-                    <a th:href="projects_manage">
+                    <a href="projects_manage.html">
                       <span>Manage Project</span>
                     </a>
                   </li>
                   <li>
-                    <a th:href="deliverable_manage">
+                    <a href="deliverable_manage.html">
                       <span>Manage Deliverable</span>
                     </a>
                   </li>
                   <li>
-                    <a th:href="reference_manage">
+                    <a href="reference_manage.html">
                       <span>Manage Reference</span>
                     </a>
                   </li>
@@ -401,47 +405,47 @@ document.addEventListener('DOMContentLoaded', function() {
                 </a>
                 <ul class="nav nav-sub dk">
                   <li class="">
-                    <a th:href="assets_manage">
+                    <a href="assets_manage.html">
                       <span>Manage Assets</span>
                     </a>
                   </li>
                   <li>
-                    <a th:href="assetstype_manage">
+                    <a href="assetstype_manage.html">
                       <span>Manage Assets Type</span>
                     </a>
                   </li>
           <li>
-                    <a th:href="assetstype_manage">
+                    <a href="assetstype_manage.html">
                       <span>Firmware</span>
                     </a>
                   </li>
           <li>
-                    <a th:href="assetstype_manage">
+                    <a href="assetstype_manage.html">
                       <span>Vendor</span>
                     </a>
                   </li>
                 </ul>
               </li>
               <li>
-                <a th:href="tickets_manage">
+                <a href="tickets_manage.html">
                   <i class="glyphicon glyphicon-tag"></i>
                   <span>Tickets</span>
                 </a>
               </li>
         <li>
-                <a th:href="contract_manage">
+                <a href="contract_manage.html">
                   <i class="fa fa-legal"></i></i>
                   <span>Contrats</span>
                 </a>
               </li>
         <li>
-                <a th:href="tickets_manage">
+                <a href="tickets_manage.html">
                   <i class="glyphicon  glyphicon-usd"></i></i>
                   <span>Expenses</span>
                 </a>
               </li>
               <li>
-                <a th:href="request_manage" class="auto">
+                <a href="request_manage.html" class="auto">
         <span class="pull-right text-muted">
                     <i class="fa fa-fw fa-angle-right text"></i>
                     <i class="fa fa-fw fa-angle-down text-active"></i>
@@ -451,12 +455,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 </a>
                  <ul class="nav nav-sub dk">
                   <li class="s">
-                    <a th:href="internal_request_manage">
+                    <a href="internal_request_manage.html">
                       <span>Internal Request</span>
                     </a>
                   </li>
                   <li>
-                    <a th:href="external_request_manage">
+                    <a href="external_request_manage.html">
                       <span>External Request</span>
                     </a>
                   </li>
@@ -514,7 +518,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		   <th  style="width:20%"><center>Title</center></th>
 		   <th  style="width:15%"><center>Description</center></th>
 		   <th  style="width:15%"><center>Delivery Date</center></th>
-		   <th  style="width:15%"></th>
+		   <th  style="width:15%"><center>Actions</center></th>
 
 		  </tr>
 	     </thead>
@@ -567,82 +571,84 @@ document.addEventListener('DOMContentLoaded', function() {
 	    <button type="button" class="close pull-right" data-dismiss="modal">&times;</button>
 	    <h1 class="m-n font-bold h3"> <b class="glyphicon-plus pull"> </b> Add Contract</h1>
 	   </div>
-	   <div class="modal-body">
-	    <div class="row">
-	     <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Contract Title</b></label>
-	     <div class="col-sm-8" style="margin: 5px 0px;">
-		  <input type="text" class="form-control" placeholder="Entry Name of Project" id="input-id-1">
-		 </div>
-	     <label class="col-sm-4 control-label"  for="input-id-1"><b>Customer Name</b></label>
-		 <div class="col-sm-8"  >
-		  <select name="account" class="form-control m-b">
-		   <option>Customer1</option>
-		   <option>Customer2</option>
-		  </select>
-		 </div>
-	     <label class="col-sm-4 control-label" placeholder="Entry Notes" for="input-id-1"><b>Description</b></label>
-		  <div class="col-sm-8">
-		   <div class="form-group">
-			<div class="btn-toolbar m-b-sm btn-editor" data-role="editor-toolbar" data-target="#editor">
-			 <div class="btn-group dropdown" dropdown="">
-			  <a class="btn btn-default" dropdown-toggle="" tooltip="Font"><i class="fa fa-font"></i><b class="caret"></b></a>
-			   <ul class="dropdown-menu">
-				<li><a href="" data-edit="fontName Serif" style="font-family:'Serif'">Serif</a></li> 
-				<li><a href="" data-edit="fontName Sans" style="font-family:'Sans'">Sans</a></li>
-				<li><a href="" data-edit="fontName Arial" style="font-family:'Arial'">Arial</a></li>
-			   </ul>
-			 </div>
-			 <div class="btn-group dropdown" dropdown="">
-			  <a class="btn btn-default" dropdown-toggle="" data-toggle="dropdown" tooltip="Font Size"><i class="fa fa-text-height"></i>&nbsp;<b class="caret"></b></a>
-			  <ul class="dropdown-menu">
-			   <li><a href="" data-edit="fontSize 5" style="font-size:24px">Huge</a></li>
-			   <li><a href="" data-edit="fontSize 3" style="font-size:18px">Normal</a></li>
-			   <li><a href="" data-edit="fontSize 1" style="font-size:14px">Small</a></li>
-			  </ul>
-		     </div>
-			 <div class="btn-group">
-			  <a class="btn btn-default" data-edit="bold" tooltip="Bold (Ctrl/Cmd+B)"><i class="fa fa-bold"></i></a>
-			  <a class="btn btn-default" data-edit="italic" tooltip="Italic (Ctrl/Cmd+I)"><i class="fa fa-italic"></i></a>
-			  <a class="btn btn-default" data-edit="strikethrough" tooltip="Strikethrough"><i class="fa fa-strikethrough"></i></a>
-			  <a class="btn btn-default" data-edit="underline" tooltip="Underline (Ctrl/Cmd+U)"><i class="fa fa-underline"></i></a>
-			 </div>
-			 <div class="btn-group">
-			  <a class="btn btn-default" data-edit="insertunorderedlist" tooltip="Bullet list"><i class="fa fa-list-ul"></i></a>
-			  <a class="btn btn-default" data-edit="insertorderedlist" tooltip="Number list"><i class="fa fa-list-ol"></i></a>
-			  <a class="btn btn-default" data-edit="outdent" tooltip="Reduce indent (Shift+Tab)"><i class="fa fa-dedent"></i></a>
-			  <a class="btn btn-default" data-edit="indent" tooltip="Indent (Tab)"><i class="fa fa-indent"></i></a>
-		     </div>
-			 <div class="btn-group">
-			  <a class="btn btn-default btn-info" data-edit="justifyleft" tooltip="Align Left (Ctrl/Cmd+L)"><i class="fa fa-align-left"></i></a>
-			  <a class="btn btn-default" data-edit="justifycenter" tooltip="Center (Ctrl/Cmd+E)"><i class="fa fa-align-center"></i></a>
-			  <a class="btn btn-default" data-edit="justifyright" tooltip="Align Right (Ctrl/Cmd+R)"><i class="fa fa-align-right"></i></a>
-			  <a class="btn btn-default" data-edit="justifyfull" tooltip="Justify (Ctrl/Cmd+J)"><i class="fa fa-align-justify"></i></a>
-			 </div>
-			 <div class="btn-group dropdown" dropdown="">
-			  <a class="btn btn-default" dropdown-toggle="" tooltip="Hyperlink"><i class="fa fa-link"></i></a>
-			  <div class="dropdown-menu">
-			   <div class="input-group m-l-xs m-r-xs">
-				<input class="form-control input-sm" id="LinkInput" placeholder="URL" type="text" data-edit="createLink">
-				<div class="input-group-btn">
-				 <button class="btn btn-sm btn-default" type="button">Add</button>
-				</div>
-			   </div>
-			  </div>
-			  <a class="btn btn-default" data-edit="unlink" tooltip="Remove Hyperlink"><i class="fa fa-cut"></i></a>
-			 </div>
+     <div class="modal-body">
+      <div class="row">
+       <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Contract Title</b></label>
+       <div class="col-sm-8" style="margin: 5px 0px;">
+      <input type="text" class="form-control" placeholder="Entry Name of Project" id="input-id-1">
+     </div>
+       <label class="col-sm-4 control-label"  for="input-id-1"><b>Customer Name</b></label>
+     <div class="col-sm-8"  >
+      <select name="account" class="form-control m-b">
+       <option>Customer1</option>
+       <option>Customer2</option>
+      </select>
+     </div>
+       <label class="col-sm-4 control-label" placeholder="Entry Notes" for="input-id-1"><b>Description</b></label>
+      <div class="col-sm-8">
+       <div class="form-group">
+      <div class="btn-toolbar m-b-sm btn-editor" data-role="editor-toolbar" data-target="#editor">
+       <div class="btn-group dropdown" dropdown="">
+        <a class="btn btn-default" dropdown-toggle="" tooltip="Font"><i class="fa fa-font"></i><b class="caret"></b></a>
+         <ul class="dropdown-menu">
+        <li><a href="" data-edit="fontName Serif" style="font-family:'Serif'">Serif</a></li> 
+        <li><a href="" data-edit="fontName Sans" style="font-family:'Sans'">Sans</a></li>
+        <li><a href="" data-edit="fontName Arial" style="font-family:'Arial'">Arial</a></li>
+         </ul>
+       </div>
+       <div class="btn-group dropdown" dropdown="">
+        <a class="btn btn-default" dropdown-toggle="" data-toggle="dropdown" tooltip="Font Size"><i class="fa fa-text-height"></i>&nbsp;<b class="caret"></b></a>
+        <ul class="dropdown-menu">
+         <li><a href="" data-edit="fontSize 5" style="font-size:24px">Huge</a></li>
+         <li><a href="" data-edit="fontSize 3" style="font-size:18px">Normal</a></li>
+         <li><a href="" data-edit="fontSize 1" style="font-size:14px">Small</a></li>
+        </ul>
+         </div>
+       <div class="btn-group">
+        <a class="btn btn-default" data-edit="bold" tooltip="Bold (Ctrl/Cmd+B)"><i class="fa fa-bold"></i></a>
+        <a class="btn btn-default" data-edit="italic" tooltip="Italic (Ctrl/Cmd+I)"><i class="fa fa-italic"></i></a>
+        <a class="btn btn-default" data-edit="strikethrough" tooltip="Strikethrough"><i class="fa fa-strikethrough"></i></a>
+        <a class="btn btn-default" data-edit="underline" tooltip="Underline (Ctrl/Cmd+U)"><i class="fa fa-underline"></i></a>
+       </div>
+       <div class="btn-group">
+        <a class="btn btn-default" data-edit="insertunorderedlist" tooltip="Bullet list"><i class="fa fa-list-ul"></i></a>
+        <a class="btn btn-default" data-edit="insertorderedlist" tooltip="Number list"><i class="fa fa-list-ol"></i></a>
+        <a class="btn btn-default" data-edit="outdent" tooltip="Reduce indent (Shift+Tab)"><i class="fa fa-dedent"></i></a>
+        <a class="btn btn-default" data-edit="indent" tooltip="Indent (Tab)"><i class="fa fa-indent"></i></a>
+         </div>
+       <div class="btn-group">
+        <a class="btn btn-default btn-info" data-edit="justifyleft" tooltip="Align Left (Ctrl/Cmd+L)"><i class="fa fa-align-left"></i></a>
+        <a class="btn btn-default" data-edit="justifycenter" tooltip="Center (Ctrl/Cmd+E)"><i class="fa fa-align-center"></i></a>
+        <a class="btn btn-default" data-edit="justifyright" tooltip="Align Right (Ctrl/Cmd+R)"><i class="fa fa-align-right"></i></a>
+        <a class="btn btn-default" data-edit="justifyfull" tooltip="Justify (Ctrl/Cmd+J)"><i class="fa fa-align-justify"></i></a>
+       </div>
+       <div class="btn-group dropdown" dropdown="">
+        <a class="btn btn-default" dropdown-toggle="" tooltip="Hyperlink"><i class="fa fa-link"></i></a>
+        <div class="dropdown-menu">
+         <div class="input-group m-l-xs m-r-xs">
+        <input class="form-control input-sm" id="LinkInput" placeholder="URL" type="text" data-edit="createLink">
+        <div class="input-group-btn">
+         <button class="btn btn-sm btn-default" type="button">Add</button>
+        </div>
+         </div>
+        </div>
+        <a class="btn btn-default" data-edit="unlink" tooltip="Remove Hyperlink"><i class="fa fa-cut"></i></a>
+       </div>
              <div class="btn-group">
-			  <a class="btn btn-default" tooltip="Insert picture (or just drag &amp; drop)" id="pictureBtn"><i class="fa fa-picture-o"></i></a>
-			  <input type="file" data-edit="insertImage" style="position:absolute; opacity:0; width:41px; height:34px">
-			 </div>
-			 <div class="btn-group">
-			  <a class="btn btn-default" data-edit="undo" tooltip="Undo (Ctrl/Cmd+Z)"><i class="fa fa-undo"></i></a>
-			  <a class="btn btn-default" data-edit="redo" tooltip="Redo (Ctrl/Cmd+Y)"><i class="fa fa-repeat"></i></a>
-			 </div>
-			</div>
-			<div ui-jq="wysiwyg" class="form-control" style="overflow:scroll;height:200px;max-height:200px" contenteditable="true"> Go ahead… </div>
-           </div>
-		  </div>
-           <label class="col-sm-4 control-label" placeholder="Entry Year" for="input-id-1"><center>Delivery Date</center></label>
+        <a class="btn btn-default" tooltip="Insert picture (or just drag &amp; drop)" id="pictureBtn"><i class="fa fa-picture-o"></i></a>
+        <input type="file" data-edit="insertImage" style="position:absolute; opacity:0; width:41px; height:34px">
+       </div>
+       <div class="btn-group">
+        <a class="btn btn-default" data-edit="undo" tooltip="Undo (Ctrl/Cmd+Z)"><i class="fa fa-undo"></i></a>
+        <a class="btn btn-default" data-edit="redo" tooltip="Redo (Ctrl/Cmd+Y)"><i class="fa fa-repeat"></i></a>
+       </div>
+      </div>
+      <div ui-jq="wysiwyg" class="form-control" style="overflow:scroll;height:200px;max-height:200px" contenteditable="true"> 
+        Go ahead… 
+      </div>
+    </div>
+   </div>
+    <label class="col-sm-4 control-label" placeholder="Entry Year" for="input-id-1"><b>Delivery Date</b></label>
        <div class="col-sm-8">
       <form action="https://formden.com/post/MlKtmY4x/" class="form-horizontal" method="post">
        <div class="form-group ">
@@ -657,12 +663,12 @@ document.addEventListener('DOMContentLoaded', function() {
        </div>
       </form>
        </div>
-		  <div class="modal-footer">
-		   <button style="margin:0px;" class="btn m-b-xs btn-sm btn-primary btn-addon"><i class="glyphicon glyphicon-ok"></i>Save</button>
-		   <button style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon" data-dismiss="modal"><i class="glyphicon glyphicon-remove"></i>Annuler</button>
-		  </div>
-		 </div>
-		</div>
+      <div class="modal-footer">
+       <button style="margin:0px;" class="btn m-b-xs btn-sm btn-primary btn-addon"><i class="glyphicon glyphicon-ok"></i>Save</button>
+       <button style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon" data-dismiss="modal"><i class="glyphicon glyphicon-remove"></i>Annuler</button>
+      </div>
+     </div>
+    </div>
 	  </div>
      </div>
     </div>
@@ -680,7 +686,7 @@ document.addEventListener('DOMContentLoaded', function() {
     <div class="modal-content">
      <div class="modal-header" style="background-image:url(img/grf-bg.jpg);color:white;">
       <button type="button" class="close pull-right" data-dismiss="modal">&times;</button>
-      <h1 class="m-n font-bold h3"> <b class="glyphicon-plus pull"> </b> Add Contract</h1>
+      <h1 class="m-n font-bold h3"> Update Contract</h1>
      </div>
      <div class="modal-body">
       <div class="row">
@@ -754,10 +760,12 @@ document.addEventListener('DOMContentLoaded', function() {
         <a class="btn btn-default" data-edit="redo" tooltip="Redo (Ctrl/Cmd+Y)"><i class="fa fa-repeat"></i></a>
        </div>
       </div>
-      <div ui-jq="wysiwyg" class="form-control" style="overflow:scroll;height:200px;max-height:200px" contenteditable="true"> Go ahead… </div>
-           </div>
+      <div ui-jq="wysiwyg" class="form-control" style="overflow:scroll;height:200px;max-height:200px" contenteditable="true"> 
+        Go ahead… 
       </div>
-           <label class="col-sm-4 control-label" placeholder="Entry Year" for="input-id-1"><b>Delivery Date</b></label>
+    </div>
+   </div>
+    <label class="col-sm-4 control-label" placeholder="Entry Year" for="input-id-1"><b>Delivery Date</b></label>
        <div class="col-sm-8">
       <form action="https://formden.com/post/MlKtmY4x/" class="form-horizontal" method="post">
        <div class="form-group ">
@@ -820,8 +828,7 @@ document.addEventListener('DOMContentLoaded', function() {
           </p> 
    </div>
    <div class="modal-footer">
-   <button class="btn m-b-xs btn-sm btn-primary btn-addon"><i class="glyphicon glyphicon-ok"></i>Yes</button>
-   <button class="btn m-b-xs btn-sm btn-default btn-addon" data-dismiss="modal"><i class="glyphicon glyphicon-remove"></i>No</button>
+   <button class="btn m-b-xs btn-sm btn-primary btn-addon" data-dismiss="modal">Return</button>
   </div>
   </div>  
 </div>

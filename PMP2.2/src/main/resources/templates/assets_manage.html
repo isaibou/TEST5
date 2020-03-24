@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="utf-8" />
   <title>Manage Assets</title>
@@ -31,163 +31,158 @@
   
 
     <!-- header -->
-  <header id="header" class="app-header navbar" role="menu">
-      <!-- navbar header -->
-      <div class="navbar-header bg-dark">
-        <button class="pull-right visible-xs dk" ui-toggle-class="show" target=".navbar-collapse">
-          <i class="glyphicon glyphicon-cog"></i>
-        </button>
-        <button class="pull-right visible-xs" ui-toggle-class="off-screen" target=".app-aside" ui-scroll="app">
-          <i class="glyphicon glyphicon-align-justify"></i>
-        </button>
-        <!-- brand -->
-        <a href="#/" class="navbar-brand text-lt">
-          <i class="fa fa-power-off"></i>
-          <span class="hidden-folded m-l-xs">PowerM</span>
-        </a>
-        <!-- / brand -->
-      </div>
-      <!-- / navbar header -->
-
-      <!-- navbar collapse -->
-      <div class="collapse pos-rlt navbar-collapse box-shadow bg-white-only">
-        <!-- buttons -->
-        <div class="nav navbar-nav hidden-xs">
-          <a href="#" class="btn no-shadow navbar-btn" ui-toggle-class="app-aside-folded" target=".app">
-            <i class="fa fa-dedent fa-fw text"></i>
-            <i class="fa fa-indent fa-fw text-active"></i>
+ <header id="header" class="app-header navbar" role="menu">
+        <!-- navbar header -->
+        <div class="navbar-header bg-dark">
+          <button class="pull-right visible-xs dk" ui-toggle-class="show" target=".navbar-collapse">
+            <i class="glyphicon glyphicon-cog"></i>
+          </button>
+          <button class="pull-right visible-xs" ui-toggle-class="off-screen" target=".app-aside" ui-scroll="app">
+            <i class="glyphicon glyphicon-align-justify"></i>
+          </button>
+          <!-- brand -->
+          <a href="#/" class="navbar-brand text-lt">
+            <i class="fa fa-power-off"></i>
+            <span class="hidden-folded m-l-xs">PowerM</span>
           </a>
-          <a href="#" class="btn no-shadow navbar-btn" ui-toggle-class="show" target="#aside-user">
-            <i class="icon-user fa-fw"></i>
-          </a>
+          <!-- / brand -->
         </div>
-        <!-- / buttons -->
+        <!-- / navbar header -->
 
-        <!-- link and dropdown -->
-        <ul class="nav navbar-nav hidden-sm">
-          <li class="dropdown">
-            <a href="#" data-toggle="dropdown" class="dropdown-toggle">
-              <i class="fa fa-fw fa-plus visible-xs-inline-block"></i>
-              <span translate="header.navbar.new.NEW">New</span> <span class="caret"></span>
+        <!-- navbar collapse -->
+        <div class="collapse pos-rlt navbar-collapse box-shadow bg-white-only">
+          <!-- buttons -->
+          <div class="nav navbar-nav hidden-xs">
+            <a href="#" class="btn no-shadow navbar-btn" ui-toggle-class="app-aside-folded" target=".app">
+              <i class="fa fa-dedent fa-fw text"></i>
+              <i class="fa fa-indent fa-fw text-active"></i>
             </a>
-            <ul class="dropdown-menu" role="menu">
-              <li><a href="#" translate="header.navbar.new.PROJECT">Projects</a></li>
-              <li>
-                <a href>
-                  <span class="badge bg-info pull-right">5</span>
-                  <span translate="header.navbar.new.TASK">Task</span>
-                </a>
-              </li>
-              <li><a href translate="header.navbar.new.USER">User</a></li>
-              <li class="divider"></li>
-              <li>
-                <a href>
-                  <span class="badge bg-danger pull-right">4</span>
-                  <span translate="header.navbar.new.EMAIL">Email</span>
-                </a>
-              </li>
-            </ul>
-          </li>
-        </ul>
-        <!-- / link and dropdown -->
-
-        <!-- search form -->
-        <form class="navbar-form navbar-form-sm navbar-left shift" ui-shift="prependTo" data-target=".navbar-collapse" role="search" ng-controller="TypeaheadDemoCtrl">
-          <div class="form-group">
-            <div class="input-group">
-              <input type="text" ng-model="selected" typeahead="state for state in states | filter:$viewValue | limitTo:8" class="form-control input-sm bg-light no-border rounded padder" placeholder="Search projects...">
-              <span class="input-group-btn">
-                <button type="submit" class="btn btn-sm bg-light rounded"><i class="fa fa-search"></i></button>
-              </span>
-            </div>
+            <a href="#" class="btn no-shadow navbar-btn" ui-toggle-class="show" target="#aside-user">
+              <i class="icon-user fa-fw"></i>
+            </a>
           </div>
-        </form>
-        <!-- / search form -->
+          <!-- / buttons -->
 
-        <!-- nabar right -->
-        <ul class="nav navbar-nav navbar-right">
-          <li class="dropdown">
-            <a href="#" data-toggle="dropdown" class="dropdown-toggle">
-              <i class="icon-bell fa-fw"></i>
-              <span class="visible-xs-inline">Notifications</span>
-              <span class="badge badge-sm up bg-danger pull-right-xs">2</span>
-            </a>
-            <!-- dropdown -->
-            <div class="dropdown-menu w-xl animated fadeInUp">
-              <div class="panel bg-white">
-                <div class="panel-heading b-light bg-light">
-                  <strong>You have <span>2</span> notifications</strong>
-                </div>
-                <div class="list-group">
-                  <a href class="list-group-item">
-                    <span class="pull-left m-r thumb-sm">
-                      <img src="img/a0.jpg" alt="..." class="img-circle">
-                    </span>
-                    <span class="clear block m-b-none">
-                      Use awesome animate.css<br>
-                      <small class="text-muted">10 minutes ago</small>
-                    </span>
-                  </a>
-                  <a href class="list-group-item">
-                    <span class="clear block m-b-none">
-                      1.0 initial released<br>
-                      <small class="text-muted">1 hour ago</small>
-                    </span>
-                  </a>
-                </div>
-                <div class="panel-footer text-sm">
-                  <a href class="pull-right"><i class="fa fa-cog"></i></a>
-                  <a href="#notes" data-toggle="class:show animated fadeInRight">See all the notifications</a>
+          <!-- link and dropdown -->
+          <ul class="nav navbar-nav hidden-sm">
+            <li class="dropdown">
+              <a href="#" data-toggle="dropdown" class="dropdown-toggle">
+                <span translate="header.navbar.new.NEW"></span> <span class="fa fa-moon-o lb-warning"></span> 
+              </a>
+              <ul class="dropdown-menu" role="menu">
+                <li>
+                  <button type="button" name="button" id="darkmode" onclick="changecolor()">
+                    <span translate="header.navbar.new.TASK">ON</span>
+                  </button>
+                </li>
+                <li>
+                  <button  type="button" name="button" id="lightmode" onclick="lightmode()">
+                    <span translate="header.navbar.new.TASK">OFF</span>
+                  </button>
+                </li>
+                
+              </ul>
+            </li>
+          </ul>
+          <!-- / link and dropdown -->
+
+          <!-- search form -->
+          <form class="navbar-form navbar-form-sm navbar-left shift" ui-shift="prependTo" data-target=".navbar-collapse" role="search" ng-controller="TypeaheadDemoCtrl">
+            <div class="form-group">
+              <div class="input-group">
+                <input type="text" ng-model="selected" typeahead="state for state in states | filter:$viewValue | limitTo:8" class="form-control input-sm bg-light no-border rounded padder" placeholder="Search projects...">
+                  <span class="input-group-btn">
+                    <button type="submit" class="btn btn-sm bg-light rounded"><i class="fa fa-search"></i></button>
+                  </span>
                 </div>
               </div>
-            </div>
-            <!-- / dropdown -->
-          </li>
-          <li class="dropdown">
-            <a href="#" data-toggle="dropdown" class="dropdown-toggle clear" data-toggle="dropdown">
-              <span class="thumb-sm avatar pull-right m-t-n-sm m-b-n-sm m-l-sm">
-                <img src="img/user.png" alt="...">
-                <i class="on md b-white bottom"></i>
-              </span>
-              <span class="hidden-sm hidden-md">Walid.largou</span> <b class="caret"></b>
-            </a>
-            <!-- dropdown -->
-            <ul class="dropdown-menu animated fadeInRight w">
-              <li class="wrapper b-b m-b-sm bg-light m-t-n-xs">
-                <div>
-                  <p>300mb of 500mb used</p>
-                </div>
-                <div class="progress progress-xs m-b-none dker">
-                  <div class="progress-bar progress-bar-info" data-toggle="tooltip" data-original-title="50%" style="width: 50%"></div>
-                </div>
-              </li>
-              <li>
-                <a href>
-                  <span class="badge bg-danger pull-right">30%</span>
-                  <span>Settings</span>
+            </form>
+            <!-- / search form -->
+
+            <!-- nabar right -->
+            <ul class="nav navbar-nav navbar-right">
+              <li class="dropdown">
+                <a href="#" data-toggle="dropdown" class="dropdown-toggle">
+                  <i class="icon-bell fa-fw"></i>
+                  <span class="visible-xs-inline">Notifications</span>
+                  <span class="badge badge-sm up bg-danger pull-right-xs">2</span>
                 </a>
-              </li>
-              <li>
-                <a ui-sref="app.page.profile">Profile</a>
-              </li>
-              <li>
-                <a ui-sref="app.docs">
-                  <span class="label bg-info pull-right">new</span>
+                <!-- dropdown -->
+                <div class="dropdown-menu w-xl animated fadeInUp">
+                  <div class="panel bg-white">
+                    <div class="panel-heading b-light bg-light">
+                      <strong>You have <span>2</span> notifications</strong>
+                    </div>
+                    <div class="list-group">
+                      <a href class="list-group-item">
+                        <span class="pull-left m-r thumb-sm">
+                          <img src="img/a0.jpg" alt="..." class="img-circle">
+                          </span>
+                          <span class="clear block m-b-none">
+                      Use awesome animate.css<br>
+                              <small class="text-muted">10 minutes ago</small>
+                            </span>
+                          </a>
+                          <a href class="list-group-item">
+                            <span class="clear block m-b-none">
+                      1.0 initial released<br>
+                                <small class="text-muted">1 hour ago</small>
+                              </span>
+                            </a>
+                          </div>
+                          <div class="panel-footer text-sm">
+                            <a href class="pull-right"><i class="fa fa-cog"></i></a>
+                            <a href="#notes" data-toggle="class:show animated fadeInRight">See all the notifications</a>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- / dropdown -->
+                    </li>
+                    <li class="dropdown">
+                      
+                        <span class="thumb-sm avatar pull-right m-t-n-sm m-b-n-sm m-l-sm">
+                          <img src="img/user.png" alt="...">
+                            <i class="on md b-white bottom"></i>
+                          </span>
+                          <span class="hidden-sm hidden-md">Walid.largou</span> <b class="caret"></b>
+                        </a>
+                        <!-- dropdown -->
+                        <ul class="dropdown-menu animated fadeInRight w">
+                          <li class="wrapper b-b m-b-sm bg-light m-t-n-xs">
+                            <div>
+                              <p>300mb of 500mb used</p>
+                            </div>
+                            <div class="progress progress-xs m-b-none dker">
+                              <div class="progress-bar progress-bar-info" data-toggle="tooltip" data-original-title="50%" style="width: 50%"></div>
+                            </div>
+                          </li>
+                          <li>
+                            <a href>
+                              <span class="badge bg-danger pull-right">30%</span>
+                              <span>Settings</span>
+                            </a>
+                          </li>
+                          <li>
+                            <a ui-sref="app.page.profile">Profile</a>
+                          </li>
+                          <li>
+                            <a ui-sref="app.docs">
+                              <span class="label bg-info pull-right">new</span>
                   Help
-                </a>
-              </li>
-              <li class="divider"></li>
-              <li>
-                <a ui-sref="access.signin">Logout</a>
-              </li>
-            </ul>
-            <!-- / dropdown -->
-          </li>
-        </ul>
-        <!-- / navbar right -->
-      </div>
-      <!-- / navbar collapse -->
-  </header>
+                            </a>
+                          </li>
+                          <li class="divider"></li>
+                          <li>
+                            <a ui-sref="access.signin">Logout</a>
+                          </li>
+                        </ul>
+                        <!-- / dropdown -->
+                      </li>
+                    </ul>
+                    <!-- / navbar right -->
+                  </div>
+                  <!-- / navbar collapse -->
+                </header>
   <!-- / header -->
 
 
@@ -237,7 +232,7 @@
                 </li>
                 <li class="divider"></li>
                 <li>
-                  <a href="page_signin.html">Logout</a>
+                  <a th:href="page_signin">Logout</a>
                 </li>
               </ul>
               <!-- / dropdown -->
@@ -247,7 +242,7 @@
           <!-- / user -->
 
           <!-- nav -->
-          <nav ui-nav class="navi clearfix">
+                   <nav ui-nav class="navi clearfix">
             <ul class="nav">
               <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
                 <span>Main</span>
@@ -288,7 +283,37 @@
                       <span>Manage customer</span>
                     </a>
                   </li>
+          
+          <li>
+                    <a th:href="purchasing_customer_manage">
+                      <span>Puchasing contact</span>
+                    </a>
+                  </li>
                     
+                </ul>
+              </li>
+           <li>
+                <a href class="auto">      
+                  <span class="pull-right text-muted">
+                    <i class="fa fa-fw fa-angle-right text"></i>
+                    <i class="fa fa-fw fa-angle-down text-active"></i>
+                  </span>
+                  <b class="badge bg-info pull-right">3</b>
+                  <i class="glyphicon glyphicon-user"></i>
+                  <span>Users</span>
+                </a>
+                <ul class="nav nav-sub dk">
+               
+                  <li>
+                    <a th:href="users">
+                      <span>Manage users</span>
+                    </a>
+                  </li>
+                                     <li>
+                    <a th:href="TypeUsers">
+                      <span>Manage Type users</span>
+                    </a>
+                  </li> 
                 </ul>
               </li>
               <li>
@@ -315,12 +340,12 @@
                     </a>
                   </li>
                   <li>
-                    <a th:href="projet_delivreble_manage">
-                      <span>Manage Delivreble</span>
+                    <a th:href="deliverable_manage">
+                      <span>Manage Deliverable</span>
                     </a>
                   </li>
                   <li>
-                    <a th:href="projects_reference_manage">
+                    <a th:href="reference_manage">
                       <span>Manage Reference</span>
                     </a>
                   </li>
@@ -346,6 +371,16 @@
                       <span>Manage Assets Type</span>
                     </a>
                   </li>
+          <li>
+                    <a th:href="assetstype_manage">
+                      <span>Firmware</span>
+                    </a>
+                  </li>
+          <li>
+                    <a th:href="assetstype_manage">
+                      <span>Vendor</span>
+                    </a>
+                  </li>
                 </ul>
               </li>
               <li>
@@ -354,9 +389,21 @@
                   <span>Tickets</span>
                 </a>
               </li>
+        <li>
+                <a th:href="contract_manage">
+                  <i class="fa fa-legal"></i></i>
+                  <span>Contrats</span>
+                </a>
+              </li>
+        <li>
+                <a th:href="tickets_manage">
+                  <i class="glyphicon  glyphicon-usd"></i></i>
+                  <span>Expenses</span>
+                </a>
+              </li>
               <li>
                 <a th:href="request_manage" class="auto">
-				<span class="pull-right text-muted">
+        <span class="pull-right text-muted">
                     <i class="fa fa-fw fa-angle-right text"></i>
                     <i class="fa fa-fw fa-angle-down text-active"></i>
                   </span>
@@ -415,15 +462,16 @@
 	    
 
 <div class="bg-light lter b-b wrapper-md">
-  <h1 class="m-n font-bold h3">Manage Assets</h1>
+  <h1 class="m-n font-bold h3">Manage Assets
+  <a style="margin-top:-5px;" data-toggle="modal"  data-target="#AddClient" class="btn btn-sm btn-primary pull-right"  role="button"><b class="glyphicon-plus pull"> </b>Add Asset</a> 
+  </h1>
 </div>
 
-  <div class="panel panel-default">
+  <!--<div class="panel panel-default">
     <div class="panel-heading">
       <small><a th:href="index">Home</a> </small>><small> Manage Assets</small>
-	  <a style="margin-top:-5px;" data-toggle="modal"  data-target="#AddClient" class="btn btn-sm btn-primary pull-right"  role="button"><b class="glyphicon-plus pull"> </b>Add Asset</a> 
     </div>
-	</div>
+	</div>-->
 	<div class="row" style="margin:5px;">
 	<div class="col-sm-6">
 		  <center><h1 class="m-n font-bold h4">Asset by Type Chart</h1></center>
@@ -494,86 +542,55 @@ function drawChart() {
             </div>
 			</div>
 	</div>
-	<div class="table-responsive col-sm-12">
-      <table style="background-color:white;" ui-jq="dataTable" ui-options="{
-          aoColumns: [
-            { mData: 'engine' }
-          ]
-        }" class="table table-striped b-t b-b">
-        <thead>
-          <tr>
-             <th  style="width:5%"><center>Customers</center></th>
-          </tr>
-        </thead>
-        <tbody>
-		<tr data-expanded="true">
-		<td><!-- Section asset !-->
-		<button class="btn btn-primary btn-block" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-			<b>AMADEUS MAROC</b>  <span class="badge bg-danger pull-center">4</span><i class="glyphicon glyphicon-play pull-right"></i>
-		</button>
-
-<div class="collapse" id="collapseExample">
-  <div class="table-responsive">
-	<div class="panel panel-default" style="margin:5px;">
-	<button class="btn btn-info btn-block" type="button" data-toggle="collapse" data-target="#assetproject" aria-expanded="false" aria-controls="assetproject">
-		<b>Project Name : CFG - Refronte Infrastructure IT</b><i class="glyphicon glyphicon-play pull-right"></i>
-	</button>
-	</div>
-<div class="collapse" id="assetproject" style="border:1px solid #19a9d5;">
-
-	 <table ui-jq="dataTable" ui-options="{ aoColumns: [{ mData: 'engine' },{ mData: 'browser' },{ mData: 'platform' },{ mData: 'version' },{ mData: 'grade' },{ mData: 'action' }]}" class="table-responsive table table-striped b-t b-b">
-			<thead>
-			  <tr>
-				 <th  style="width:15%"><center>Asset ID</center></th>
-				<th  style="width:15%"><center>Asset S/N</center></th>
-				<th  style="width:13%"><center>Current Firmware</center></th>
-				<th  style="width:13%"><center>Type</center></th>
-				<th  style="width:12%"><center>Asset Type</center></th>
-				<th  style="width:12%"><center>End Vendor Warranty</center></th>
-				<th  style="width:10%"><center>End PM Warranty</center></th>
-				<th  style="width:15%"><center>Actions</center></th>
-			  </tr>
-			</thead>
-			<tbody>
-			<tr data-expanded="true">
-			<td><center>Projet refonte Plateforme IT</center></td>
-			<td> 	
-			<center>JESA00063 00 16 A.2</center>
-			</td>
-			<td><center>JESA-IT-17072015</center></td>
-			<td><center><span class="label bg-danger pull-center m-t-md">closed</span><center/></td>
-			<td><center><span class="label bg-success pull-center m-t-md">won</span><center/></td>
-			<td></td>
-			<td></td>
-			<td>
-       <center>
-        <div class="btn-group dropdown">
-         <button class="btn btn-default btn-xs" data-toggle="dropdown"><i class="glyphicon glyphicon-cog"></i> Action <span class="caret"></span></button>
-          <ul class="dropdown-menu">
-           <li>
-            <a style="margin-top:-5px;" data-toggle="modal"  data-target="#Update" class="btn btn-sm btn-light" role="button">Update</a>
-           </li>
-           <li>
-            <a style="margin-top:-5px;" data-toggle="modal"  data-target="#Delete" class="btn btn-sm btn-light" role="button">Delete</a>
-           </li>
-           <li>
-            <a style="margin-top:-5px;" data-toggle="modal"  data-target="#Detail" class="btn btn-sm btn-light" role="button">Detail</a>
-           </li>
-          </ul>
-        </div>
-       </center>
-			</td>
-			</tr>
-			</tbody>
-	</table>
-	</div>
-	</div>
-		
-		</td>
-		</tr>
-        </tbody>
-      </table>
-	  </div> 
+<div class="col-sm-12">
+ <div class="card card-body">
+  <div class="table-responsive" style="background-color:white; margin:10px; padding:10px;">
+   <table ui-jq="dataTable" ui-options="{
+                                      aoColumns: [
+                                      { mData: 'engine' },
+                                      { mData: 'engine1' },
+                                      { mData: 'browser' },
+                                      { mData: 'platform' },
+                                      { mData: 'version' },
+                                      { mData: 'grade' },
+                                      { mData: 'grade1' },
+                                      { mData: 'action' }
+                                      ]
+                                    }" class="table table-striped b-t b-b">
+    <thead>
+     <tr>
+                                      <th  style="width:15%"><center>Customers</center></th>
+                                      <th  style="width:15%"><center>Project Name</center></th>
+                                      <th  style="width:13%"><center>Asset S/N</center></th>
+                                      <th  style="width:13%"><center>Current Firmware</center></th>
+                                      <th  style="width:10%"><center>Asset Type</center></th>
+                                      <th  style="width:10%"><center>End Vendor Warranty</center></th>
+                                      <th  style="width:10%"><center>End PM Warranty</center></th>
+                                      <th  style="width:14%"><center>Actions</center></th>
+     </tr>
+    </thead>
+    <tbody>
+     <tr th:each="a:${as}">
+      <td th:text="${a.Customers}"><center>AMADEUS MAROC</center></td>
+      <td th:text="${a.Project Name}"><center>CFG - Refronte Infrastructure IT</center></td>
+      <td th:text="${a.Asset S/N}"><center>JESA00063 00 16 A.2</center></td>
+      <td th:text="${a.Current Firmware}"><center>JESA-IT-17072015</center></td>    
+      <td th:text="${a.Asset Type}"><center><span class="label bg-success pull-center m-t-md">won</span></center></td>
+      <td th:text="${a.End Vendor Warranty}"><center>02-12-2020</center></td>
+      <td th:text="${a.End PM Warranty}"><center>15-06-2020</center></td>
+      <td><center><div class="btn-group dropdown"><button class="btn btn-default btn-xs" data-toggle="dropdown"><i class="glyphicon glyphicon-cog"></i> Action <span class="caret"></span></button>
+       <ul class="dropdown-menu">
+        <li><a style="margin-top:-5px;" data-toggle="modal"  data-target="#Update" class="btn btn-sm btn-light" role="button">Update</a></li>
+        <li><a style="margin-top:-5px;" data-toggle="modal"  data-target="#Delete" class="btn btn-sm btn-light" role="button">Delete</a></li>
+        <li><a style="margin-top:-5px;" data-toggle="modal"  data-target="#Detail" class="btn btn-sm btn-light" role="button">Detail</a></li>
+       </ul></div></center>
+      </td>
+     </tr>
+    </tbody>
+   </table>
+  </div>
+ </div>
+</div>
 
 <div class="modal fade" role="dialog" id="AddClient" >
   <div class="modal-dialog modal-lg" >
@@ -584,42 +601,42 @@ function drawChart() {
       </div>
       <div class="modal-body">
         <div class="row">
-          <label class="col-sm-4 control-label"  for="input-id-1"><b>Interface Asset</b></label>
-          <div class="col-sm-8">
+          <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Interface Asset</b></label>
+          <div class="col-sm-8" style="margin: 5px 0px;">
             <input type="text"  class="form-control" placeholder="Entry Interface Asset"id="input-id-2">
           </div>
-          <label class="col-sm-4 control-label"  for="input-id-1"><b>Login Asset</b></label>
-          <div class="col-sm-8">
+          <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Login Asset</b></label>
+          <div class="col-sm-8" style="margin: 5px 0px;">
             <input type="text"  class="form-control" placeholder="Entry Login Asset"id="input-id-2">
           </div>
-          <label class="col-sm-4 control-label"  for="input-id-1"><b>Password Asset</b></label>
-          <div class="col-sm-8">
+          <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Password Asset</b></label>
+          <div class="col-sm-8" style="margin: 5px 0px;">
              <input type="password" class="form-control" placeholder="Password" id="input-id-2">
           </div>
-          <label class="col-sm-4 control-label" for="input-id-1"><b>Asset Type</b></label>
-          <div class="col-sm-8"  >
+          <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Asset Type</b></label>
+          <div class="col-sm-8" style="margin: 5px 0px;" >
             <select name="account" class="form-control m-b">
               <option>Type1</option>
               <option>Type2</option>
             </select>
           </div>
-          <label class="col-sm-4 control-label"  for="input-id-1"><b>Frimware</b></label>
-          <div class="col-sm-8">
+          <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Frimware</b></label>
+          <div class="col-sm-8" style="margin: 5px 0px;">
             <input type="text"  class="form-control" placeholder="Entry Frimware"id="input-id-2">
           </div>
-          <label class="col-sm-4 control-label" for="input-id-1"><b>Project</b></label>
-          <div class="col-sm-8">
+          <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Project</b></label>
+          <div class="col-sm-8" style="margin: 5px 0px;">
             <select name="account" class="form-control m-b">
               <option>Project1</option>
               <option>Project2</option>
             </select>
           </div>
-          <label class="col-sm-4 control-label" placeholder="Entry Seriel Number" for="input-id-1"><b>Seriel Number</b></label>
-          <div class="col-sm-8">
+          <label class="col-sm-4 control-label" placeholder="Entry Seriel Number" style="margin: 5px 0px;" for="input-id-1"><b>Seriel Number</b></label>
+          <div class="col-sm-8" style="margin: 5px 0px;">
             <input type="text"  class="form-control" placeholder="Entry Seriel Number"id="input-id-2">
           </div>
-          <label class="col-sm-4 control-label" placeholder="Entry Description" for="input-id-1"><b>Description</b></label>
-          <div class="col-sm-8">
+          <label class="col-sm-4 control-label" placeholder="Entry Description" style="margin: 5px 0px;" for="input-id-1"><b>Description</b></label>
+          <div class="col-sm-8" style="margin: 5px 0px;">
             <div class="form-group">
             <div class="btn-toolbar m-b-sm btn-editor" data-role="editor-toolbar" data-target="#editor">
               <div class="btn-group dropdown" dropdown="">
@@ -682,16 +699,16 @@ function drawChart() {
             </div>
           </div>
         </div>
-          <label class="col-sm-4 control-label" placeholder="Entry Configuration File" for="input-id-1"><b>Configuration File</b></label>
-          <div class="col-sm-4">
+          <label class="col-sm-4 control-label" placeholder="Entry Configuration File" style="margin: 5px 0px;" for="input-id-1"><b>Configuration File</b></label>
+          <div class="col-sm-4" style="margin: 5px 0px;">
             <input type="text" placeholder="Entry Configuration File"class="form-control" id="input-id-1">
           </div>
-          <div class="btn-group">
+          <div class="btn-group" style="margin: 5px 0px;">
                 <a class="btn btn-default" tooltip="Insert picture (or just drag &amp; drop)" id="pictureBtn"><i class="icon-paper-clip"></i></a>
                 <input type="file" data-edit="insertImage" style="position:absolute; opacity:0; width:41px; height:34px">
               </div> 
-          <label class="col-sm-4 control-label" placeholder="Entry MustGather" for="input-id-1"><b>MustGather</b></label>
-          <div class="col-sm-8">
+          <label class="col-sm-4 control-label" placeholder="Entry MustGather" style="margin: 5px 0px;" for="input-id-1"><b>MustGather</b></label>
+          <div class="col-sm-8" style="margin: 5px 0px;">
             <div class="form-group">
             <div class="btn-toolbar m-b-sm btn-editor" data-role="editor-toolbar" data-target="#editor">
               <div class="btn-group dropdown" dropdown="">
@@ -754,8 +771,8 @@ function drawChart() {
             </div>
           </div>
         </div>
-          <label class="col-sm-4 control-label" placeholder="Entry EndOfVendorWarranty" for="input-id-1"><b>End Of Vendor Warranty</b></label>
-          <div class="col-sm-8">
+          <label class="col-sm-4 control-label" placeholder="Entry EndOfVendorWarranty" style="margin: 5px 0px;" for="input-id-1"><b>End Of Vendor Warranty</b></label>
+          <div class="col-sm-8" style="margin: 5px 0px;">
             <form action="https://formden.com/post/MlKtmY4x/" class="form-horizontal" method="post">
             <div class="form-group ">
             <div class="col-sm-10">
@@ -769,8 +786,8 @@ function drawChart() {
             </div>
             </form>
           </div>
-          <label class="col-sm-4 control-label" placeholder="Entry EndPowermWarranty" for="input-id-1"><b>End PowerM Warranty</b></label>
-          <div class="col-sm-8">
+          <label class="col-sm-4 control-label" placeholder="Entry EndPowermWarranty" style="margin: 5px 0px;" for="input-id-1"><b>End PowerM Warranty</b></label>
+          <div class="col-sm-8" style="margin: 5px 0px;">
             <form action="https://formden.com/post/MlKtmY4x/" class="form-horizontal" method="post">
             <div class="form-group ">
             <div class="col-sm-10">
@@ -784,17 +801,16 @@ function drawChart() {
             </div>
             </form>
           </div>
-          <label class="col-sm-4 control-label" placeholder="Entry SLA" for="input-id-1"><b>SLA</b></label>
-          <div class="col-sm-4">
+          <label class="col-sm-4 control-label" placeholder="Entry SLA" style="margin: 5px 0px;" for="input-id-1"><b>SLA</b></label>
+          <div class="col-sm-4" style="margin: 5px 0px;">
             <input type="text" placeholder="Entry SLA"class="form-control" id="input-id-1">
           </div>
-          <div class="col-sm-4" >
+          <div class="col-sm-4" style="margin: 5px 0px;" >
           <div class="btn-group">
             <a class="btn btn-default" tooltip="Insert picture (or just drag &amp; drop)" id="pictureBtn"><i class="icon-paper-clip"></i></a>
             <input type="file" data-edit="insertImage" style="position:absolute; opacity:0; width:41px; height:34px">
           </div> 
-        </div>
-          
+        </div>         
         </div>
       </div>
       <div class="modal-footer">
@@ -821,50 +837,50 @@ function drawChart() {
 
 
 <div class="modal fade" role="dialog" id="Update" >
- <div class="modal-dialog modal-lg" >
+  <div class="modal-dialog modal-lg" >
     <div class="modal-content">
       <div class="modal-header" style="background-image:url(img/grf-bg.jpg);color:white;">
         <button type="button" class="close pull-right" data-dismiss="modal">&times;</button>
-          <h1 class="m-n font-bold h3"> <b class="glyphicon-plus pull"> </b> Update Asset</h1>
+          <h1 class="m-n font-bold h3"> Update Asset</h1>
       </div>
       <div class="modal-body">
         <div class="row">
-          <label class="col-sm-4 control-label"  for="input-id-1"><b>Interface Asset</b></label>
-          <div class="col-sm-8">
+          <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Interface Asset</b></label>
+          <div class="col-sm-8" style="margin: 5px 0px;">
             <input type="text"  class="form-control" placeholder="Entry Interface Asset"id="input-id-2">
           </div>
-          <label class="col-sm-4 control-label"  for="input-id-1"><b>Login Asset</b></label>
-          <div class="col-sm-8">
+          <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Login Asset</b></label>
+          <div class="col-sm-8" style="margin: 5px 0px;">
             <input type="text"  class="form-control" placeholder="Entry Login Asset"id="input-id-2">
           </div>
-          <label class="col-sm-4 control-label"  for="input-id-1"><b>Password Asset</b></label>
-          <div class="col-sm-8">
+          <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Password Asset</b></label>
+          <div class="col-sm-8" style="margin: 5px 0px;">
              <input type="password" class="form-control" placeholder="Password" id="input-id-2">
           </div>
-          <label class="col-sm-4 control-label" for="input-id-1"><b>Asset Type</b></label>
-          <div class="col-sm-8"  >
+          <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Asset Type</b></label>
+          <div class="col-sm-8" style="margin: 5px 0px;" >
             <select name="account" class="form-control m-b">
               <option>Type1</option>
               <option>Type2</option>
             </select>
           </div>
-          <label class="col-sm-4 control-label"  for="input-id-1"><b>Frimware</b></label>
-          <div class="col-sm-8">
+          <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Frimware</b></label>
+          <div class="col-sm-8" style="margin: 5px 0px;">
             <input type="text"  class="form-control" placeholder="Entry Frimware"id="input-id-2">
           </div>
-          <label class="col-sm-4 control-label" for="input-id-1"><b>Project</b></label>
-          <div class="col-sm-8">
+          <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Project</b></label>
+          <div class="col-sm-8" style="margin: 5px 0px;">
             <select name="account" class="form-control m-b">
               <option>Project1</option>
               <option>Project2</option>
             </select>
           </div>
-          <label class="col-sm-4 control-label" placeholder="Entry Seriel Number" for="input-id-1"><b>Seriel Number</b></label>
-          <div class="col-sm-8">
+          <label class="col-sm-4 control-label" placeholder="Entry Seriel Number" style="margin: 5px 0px;" for="input-id-1"><b>Seriel Number</b></label>
+          <div class="col-sm-8" style="margin: 5px 0px;">
             <input type="text"  class="form-control" placeholder="Entry Seriel Number"id="input-id-2">
           </div>
-          <label class="col-sm-4 control-label" placeholder="Entry Description" for="input-id-1"><b>Description</b></label>
-          <div class="col-sm-8">
+          <label class="col-sm-4 control-label" placeholder="Entry Description" style="margin: 5px 0px;" for="input-id-1"><b>Description</b></label>
+          <div class="col-sm-8" style="margin: 5px 0px;">
             <div class="form-group">
             <div class="btn-toolbar m-b-sm btn-editor" data-role="editor-toolbar" data-target="#editor">
               <div class="btn-group dropdown" dropdown="">
@@ -927,16 +943,16 @@ function drawChart() {
             </div>
           </div>
         </div>
-          <label class="col-sm-4 control-label" placeholder="Entry Configuration File" for="input-id-1"><b>Configuration File</b></label>
-          <div class="col-sm-4">
+          <label class="col-sm-4 control-label" placeholder="Entry Configuration File" style="margin: 5px 0px;" for="input-id-1"><b>Configuration File</b></label>
+          <div class="col-sm-4" style="margin: 5px 0px;">
             <input type="text" placeholder="Entry Configuration File"class="form-control" id="input-id-1">
           </div>
-          <div class="btn-group">
+          <div class="btn-group" style="margin: 5px 0px;">
                 <a class="btn btn-default" tooltip="Insert picture (or just drag &amp; drop)" id="pictureBtn"><i class="icon-paper-clip"></i></a>
                 <input type="file" data-edit="insertImage" style="position:absolute; opacity:0; width:41px; height:34px">
               </div> 
-          <label class="col-sm-4 control-label" placeholder="Entry MustGather" for="input-id-1"><b>MustGather</b></label>
-          <div class="col-sm-8">
+          <label class="col-sm-4 control-label" placeholder="Entry MustGather" style="margin: 5px 0px;" for="input-id-1"><b>MustGather</b></label>
+          <div class="col-sm-8" style="margin: 5px 0px;">
             <div class="form-group">
             <div class="btn-toolbar m-b-sm btn-editor" data-role="editor-toolbar" data-target="#editor">
               <div class="btn-group dropdown" dropdown="">
@@ -999,8 +1015,8 @@ function drawChart() {
             </div>
           </div>
         </div>
-          <label class="col-sm-4 control-label" placeholder="Entry EndOfVendorWarranty" for="input-id-1"><b>End Of Vendor Warranty</b></label>
-          <div class="col-sm-8">
+          <label class="col-sm-4 control-label" placeholder="Entry EndOfVendorWarranty" style="margin: 5px 0px;" for="input-id-1"><b>End Of Vendor Warranty</b></label>
+          <div class="col-sm-8" style="margin: 5px 0px;">
             <form action="https://formden.com/post/MlKtmY4x/" class="form-horizontal" method="post">
             <div class="form-group ">
             <div class="col-sm-10">
@@ -1014,8 +1030,8 @@ function drawChart() {
             </div>
             </form>
           </div>
-          <label class="col-sm-4 control-label" placeholder="Entry EndPowermWarranty" for="input-id-1"><b>End PowerM Warranty</b></label>
-          <div class="col-sm-8">
+          <label class="col-sm-4 control-label" placeholder="Entry EndPowermWarranty" style="margin: 5px 0px;" for="input-id-1"><b>End PowerM Warranty</b></label>
+          <div class="col-sm-8" style="margin: 5px 0px;">
             <form action="https://formden.com/post/MlKtmY4x/" class="form-horizontal" method="post">
             <div class="form-group ">
             <div class="col-sm-10">
@@ -1029,17 +1045,16 @@ function drawChart() {
             </div>
             </form>
           </div>
-          <label class="col-sm-4 control-label" placeholder="Entry SLA" for="input-id-1"><b>SLA</b></label>
-          <div class="col-sm-4">
+          <label class="col-sm-4 control-label" placeholder="Entry SLA" style="margin: 5px 0px;" for="input-id-1"><b>SLA</b></label>
+          <div class="col-sm-4" style="margin: 5px 0px;">
             <input type="text" placeholder="Entry SLA"class="form-control" id="input-id-1">
           </div>
-          <div class="col-sm-4" >
+          <div class="col-sm-4" style="margin: 5px 0px;" >
           <div class="btn-group">
             <a class="btn btn-default" tooltip="Insert picture (or just drag &amp; drop)" id="pictureBtn"><i class="icon-paper-clip"></i></a>
             <input type="file" data-edit="insertImage" style="position:absolute; opacity:0; width:41px; height:34px">
           </div> 
-        </div>
-          
+        </div>         
         </div>
       </div>
       <div class="modal-footer">
@@ -1069,13 +1084,17 @@ function drawChart() {
 </div>
 <div class="modal fade" role="dialog" id="Detail" >
  <div class="modal-dialog modal-lg" >
-  <div data-expanded="true">
-       <div class="panel panel-default">
-        <div class="panel-heading">
-          Information Asset
-        </div>
-        <div class="panel-body">
-          <p>
+  <div class="modal-content">
+   <div class="modal-header" style="background-image:url(img/grf-bg.jpg);color:white;">
+    <button type="button" class="close pull-right" data-dismiss="modal">&times;</button>
+    <h1 class="m-n font-bold h3">Information Asset</h1>
+   </div>
+   <div class="modal-body">
+    <div class="panel-heading">
+     <span class="m-n font-thin h2 text-black">Information Asset</span>
+    </div>
+    <div class="panel-body">
+     <p>
             <span class="m-n font-thin h3 text-black" >Project Name:</span>
             <span ng-repeat="nom in project"> {{ project.nomProject }} </br></span>
             <span class="m-n font-thin h3 text-black">Type Asset:</span>
@@ -1106,37 +1125,27 @@ function drawChart() {
             <span ng-repeat="UpdatedBy in Employe"> {{UpdatedBy}} </span>
             <span class="m-n font-thin h3 text-black"> Last update </span>  
             <span> {{LastUpdate}} </span></br>
-          </p>
-        </div>
-       </div>
-      </div>
-      <div data-expanded="true" >
-      <div class="panel panel-default">
-       <div class="panel-heading " >
-         Information Management
-       </div>
-       <div class="panel-body">
-         <p>
+     </p>
+    </div>
+    <div class="panel-heading " >
+      <span class="m-n font-thin h2 text-black">Information Management</span>
+    </div>
+    <div class="panel-body">
+      <p>
            <span class="m-n font-thin h3 text-black">Management Interface :</span>
            <span ng-repeat="interface in asset"> {{ asset.interfaceAsset }}</span></br>
            <span class="m-n font-thin h3 text-black">Management Login :</span>
            <span ng-repeat="login in asset"> {{ asset.loginAsset }}</span></br>
            <span class="m-n font-thin h3 text-black">Management Password :</span>
            <span ng-repeat="password in asset"> {{ asset.passwordAsset }}</span>
-         </p>
-       </div>
-      </div>
-     </div>
+      </p>
     </div>
- <div class="col-md-1">
-   <div ui-sref-active="active">
-      <a ui-sref="html.customer_manage.html">
-      <span class="btn btn-sm btn-info" data-dismiss="modal">Return</span>
-      </a>
+   </div>
+   <div class="modal-footer">
+   <button class="btn m-b-xs btn-sm btn-primary btn-addon" data-dismiss="modal">Return</button>
   </div>
+  </div>  
 </div>
-  </div>
- </div>
 </div>
 
 </div>
@@ -1163,5 +1172,66 @@ function drawChart() {
     })
   })
 </script>
+<script type="text/javascript">
+  function changecolor() {
+       $('body,.wrapper,.content,.panel-default,.panel-heading,#content-h,#header,.modal-content').css("background-color", "#3a3f51");
+       $('.wrapper,.content,.panel-default,.panel-heading,#content-h').css("border-color", "#313639");
+    $('.h3,.h5,.wrapper,panel-default,#content-b,.panel-heading').css("color", "white");
+              $('.panel-default,#content-b').css("background-color", "#3a3f51");
+
+  google.charts.load('current', {packages: ['corechart']});
+    google.charts.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+      // Define the chart to be drawn.
+      var data = new google.visualization.DataTable();
+      data.addColumn('string', 'Element');
+      data.addColumn('number', 'Percentage');
+      data.addRows([
+        ['Configuration', 0.68],
+        ['Documentation', 0.11],
+        ['Maintenance', 0.11],
+        ['Installation', 0.10]
+      ]);
+
+      // Instantiate and draw the chart.
+      var chart = new google.visualization.PieChart(document.getElementById('myPieChart'));
+    var options = {backgroundColor: '#3a3f51', colors: ['#6254b2', '#3289c8', '#27c24c','#ffbb3b'],legendTextStyle: { color: '#FFF' },is3D: true};
+      chart.draw(data, options);
+    }
+
+      };
+    
+      function lightmode() {
+       $('.wrapper,.content,.panel-heading,#content-h,#header,.modal-content').css("background-color", "#f0f3f4");
+          $('.panel-default,#content-b').css("background-color", "#f0f3f4");
+       $('.wrapper,.content,.panel-default,.panel-heading,#content-h').css("border-color", "#dee5e7");
+    $('.h3,.h5,.wrapper,panel-default,#content-b,.panel-heading').css("color", "#58666e");
+
+  google.charts.load('current', {packages: ['corechart']});
+    google.charts.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+      // Define the chart to be drawn.
+      var data = new google.visualization.DataTable();
+      data.addColumn('string', 'Element');
+      data.addColumn('number', 'Percentage');
+      data.addRows([
+        ['Configuration', 0.68],
+        ['Documentation', 0.11],
+        ['Maintenance', 0.11],
+        ['Installation', 0.10]
+      ]);
+
+      // Instantiate and draw the chart.
+      var chart = new google.visualization.PieChart(document.getElementById('myPieChart'));
+    var options = {backgroundColor: '#f0f3f4', colors: ['#6254b2', '#3289c8', '#27c24c','#ffbb3b'],legendTextStyle: { color: 'black' },is3D: true};
+      chart.draw(data, options);
+    }
+
+      };
+    
+ 
+    </script>
 </body>
 </html>

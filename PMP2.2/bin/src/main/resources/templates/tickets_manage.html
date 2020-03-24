@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html lang="en" class="">
+	<head>
+		<meta charset="utf-8" />
+		<title>Tickets m </title>
+		<meta name="description" content="app, web app, responsive, responsive layout, admin, admin panel, admin dashboard, flat, flat ui, ui kit, AngularJS, ui route, charts, widgets, components" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+		<link rel="stylesheet" href="../libs/assets/animate.css/animate.css" type="text/css" />
+		<link rel="stylesheet" href="../libs/assets/font-awesome/css/font-awesome.min.css" type="text/css" />
+		<link rel="stylesheet" href="../libs/assets/simple-line-icons/css/simple-line-icons.css" type="text/css" />
+		<link rel="stylesheet" href="../libs/jquery/bootstrap/dist/css/bootstrap.css" type="text/css" />
+		<link href='../libs/packages/core/main.css' rel='stylesheet' />
+		<link href='../libs/packages/daygrid/main.css' rel='stylesheet' />
+		<link href='../libs/packages/timegrid/main.css' rel='stylesheet' />
+		<link href='../libs/packages/list/main.css' rel='stylesheet' />
+		<script src='../libs/packages/core/main.js'></script>
+		<script src='../libs/packages/interaction/main.js'></script>
+		<script src='../libs/packages/daygrid/main.js'></script>
+		<script src='../libs/packages/timegrid/main.js'></script>
+		<script src='../libs/packages/list/main.js'></script>
+
+		<link rel="stylesheet" href="css/font.css" type="text/css" />
+		<link rel="stylesheet" href="css/app.css" type="text/css" />
+		<script>
+
+document.addEventListener('DOMContentLoaded', function() {
+    var calendarEl = document.getElementById('calendar1');
+
+    var calendar1 = new FullCalendar.Calendar(calendarEl, {
+
+      plugins: [ 'interaction', 'dayGrid', 'list', 'googleCalendar' ],
+
+      header: {
+        left: 'prev,next today',
+        center: 'title',
+        right: 'dayGridMonth,listYear'
+      },
+
+      displayEventTime: false, // don't show the time column in list view
+
+      // THIS KEY WON'T WORK IN PRODUCTION!!!
+      // To make your own Google API key, follow the directions here:
+      // http://fullcalendar.io/docs/google_calendar/
+      googleCalendarApiKey: 'AIzaSyDcnW6WejpTOCffshGDDb4neIrXVUA1EAE',
+
+      // US Holidays
+      events: 'en.usa#holiday@group.v.calendar.google.com',
+
+      eventClick: function(arg) {
+        // opens events in a popup window
+        window.open(arg.event.url, 'google-calendar-event', 'width=700,height=600');
+
+        arg.jsEvent.preventDefault() // don't navigate in main tab
+      },
+
+      loading: function(bool) {
+        document.getElementById('loading').style.display =
+          bool ? 'block' : 'none';
+      }
+
+    });
+
+    calendar1.render();
+  });
+
+
+		</script>
+		<script src="https://www.gstatic.com/charts/loader.js"></script>
+<script>
+			google.charts.load('current', {packages: ['corechart']});
+			google.charts.setOnLoadCallback(drawChart);
+
+			function drawChart() {
+			// Define the chart to be drawn.
+			var data = new google.visualization.DataTable();
+			data.addColumn('string', 'Element');
+			data.addColumn('number', 'Percentage');
+			data.addRows([
+			['Finance', 0.70],
+			['Banking', 0.21],
+			['Construction', 0.01],
+			['Technology', 0.02],
+			['Telecomunication', 0.02]
+			]);
+			
+			var options = {backgroundColor: '#f0f3f4', colors: ['#6254b2', '#3289c8', '#27c24c', '#ff4040', '#ffbb3b'],
+  is3D: true};
+
+
+
+
+			// Instantiate and draw the chart.
+			var chart = new google.visualization.PieChart(document.getElementById('myPieChart'));
+			chart.draw(data, options);
+			}
+		</script>
+
+	</head>
+	<body>
+		<div class="app app-header-fixed ">
+
+
+			<!-- header -->
+  <header id="header" class="app-header navbar" role="menu">
+      <!-- navbar header -->
+      <div class="navbar-header bg-dark">
+        <button class="pull-right visible-xs dk" ui-toggle-class="show" target=".navbar-collapse">
+          <i class="glyphicon glyphicon-cog"></i>
+        </button>
+        <button class="pull-right visible-xs" ui-toggle-class="off-screen" target=".app-aside" ui-scroll="app">
+          <i class="glyphicon glyphicon-align-justify"></i>
+        </button>
+        <!-- brand -->
+        <a href="#/" class="navbar-brand text-lt">
+          <i class="fa fa-power-off"></i>
+          <span class="hidden-folded m-l-xs">PowerM</span>
+        </a>
+        <!-- / brand -->
+      </div>
+      <!-- / navbar header -->
+
+      <!-- navbar collapse -->
+      <div class="collapse pos-rlt navbar-collapse box-shadow bg-white-only">
+        <!-- buttons -->
+        <div class="nav navbar-nav hidden-xs">
+          <a href="#" class="btn no-shadow navbar-btn" ui-toggle-class="app-aside-folded" target=".app">
+            <i class="fa fa-dedent fa-fw text"></i>
+            <i class="fa fa-indent fa-fw text-active"></i>
+          </a>
+          <a href="#" class="btn no-shadow navbar-btn" ui-toggle-class="show" target="#aside-user">
+            <i class="icon-user fa-fw"></i>
+          </a>
+        </div>
+        <!-- / buttons -->
+
+        <!-- link and dropdown -->
+        <ul class="nav navbar-nav hidden-sm">
+          <li class="dropdown">
+            <a href="#" data-toggle="dropdown" class="dropdown-toggle">
+              <i class="fa fa-fw fa-plus visible-xs-inline-block"></i>
+              <span translate="header.navbar.new.NEW">New</span> <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="#" translate="header.navbar.new.PROJECT">Projects</a></li>
+              <li>
+                <a href>
+                  <span class="badge bg-info pull-right">5</span>
+                  <span translate="header.navbar.new.TASK">Task</span>
+                </a>
+              </li>
+              <li><a href translate="header.navbar.new.USER">User</a></li>
+              <li class="divider"></li>
+              <li>
+                <a href>
+                  <span class="badge bg-danger pull-right">4</span>
+                  <span translate="header.navbar.new.EMAIL">Email</span>
+                </a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+        <!-- / link and dropdown -->
+
+        <!-- search form -->
+        <form class="navbar-form navbar-form-sm navbar-left shift" ui-shift="prependTo" data-target=".navbar-collapse" role="search" ng-controller="TypeaheadDemoCtrl">
+          <div class="form-group">
+            <div class="input-group">
+              <input type="text" ng-model="selected" typeahead="state for state in states | filter:$viewValue | limitTo:8" class="form-control input-sm bg-light no-border rounded padder" placeholder="Search projects...">
+              <span class="input-group-btn">
+                <button type="submit" class="btn btn-sm bg-light rounded"><i class="fa fa-search"></i></button>
+              </span>
+            </div>
+          </div>
+        </form>
+        <!-- / search form -->
+
+        <!-- nabar right -->
+        <ul class="nav navbar-nav navbar-right">
+          <li class="dropdown">
+            <a href="#" data-toggle="dropdown" class="dropdown-toggle">
+              <i class="icon-bell fa-fw"></i>
+              <span class="visible-xs-inline">Notifications</span>
+              <span class="badge badge-sm up bg-danger pull-right-xs">2</span>
+            </a>
+            <!-- dropdown -->
+            <div class="dropdown-menu w-xl animated fadeInUp">
+              <div class="panel bg-white">
+                <div class="panel-heading b-light bg-light">
+                  <strong>You have <span>2</span> notifications</strong>
+                </div>
+                <div class="list-group">
+                  <a href class="list-group-item">
+                    <span class="pull-left m-r thumb-sm">
+                      <img src="img/a0.jpg" alt="..." class="img-circle">
+                    </span>
+                    <span class="clear block m-b-none">
+                      Use awesome animate.css<br>
+                      <small class="text-muted">10 minutes ago</small>
+                    </span>
+                  </a>
+                  <a href class="list-group-item">
+                    <span class="clear block m-b-none">
+                      1.0 initial released<br>
+                      <small class="text-muted">1 hour ago</small>
+                    </span>
+                  </a>
+                </div>
+                <div class="panel-footer text-sm">
+                  <a href class="pull-right"><i class="fa fa-cog"></i></a>
+                  <a href="#notes" data-toggle="class:show animated fadeInRight">See all the notifications</a>
+                </div>
+              </div>
+            </div>
+            <!-- / dropdown -->
+          </li>
+          <li class="dropdown">
+              <span class="thumb-sm avatar pull-right m-t-n-sm m-b-n-sm m-l-sm">
+                <img src="img/user.png" alt="...">
+                <i class="on md b-white bottom"></i>
+              </span>
+              <span class="hidden-sm hidden-md">Walid.largou</span> <b class="caret"></b>
+            </a>
+            <!-- dropdown -->
+            <ul class="dropdown-menu animated fadeInRight w">
+              <li class="wrapper b-b m-b-sm bg-light m-t-n-xs">
+                <div>
+                  <p>300mb of 500mb used</p>
+                </div>
+                <div class="progress progress-xs m-b-none dker">
+                  <div class="progress-bar progress-bar-info" data-toggle="tooltip" data-original-title="50%" style="width: 50%"></div>
+                </div>
+              </li>
+              <li>
+                <a href>
+                  <span class="badge bg-danger pull-right">30%</span>
+                  <span>Settings</span>
+                </a>
+              </li>
+              <li>
+                <a ui-sref="app.page.profile">Profile</a>
+              </li>
+              <li>
+                <a ui-sref="app.docs">
+                  <span class="label bg-info pull-right">new</span>
+                  Help
+                </a>
+              </li>
+              <li class="divider"></li>
+              <li>
+                <a ui-sref="access.signin">Logout</a>
+              </li>
+            </ul>
+            <!-- / dropdown -->
+          </li>
+        </ul>
+        <!-- / navbar right -->
+      </div>
+      <!-- / navbar collapse -->
+  </header>
+  <!-- / header -->
+
+
+    <!-- aside -->
+ <aside id="aside" class="app-aside hidden-xs bg-dark">
+      <div class="aside-wrap">
+        <div class="navi-wrap">
+          <!-- user -->
+          <div class="clearfix hidden-xs text-center hide" id="aside-user">
+            <div class="dropdown wrapper">
+              <a href="app.page.profile">
+                <span class="thumb-lg w-auto-folded avatar m-t-sm">
+                  <img src="img/a0.jpg" class="img-full" alt="...">
+                </span>
+              </a>
+              <a href="#" data-toggle="dropdown" class="dropdown-toggle hidden-folded">
+                <span class="clear">
+                  <span class="block m-t-sm">
+                    <strong class="font-bold text-lt">Walid.Largou</strong> 
+                    <b class="caret"></b>
+                  </span>
+                  <span class="text-muted text-xs block">Manager</span>
+                </span>
+              </a>
+              <!-- dropdown -->
+              <ul class="dropdown-menu animated fadeInRight w hidden-folded">
+                <li class="wrapper b-b m-b-sm bg-info m-t-n-xs">
+                  <span class="arrow top hidden-folded arrow-info"></span>
+                  <div>
+                    <p>300mb of 500mb used</p>
+                  </div>
+                  <div class="progress progress-xs m-b-none dker">
+                    <div class="progress-bar bg-white" data-toggle="tooltip" data-original-title="50%" style="width: 50%"></div>
+                  </div>
+                </li>
+                <li>
+                  <a href>Settings</a>
+                </li>
+                <li>
+                  <a href="page_profile.html">Profile</a>
+                </li>
+                <li>
+                  <a href>
+                    <span class="badge bg-danger pull-right">3</span>
+                    Notifications
+                  </a>
+                </li>
+                <li class="divider"></li>
+                <li>
+                  <a href="page_signin.html">Logout</a>
+                </li>
+              </ul>
+              <!-- / dropdown -->
+            </div>
+            <div class="line dk hidden-folded"></div>
+          </div>
+          <!-- / user -->
+
+          <!-- nav -->
+          <nav ui-nav class="navi clearfix">
+            <ul class="nav">
+              <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
+                <span>Main</span>
+              </li>
+              <li>
+                <a th:href="index" class="auto">      
+                  <i class="glyphicon glyphicon-stats icon text-primary-dker"></i>
+                  <span class="font-bold">Dashboard</span>
+                </a>
+               
+              </li>
+              <li>
+                <a th:href="mail">
+                  <b class="badge bg-info pull-right">9</b>
+                  <i class="glyphicon glyphicon-envelope icon text-info-lter"></i>
+                  <span class="font-bold">Email</span>
+                </a>
+              </li>
+              <li class="line dk"></li>
+
+              <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
+                <span>Management</span>
+              </li>
+              <li>
+                <a href class="auto">      
+                  <span class="pull-right text-muted">
+                    <i class="fa fa-fw fa-angle-right text"></i>
+                    <i class="fa fa-fw fa-angle-down text-active"></i>
+                  </span>
+                  <b class="badge bg-info pull-right">3</b>
+                  <i class="glyphicon glyphicon-briefcase"></i>
+                  <span>Customers</span>
+                </a>
+                <ul class="nav nav-sub dk">
+               
+                  <li>
+                    <a th:href="customer_manage">
+                      <span>Manage customer</span>
+                    </a>
+                  </li>
+                    
+                </ul>
+              </li>
+              <li>
+                <a th:href="timesheets" class="auto">
+                  <i class="glyphicon glyphicon-calendar icon"></i>
+                  <span>TimeSheet</span>
+                </a>
+
+              </li>
+              <li>
+                <a href class="auto">
+                  <span class="pull-right text-muted">
+                    <i class="fa fa-fw fa-angle-right text"></i>
+                    <i class="fa fa-fw fa-angle-down text-active"></i>
+                  </span>
+                  <b class="label bg-primary pull-right">2</b>
+                  <i class="glyphicon glyphicon-list"></i>
+                  <span>Projects</span>
+                </a>
+                <ul class="nav nav-sub dk">
+                  <li class="s">
+                    <a th:href="projects_manage">
+                      <span>Manage Project</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a th:href="project_delivrable_manage">
+                      <span>Manage Delivrable</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a th:href="reference_manage">
+                      <span>Manage Reference</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <a href class="auto">
+                  <span class="pull-right text-muted">
+                    <i class="fa fa-fw fa-angle-right text"></i>
+                    <i class="fa fa-fw fa-angle-down text-active"></i>
+                  </span>
+                  <i class="glyphicon  glyphicon-th"></i>
+                  <span>Assets</span>
+                </a>
+                <ul class="nav nav-sub dk">
+                  <li class="">
+                    <a th:href="assets_manage">
+                      <span>Manage Assets</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a th:href="assetstype_manage">
+                      <span>Manage Assets Type</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <a th:href="tickets_manage">
+                  <i class="glyphicon glyphicon-tag"></i>
+                  <span>Tickets</span>
+                </a>
+              </li>
+              <li>
+                <a th:href="request_manage" class="auto">
+				<span class="pull-right text-muted">
+                    <i class="fa fa-fw fa-angle-right text"></i>
+                    <i class="fa fa-fw fa-angle-down text-active"></i>
+                  </span>
+                  <i class="glyphicon  glyphicon-save icon"></i>
+                  <span>Request</span>
+                </a>
+                 <ul class="nav nav-sub dk">
+                  <li class="s">
+                    <a th:href="internal_request_manage">
+                      <span>Internal Request</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a th:href="external_request_manage">
+                      <span>External Request</span>
+                    </a>
+                  </li>
+                </ul>
+
+               
+              </li>
+              <li class="line dk hidden-folded"></li>
+
+              <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">          
+                <span>Your Stuff</span>
+              </li>  
+              <li>
+                <a href="page_profile.html">
+                  <i class="icon-user icon text-success-lter"></i>
+                  <b class="badge bg-success pull-right">30%</b>
+                  <span>Profile</span>
+                </a>
+              </li>
+              <li>
+                <a href>
+                  <i class="icon-question icon"></i>
+                  <span>Documents</span>
+                </a>
+              </li>
+            </ul>
+          </nav>
+          <!-- nav -->
+
+          <!-- aside footer -->
+       
+          <!-- / aside footer -->
+        </div>
+      </div>
+  </aside>
+									<!-- / aside -->
+
+
+									<!-- content -->
+									<div id="content" class="app-content" role="main">
+										<div class="app-content-body ">
+
+
+											<div class="bg-light lter b-b wrapper-md">
+												<h1 class="m-n font-bold h3">Manage Tickets</h1>
+											</div>
+											
+												 <div class="panel panel-default">
+													<div class="panel-heading">
+														<small><a href="index.html">Home</a> </small>><small> Manage Ticketss</small>
+														<a style="margin-top:-5px;" data-toggle="modal"  data-target="#AddClient" class="btn btn-sm btn-primary pull-right"  role="button"><b class="glyphicon-plus pull"> </b>Add Tickets</a> 
+													</div>
+														</div>															
+														<div class="row" style="margin:5px;">
+													
+																				<div class="col-sm-12">              
+																					<div class="row row-sm text-center">
+																						<div class="col-xs-4">
+																							<div class="panel padder-v item">
+																								<div class="h1 text-info font-thin h1 count pull-center">521</div>
+																								<span class="text-muted text-xs"><b>Total Ongoing Tickets</b></span>
+																								<span class="bottom text-right w-full">
+																									<i class="glyphicon  glyphicon-tags text-muted m-r-sm"></i>
+																								</span>
+																							</div>
+																						</div>
+																						<div class="col-xs-4">
+																							<a href class="block panel padder-v bg-primary item">
+																								<span class="text-white font-thin h1 count block">930</span>
+																								<span class="text-muted text-xs"><b>Total Ticket <small>(current week)</small></b></span>
+																								<span class="bottom text-right w-full">
+																									<i class="glyphicon  glyphicon-tags text-muted m-r-sm"></i>
+																								</span>
+																							</a>
+																						</div>
+																						<div class="col-xs-4">
+																							<div class="panel padder-v bg-info item">
+																								<div class="h1 text-white font-thin h1 count pull-center">521</div>
+																								<span class="text-muted text-xs"><b>Total Ongoing Tickets</b></span>
+																								<span class="bottom text-right w-full">
+																									<i class="glyphicon  glyphicon-tags text-muted m-r-sm"></i>
+																								</span>
+																							</div>
+																						</div>
+																					</div>
+																				</div> 
+																				<div class="col-sm-4">
+																				
+																	<thead>
+																		<tr>
+																			<center><h3 class="m-n font-bold h4">Recent Tickets</h3></center><br>
+																			<table style="background-color:white;" class="table table-striped m-b-none">
+          <thead>
+            <tr>
+              <th><center>Title</center></th>                    
+              <th><center>Customer</center></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>                    
+              <td><b><a>Instalation issue IBM server</a></b><br><small> <i class="glyphicon glyphicon-time" style="font-size:10px;"></i> 2 days</small></td>
+              <td class="text-info">
+                <center><b>Attijariwafabank</b></center>
+              </td>
+            </tr>
+             <tr>                    
+              <td><b><a>Logs issue IBM server</a></b><br><small> <i class="glyphicon glyphicon-time" style="font-size:10px;"></i> 1 Semaine</small></td>
+              <td class="text-info">
+                <center><b>Bank Populaire </b></center>
+              </td>
+            </tr>
+			  <tr>                    
+              <td><b><a>Hardware installation issue</a></b><br><small> <i class="glyphicon glyphicon-time" style="font-size:10px;"></i> 1 Semaine</small></td>
+              <td class="text-info">
+                <center><b>CFG Bank </b></center>
+              </td>
+            </tr>
+			<tr>
+			<td  colspan="2">
+		  <span class="pull-right">View More</span>
+		  </td>
+
+			</tr>
+          </tbody>
+		
+		  
+        </table>
+																			
+																		</tr>
+																	</thead>
+																	<tbody>
+																		<tr data-expanded="true">
+																			<td><td>
+																			</tr>
+																			</tbody>
+																			</table>
+																			
+																				
+																				</div>
+																				
+																				<div class="col-sm-4">
+																					<center><h3 class="m-n font-bold h4">Tickets by impact chart </h3></center><br>
+																					<div class="row">
+																						<div class="col-sm-12">
+																							<center><div  id="myPieChart"/></center>
+																						</div>
+																					</div>
+																				</div>
+																				<div class="col-sm-4">
+																					<center><h3 class="m-n font-bold h4">Expected Temporaray Date </h3></center><br>
+																					<div id='loading'>loading...</div>
+																					<div id='calendar1'></div>
+																				</div>
+																						<div style="background-color:white; margin:5px 0px;padding:5px 5px;"class="col-sm-12">
+																<table style="background-color:white;"ui-jq="dataTable" ui-options="{
+          aoColumns: [
+            { mData: 'engine' }
+          ]
+        }" class="table table-striped b-t b-b">
+																	<thead>
+																		<tr>
+																			<th  style="width:5%"><center>Project Name</center></th>
+																		</tr>
+																	</thead>
+																	<tbody>
+																		<tr data-expanded="true">
+																			<td>
+
+																				<button class="btn btn-primary btn-block" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+																					<b>JESA - Maintenance hardware et software</b> <span style="padding:2px;width:13px;height:13px;font-size:9px;font-weight:bold;"class="badge bg-info pull-center">3</span><i class="glyphicon glyphicon-play pull-right"></i>
+																				</button>
+
+																				<div class="collapse" id="collapseExample">
+																					<div class="card card-body">
+																						<div class="table-responsive">
+																							<div class="panel panel-default" style="margin:5px;">
+																								<button class="btn btn-info btn-block" type="button" data-toggle="collapse" data-target="#assetproject" aria-expanded="false" aria-controls="assetproject">
+																									<b>Project Name : CFG - Refronte Infrastructure IT</b><i class="glyphicon glyphicon-play pull-right"></i>
+																								</button>
+																								<div class="collapse" id="assetproject" style="margin-top:5px;border:1px solid #19a9d5;">
+																									<table ui-jq="dataTable" ui-options="{ aoColumns: [{ mData: 'engine' },{ mData: 'browser' },{ mData: 'platform' },{ mData: 'version' },{ mData: 'grade' },{ mData: 'action' }]}" class="table-responsive table table-striped b-t b-b">
+																										<thead>
+																											<tr>
+																												<th  style="width:15%"><center>Asset ID</center></th>
+																												<th  style="width:15%"><center>Asset S/N</center></th>
+																												<th  style="width:13%"><center>Current Firmware</center></th>
+																												<th  style="width:13%"><center>Type</center></th>
+																												<th  style="width:12%"><center>Asset Type</center></th>
+																												<th  style="width:12%"><center>End Vendor Warranty</center></th>
+																												<th  style="width:10%"><center>End PM Warranty</center></th>
+																												<th  style="width:15%"><center>Actions</center></th>
+																											</tr>
+																										</thead>
+																										<tbody>
+																											<tr data-expanded="true">
+																												<td><center>Projet refonte Plateforme IT</center></td>
+																												<td> 	
+																													<center>JESA00063 00 16 A.2</center>
+																												</td>
+																												<td><center>JESA-IT-17072015</center></td>
+																												<td><center><span class="label bg-danger pull-center m-t-md">closed</span><center/></td>
+																													<td><center><span class="label bg-success pull-center m-t-md">won</span><center/></td>
+																														<td></td>
+																														<td></td>
+																														<td>
+
+																															<span class="label btn-info pull-center m-t-sm"><b class="glyphicon  glyphicon-cog"></b></span>
+																															<span class="label btn-info pull-center m-t-sm"><b class="glyphicon  glyphicon-trash"></b></span>
+																															<span class="label btn-info pull-center m-t-sm"><b class="glyphicon  glyphicon-info-sign"></b></span>
+																														</td>
+																													</tr>
+																												</tbody>
+																											</table>
+																										</div>
+																									</div>
+																								</div> 
+																							</div>
+																						</div>
+																					</table>
+																				</div>
+																			</div>
+																		
+																	
+
+																<div class="modal fade" role="dialog" id="AddClient" >
+  <div class="modal-dialog modal-lg" >
+    <div class="modal-content">
+      <div class="modal-header" style="background-image:url(img/grf-bg.jpg);color:white;">
+        <button type="button" class="close pull-right" data-dismiss="modal">&times;</button>
+          <h1 class="m-n font-bold h3"> <b class="glyphicon-plus pull"> </b> Add Ticket</h1>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <label class="col-sm-4 control-label"  for="input-id-1"><b>Type Ticket</b></label>
+          <div class="col-sm-8"  >
+            <select name="account" class="form-control m-b">
+              <option>Ticket1</option>
+              <option>Ticket2</option>
+            </select>
+          </div>
+          <label class="col-sm-4 control-label"  for="input-id-1"><b>Employee</b></label>
+          <div class="col-sm-8"  >
+            <select name="account" class="form-control m-b">
+              <option>NomEmployee</option>
+              <option>NomEmployee</option>
+            </select>
+          </div>
+          <label class="col-sm-4 control-label"  for="input-id-1"><b>Asset</b></label>
+          <div class="col-sm-8"  >
+            <select name="account" class="form-control m-b">
+              <option>NomAsset</option>
+              <option>NomAsset</option>
+            </select>
+          </div>
+          <label class="col-sm-4 control-label"  for="input-id-1"><b>Company</b></label>
+          <div class="col-sm-8"  >
+            <select name="account" class="form-control m-b">
+              <option>NomCompany</option>
+              <option>NomCompamy</option>
+            </select>
+          </div>
+          <label class="col-sm-4 control-label"  for="input-id-1"><b>Priority Ticket</b></label>
+          <div class="col-sm-8"  >
+            <select name="account" class="form-control m-b">
+              <option>Low</option>
+              <option>Medium</option>
+              <option>High</option>
+            </select>
+          </div>
+          <label class="col-sm-4 control-label" placeholder="Entry Description" for="input-id-1"><b>Description</b></label>
+          <div class="col-sm-8">
+            <div class="form-group">
+            <div class="btn-toolbar m-b-sm btn-editor" data-role="editor-toolbar" data-target="#editor">
+              <div class="btn-group dropdown" dropdown="">
+                <a class="btn btn-default" dropdown-toggle="" tooltip="Font"><i class="fa fa-font"></i><b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><a href="" data-edit="fontName Serif" style="font-family:'Serif'">Serif</a></li> 
+                  <li><a href="" data-edit="fontName Sans" style="font-family:'Sans'">Sans</a></li>
+                  <li><a href="" data-edit="fontName Arial" style="font-family:'Arial'">Arial</a></li></ul>
+              </div>
+              <div class="btn-group dropdown" dropdown="">
+                <a class="btn btn-default" dropdown-toggle="" data-toggle="dropdown" tooltip="Font Size">
+                  <i class="fa fa-text-height"></i>&nbsp;<b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a href="" data-edit="fontSize 5" style="font-size:24px">Huge</a></li>
+                  <li><a href="" data-edit="fontSize 3" style="font-size:18px">Normal</a></li>
+                  <li><a href="" data-edit="fontSize 1" style="font-size:14px">Small</a></li>
+                </ul>
+              </div>
+              <div class="btn-group">
+                <a class="btn btn-default" data-edit="bold" tooltip="Bold (Ctrl/Cmd+B)"><i class="fa fa-bold"></i></a>
+                <a class="btn btn-default" data-edit="italic" tooltip="Italic (Ctrl/Cmd+I)"><i class="fa fa-italic"></i></a>
+                <a class="btn btn-default" data-edit="strikethrough" tooltip="Strikethrough"><i class="fa fa-strikethrough"></i></a>
+                <a class="btn btn-default" data-edit="underline" tooltip="Underline (Ctrl/Cmd+U)"><i class="fa fa-underline"></i></a>
+              </div>
+              <div class="btn-group">
+                <a class="btn btn-default" data-edit="insertunorderedlist" tooltip="Bullet list"><i class="fa fa-list-ul"></i></a>
+                <a class="btn btn-default" data-edit="insertorderedlist" tooltip="Number list"><i class="fa fa-list-ol"></i></a>
+                <a class="btn btn-default" data-edit="outdent" tooltip="Reduce indent (Shift+Tab)"><i class="fa fa-dedent"></i></a>
+                <a class="btn btn-default" data-edit="indent" tooltip="Indent (Tab)"><i class="fa fa-indent"></i></a>
+              </div>
+              <div class="btn-group">
+                <a class="btn btn-default btn-info" data-edit="justifyleft" tooltip="Align Left (Ctrl/Cmd+L)"><i class="fa fa-align-left"></i></a>
+                <a class="btn btn-default" data-edit="justifycenter" tooltip="Center (Ctrl/Cmd+E)"><i class="fa fa-align-center"></i></a>
+                <a class="btn btn-default" data-edit="justifyright" tooltip="Align Right (Ctrl/Cmd+R)"><i class="fa fa-align-right"></i></a>
+                <a class="btn btn-default" data-edit="justifyfull" tooltip="Justify (Ctrl/Cmd+J)"><i class="fa fa-align-justify"></i></a>
+              </div>
+              <div class="btn-group dropdown" dropdown="">
+                <a class="btn btn-default" dropdown-toggle="" tooltip="Hyperlink"><i class="fa fa-link"></i></a>
+                <div class="dropdown-menu">
+                  <div class="input-group m-l-xs m-r-xs">
+                    <input class="form-control input-sm" id="LinkInput" placeholder="URL" type="text" data-edit="createLink">
+                    <div class="input-group-btn">
+                      <button class="btn btn-sm btn-default" type="button">Add</button>
+                    </div>
+                  </div>
+                </div>
+                <a class="btn btn-default" data-edit="unlink" tooltip="Remove Hyperlink"><i class="fa fa-cut"></i></a>
+              </div>
+              
+              <div class="btn-group">
+                <a class="btn btn-default" tooltip="Insert picture (or just drag &amp; drop)" id="pictureBtn"><i class="fa fa-picture-o"></i></a>
+                <input type="file" data-edit="insertImage" style="position:absolute; opacity:0; width:41px; height:34px">
+              </div>
+              <div class="btn-group">
+                <a class="btn btn-default" data-edit="undo" tooltip="Undo (Ctrl/Cmd+Z)"><i class="fa fa-undo"></i></a>
+                <a class="btn btn-default" data-edit="redo" tooltip="Redo (Ctrl/Cmd+Y)"><i class="fa fa-repeat"></i></a>
+              </div>
+            </div>
+            <div ui-jq="wysiwyg" class="form-control" style="overflow:scroll;height:200px;max-height:200px" contenteditable="true">
+              Go ahead…
+            </div>
+          </div>
+        </div>
+          <label class="col-sm-4 control-label" placeholder="Entry DateTime" for="input-id-1"><b>OpenedDate</b></label>
+          <div class="col-sm-8">
+            <form action="https://formden.com/post/MlKtmY4x/" class="form-horizontal" method="post">
+            <div class="form-group ">
+            <div class="col-sm-10">
+            <div class="input-group">
+            <div class="input-group-addon">
+              <i class="fa fa-calendar"></i>
+            </div>
+            <input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" type="text"/>
+            </div>
+            </div>
+            </div>
+            </form>
+          </div>
+          <label class="col-sm-4 control-label" placeholder="Entry DateTime" for="input-id-1"><b>ClosedDate</b></label>
+          <div class="col-sm-8">
+            <form action="https://formden.com/post/MlKtmY4x/" class="form-horizontal" method="post">
+            <div class="form-group ">
+            <div class="col-sm-10">
+            <div class="input-group">
+            <div class="input-group-addon">
+              <i class="fa fa-calendar"></i>
+            </div>
+            <input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" type="text"/>
+            </div>
+            </div>
+            </div>
+            </form>
+          </div>
+          <label class="col-sm-4 control-label" placeholder="Entry Log File" for="input-id-1"><b>Log File</b></label>
+          <div class="col-sm-4">
+            <input type="text" placeholder="Entry Log File"class="form-control" id="input-id-1">
+          </div>
+          <div class="btn-group">
+                <a class="btn btn-default" tooltip="Insert picture (or just drag &amp; drop)" id="pictureBtn"><i class="icon-paper-clip"></i></a>
+                <input type="file" data-edit="insertImage" style="position:absolute; opacity:0; width:41px; height:34px">
+              </div> 
+          <label class="col-sm-4 control-label" placeholder="Entry Description" for="input-id-1"><b>Solution Description</b></label>
+          <div class="col-sm-8">
+            <div class="form-group">
+            <div class="btn-toolbar m-b-sm btn-editor" data-role="editor-toolbar" data-target="#editor">
+              <div class="btn-group dropdown" dropdown="">
+                <a class="btn btn-default" dropdown-toggle="" tooltip="Font"><i class="fa fa-font"></i><b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><a href="" data-edit="fontName Serif" style="font-family:'Serif'">Serif</a></li> 
+                  <li><a href="" data-edit="fontName Sans" style="font-family:'Sans'">Sans</a></li>
+                  <li><a href="" data-edit="fontName Arial" style="font-family:'Arial'">Arial</a></li></ul>
+              </div>
+              <div class="btn-group dropdown" dropdown="">
+                <a class="btn btn-default" dropdown-toggle="" data-toggle="dropdown" tooltip="Font Size">
+                  <i class="fa fa-text-height"></i>&nbsp;<b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a href="" data-edit="fontSize 5" style="font-size:24px">Huge</a></li>
+                  <li><a href="" data-edit="fontSize 3" style="font-size:18px">Normal</a></li>
+                  <li><a href="" data-edit="fontSize 1" style="font-size:14px">Small</a></li>
+                </ul>
+              </div>
+              <div class="btn-group">
+                <a class="btn btn-default" data-edit="bold" tooltip="Bold (Ctrl/Cmd+B)"><i class="fa fa-bold"></i></a>
+                <a class="btn btn-default" data-edit="italic" tooltip="Italic (Ctrl/Cmd+I)"><i class="fa fa-italic"></i></a>
+                <a class="btn btn-default" data-edit="strikethrough" tooltip="Strikethrough"><i class="fa fa-strikethrough"></i></a>
+                <a class="btn btn-default" data-edit="underline" tooltip="Underline (Ctrl/Cmd+U)"><i class="fa fa-underline"></i></a>
+              </div>
+              <div class="btn-group">
+                <a class="btn btn-default" data-edit="insertunorderedlist" tooltip="Bullet list"><i class="fa fa-list-ul"></i></a>
+                <a class="btn btn-default" data-edit="insertorderedlist" tooltip="Number list"><i class="fa fa-list-ol"></i></a>
+                <a class="btn btn-default" data-edit="outdent" tooltip="Reduce indent (Shift+Tab)"><i class="fa fa-dedent"></i></a>
+                <a class="btn btn-default" data-edit="indent" tooltip="Indent (Tab)"><i class="fa fa-indent"></i></a>
+              </div>
+              <div class="btn-group">
+                <a class="btn btn-default btn-info" data-edit="justifyleft" tooltip="Align Left (Ctrl/Cmd+L)"><i class="fa fa-align-left"></i></a>
+                <a class="btn btn-default" data-edit="justifycenter" tooltip="Center (Ctrl/Cmd+E)"><i class="fa fa-align-center"></i></a>
+                <a class="btn btn-default" data-edit="justifyright" tooltip="Align Right (Ctrl/Cmd+R)"><i class="fa fa-align-right"></i></a>
+                <a class="btn btn-default" data-edit="justifyfull" tooltip="Justify (Ctrl/Cmd+J)"><i class="fa fa-align-justify"></i></a>
+              </div>
+              <div class="btn-group dropdown" dropdown="">
+                <a class="btn btn-default" dropdown-toggle="" tooltip="Hyperlink"><i class="fa fa-link"></i></a>
+                <div class="dropdown-menu">
+                  <div class="input-group m-l-xs m-r-xs">
+                    <input class="form-control input-sm" id="LinkInput" placeholder="URL" type="text" data-edit="createLink">
+                    <div class="input-group-btn">
+                      <button class="btn btn-sm btn-default" type="button">Add</button>
+                    </div>
+                  </div>
+                </div>
+                <a class="btn btn-default" data-edit="unlink" tooltip="Remove Hyperlink"><i class="fa fa-cut"></i></a>
+              </div>
+              
+              <div class="btn-group">
+                <a class="btn btn-default" tooltip="Insert picture (or just drag &amp; drop)" id="pictureBtn"><i class="fa fa-picture-o"></i></a>
+                <input type="file" data-edit="insertImage" style="position:absolute; opacity:0; width:41px; height:34px">
+              </div>
+              <div class="btn-group">
+                <a class="btn btn-default" data-edit="undo" tooltip="Undo (Ctrl/Cmd+Z)"><i class="fa fa-undo"></i></a>
+                <a class="btn btn-default" data-edit="redo" tooltip="Redo (Ctrl/Cmd+Y)"><i class="fa fa-repeat"></i></a>
+              </div>
+            </div>
+            <div ui-jq="wysiwyg" class="form-control" style="overflow:scroll;height:200px;max-height:200px" contenteditable="true">
+              Go ahead…
+            </div>
+          </div>
+        </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button style="margin:0px;" class="btn m-b-xs btn-sm btn-primary btn-addon"><i class="glyphicon glyphicon-ok"></i>Save</button>
+       <button style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon" data-dismiss="modal"><i class="glyphicon glyphicon-remove"></i>Annuler</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+																				
+																			</div>
+																			<!-- /content -->
+
+																			<!-- footer -->
+																			<footer id="footer" class="app-footer" role="footer">
+																				<div class="wrapper b-t bg-light">
+																					<span class="pull-right">2.2.0 <a href ui-scroll="app" class="m-l-sm text-muted"><i class="fa fa-long-arrow-up"></i></a></span>
+      &copy; PowerM 2020 Copyright.
+																				</div>
+																			</footer>
+																			<!-- / footer -->
+
+
+
+																		</div>
+
+																		<script src="../libs/jquery/jquery/dist/jquery.js"></script>
+																		<script src="../libs/jquery/bootstrap/dist/js/bootstrap.js"></script>
+																		<script src="js/ui-load.js"></script>
+																		<script src="js/ui-jp.config.js"></script>
+																		<script src="js/ui-jp.js"></script>
+																		<script src="js/ui-nav.js"></script>
+																		<script src="js/ui-toggle.js"></script>
+																		<script src="js/ui-client.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+<script src="js/myjavascript.js"></script>
+<script>
+  $(document).ready(function(){
+    var date_input=$('input[name="date"]'); //our date input has the name "date"
+    var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
+    date_input.datepicker({
+      format: 'mm/dd/yyyy',
+      container: container,
+      todayHighlight: true,
+      autoclose: true,
+    })
+  })
+</script>
+																	</body>
+																</html>
+																

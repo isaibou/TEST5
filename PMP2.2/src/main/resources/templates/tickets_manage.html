@@ -2,7 +2,7 @@
 <html lang="en" class="">
 	<head>
 		<meta charset="utf-8" />
-		<title>Tickets m </title>
+		<title>Tickets </title>
 		<meta name="description" content="app, web app, responsive, responsive layout, admin, admin panel, admin dashboard, flat, flat ui, ui kit, AngularJS, ui route, charts, widgets, components" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 		<link rel="stylesheet" href="../libs/assets/animate.css/animate.css" type="text/css" />
@@ -94,7 +94,100 @@ document.addEventListener('DOMContentLoaded', function() {
 			chart.draw(data, options);
 			}
 		</script>
+	<style>
+  .tabbable-line > .nav-tabs {
+  border: none;
+  margin: 0px;
+}
+.tabbable-line > .nav-tabs > li {
+  margin-right: 2px;
+}
+.tabbable-line > .nav-tabs > li > a {
+  border: 0;
+  margin-right: 0;
+  color: #333333;
+}
+.tabbable-line > .nav-tabs > li > a > i {
+  color: #333333;
+}
+.tabbable-line > .nav-tabs > li.open, .tabbable-line > .nav-tabs > li:hover {
+  border-bottom: 4px solid #6254b2;
+}
+.tabbable-line > .nav-tabs > li.open > a, .tabbable-line > .nav-tabs > li:hover > a {
+  border: 0;
+  background: none !important;
+  color: #6254b2;
+}
+.tabbable-line > .nav-tabs > li.open > a > i, .tabbable-line > .nav-tabs > li:hover > a > i {
+  color: #6254b2;
+}
+.tabbable-line > .nav-tabs > li.open .dropdown-menu, .tabbable-line > .nav-tabs > li:hover .dropdown-menu {
+  margin-top: 0px;
+}
+.tabbable-line > .nav-tabs > li.active {
+  border-bottom: 4px solid #6254b2;
 
+  position: relative;
+}
+.tabbable-line > .nav-tabs > li.active > a {
+  border: 0;
+  color: #333333;
+}
+.tabbable-line > .nav-tabs > li.active > a > i {
+  color: #2da02b;
+}
+.tabbable-line > .tab-content {
+  margin-top: -3px;
+  background-color: #fff;
+  border: 0;
+  border-top: 1px solid #eee;
+  padding: 15px 0;
+}
+.portlet .tabbable-line > .tab-content {
+  padding-bottom: 0;
+}
+
+/* Below tabs mode */
+
+.tabbable-line.tabs-below > .nav-tabs > li {
+  border-top: 4px solid transparent;
+}
+.tabbable-line.tabs-below > .nav-tabs > li > a {
+  margin-top: 0;
+}
+.tabbable-line.tabs-below > .nav-tabs > li:hover {
+  border-bottom: 0;
+  border-top: 4px solid #fbcdcf;
+}
+.tabbable-line.tabs-below > .nav-tabs > li.active {
+  margin-bottom: -2px;
+  border-bottom: 0;
+  border-top: 4px solid #f3565d;
+}
+.tabbable-line.tabs-below > .tab-content {
+  margin-top: -10px;
+  border-top: 0;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 15px;
+}
+
+.tabbable-panel {
+  border:1px solid #eee;
+  padding: 10px;
+}
+
+
+
+@media (max-width: 767px) {
+    .table-responsive .dropdown-menu {
+        position: static !important;
+    }
+}
+@media (min-width: 768px) {
+    .table-responsive {
+        overflow: inherit;
+    }
+		</style>
 	</head>
 	<body>
 		<div class="app app-header-fixed ">
@@ -102,161 +195,157 @@ document.addEventListener('DOMContentLoaded', function() {
 
 			<!-- header -->
   <header id="header" class="app-header navbar" role="menu">
-      <!-- navbar header -->
-      <div class="navbar-header bg-dark">
-        <button class="pull-right visible-xs dk" ui-toggle-class="show" target=".navbar-collapse">
-          <i class="glyphicon glyphicon-cog"></i>
-        </button>
-        <button class="pull-right visible-xs" ui-toggle-class="off-screen" target=".app-aside" ui-scroll="app">
-          <i class="glyphicon glyphicon-align-justify"></i>
-        </button>
-        <!-- brand -->
-        <a href="#/" class="navbar-brand text-lt">
-          <i class="fa fa-power-off"></i>
-          <span class="hidden-folded m-l-xs">PowerM</span>
-        </a>
-        <!-- / brand -->
-      </div>
-      <!-- / navbar header -->
-
-      <!-- navbar collapse -->
-      <div class="collapse pos-rlt navbar-collapse box-shadow bg-white-only">
-        <!-- buttons -->
-        <div class="nav navbar-nav hidden-xs">
-          <a href="#" class="btn no-shadow navbar-btn" ui-toggle-class="app-aside-folded" target=".app">
-            <i class="fa fa-dedent fa-fw text"></i>
-            <i class="fa fa-indent fa-fw text-active"></i>
+        <!-- navbar header -->
+        <div class="navbar-header bg-dark">
+          <button class="pull-right visible-xs dk" ui-toggle-class="show" target=".navbar-collapse">
+            <i class="glyphicon glyphicon-cog"></i>
+          </button>
+          <button class="pull-right visible-xs" ui-toggle-class="off-screen" target=".app-aside" ui-scroll="app">
+            <i class="glyphicon glyphicon-align-justify"></i>
+          </button>
+          <!-- brand -->
+          <a href="#/" class="navbar-brand text-lt">
+            <i class="fa fa-power-off"></i>
+            <span class="hidden-folded m-l-xs">PowerM</span>
           </a>
-          <a href="#" class="btn no-shadow navbar-btn" ui-toggle-class="show" target="#aside-user">
-            <i class="icon-user fa-fw"></i>
-          </a>
+          <!-- / brand -->
         </div>
-        <!-- / buttons -->
+        <!-- / navbar header -->
 
-        <!-- link and dropdown -->
-        <ul class="nav navbar-nav hidden-sm">
-          <li class="dropdown">
-            <a href="#" data-toggle="dropdown" class="dropdown-toggle">
-              <i class="fa fa-fw fa-plus visible-xs-inline-block"></i>
-              <span translate="header.navbar.new.NEW">New</span> <span class="caret"></span>
+        <!-- navbar collapse -->
+        <div class="collapse pos-rlt navbar-collapse box-shadow bg-white-only">
+          <!-- buttons -->
+          <div class="nav navbar-nav hidden-xs">
+            <a href="#" class="btn no-shadow navbar-btn" ui-toggle-class="app-aside-folded" target=".app">
+              <i class="fa fa-dedent fa-fw text"></i>
+              <i class="fa fa-indent fa-fw text-active"></i>
             </a>
-            <ul class="dropdown-menu" role="menu">
-              <li><a href="#" translate="header.navbar.new.PROJECT">Projects</a></li>
-              <li>
-                <a href>
-                  <span class="badge bg-info pull-right">5</span>
-                  <span translate="header.navbar.new.TASK">Task</span>
-                </a>
-              </li>
-              <li><a href translate="header.navbar.new.USER">User</a></li>
-              <li class="divider"></li>
-              <li>
-                <a href>
-                  <span class="badge bg-danger pull-right">4</span>
-                  <span translate="header.navbar.new.EMAIL">Email</span>
-                </a>
-              </li>
-            </ul>
-          </li>
-        </ul>
-        <!-- / link and dropdown -->
-
-        <!-- search form -->
-        <form class="navbar-form navbar-form-sm navbar-left shift" ui-shift="prependTo" data-target=".navbar-collapse" role="search" ng-controller="TypeaheadDemoCtrl">
-          <div class="form-group">
-            <div class="input-group">
-              <input type="text" ng-model="selected" typeahead="state for state in states | filter:$viewValue | limitTo:8" class="form-control input-sm bg-light no-border rounded padder" placeholder="Search projects...">
-              <span class="input-group-btn">
-                <button type="submit" class="btn btn-sm bg-light rounded"><i class="fa fa-search"></i></button>
-              </span>
-            </div>
+            <a href="#" class="btn no-shadow navbar-btn" ui-toggle-class="show" target="#aside-user">
+              <i class="icon-user fa-fw"></i>
+            </a>
           </div>
-        </form>
-        <!-- / search form -->
+          <!-- / buttons -->
 
-        <!-- nabar right -->
-        <ul class="nav navbar-nav navbar-right">
-          <li class="dropdown">
-            <a href="#" data-toggle="dropdown" class="dropdown-toggle">
-              <i class="icon-bell fa-fw"></i>
-              <span class="visible-xs-inline">Notifications</span>
-              <span class="badge badge-sm up bg-danger pull-right-xs">2</span>
-            </a>
-            <!-- dropdown -->
-            <div class="dropdown-menu w-xl animated fadeInUp">
-              <div class="panel bg-white">
-                <div class="panel-heading b-light bg-light">
-                  <strong>You have <span>2</span> notifications</strong>
-                </div>
-                <div class="list-group">
-                  <a href class="list-group-item">
-                    <span class="pull-left m-r thumb-sm">
-                      <img src="img/a0.jpg" alt="..." class="img-circle">
-                    </span>
-                    <span class="clear block m-b-none">
-                      Use awesome animate.css<br>
-                      <small class="text-muted">10 minutes ago</small>
-                    </span>
-                  </a>
-                  <a href class="list-group-item">
-                    <span class="clear block m-b-none">
-                      1.0 initial released<br>
-                      <small class="text-muted">1 hour ago</small>
-                    </span>
-                  </a>
-                </div>
-                <div class="panel-footer text-sm">
-                  <a href class="pull-right"><i class="fa fa-cog"></i></a>
-                  <a href="#notes" data-toggle="class:show animated fadeInRight">See all the notifications</a>
+          <!-- link and dropdown -->
+          <ul class="nav navbar-nav hidden-sm">
+            <li class="dropdown">
+              <a href="#" data-toggle="dropdown" class="dropdown-toggle">
+                <span translate="header.navbar.new.NEW"></span> <span class="fa fa-moon-o lb-warning"></span> 
+              </a>
+              <ul class="dropdown-menu" role="menu">
+                <li>
+                  <button type="button" name="button" id="darkmode" onclick="changecolor()">
+                    <span translate="header.navbar.new.TASK">ON</span>
+                  </button>
+                </li>
+                <li>
+                  <button  type="button" name="button" id="lightmode" onclick="lightmode()">
+                    <span translate="header.navbar.new.TASK">OFF</span>
+                  </button>
+                </li>
+                
+              </ul>
+            </li>
+          </ul>
+          <!-- / link and dropdown -->
+
+          <!-- search form -->
+          <form class="navbar-form navbar-form-sm navbar-left shift" ui-shift="prependTo" data-target=".navbar-collapse" role="search" ng-controller="TypeaheadDemoCtrl">
+            <div class="form-group">
+              <div class="input-group">
+                <input type="text" ng-model="selected" typeahead="state for state in states | filter:$viewValue | limitTo:8" class="form-control input-sm bg-light no-border rounded padder" placeholder="Search projects...">
+                  <span class="input-group-btn">
+                    <button type="submit" class="btn btn-sm bg-light rounded"><i class="fa fa-search"></i></button>
+                  </span>
                 </div>
               </div>
-            </div>
-            <!-- / dropdown -->
-          </li>
-          <li class="dropdown">
-              <span class="thumb-sm avatar pull-right m-t-n-sm m-b-n-sm m-l-sm">
-                <img src="img/user.png" alt="...">
-                <i class="on md b-white bottom"></i>
-              </span>
-              <span class="hidden-sm hidden-md">Walid.largou</span> <b class="caret"></b>
-            </a>
-            <!-- dropdown -->
-            <ul class="dropdown-menu animated fadeInRight w">
-              <li class="wrapper b-b m-b-sm bg-light m-t-n-xs">
-                <div>
-                  <p>300mb of 500mb used</p>
-                </div>
-                <div class="progress progress-xs m-b-none dker">
-                  <div class="progress-bar progress-bar-info" data-toggle="tooltip" data-original-title="50%" style="width: 50%"></div>
-                </div>
-              </li>
-              <li>
-                <a href>
-                  <span class="badge bg-danger pull-right">30%</span>
-                  <span>Settings</span>
+            </form>
+            <!-- / search form -->
+
+            <!-- nabar right -->
+            <ul class="nav navbar-nav navbar-right">
+              <li class="dropdown">
+                <a href="#" data-toggle="dropdown" class="dropdown-toggle">
+                  <i class="icon-bell fa-fw"></i>
+                  <span class="visible-xs-inline">Notifications</span>
+                  <span class="badge badge-sm up bg-danger pull-right-xs">2</span>
                 </a>
-              </li>
-              <li>
-                <a ui-sref="app.page.profile">Profile</a>
-              </li>
-              <li>
-                <a ui-sref="app.docs">
-                  <span class="label bg-info pull-right">new</span>
+                <!-- dropdown -->
+                <div class="dropdown-menu w-xl animated fadeInUp">
+                  <div class="panel bg-white">
+                    <div class="panel-heading b-light bg-light">
+                      <strong>You have <span>2</span> notifications</strong>
+                    </div>
+                    <div class="list-group">
+                      <a href class="list-group-item">
+                        <span class="pull-left m-r thumb-sm">
+                          <img src="img/a0.jpg" alt="..." class="img-circle">
+                          </span>
+                          <span class="clear block m-b-none">
+                      Use awesome animate.css<br>
+                              <small class="text-muted">10 minutes ago</small>
+                            </span>
+                          </a>
+                          <a href class="list-group-item">
+                            <span class="clear block m-b-none">
+                      1.0 initial released<br>
+                                <small class="text-muted">1 hour ago</small>
+                              </span>
+                            </a>
+                          </div>
+                          <div class="panel-footer text-sm">
+                            <a href class="pull-right"><i class="fa fa-cog"></i></a>
+                            <a href="#notes" data-toggle="class:show animated fadeInRight">See all the notifications</a>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- / dropdown -->
+                    </li>
+                    <li class="dropdown">
+                      <a href="#" data-toggle="dropdown" class="dropdown-toggle clear" data-toggle="dropdown">
+                        <span class="thumb-sm avatar pull-right m-t-n-sm m-b-n-sm m-l-sm">
+                          <img src="img/user.png" alt="...">
+                            <i class="on md b-white bottom"></i>
+                          </span>
+                          <span class="hidden-sm hidden-md">Walid.largou</span> <b class="caret"></b>
+                        </a>
+                        <!-- dropdown -->
+                        <ul class="dropdown-menu animated fadeInRight w">
+                          <li class="wrapper b-b m-b-sm bg-light m-t-n-xs">
+                            <div>
+                              <p>300mb of 500mb used</p>
+                            </div>
+                            <div class="progress progress-xs m-b-none dker">
+                              <div class="progress-bar progress-bar-info" data-toggle="tooltip" data-original-title="50%" style="width: 50%"></div>
+                            </div>
+                          </li>
+                          <li>
+                            <a href>
+                              <span class="badge bg-danger pull-right">30%</span>
+                              <span>Settings</span>
+                            </a>
+                          </li>
+                          <li>
+                            <a ui-sref="app.page.profile">Profile</a>
+                          </li>
+                          <li>
+                            <a ui-sref="app.docs">
+                              <span class="label bg-info pull-right">new</span>
                   Help
-                </a>
-              </li>
-              <li class="divider"></li>
-              <li>
-                <a ui-sref="access.signin">Logout</a>
-              </li>
-            </ul>
-            <!-- / dropdown -->
-          </li>
-        </ul>
-        <!-- / navbar right -->
-      </div>
-      <!-- / navbar collapse -->
-  </header>
+                            </a>
+                          </li>
+                          <li class="divider"></li>
+                          <li>
+                            <a ui-sref="access.signin">Logout</a>
+                          </li>
+                        </ul>
+                        <!-- / dropdown -->
+                      </li>
+                    </ul>
+                    <!-- / navbar right -->
+                  </div>
+                  <!-- / navbar collapse -->
+                </header>
   <!-- / header -->
 
 
@@ -322,14 +411,14 @@ document.addEventListener('DOMContentLoaded', function() {
                 <span>Main</span>
               </li>
               <li>
-                <a th:href="index" class="auto">      
+                <a href="index.html" class="auto">      
                   <i class="glyphicon glyphicon-stats icon text-primary-dker"></i>
                   <span class="font-bold">Dashboard</span>
                 </a>
                
               </li>
               <li>
-                <a th:href="mail">
+                <a href="mail.html">
                   <b class="badge bg-info pull-right">9</b>
                   <i class="glyphicon glyphicon-envelope icon text-info-lter"></i>
                   <span class="font-bold">Email</span>
@@ -353,15 +442,45 @@ document.addEventListener('DOMContentLoaded', function() {
                 <ul class="nav nav-sub dk">
                
                   <li>
-                    <a th:href="customer_manage">
+                    <a href="customer_manage.html">
                       <span>Manage customer</span>
+                    </a>
+                  </li>
+          
+          <li>
+                    <a href="purchasing_customer_manage.html">
+                      <span>Puchasing contact</span>
                     </a>
                   </li>
                     
                 </ul>
               </li>
+           <li>
+                <a href class="auto">      
+                  <span class="pull-right text-muted">
+                    <i class="fa fa-fw fa-angle-right text"></i>
+                    <i class="fa fa-fw fa-angle-down text-active"></i>
+                  </span>
+                  <b class="badge bg-info pull-right">3</b>
+                  <i class="glyphicon glyphicon-user"></i>
+                  <span>Users</span>
+                </a>
+                <ul class="nav nav-sub dk">
+               
+                  <li>
+                    <a href="users.html">
+                      <span>Manage users</span>
+                    </a>
+                  </li>
+                                    <li>
+                    <a href="TypeUsers.html">
+                      <span>Manage Type users</span>
+                    </a>
+                  </li>  
+                </ul>
+              </li>
               <li>
-                <a th:href="timesheets" class="auto">
+                <a href="timesheets.html" class="auto">
                   <i class="glyphicon glyphicon-calendar icon"></i>
                   <span>TimeSheet</span>
                 </a>
@@ -379,17 +498,17 @@ document.addEventListener('DOMContentLoaded', function() {
                 </a>
                 <ul class="nav nav-sub dk">
                   <li class="s">
-                    <a th:href="projects_manage">
+                    <a href="projects_manage.html">
                       <span>Manage Project</span>
                     </a>
                   </li>
                   <li>
-                    <a th:href="project_delivrable_manage">
-                      <span>Manage Delivrable</span>
+                    <a href="deliverable_manage.html">
+                      <span>Manage Deliverable</span>
                     </a>
                   </li>
                   <li>
-                    <a th:href="reference_manage">
+                    <a href="reference_manage.html">
                       <span>Manage Reference</span>
                     </a>
                   </li>
@@ -406,26 +525,48 @@ document.addEventListener('DOMContentLoaded', function() {
                 </a>
                 <ul class="nav nav-sub dk">
                   <li class="">
-                    <a th:href="assets_manage">
+                    <a href="assets_manage.html">
                       <span>Manage Assets</span>
                     </a>
                   </li>
                   <li>
-                    <a th:href="assetstype_manage">
+                    <a href="assetstype_manage.html">
                       <span>Manage Assets Type</span>
+                    </a>
+                  </li>
+          <li>
+                    <a href="firmware.html">
+                      <span>Firmware</span>
+                    </a>
+                  </li>
+          <li>
+                    <a href="vendor.html">
+                      <span>Vendor</span>
                     </a>
                   </li>
                 </ul>
               </li>
               <li>
-                <a th:href="tickets_manage">
+                <a href="tickets_manage.html">
                   <i class="glyphicon glyphicon-tag"></i>
                   <span>Tickets</span>
                 </a>
               </li>
+        <li>
+                <a href="contract_manage.html">
+                  <i class="fa fa-legal"></i></i>
+                  <span>Contrats</span>
+                </a>
+              </li>
+        <li>
+                <a href="expense.html">
+                  <i class="glyphicon  glyphicon-usd"></i></i>
+                  <span>Expenses</span>
+                </a>
+              </li>
               <li>
-                <a th:href="request_manage" class="auto">
-				<span class="pull-right text-muted">
+                <a href="request_manage.html" class="auto">
+        <span class="pull-right text-muted">
                     <i class="fa fa-fw fa-angle-right text"></i>
                     <i class="fa fa-fw fa-angle-down text-active"></i>
                   </span>
@@ -434,12 +575,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 </a>
                  <ul class="nav nav-sub dk">
                   <li class="s">
-                    <a th:href="internal_request_manage">
+                    <a href="internal_request_manage.html">
                       <span>Internal Request</span>
                     </a>
                   </li>
                   <li>
-                    <a th:href="external_request_manage">
+                    <a href="external_request_manage.html">
                       <span>External Request</span>
                     </a>
                   </li>
@@ -484,15 +625,17 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 											<div class="bg-light lter b-b wrapper-md">
-												<h1 class="m-n font-bold h3">Manage Tickets</h1>
+												<h1 class="m-n font-bold h3">Manage Tickets
+                        <a style="margin-top:-5px;" data-toggle="modal"  data-target="#AddClient" class="btn btn-sm btn-primary pull-right"  role="button"><b class="glyphicon-plus pull"> </b>Add Tickets</a>
+                        </h1>
 											</div>
 											
-												 <div class="panel panel-default">
+												<!-- <div class="panel panel-default">
 													<div class="panel-heading">
 														<small><a href="index.html">Home</a> </small>><small> Manage Ticketss</small>
-														<a style="margin-top:-5px;" data-toggle="modal"  data-target="#AddClient" class="btn btn-sm btn-primary pull-right"  role="button"><b class="glyphicon-plus pull"> </b>Add Tickets</a> 
+														 
 													</div>
-														</div>															
+														</div>	-->														
 														<div class="row" style="margin:5px;">
 													
 																				<div class="col-sm-12">              
@@ -590,81 +733,479 @@ document.addEventListener('DOMContentLoaded', function() {
 																				</div>
 																				<div class="col-sm-4">
 																					<center><h3 class="m-n font-bold h4">Expected Temporaray Date </h3></center><br>
-																					<div id='loading'>loading...</div>
 																					<div id='calendar1'></div>
 																				</div>
-																						<div style="background-color:white; margin:5px 0px;padding:5px 5px;"class="col-sm-12">
-																<table style="background-color:white;"ui-jq="dataTable" ui-options="{
-          aoColumns: [
-            { mData: 'engine' }
-          ]
-        }" class="table table-striped b-t b-b">
-																	<thead>
-																		<tr>
-																			<th  style="width:5%"><center>Project Name</center></th>
-																		</tr>
-																	</thead>
-																	<tbody>
-																		<tr data-expanded="true">
-																			<td>
+																						<div class="col-sm-12" style="background-color:white;margin-bottom:20px;">  
+ <div class="tabbable-line">
+  <ul class="nav nav-tabs ">
+   <li class="active">
+  <a href="#tab_default_1" data-toggle="tab"><h1 class="m-n font-bold h5">Submitted Tickets</h1> </a>
+   </li>
+   <li>
+  <a href="#tab_default_2" data-toggle="tab"><h1 class="m-n font-bold h5">Affected Tickets </h3></a>
+   </li>
+   <li>
+  <a href="#tab_default_3" data-toggle="tab"><h1 class="m-n font-bold h5">Processing </h3></a>
+   </li>
+   <li>
+  <a href="#tab_default_4" data-toggle="tab"><h1 class="m-n font-bold h5">Waiting </h3></a>
+   </li>
+   <li>
+  <a href="#tab_default_5" data-toggle="tab"><h1 class="m-n font-bold h5">Resolved </h3></a>
+   </li>
+   <li>
+  <a href="#tab_default_6" data-toggle="tab"><h1 class="m-n font-bold h5">Closed Tickets </h3></a>
+   </li> 
+   <li>
+  <a href="#tab_default_7" data-toggle="tab"><h1 class="m-n font-bold h5">Archived Tickets </h3></a>
+   </li>
+  </ul>
+ </div> 
+ <div class="tab-content">
+  <div class="tab-pane active" id="tab_default_1" >
+   <div class="row" style="margin:5px 0px;">
+  <div class="table-responsive" >
+   <table id="mytable"ui-jq="dataTable" ui-options="{
+                              aoColumns: [
+                              { mData: 'engine' },
+                              { mData: 'browser' },
+                              { mData: 'platform' },
+                              { mData: 'version' },
+                              { mData: 'action' }
+                              ]
+                              }" class="table table-striped b-t b-b">
+    <thead>
+     <tr>
+    <th  style="width:20%"><center>Customer</center></th>
+	    <th  style="width:45%"><center>Description</center></th>
+    <th  style="width:5%"><center>priority</center></th>
+    <th  style="width:15%"><center>Opened Date</center></th>
 
-																				<button class="btn btn-primary btn-block" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-																					<b>JESA - Maintenance hardware et software</b> <span style="padding:2px;width:13px;height:13px;font-size:9px;font-weight:bold;"class="badge bg-info pull-center">3</span><i class="glyphicon glyphicon-play pull-right"></i>
-																				</button>
+    <th  style="width:15%"><center>Actions</center></th>
+     </tr>
+    </thead>
+    <tbody>
+     <tr data-expanded="true">
+  
+    <td><center>Attijariwafabank</center></td>
+    <td>
+	<center>
+	<span>There are a few easy ways to quickly get started with Bootstrap, each one ...</span>
+    <span class="text-muted hide" id="moreless1"> appealing to a different skill level and use case. Read through to see what suits your particular needs.</span></center>
+	 <p>
+        <button class="btn btn-sm pull-right" ui-toggle-class="show" target="#moreless1">
+          <i class="fa fa-plus text"></i>
+          <span class="text">More</span>
+          <i class="fa fa-minus text-active"></i>
+          <span class="text-active">Less</span>
+        </button>
+      </p>
+	
+	</td>
+	 <td><center><span class="label bg-success pull-center m-t-md">Medium</span></center></td>
+    <td><center>02-03-2020</center></td>
+   
+    <td><center>
+    <div class="btn-group dropdown">
+																										<button class="btn btn-default btn-xs" data-toggle="dropdown"><i class="glyphicon glyphicon-cog"></i> Action <span class="caret"></span></button>
+																										<ul class="dropdown-menu">
+																											
+																											<li>
+																												<a style="margin-top:-5px;" data-toggle="modal"  data-target="#DetailS" class="btn btn-sm btn-light" role="button">Detail</a>
+																												</li>
+																												  <li class="divider"></li>
+																												  <li>
+																												<a style="margin-top:-5px;" data-toggle="modal"  data-target="#Affected" class="btn btn-sm btn-light" role="button">Affecte to</a>
+																												<a style="margin-top:-5px;" data-toggle="modal"  data-target="#Close" class="btn btn-sm btn-light" role="button">Close</a>
+																											</li>
+																										</ul>
+</div>
+     </center></td>
+     </tr>
+    </tbody>
+   </table>
+    </div>
+   </div>
+  </div>
+  <div class="tab-pane" id="tab_default_2">
+      <div class="table-responsive" >
+   <table id="mytable"ui-jq="dataTable" ui-options="{
+                              aoColumns: [
+                              { mData: 'engine' },
+                              { mData: 'browser' },
+                              { mData: 'platform' },
+                              { mData: 'version' },
+                              { mData: 'action' }
+                              ]
+                              }" class="table table-striped b-t b-b">
+    <thead>
+     <tr>
+    <th  style="width:20%"><center>Customer</center></th>
+   <th  style="width:25%"><center>Description</center></th>
+    <th  style="width:25%"><center>Employee</center></th>
+    <th  style="width:15%"><center>Opened Date</center></th>
 
-																				<div class="collapse" id="collapseExample">
-																					<div class="card card-body">
-																						<div class="table-responsive">
-																							<div class="panel panel-default" style="margin:5px;">
-																								<button class="btn btn-info btn-block" type="button" data-toggle="collapse" data-target="#assetproject" aria-expanded="false" aria-controls="assetproject">
-																									<b>Project Name : CFG - Refronte Infrastructure IT</b><i class="glyphicon glyphicon-play pull-right"></i>
-																								</button>
-																								<div class="collapse" id="assetproject" style="margin-top:5px;border:1px solid #19a9d5;">
-																									<table ui-jq="dataTable" ui-options="{ aoColumns: [{ mData: 'engine' },{ mData: 'browser' },{ mData: 'platform' },{ mData: 'version' },{ mData: 'grade' },{ mData: 'action' }]}" class="table-responsive table table-striped b-t b-b">
-																										<thead>
-																											<tr>
-																												<th  style="width:15%"><center>Asset ID</center></th>
-																												<th  style="width:15%"><center>Asset S/N</center></th>
-																												<th  style="width:13%"><center>Current Firmware</center></th>
-																												<th  style="width:13%"><center>Type</center></th>
-																												<th  style="width:12%"><center>Asset Type</center></th>
-																												<th  style="width:12%"><center>End Vendor Warranty</center></th>
-																												<th  style="width:10%"><center>End PM Warranty</center></th>
-																												<th  style="width:15%"><center>Actions</center></th>
-																											</tr>
-																										</thead>
-																										<tbody>
-																											<tr data-expanded="true">
-																												<td><center>Projet refonte Plateforme IT</center></td>
-																												<td> 	
-																													<center>JESA00063 00 16 A.2</center>
-																												</td>
-																												<td><center>JESA-IT-17072015</center></td>
-																												<td><center><span class="label bg-danger pull-center m-t-md">closed</span><center/></td>
-																													<td><center><span class="label bg-success pull-center m-t-md">won</span><center/></td>
-																														<td></td>
-																														<td></td>
-																														<td>
+    <th  style="width:15%"><center>Actions</center></th>
+     </tr>
+    </thead>
+    <tbody>
+     <tr data-expanded="true">
+  
+    <td><center>Attijariwafabank</center></td>
+    <td>
+  <center>
+  <span>There are a few easy ways to quickly get started with Bootstrap, each one ...</span>
+    <span class="text-muted hide" id="moreless2"> appealing to a different skill level and use case. Read through to see what suits your particular needs.</span></center>
+   <p>
+        <button class="btn btn-sm pull-right" ui-toggle-class="show" target="#moreless2">
+          <i class="fa fa-plus text"></i>
+          <span class="text">More</span>
+          <i class="fa fa-minus text-active"></i>
+          <span class="text-active">Less</span>
+        </button>
+      </p>
+  
+  </td>
+   <td><center><span class="label bg-info pull-center m-t-md">@zaki</span> <span class="label bg-info pull-center m-t-md">@Anass.limouni</span></center></td>
+    <td><center>02-03-2020</center></td>
+   
+    <td><center>
+    <div class="btn-group dropdown">
+                                                    <button class="btn btn-default btn-xs" data-toggle="dropdown"><i class="glyphicon glyphicon-cog"></i> Action <span class="caret"></span></button>
+                                                    <ul class="dropdown-menu">
+                                                      
+                                                      <li>
+                                                        <a style="margin-top:-5px;" data-toggle="modal"  data-target="#DetailA" class="btn btn-sm btn-light" role="button">Detail</a>
+                                                        </li>
+                                                        
+                                                    </ul>
+</div>
+     </center></td>
+     </tr>
+    </tbody>
+   </table>
+    </div>
+  </div>
+  <div class="tab-pane" id="tab_default_3">
+      <div class="table-responsive" >
+   <table id="mytable"ui-jq="dataTable" ui-options="{
+                              aoColumns: [
+                              { mData: 'engine' },
+                              { mData: 'browser' },
+                              { mData: 'platform' },
+                              { mData: 'version' },
+                              { mData: 'action' }
+                              ]
+                              }" class="table table-striped b-t b-b">
+    <thead>
+     <tr>
+    <th  style="width:20%"><center>Customer</center></th>
+   <th  style="width:25%"><center>Description</center></th>
+    <th  style="width:25%"><center>Employee</center></th>
+    <th  style="width:15%"><center>Opened Date</center></th>
 
-																															<span class="label btn-info pull-center m-t-sm"><b class="glyphicon  glyphicon-cog"></b></span>
-																															<span class="label btn-info pull-center m-t-sm"><b class="glyphicon  glyphicon-trash"></b></span>
-																															<span class="label btn-info pull-center m-t-sm"><b class="glyphicon  glyphicon-info-sign"></b></span>
-																														</td>
-																													</tr>
-																												</tbody>
-																											</table>
-																										</div>
-																									</div>
-																								</div> 
-																							</div>
-																						</div>
-																					</table>
-																				</div>
-																			</div>
-																		
-																	
+    <th  style="width:15%"><center>Actions</center></th>
+     </tr>
+    </thead>
+    <tbody>
+     <tr data-expanded="true">
+  
+    <td><center>Attijariwafabank</center></td>
+    <td>
+  <center>
+  <span>There are a few easy ways to quickly get started with Bootstrap, each one ...</span>
+    <span class="text-muted hide" id="moreless3"> appealing to a different skill level and use case. Read through to see what suits your particular needs.</span></center>
+   <p>
+        <button class="btn btn-sm pull-right" ui-toggle-class="show" target="#moreless3">
+          <i class="fa fa-plus text"></i>
+          <span class="text">More</span>
+          <i class="fa fa-minus text-active"></i>
+          <span class="text-active">Less</span>
+        </button>
+      </p>
+  
+  </td>
+   <td><center><span class="label bg-info pull-center m-t-md">@zaki</span> <span class="label bg-info pull-center m-t-md">@Anass.limouni</span></center></td>
+    <td><center>02-03-2020</center></td>
+   
+    <td><center>
+    <div class="btn-group dropdown">
+                                                    <button class="btn btn-default btn-xs" data-toggle="dropdown"><i class="glyphicon glyphicon-cog"></i> Action <span class="caret"></span></button>
+                                                    <ul class="dropdown-menu">
+                                                      
+                                                      <li>
+                                                        <a style="margin-top:-5px;" data-toggle="modal"  data-target="#DetailP" class="btn btn-sm btn-light" role="button">Detail</a>
+                                                        </li>
+                                                        
+                                                    </ul>
+</div>
+     </center></td>
+     </tr>
+    </tbody>
+   </table>
+    </div>
+  </div>
+  <div class="tab-pane" id="tab_default_4">
+      <div class="table-responsive" >
+   <table id="mytable"ui-jq="dataTable" ui-options="{
+                              aoColumns: [
+                              { mData: 'engine' },
+                              { mData: 'browser' },
+                              { mData: 'platform' },
+                              { mData: 'version' },
+                              { mData: 'action' }
+                              ]
+                              }" class="table table-striped b-t b-b">
+    <thead>
+     <tr>
+    <th  style="width:20%"><center>Customer</center></th>
+   <th  style="width:25%"><center>Description</center></th>
+   <th  style="width:15%"><center>priority</center></th>
+    <th  style="width:15%"><center>Opened Date</center></th>
 
-																<div class="modal fade" role="dialog" id="AddClient" >
+    <th  style="width:15%"><center>Actions</center></th>
+     </tr>
+    </thead>
+    <tbody>
+     <tr data-expanded="true">
+  
+    <td><center>Attijariwafabank</center></td>
+    <td>
+  <center>
+  <span>There are a few easy ways to quickly get started with Bootstrap, each one ...</span>
+    <span class="text-muted hide" id="moreless4"> appealing to a different skill level and use case. Read through to see what suits your particular needs.</span></center>
+   <p>
+        <button class="btn btn-sm pull-right" ui-toggle-class="show" target="#moreless4">
+          <i class="fa fa-plus text"></i>
+          <span class="text">More</span>
+          <i class="fa fa-minus text-active"></i>
+          <span class="text-active">Less</span>
+        </button>
+      </p>
+  
+  </td>
+  <td><center><span class="label bg-success pull-center m-t-md">Medium</span></center></td>
+    <td><center>02-03-2020</center></td>
+   
+    <td><center>
+    <div class="btn-group dropdown">
+                                                    <button class="btn btn-default btn-xs" data-toggle="dropdown"><i class="glyphicon glyphicon-cog"></i> Action <span class="caret"></span></button>
+                                                    <ul class="dropdown-menu">
+                                                      
+                                                      <li>
+                                                        <a style="margin-top:-5px;" data-toggle="modal"  data-target="#DetailW" class="btn btn-sm btn-light" role="button">Detail</a>
+                                                        </li>
+                                                        
+                                                    </ul>
+</div>
+     </center></td>
+     </tr>
+    </tbody>
+   </table>
+    </div>
+  </div>
+  <div class="tab-pane" id="tab_default_5">
+      <div class="table-responsive" >
+   <table id="mytable"ui-jq="dataTable" ui-options="{
+                              aoColumns: [
+                              { mData: 'engine' },
+                              { mData: 'browser' },
+                              { mData: 'platform' },
+                              { mData: 'version' },
+                              { mData: 'action' }
+                              ]
+                              }" class="table table-striped b-t b-b">
+    <thead>
+     <tr>
+    <th  style="width:20%"><center>Customer</center></th>
+   <th  style="width:25%"><center>Description</center></th>
+    <th  style="width:25%"><center>Log File</center></th>
+    <th  style="width:15%"><center>Solution Description</center></th>
+
+    <th  style="width:15%"><center>Actions</center></th>
+     </tr>
+    </thead>
+    <tbody>
+     <tr data-expanded="true">
+  
+    <td><center>Attijariwafabank</center></td>
+    <td>
+  <center>
+  <span>There are a few easy ways to quickly get started with Bootstrap, each one ...</span>
+    <span class="text-muted hide" id="moreless5"> appealing to a different skill level and use case. Read through to see what suits your particular needs.</span></center>
+   <p>
+        <button class="btn btn-sm pull-right" ui-toggle-class="show" target="#moreless5">
+          <i class="fa fa-plus text"></i>
+          <span class="text">More</span>
+          <i class="fa fa-minus text-active"></i>
+          <span class="text-active">Less</span>
+        </button>
+      </p>
+  
+  </td>
+   <td><center><a  data-toggle="modal"  data-target="#imgpreview"><img class="img-thumbnail" width="80px" height="60px"src="https://www.prefamaroc.ma/img/attestations/mojazine.jpg" ><a/><center/></td>
+   <td><center><a  data-toggle="modal"  data-target="#imgpreview"><img class="img-thumbnail" width="80px" height="60px"src="https://www.prefamaroc.ma/img/attestations/mojazine.jpg" ><a/><center/></td>
+   
+    <td><center>
+    <div class="btn-group dropdown">
+                                                    <button class="btn btn-default btn-xs" data-toggle="dropdown"><i class="glyphicon glyphicon-cog"></i> Action <span class="caret"></span></button>
+                                                    <ul class="dropdown-menu">
+                                                      
+                                                      <li>
+                                                        <a style="margin-top:-5px;" data-toggle="modal"  data-target="#DetailR" class="btn btn-sm btn-light" role="button">Detail</a>
+                                                        </li>
+                                                    </ul>
+</div>
+     </center></td>
+     </tr>
+    </tbody>
+   </table>
+    </div>
+  </div>
+  <div class="tab-pane" id="tab_default_6">
+    <div class="table-responsive" >
+   <table id="mytable"ui-jq="dataTable" ui-options="{
+                              aoColumns: [
+                              { mData: 'engine' },
+                              { mData: 'browser' },
+                              { mData: 'platform' },
+                              { mData: 'version' },
+                              { mData: 'action' }
+                              ]
+                              }" class="table table-striped b-t b-b">
+    <thead>
+     <tr>
+    <th  style="width:20%"><center>Customer</center></th>
+	 <th  style="width:25%"><center>Description</center></th>
+    <th  style="width:25%"><center>Employee</center></th>
+    <th  style="width:15%"><center>Closed Date</center></th>
+
+    <th  style="width:15%"><center>Actions</center></th>
+     </tr>
+    </thead>
+    <tbody>
+     <tr data-expanded="true">
+  
+    <td><center>Attijariwafabank</center></td>
+    <td>
+	<center>
+	<span>There are a few easy ways to quickly get started with Bootstrap, each one ...</span>
+    <span class="text-muted hide" id="moreless6"> appealing to a different skill level and use case. Read through to see what suits your particular needs.</span></center>
+	 <p>
+        <button class="btn btn-sm pull-right" ui-toggle-class="show" target="#moreless6">
+          <i class="fa fa-plus text"></i>
+          <span class="text">More</span>
+          <i class="fa fa-minus text-active"></i>
+          <span class="text-active">Less</span>
+        </button>
+      </p>
+	
+	</td>
+	 <td><center><span class="label bg-info pull-center m-t-md">@zaki</span> <span class="label bg-info pull-center m-t-md">@Anass.limouni</span></center></td>
+    <td><center>02-03-2020</center></td>
+   
+    <td><center>
+    <div class="btn-group dropdown">
+																										<button class="btn btn-default btn-xs" data-toggle="dropdown"><i class="glyphicon glyphicon-cog"></i> Action <span class="caret"></span></button>
+																										<ul class="dropdown-menu">
+																											
+																											<li>
+																												<a style="margin-top:-5px;" data-toggle="modal"  data-target="#DetailC" class="btn btn-sm btn-light" role="button">Detail</a>
+																												</li>
+																												  <li class="divider"></li>
+																												  <li>
+																												<a style="margin-top:-5px;" data-toggle="modal"  data-target="#Archived" class="btn btn-sm btn-light" role="button">Archived</a>
+																												
+																											</li>
+																										</ul>
+</div>
+     </center></td>
+     </tr>
+    </tbody>
+   </table>
+    </div>
+  </div>
+    <div class="tab-pane" id="tab_default_7">
+	    <div class="table-responsive" >
+   <table id="mytable"ui-jq="dataTable" ui-options="{
+                              aoColumns: [
+                              { mData: 'engine' },
+                              { mData: 'browser' },
+                              { mData: 'platform' },
+                              { mData: 'version' },
+                              { mData: 'action' }
+                              ]
+                              }" class="table table-striped b-t b-b">
+    <thead>
+     <tr>
+    <th  style="width:20%"><center>Customer</center></th>
+	 <th  style="width:25%"><center>Description</center></th>
+    <th  style="width:25%"><center>Employee</center></th>
+    <th  style="width:15%"><center>Closed Date</center></th>
+
+    <th  style="width:15%"><center>Actions</center></th>
+     </tr>
+    </thead>
+    <tbody>
+     <tr data-expanded="true">
+  
+    <td><center>Attijariwafabank</center></td>
+    <td>
+	<center>
+	<span>There are a few easy ways to quickly get started with Bootstrap, each one ...</span>
+    <span class="text-muted hide" id="moreless7"> appealing to a different skill level and use case. Read through to see what suits your particular needs.</span></center>
+	 <p>
+        <button class="btn btn-sm pull-right" ui-toggle-class="show" target="#moreless7">
+          <i class="fa fa-plus text"></i>
+          <span class="text">More</span>
+          <i class="fa fa-minus text-active"></i>
+          <span class="text-active">Less</span>
+        </button>
+      </p>
+	
+	</td>
+	 <td><center><span class="label bg-info pull-center m-t-md">@zaki</span> <span class="label bg-info pull-center m-t-md">@Anass.limouni</span></center></td>
+    <td><center>02-03-2020</center></td>
+   
+    <td><center>
+    <div class="btn-group dropdown">
+																										<button class="btn btn-default btn-xs" data-toggle="dropdown"><i class="glyphicon glyphicon-cog"></i> Action <span class="caret"></span></button>
+																										<ul class="dropdown-menu">
+																											
+																											<li>
+																												<a style="margin-top:-5px;" data-toggle="modal"  data-target="#DetailAT" class="btn btn-sm btn-light" role="button">Detail</a>
+																												</li>
+																												
+																										</ul>
+</div>
+     </center></td>
+     </tr>
+    </tbody>
+   </table>
+    </div>
+	</div>
+ </div>
+</div>
+</div>
+
+<div class="modal fade" role="dialog" id="imgpreview">
+ <div class="modal-dialog">
+  <div class="modal-content">
+   <div class="modal-body">
+    <div class="row">
+     <img src="https://www.prefamaroc.ma/img/attestations/mojazine.jpg" width="100%" height="100%"/>
+    </div>
+   </div>
+   <div class="modal-footer">
+    <button style="margin:0px;" class="btn m-b-xs btn-sm btn-primary btn-addon"><i class="glyphicon glyphicon-print"></i>Print</button>
+    <button style="margin:0px;" class="btn m-b-xs btn-sm btn-primary btn-addon"><i class="glyphicon glyphicon-download-alt"></i>Download</button>
+    <button style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon" data-dismiss="modal" data-dismiss="modal"><i class="glyphicon glyphicon-remove"></i>Cancel</button>
+   </div>
+  </div>
+ </div>
+</div>
+						
+<div class="modal fade" role="dialog" id="AddClient" >
   <div class="modal-dialog modal-lg" >
     <div class="modal-content">
       <div class="modal-header" style="background-image:url(img/grf-bg.jpg);color:white;">
@@ -694,11 +1235,11 @@ document.addEventListener('DOMContentLoaded', function() {
               <option>NomAsset</option>
             </select>
           </div>
-          <label class="col-sm-4 control-label"  for="input-id-1"><b>Company</b></label>
+          <label class="col-sm-4 control-label"  for="input-id-1"><b>Customer</b></label>
           <div class="col-sm-8"  >
             <select name="account" class="form-control m-b">
-              <option>NomCompany</option>
-              <option>NomCompamy</option>
+              <option>NomCustomer</option>
+              <option>NomCustomer</option>
             </select>
           </div>
           <label class="col-sm-4 control-label"  for="input-id-1"><b>Priority Ticket</b></label>
@@ -887,11 +1428,311 @@ document.addEventListener('DOMContentLoaded', function() {
       </div>
     </div>
   </div>
+</div>	
+
+<div class="modal fade" role="dialog" id="Close" >
+ <div class="modal-dialog modal-lg" >
+  <div class="modal-content">
+   <div class="modal-header" style="background-image:url(img/grf-bg.jpg);color:white;">
+  <button type="button" class="close pull-right" data-dismiss="modal">&times;</button>
+     <h1 class="m-n font-bold h3">Close Ticket</h1>
+   </div>
+   <div class="modal-body">
+    Do you want to Close this Ticket ? 
+   </div>
+    <div class="modal-footer">
+   <button class="btn m-b-xs btn-sm btn-primary btn-addon"><i class="glyphicon glyphicon-ok"></i>Yes</button>
+   <button class="btn m-b-xs btn-sm btn-default btn-addon" data-dismiss="modal"><i class="glyphicon glyphicon-remove"></i>No</button>
+  </div>
+  </div>  
+</div>
+</div>
+
+<div class="modal fade" role="dialog" id="Affected" >
+ <div class="modal-dialog modal-lg" >
+  <div class="modal-content">
+   <div class="modal-header" style="background-image:url(img/grf-bg.jpg);color:white;">
+  <button type="button" class="close pull-right" data-dismiss="modal">&times;</button>
+  <h1 class="m-n font-bold h3"> Affected Employe</h1>
+   </div>
+   <div class="modal-body">
+  <div class="row">
+   <label class="col-sm-4 control-label" for="input-id-1" style="margin:5px 0px;"><b>Employes :</b></label>
+   <div class="col-sm-8">
+    <input type="text" data-role="tagsinput"  placeholder="enter les Employes" class="form-control" id="input-id-1">
+   </div>
+  </div>
+   </div>
+   <div class="modal-footer">
+  <button style="margin:0px;" class="btn m-b-xs btn-sm btn-primary btn-addon"><i class="glyphicon glyphicon-ok"></i>Save</button>
+  <button style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon" data-dismiss="modal"><i class="glyphicon glyphicon-remove"></i>Annuler</button>
+   </div>
+  </div>
+ </div>
+</div>
+
+<div class="modal fade" role="dialog" id="Archived" >
+ <div class="modal-dialog modal-lg" >
+  <div class="modal-content">
+   <div class="modal-header" style="background-image:url(img/grf-bg.jpg);color:white;">
+  <button type="button" class="close pull-right" data-dismiss="modal">&times;</button>
+     <h1 class="m-n font-bold h3">Archived Ticket</h1>
+   </div>
+   <div class="modal-body">
+    Do you want to Archived this Ticket ? 
+   </div>
+    <div class="modal-footer">
+   <button class="btn m-b-xs btn-sm btn-primary btn-addon"><i class="glyphicon glyphicon-ok"></i>Yes</button>
+   <button class="btn m-b-xs btn-sm btn-default btn-addon" data-dismiss="modal"><i class="glyphicon glyphicon-remove"></i>No</button>
+  </div>
+  </div>  
+</div>
+</div>
+
+<div class="modal fade" role="dialog" id="DetailS" >
+ <div class="modal-dialog modal-lg" >
+  <div class="modal-content">
+   <div class="modal-header" style="background-image:url(img/grf-bg.jpg);color:white;">
+  <button type="button" class="close pull-right" data-dismiss="modal">&times;</button>
+     <h1 class="m-n font-bold h3">Information Ticket</h1>
+   </div>
+   <div class="modal-body">
+          <p>
+            <span class="m-n font-thin h3 text-black" >Ticket Title:</span>
+            <span ng-repeat="nom in ticket"> {{ ticket.nomTicket }} </br></span>
+            <span class="m-n font-thin h3 text-black">Customer Name:</span>
+            <span ng-repeat="nom in customer"> {{ customer.nomCustomer }}</span></br>
+            <span class="m-n font-thin h3 text-black">Description :</span>
+            <span ng-repeat="description in ticket"> {{ ticket.descriptionTicket }}</span></br>
+            <span class="m-n font-thin h3 text-black" >Priority :</span>
+            <span ng-repeat="priority in tcket"> {{ ticket.priorityTicket }} </br></span>
+            <span class="m-n font-thin h3 text-black">Opened Date :</span>
+            <span ng-repeat="openedDate in ticket"> {{ ticket.openedDateTicket }}</span></br>
+          </p> 
+   </div>
+   <div class="modal-footer">
+   <button class="btn m-b-xs btn-sm btn-primary btn-addon" data-dismiss="modal">Return</button>
+  </div>
+  </div>  
+</div>
+</div>
+
+<div class="modal fade" role="dialog" id="DetailA" >
+ <div class="modal-dialog modal-lg" >
+  <div class="modal-content">
+   <div class="modal-header" style="background-image:url(img/grf-bg.jpg);color:white;">
+    <button type="button" class="close pull-right" data-dismiss="modal">&times;</button>
+    <h1 class="m-n font-bold h3">Information Ticket</h1>
+   </div>
+   <div class="modal-body">
+          <p>
+            <span class="m-n font-thin h3 text-black" >Ticket Title:</span>
+            <span ng-repeat="nom in ticket"> {{ ticket.nomTicket }} </br></span>
+            <span class="m-n font-thin h3 text-black">Customer Name:</span>
+            <span ng-repeat="nom in customer"> {{ customer.nomCustomer }}</span></br>
+            <span class="m-n font-thin h3 text-black">Description :</span>
+            <span ng-repeat="description in ticket"> {{ ticket.descriptionTicket }}</span></br>
+            <span class="m-n font-thin h3 text-black" >Priority :</span>
+            <span ng-repeat="priority in tcket"> {{ ticket.priorityTicket }} </br></span>
+            <span class="m-n font-thin h3 text-black">Opened Date :</span>
+            <span ng-repeat="openedDate in ticket"> {{ ticket.openedDateTicket }}</span></br>
+            <span class="m-n font-thin h3 text-black">Asset Name:</span>
+            <span ng-repeat="nom in asset"> {{ asset.nomAsset }}</span></br>
+            <span class="m-n font-thin h3 text-black" >Employe Affected:</span>
+            <span ng-repeat="nom in employe"> {{ ticket.nomEmploye }} </br></span>
+            <span class="m-n font-thin h3 text-black" >Log File:</span>
+            <a href="http://localhost:8082/download/{{ticket.logFileTicket}}" target="_blank"><span class="m-n font-thin h3 text-black"> file </span></a></br>
+          </p> 
+   </div>
+   <div class="modal-footer">
+    <button class="btn m-b-xs btn-sm btn-primary btn-addon" data-dismiss="modal">Return</button>
+   </div>
+  </div>  
+ </div>
+</div>
+
+<div class="modal fade" role="dialog" id="DetailP" >
+ <div class="modal-dialog modal-lg" >
+  <div class="modal-content">
+   <div class="modal-header" style="background-image:url(img/grf-bg.jpg);color:white;">
+    <button type="button" class="close pull-right" data-dismiss="modal">&times;</button>
+    <h1 class="m-n font-bold h3">Information Ticket</h1>
+   </div>
+   <div class="modal-body">
+          <p>
+            <span class="m-n font-thin h3 text-black" >Ticket Title:</span>
+            <span ng-repeat="nom in ticket"> {{ ticket.nomTicket }} </br></span>
+            <span class="m-n font-thin h3 text-black">Customer Name:</span>
+            <span ng-repeat="nom in customer"> {{ customer.nomCustomer }}</span></br>
+            <span class="m-n font-thin h3 text-black">Description :</span>
+            <span ng-repeat="description in ticket"> {{ ticket.descriptionTicket }}</span></br>
+            <span class="m-n font-thin h3 text-black" >Priority :</span>
+            <span ng-repeat="priority in tcket"> {{ ticket.priorityTicket }} </br></span>
+            <span class="m-n font-thin h3 text-black">Opened Date :</span>
+            <span ng-repeat="openedDate in ticket"> {{ ticket.openedDateTicket }}</span></br>
+            <span class="m-n font-thin h3 text-black">Asset Name:</span>
+            <span ng-repeat="nom in asset"> {{ asset.nomAsset }}</span></br>
+            <span class="m-n font-thin h3 text-black" >Employe Affected:</span>
+            <span ng-repeat="nom in employe"> {{ ticket.nomEmploye }} </br></span>
+            <span class="m-n font-thin h3 text-black" >Log File:</span>
+            <a href="http://localhost:8082/download/{{ticket.logFileTicket}}" target="_blank"><span class="m-n font-thin h3 text-black"> file </span></a></br>
+          </p> 
+   </div>
+   <div class="modal-footer">
+    <button class="btn m-b-xs btn-sm btn-primary btn-addon" data-dismiss="modal">Return</button>
+   </div>
+  </div>  
+ </div>
+</div>
+
+<div class="modal fade" role="dialog" id="DetailW" >
+ <div class="modal-dialog modal-lg" >
+  <div class="modal-content">
+   <div class="modal-header" style="background-image:url(img/grf-bg.jpg);color:white;">
+    <button type="button" class="close pull-right" data-dismiss="modal">&times;</button>
+    <h1 class="m-n font-bold h3">Information Ticket</h1>
+   </div>
+   <div class="modal-body">
+          <p>
+            <span class="m-n font-thin h3 text-black" >Ticket Title:</span>
+            <span ng-repeat="nom in ticket"> {{ ticket.nomTicket }} </br></span>
+            <span class="m-n font-thin h3 text-black">Customer Name:</span>
+            <span ng-repeat="nom in customer"> {{ customer.nomCustomer }}</span></br>
+            <span class="m-n font-thin h3 text-black">Description :</span>
+            <span ng-repeat="description in ticket"> {{ ticket.descriptionTicket }}</span></br>
+            <span class="m-n font-thin h3 text-black" >Priority :</span>
+            <span ng-repeat="priority in tcket"> {{ ticket.priorityTicket }} </br></span>
+            <span class="m-n font-thin h3 text-black">Opened Date :</span>
+            <span ng-repeat="openedDate in ticket"> {{ ticket.openedDateTicket }}</span></br>
+            <span class="m-n font-thin h3 text-black">Asset Name:</span>
+            <span ng-repeat="nom in asset"> {{ asset.nomAsset }}</span></br>
+            <span class="m-n font-thin h3 text-black" >Employe Affected:</span>
+            <span ng-repeat="nom in employe"> {{ ticket.nomEmploye }} </br></span>
+            <span class="m-n font-thin h3 text-black" >Log File:</span>
+            <a href="http://localhost:8082/download/{{ticket.logFileTicket}}" target="_blank"><span class="m-n font-thin h3 text-black"> file </span></a></br>
+          </p> 
+   </div>
+   <div class="modal-footer">
+    <button class="btn m-b-xs btn-sm btn-primary btn-addon" data-dismiss="modal">Return</button>
+   </div>
+  </div>  
+ </div>
+</div>
+
+<div class="modal fade" role="dialog" id="DetailR" >
+ <div class="modal-dialog modal-lg" >
+  <div class="modal-content">
+   <div class="modal-header" style="background-image:url(img/grf-bg.jpg);color:white;">
+    <button type="button" class="close pull-right" data-dismiss="modal">&times;</button>
+    <h1 class="m-n font-bold h3">Information Ticket</h1>
+   </div>
+   <div class="modal-body">
+          <p>
+            <span class="m-n font-thin h3 text-black" >Ticket Title:</span>
+            <span ng-repeat="nom in ticket"> {{ ticket.nomTicket }} </br></span>
+            <span class="m-n font-thin h3 text-black">Customer Name:</span>
+            <span ng-repeat="nom in customer"> {{ customer.nomCustomer }}</span></br>
+            <span class="m-n font-thin h3 text-black">Description :</span>
+            <span ng-repeat="description in ticket"> {{ ticket.descriptionTicket }}</span></br>
+            <span class="m-n font-thin h3 text-black" >Priority :</span>
+            <span ng-repeat="priority in tcket"> {{ ticket.priorityTicket }} </br></span>
+            <span class="m-n font-thin h3 text-black">Opened Date :</span>
+            <span ng-repeat="openedDate in ticket"> {{ ticket.openedDateTicket }}</span></br>
+            <span class="m-n font-thin h3 text-black">Asset Name:</span>
+            <span ng-repeat="nom in asset"> {{ asset.nomAsset }}</span></br>
+            <span class="m-n font-thin h3 text-black" >Employe Affected:</span>
+            <span ng-repeat="nom in employe"> {{ ticket.nomEmploye }} </br></span>
+            <span class="m-n font-thin h3 text-black" >Log File:</span>
+            <a href="http://localhost:8082/download/{{ticket.logFileTicket}}" target="_blank"><span class="m-n font-thin h3 text-black"> file </span></a></br>
+            <span class="m-n font-thin h3 text-black" >Solution Description:</span>
+            <a href="http://localhost:8082/download/{{ticket.solutionDescriptionTicket}}" target="_blank"><span class="m-n font-thin h3 text-black"> file </span></a></br>
+          </p> 
+   </div>
+   <div class="modal-footer">
+    <button class="btn m-b-xs btn-sm btn-primary btn-addon" data-dismiss="modal">Return</button>
+   </div>
+  </div>  
+ </div>
+</div>
+
+<div class="modal fade" role="dialog" id="DetailC" >
+ <div class="modal-dialog modal-lg" >
+  <div class="modal-content">
+   <div class="modal-header" style="background-image:url(img/grf-bg.jpg);color:white;">
+    <button type="button" class="close pull-right" data-dismiss="modal">&times;</button>
+    <h1 class="m-n font-bold h3">Information Ticket</h1>
+   </div>
+   <div class="modal-body">
+          <p>
+            <span class="m-n font-thin h3 text-black" >Ticket Title:</span>
+            <span ng-repeat="nom in ticket"> {{ ticket.nomTicket }} </br></span>
+            <span class="m-n font-thin h3 text-black">Customer Name:</span>
+            <span ng-repeat="nom in customer"> {{ customer.nomCustomer }}</span></br>
+            <span class="m-n font-thin h3 text-black">Description :</span>
+            <span ng-repeat="description in ticket"> {{ ticket.descriptionTicket }}</span></br>
+            <span class="m-n font-thin h3 text-black" >Priority :</span>
+            <span ng-repeat="priority in tcket"> {{ ticket.priorityTicket }} </br></span>
+            <span class="m-n font-thin h3 text-black">Opened Date :</span>
+            <span ng-repeat="openedDate in ticket"> {{ ticket.openedDateTicket }}</span></br>
+            <span class="m-n font-thin h3 text-black">Asset Name:</span>
+            <span ng-repeat="nom in asset"> {{ asset.nomAsset }}</span></br>
+            <span class="m-n font-thin h3 text-black" >Employe Affected:</span>
+            <span ng-repeat="nom in employe"> {{ ticket.nomEmploye }} </br></span>
+            <span class="m-n font-thin h3 text-black" >Log File:</span>
+            <a href="http://localhost:8082/download/{{ticket.logFileTicket}}" target="_blank"><span class="m-n font-thin h3 text-black"> file </span></a></br>
+            <span class="m-n font-thin h3 text-black" >Solution Description:</span>
+            <a href="http://localhost:8082/download/{{ticket.solutionDescriptionTicket}}" target="_blank"><span class="m-n font-thin h3 text-black"> file </span></a></br>
+            <span class="m-n font-thin h3 text-black">Closed Date :</span>
+            <span ng-repeat="closedDate in ticket"> {{ ticket.closedDateTicket }}</span></br>
+          </p> 
+   </div>
+   <div class="modal-footer">
+    <button class="btn m-b-xs btn-sm btn-primary btn-addon" data-dismiss="modal">Return</button>
+   </div>
+  </div>  
+ </div>
+</div>
+
+<div class="modal fade" role="dialog" id="DetailAT" >
+ <div class="modal-dialog modal-lg" >
+  <div class="modal-content">
+   <div class="modal-header" style="background-image:url(img/grf-bg.jpg);color:white;">
+    <button type="button" class="close pull-right" data-dismiss="modal">&times;</button>
+    <h1 class="m-n font-bold h3">Information Ticket</h1>
+   </div>
+   <div class="modal-body">
+          <p>
+            <span class="m-n font-thin h3 text-black" >Ticket Title:</span>
+            <span ng-repeat="nom in ticket"> {{ ticket.nomTicket }} </br></span>
+            <span class="m-n font-thin h3 text-black">Customer Name:</span>
+            <span ng-repeat="nom in customer"> {{ customer.nomCustomer }}</span></br>
+            <span class="m-n font-thin h3 text-black">Description :</span>
+            <span ng-repeat="description in ticket"> {{ ticket.descriptionTicket }}</span></br>
+            <span class="m-n font-thin h3 text-black" >Priority :</span>
+            <span ng-repeat="priority in tcket"> {{ ticket.priorityTicket }} </br></span>
+            <span class="m-n font-thin h3 text-black">Opened Date :</span>
+            <span ng-repeat="openedDate in ticket"> {{ ticket.openedDateTicket }}</span></br>
+            <span class="m-n font-thin h3 text-black">Asset Name:</span>
+            <span ng-repeat="nom in asset"> {{ asset.nomAsset }}</span></br>
+            <span class="m-n font-thin h3 text-black" >Employe Affected:</span>
+            <span ng-repeat="nom in employe"> {{ ticket.nomEmploye }} </br></span>
+            <span class="m-n font-thin h3 text-black" >Log File:</span>
+            <a href="http://localhost:8082/download/{{ticket.logFileTicket}}" target="_blank"><span class="m-n font-thin h3 text-black"> file </span></a></br>
+            <span class="m-n font-thin h3 text-black" >Solution Description:</span>
+            <a href="http://localhost:8082/download/{{ticket.solutionDescriptionTicket}}" target="_blank"><span class="m-n font-thin h3 text-black"> file </span></a></br>
+            <span class="m-n font-thin h3 text-black">Closed Date :</span>
+            <span ng-repeat="closedDate in ticket"> {{ ticket.closedDateTicket }}</span></br>
+          </p> 
+   </div>
+   <div class="modal-footer">
+    <button class="btn m-b-xs btn-sm btn-primary btn-addon" data-dismiss="modal">Return</button>
+   </div>
+  </div>  
+ </div>
 </div>
 
 
-																				
-																			</div>
+
 																			<!-- /content -->
 
 																			<!-- footer -->
@@ -915,6 +1756,7 @@ document.addEventListener('DOMContentLoaded', function() {
 																		<script src="js/ui-nav.js"></script>
 																		<script src="js/ui-toggle.js"></script>
 																		<script src="js/ui-client.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.min.js" integrity="sha256-tQ3x4V2JW+L0ew/P3v2xzL46XDjEWUExFkCDY0Rflqc=" crossorigin="anonymous"></script>                                    
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
 <script src="js/myjavascript.js"></script>
@@ -930,6 +1772,70 @@ document.addEventListener('DOMContentLoaded', function() {
     })
   })
 </script>
+<script type="text/javascript">
+  function changecolor() {
+       $('body,.wrapper,.content,.panel-default,.panel-heading,#content-h,#header,.modal-content').css("background-color", "#3a3f51");
+       $('.wrapper,.content,.panel-default,.panel-heading,#content-h').css("border-color", "#313639");
+    $('.h3,.h5,.wrapper,panel-default,#content-b,.panel-heading').css("color", "white");
+              $('.panel-default,#content-b').css("background-color", "#3a3f51");
+
+  google.charts.load('current', {packages: ['corechart']});
+    google.charts.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+      // Define the chart to be drawn.
+      var data = new google.visualization.DataTable();
+      data.addColumn('string', 'Element');
+      data.addColumn('number', 'Percentage');
+      data.addRows([
+        ['Configuration', 0.68],
+        ['Documentation', 0.11],
+        ['Maintenance', 0.11],
+        ['Installation', 0.10]
+      ]);
+
+      // Instantiate and draw the chart.
+      var chart = new google.visualization.PieChart(document.getElementById('myPieChart'));
+    var options = {backgroundColor: '#3a3f51', colors: ['#6254b2', '#3289c8', '#27c24c','#ffbb3b'],legendTextStyle: { color: '#FFF' },is3D: true};
+      chart.draw(data, options);
+    }
+
+      };
+    
+      function lightmode() {
+       $('.wrapper,.content,.panel-heading,#content-h,#header,.modal-content').css("background-color", "#f0f3f4");
+          $('.panel-default,#content-b').css("background-color", "#f0f3f4");
+       $('.wrapper,.content,.panel-default,.panel-heading,#content-h').css("border-color", "#dee5e7");
+    $('.h3,.h5,.wrapper,panel-default,#content-b,.panel-heading').css("color", "#58666e");
+
+  google.charts.load('current', {packages: ['corechart']});
+    google.charts.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+      // Define the chart to be drawn.
+      var data = new google.visualization.DataTable();
+      data.addColumn('string', 'Element');
+      data.addColumn('number', 'Percentage');
+      data.addRows([
+        ['Configuration', 0.68],
+        ['Documentation', 0.11],
+        ['Maintenance', 0.11],
+        ['Installation', 0.10]
+      ]);
+
+      // Instantiate and draw the chart.
+      var chart = new google.visualization.PieChart(document.getElementById('myPieChart'));
+    var options = {backgroundColor: '#f0f3f4', colors: ['#6254b2', '#3289c8', '#27c24c','#ffbb3b'],legendTextStyle: { color: 'black' },is3D: true};
+      chart.draw(data, options);
+    }
+
+      };
+    $('#mytable').dataTable( {
+	"scrollY": 300,
+  responsive: true
+} );
+ 
+    </script>
 																	</body>
 																</html>
 																

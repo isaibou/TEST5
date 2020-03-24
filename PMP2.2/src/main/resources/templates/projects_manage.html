@@ -232,6 +232,7 @@ document.addEventListener('DOMContentLoaded', function() {
 											<!-- / dropdown -->
 										</li>
 										<li class="dropdown">
+											
 												<span class="thumb-sm avatar pull-right m-t-n-sm m-b-n-sm m-l-sm">
 													<img src="img/user.png" alt="...">
 														<i class="on md b-white bottom"></i>
@@ -290,14 +291,14 @@ document.addEventListener('DOMContentLoaded', function() {
                 <span>Main</span>
               </li>
               <li>
-                <a th:href="index" class="auto">      
+                <a href="index.html" class="auto">      
                   <i class="glyphicon glyphicon-stats icon text-primary-dker"></i>
                   <span class="font-bold">Dashboard</span>
                 </a>
                
               </li>
               <li>
-                <a th:href="mail">
+                <a href="mail.html">
                   <b class="badge bg-info pull-right">9</b>
                   <i class="glyphicon glyphicon-envelope icon text-info-lter"></i>
                   <span class="font-bold">Email</span>
@@ -321,13 +322,13 @@ document.addEventListener('DOMContentLoaded', function() {
                 <ul class="nav nav-sub dk">
                
                   <li>
-                    <a th:href="customer_manage">
+                    <a href="customer_manage.html">
                       <span>Manage customer</span>
                     </a>
                   </li>
           
           <li>
-                    <a th:href="purchasing_customer_manage">
+                    <a href="purchasing_customer_manage.html">
                       <span>Puchasing contact</span>
                     </a>
                   </li>
@@ -347,15 +348,19 @@ document.addEventListener('DOMContentLoaded', function() {
                 <ul class="nav nav-sub dk">
                
                   <li>
-                    <a th:href="users">
+                    <a href="users.html">
                       <span>Manage users</span>
                     </a>
                   </li>
-                    
+                                    <li>
+                    <a href="TypeUsers.html">
+                      <span>Manage Type users</span>
+                    </a>
+                  </li>  
                 </ul>
               </li>
               <li>
-                <a th:href="timesheets" class="auto">
+                <a href="timesheets.html" class="auto">
                   <i class="glyphicon glyphicon-calendar icon"></i>
                   <span>TimeSheet</span>
                 </a>
@@ -373,17 +378,17 @@ document.addEventListener('DOMContentLoaded', function() {
                 </a>
                 <ul class="nav nav-sub dk">
                   <li class="s">
-                    <a th:href="projects_manage">
+                    <a href="projects_manage.html">
                       <span>Manage Project</span>
                     </a>
                   </li>
                   <li>
-                    <a th:href="project_delivrable_manage">
-                      <span>Manage Delivrable</span>
+                    <a href="deliverable_manage.html">
+                      <span>Manage Deliverable</span>
                     </a>
                   </li>
                   <li>
-                    <a th:href="reference_manage">
+                    <a href="reference_manage.html">
                       <span>Manage Reference</span>
                     </a>
                   </li>
@@ -400,47 +405,47 @@ document.addEventListener('DOMContentLoaded', function() {
                 </a>
                 <ul class="nav nav-sub dk">
                   <li class="">
-                    <a th:href="assets_manage">
+                    <a href="assets_manage.html">
                       <span>Manage Assets</span>
                     </a>
                   </li>
                   <li>
-                    <a th:href="assetstype_manage">
+                    <a href="assetstype_manage.html">
                       <span>Manage Assets Type</span>
                     </a>
                   </li>
           <li>
-                    <a th:href="assetstype_manage">
+                    <a href="assetstype_manage.html">
                       <span>Firmware</span>
                     </a>
                   </li>
           <li>
-                    <a th:href="assetstype_manage">
+                    <a href="assetstype_manage.html">
                       <span>Vendor</span>
                     </a>
                   </li>
                 </ul>
               </li>
               <li>
-                <a th:href="tickets_manage">
+                <a href="tickets_manage.html">
                   <i class="glyphicon glyphicon-tag"></i>
                   <span>Tickets</span>
                 </a>
               </li>
         <li>
-                <a th:href="contract_manage">
+                <a href="contract_manage.html">
                   <i class="fa fa-legal"></i></i>
                   <span>Contrats</span>
                 </a>
               </li>
         <li>
-                <a th:href="tickets_manage">
+                <a href="tickets_manage.html">
                   <i class="glyphicon  glyphicon-usd"></i></i>
                   <span>Expenses</span>
                 </a>
               </li>
               <li>
-                <a th:href="request_manage" class="auto">
+                <a href="request_manage.html" class="auto">
         <span class="pull-right text-muted">
                     <i class="fa fa-fw fa-angle-right text"></i>
                     <i class="fa fa-fw fa-angle-down text-active"></i>
@@ -450,12 +455,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 </a>
                  <ul class="nav nav-sub dk">
                   <li class="s">
-                    <a th:href="internal_request_manage">
+                    <a href="internal_request_manage.html">
                       <span>Internal Request</span>
                     </a>
                   </li>
                   <li>
-                    <a th:href="external_request_manage">
+                    <a href="external_request_manage.html">
                       <span>External Request</span>
                     </a>
                   </li>
@@ -979,8 +984,7 @@ document.addEventListener('DOMContentLoaded', function() {
      </p>
    </div>
    <div class="modal-footer">
-   <button class="btn m-b-xs btn-sm btn-primary btn-addon"><i class="glyphicon glyphicon-ok"></i>Yes</button>
-   <button class="btn m-b-xs btn-sm btn-default btn-addon" data-dismiss="modal"><i class="glyphicon glyphicon-remove"></i>No</button>
+   <button class="btn m-b-xs btn-sm btn-primary btn-addon" data-dismiss="modal">Return</button>
   </div>
   </div>  
 </div>

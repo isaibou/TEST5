@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="en" class="">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8"/>
   <title>Assets Type Manage</title>
   <meta name="description" content="app, web app, responsive, responsive layout, admin, admin panel, admin dashboard, flat, flat ui, ui kit, AngularJS, ui route, charts, widgets, components" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
@@ -227,7 +227,7 @@
                   <a href>Settings</a>
                 </li>
                 <li>
-                  <a href="page_profile.html">Profile</a>
+                  <a th:href="page_profile">Profile</a>
                 </li>
                 <li>
                   <a href>
@@ -237,7 +237,7 @@
                 </li>
                 <li class="divider"></li>
                 <li>
-                  <a href="page_signin.html">Logout</a>
+                  <a th:href="page_signin">Logout</a>
                 </li>
               </ul>
               <!-- / dropdown -->
@@ -258,7 +258,7 @@
                 </a>               
               </li>
               <li>
-                <a th:href="mail.html">
+                <a th:href="mail">
                   <b class="badge bg-info pull-right">9</b>
                   <i class="glyphicon glyphicon-envelope icon text-info-lter"></i>
                   <span class="font-bold">Email</span>
@@ -309,7 +309,7 @@
                     </a>
                   </li>
                   <li>
-                    <a href="projet_delivrable_manage.html">
+                    <a th:href="projet_delivrable_manage">
                       <span>Manage Delivrable</span>
                     </a>
                   </li>
@@ -375,7 +375,7 @@
                 <span>Your Stuff</span>
               </li>  
               <li>
-                <a href="page_profile.html">
+                <a th:href="page_profile">
                   <i class="icon-user icon text-success-lter"></i>
                   <b class="badge bg-success pull-right">30%</b>
                   <span>Profile</span>
@@ -406,7 +406,7 @@
 
  <div class="panel panel-default">
  <div class="panel-heading">
-  <small><a href="index.html">Home</a> </small>><small> Manage Assets Type</small>
+  <small><a th:href="index">Home</a> </small>><small> Manage Assets Type</small>
 	<a style="margin-top:-5px;" data-toggle="modal"  data-target="#AddClient" class="btn btn-sm btn-primary pull-right"  role="button"><b class="glyphicon-plus pull"> </b>Add Assets Type</a> 
  </div>
  </div>
@@ -508,7 +508,7 @@
         }}'>
                                   <thead>
                                     <tr>
-                                      <th  style="width:5%"><center>Id</center></th>
+                                      <th  style="width:5%"><center>ID</center></th>
                                       <th  style="width:15%"><center>Asset Name</center></th>
                                       <th  style="width:15%"><center>Band</center></th>
                                       <th  style="width:15%"><center>End Of Support Date</center></th>
@@ -517,12 +517,12 @@
                                     </tr>
                                   </thead>
                                   <tbody>
-                                    <tr data-expanded="true">
-                                      <td><center>1</center></td>
-                                      <td><center>ServeurH</center></td>
-                                      <td><center>IBM</center></td>
-                                      <td><center>22-02-2019<center/></td>
-                                      <td><center>05-04-2019<center/></td>
+                                    <tr th:each="a:${assetstype}">
+                                      <td th:text="${a.ID}"><center></center></td>
+                                      <td th:text="${a.Asset Name}"><center></center></td>
+                                      <td th:text="${a.Band}"><center>IBM</center></td>
+                                      <td th:text="${a.End Of Support Date}"><center>22-02-2019<center/></td>
+                                      <td th:text="${a.End Sale Date}"><center>05-04-2019<center/></td>
                                       <td><center><div class="btn-group dropdown">
                                         <button class="btn btn-default btn-xs" data-toggle="dropdown"><i class="glyphicon glyphicon-cog"></i> Action <span class="caret"></span></button>
                                               <ul class="dropdown-menu">

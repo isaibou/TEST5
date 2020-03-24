@@ -6,9 +6,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class ReferenceController {
 	
-	@RequestMapping(value="/reference_manage")
+	@RequestMapping(value="/projects_reference_manage")
 	public String ReferenceManage() {
-		return "reference_manage";
+		return "projects_reference_manage";
 	}
 
 }

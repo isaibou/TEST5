@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="">
+<html lxmlns:th="http://www.thymeleaf.org">
 	<head>
 		<meta charset="utf-8" />
 		<title> Manage Purchasing Customers </title>
@@ -167,6 +167,7 @@
 											<!-- / dropdown -->
 										</li>
 										<li class="dropdown">
+											
 												<span class="thumb-sm avatar pull-right m-t-n-sm m-b-n-sm m-l-sm">
 													<img src="img/user.png" alt="...">
 														<i class="on md b-white bottom"></i>
@@ -250,7 +251,7 @@
 																<a href>Settings</a>
 															</li>
 															<li>
-																<a href="page_profile.html">Profile</a>
+																<a th:href="page_profile">Profile</a>
 															</li>
 															<li>
 																<a href>
@@ -260,7 +261,7 @@
 															</li>
 															<li class="divider"></li>
 															<li>
-																<a href="page_signin.html">Logout</a>
+																<a th:href="page_signin">Logout</a>
 															</li>
 														</ul>
 														<!-- / dropdown -->
@@ -337,7 +338,11 @@
                       <span>Manage users</span>
                     </a>
                   </li>
-                    
+                                    <li>
+                    <a th:href="TypeUsers">
+                      <span>Manage Type users</span>
+                    </a>
+                  </li>  
                 </ul>
               </li>
               <li>
@@ -359,13 +364,13 @@
                 </a>
                 <ul class="nav nav-sub dk">
                   <li class="s">
-                    <a href="projects_manage">
+                    <a th:href="projects_manage">
                       <span>Manage Project</span>
                     </a>
                   </li>
                   <li>
-                    <a th:href="project_delivrable_manage">
-                      <span>Manage Delivrable</span>
+                    <a th:href="deliverable_manage">
+                      <span>Manage Deliverable</span>
                     </a>
                   </li>
                   <li>
@@ -455,7 +460,7 @@
                 <span>Your Stuff</span>
               </li>  
               <li>
-                <a href="page_profile.html">
+                <a th:href="page_profile">
                   <i class="icon-user icon text-success-lter"></i>
                   <b class="badge bg-success pull-right">30%</b>
                   <span>Profile</span>
@@ -493,7 +498,7 @@
 											
 												<!--<div class="panel panel-default">
 													<div class="panel-heading">
-														<small><a href="index.html">Home</a> </small>><small> Manage Clients</small>
+														<small><a th:href="index">Home</a> </small>><small> Manage Clients</small>
 														<a style="margin-top:-5px;" data-toggle="modal"  data-target="#AddClient" class="btn btn-sm btn-primary pull-right"  role="button"><b class="glyphicon-plus pull"> </b>Add Customer</a> 
 													</div>
 												</div>-->
@@ -516,7 +521,7 @@
 																	<th  style="width:30%;"><center>Name & Last name</center></th>
 																	<th  style="width:30%"><center>Phone</center></th>
 																	<th  style="width:30%;"><center>Email</center></th>
-																	<th  style="width:10%;"></th>
+																	<th  style="width:10%;">Actions</th>
 																</tr>
 															</thead>
 															<tbody>
@@ -569,7 +574,7 @@
   <div class="modal-content">
    <div class="modal-header" style="background-image:url(img/grf-bg.jpg);color:white;">
 	<button type="button" class="close pull-right" data-dismiss="modal">&times;</button>
-    <h1 class="m-n font-bold h3"> <b class="glyphicon-plus pull"> </b> Update Purchasing Customer</h1>
+    <h1 class="m-n font-bold h3"> <b class="glyphicon-plus pull"> </b> Add Purchasing Customer</h1>
    </div>
    <div class="modal-body">
 	<div class="row">
@@ -609,7 +614,7 @@
     <div class="modal-content">
    <div class="modal-header" style="background-image:url(img/grf-bg.jpg);color:white;">
 	<button type="button" class="close pull-right" data-dismiss="modal">&times;</button>
-    <h1 class="m-n font-bold h3"> <b class="glyphicon-plus pull"> </b> Update Purchasing Customer</h1>
+    <h1 class="m-n font-bold h3"> Update Purchasing Customer</h1>
    </div>
    <div class="modal-body">
 	<div class="row">
@@ -681,8 +686,7 @@
           </p> 
    </div>
    <div class="modal-footer">
-   <button class="btn m-b-xs btn-sm btn-primary btn-addon"><i class="glyphicon glyphicon-ok"></i>Yes</button>
-   <button class="btn m-b-xs btn-sm btn-default btn-addon" data-dismiss="modal"><i class="glyphicon glyphicon-remove"></i>No</button>
+   <button class="btn m-b-xs btn-sm btn-primary btn-addon" data-dismiss="modal">Return</button>
   </div>
   </div>
 </div>

@@ -25,7 +25,7 @@ public class Contrat implements Serializable{
 		Description = description;
 		DeliveryDate = deliveryDate;
 	}
-	public Integer getContrat_ID() {
+	public Integer getContract_ID() {
 		return Contrat_ID;
 	}
 	public void setContrat_ID(Integer contrat_ID) {

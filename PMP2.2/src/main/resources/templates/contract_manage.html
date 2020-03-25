@@ -1,6 +1,5 @@
-
 <!DOCTYPE html>
-<html lang="en" class="">
+<html xmlns:th="http://www.thymeleaf.org">
 	<head>
 		<meta charset="utf-8" />
 		<title>Manage Contracts</title>
@@ -233,6 +232,7 @@ document.addEventListener('DOMContentLoaded', function() {
 											<!-- / dropdown -->
 										</li>
 										<li class="dropdown">
+											
 												<span class="thumb-sm avatar pull-right m-t-n-sm m-b-n-sm m-l-sm">
 													<img src="img/user.png" alt="...">
 														<i class="on md b-white bottom"></i>
@@ -282,7 +282,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	<div class="navi-wrap"><!-- user -->
 	 <div class="clearfix hidden-xs text-center hide" id="aside-user">
 	  <div class="dropdown wrapper"><a href="app.page.profile"><span class="thumb-lg w-auto-folded avatar m-t-sm"><img src="img/a0.jpg" class="img-full" alt="..."></span></a><a href="#" data-toggle="dropdown" class="dropdown-toggle hidden-folded"><span class="clear"><span class="block m-t-sm"><strong class="font-bold text-lt">Walid.Largou</strong><b class="caret"></b></span><span class="text-muted text-xs block">Manager</span></span></a><!-- dropdown --><ul class="dropdown-menu animated fadeInRight w hidden-folded"><li class="wrapper b-b m-b-sm bg-info m-t-n-xs"><span class="arrow top hidden-folded arrow-info"></span><div><p>300mb of 500mb used</p></div><div class="progress progress-xs m-b-none dker"><div class="progress-bar bg-white" data-toggle="tooltip" data-original-title="50%" style="width: 50%"></div></div></li><li><a href>Settings</a></li>
-	  <li><a href="page_profile.html">Profile</a></li><li><a href><span class="badge bg-danger pull-right">3</span>Notifications</a></li><li class="divider"></li><li><a href="page_signin.html">Logout</a></li></ul><!-- / dropdown --></div>
+	  <li><a th:href="page_profile">Profile</a></li><li><a href><span class="badge bg-danger pull-right">3</span>Notifications</a></li><li class="divider"></li><li><a th:href="page_signin">Logout</a></li></ul><!-- / dropdown --></div>
 	  <div class="line dk hidden-folded"></div>
 	 </div><!-- / user --><!-- nav -->
           <nav ui-nav class="navi clearfix">
@@ -352,7 +352,11 @@ document.addEventListener('DOMContentLoaded', function() {
                       <span>Manage users</span>
                     </a>
                   </li>
-                    
+                                     <li>
+                    <a th:href="TypeUsers">
+                      <span>Manage Type users</span>
+                    </a>
+                  </li> 
                 </ul>
               </li>
               <li>
@@ -401,7 +405,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 </a>
                 <ul class="nav nav-sub dk">
                   <li class="">
-                    <a th:href="assets_manage">
+                    <a th:href="assets_manag">
                       <span>Manage Assets</span>
                     </a>
                   </li>
@@ -470,7 +474,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 <span>Your Stuff</span>
               </li>  
               <li>
-                <a href="page_profile.html">
+                <a th:href="page_profile">
                   <i class="icon-user icon text-success-lter"></i>
                   <b class="badge bg-success pull-right">30%</b>
                   <span>Profile</span>
@@ -514,7 +518,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		   <th  style="width:20%"><center>Title</center></th>
 		   <th  style="width:15%"><center>Description</center></th>
 		   <th  style="width:15%"><center>Delivery Date</center></th>
-		   <th  style="width:15%"></th>
+		   <th  style="width:15%"><center>Actions</center></th>
 
 		  </tr>
 	     </thead>
@@ -567,82 +571,84 @@ document.addEventListener('DOMContentLoaded', function() {
 	    <button type="button" class="close pull-right" data-dismiss="modal">&times;</button>
 	    <h1 class="m-n font-bold h3"> <b class="glyphicon-plus pull"> </b> Add Contract</h1>
 	   </div>
-	   <div class="modal-body">
-	    <div class="row">
-	     <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Contract Title</b></label>
-	     <div class="col-sm-8" style="margin: 5px 0px;">
-		  <input type="text" class="form-control" placeholder="Entry Name of Project" id="input-id-1">
-		 </div>
-	     <label class="col-sm-4 control-label"  for="input-id-1"><b>Customer Name</b></label>
-		 <div class="col-sm-8"  >
-		  <select name="account" class="form-control m-b">
-		   <option>Customer1</option>
-		   <option>Customer2</option>
-		  </select>
-		 </div>
-	     <label class="col-sm-4 control-label" placeholder="Entry Notes" for="input-id-1"><b>Description</b></label>
-		  <div class="col-sm-8">
-		   <div class="form-group">
-			<div class="btn-toolbar m-b-sm btn-editor" data-role="editor-toolbar" data-target="#editor">
-			 <div class="btn-group dropdown" dropdown="">
-			  <a class="btn btn-default" dropdown-toggle="" tooltip="Font"><i class="fa fa-font"></i><b class="caret"></b></a>
-			   <ul class="dropdown-menu">
-				<li><a href="" data-edit="fontName Serif" style="font-family:'Serif'">Serif</a></li> 
-				<li><a href="" data-edit="fontName Sans" style="font-family:'Sans'">Sans</a></li>
-				<li><a href="" data-edit="fontName Arial" style="font-family:'Arial'">Arial</a></li>
-			   </ul>
-			 </div>
-			 <div class="btn-group dropdown" dropdown="">
-			  <a class="btn btn-default" dropdown-toggle="" data-toggle="dropdown" tooltip="Font Size"><i class="fa fa-text-height"></i>&nbsp;<b class="caret"></b></a>
-			  <ul class="dropdown-menu">
-			   <li><a href="" data-edit="fontSize 5" style="font-size:24px">Huge</a></li>
-			   <li><a href="" data-edit="fontSize 3" style="font-size:18px">Normal</a></li>
-			   <li><a href="" data-edit="fontSize 1" style="font-size:14px">Small</a></li>
-			  </ul>
-		     </div>
-			 <div class="btn-group">
-			  <a class="btn btn-default" data-edit="bold" tooltip="Bold (Ctrl/Cmd+B)"><i class="fa fa-bold"></i></a>
-			  <a class="btn btn-default" data-edit="italic" tooltip="Italic (Ctrl/Cmd+I)"><i class="fa fa-italic"></i></a>
-			  <a class="btn btn-default" data-edit="strikethrough" tooltip="Strikethrough"><i class="fa fa-strikethrough"></i></a>
-			  <a class="btn btn-default" data-edit="underline" tooltip="Underline (Ctrl/Cmd+U)"><i class="fa fa-underline"></i></a>
-			 </div>
-			 <div class="btn-group">
-			  <a class="btn btn-default" data-edit="insertunorderedlist" tooltip="Bullet list"><i class="fa fa-list-ul"></i></a>
-			  <a class="btn btn-default" data-edit="insertorderedlist" tooltip="Number list"><i class="fa fa-list-ol"></i></a>
-			  <a class="btn btn-default" data-edit="outdent" tooltip="Reduce indent (Shift+Tab)"><i class="fa fa-dedent"></i></a>
-			  <a class="btn btn-default" data-edit="indent" tooltip="Indent (Tab)"><i class="fa fa-indent"></i></a>
-		     </div>
-			 <div class="btn-group">
-			  <a class="btn btn-default btn-info" data-edit="justifyleft" tooltip="Align Left (Ctrl/Cmd+L)"><i class="fa fa-align-left"></i></a>
-			  <a class="btn btn-default" data-edit="justifycenter" tooltip="Center (Ctrl/Cmd+E)"><i class="fa fa-align-center"></i></a>
-			  <a class="btn btn-default" data-edit="justifyright" tooltip="Align Right (Ctrl/Cmd+R)"><i class="fa fa-align-right"></i></a>
-			  <a class="btn btn-default" data-edit="justifyfull" tooltip="Justify (Ctrl/Cmd+J)"><i class="fa fa-align-justify"></i></a>
-			 </div>
-			 <div class="btn-group dropdown" dropdown="">
-			  <a class="btn btn-default" dropdown-toggle="" tooltip="Hyperlink"><i class="fa fa-link"></i></a>
-			  <div class="dropdown-menu">
-			   <div class="input-group m-l-xs m-r-xs">
-				<input class="form-control input-sm" id="LinkInput" placeholder="URL" type="text" data-edit="createLink">
-				<div class="input-group-btn">
-				 <button class="btn btn-sm btn-default" type="button">Add</button>
-				</div>
-			   </div>
-			  </div>
-			  <a class="btn btn-default" data-edit="unlink" tooltip="Remove Hyperlink"><i class="fa fa-cut"></i></a>
-			 </div>
+     <div class="modal-body">
+      <div class="row">
+       <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Contract Title</b></label>
+       <div class="col-sm-8" style="margin: 5px 0px;">
+      <input type="text" class="form-control" placeholder="Entry Name of Project" id="input-id-1">
+     </div>
+       <label class="col-sm-4 control-label"  for="input-id-1"><b>Customer Name</b></label>
+     <div class="col-sm-8"  >
+      <select name="account" class="form-control m-b">
+       <option>Customer1</option>
+       <option>Customer2</option>
+      </select>
+     </div>
+       <label class="col-sm-4 control-label" placeholder="Entry Notes" for="input-id-1"><b>Description</b></label>
+      <div class="col-sm-8">
+       <div class="form-group">
+      <div class="btn-toolbar m-b-sm btn-editor" data-role="editor-toolbar" data-target="#editor">
+       <div class="btn-group dropdown" dropdown="">
+        <a class="btn btn-default" dropdown-toggle="" tooltip="Font"><i class="fa fa-font"></i><b class="caret"></b></a>
+         <ul class="dropdown-menu">
+        <li><a href="" data-edit="fontName Serif" style="font-family:'Serif'">Serif</a></li> 
+        <li><a href="" data-edit="fontName Sans" style="font-family:'Sans'">Sans</a></li>
+        <li><a href="" data-edit="fontName Arial" style="font-family:'Arial'">Arial</a></li>
+         </ul>
+       </div>
+       <div class="btn-group dropdown" dropdown="">
+        <a class="btn btn-default" dropdown-toggle="" data-toggle="dropdown" tooltip="Font Size"><i class="fa fa-text-height"></i>&nbsp;<b class="caret"></b></a>
+        <ul class="dropdown-menu">
+         <li><a href="" data-edit="fontSize 5" style="font-size:24px">Huge</a></li>
+         <li><a href="" data-edit="fontSize 3" style="font-size:18px">Normal</a></li>
+         <li><a href="" data-edit="fontSize 1" style="font-size:14px">Small</a></li>
+        </ul>
+         </div>
+       <div class="btn-group">
+        <a class="btn btn-default" data-edit="bold" tooltip="Bold (Ctrl/Cmd+B)"><i class="fa fa-bold"></i></a>
+        <a class="btn btn-default" data-edit="italic" tooltip="Italic (Ctrl/Cmd+I)"><i class="fa fa-italic"></i></a>
+        <a class="btn btn-default" data-edit="strikethrough" tooltip="Strikethrough"><i class="fa fa-strikethrough"></i></a>
+        <a class="btn btn-default" data-edit="underline" tooltip="Underline (Ctrl/Cmd+U)"><i class="fa fa-underline"></i></a>
+       </div>
+       <div class="btn-group">
+        <a class="btn btn-default" data-edit="insertunorderedlist" tooltip="Bullet list"><i class="fa fa-list-ul"></i></a>
+        <a class="btn btn-default" data-edit="insertorderedlist" tooltip="Number list"><i class="fa fa-list-ol"></i></a>
+        <a class="btn btn-default" data-edit="outdent" tooltip="Reduce indent (Shift+Tab)"><i class="fa fa-dedent"></i></a>
+        <a class="btn btn-default" data-edit="indent" tooltip="Indent (Tab)"><i class="fa fa-indent"></i></a>
+         </div>
+       <div class="btn-group">
+        <a class="btn btn-default btn-info" data-edit="justifyleft" tooltip="Align Left (Ctrl/Cmd+L)"><i class="fa fa-align-left"></i></a>
+        <a class="btn btn-default" data-edit="justifycenter" tooltip="Center (Ctrl/Cmd+E)"><i class="fa fa-align-center"></i></a>
+        <a class="btn btn-default" data-edit="justifyright" tooltip="Align Right (Ctrl/Cmd+R)"><i class="fa fa-align-right"></i></a>
+        <a class="btn btn-default" data-edit="justifyfull" tooltip="Justify (Ctrl/Cmd+J)"><i class="fa fa-align-justify"></i></a>
+       </div>
+       <div class="btn-group dropdown" dropdown="">
+        <a class="btn btn-default" dropdown-toggle="" tooltip="Hyperlink"><i class="fa fa-link"></i></a>
+        <div class="dropdown-menu">
+         <div class="input-group m-l-xs m-r-xs">
+        <input class="form-control input-sm" id="LinkInput" placeholder="URL" type="text" data-edit="createLink">
+        <div class="input-group-btn">
+         <button class="btn btn-sm btn-default" type="button">Add</button>
+        </div>
+         </div>
+        </div>
+        <a class="btn btn-default" data-edit="unlink" tooltip="Remove Hyperlink"><i class="fa fa-cut"></i></a>
+       </div>
              <div class="btn-group">
-			  <a class="btn btn-default" tooltip="Insert picture (or just drag &amp; drop)" id="pictureBtn"><i class="fa fa-picture-o"></i></a>
-			  <input type="file" data-edit="insertImage" style="position:absolute; opacity:0; width:41px; height:34px">
-			 </div>
-			 <div class="btn-group">
-			  <a class="btn btn-default" data-edit="undo" tooltip="Undo (Ctrl/Cmd+Z)"><i class="fa fa-undo"></i></a>
-			  <a class="btn btn-default" data-edit="redo" tooltip="Redo (Ctrl/Cmd+Y)"><i class="fa fa-repeat"></i></a>
-			 </div>
-			</div>
-			<div ui-jq="wysiwyg" class="form-control" style="overflow:scroll;height:200px;max-height:200px" contenteditable="true"> Go ahead… </div>
-           </div>
-		  </div>
-           <label class="col-sm-4 control-label" placeholder="Entry Year" for="input-id-1"><center>Delivery Date</center></label>
+        <a class="btn btn-default" tooltip="Insert picture (or just drag &amp; drop)" id="pictureBtn"><i class="fa fa-picture-o"></i></a>
+        <input type="file" data-edit="insertImage" style="position:absolute; opacity:0; width:41px; height:34px">
+       </div>
+       <div class="btn-group">
+        <a class="btn btn-default" data-edit="undo" tooltip="Undo (Ctrl/Cmd+Z)"><i class="fa fa-undo"></i></a>
+        <a class="btn btn-default" data-edit="redo" tooltip="Redo (Ctrl/Cmd+Y)"><i class="fa fa-repeat"></i></a>
+       </div>
+      </div>
+      <div ui-jq="wysiwyg" class="form-control" style="overflow:scroll;height:200px;max-height:200px" contenteditable="true"> 
+        Go ahead… 
+      </div>
+    </div>
+   </div>
+    <label class="col-sm-4 control-label" placeholder="Entry Year" for="input-id-1"><b>Delivery Date</b></label>
        <div class="col-sm-8">
       <form action="https://formden.com/post/MlKtmY4x/" class="form-horizontal" method="post">
        <div class="form-group ">
@@ -657,12 +663,12 @@ document.addEventListener('DOMContentLoaded', function() {
        </div>
       </form>
        </div>
-		  <div class="modal-footer">
-		   <button style="margin:0px;" class="btn m-b-xs btn-sm btn-primary btn-addon"><i class="glyphicon glyphicon-ok"></i>Save</button>
-		   <button style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon" data-dismiss="modal"><i class="glyphicon glyphicon-remove"></i>Annuler</button>
-		  </div>
-		 </div>
-		</div>
+      <div class="modal-footer">
+       <button style="margin:0px;" class="btn m-b-xs btn-sm btn-primary btn-addon"><i class="glyphicon glyphicon-ok"></i>Save</button>
+       <button style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon" data-dismiss="modal"><i class="glyphicon glyphicon-remove"></i>Annuler</button>
+      </div>
+     </div>
+    </div>
 	  </div>
      </div>
     </div>
@@ -680,7 +686,7 @@ document.addEventListener('DOMContentLoaded', function() {
     <div class="modal-content">
      <div class="modal-header" style="background-image:url(img/grf-bg.jpg);color:white;">
       <button type="button" class="close pull-right" data-dismiss="modal">&times;</button>
-      <h1 class="m-n font-bold h3"> <b class="glyphicon-plus pull"> </b> Add Contract</h1>
+      <h1 class="m-n font-bold h3"> Update Contract</h1>
      </div>
      <div class="modal-body">
       <div class="row">
@@ -754,10 +760,12 @@ document.addEventListener('DOMContentLoaded', function() {
         <a class="btn btn-default" data-edit="redo" tooltip="Redo (Ctrl/Cmd+Y)"><i class="fa fa-repeat"></i></a>
        </div>
       </div>
-      <div ui-jq="wysiwyg" class="form-control" style="overflow:scroll;height:200px;max-height:200px" contenteditable="true"> Go ahead… </div>
-           </div>
+      <div ui-jq="wysiwyg" class="form-control" style="overflow:scroll;height:200px;max-height:200px" contenteditable="true"> 
+        Go ahead… 
       </div>
-           <label class="col-sm-4 control-label" placeholder="Entry Year" for="input-id-1"><b>Delivery Date</b></label>
+    </div>
+   </div>
+    <label class="col-sm-4 control-label" placeholder="Entry Year" for="input-id-1"><b>Delivery Date</b></label>
        <div class="col-sm-8">
       <form action="https://formden.com/post/MlKtmY4x/" class="form-horizontal" method="post">
        <div class="form-group ">
@@ -820,8 +828,7 @@ document.addEventListener('DOMContentLoaded', function() {
           </p> 
    </div>
    <div class="modal-footer">
-   <button class="btn m-b-xs btn-sm btn-primary btn-addon"><i class="glyphicon glyphicon-ok"></i>Yes</button>
-   <button class="btn m-b-xs btn-sm btn-default btn-addon" data-dismiss="modal"><i class="glyphicon glyphicon-remove"></i>No</button>
+   <button class="btn m-b-xs btn-sm btn-primary btn-addon" data-dismiss="modal">Return</button>
   </div>
   </div>  
 </div>

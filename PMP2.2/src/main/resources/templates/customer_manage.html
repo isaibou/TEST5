@@ -1,8 +1,13 @@
+<<<<<<< HEAD
 <!DOCTYPE html >
 <html  xmlns ="www.thymeleaf.org">
+=======
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+>>>>>>> branch 'master' of https://github.com/isaibou/TEST5
 	<head>
 		<meta charset="utf-8" />
-		<title>Manage clients</title>
+		<title>Customers Manage</title>
 		<meta name="description" content="app, web app, responsive, responsive layout, admin, admin panel, admin dashboard, flat, flat ui, ui kit, AngularJS, ui route, charts, widgets, components" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 		<link rel="stylesheet" href="../libs/assets/animate.css/animate.css" type="text/css" />
@@ -95,25 +100,20 @@
 					<ul class="nav navbar-nav hidden-sm">
 						<li class="dropdown">
 							<a href="#" data-toggle="dropdown" class="dropdown-toggle">
-								<i class="fa fa-fw fa-plus visible-xs-inline-block"></i>
-								<span translate="header.navbar.new.NEW">New</span> <span class="caret"></span>
+								<span translate="header.navbar.new.NEW"></span> <span class="fa fa-moon-o lb-warning"></span>	
 							</a>
 							<ul class="dropdown-menu" role="menu">
-								<li><a href="#" translate="header.navbar.new.PROJECT">Projects</a></li>
 								<li>
-									<a href>
-										<span class="badge bg-info pull-right">5</span>
-										<span translate="header.navbar.new.TASK">Task</span>
-									</a>
+									<button type="button" name="button" id="darkmode" onclick="changecolor()">
+										<span translate="header.navbar.new.TASK">ON</span>
+									</button>
 								</li>
-								<li><a href translate="header.navbar.new.USER">User</a></li>
-								<li class="divider"></li>
 								<li>
-									<a href>
-										<span class="badge bg-danger pull-right">4</span>
-										<span translate="header.navbar.new.EMAIL">Email</span>
-									</a>
+									<button  type="button" name="button" id="lightmode" onclick="lightmode()">
+										<span translate="header.navbar.new.TASK">OFF</span>
+									</button>
 								</li>
+								
 							</ul>
 						</li>
 					</ul>
@@ -152,13 +152,13 @@
 													<img src="img/a0.jpg" alt="..." class="img-circle">
 													</span>
 													<span class="clear block m-b-none">
-														Use awesome animate.css<br>
+                      Use awesome animate.css<br>
 															<small class="text-muted">10 minutes ago</small>
 														</span>
 													</a>
 													<a href class="list-group-item">
 														<span class="clear block m-b-none">
-															1.0 initial released<br>
+                      1.0 initial released<br>
 																<small class="text-muted">1 hour ago</small>
 															</span>
 														</a>
@@ -172,6 +172,7 @@
 											<!-- / dropdown -->
 										</li>
 										<li class="dropdown">
+											
 												<span class="thumb-sm avatar pull-right m-t-n-sm m-b-n-sm m-l-sm">
 													<img src="img/user.png" alt="...">
 														<i class="on md b-white bottom"></i>
@@ -200,7 +201,7 @@
 													<li>
 														<a ui-sref="app.docs">
 															<span class="label bg-info pull-right">new</span>
-															Help
+                  Help
 														</a>
 													</li>
 													<li class="divider"></li>
@@ -255,7 +256,7 @@
 																<a href>Settings</a>
 															</li>
 															<li>
-																<a href="page_profile.html">Profile</a>
+																<a th:href="page_profile">Profile</a>
 															</li>
 															<li>
 																<a href>
@@ -265,7 +266,7 @@
 															</li>
 															<li class="divider"></li>
 															<li>
-																<a href="page_signin.html">Logout</a>
+																<a th:href="page_signin">Logout</a>
 															</li>
 														</ul>
 														<!-- / dropdown -->
@@ -275,157 +276,209 @@
 												<!-- / user -->
 
 												<!-- nav -->
-												<nav ui-nav class="navi clearfix">
-													<ul class="nav">
-														<li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
-															<span>Main</span>
-														</li>
-														<li>
-															<a th:href="index" class="auto">      
-																<i class="glyphicon glyphicon-stats icon text-primary-dker"></i>
-																<span class="font-bold">Dashboard</span>
-															</a>
+          <nav ui-nav class="navi clearfix">
+            <ul class="nav">
+              <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
+                <span>Main</span>
+              </li>
+              <li>
+                <a th:href="index" class="auto">      
+                  <i class="glyphicon glyphicon-stats icon text-primary-dker"></i>
+                  <span class="font-bold">Dashboard</span>
+                </a>
+               
+              </li>
+              <li>
+                <a th:href="mail">
+                  <b class="badge bg-info pull-right">9</b>
+                  <i class="glyphicon glyphicon-envelope icon text-info-lter"></i>
+                  <span class="font-bold">Email</span>
+                </a>
+              </li>
+              <li class="line dk"></li>
 
-														</li>
-														<li>
-															<a th:href="mail">
-																<b class="badge bg-info pull-right">9</b>
-																<i class="glyphicon glyphicon-envelope icon text-info-lter"></i>
-																<span class="font-bold">Email</span>
-															</a>
-														</li>
-														<li class="line dk"></li>
+              <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
+                <span>Management</span>
+              </li>
+              <li>
+                <a href class="auto">      
+                  <span class="pull-right text-muted">
+                    <i class="fa fa-fw fa-angle-right text"></i>
+                    <i class="fa fa-fw fa-angle-down text-active"></i>
+                  </span>
+                  <b class="badge bg-info pull-right">3</b>
+                  <i class="glyphicon glyphicon-briefcase"></i>
+                  <span>Customers</span>
+                </a>
+                <ul class="nav nav-sub dk">
+               
+                  <li>
+                    <a th:href="customer_manage">
+                      <span>Manage customer</span>
+                    </a>
+                  </li>
+				  
+				  <li>
+                    <a th:href="purchasing_customer_manage">
+                      <span>Puchasing contact</span>
+                    </a>
+                  </li>
+                    
+                </ul>
+              </li>
+			     <li>
+                <a href class="auto">      
+                  <span class="pull-right text-muted">
+                    <i class="fa fa-fw fa-angle-right text"></i>
+                    <i class="fa fa-fw fa-angle-down text-active"></i>
+                  </span>
+                  <b class="badge bg-info pull-right">3</b>
+                  <i class="glyphicon glyphicon-user"></i>
+                  <span>Users</span>
+                </a>
+                <ul class="nav nav-sub dk">
+               
+                  <li>
+                    <a th:href="users">
+                      <span>Manage users</span>
+                    </a>
+                  </li>
+                                     <li>
+                    <a th:href="TypeUsers">
+                      <span>Manage Type users</span>
+                    </a>
+                  </li> 
+                </ul>
+              </li>
+              <li>
+                <a th:href="timesheets" class="auto">
+                  <i class="glyphicon glyphicon-calendar icon"></i>
+                  <span>TimeSheet</span>
+                </a>
 
-														<li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
-															<span>Management</span>
-														</li>
-														<li>
-															<a href class="auto">      
-																<span class="pull-right text-muted">
-																	<i class="fa fa-fw fa-angle-right text"></i>
-																	<i class="fa fa-fw fa-angle-down text-active"></i>
-																</span>
-																<b class="badge bg-info pull-right">3</b>
-																<i class="glyphicon glyphicon-briefcase"></i>
-																<span>Customers</span>
-															</a>
-															<ul class="nav nav-sub dk">
+              </li>
+              <li>
+                <a href class="auto">
+                  <span class="pull-right text-muted">
+                    <i class="fa fa-fw fa-angle-right text"></i>
+                    <i class="fa fa-fw fa-angle-down text-active"></i>
+                  </span>
+                  <b class="label bg-primary pull-right">2</b>
+                  <i class="glyphicon glyphicon-list"></i>
+                  <span>Projects</span>
+                </a>
+                <ul class="nav nav-sub dk">
+                  <li class="s">
+                    <a th:href="projects_manage">
+                      <span>Manage Project</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a th:href="deliverable_manage">
+                      <span>Manage Deliverable</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a th:href="reference_manage">
+                      <span>Manage Reference</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <a href class="auto">
+                  <span class="pull-right text-muted">
+                    <i class="fa fa-fw fa-angle-right text"></i>
+                    <i class="fa fa-fw fa-angle-down text-active"></i>
+                  </span>
+                  <i class="glyphicon  glyphicon-th"></i>
+                  <span>Assets</span>
+                </a>
+                <ul class="nav nav-sub dk">
+                  <li class="">
+                    <a th:href="assets_manage">
+                      <span>Manage Assets</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a th:href="assetstype_manage">
+                      <span>Manage Assets Type</span>
+                    </a>
+                  </li>
+				  <li>
+                    <a th:href="assetstype_manage">
+                      <span>Firmware</span>
+                    </a>
+                  </li>
+				  <li>
+                    <a th:href="assetstype_manage">
+                      <span>Vendor</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <a th:href="tickets_manage">
+                  <i class="glyphicon glyphicon-tag"></i>
+                  <span>Tickets</span>
+                </a>
+              </li>
+			  <li>
+                <a th:href="contract_manage">
+                  <i class="fa fa-legal"></i></i>
+                  <span>Contrats</span>
+                </a>
+              </li>
+			  <li>
+                <a th:href="tickets_manage">
+                  <i class="glyphicon  glyphicon-usd"></i></i>
+                  <span>Expenses</span>
+                </a>
+              </li>
+              <li>
+                <a th:href="request_manage" class="auto">
+				<span class="pull-right text-muted">
+                    <i class="fa fa-fw fa-angle-right text"></i>
+                    <i class="fa fa-fw fa-angle-down text-active"></i>
+                  </span>
+                  <i class="glyphicon  glyphicon-save icon"></i>
+                  <span>Request</span>
+                </a>
+                 <ul class="nav nav-sub dk">
+                  <li class="s">
+                    <a th:href="internal_request_manage">
+                      <span>Internal Request</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a th:href="external_request_manage">
+                      <span>External Request</span>
+                    </a>
+                  </li>
+                </ul>
 
-																<li>
-																	<a th:href="customer_manage">
-																		<span>Manage customer</span>
-																	</a>
-																</li>
+               
+              </li>
+              <li class="line dk hidden-folded"></li>
 
-															</ul>
-														</li>
-														<li>
-															<a th:href="timesheets" class="auto">
-																<i class="glyphicon glyphicon-calendar icon"></i>
-																<span>TimeSheet</span>
-															</a>
-
-														</li>
-														<li>
-															<a href class="auto">
-																<span class="pull-right text-muted">
-																	<i class="fa fa-fw fa-angle-right text"></i>
-																	<i class="fa fa-fw fa-angle-down text-active"></i>
-																</span>
-																<b class="label bg-primary pull-right">2</b>
-																<i class="glyphicon glyphicon-list"></i>
-																<span>Projects</span>
-															</a>
-															<ul class="nav nav-sub dk">
-																<li class="s">
-																	<a th:href="projects_manage">
-																		<span>Manage Project</span>
-																	</a>
-																</li>
-																<li>
-																	<a th:href="projet_delivrable_manage">
-																		<span>Manage Delivrable</span>
-																	</a>
-																</li>
-																<li>
-																	<a th:href="reference_manage">
-																		<span>Manage Reference</span>
-																	</a>
-																</li>
-															</ul>
-														</li>
-														<li>
-															<a href class="auto">
-																<span class="pull-right text-muted">
-																	<i class="fa fa-fw fa-angle-right text"></i>
-																	<i class="fa fa-fw fa-angle-down text-active"></i>
-																</span>
-																<i class="glyphicon  glyphicon-th"></i>
-																<span>Assets</span>
-															</a>
-															<ul class="nav nav-sub dk">
-																<li class="">
-																	<a th:href="assets_manage">
-																		<span>Manage Assets</span>
-																	</a>
-																</li>
-																<li>
-																	<a th:href="assetstype_manage">
-																		<span>Manage Assets Type</span>
-																	</a>
-																</li>
-															</ul>
-														</li>
-														<li>
-															<a th:href="tickets_manage">
-																<i class="glyphicon glyphicon-tag"></i>
-																<span>Tickets</span>
-															</a>
-														</li>
-														<li>
-															<a th:href="request_manage" class="auto">
-																<span class="pull-right text-muted">
-																	<i class="fa fa-fw fa-angle-right text"></i>
-																	<i class="fa fa-fw fa-angle-down text-active"></i>
-																</span>
-																<i class="glyphicon  glyphicon-save icon"></i>
-																<span>Request</span>
-															</a>
-															<ul class="nav nav-sub dk">
-																<li class="s">
-																	<a th:href="internal_request_manage">
-																		<span>Internal Request</span>
-																	</a>
-																</li>
-																<li>
-																	<a th:href="external_request_manage">
-																		<span>External Request</span>
-																	</a>
-																</li>
-															</ul>
-
-
-														</li>
-														<li class="line dk hidden-folded"></li>
-
-														<li class="hidden-folded padder m-t m-b-sm text-muted text-xs">          
-															<span>Your Stuff</span>
-														</li>  
-														<li>
-															<a href="page_profile.html">
-																<i class="icon-user icon text-success-lter"></i>
-																<b class="badge bg-success pull-right">30%</b>
-																<span>Profile</span>
-															</a>
-														</li>
-														<li>
-															<a href>
-																<i class="icon-question icon"></i>
-																<span>Documents</span>
-															</a>
-														</li>
-													</ul>
-												</nav>
+              <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">          
+                <span>Your Stuff</span>
+              </li>  
+              <li>
+                <a th:href="page_profile">
+                  <i class="icon-user icon text-success-lter"></i>
+                  <b class="badge bg-success pull-right">30%</b>
+                  <span>Profile</span>
+                </a>
+              </li>
+              <li>
+                <a href>
+                  <i class="icon-question icon"></i>
+                  <span>Documents</span>
+                </a>
+              </li>
+            </ul>
+          </nav>
 												<!-- nav -->
 
 												<!-- aside footer -->
@@ -443,15 +496,17 @@
 										<div class="hbox hbox-auto-xs hbox-auto-sm">
 												<div class="col">
 											<div class="bg-light lter b-b wrapper-md">
-												<h1 class="m-n font-bold h3">Manage Customers</h1>
+												<h1 class="m-n font-bold h3"> Manage Customers 
+												<a style="margin-top:-5px;" data-toggle="modal"  data-target="#AddClient" class="btn btn-sm btn-primary pull-right"  role="button"><b class="glyphicon-plus pull"> </b>Add Customer</a> 
+											</h1>
 											</div>
 											
-												<div class="panel panel-default">
+												<!--<div class="panel panel-default">
 													<div class="panel-heading">
-														<small><a href="index.html">Home</a> </small>><small> Manage Clients</small>
+														<small><a th:href="index">Home</a> </small>><small> Manage Clients</small>
 														<a style="margin-top:-5px;" data-toggle="modal"  data-target="#AddClient" class="btn btn-sm btn-primary pull-right"  role="button"><b class="glyphicon-plus pull"> </b>Add Customer</a> 
 													</div>
-												</div>
+												</div>-->
 
 												<div class="row" style="margin:5px;background-color:#f0f3f4;">
 													<div class="col-sm-6">
@@ -509,7 +564,7 @@
 													<div class="table-responsive">
 														<table ui-jq="dataTable" ui-options="{
 															aoColumns: [
-															{ mData: 'engine' },
+															
 															{ mData: 'browser' },
 															{ mData: 'platform' },
 															{ mData: 'version' },
@@ -518,9 +573,15 @@
 															]
 															}" class="table table-striped b-t b-b">
 															<thead>
+<<<<<<< HEAD
 																<tr >
 																	<th  style="width:5%"><center>ID</center></th>
 																	<th  style="width:15%"><center>Customer</center></th>
+=======
+																<tr>
+																
+																	<th  style="width:25%"><center>Customer</center></th>
+>>>>>>> branch 'master' of https://github.com/isaibou/TEST5
 																	<th  style="width:25%"><center>Address</center></th>
 																	<th  style="width:15%"><center>City</center></th>
 																	<th  style="width:15%"><center>Country</center></th>
@@ -530,19 +591,85 @@
 																</tr>
 															</thead>
 															<tbody>
+<<<<<<< HEAD
 																<tr data-expanded="true" th:each="c:${cust}">
 																	<td th:text="${c.Customer_ID}"> <center></center> </td>
 																	<td th:text="${c.Name}" ><center></center> 	</td>
 																	<td th:text="${c.City}" ><center></center> 	</td>
 																		
+=======
+																<tr data-expanded="true">
+																
+																	<td> 	
+																		<div class="row">
+																			<div class="col-sm-3"><img class="img-thumbnail" src="https://upload.wikimedia.org/wikipedia/fr/9/91/ATW.PNG" alt="logo_company" width="60px" height="60px"/></div>
+																			<div class="col-sm-9"><b>ATTIJARIWAFA BANK <br> (052) 299-9999</b></div>
+>>>>>>> branch 'master' of https://github.com/isaibou/TEST5
 
+<<<<<<< HEAD
 																		
 																		<td th:text="${c.AdressCompany}"><center></center></td>
 																		<td th:text ="${c.Country}"><center><center/></td>
 																		<td th:text ="${c.PhoneCompany}"><center><center/></td>
 																		
 																</tr>
+=======
+																			</div>
+																		</td>
+																		<td><center>119 RUE RABAT AGADAL</center></td>
+																		<td><center>Banking<center/></td>
+																			<td><center><span class="label bg-success pull-center m-t-md">yes</span><center/></td>
+																				<td>
+																					<center>
+																						<div class="btn-group dropdown">
+																							<button class="btn btn-default btn-xs" data-toggle="dropdown"><i class="glyphicon glyphicon-cog"></i> Action <span class="caret"></span></button>
+																							<ul class="dropdown-menu">
+																								<li>
+																									<a style="margin-top:-5px;" data-toggle="modal"  data-target="#Update" class="btn btn-sm btn-light" role="button">Update</a>
+																								</li>
+																								<li>
+																									<a style="margin-top:-5px;" data-toggle="modal"  data-target="#Delete" class="btn btn-sm btn-light" role="button">Delete</a>
+																								</li>
+																								<li>
+																									<a style="margin-top:-5px;" data-toggle="modal"  data-target="#Detail" class="btn btn-sm btn-light" role="button">Detail</a>
+																								</li>
+																							</ul>
+																						</div>
+																					</center>
+																				</td>
+																			</tr>
+																			<tr data-expanded="true">
+>>>>>>> branch 'master' of https://github.com/isaibou/TEST5
 																			
+																				<td> 	
+																					<div class="row">
+																						<div class="col-sm-3"><img class="img-thumbnail" src="https://upload.wikimedia.org/wikipedia/commons/d/df/Logo_CFG_BANK-.jpg" alt="logo_company" width="60px" height="60px"/></div>
+																						<div class="col-sm-9"><b>CFG BANK <br> (052) 299-9999</b></div>
+
+																						</div>
+																					</td>
+																					<td><center>119 RUE RABAT AGADAL</center></td>
+																					<td><center>Banking<center/></td>
+																						<td><center><span class="label bg-success pull-center m-t-md">yes</span><center/></td>
+																							<td>
+																								<center>
+																									<div class="btn-group dropdown">
+																										<button class="btn btn-default btn-xs" data-toggle="dropdown"><i class="glyphicon glyphicon-cog"></i> Action <span class="caret"></span></button>
+																										<ul class="dropdown-menu">
+																											<li>
+																												<a style="margin-top:-5px;" data-toggle="modal"  data-target="#Update" class="btn btn-sm btn-light" role="button">Update</a>
+																											</li>
+																											<li>
+																												<a style="margin-top:-5px;" data-toggle="modal"  data-target="#Delete" class="btn btn-sm btn-light" role="button">Delete</a>
+																											</li>
+																											<li>
+																												<a style="margin-top:-5px;" data-toggle="modal"  data-target="#Detail" class="btn btn-sm btn-light" role="button">Detail</a>
+																											</li>
+																										</ul>
+																									</div>
+																								</center>
+																							</td>
+																						</tr>
 																					</tbody>
 																				</table>
 																			</div>
@@ -555,7 +682,74 @@
 </div>
 </div>
 </div>
+<div class="modal fade" role="dialog" id="AddClient" >
+ <div class="modal-dialog modal-lg" >
+  <div class="modal-content">
+   <div class="modal-header" style="background-image:url(img/grf-bg.jpg);color:white;">
+	<button type="button" class="close pull-right" data-dismiss="modal">&times;</button>
+    <h1 class="m-n font-bold h3"> <b class="glyphicon-plus pull"> </b> Add Company</h1>
+   </div>
+   <div class="modal-body">
+	<div class="row">
+	 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Comapny Name</b></label>
+     <div class="col-sm-8" style="margin: 5px 0px;" >
+      <input type="text" class="form-control" placeholder="Entry Name of Company" id="input-id-1">
+	 </div>
+	 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Address</b></label>
+	 <div class="col-sm-8" style="margin: 5px 0px;">
+	  <input type="text"  class="form-control" placeholder="Entry Address of Company"id="input-id-2">
+	 </div>
+	 <label class="col-sm-4 control-label" placeholder="Entry Country of Company" style="margin: 5px 0px;" for="input-id-1"><b>Country</b></label>
+	 <div class="col-sm-8" style="margin: 5px 0px;">
+	  <select id="countryA" name ="country" class="form-control m-b"></select>
+	 </div>
+	 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>City</b></label>
+	 <div class="col-sm-8" style="margin: 5px 0px;">
+	  <select name ="state" id ="stateA" class="form-control m-b"></select>
+	 </div>
+	 <label class="col-sm-4 control-label" placeholder="Entry Phone of Company" style="margin: 5px 0px;" for="input-id-1"><b>Phone</b></label>
+	 <div class="col-sm-8" style="margin: 5px 0px;">
+	  <input type="tel" placeholder="Entry Phone of Company"class="form-control" id="input-id-1" required>
+	 </div>
+	 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Industry</b></label>
+	 <div class="col-sm-8" style="margin: 5px 0px;">
+	  <select name="account" class="form-control m-b">
+	   <option>Advertising</option>
+	   <option>Manufacturing</option>
+	   <option>Construction</option>
+	   <option>Education</option>
+	   <option>Entertainment</option>
+	   <option>Healthcare</option>
+	   <option>Government</option>
+	   <option>Technology</option>
+	   <option>Retail</option>
+	   <option>Wholesale</option>
+	   <option>Banking</option>
+	   <option>Finance</option>
+	   <option>Telecomunication</option>
+	   <option>Transportation</option>
+	  </select>
+	 </div>
+     <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>VIP</b></label>
+	 <div class="col-sm-8" style="margin: 5px 0px;">
+	  <div class="col-sm-4">
+	   <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked="">Yes</input>
+      </div>
+	  <div class="col-sm-4">
+	   <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked=""  >No</input>
+	  </div>
+	 </div>
+	</div>
+   </div>
+   <div class="modal-footer">
+	<button style="margin:0px;" class="btn m-b-xs btn-sm btn-primary btn-addon"><i class="glyphicon glyphicon-ok"></i>Save</button>
+	<button style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon" data-dismiss="modal"><i class="glyphicon glyphicon-remove"  ></i>Annuler</button>
+   </div>
+  </div>
+ </div>
+</div>
 
+<<<<<<< HEAD
 
 
 
@@ -818,6 +1012,170 @@
 													</div>
 										
 
+=======
+<div class="modal fade" role="dialog" id="Update" >
+ <div class="modal-dialog modal-lg" >
+  <div class="modal-content">
+   <div class="modal-header" style="background-image:url(img/grf-bg.jpg);color:white;">
+	<button type="button" class="close pull-right" data-dismiss="modal">&times;</button>
+    <h1 class="m-n font-bold h3"> Update Company</h1>
+   </div>
+   <div class="modal-body">
+	<div class="row">
+	 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Comapny Name</b></label>
+     <div class="col-sm-8" style="margin: 5px 0px;" >
+      <input type="text" class="form-control" placeholder="Entry Name of Company" id="input-id-1">
+	 </div>
+	 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Address</b></label>
+	 <div class="col-sm-8" style="margin: 5px 0px;">
+	  <input type="text"  class="form-control" placeholder="Entry Address of Company"id="input-id-2">
+	 </div>
+     <label class="col-sm-4 control-label" placeholder="Entry Country of Company" style="margin: 5px 0px;" for="input-id-1"><b>Country</b></label>
+	 <div class="col-sm-8" style="margin: 5px 0px;">
+	  <select id="countryU" name ="country" class="form-control m-b"></select>
+	 </div>
+	 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>City</b></label>
+	 <div class="col-sm-8" style="margin: 5px 0px;">
+	  <select name ="state" id ="stateU" class="form-control m-b"></select>
+	 </div>
+	 <label class="col-sm-4 control-label" placeholder="Entry Phone of Company" style="margin: 5px 0px;" for="input-id-1"><b>Phone</b></label>
+	 <div class="col-sm-8" style="margin: 5px 0px;">
+	  <input type="text" placeholder="Entry Phone of Company"class="form-control" id="input-id-1">
+	 </div>
+	 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Industry</b></label>
+	 <div class="col-sm-8" style="margin: 5px 0px;">
+	  <select name="account" class="form-control m-b">
+	   <option>Advertising</option>
+	   <option>Manufacturing</option>
+	   <option>Construction</option>
+	   <option>Education</option>
+	   <option>Entertainment</option>
+	   <option>Healthcare</option>
+	   <option>Government</option>
+	   <option>Technology</option>
+	   <option>Retail</option>
+	   <option>Wholesale</option>
+	   <option>Banking</option>
+	   <option>Finance</option>
+	   <option>Telecomunication</option>
+	   <option>Transportation</option>
+	  </select>
+	 </div>
+     <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>VIP</b></label>
+	 <div class="col-sm-8" style="margin: 5px 0px;">
+	  <div class="col-sm-4">
+	   <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked="">Yes</input>
+      </div>
+	  <div class="col-sm-4">
+	   <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked=""  >No</input>
+	  </div>
+	 </div>
+	</div>
+   </div>
+   <div class="modal-footer">
+	<button style="margin:0px;" class="btn m-b-xs btn-sm btn-primary btn-addon"><i class="glyphicon glyphicon-ok"></i>Save</button>
+	<button style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon" data-dismiss="modal"><i class="glyphicon glyphicon-remove"  ></i>Annuler</button>
+   </div>
+  </div>
+ </div>
+</div>
+<div class="modal fade" role="dialog" id="Delete" >
+ <div class="modal-dialog modal-lg" >
+  <div class="modal-content">
+   <div class="modal-header" style="background-image:url(img/grf-bg.jpg);color:white;">
+	<button type="button" class="close pull-right" data-dismiss="modal">&times;</button>
+	<h1 class="m-n font-bold h3">Delete Customer</h1>
+   </div>
+   <div class="modal-body">
+   	Do you want to delete this Customer ? 
+   </div>
+   <div class="modal-footer">
+	<button class="btn m-b-xs btn-sm btn-primary btn-addon"><i class="glyphicon glyphicon-ok"></i>Yes</button>
+	<button class="btn m-b-xs btn-sm btn-default btn-addon" data-dismiss="modal"><i class="glyphicon glyphicon-remove"></i>No</button>
+   </div>
+  </div>  
+ </div>
+</div>
+<div class="modal fade" role="dialog" id="Detail" >
+ <div class="modal-dialog modal-lg" >
+  <div class="modal-content">
+   <div class="modal-header" style="background-image:url(img/grf-bg.jpg);color:white;">
+  <button type="button" class="close pull-right" data-dismiss="modal">&times;</button>
+     <h1 class="m-n font-bold h3">Information Customer</h1>
+   </div>
+   <div class="modal-body">
+   	<div class="panel-heading">
+          <span class="m-n font-thin h2 text-black">Information Customer</span>
+	</div>
+	<div class="panel-body">
+    <p>
+     <span class="m-n font-thin h3 text-black" >Nom :</span>
+	 <span ng-repeat="nom in company"> {{ company.nomCompany }} </br></span>
+	 <span class="m-n font-thin h3 text-black">Logo :</span>
+	 <span> {{ company.logoCompany }}</span></br>
+	 <span class="m-n font-thin h3 text-black" >Adresse :</span> 
+	 <span ng-repeat="adresseCompany in company"> {{ company.adresseCompany }} </br></span>
+	 <span class="m-n font-thin h3 text-black">Industry :</span>
+	 <span ng-repeat="industryCompany in company"> {{ company.industryCompany }}</span></br>
+	 <span class="m-n font-thin h3 text-black">Phone :</span>
+	 <span ng-repeat="phoneCompany in company"> {{ company.phoneCompany }}</span></br>
+	 <span class="m-n font-thin h3 text-black">PM community :</span>
+	 <span ng-repeat="PMcommunity in company"> {{ company.PMcommunityCompany }}</span></br>
+	</p>
+	</div>
+	<div class="panel-heading " >
+         <span class="m-n font-thin h2 text-black">Information Purchasing</span>
+	</div>
+	<div class="panel-body">
+	 <p>
+	    <span class="m-n font-thin h3 text-black">Nom :</span>
+		<span ng-repeat="nomPurchasing in purchasing"> {{ purchasing.nomPurchasing }}</span></br>
+		<span class="m-n font-thin h3 text-black">Phone :</span>
+		<span ng-repeat="phonePurchasing in purchasing"> {{ purchasing.phonePurchasing }}</span></br>
+		<span class="m-n font-thin h3 text-black">Email :</span>
+		<span ng-repeat="emailPurchasing in purchasing"> {{ purchasing.emailPurchasing }}</span>
+     </p>
+	</div>
+	<div class="panel-heading " >
+         <span class="m-n font-thin h2 text-black">Information Technical</span>
+    </div>
+	<div class="panel-body">
+	 <p>
+	    <span class="m-n font-thin h3 text-black">Nom :</span>
+		<span ng-repeat="nomTechnical in technical"> {{ technical.nomTechnical }}</span></br>
+		<span class="m-n font-thin h3 text-black">Phone :</span>
+	    <span ng-repeat="phoneTechnical in technical"> {{ technical.phoneTechnical }}</span></br>
+	    <span class="m-n font-thin h3 text-black">Email :</span>
+		<span ng-repeat="emailTechnical in technical"> {{ technical.emailTechnical }}</span>
+	 </p>
+	</div>
+	<div class="panel-heading " >
+         <span class="m-n font-thin h2 text-black">Information CIO</span>
+	</div>
+	<div class="panel-body">
+	 <p>
+		<span class="m-n font-thin h3 text-black">Nom :</span>
+		<span ng-repeat="nomCIO in CIO"> {{ CIO.nomCIO }}</span></br>
+		<span class="m-n font-thin h3 text-black">Phone :</span>
+		<span ng-repeat="phoneCIO in CIO"> {{ CIO.phoneCIO }}</span></br>
+		<span class="m-n font-thin h3 text-black">Email :</span>
+		<span ng-repeat="emailCIO in CIO"> {{ CIO.emailCIO }}</span>
+	 </p>
+    </div>
+    <div class="panel-heading">
+           <span class="m-n font-thin h2 text-black">DataCentre</span>
+	</div>
+	<div class="panel-body">
+		<span ng-repeat="nom in company.DataCentre"> {{ nom.nomDataCentre }}</br></span>
+	</div>
+   </div>
+   <div class="modal-footer">
+   <button class="btn m-b-xs btn-sm btn-primary btn-addon" data-dismiss="modal">Return</button>
+  </div>
+  </div>  
+</div>
+</div>
+>>>>>>> branch 'master' of https://github.com/isaibou/TEST5
 									<!-- /content -->
 
 									<!-- footer -->
@@ -841,6 +1199,7 @@
 								<script src="js/ui-nav.js"></script>
 								<script src="js/ui-toggle.js"></script>
 								<script src="js/ui-client.js"></script>
+								<script src = "js/countries.js"></script>
 								<script>
 																					$('.count').each(function () {
 																						$(this).prop('Counter',0).animate({
@@ -854,7 +1213,71 @@
 																						});
 																					});
 								</script>
+<script language="javascript">
+	populateCountries("countryA", "stateA"); // first parameter is id of country drop-down and second parameter is id of state drop-down
+    populateCountries("countryU", "stateU");
+</script>
+<script type="text/javascript">
+  function changecolor() {
+       $('body,.wrapper,.content,.panel-default,.panel-heading,#content-h,#header,.modal-content').css("background-color", "#3a3f51");
+       $('.wrapper,.content,.panel-default,.panel-heading,#content-h').css("border-color", "#313639");
+		$('.h3,.h5,.wrapper,panel-default,#content-b,.panel-heading').css("color", "white");
+		          $('.panel-default,#content-b').css("background-color", "#3a3f51");
 
+	google.charts.load('current', {packages: ['corechart']});
+    google.charts.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+      // Define the chart to be drawn.
+      var data = new google.visualization.DataTable();
+      data.addColumn('string', 'Element');
+      data.addColumn('number', 'Percentage');
+      data.addRows([
+        ['Configuration', 0.68],
+        ['Documentation', 0.11],
+        ['Maintenance', 0.11],
+        ['Installation', 0.10]
+      ]);
+
+      // Instantiate and draw the chart.
+      var chart = new google.visualization.PieChart(document.getElementById('myPieChart'));
+	  var options = {backgroundColor: '#3a3f51', colors: ['#6254b2', '#3289c8', '#27c24c','#ffbb3b'],legendTextStyle: { color: '#FFF' },is3D: true};
+      chart.draw(data, options);
+    }
+
+      };
+	  
+	    function lightmode() {
+       $('.wrapper,.content,.panel-heading,#content-h,#header,.modal-content').css("background-color", "#f0f3f4");
+          $('.panel-default,#content-b').css("background-color", "#f0f3f4");
+       $('.wrapper,.content,.panel-default,.panel-heading,#content-h').css("border-color", "#dee5e7");
+		$('.h3,.h5,.wrapper,panel-default,#content-b,.panel-heading').css("color", "#58666e");
+
+	google.charts.load('current', {packages: ['corechart']});
+    google.charts.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+      // Define the chart to be drawn.
+      var data = new google.visualization.DataTable();
+      data.addColumn('string', 'Element');
+      data.addColumn('number', 'Percentage');
+      data.addRows([
+        ['Configuration', 0.68],
+        ['Documentation', 0.11],
+        ['Maintenance', 0.11],
+        ['Installation', 0.10]
+      ]);
+
+      // Instantiate and draw the chart.
+      var chart = new google.visualization.PieChart(document.getElementById('myPieChart'));
+	  var options = {backgroundColor: '#f0f3f4', colors: ['#6254b2', '#3289c8', '#27c24c','#ffbb3b'],legendTextStyle: { color: 'black' },is3D: true};
+      chart.draw(data, options);
+    }
+
+      };
+	  
+ 
+		</script>
 							</body>
 						</html>
 						

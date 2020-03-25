@@ -7,7 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+<<<<<<< HEAD
 import org.springframework.web.bind.annotation.RequestMethod;
+=======
+>>>>>>> branch 'master' of https://github.com/isaibou/TEST5
 
 import com.example.demo.entities.*;
 import com.example.demo.repository.CustomerRepository;

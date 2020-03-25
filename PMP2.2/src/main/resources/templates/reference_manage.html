@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="">
+<html xmlns:th="http://www.thymeleaf.org">
 	<head>
 		<meta charset="utf-8" />
 		<title>Reference Manage</title>
@@ -175,6 +175,7 @@
 											<!-- / dropdown -->
 										</li>
 										<li class="dropdown">
+											
 												<span class="thumb-sm avatar pull-right m-t-n-sm m-b-n-sm m-l-sm">
 													<img src="img/user.png" alt="...">
 														<i class="on md b-white bottom"></i>
@@ -257,7 +258,7 @@
 																<a href>Settings</a>
 															</li>
 															<li>
-																<a href="page_profile.html">Profile</a>
+																<a th:href="page_profile">Profile</a>
 															</li>
 															<li>
 																<a href>
@@ -267,7 +268,7 @@
 															</li>
 															<li class="divider"></li>
 															<li>
-																<a href="page_signin.html">Logout</a>
+																<a th:href="page_signin">Logout</a>
 															</li>
 														</ul>
 														<!-- / dropdown -->
@@ -344,7 +345,11 @@
                       <span>Manage users</span>
                     </a>
                   </li>
-                    
+                                    <li>
+                    <a th:href="TypeUsers">
+                      <span>Manage Type users</span>
+                    </a>
+                  </li>  
                 </ul>
               </li>
               <li>
@@ -371,8 +376,8 @@
                     </a>
                   </li>
                   <li>
-                    <a th:href="project_delivrable_manage">
-                      <span>Manage Delivrable</span>
+                    <a th:href="deliverable_manage">
+                      <span>Manage Deliverable</span>
                     </a>
                   </li>
                   <li>
@@ -393,7 +398,7 @@
                 </a>
                 <ul class="nav nav-sub dk">
                   <li class="">
-                    <a href="assets_manage.html">
+                    <a th:href="assets_manage">
                       <span>Manage Assets</span>
                     </a>
                   </li>
@@ -462,7 +467,7 @@
                 <span>Your Stuff</span>
               </li>  
               <li>
-                <a href="page_profile.html">
+                <a th:href="page_profile">
                   <i class="icon-user icon text-success-lter"></i>
                   <b class="badge bg-success pull-right">30%</b>
                   <span>Profile</span>
@@ -501,7 +506,7 @@
 
 											<!--<div class="panel panel-default">
 													<div class="panel-heading">
-														<small><a href="index.html">Home</a> </small>><small> Manage Reference Projects</small>
+														<small><a th:href="index">Home</a> </small>><small> Manage Reference Projects</small>
                                                     </div>
 												</div>-->
 											<div class="row" style="margin:5px;background-color:#f0f3f4;">
@@ -606,11 +611,11 @@ function drawChart() {
 																		}" class="table table-striped b-t b-b">
 																	<thead>
 																		<tr>
-																			<th  style="width:10%"><center>Reference Name</center></th>
-																			<th  style="width:5%"><center>Project</center></th>
+																			<th  style="width:10%"><center>Project</center></th>
 																			<th  style="width:5%"><center>year</center></th>
-																			<th  style="width:25%"><center>SignedBy</center></th>
+																			<th  style="width:5%"><center>SignedBy</center></th>
 																			<th  style="width:25%"><center>Signing Date</center></th>
+																			<th  style="width:25%"><center>Picture File</center></th>
 																			<th  style="width:25%"><center>keywords tags</center></th>
 																			<th  style="width:10%"><center>Preview</center></th>
 																			<th  style="width:15%"><center>Actions</center></th>
@@ -618,11 +623,11 @@ function drawChart() {
 																	</thead>
 																	<tbody>
 																		<tr data-expanded="true">
-																			<td><center>PowerM</center></td>
 																			<td><center>PMP</center></td>
-																			<td><center>2020<center/></td>
+																			<td><center>2020</center></td>
 																			<td><center><span class="badge bg-primary">Walid</span></center></td>
-																			<td>03-02-2020</td>		
+																			<td><center>03-02-2020</center></td>
+																			<td> </td>		
 																				<td>
 																					<span class="badge bg-info">Dell servers</span>
 																					<span class="badge bg-info">Futjisi servers</span>
@@ -676,10 +681,6 @@ function drawChart() {
    </div>
    <div class="modal-body">
 	<div class="row">
-	 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Reference Name</b></label>
-	 <div class="col-sm-8" style="margin: 5px 0px;">
-	  <input type="text" placeholder="Entry Name" class="form-control" id="input-id-1">
-	 </div>
 	 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Project</b></label>
 	 <div class="col-sm-8" style="margin: 5px 0px;" >
 	  <select name="account" class="form-control m-b">
@@ -770,10 +771,6 @@ function drawChart() {
    </div>
    <div class="modal-body">
 	<div class="row">
-	 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Reference Name</b></label>
-	 <div class="col-sm-8" style="margin: 5px 0px;">
-	  <input type="text" placeholder="Entry Name" class="form-control" id="input-id-1">
-	 </div>
 	 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Project</b></label>
 	 <div class="col-sm-8" style="margin: 5px 0px;" >
 	  <select name="account" class="form-control m-b">
@@ -897,8 +894,7 @@ function drawChart() {
 	</p>
    </div>
    <div class="modal-footer">
-   <button class="btn m-b-xs btn-sm btn-primary btn-addon"><i class="glyphicon glyphicon-ok"></i>Yes</button>
-   <button class="btn m-b-xs btn-sm btn-default btn-addon" data-dismiss="modal"><i class="glyphicon glyphicon-remove"></i>No</button>
+   <button class="btn m-b-xs btn-sm btn-primary btn-addon" data-dismiss="modal">Return</button>
   </div>
   </div>  
 </div>

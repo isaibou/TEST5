@@ -1,0 +1,719 @@
+ <!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8" />
+<title>Type Users</title>
+<meta name="description" content="app, web app, responsive, responsive layout, admin, admin panel, admin dashboard, flat, flat ui, ui kit, AngularJS, ui route, charts, widgets, components" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+<link rel="stylesheet" href="../libs/assets/animate.css/animate.css" type="text/css" />
+<link rel="stylesheet" href="../libs/assets/font-awesome/css/font-awesome.min.css" type="text/css" />
+<link rel="stylesheet" href="../libs/assets/simple-line-icons/css/simple-line-icons.css" type="text/css" />
+<link rel="stylesheet" href="../libs/jquery/bootstrap/dist/css/bootstrap.css" type="text/css" />
+<link rel="stylesheet" href="css/font.css" type="text/css" />
+<link rel="stylesheet" href="css/app.css" type="text/css" />
+<style>
+.hidetext { -webkit-text-security: square; }
+</style>
+</head>
+<body>
+<div class="app app-header-fixed "><!-- header -->
+<header id="header" class="app-header navbar" role="menu"><!-- navbar header -->
+<div class="navbar-header bg-dark">
+ <button class="pull-right visible-xs dk" ui-toggle-class="show" target=".navbar-collapse">
+  <i class="glyphicon glyphicon-cog"></i>
+ </button>
+ <button class="pull-right visible-xs" ui-toggle-class="off-screen" target=".app-aside" ui-scroll="app">
+  <i class="glyphicon glyphicon-align-justify"></i>
+ </button><!-- brand -->
+ <a href="#/" class="navbar-brand text-lt">
+  <i class="fa fa-power-off"></i>
+  <span class="hidden-folded m-l-xs">PowerM</span>
+ </a><!-- / brand -->
+</div><!-- / navbar header --><!-- navbar collapse -->
+<div class="collapse pos-rlt navbar-collapse box-shadow bg-white-only"><!-- buttons -->
+ <div class="nav navbar-nav hidden-xs">
+  <a href="#" class="btn no-shadow navbar-btn" ui-toggle-class="app-aside-folded" target=".app">
+   <i class="fa fa-dedent fa-fw text"></i><i class="fa fa-indent fa-fw text-active"></i>
+  </a>
+  <a href="#" class="btn no-shadow navbar-btn" ui-toggle-class="show" target="#aside-user"><i class="icon-user fa-fw"></i></a>
+ </div><!-- link and dropdown -->
+ <ul class="nav navbar-nav hidden-sm">
+  <li class="dropdown"><a href="#" data-toggle="dropdown" class="dropdown-toggle"><span translate="header.navbar.new.NEW"></span> <span class="fa fa-moon-o lb-warning"></span></a><ul class="dropdown-menu" role="menu"><li><button type="button" name="button" id="darkmode" onclick="changecolor()"><span translate="header.navbar.new.TASK">ON</span></button></li><li><button  type="button" name="button" id="lightmode" onclick="lightmode()"><span translate="header.navbar.new.TASK">OFF</span></button></li></ul></li>
+ </ul><!-- / link and dropdown --><!-- search form -->
+ <form class="navbar-form navbar-form-sm navbar-left shift" ui-shift="prependTo" data-target=".navbar-collapse" role="search" ng-controller="TypeaheadDemoCtrl">
+  <div class="form-group">
+   <div class="input-group">
+	<input type="text" ng-model="selected" typeahead="state for state in states | filter:$viewValue | limitTo:8" class="form-control input-sm bg-light no-border rounded padder" placeholder="Search projects...">
+	<span class="input-group-btn">
+	 <button type="submit" class="btn btn-sm bg-light rounded"><i class="fa fa-search"></i></button>
+	</span>
+   </div>
+  </div>
+ </form><!-- / search form --><!-- nabar right -->
+ <ul class="nav navbar-nav navbar-right">
+  <li class="dropdown">
+   <a href="#" data-toggle="dropdown" class="dropdown-toggle">
+   	<i class="icon-bell fa-fw"></i>
+   	<span class="visible-xs-inline">Notifications</span>
+   	<span class="badge badge-sm up bg-danger pull-right-xs">2</span>
+   </a><!-- dropdown -->
+   <div class="dropdown-menu w-xl animated fadeInUp">
+   	<div class="panel bg-white">
+   	 <div class="panel-heading b-light bg-light">
+   	  <strong>You have <span>2</span> notifications</strong>
+     </div>
+     <div class="list-group">
+      <a href class="list-group-item">
+       <span class="pull-left m-r thumb-sm"><img src="img/a0.jpg" alt="..." class="img-circle"></span>
+       <span class="clear block m-b-none">Use awesome animate.css<br><small class="text-muted">10 minutes ago</small></span>
+      </a>
+      <a href class="list-group-item">
+       <span class="clear block m-b-none">1.0 initial released<br><small class="text-muted">1 hour ago</small></span>
+      </a>
+     </div>
+     <div class="panel-footer text-sm">
+      <a href class="pull-right"><i class="fa fa-cog"></i></a>
+      <a href="#notes" data-toggle="class:show animated fadeInRight">See all the notifications</a>
+     </div>
+    </div>
+   </div><!-- / dropdown -->
+  </li>
+  <li class="dropdown">
+   <a href="#" data-toggle="dropdown" class="dropdown-toggle clear" data-toggle="dropdown">
+   	<span class="thumb-sm avatar pull-right m-t-n-sm m-b-n-sm m-l-sm">
+     <img src="img/user.png" alt="..."><i class="on md b-white bottom"></i>
+    </span>
+    <span class="hidden-sm hidden-md">Walid.largou</span><b class="caret"></b>
+   </a><!-- dropdown -->
+   <ul class="dropdown-menu animated fadeInRight w">
+   	<li class="wrapper b-b m-b-sm bg-light m-t-n-xs">
+   	 <div><p>300mb of 500mb used</p></div>
+   	 <div class="progress progress-xs m-b-none dker">
+   	  <div class="progress-bar progress-bar-info" data-toggle="tooltip" data-original-title="50%" style="width: 50%"></div>
+   	 </div>
+   	</li>
+   	<li><a href><span class="badge bg-danger pull-right">30%</span><span>Settings</span></a></li>
+   	<li><a ui-sref="app.page.profile">Profile</a></li>
+   	<li><a ui-sref="app.docs"><span class="label bg-info pull-right">new</span>Help</a></li>
+   	<li class="divider"></li><li><a ui-sref="access.signin">Logout</a></li>
+   </ul><!-- / dropdown -->
+  </li>
+ </ul><!-- / navbar right -->
+</div><!-- / navbar collapse -->
+</header><!-- / header --><!-- aside -->
+<aside id="aside" class="app-aside hidden-xs bg-dark">
+ <div class="aside-wrap">
+  <div class="navi-wrap"><!-- user -->
+   <div class="clearfix hidden-xs text-center hide" id="aside-user">
+	<div class="dropdown wrapper">
+	 <a href="app.page.profile">
+	  <span class="thumb-lg w-auto-folded avatar m-t-sm"><img src="img/a0.jpg" class="img-full" alt="..."></span>
+	 </a>
+	 <a href="#" data-toggle="dropdown" class="dropdown-toggle hidden-folded">
+	  <span class="clear"><span class="block m-t-sm"><strong class="font-bold text-lt">Walid.Largou</strong><b class="caret"></b></span><span class="text-muted text-xs block">Manager</span></span>
+	 </a><!-- dropdown -->
+	 <ul class="dropdown-menu animated fadeInRight w hidden-folded">
+	  <li class="wrapper b-b m-b-sm bg-info m-t-n-xs"><span class="arrow top hidden-folded arrow-info"></span><div><p>300mb of 500mb used</p></div><div class="progress progress-xs m-b-none dker"><div class="progress-bar bg-white" data-toggle="tooltip" data-original-title="50%" style="width: 50%"></div></div></li>
+	  <li><a href>Settings</a></li>
+	  <li><a th:href="page_profile">Profile</a></li>
+	  <li><a href><span class="badge bg-danger pull-right">3</span>Notifications</a></li>
+	  <li class="divider"></li>
+	  <li><a th:href="page_signin">Logout</a></li>
+     </ul><!-- / dropdown -->
+	</div>
+	<div class="line dk hidden-folded"></div>
+   </div><!-- / user --><!-- nav -->
+          <nav ui-nav class="navi clearfix">
+            <ul class="nav">
+              <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
+                <span>Main</span>
+              </li>
+              <li>
+                <a th:href="index" class="auto">      
+                  <i class="glyphicon glyphicon-stats icon text-primary-dker"></i>
+                  <span class="font-bold">Dashboard</span>
+                </a>
+               
+              </li>
+              <li>
+                <a th:href="mail">
+                  <b class="badge bg-info pull-right">9</b>
+                  <i class="glyphicon glyphicon-envelope icon text-info-lter"></i>
+                  <span class="font-bold">Email</span>
+                </a>
+              </li>
+              <li class="line dk"></li>
+
+              <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
+                <span>Management</span>
+              </li>
+              <li>
+                <a href class="auto">      
+                  <span class="pull-right text-muted">
+                    <i class="fa fa-fw fa-angle-right text"></i>
+                    <i class="fa fa-fw fa-angle-down text-active"></i>
+                  </span>
+                  <b class="badge bg-info pull-right">3</b>
+                  <i class="glyphicon glyphicon-briefcase"></i>
+                  <span>Customers</span>
+                </a>
+                <ul class="nav nav-sub dk">
+               
+                  <li>
+                    <a th:href="customer_manage">
+                      <span>Manage customer</span>
+                    </a>
+                  </li>
+          
+          <li>
+                    <a th:href="purchasing_customer_manage">
+                      <span>Puchasing contact</span>
+                    </a>
+                  </li>
+                    
+                </ul>
+              </li>
+           <li>
+                <a href class="auto">      
+                  <span class="pull-right text-muted">
+                    <i class="fa fa-fw fa-angle-right text"></i>
+                    <i class="fa fa-fw fa-angle-down text-active"></i>
+                  </span>
+                  <b class="badge bg-info pull-right">3</b>
+                  <i class="glyphicon glyphicon-user"></i>
+                  <span>Users</span>
+                </a>
+                <ul class="nav nav-sub dk">
+               
+                  <li>
+                    <a th:href="users">
+                      <span>Manage users</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a thhref="TypeUsers">
+                      <span>Manage Type users</span>
+                    </a>
+                  </li> 
+                </ul>
+              </li>
+              <li>
+                <a th:href="timesheets" class="auto">
+                  <i class="glyphicon glyphicon-calendar icon"></i>
+                  <span>TimeSheet</span>
+                </a>
+
+              </li>
+              <li>
+                <a href class="auto">
+                  <span class="pull-right text-muted">
+                    <i class="fa fa-fw fa-angle-right text"></i>
+                    <i class="fa fa-fw fa-angle-down text-active"></i>
+                  </span>
+                  <b class="label bg-primary pull-right">2</b>
+                  <i class="glyphicon glyphicon-list"></i>
+                  <span>Projects</span>
+                </a>
+                <ul class="nav nav-sub dk">
+                  <li class="s">
+                    <a th:href="projects_manage">
+                      <span>Manage Project</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a th:href="deliverable_manage">
+                      <span>Manage Deliverable</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a th:href="reference_manage">
+                      <span>Manage Reference</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <a href class="auto">
+                  <span class="pull-right text-muted">
+                    <i class="fa fa-fw fa-angle-right text"></i>
+                    <i class="fa fa-fw fa-angle-down text-active"></i>
+                  </span>
+                  <i class="glyphicon  glyphicon-th"></i>
+                  <span>Assets</span>
+                </a>
+                <ul class="nav nav-sub dk">
+                  <li class="">
+                    <a th:href="assets_manage">
+                      <span>Manage Assets</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a th:href="assetstype_manage">
+                      <span>Manage Assets Type</span>
+                    </a>
+                  </li>
+          <li>
+                    <a th:href="firmware">
+                      <span>Firmware</span>
+                    </a>
+                  </li>
+          <li>
+                    <a th:href="vendor">
+                      <span>Vendor</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <a th:href="tickets_manage">
+                  <i class="glyphicon glyphicon-tag"></i>
+                  <span>Tickets</span>
+                </a>
+              </li>
+        <li>
+                <a th:href="contract_manage">
+                  <i class="fa fa-legal"></i></i>
+                  <span>Contrats</span>
+                </a>
+              </li>
+        <li>
+                <a th:href="expense">
+                  <i class="glyphicon  glyphicon-usd"></i></i>
+                  <span>Expenses</span>
+                </a>
+              </li>
+              <li>
+                <a th:href="request_manage" class="auto">
+        <span class="pull-right text-muted">
+                    <i class="fa fa-fw fa-angle-right text"></i>
+                    <i class="fa fa-fw fa-angle-down text-active"></i>
+                  </span>
+                  <i class="glyphicon  glyphicon-save icon"></i>
+                  <span>Request</span>
+                </a>
+                 <ul class="nav nav-sub dk">
+                  <li class="s">
+                    <a th:href="internal_request_manage">
+                      <span>Internal Request</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a th:href="external_request_manage">
+                      <span>External Request</span>
+                    </a>
+                  </li>
+                </ul>            
+              </li>
+              <li class="line dk hidden-folded"></li>
+
+              <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">          
+                <span>Your Stuff</span>
+              </li>  
+              <li>
+                <a th:href="page_profile">
+                  <i class="icon-user icon text-success-lter"></i>
+                  <b class="badge bg-success pull-right">30%</b>
+                  <span>Profile</span>
+                </a>
+              </li>
+              <li>
+                <a href>
+                  <i class="icon-question icon"></i>
+                  <span>Documents</span>
+                </a>
+              </li>
+            </ul>
+          </nav><!-- nav --><!-- aside footer --><!-- / aside footer -->
+  </div>
+ </div>
+</aside><!-- / aside --><!-- content -->
+<div id="content" class="app-content" role="main">
+ <div class="app-content-body ">
+  <div class="hbox hbox-auto-xs hbox-auto-sm">
+   <div class="col">
+  <div class="bg-light lter b-b wrapper-md">
+   <h1 class="m-n font-bold h3">Manage Type Users   </h1>
+  </div>
+  <!-- <div class="panel-heading"><small><a th:href="index">Home</a> </small>><small> Manage users</small> </div>-->
+	<div class="wrapper bg-white b-b">
+	 <ul class="nav nav-pills nav-sm">
+	  <li class="active"><a href="#tab_default_1" data-toggle="tab">Customers</a></li>
+	  <li><a href="#tab_default_2" data-toggle="tab">Employes</a></li>
+     </ul>
+	</div>
+  <div class="tab-content" >
+   <div class="tab-pane active" id="tab_default_1" >
+    <div>
+    <div class="col-sm-12">
+                            <div class="row text-center" style="margin: 10px 5px;">
+                              <div class="col-sm-6">
+                                <div class="panel padder-v item">
+                                  <div class="h1 count text-info font-thin h1 pull-center">121</div>
+                                  <span class="text-muted text-xs"><b>Nbr Total de User Customer</b></span>
+                                  <span class="bottom text-right w-full">
+                                    <i class="glyphicon   glyphicon-tower text-muted m-r-sm"></i>
+                                  </span>
+                                </div>
+                              </div>
+
+                              <div class="col-sm-6">
+                                <a href="" class="block panel padder-v bg-primary item">
+                                  <span class="text-white count font-thin h1 block">80</span>
+                                  <span class="text-muted text-xs"><b>Customer assidus</b></span>
+                                  <span class="bottom text-right w-full">
+                                    <i class="glyphicon glyphicon-briefcase text-muted m-r-sm"></i>
+                                  </span>
+                                </a>
+                              </div>
+                            </div>
+                          </div>
+    <a style="margin-top:5px;" data-toggle="modal"  data-target="#AddUserC" class="btn btn-sm btn-info pull-right"  role="button"><b class="glyphicon-plus pull"> </b> Add Type User Customer</a>
+    </div>
+	 <div class="col-sm-12" style="padding:20px 15px;margin:0px 2px;border-top:2px #19a9d5 solid;background-color:white;">
+	  <div class="panel panel-default">
+       <div class="table-responsive">
+		<table ui-jq="dataTable" ui-options="{ aoColumns: [
+											
+												{ mData: 'Picture' },
+												{ mData: 'Name & Last Name' },
+												{ mData: 'CIN' },
+												{ mData: 'Status' },
+												{ mData: 'password' },
+												{ mData: 'action' }]
+											}" class="table  b-t b-b">
+		<thead>
+		 <tr>    
+		  <th  style="width:10%"><center>Picture</center></th>
+		  <th  style="width:16%"><center>Name & Last Name</center></th>
+      <th  style="width:8%"><center>Telephone</center></th>
+		  <th  style="width:15%"><center>Status</center></th>
+		  <th  style="width:15%"><center>Type User Customer</center></th>
+	    <th  style="width:15%"><center>Actions</center></th>
+		 </tr>
+		</thead>
+		<tbody>
+		 <tr data-expanded="true">		
+		  <td><img class="img-thumbnail" src="img/user.png" alt="logo_company" width="60px" height="60px"/></td>
+		  <td><h1 class="m-n font-bold h4">Walid Largou</h1> <small><i class="fa fa-phone"></i> (052) 299-9999 <br> <i  class="fa fa-envelope"/></i> walid.largou@powerm.ma</small></td>
+          <td><center>06000000</center></td>
+		  <td><center><center><span class="label bg-success pull-center m-t-md">enable</span><center/><center/></td>
+	   	  <td><center><h1 class="m-n font-bold h4">CEO</h1></center></td>
+		  <td>
+		   <center>
+            <div class="btn-group dropdown">
+             <button class="btn btn-default btn-xs" data-toggle="dropdown">
+              <i class="glyphicon glyphicon-cog"></i> Action <span class="caret"></span>
+             </button>
+             <ul class="dropdown-menu">
+              <li><a style="margin-top:-5px;" data-toggle="modal"  data-target="#Update" class="btn btn-sm btn-light" role="button">Update</a></li>
+              <li><a style="margin-top:-5px;" data-toggle="modal"  data-target="#DetailM" class="btn btn-sm btn-light" role="button">Detail</a></li>
+             </ul>
+            </div>
+           </center>
+          </td>
+		 </tr>
+		</tbody>
+	   </table>
+      </div>
+     </div>
+	</div>
+</div>
+<div class="tab-pane" id="tab_default_2">
+  <div>
+    <div class="col-sm-12">
+                            <div class="row text-center" style="margin: 10px 5px;">
+                              <div class="col-sm-6">
+                                <a href="" class="block panel padder-v bg-primary item">
+
+                                  <div class="h1 count text-white font-thin h1 pull-center">211</div>
+                                  <span class="text-muted text-xs"><b>Nbr Total d'Employes </b></span>
+                                  <span class="bottom text-right w-full">
+                                    <i class="glyphicon glyphicon-tag text-muted m-r-sm"></i>
+                                  </span>
+                                </a>
+                              </div>
+
+                              <div class="col-sm-6">
+                                <div class="panel padder-v item">
+                                  <span class="text-info count font-thin h1 block">93</span>
+                                  <span class="text-muted text-xs"><b>Employés assidus</b></span>
+                                  <span class="bottom text-right w-full">
+                                    <i class="glyphicon  glyphicon-tag text-muted m-r-sm"></i>
+                                  </span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+    <a style="margin-top:5px;" data-toggle="modal"  data-target="#AddUserE" class="btn btn-sm btn-info pull-right" role="button"><b class="glyphicon-plus pull"> </b> Add Type User Employe</a>
+    </div>
+    <div class="col-sm-12" style="padding:20px 15px;margin:0px 2px;border-top:2px #19a9d5 solid;background-color:white;">
+	 <div class="panel panel-default">
+      <div class="table-responsive">
+	   <table ui-jq="dataTable" ui-options="{aoColumns: [
+												
+												{ mData: 'Picture' },
+												{ mData: 'Name & Last Name' },
+												{ mData: 'CIN' },
+												{ mData: 'Status' },
+												{ mData: 'password' },
+												{ mData: 'action' }]
+											}" class="table  b-t b-b">
+		<thead>
+		 <tr>
+	
+		  <th  style="width:10%"><center>Picture</center></th>
+		  <th  style="width:16%"><center>Name & Last Name</center></th>
+          <th  style="width:8%"><center>CIN</center></th>
+		  <th  style="width:15%"><center>Status</center></th>
+	      <th  style="width:15%"><center>Type User Employe</center></th>
+		  <th  style="width:15%"><center>Actions</center></th>
+		 </tr>
+		</thead>
+		<tbody>
+		 <tr data-expanded="true">
+	
+		  <td><img class="img-thumbnail" src="img/user.png" alt="logo_company" width="60px" height="60px"/></td>
+		  <td><h1 class="m-n font-bold h4">Youssef Sbai idrissi</h1></center> <small><i class="fa fa-phone"></i> (052) 299-9999 <br> <i class="fa fa-envelope"/></i> youssef.sbai@powerm.ma</small></td>
+          <td><center>L000001</center></td>
+          <td><center><center><span class="label bg-danger pull-center m-t-md">disable</span></center></center></td>
+		  <td><center><h1 class="m-n font-bold h4">Ingenieur</h1></center></td>
+		  <td>
+		   <center>
+		   	<div class="btn-group dropdown">
+		     <button class="btn btn-default btn-xs" data-toggle="dropdown">
+		      <i class="glyphicon glyphicon-cog"></i> Action <span class="caret"></span>
+		     </button>
+		     <ul class="dropdown-menu">
+		      <li><a style="margin-top:-5px;" data-toggle="modal"  data-target="#Update" class="btn btn-sm btn-light" role="button">Update</a></li>		      
+		      <li><a style="margin-top:-5px;" data-toggle="modal"  data-target="#DetailE" class="btn btn-sm btn-light" role="button">Detail</a></li>
+		     </ul>
+		    </div>
+		   </center>
+		  </td>
+		 </tr>
+		</tbody>
+	   </table>
+      </div>
+	 </div>
+	</div>
+  </div>
+   </div>
+  </div>
+ </div>
+</div>
+</div><!-- /content -->
+<div class="modal fade" role="dialog" id="AddUserE" >
+ <div class="modal-dialog modal-lg" >
+  <div class="modal-content">
+   <div class="modal-header" style="background-image:url(img/grf-bg.jpg);color:white;">
+	<button type="button" class="close pull-right" data-dismiss="modal">&times;</button>
+	<h1 class="m-n font-bold h3"> <b class="glyphicon-plus pull"> </b> Add Type User Employe</h1>
+   </div>
+   <div class="modal-body">
+	<div class="row">
+	 <label class="col-sm-4 control-label" for="input-id-1" style="margin:5px 0px;"><b>Type:</b></label>
+	 <div class="col-sm-8" style="margin:5px 0px;" >
+	  <input type="text" placeholder="Entry Nom" class="form-control" id="input-id-1">
+	 </div>
+	</div>
+   </div>
+  <div class="modal-footer">
+  <button style="margin:0px;" class="btn m-b-xs btn-sm btn-primary btn-addon"><i class="glyphicon glyphicon-ok"></i>Save</button>
+	<button style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon" data-dismiss="modal"><i class="glyphicon glyphicon-remove"></i>Annuler</button>
+   </div>
+  </div>
+ </div>
+</div>
+<div class="modal fade" role="dialog" id="AddUserC" >
+ <div class="modal-dialog modal-lg" >
+  <div class="modal-content">
+   <div class="modal-header" style="background-image:url(img/grf-bg.jpg);color:white;">
+  <button type="button" class="close pull-right" data-dismiss="modal">&times;</button>
+  <h1 class="m-n font-bold h3"> <b class="glyphicon-plus pull"> </b> Add Type User Customer</h1>
+   </div>
+   <div class="modal-body">
+  <div class="row">
+   <label class="col-sm-4 control-label" for="input-id-1" style="margin:5px 0px;"><b>Type:</b></label>
+   <div class="col-sm-8" style="margin:5px 0px;" >
+    <input type="text" placeholder="Entry Nom" class="form-control" id="input-id-1">
+   </div>
+  </div>
+   </div>
+  <div class="modal-footer">
+  <button style="margin:0px;" class="btn m-b-xs btn-sm btn-primary btn-addon"><i class="glyphicon glyphicon-ok"></i>Save</button>
+  <button style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon" data-dismiss="modal"><i class="glyphicon glyphicon-remove"></i>Annuler</button>
+   </div>
+  </div>
+ </div>
+</div>
+<div class="modal fade" role="dialog" id="Update" >
+ <div class="modal-dialog modal-lg" >
+  <div class="modal-content">
+   <div class="modal-header" style="background-image:url(img/grf-bg.jpg);color:white;">
+  <button type="button" class="close pull-right" data-dismiss="modal">&times;</button>
+  <h1 class="m-n font-bold h3"> Update Type User</h1>
+   </div>
+   <div class="modal-body">
+  <div class="row">
+   <label class="col-sm-4 control-label" for="input-id-1" style="margin:5px 0px;"><b>Type :</b></label>
+   <div class="col-sm-8" style="margin:5px 0px;" >
+    <input type="text" placeholder="Entry Nom" class="form-control" id="input-id-1">
+   </div>
+  </div>
+   </div>
+   <div class="modal-footer">
+  <button style="margin:0px;" class="btn m-b-xs btn-sm btn-primary btn-addon"><i class="glyphicon glyphicon-ok"></i>Save</button>
+  <button style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon" data-dismiss="modal"><i class="glyphicon glyphicon-remove"></i>Annuler</button>
+   </div>
+  </div>
+ </div>
+</div>
+<!--<div class="modal fade" role="dialog" id="Delete" >
+ <div class="modal-dialog modal-lg" >
+  <div class="modal-content">
+   <div class="modal-header" style="background-image:url(img/grf-bg.jpg);color:white;">
+  <button type="button" class="close pull-right" data-dismiss="modal">&times;</button>
+     <h1 class="m-n font-bold h3">Delete Type User</h1>
+   </div>
+   <div class="modal-body">
+    Do you want to delete this Type User ? 
+   </div>
+    <div class="modal-footer">
+   <button class="btn m-b-xs btn-sm btn-primary btn-addon"><i class="glyphicon glyphicon-ok"></i>Yes</button>
+   <button class="btn m-b-xs btn-sm btn-default btn-addon" data-dismiss="modal"><i class="glyphicon glyphicon-remove"></i>No</button>
+  </div>
+  </div>  
+</div>
+</div>-->
+<div class="modal fade" role="dialog" id="DetailE" >
+ <div class="modal-dialog modal-lg" >
+  <div class="modal-content">
+   <div class="modal-header" style="background-image:url(img/grf-bg.jpg);color:white;">
+  <button type="button" class="close pull-right" data-dismiss="modal">&times;</button>
+     <h1 class="m-n font-bold h3">Information Employe</h1>
+   </div>
+   <div class="modal-body">
+          <p>
+            <span class="m-n font-thin h3 text-black" >Employe Name:</span>
+            <span ng-repeat="nom in employe"> {{ employe.nomEmploye }} </br></span>
+            <span class="m-n font-thin h3 text-black" >Employe type:</span>
+            <span ng-repeat="type in employe"> {{ employe.typeEmploye }} </br></span>
+            <span class="m-n font-thin h3 text-black">Employe CIN:</span>
+            <span ng-repeat="CIN in employe"> {{ employe.CINEmploye }}</span></br>
+            <span class="m-n font-thin h3 text-black">Employe Telephone:</span>
+            <span ng-repeat="phone in employe"> {{ employe.phoneEmploye }}</span></br>
+            <span class="m-n font-thin h3 text-black">Login:</span>
+            <span ng-repeat="login in employe"> {{ employe.loginEmploye }}</span></br>
+            <span class="m-n font-thin h3 text-black">Password:</span>
+            <span ng-repeat="password in employe"> {{ employe.passwordEmploye }}</span></br>
+            <span class="m-n font-thin h3 text-black">Status:</span>
+            <span ng-repeat="status in employe"> {{ employe.statusEmploye }}</span></br>
+          </p> 
+   </div>
+   <div class="modal-footer">
+   <button class="btn m-b-xs btn-sm btn-primary btn-addon" data-dismiss="modal">Return</button>
+  </div>
+  </div>  
+</div>
+</div>
+<div class="modal fade" role="dialog" id="DetailM" >
+ <div class="modal-dialog modal-lg" >
+  <div class="modal-content">
+   <div class="modal-header" style="background-image:url(img/grf-bg.jpg);color:white;">
+  <button type="button" class="close pull-right" data-dismiss="modal">&times;</button>
+     <h1 class="m-n font-bold h3">Information User Customer</h1>
+   </div>
+   <div class="modal-body">
+        <p>
+            <span class="m-n font-thin h3 text-black" >User Customer Name:</span>
+            <span ng-repeat="nom in userCustomer"> {{ userCustomer.nomUserCustomer }} </br></span>
+            <span class="m-n font-thin h3 text-black" >User Customer Type:</span>
+            <span ng-repeat="type in userCustomer"> {{ userCustomer.typeUserCustomer }} </br></span>
+            <span class="m-n font-thin h3 text-black">Customer Name:</span>
+            <span ng-repeat="nom in customer"> {{ customer.nomCustomer }}</span></br>
+            <span class="m-n font-thin h3 text-black">User Customer Telephone:</span>
+            <span ng-repeat="phone in userCustomer"> {{ userCustomer.phoneUserCustomer }}</span></br>
+            <span class="m-n font-thin h3 text-black">Login:</span>
+            <span ng-repeat="login in userCustomer"> {{ userCustomer.loginUserCustomer }}</span></br>
+            <span class="m-n font-thin h3 text-black">Password:</span>
+            <span ng-repeat="password in userCustomer"> {{ userCustomer.passwordUserCustomer }}</span></br>
+            <span class="m-n font-thin h3 text-black">Status:</span>
+            <span ng-repeat="status in UserCustomer"> {{ userCustomer.statusUserCustomer }}</span></br>
+          </p> 
+   </div>
+   <div class="modal-footer">
+   <button class="btn m-b-xs btn-sm btn-primary btn-addon" data-dismiss="modal">Return</button>
+  </div>
+  </div>  
+</div>
+</div>
+<!-- footer -->
+<footer id="footer" class="app-footer" role="footer">
+ <div class="wrapper b-t bg-light">
+  <span class="pull-right">2.2.0 <a href ui-scroll="app" class="m-l-sm text-muted"><i class="fa fa-long-arrow-up"></i></a></span>&copy; 2020 Copyright.
+ </div>
+</footer>
+<!-- / footer -->
+</div>
+<script src="../libs/jquery/jquery/dist/jquery.js"></script>
+<script src="../libs/jquery/bootstrap/dist/js/bootstrap.js"></script>
+<script src="js/ui-load.js"></script>
+<script src="js/ui-jp.config.js"></script>
+<script src="js/ui-jp.js"></script>
+<script src="js/ui-nav.js"></script>
+<script src="js/ui-toggle.js"></script>
+<script src="js/ui-client.js"></script>
+<script src="js/myjavascript.js"></script>
+<script type="text/javascript">
+  function changecolor() {
+       $('body,.wrapper,.content,.panel-default,.panel-heading,#content-h,#header,.modal-content').css("background-color", "#3a3f51");
+       $('.wrapper,.content,.panel-default,.panel-heading,#content-h').css("border-color", "#313639");
+		$('.h3,.h5,.wrapper,panel-default,#content-b,.panel-heading').css("color", "white");
+		          $('.panel-default,#content-b').css("background-color", "#3a3f51");
+	google.charts.load('current', {packages: ['corechart']});
+    google.charts.setOnLoadCallback(drawChart);
+    function drawChart() {
+      // Define the chart to be drawn.
+      var data = new google.visualization.DataTable();
+      data.addColumn('string', 'Element');
+      data.addColumn('number', 'Percentage');
+      data.addRows([
+        ['Configuration', 0.68],
+        ['Documentation', 0.11],
+        ['Maintenance', 0.11],
+        ['Installation', 0.10]
+      ]);
+      // Instantiate and draw the chart.
+      var chart = new google.visualization.PieChart(document.getElementById('myPieChart'));
+	  var options = {backgroundColor: '#3a3f51', colors: ['#6254b2', '#3289c8', '#27c24c','#ffbb3b'],legendTextStyle: { color: '#FFF' },is3D: true};
+      chart.draw(data, options);
+    }
+      };  
+	    function lightmode() {
+       $('.wrapper,.content,.panel-heading,#content-h,#header,.modal-content').css("background-color", "#f0f3f4");
+          $('.panel-default,#content-b').css("background-color", "#f0f3f4");
+       $('.wrapper,.content,.panel-default,.panel-heading,#content-h').css("border-color", "#dee5e7");
+		$('.h3,.h5,.wrapper,panel-default,#content-b,.panel-heading').css("color", "#58666e");
+	google.charts.load('current', {packages: ['corechart']});
+    google.charts.setOnLoadCallback(drawChart);
+    function drawChart() {
+      // Define the chart to be drawn.
+      var data = new google.visualization.DataTable();
+      data.addColumn('string', 'Element');
+      data.addColumn('number', 'Percentage');
+      data.addRows([
+        ['Configuration', 0.68],
+        ['Documentation', 0.11],
+        ['Maintenance', 0.11],
+        ['Installation', 0.10]
+      ]);
+      // Instantiate and draw the chart.
+      var chart = new google.visualization.PieChart(document.getElementById('myPieChart'));
+	  var options = {backgroundColor: '#f0f3f4', colors: ['#6254b2', '#3289c8', '#27c24c','#ffbb3b'],legendTextStyle: { color: 'black' },is3D: true};
+      chart.draw(data, options);
+    }
+      };
+</script>
+</body>
+</html>
+								

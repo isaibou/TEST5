@@ -1,5 +1,5 @@
  <!DOCTYPE html>
-<html lang="en" class="">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="utf-8" />
 <title>Users</title>
@@ -79,6 +79,7 @@
    </div><!-- / dropdown -->
   </li>
   <li class="dropdown">
+   <a href="#" data-toggle="dropdown" class="dropdown-toggle clear" data-toggle="dropdown">
    	<span class="thumb-sm avatar pull-right m-t-n-sm m-b-n-sm m-l-sm">
      <img src="img/user.png" alt="..."><i class="on md b-white bottom"></i>
     </span>
@@ -114,10 +115,10 @@
 	 <ul class="dropdown-menu animated fadeInRight w hidden-folded">
 	  <li class="wrapper b-b m-b-sm bg-info m-t-n-xs"><span class="arrow top hidden-folded arrow-info"></span><div><p>300mb of 500mb used</p></div><div class="progress progress-xs m-b-none dker"><div class="progress-bar bg-white" data-toggle="tooltip" data-original-title="50%" style="width: 50%"></div></div></li>
 	  <li><a href>Settings</a></li>
-	  <li><a href="page_profile.html">Profile</a></li>
+	  <li><a th:href="page_profile">Profile</a></li>
 	  <li><a href><span class="badge bg-danger pull-right">3</span>Notifications</a></li>
 	  <li class="divider"></li>
-	  <li><a href="page_signin.html">Logout</a></li>
+	  <li><a th:href="page_signin">Logout</a></li>
      </ul><!-- / dropdown -->
 	</div>
 	<div class="line dk hidden-folded"></div>
@@ -189,7 +190,11 @@
                       <span>Manage users</span>
                     </a>
                   </li>
-                    
+                                    <li>
+                    <a th:href="TypeUsers">
+                      <span>Manage Type users</span>
+                    </a>
+                  </li>  
                 </ul>
               </li>
               <li>
@@ -216,8 +221,8 @@
                     </a>
                   </li>
                   <li>
-                    <a th;href="project_delivrable_manage.html">
-                      <span>Manage Delivrable</span>
+                    <a th:href="deliverable_manage">
+                      <span>Manage Deliverable</span>
                     </a>
                   </li>
                   <li>
@@ -307,7 +312,7 @@
                 <span>Your Stuff</span>
               </li>  
               <li>
-                <a href="page_profile.html">
+                <a th:href="page_profile">
                   <i class="icon-user icon text-success-lter"></i>
                   <b class="badge bg-success pull-right">30%</b>
                   <span>Profile</span>
@@ -332,10 +337,10 @@
 	<div class="bg-light lter b-b wrapper-md">
 	 <h1 class="m-n font-bold h3">Manage Users
 	 <a style="margin-top:-5px;" data-toggle="modal"  data-target="#AddUser" class="btn btn-sm btn-primary pull-right"  role="button"><b class="glyphicon-plus pull"> </b> Add User </a></h1>
-	</div><!-- <div class="panel-heading"><small><a href="index.html">Home</a> </small>><small> Manage users</small> </div>-->
+	</div><!-- <div class="panel-heading"><small><a th:href="index">Home</a> </small>><small> Manage users</small> </div>-->
 	<div class="wrapper bg-white b-b">
 	 <ul class="nav nav-pills nav-sm">
-	  <li class="active"><a href="#tab_default_1" data-toggle="tab">User Customers</a></li>
+	  <li class="active"><a href="#tab_default_1" data-toggle="tab">Customers</a></li>
 	  <li><a href="#tab_default_2" data-toggle="tab">Employes</a></li>
      </ul>
 	</div>
@@ -357,10 +362,10 @@
 	     
 		  <th  style="width:10%"><center>Picture</center></th>
 		  <th  style="width:16%"><center>Name & Last Name</center></th>
-          <th  style="width:8%"><center>CIN</center></th>
+          <th  style="width:8%"><center>Telephone</center></th>
 		  <th  style="width:15%"><center>Status</center></th>
 		  <th  style="width:15%"><center>Password</center></th>
-	      <th  style="width:15%"><center></center></th>
+	      <th  style="width:15%"><center>Actions</center></th>
 		 </tr>
 		</thead>
 		<tbody>
@@ -368,7 +373,7 @@
 		
 		  <td><img class="img-thumbnail" src="img/user.png" alt="logo_company" width="60px" height="60px"/></td>
 		  <td><h1 class="m-n font-bold h4">Walid Largou</h1> <small><i class="fa fa-phone"></i> (052) 299-9999 <br> <i  class="fa fa-envelope"/></i> walid.largou@powerm.ma</small></td>
-          <td><center>L000000</center></td>
+          <td><center>06000000</center></td>
 		  <td><center><center><span class="label bg-success pull-center m-t-md">enable</span><center/><center/></td>
 	   	  <td class="hidetext">password</td>
 		  <td>
@@ -411,7 +416,7 @@
           <th  style="width:8%"><center>CIN</center></th>
 		  <th  style="width:15%"><center>Status</center></th>
 	      <th  style="width:15%"><center>Password</center></th>
-		  <th  style="width:15%"><center></center></th>
+		  <th  style="width:15%"><center>Actions</center></th>
 		 </tr>
 		</thead>
 		<tbody>
@@ -576,6 +581,8 @@
           <p>
             <span class="m-n font-thin h3 text-black" >Employe Name:</span>
             <span ng-repeat="nom in employe"> {{ employe.nomEmploye }} </br></span>
+            <span class="m-n font-thin h3 text-black" >Employe type:</span>
+            <span ng-repeat="type in employe"> {{ employe.typeEmploye }} </br></span>
             <span class="m-n font-thin h3 text-black">Employe CIN:</span>
             <span ng-repeat="CIN in employe"> {{ employe.CINEmploye }}</span></br>
             <span class="m-n font-thin h3 text-black">Employe Telephone:</span>
@@ -589,8 +596,7 @@
           </p> 
    </div>
    <div class="modal-footer">
-   <button class="btn m-b-xs btn-sm btn-primary btn-addon"><i class="glyphicon glyphicon-ok"></i>Yes</button>
-   <button class="btn m-b-xs btn-sm btn-default btn-addon" data-dismiss="modal"><i class="glyphicon glyphicon-remove"></i>No</button>
+   <button class="btn m-b-xs btn-sm btn-primary btn-addon" data-dismiss="modal">Return</button>
   </div>
   </div>  
 </div>
@@ -606,8 +612,10 @@
         <p>
             <span class="m-n font-thin h3 text-black" >User Customer Name:</span>
             <span ng-repeat="nom in userCustomer"> {{ userCustomer.nomUserCustomer }} </br></span>
-            <span class="m-n font-thin h3 text-black">User Customer CIN:</span>
-            <span ng-repeat="CIN in userCustomer"> {{ userCustomer.CINUserCustomer }}</span></br>
+            <span class="m-n font-thin h3 text-black" >User Customer Type:</span>
+            <span ng-repeat="type in userCustomer"> {{ userCustomer.typeUserCustomer }} </br></span>
+            <span class="m-n font-thin h3 text-black">Customer Name:</span>
+            <span ng-repeat="nom in customer"> {{ customer.nomCustomer }}</span></br>
             <span class="m-n font-thin h3 text-black">User Customer Telephone:</span>
             <span ng-repeat="phone in userCustomer"> {{ userCustomer.phoneUserCustomer }}</span></br>
             <span class="m-n font-thin h3 text-black">Login:</span>
@@ -619,8 +627,7 @@
           </p> 
    </div>
    <div class="modal-footer">
-   <button class="btn m-b-xs btn-sm btn-primary btn-addon"><i class="glyphicon glyphicon-ok"></i>Yes</button>
-   <button class="btn m-b-xs btn-sm btn-default btn-addon" data-dismiss="modal"><i class="glyphicon glyphicon-remove"></i>No</button>
+   <button class="btn m-b-xs btn-sm btn-primary btn-addon" data-dismiss="modal">Return</button>
   </div>
   </div>  
 </div>

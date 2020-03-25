@@ -449,14 +449,14 @@
       </div>
       <div class="modal-body">
        <div class="row">
-		    <form>
+		    <form th:action="@{SaveAssetType}" th:object="${assetType}">
           <label class="col-sm-4 control-label"  for="input-id-1" style="margin-bottom:5px;"><b>Name</b></label>
           <div class="col-sm-8" style="margin-bottom:5px;">
-            <input type="text"  class="form-control" placeholder="Entry Name" id="input-id-2">
+            <input type="text"  class="form-control" placeholder="Entry Name" id="input-id-2" th:field:=*{Name}>
           </div>
-          <label class="col-sm-4 control-label"  for="input-id-1" style="margin-bottom:5px;"><b>Band</b></label>
+          <label class="col-sm-4 control-label"  for="input-id-1" style="margin-bottom:5px;"><b>Brand</b></label>
           <div class="col-sm-8" style="margin-bottom:5px;">
-            <input type="text"  class="form-control" placeholder="Entry Band" id="input-id-2">
+            <input type="text"  class="form-control" placeholder="Entry Band" id="input-id-2" th:field:=*{Brand}>
           </div>
           <label class="col-sm-4 control-label" placeholder="Entry EndOfSupportDate" for="input-id-1" style="margin-bottom:5px;"><b>End Of Support Date</b></label>
           <div class="col-sm-8" style="margin-bottom:5px;">
@@ -464,7 +464,7 @@
             <div class="input-group-addon">
               <i class="fa fa-calendar"></i>
             </div>
-            <input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" type="text"/>
+            <input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" type="date" th:field:=*{EndOfSuportDate}>
            </div>
           </div>
           <label class="col-sm-4 control-label" placeholder="Entry EndSaleDate" for="input-id-1" style="margin-bottom:5px;"><b>End Sale Date</b></label>
@@ -473,15 +473,20 @@
              <div class="input-group-addon">
               <i class="fa fa-calendar"></i>
              </div>
-             <input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" type="text" width="100%"/>
+             <input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" type="date" width="100%" th:field:=*{EndSaleDate}>
             </div>   
           </div>
-		    </form>
-		   </div>
-       <div class="modal-footer">
+            <label class="col-sm-4 control-label"  for="input-id-1" style="margin-bottom:5px;"><b>FRU</b></label>
+          <div class="col-sm-8" style="margin-bottom:5px;">
+            <input type="text"  class="form-control" placeholder="Entry FRU" id="input-id-2" th:field:=*{FRU}>
+          </div>
+           <div class="modal-footer">
         <button style="margin:0px;" class="btn m-b-xs btn-sm btn-primary btn-addon"><i class="glyphicon glyphicon-ok"></i>Save</button>
        <button style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon"  data-dismiss="modal"><i class="glyphicon glyphicon-remove"></i>Annuler</button>
       </div>
+		    </form>
+		   </div>
+      
 	  </div> 
   </div>
 </div>
@@ -508,21 +513,40 @@
         }}'>
                                   <thead>
                                     <tr>
+<<<<<<< HEAD
+                                      <th  style="width:5%"><center>Id</center></th>
+                                      <th  style="width:13%"><center>Asset Name</center></th>
+                                      <th  style="width:13%"><center>Band</center></th>
+                                      <th  style="width:13%"><center>End Of Support Date</center></th>
+                                      <th  style="width:13%"><center>End Sale Date</center></th>
+                                      <th  style="width:13%"><center>FRU</center></th>
+                                      <th  style="width:13%"><center>Actions</center></th>
+=======
                                       <th  style="width:5%"><center>ID</center></th>
                                       <th  style="width:15%"><center>Asset Name</center></th>
                                       <th  style="width:15%"><center>Band</center></th>
                                       <th  style="width:15%"><center>End Of Support Date</center></th>
                                       <th  style="width:15%"><center>End Sale Date</center></th>
                                       <th  style="width:15%"><center>Actions</center></th>
+>>>>>>> branch 'master' of https://github.com/isaibou/TEST5
                                     </tr>
                                   </thead>
                                   <tbody>
+<<<<<<< HEAD
+                                    <tr data-expanded="true" th:each ="a:${ListassetType}">
+                                      <td th:text="${a.Name}"><center></center></td>
+                                      <td th:text="${a.Brand}"><center></center></td>
+                                      <td th:text="${a.EndOfSuportDate}"><center></center></td>
+                                      <td th:text="${a.EndSaleDate}"><center><center/></td>
+                                      <td th:text="${a.FRU}"><center><center/></td>
+=======
                                     <tr th:each="a:${assetstype}">
                                       <td th:text="${a.ID}"><center></center></td>
                                       <td th:text="${a.Asset Name}"><center></center></td>
                                       <td th:text="${a.Band}"><center>IBM</center></td>
                                       <td th:text="${a.End Of Support Date}"><center>22-02-2019<center/></td>
                                       <td th:text="${a.End Sale Date}"><center>05-04-2019<center/></td>
+>>>>>>> branch 'master' of https://github.com/isaibou/TEST5
                                       <td><center><div class="btn-group dropdown">
                                         <button class="btn btn-default btn-xs" data-toggle="dropdown"><i class="glyphicon glyphicon-cog"></i> Action <span class="caret"></span></button>
                                               <ul class="dropdown-menu">

@@ -1,5 +1,8 @@
 package com.example.demo.controllers;
 
+import java.util.Date;
+
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,20 +14,33 @@ import com.example.demo.entities.AssetType;
 
 import com.example.demo.repository.AssetTypeRepository;
 
+import javassist.expr.NewArray;
+
+import com.example.demo.repository.AssetTypeRepository;
+
+
 @Controller
-public class AssetTypeController{
-	
+
+public class AssetTypeController
+{
+
 	@Autowired
-	private AssetTypeRepository assettypeRepository;
+	private AssetTypeRepository assetTypeRepository;
+
 	
 	@RequestMapping(value="/assetstype_manage")
-	public String assetstype_manage(Model model) {
+	public String Assetstype_Manage(Model model, AssetType assetType) {
 		
-		List<AssetType> asstype = assettypeRepository.findAll();
-		model.addAttribute("assetstype",asstype);
-		
-		return "assetstype_manage";
+	List<AssetType>	ListassetType = assetTypeRepository.findAll();
+	model.addAttribute("ListassetType" , ListassetType);
+	model.addAttribute("assetType", new AssetType());
+	
+	return "assetstype_manage";
+	
+
 	}
+		
+	
 	
 
 }

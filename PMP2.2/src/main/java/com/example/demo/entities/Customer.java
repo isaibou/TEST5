@@ -9,6 +9,22 @@ import javax.persistence.Id;
 @Entity
 public class Customer implements Serializable{
 	
+	public String getCity() {
+		return City;
+	}
+
+	public void setCity(String city) {
+		City = city;
+	}
+
+	public String getCountry() {
+		return Country;
+	}
+
+	public void setCountry(String country) {
+		Country = country;
+	}
+
 	@Id
 	@GeneratedValue
 	private Integer Customer_ID;
@@ -20,13 +36,17 @@ public class Customer implements Serializable{
 	private Boolean Vip;
 	private String PhoneCIO;
 	private String EmailCIO;
+	private String City;
+	private String Country; 
 	
 	public Customer() {
 		super();
 	}
 
+	
+
 	public Customer(String name, String industry, String logo, String phoneCompany, String adressCompany, Boolean vip,
-			String phoneCIO, String emailCIO) {
+			String phoneCIO, String emailCIO, String city, String country) {
 		super();
 		Name = name;
 		Industry = industry;
@@ -36,6 +56,8 @@ public class Customer implements Serializable{
 		Vip = vip;
 		PhoneCIO = phoneCIO;
 		EmailCIO = emailCIO;
+		City = city;
+		Country = country;
 	}
 
 	public Integer getCustomer_ID() {

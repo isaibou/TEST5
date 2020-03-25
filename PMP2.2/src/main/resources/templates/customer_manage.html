@@ -1,5 +1,5 @@
-<!DOCTYPE html>
-<html lang="en" class="">
+<!DOCTYPE html >
+<html  xmlns ="www.thymeleaf.org">
 	<head>
 		<meta charset="utf-8" />
 		<title>Manage clients</title>
@@ -520,32 +520,31 @@
 															<thead>
 																<tr >
 																	<th  style="width:5%"><center>ID</center></th>
-																	<th  style="width:25%"><center>Customer</center></th>
+																	<th  style="width:15%"><center>Customer</center></th>
 																	<th  style="width:25%"><center>Address</center></th>
-																	<th  style="width:15%"><center>Industry</center></th>
-																	<th  style="width:5%"><center>VIP</center></th>
+																	<th  style="width:15%"><center>City</center></th>
+																	<th  style="width:15%"><center>Country</center></th>
+																	<th  style="width:15%"><center>Phone</center></th>
+																	
 																	<th  style="width:15%"><center>Actions</center></th>
 																</tr>
 															</thead>
 															<tbody>
-																<tr th:each="c:${cust}">
-																	<td th:text="${c.Customer_ID}"> </td>
-																	<td th:text="${c.Name}"> 	
-																		<div class="row">
-																			<div class="col-sm-3"><img class="img-thumbnail" src="https://upload.wikimedia.org/wikipedia/fr/9/91/ATW.PNG" alt="logo_company" width="60px" height="60px"/></div>
+																<tr data-expanded="true" th:each="c:${cust}">
+																	<td th:text="${c.Customer_ID}"> <center></center> </td>
+																	<td th:text="${c.Name}" ><center></center> 	</td>
+																	<td th:text="${c.City}" ><center></center> 	</td>
+																		
 
-																			</div>
-																		</td>
-																		<td th:text="${c.Industry}"><center></center></td>
-																		<td th:text ="${c.Logo}"><center><center/></td>
-																			
-																			</tr>
+																		
+																		<td th:text="${c.AdressCompany}"><center></center></td>
+																		<td th:text ="${c.Country}"><center><center/></td>
+																		<td th:text ="${c.PhoneCompany}"><center><center/></td>
+																		
+																</tr>
 																			
 																					</tbody>
 																				</table>
-
-
-
 																			</div>
 																			<th></th>
 																		</div >
@@ -568,34 +567,35 @@
 
 																					<h1 class="m-n font-bold h3"> <b class="glyphicon-plus pull"> </b> Add Company</h1>
 																				</div>
+																				<form th:action="@{SaveCustomer}" method ="post" th:object="${customer}">
 																				<div class="modal-body">
 																					<div class="row">
 																						<label class="col-sm-4 control-label" for="input-id-1"><b>Comapny Name</b></label>
 																						<div class="col-sm-8"  >
-																							<input type="text" class="form-control" placeholder="Entry Name of Company" id="input-id-1">
+																							<input type="text" class="form-control" placeholder="Entry Name of Company" id="input-id-1" th:field="*{Name}">
 																							</div>
 
 
 																							<label class="col-sm-4 control-label"  for="input-id-1"><b>Address</b></label>
 																							<div class="col-sm-8">
-																								<input type="text"  class="form-control" placeholder="Entry Address of Company"id="input-id-2">
+																								<input type="text"  class="form-control" placeholder="Entry Address of Company"id="input-id-2" th:field="*{AdressCompany}">
 																								</div>
 
 																								<label class="col-sm-4 control-label" for="input-id-1"><b>City</b></label>
 																								<div class="col-sm-8">
-																									<input type="text" placeholder="Entry City of Company" class="form-control" id="input-id-1">
+																									<input type="text" placeholder="Entry City of Company" class="form-control" id="input-id-1" th:field=*{City} >
 																									</div>
-																									<label class="col-sm-4 control-label" placeholder="Entry Country of Company" for="input-id-1"><b>Country</b></label>
+																									<label class="col-sm-4 control-label" placeholder="Entry Country of Company" for="input-id-1" ><b>Country</b></label>
 																									<div class="col-sm-8">
-																										<input type="text" placeholder="Entry Country of Company" class="form-control" id="input-id-1">
+																										<input type="text" placeholder="Entry Country of Company" class="form-control" id="input-id-1" th:field=*{Country} >
 																										</div>
 																										<label class="col-sm-4 control-label" placeholder="Entry Phone of Company" for="input-id-1"><b>Phone</b></label>
 																										<div class="col-sm-8">
-																											<input type="text" placeholder="Entry Phone of Company"class="form-control" id="input-id-1">
+																											<input type="text" placeholder="Entry Phone of Company"class="form-control" id="input-id-1" th:field="*{PhoneCompany}">
 																											</div>
 																											<label class="col-sm-4 control-label" for="input-id-1"><b>Industry</b></label>
 																											<div class="col-sm-8">
-																												<select name="account" class="form-control m-b">
+																												<select name="account" class="form-control m-b" >
 																													<option>Advertising</option>
 																													<option>Manufacturing</option>
 																													<option>Construction</option>
@@ -617,7 +617,7 @@
 																											<label class="col-sm-4 control-label" for="input-id-1"><b>VIP</b></label>
 																											<div class="col-sm-8">
 																												<div class="col-sm-4">
-																													<input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked="">Yes</input>
+																													<input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked=""  >Yes</input>
 																												</div>
 																												<div class="col-sm-4">
 																													<input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked=""  >No</input>
@@ -626,9 +626,11 @@
 																										</div>
 																									</div>
 																									<div class="modal-footer">
-																										<button style="margin:0px;" class="btn m-b-xs btn-sm btn-primary btn-addon"><i class="glyphicon glyphicon-ok"></i>Save</button>
-																										<button style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon" data-dismiss="modal"><i class="glyphicon glyphicon-remove"  ></i>Annuler</button>
+																										<button type ="submit"; style="margin:0px;" class="btn m-b-xs btn-sm btn-primary btn-addon"><i class="glyphicon glyphicon-ok"></i>Save</button>
+																										<button style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon" data-dismiss="modal"><i class="glyphicon glyphicon-remove"  ></i>Dismiss</button>
 																									</div>
+																									</form>
+																									
 																								</div>
 																							</div>
 																						</div>
@@ -694,7 +696,7 @@
 																															</div>
 																														</div>
 																														<div class="modal-footer">
-																															<button style="margin:0px;" class="btn m-b-xs btn-sm btn-primary btn-addon"><i class="glyphicon glyphicon-ok"></i>Save</button>
+																															<button type ="submit" style="margin:0px;" class="btn m-b-xs btn-sm btn-primary btn-addon"><i class="glyphicon glyphicon-ok"></i>Save</button>
 																															<button style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon" data-dismiss="modal"><i class="glyphicon glyphicon-remove"></i>Annuler</button>
 																														</div>
 																													</div>

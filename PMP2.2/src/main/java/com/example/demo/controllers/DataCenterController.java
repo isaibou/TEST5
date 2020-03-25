@@ -14,6 +14,7 @@ public class DataCenterController {
 	
 	@RequestMapping(value="/r_manage")
 	public String index() {
+		
 		System.out.println("hahahaha");
 		return "customer_manage";
 	}

@@ -20,8 +20,10 @@ public class ProjectController {
 	
 	@RequestMapping(value="/projects_manage")
 	public String ProjectsManage(Model model) {
+		
 			List<Project> projet = ProjectRepository.findAll();
 			model.addAttribute("proj",projet);
+			
 		return "projects_manage";
 	}
 

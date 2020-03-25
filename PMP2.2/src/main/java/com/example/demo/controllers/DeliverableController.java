@@ -20,6 +20,7 @@ public class DeliverableController {
 	public String DelivrableManage(Model model) {
 		
 		List<Deliverable> delive = deliverablerepository.findAll();
+		
 		model.addAttribute("deliverable", delive);
 		return "deliverable_manage";
 	}

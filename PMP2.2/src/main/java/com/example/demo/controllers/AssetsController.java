@@ -24,7 +24,7 @@ public class AssetsController {
 		List<Assets> ListAssets = assetRepository.findAll();
 		model.addAttribute("Listassets",ListAssets);
 		model.addAttribute("assets", new Assets());
-		ListAssets.forEach(c->System.out.println(c.getSerielNumber()));
+		//ListAssets.forEach(c->System.out.println(c.getSerielNumber()));
 		
 		return "assets_manage";
 	}

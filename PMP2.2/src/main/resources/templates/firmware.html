@@ -232,7 +232,7 @@ document.addEventListener('DOMContentLoaded', function() {
 											<!-- / dropdown -->
 										</li>
 										<li class="dropdown">
-											<a href="#" data-toggle="dropdown" class="dropdown-toggle clear" data-toggle="dropdown">
+											
 												<span class="thumb-sm avatar pull-right m-t-n-sm m-b-n-sm m-l-sm">
 													<img src="img/user.png" alt="...">
 														<i class="on md b-white bottom"></i>
@@ -494,7 +494,8 @@ document.addEventListener('DOMContentLoaded', function() {
   <div id="content" class="app-content" role="main">
    <div class="app-content-body ">
     <div class="bg-light lter b-b wrapper-md"><h1 class="m-n font-bold h3">Firmware
-    <a style="margin-top:-5px;" data-toggle="modal"  data-target="#AddClient" class="btn btn-sm btn-primary pull-right"  role="button"><b class="glyphicon-plus pull"> </b>Add Firmware</a></h1></div>
+    <a style="margin-top:-5px;" data-toggle="modal"  data-target="#AddClient" class="btn btn-sm btn-primary pull-right"  role="button">
+    <b class="glyphicon-plus pull"> </b>Add Firmware</a></h1></div>
 	
 	<div class="row" style="margin:5px;background-color:#f0f3f4;">
      
@@ -565,19 +566,14 @@ document.addEventListener('DOMContentLoaded', function() {
 	    <button type="button" class="close pull-right" data-dismiss="modal">&times;</button>
 	    <h1 class="m-n font-bold h3"> <b class="glyphicon-plus pull"> </b> Add Firmware</h1>
 	   </div>
+	   <form th:action="@{SaveFrimware}" class="form-horizontal" method="post" th:object="${frimware}">
      <div class="modal-body">
       <div class="row">
-       <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Firmware Name</b></label>
+       <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Frimware Name</b></label>
        <div class="col-sm-8" style="margin: 5px 0px;">
-      <input type="text" class="form-control" placeholder="Entry Name of firmware" id="input-id-1">
+      <input type="text" th:field="*{frimwareName}" class="form-control" placeholder="Entry Name of firmware" id="input-id-1">
      </div>
-       <label class="col-sm-4 control-label"  for="input-id-1"><b>Asset</b></label>
-     <div class="col-sm-8"  >
-      <select name="account" class="form-control m-b">
-       <option>Asset1</option>
-       <option>Asset2</option>
-      </select>
-     </div>
+       
        <label class="col-sm-4 control-label" placeholder="Entry Notes" for="input-id-1"><b>Description</b></label>
       <div class="col-sm-8">
        <div class="form-group">
@@ -620,8 +616,8 @@ document.addEventListener('DOMContentLoaded', function() {
         <a class="btn btn-default" dropdown-toggle="" tooltip="Hyperlink"><i class="fa fa-link"></i></a>
         <div class="dropdown-menu">
          <div class="input-group m-l-xs m-r-xs">
-        <input class="form-control input-sm" id="LinkInput" placeholder="URL" type="text" data-edit="createLink">
-        <div class="input-group-btn">
+        <input type="text" th:field="*{description}" class="form-control input-sm" id="LinkInput" placeholder="URL" type="text" data-edit="createLink">
+        <div  class="input-group-btn">
          <button class="btn btn-sm btn-default" type="button">Add</button>
         </div>
          </div>
@@ -644,14 +640,14 @@ document.addEventListener('DOMContentLoaded', function() {
    </div>
     <label class="col-sm-4 control-label" placeholder="Entry Year" for="input-id-1"><b>Release Date</b></label>
        <div class="col-sm-8">
-      <form action="https://formden.com/post/MlKtmY4x/" class="form-horizontal" method="post">
+      
        <div class="form-group ">
         <div class="col-sm-10">
        <div class="input-group">
         <div class="input-group-addon">
          <i class="fa fa-calendar"></i>
         </div>
-        <input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" type="text"/>
+        <input type="date" th:field="*{releaseDate}" class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" type="text"/>
          </div>
         </div>
        </div>
@@ -688,13 +684,6 @@ document.addEventListener('DOMContentLoaded', function() {
        <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Firmware Name</b></label>
        <div class="col-sm-8" style="margin: 5px 0px;">
       <input type="text" class="form-control" placeholder="Entry Name of firmware" id="input-id-1">
-     </div>
-       <label class="col-sm-4 control-label"  for="input-id-1"><b>Asset</b></label>
-     <div class="col-sm-8"  >
-      <select name="account" class="form-control m-b">
-       <option>Asset1</option>
-       <option>Asset2</option>
-      </select>
      </div>
        <label class="col-sm-4 control-label" placeholder="Entry Notes" for="input-id-1"><b>Description</b></label>
       <div class="col-sm-8">
@@ -814,8 +803,6 @@ document.addEventListener('DOMContentLoaded', function() {
           <p>
             <span class="m-n font-thin h3 text-black" >Firmware Name:</span>
             <span ng-repeat="nom in firmware"> {{ firmware.nomFirmware }} </br></span>
-            <span class="m-n font-thin h3 text-black">Asset Name:</span>
-            <span ng-repeat="nom in asset"> {{ asset.nomAsset }}</span></br>
             <span class="m-n font-thin h3 text-black">Release Date :</span>
             <span ng-repeat="releaseDate in firmware"> {{ frimware.releaseDateFrimware }}</span></br>
             <span class="m-n font-thin h3 text-black" >Description :</span>

@@ -26,6 +26,8 @@ public class FrimwareController {
 			
 			return "firmware";
 	}
+		//les deux methode post et get
+		
 		@RequestMapping(value="/firmware" ,method=RequestMethod.GET)
 		public String Frimware(Model model) {
 			model.addAttribute("frimware" ,new Frimware());

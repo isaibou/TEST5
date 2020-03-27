@@ -27,18 +27,34 @@ public class CustomerController {
 		model.addAttribute("cust", custs);
 		model.addAttribute("customer", new Customer());
 		
-
 		return "customer_manage";
 	}
 	
 	
 	@RequestMapping(value="/SaveCustomer" , method= RequestMethod.POST)
-	private String SaveCustomer(Customer cust) {
-		customerrepository.save(cust);
+	private String SaveCustomer(Customer addCust) {
+		customerrepository.save(addCust);
 		return "redirect:/customer_manage";
 		
 	}
+	
+	@RequestMapping(value ="/updateCustomer" )
+	private String updateCustomer( Model model, Integer id ) {
+	Customer	cust = customerrepository.getOne(id);
+		 model.addAttribute("upCustomer",cust);
+		 System.out.println(cust.getName());
+		
+			return "redirect:/customer_manage";
+			
+	}
 
+
+	@RequestMapping(value ="/deleteCustomer" )
+	private String deleteCustomer( Model model, Integer id ) {
+	
+		customerrepository.deleteById(id);
+		
+			return "redirect:/customer_manage";	}
 
 }
  	

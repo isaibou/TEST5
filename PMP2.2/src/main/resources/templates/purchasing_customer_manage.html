@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lxmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
 	<head>
 		<meta charset="utf-8" />
 		<title> Manage Purchasing Customers </title>
@@ -309,7 +309,7 @@
                 <ul class="nav nav-sub dk">
                
                   <li>
-                    <a th:href="customer_manage">
+                    <a t:href="customer_manage">
                       <span>Manage customer</span>
                     </a>
                   </li>
@@ -402,12 +402,12 @@
                     </a>
                   </li>
 				  <li>
-                    <a th:href="assetstype_manage">
+                    <a th:href="firmware">
                       <span>Firmware</span>
                     </a>
                   </li>
 				  <li>
-                    <a th:href="assetstype_manage">
+                    <a th:href="vendor">
                       <span>Vendor</span>
                     </a>
                   </li>
@@ -426,7 +426,7 @@
                 </a>
               </li>
 			  <li>
-                <a th:href="tickets_manage">
+                <a th:href="expense">
                   <i class="glyphicon  glyphicon-usd"></i></i>
                   <span>Expenses</span>
                 </a>
@@ -495,9 +495,7 @@
 												<h1 class="m-n font-bold h3"> Manage Purchasing Customers 
 												<a style="margin-top:-5px;" data-toggle="modal"  data-target="#AddClient" class="btn btn-sm btn-primary pull-right"  role="button"><b class="glyphicon-plus pull"> </b>Add Purchasing Customer</a> 
 											</h1>
-											</div>
-											
-
+											</div>	
 <div class="col-sm-12">
                             <div class="row text-center" style="margin: 10px 5px;">
                               <div class="col-sm-6">
@@ -510,7 +508,6 @@
                                 </div>
                               </div>
 
-
                               <div class="col-sm-6">
                                 <a href="" class="block panel padder-v bg-primary item">
                                   <span class="text-white count font-thin h1 block">80</span>
@@ -522,7 +519,7 @@
                               </div>
                             </div>
   </div>
-  
+
 												<div class="panel panel-default" style="margin:0px 5px;">
 													<div class="table-responsive" >
 														<table ui-jq="dataTable" ui-options="{

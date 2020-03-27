@@ -7,7 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-
+import com.example.demo.entities.AssetType;
 import com.example.demo.entities.Assets;
 import com.example.demo.repository.AssetRepository;
 
@@ -21,8 +21,10 @@ public class AssetsController {
 	@RequestMapping(value="/assets_manage")
 	public String ManageAsset(Model model) {
 		
-		List<Assets> asset =assetRepository.findAll();
-		model.addAttribute("as",asset);
+		List<Assets> ListAssets = assetRepository.findAll();
+		model.addAttribute("Listassets",ListAssets);
+		model.addAttribute("assets", new Assets());
+		ListAssets.forEach(c->System.out.println(c.getSerielNumber()));
 		
 		return "assets_manage";
 	}

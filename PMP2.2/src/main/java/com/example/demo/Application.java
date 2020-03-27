@@ -54,13 +54,13 @@ public class Application {
 		
 		
 		
-		List<Assets> asset = assetRepository.findAll();
+		List<Assets> assets = assetRepository.findAll();
 		
 		
 		 List<AssetType> assettype = assettypeRepository.findAll();
 		 
 		 
-		 assettype.forEach(c->System.out.println(c.getName()));
+		 //assettype.forEach(c->System.out.println(c.getName()));
 //>>>>>>> branch 'master' of https://github.com/isaibou/TEST5
 	}
 

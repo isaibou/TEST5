@@ -36,26 +36,6 @@ public class Application {
 		AssetRepository assetRepository = ctx.getBean(AssetRepository.class);
 		
 		
-		 
-		
-		 assettypeRepository.save(new AssetType("sasa", "ddd", new Date(), new Date(),"sss"));
-		
-		 assettypeRepository.save(new AssetType("sasa1", "ddd1", new Date(), new Date(),"sss1"));
-		
-		 assettypeRepository.save(new AssetType("sasa2", "ddd2", new Date(), new Date(),"sss2"));
-		
-		 
-		assetRepository.save(new Assets("asset1", "asset2", "asset3", "asset4", "asset5", new Date(), "asset6", "asset7", "asset8", 0, new Date()));
-		 
-		assetRepository.save(new Assets("asset1", "asset2", "asset3", "asset4", "asset5", new Date(), "asset6", "asset7", "asset8", 0, new Date()));
-		
-		
-		
-		
-		
-		
-		List<Assets> asset = assetRepository.findAll();
-		
 		
 		 List<AssetType> assettype = assettypeRepository.findAll();
 		 

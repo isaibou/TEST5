@@ -589,7 +589,7 @@
 																							<button class="btn btn-default btn-xs" data-toggle="dropdown"><i class="glyphicon glyphicon-cog"></i> Action <span class="caret"></span></button>
 																							<ul class="dropdown-menu">
 																								<li>
-									<a  style="margin-top:-5px;" data-toggle="modal"  data-target="#Update" class="btn btn-sm btn-light" role="button">Update</a>						</li>
+									<a onclick="document.location.th:href="@{updateCustomer(id=${c.Customer_ID})}"  style="margin-top:-5px;" data-toggle="modal"  data-target="#Update" class="btn btn-sm btn-light" role="button">Update</a>						</li>
 																								<li>
 																									<a th:href ="@{deleteCustomer(id=${c.Customer_ID})}" data-target="#Delete" style="margin-top:-5px;" data-toggle="modal"  class="btn btn-sm btn-light" role="button">Delete</a>
 																								</li>

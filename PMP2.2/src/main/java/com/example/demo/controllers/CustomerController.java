@@ -38,7 +38,7 @@ public class CustomerController {
 		
 	}
 	
-	@RequestMapping(value ="/customer_manage" )
+	@RequestMapping(value ="/updateCustomer" )
 	private String updateCustomer( Model model, Integer id ) {
 	Customer	cust = customerrepository.getOne(id);
 		 model.addAttribute("upCustomer",cust);

@@ -16,7 +16,7 @@
 </head>
 <body>
 <div class="app" >
- <a href class="navbar-brand block m-t"><i class="fa fa-power-off"></i> <b>PowerM</b> </a>
+ <a href="" class="navbar-brand block m-t"><i class="fa fa-power-off"></i> <b>PowerM</b> </a>
  <div>
  <div class="modal-dialog modal-lg" >
   <div class="modal-content">
@@ -24,43 +24,48 @@
    </div>
    <div class="modal-body">
 	<div class="row">
+<form action="@{updateCustomer}" th:object="${customerUp}">
 	 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Comapny Logo</b></label>
      <div class="col-sm-4" style="margin: 5px 0px;">
-      <input type="text" placeholder="Entry Name Logo"class="form-control" id="input-id-1">
+      <input type="text" placeholder="Entry Name Logo"class="form-control" id="input-id-1"/>
      </div>
      <div class="col-sm-4" style="margin: 5px 0px;" >
       <div class="btn-group">
        <a class="btn btn-default" tooltip="Insert picture (or just drag &amp; drop)" id="pictureBtn"><i class="fa fa-picture-o"></i></a>
-       <input type="file" data-edit="insertImage" style="position:absolute; opacity:0; width:41px; height:34px">
+       <input type="file" data-edit="insertImage" style="position:absolute; opacity:0; width:41px; height:34px"   />
       </div> 
         </div>
+         <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>ID</b></label>
+     <div class="col-sm-8" style="margin: 5px 0px;" >
+      <input type="text" class="form-control" placeholder="Entry Name of Company" id="input-id-1"  th:field=*{Customer_ID}>
+	 </div>
 	 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Comapny Name</b></label>
      <div class="col-sm-8" style="margin: 5px 0px;" >
-      <input type="text" class="form-control" placeholder="Entry Name of Company" id="input-id-1">
+      <input type="text" class="form-control" placeholder="Entry Name of Company" id="input-id-1"  th:field=*{Name}>
 	 </div>
 	 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Address Company</b></label>
 	 <div class="col-sm-8" style="margin: 5px 0px;">
-	  <input type="text"  class="form-control" placeholder="Entry Address of Company"id="input-id-2">
+	  <input type="text"  class="form-control" placeholder="Entry Address of Company"id="input-id-2" th:field=*{AdressCompany}>
 	 </div>
 	 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Phone Company</b></label>
 	 <div class="col-sm-8" style="margin: 5px 0px;">
-	  <input type="tel" placeholder="Entry Phone of Company" class="form-control" id="input-id-1" required>
+	  <input type="tel" placeholder="Entry Phone of Company" class="form-control" id="input-id-1" required th:field=*{PhoneCompany}>
 	 </div>
 	 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Phone CIO</b></label>
 	 <div class="col-sm-8" style="margin: 5px 0px;">
-	  <input type="tel" placeholder="Entry Phone CIO"class="form-control" id="input-id-1" required>
+	  <input type="tel" placeholder="Entry Phone CIO"class="form-control" id="input-id-1" required  th:field=*{PhoneCIO}>
 	 </div>
 	 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Email CIO</b></label>
 	 <div class="col-sm-8" style="margin: 5px 0px;">
-	  <input type="email" placeholder="Entry Phone CIO"class="form-control" id="input-id-1" required>
+	  <input type="email" placeholder="Entry Phone CIO"class="form-control" id="input-id-1" required th:field=*{EmailCIO}> 
 	 </div>
 	 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Country</b></label>
 	 <div class="col-sm-8" style="margin: 5px 0px;">
-	  <select id="countryA" name ="country" class="form-control m-b"></select>
+	  <select id="countryA" name ="country" class="form-control m-b"  th:field=*{Country}></select>
 	 </div>
 	 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>City</b></label>
 	 <div class="col-sm-8" style="margin: 5px 0px;">
-	  <select name ="state" id ="stateA" class="form-control m-b"></select>
+	  <select name ="state" id ="stateA" class="form-control m-b" th:field=*{City} ></select>
 	 </div>
 	 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Industry</b></label>
 	 <div class="col-sm-8" style="margin: 5px 0px;">
@@ -97,6 +102,7 @@
 	<button style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon" data-dismiss="modal"><i class="glyphicon glyphicon-remove"  ></i>Annuler</button>
    </div>
   </div>
+  </form>
  </div>
 </div>
 </div>

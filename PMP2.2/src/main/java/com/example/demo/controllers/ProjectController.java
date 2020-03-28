@@ -33,5 +33,24 @@ public class ProjectController {
 		ProjectRepository.save(proj);
 		return "redirect:/projects_manage";
 		
-	}	
+	}
+	
+	@RequestMapping(value ="/updateProject" )
+	private String updateCustomer( Model model, Integer id ) {
+	Project	project = ProjectRepository.getOne(id);
+		 model.addAttribute("project",project);
+		 System.out.println(project.getName());
+		
+			return "updateProject";
+			
+	}
+
+
+	@RequestMapping(value ="/deleteProject" )
+	private String deleteProject( Model model, Integer id ) {
+	
+		ProjectRepository.deleteById(id);
+		
+			return "redirect:/projects_manage";	
+	}
 }

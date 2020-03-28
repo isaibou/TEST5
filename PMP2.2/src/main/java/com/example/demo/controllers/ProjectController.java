@@ -6,10 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
-
-import com.example.demo.entities.Project;
-
+import com.example.demo.entities.*;
+import com.example.demo.repository.CustomerRepository;
 import com.example.demo.repository.ProjetRepository;
 
 @Controller
@@ -23,9 +23,15 @@ public class ProjectController {
 		
 			List<Project> projet = ProjectRepository.findAll();
 			model.addAttribute("proj",projet);
+			model.addAttribute("project", new Project());
 			
 		return "projects_manage";
 	}
 
-	
+	@RequestMapping(value="/SaveProject" , method= RequestMethod.POST)
+	private String SaveProject(Project proj) {
+		ProjectRepository.save(proj);
+		return "redirect:/projects_manage";
+		
+	}	
 }

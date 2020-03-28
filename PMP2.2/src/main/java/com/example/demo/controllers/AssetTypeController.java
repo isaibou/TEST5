@@ -34,6 +34,7 @@ public class AssetTypeController
 	List<AssetType>	ListassetType = assetTypeRepository.findAll();
 	model.addAttribute("ListassetType" , ListassetType);
 	model.addAttribute("assetType", new AssetType());
+	//ListassetType.forEach(c->System.out.println(c.getName()));
 	
 	return "assetstype_manage";
 	

@@ -40,11 +40,11 @@ public class CustomerController {
 	
 	@RequestMapping(value ="/updateCustomer" )
 	private String updateCustomer( Model model, Integer id ) {
-	Customer	cust = customerrepository.getOne(id);
-		 model.addAttribute("upCustomer",cust);
-		 System.out.println(cust.getName());
+	Customer	customer = customerrepository.getOne(id);
+		 model.addAttribute("customer",customer);
+		 System.out.println(customer.getName());
 		
-			return "redirect:/customer_manage";
+			return "updateCustomer";
 			
 	}
 

@@ -125,8 +125,5 @@ public class Project implements Serializable{
 	public void setStatus(String status) {
 		Status = status;
 	}
-	
-	
-	
 
 }

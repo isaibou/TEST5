@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en" class="">
+<head>
+  <meta charset="utf-8" />
+  <title>Update Customer</title>
+  <meta name="description" content="app, web app, responsive, responsive layout, admin, admin panel, admin dashboard, flat, flat ui, ui kit, AngularJS, ui route, charts, widgets, components" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <link rel="stylesheet" href="../libs/assets/animate.css/animate.css" type="text/css" />
+  <link rel="stylesheet" href="../libs/assets/font-awesome/css/font-awesome.min.css" type="text/css" />
+  <link rel="stylesheet" href="../libs/assets/simple-line-icons/css/simple-line-icons.css" type="text/css" />
+  <link rel="stylesheet" href="../libs/jquery/bootstrap/dist/css/bootstrap.css" type="text/css" />
+
+  <link rel="stylesheet" href="css/font.css" type="text/css" />
+  <link rel="stylesheet" href="css/app.css" type="text/css" />
+
+</head>
+<body>
+<div class="app" >
+ <a href class="navbar-brand block m-t"><i class="fa fa-power-off"></i> <b>PowerM</b> </a>
+ <div>
+ <div class="modal-dialog modal-lg" >
+  <div class="modal-content">
+    <h1 class="m-n font-bold h3"> Update Customer </h1>
+   </div>
+   <div class="modal-body">
+	<div class="row">
+	 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Comapny Logo</b></label>
+     <div class="col-sm-4" style="margin: 5px 0px;">
+      <input type="text" placeholder="Entry Name Logo"class="form-control" id="input-id-1">
+     </div>
+     <div class="col-sm-4" style="margin: 5px 0px;" >
+      <div class="btn-group">
+       <a class="btn btn-default" tooltip="Insert picture (or just drag &amp; drop)" id="pictureBtn"><i class="fa fa-picture-o"></i></a>
+       <input type="file" data-edit="insertImage" style="position:absolute; opacity:0; width:41px; height:34px">
+      </div> 
+        </div>
+	 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Comapny Name</b></label>
+     <div class="col-sm-8" style="margin: 5px 0px;" >
+      <input type="text" class="form-control" placeholder="Entry Name of Company" id="input-id-1">
+	 </div>
+	 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Address Company</b></label>
+	 <div class="col-sm-8" style="margin: 5px 0px;">
+	  <input type="text"  class="form-control" placeholder="Entry Address of Company"id="input-id-2">
+	 </div>
+	 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Phone Company</b></label>
+	 <div class="col-sm-8" style="margin: 5px 0px;">
+	  <input type="tel" placeholder="Entry Phone of Company" class="form-control" id="input-id-1" required>
+	 </div>
+	 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Phone CIO</b></label>
+	 <div class="col-sm-8" style="margin: 5px 0px;">
+	  <input type="tel" placeholder="Entry Phone CIO"class="form-control" id="input-id-1" required>
+	 </div>
+	 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Email CIO</b></label>
+	 <div class="col-sm-8" style="margin: 5px 0px;">
+	  <input type="email" placeholder="Entry Phone CIO"class="form-control" id="input-id-1" required>
+	 </div>
+	 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Country</b></label>
+	 <div class="col-sm-8" style="margin: 5px 0px;">
+	  <select id="countryA" name ="country" class="form-control m-b"></select>
+	 </div>
+	 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>City</b></label>
+	 <div class="col-sm-8" style="margin: 5px 0px;">
+	  <select name ="state" id ="stateA" class="form-control m-b"></select>
+	 </div>
+	 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Industry</b></label>
+	 <div class="col-sm-8" style="margin: 5px 0px;">
+	  <select name="account" class="form-control m-b">
+	   <option>Advertising</option>
+	   <option>Manufacturing</option>
+	   <option>Construction</option>
+	   <option>Education</option>
+	   <option>Entertainment</option>
+	   <option>Healthcare</option>
+	   <option>Government</option>
+	   <option>Technology</option>
+	   <option>Retail</option>
+	   <option>Wholesale</option>
+	   <option>Banking</option>
+	   <option>Finance</option>
+	   <option>Telecomunication</option>
+	   <option>Transportation</option>
+	  </select>
+	 </div>
+     <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>VIP</b></label>
+	 <div class="col-sm-8" style="margin: 5px 0px;">
+	  <div class="col-sm-4">
+	   <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked="">Yes</input>
+      </div>
+	  <div class="col-sm-4">
+	   <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked=""  >No</input>
+	  </div>
+	 </div>
+	</div>
+   </div>
+   <div class="modal-footer">
+	<button style="margin:0px;" class="btn m-b-xs btn-sm btn-primary btn-addon"><i class="glyphicon glyphicon-ok"></i>Save</button>
+	<button style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon" data-dismiss="modal"><i class="glyphicon glyphicon-remove"  ></i>Annuler</button>
+   </div>
+  </div>
+ </div>
+</div>
+</div>
+
+<script src="../libs/jquery/jquery/dist/jquery.js"></script>
+<script src="../libs/jquery/bootstrap/dist/js/bootstrap.js"></script>
+<script src="js/ui-load.js"></script>
+<script src="js/ui-jp.config.js"></script>
+<script src="js/ui-jp.js"></script>
+<script src="js/ui-nav.js"></script>
+<script src="js/ui-toggle.js"></script>
+<script src="js/ui-client.js"></script>
+<script src = "js/countries.js"></script>
+<script language="javascript">
+	populateCountries("countryA", "stateA"); // first parameter is id of country drop-down and second parameter is id of state drop-down
+    populateCountries("countryU", "stateU");
+</script>
+</body>
+</html>

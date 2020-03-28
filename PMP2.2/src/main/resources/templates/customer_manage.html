@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<<<<<<< HEAD
+
 <html lang="en" class="">
 	<head>
 		<meta charset="utf-8" />
@@ -590,9 +590,9 @@
 																							<button class="btn btn-default btn-xs" data-toggle="dropdown"><i class="glyphicon glyphicon-cog"></i> Action <span class="caret"></span></button>
 																							<ul class="dropdown-menu">
 																								<li>
-									<a th:href="@{updateCustomer(id=${c.Customer_ID})}"  style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Update</a>						</li>
+																									<a th:href="@{updateCustomerform(id=${c.Customer_ID})}"  style="margin-top:-5px;"   class="btn btn-sm btn-light" role="button">Update</a>						</li>
 																								<li>
-																									<a th:href ="@{deleteCustomer(id=${c.Customer_ID})}" data-target="#Delete" style="margin-top:-5px;" data-toggle="modal"  class="btn btn-sm btn-light" role="button">Delete</a>
+																									<a th:href="@{deleteCustomer(id=${c.Customer_ID})}"  style="margin-top:-5px;" data-toggle="modal"  class="btn btn-sm btn-light" role="button">Delete</a>
 																								</li>
 																								<li>
 																									<a style="margin-top:-5px;" data-toggle="modal"  data-target="#Detail" class="btn btn-sm btn-light" role="button">Detail</a>
@@ -627,6 +627,10 @@
    </div>
    	<form th:action="@{SaveCustomer}" method ="post" th:object="${customer}">
    <div class="modal-body">
+    <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Comapny Logo</b></label>
+     <div class="col-sm-4" style="margin: 5px 0px;">
+      <input type="text" placeholder="Entry Name Logo"class="form-control" id="input-id-1"/>
+     </div>
 	<div class="row">
 	 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Comapny Name</b></label>
      <div class="col-sm-8" style="margin: 5px 0px;" >
@@ -635,6 +639,14 @@
 	 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Address</b></label>
 	 <div class="col-sm-8" style="margin: 5px 0px;">
 	  <input type="text"  class="form-control" placeholder="Entry Address of Company"id="input-id-2" th:field=*{AdressCompany}>
+	 </div>
+	  <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Email CIO</b></label>
+	 <div class="col-sm-8" style="margin: 5px 0px;">
+	  <input type="email" placeholder="Entry Phone CIO"class="form-control" id="input-id-1" required th:field=*{EmailCIO}> 
+	 </div>
+	  <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Phone CIO</b></label>
+	 <div class="col-sm-8" style="margin: 5px 0px;">
+	  <input type="tel" placeholder="Entry Phone CIO"class="form-control" id="input-id-1" required  th:field=*{PhoneCIO}>
 	 </div>
 	 <label class="col-sm-4 control-label" placeholder="Entry Country of Company" style="margin: 5px 0px;" for="input-id-1"><b>Country</b></label>
 	 <div class="col-sm-8" style="margin: 5px 0px;">

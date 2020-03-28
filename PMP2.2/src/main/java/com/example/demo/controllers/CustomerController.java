@@ -38,14 +38,21 @@ public class CustomerController {
 		
 	}
 	
-	@RequestMapping(value ="/updateCustomer" )
-	private String updateCustomer( Model model, Integer id ) {
+	@RequestMapping(value ="/updateCustomerform" )
+	private String updateCustomerform( Model model, Integer id ) {
 	Customer	customer = customerrepository.getOne(id);
-		 model.addAttribute("customer",customer);
+		 model.addAttribute("customerUp",customer);
 		 System.out.println(customer.getName());
 		
-			return "updateCustomer";
+			return "updateCustomerForm";
 			
+	}
+	
+	@RequestMapping(value = "/updateCustomer",method= RequestMethod.POST)
+	public String updateCustomer(Model model, Customer cust){
+		customerrepository.save(cust);
+		
+		return "redirect:/customer_manage";
 	}
 
 

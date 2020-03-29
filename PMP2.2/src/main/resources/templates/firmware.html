@@ -559,7 +559,6 @@
 						<tbody>
 							<tr th:each="f : ${firmList}">
 
-
 								<td th:text="${f.name}"><center>
 										<b></b>
 									</center></td>
@@ -729,8 +728,7 @@
    <span class="pull-right">2.2.0 <a href ui-scroll="app" class="m-l-sm text-muted"><i class="fa fa-long-arrow-up"></i></a></span>&copy; PowerM 2020 Copyright.
   </div>
  </footer><!-- / footer -->
-
-
+	</div>
 
 				<div class="col-sm-12">
 					<div class="row row-sm text-center">
@@ -765,7 +763,6 @@
 									<b class="glyphicon-plus pull"> </b> Add Firmware
 								</h1>
 							</div>
-							<!-- add -->
 							<form action="#" th:action="@{/addFirmware}" th:object="${obj}"
 								method="post">
 								<div class="modal-body">
@@ -778,6 +775,7 @@
 												th:field="*{name}">
 
 										</div>
+										
 										<label class="col-sm-4 control-label" for="input-id-1"><b>Asset</b></label>
 										<div class="col-sm-8">
 											<select name="account" class="form-control m-b">
@@ -785,8 +783,9 @@
 												<option>Asset2</option>
 											</select>
 										</div>
-										<div class="col-sm-8" style="margin: 5px 5px;"> 
-										<label class="col-sm-4 control-label"
+										<div class="modal-body">
+										<div class="col-sm-8" style="margin: 5px 0px;"> 
+										<label class="col-sm-4 control-label" style="margin: 5px 0px;"
 											placeholder="Entry Notes" for="input-id-1"><b>Description</b></label>
 											<textarea class="form-control" id="description"
 																	th:field="*{description}" placeholder="Description"
@@ -950,7 +949,7 @@
 						<button type="button" class="close pull-right"
 							data-dismiss="modal">&times;</button>
 						<h1 class="m-n font-bold h3">Update Firmware</h1>
-						
+						<!--  -->
 					</div>
 					<div class="modal-body">
 						<div class="row">
@@ -959,7 +958,6 @@
 							<div class="col-sm-8" style="margin: 5px 0px;">
 								<input type="text" class="form-control"
 									placeholder="Entry Name of firmware" id="input-id-1">
-									>
 							</div>
 							<label class="col-sm-4 control-label" for="input-id-1"><b>Asset</b></label>
 							<div class="col-sm-8">

@@ -2,9 +2,12 @@ package com.example.demo.controllers;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -16,8 +19,7 @@ import com.example.demo.repository.ProjetRepository;
 public class ProjectController {
 	@Autowired
 	private ProjetRepository ProjectRepository;
-	
-	
+
 	@RequestMapping(value="/projects_manage")
 	public String ProjectsManage(Model model) {
 		
@@ -29,19 +31,31 @@ public class ProjectController {
 	}
 
 	@RequestMapping(value="/SaveProject" , method= RequestMethod.POST)
-	private String SaveProject(Project proj) {
-		ProjectRepository.save(proj);
+	private String SaveProject(@Valid Project addProj, BindingResult bindingResult) {
+		
+		addProj.setStatus("Actif");
+		
+		ProjectRepository.save(addProj);
 		return "redirect:/projects_manage";
 		
 	}
+
+	@RequestMapping(value = "/editProject",method= RequestMethod.POST)
+	public String updateProject(Model model, Project proj){
+	proj= 	(Project) model.getAttribute("project");
+		ProjectRepository.save(proj);
+		
+		return "redirect:/projects_manage";
+	}
 	
-	@RequestMapping(value ="/updateProject" )
-	private String updateCustomer( Model model, Integer id ) {
+	@RequestMapping(value ="/UpdateProjectForm" )
+	private String updateProject( Model model, Integer id ) {
+		
 	Project	project = ProjectRepository.getOne(id);
 		 model.addAttribute("project",project);
 		 System.out.println(project.getName());
 		
-			return "updateProject";
+			return "UpdateProjectFrom";
 			
 	}
 
@@ -53,4 +67,17 @@ public class ProjectController {
 		
 			return "redirect:/projects_manage";	
 	}
+
+	@RequestMapping(value ="/archiverProject" )
+	private String archiverProject( Model model, Integer id ) {
+	
+	Project proj = ProjectRepository.getOne(id);
+	proj.setStatus("Archived");
+	proj.setName("Ibrahim");
+	ProjectRepository.save(proj);
+	System.out.println(proj.getStatus());
+		
+			return "redirect:/projects_manage";	
+	}
+
 }

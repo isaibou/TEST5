@@ -555,8 +555,13 @@ document.addEventListener('DOMContentLoaded', function() {
 		   <td th:text ="${p.Year}"><center></center></td>
 		   <td th:text ="${p.DeliveryDate}"><center><span ></span></center></td>
 		   <td th:text ="${p.Amount}"><center></center></td>
-           <td th:text ="${p.TechnologyPartners}"><center><span class="label bg-info pull-center m-t-md">bootstrap</span><span class="label bg-info pull-center m-t-md">JEE</span></center></td>
-		   <td><center><div class="btn-group dropdown"><button class="btn btn-default btn-xs" data-toggle="dropdown"><i class="glyphicon glyphicon-cog"></i> Action <span class="caret"></span></button><ul class="dropdown-menu"><li><a style="margin-top:-5px;" data-toggle="modal"  data-target="#Update" class="btn btn-sm btn-light" role="button">Update</a></li><li><a style="margin-top:-5px;" data-toggle="modal"  data-target="#Delete" class="btn btn-sm btn-light" role="button">Delete</a></li><li><a style="margin-top:-5px;" data-toggle="modal"  data-target="#Detail" class="btn btn-sm btn-light" role="button">Detail</a></li></ul></div></center></td>
+           <td th:text ="${p.TechnologyPartners}"><center><span class="label bg-info pull-center m-t-md"></span><span class="label bg-info pull-center m-t-md"></span></center></td>
+		   <td><center><div class="btn-group dropdown"><button class="btn btn-default btn-xs" data-toggle="dropdown">
+		     <i class="glyphicon glyphicon-cog"></i> Action <span class="caret"></span></button>
+		     <ul class="dropdown-menu">
+		     <li><a th:href="@{UpdateProjectForm(id=${p.Project_ID})}"  style="margin-top:-5px;"   class="btn btn-sm btn-light" role="button">Update</a></li>
+		     <li><a th:href="@{archiverProject(id=${p.Project_ID})}"  style="margin-top:-5px;"  class="btn btn-sm btn-light" role="button">Archive</a></li>
+		     <li><a style="margin-top:-5px;" data-toggle="modal"  data-target="#Detail" class="btn btn-sm btn-light" role="button">Detail</a></li></ul></div></center></td>
 		  </tr>
 		 </tbody>
 		</table>

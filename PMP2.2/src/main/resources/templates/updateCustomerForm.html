@@ -22,17 +22,16 @@
   <div class="modal-content">
     <h1 class="m-n font-bold h3"> Update Customer </h1>
    </div>
+   <form th:action="@{editCustomer}" method ="post" th:object="${customer}">
    <div class="modal-body">
 	<div class="row">
-<form th:action="@{editCustomer}" method ="post" th:object="${customer}">
-   <div class="modal-body">
     <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b></b></label>
      <div class="col-sm-8" style="margin: 5px 0px;" >
       <input type="hidden" class="form-control" placeholder="Entry Name of Company" id="input-id-1"  required th:field=*{Customer_ID}>
       <span class="text-danger" th:errors=*{Name}></span>
 	 </div>
     <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Comapny Logo</b></label>
-     <div class="col-sm-4" style="margin: 5px 0px;">
+     <div class="col-sm-8" style="margin: 5px 0px;">
       <input type="text" placeholder="Entry Name Logo"class="form-control" id="input-id-1"   th:field=*{Logo}/>
      </div>
 	<div class="row">

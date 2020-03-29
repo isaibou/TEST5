@@ -1,509 +1,486 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-	<head>
-		<meta charset="utf-8" />
-		<title> Firmware </title>
-		<meta name="description" content="app, web app, responsive, responsive layout, admin, admin panel, admin dashboard, flat, flat ui, ui kit, AngularJS, ui route, charts, widgets, components" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-		<link rel="stylesheet" href="../libs/assets/animate.css/animate.css" type="text/css" />
-		<link rel="stylesheet" href="../libs/assets/font-awesome/css/font-awesome.min.css" type="text/css" />
-		<link rel="stylesheet" href="../libs/assets/simple-line-icons/css/simple-line-icons.css" type="text/css" />
-		<link rel="stylesheet" href="../libs/jquery/bootstrap/dist/css/bootstrap.css" type="text/css" />
-		<link href='../libs/packages/core/main.css' rel='stylesheet' />
-		<link href='../libs/packages/daygrid/main.css' rel='stylesheet' />
-		<link href='../libs/packages/timegrid/main.css' rel='stylesheet' />
-		<link href='../libs/packages/list/main.css' rel='stylesheet' />
-		<script src='../libs/packages/core/main.js'></script>
-		<script src='../libs/packages/interaction/main.js'></script>
-		<script src='../libs/packages/daygrid/main.js'></script>
-		<script src='../libs/packages/timegrid/main.js'></script>
-		<script src='../libs/packages/list/main.js'></script>
+<head>
+<meta charset="utf-8" />
+<title>Firmware</title>
+<meta name="description"
+	content="app, web app, responsive, responsive layout, admin, admin panel, admin dashboard, flat, flat ui, ui kit, AngularJS, ui route, charts, widgets, components" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, maximum-scale=1" />
+<link rel="stylesheet" href="../libs/assets/animate.css/animate.css"
+	type="text/css" />
+<link rel="stylesheet"
+	href="../libs/assets/font-awesome/css/font-awesome.min.css"
+	type="text/css" />
+<link rel="stylesheet"
+	href="../libs/assets/simple-line-icons/css/simple-line-icons.css"
+	type="text/css" />
+<link rel="stylesheet"
+	href="../libs/jquery/bootstrap/dist/css/bootstrap.css" type="text/css" />
+<link href='../libs/packages/core/main.css' rel='stylesheet' />
+<link href='../libs/packages/daygrid/main.css' rel='stylesheet' />
+<link href='../libs/packages/timegrid/main.css' rel='stylesheet' />
+<link href='../libs/packages/list/main.css' rel='stylesheet' />
+<script src='../libs/packages/core/main.js'></script>
+<script src='../libs/packages/interaction/main.js'></script>
+<script src='../libs/packages/daygrid/main.js'></script>
+<script src='../libs/packages/timegrid/main.js'></script>
+<script src='../libs/packages/list/main.js'></script>
 
-		<link rel="stylesheet" href="css/font.css" type="text/css" />
-		<link rel="stylesheet" href="css/app.css" type="text/css" />
-		<script>
+<link rel="stylesheet" href="css/font.css" type="text/css" />
+<link rel="stylesheet" href="css/app.css" type="text/css" />
+<script>
+	document
+			.addEventListener(
+					'DOMContentLoaded',
+					function() {
+						var calendarEl = document.getElementById('calendar1');
 
-document.addEventListener('DOMContentLoaded', function() {
-    var calendarEl = document.getElementById('calendar1');
+						var calendar1 = new FullCalendar.Calendar(
+								calendarEl,
+								{
 
-    var calendar1 = new FullCalendar.Calendar(calendarEl, {
+									plugins : [ 'interaction', 'dayGrid',
+											'list', 'googleCalendar' ],
 
-      plugins: [ 'interaction', 'dayGrid', 'list', 'googleCalendar' ],
+									header : {
+										left : 'prev,next today',
+										center : 'title',
+										right : 'dayGridMonth,listYear'
+									},
 
-      header: {
-        left: 'prev,next today',
-        center: 'title',
-        right: 'dayGridMonth,listYear'
-      },
+									displayEventTime : false, // don't show the time column in list view
 
-      displayEventTime: false, // don't show the time column in list view
+									// THIS KEY WON'T WORK IN PRODUCTION!!!
+									// To make your own Google API key, follow the directions here:
+									// http://fullcalendar.io/docs/google_calendar/
+									googleCalendarApiKey : 'AIzaSyDcnW6WejpTOCffshGDDb4neIrXVUA1EAE',
 
-      // THIS KEY WON'T WORK IN PRODUCTION!!!
-      // To make your own Google API key, follow the directions here:
-      // http://fullcalendar.io/docs/google_calendar/
-      googleCalendarApiKey: 'AIzaSyDcnW6WejpTOCffshGDDb4neIrXVUA1EAE',
+									// US Holidays
+									events : 'en.usa#holiday@group.v.calendar.google.com',
 
-      // US Holidays
-      events: 'en.usa#holiday@group.v.calendar.google.com',
+									eventClick : function(arg) {
+										// opens events in a popup window
+										window.open(arg.event.url,
+												'google-calendar-event',
+												'width=700,height=600');
 
-      eventClick: function(arg) {
-        // opens events in a popup window
-        window.open(arg.event.url, 'google-calendar-event', 'width=700,height=600');
+										arg.jsEvent.preventDefault() // don't navigate in main tab
+									},
 
-        arg.jsEvent.preventDefault() // don't navigate in main tab
-      },
+									loading : function(bool) {
+										document.getElementById('loading').style.display = bool ? 'block'
+												: 'none';
+									}
 
-      loading: function(bool) {
-        document.getElementById('loading').style.display =
-          bool ? 'block' : 'none';
-      }
+								});
 
-    });
+						calendar1.render();
+					});
+</script>
+<script>
+	document
+			.addEventListener(
+					'DOMContentLoaded',
+					function() {
+						var calendarEl = document.getElementById('calendar');
 
-    calendar1.render();
-  });
+						var calendar = new FullCalendar.Calendar(
+								calendarEl,
+								{
 
+									plugins : [ 'interaction', 'dayGrid',
+											'list', 'googleCalendar' ],
 
-		</script>
-		<script>
+									header : {
+										left : 'prev,next today',
+										center : 'title',
+										right : 'dayGridMonth,listYear'
+									},
 
-document.addEventListener('DOMContentLoaded', function() {
-    var calendarEl = document.getElementById('calendar');
+									displayEventTime : false, // don't show the time column in list view
 
-    var calendar = new FullCalendar.Calendar(calendarEl, {
+									// THIS KEY WON'T WORK IN PRODUCTION!!!
+									// To make your own Google API key, follow the directions here:
+									// http://fullcalendar.io/docs/google_calendar/
+									googleCalendarApiKey : 'AIzaSyDcnW6WejpTOCffshGDDb4neIrXVUA1EAE',
 
-      plugins: [ 'interaction', 'dayGrid', 'list', 'googleCalendar' ],
+									// US Holidays
+									events : 'en.usa#holiday@group.v.calendar.google.com',
 
-      header: {
-        left: 'prev,next today',
-        center: 'title',
-        right: 'dayGridMonth,listYear'
-      },
+									eventClick : function(arg) {
+										// opens events in a popup window
+										window.open(arg.event.url,
+												'google-calendar-event',
+												'width=700,height=600');
 
-      displayEventTime: false, // don't show the time column in list view
+										arg.jsEvent.preventDefault() // don't navigate in main tab
+									},
 
-      // THIS KEY WON'T WORK IN PRODUCTION!!!
-      // To make your own Google API key, follow the directions here:
-      // http://fullcalendar.io/docs/google_calendar/
-      googleCalendarApiKey: 'AIzaSyDcnW6WejpTOCffshGDDb4neIrXVUA1EAE',
+									loading : function(bool) {
+										document.getElementById('loading').style.display = bool ? 'block'
+												: 'none';
+									}
 
-      // US Holidays
-      events: 'en.usa#holiday@group.v.calendar.google.com',
+								});
 
-      eventClick: function(arg) {
-        // opens events in a popup window
-        window.open(arg.event.url, 'google-calendar-event', 'width=700,height=600');
-
-        arg.jsEvent.preventDefault() // don't navigate in main tab
-      },
-
-      loading: function(bool) {
-        document.getElementById('loading').style.display =
-          bool ? 'block' : 'none';
-      }
-
-    });
-
-    calendar.render();
-  });
-
-
-		</script>
-			<style>
-@media (max-width: 767px) {
-    .table-responsive .dropdown-menu {
-        position: static !important;
-    }
+						calendar.render();
+					});
+</script>
+<style>
+@media ( max-width : 767px) {
+	.table-responsive .dropdown-menu {
+		position: static !important;
+	}
 }
-@media (min-width: 768px) {
-    .table-responsive {
-        overflow: inherit;
-    }
+
+@media ( min-width : 768px) {
+	.table-responsive {
+		overflow: inherit;
+	}
 }
 </style>
 </head>
 <body>
-<div class="app app-header-fixed ">
- <header id="header" class="app-header navbar" role="menu">
-				<!-- navbar header -->
-				<div class="navbar-header bg-dark">
-					<button class="pull-right visible-xs dk" ui-toggle-class="show" target=".navbar-collapse">
-						<i class="glyphicon glyphicon-cog"></i>
-					</button>
-					<button class="pull-right visible-xs" ui-toggle-class="off-screen" target=".app-aside" ui-scroll="app">
-						<i class="glyphicon glyphicon-align-justify"></i>
-					</button>
-					<!-- brand -->
-					<a href="#/" class="navbar-brand text-lt">
-						<i class="fa fa-power-off"></i>
-						<span class="hidden-folded m-l-xs">PowerM</span>
+	<div class="app app-header-fixed ">
+		<header id="header" class="app-header navbar" role="menu">
+			<!-- navbar header -->
+			<div class="navbar-header bg-dark">
+				<button class="pull-right visible-xs dk" ui-toggle-class="show"
+					target=".navbar-collapse">
+					<i class="glyphicon glyphicon-cog"></i>
+				</button>
+				<button class="pull-right visible-xs" ui-toggle-class="off-screen"
+					target=".app-aside" ui-scroll="app">
+					<i class="glyphicon glyphicon-align-justify"></i>
+				</button>
+				<!-- brand -->
+				<a href="#/" class="navbar-brand text-lt"> <i
+					class="fa fa-power-off"></i> <span class="hidden-folded m-l-xs">PowerM</span>
+				</a>
+				<!-- / brand -->
+			</div>
+			<!-- / navbar header -->
+
+			<!-- navbar collapse -->
+			<div
+				class="collapse pos-rlt navbar-collapse box-shadow bg-white-only">
+				<!-- buttons -->
+				<div class="nav navbar-nav hidden-xs">
+					<a href="#" class="btn no-shadow navbar-btn"
+						ui-toggle-class="app-aside-folded" target=".app"> <i
+						class="fa fa-dedent fa-fw text"></i> <i
+						class="fa fa-indent fa-fw text-active"></i>
+					</a> <a href="#" class="btn no-shadow navbar-btn"
+						ui-toggle-class="show" target="#aside-user"> <i
+						class="icon-user fa-fw"></i>
 					</a>
-					<!-- / brand -->
 				</div>
-				<!-- / navbar header -->
+				<!-- / buttons -->
 
-				<!-- navbar collapse -->
-				<div class="collapse pos-rlt navbar-collapse box-shadow bg-white-only">
-					<!-- buttons -->
-					<div class="nav navbar-nav hidden-xs">
-						<a href="#" class="btn no-shadow navbar-btn" ui-toggle-class="app-aside-folded" target=".app">
-							<i class="fa fa-dedent fa-fw text"></i>
-							<i class="fa fa-indent fa-fw text-active"></i>
-						</a>
-						<a href="#" class="btn no-shadow navbar-btn" ui-toggle-class="show" target="#aside-user">
-							<i class="icon-user fa-fw"></i>
-						</a>
+				<!-- link and dropdown -->
+				<ul class="nav navbar-nav hidden-sm">
+					<li class="dropdown"><a href="#" data-toggle="dropdown"
+						class="dropdown-toggle"> <span
+							translate="header.navbar.new.NEW"></span> <span
+							class="fa fa-moon-o lb-warning"></span>
+					</a>
+						<ul class="dropdown-menu" role="menu">
+							<li>
+								<button type="button" name="button" id="darkmode"
+									onclick="changecolor()">
+									<span translate="header.navbar.new.TASK">ON</span>
+								</button>
+							</li>
+							<li>
+								<button type="button" name="button" id="lightmode"
+									onclick="lightmode()">
+									<span translate="header.navbar.new.TASK">OFF</span>
+								</button>
+							</li>
+
+						</ul></li>
+				</ul>
+				<!-- / link and dropdown -->
+
+				<!-- search form -->
+				<form class="navbar-form navbar-form-sm navbar-left shift"
+					ui-shift="prependTo" data-target=".navbar-collapse" role="search"
+					ng-controller="TypeaheadDemoCtrl">
+					<div class="form-group">
+						<div class="input-group">
+							<input type="text" ng-model="selected"
+								typeahead="state for state in states | filter:$viewValue | limitTo:8"
+								class="form-control input-sm bg-light no-border rounded padder"
+								placeholder="Search projects..."> <span
+								class="input-group-btn">
+								<button type="submit" class="btn btn-sm bg-light rounded">
+									<i class="fa fa-search"></i>
+								</button>
+							</span>
+						</div>
 					</div>
-					<!-- / buttons -->
+				</form>
+				<!-- / search form -->
 
-					<!-- link and dropdown -->
-					<ul class="nav navbar-nav hidden-sm">
-						<li class="dropdown">
-							<a href="#" data-toggle="dropdown" class="dropdown-toggle">
-								<span translate="header.navbar.new.NEW"></span> <span class="fa fa-moon-o lb-warning"></span>	
-							</a>
-							<ul class="dropdown-menu" role="menu">
-								<li>
-									<button type="button" name="button" id="darkmode" onclick="changecolor()">
-										<span translate="header.navbar.new.TASK">ON</span>
-									</button>
-								</li>
-								<li>
-									<button  type="button" name="button" id="lightmode" onclick="lightmode()">
-										<span translate="header.navbar.new.TASK">OFF</span>
-									</button>
-								</li>
-								
-							</ul>
-						</li>
-					</ul>
-					<!-- / link and dropdown -->
-
-					<!-- search form -->
-					<form class="navbar-form navbar-form-sm navbar-left shift" ui-shift="prependTo" data-target=".navbar-collapse" role="search" ng-controller="TypeaheadDemoCtrl">
-						<div class="form-group">
-							<div class="input-group">
-								<input type="text" ng-model="selected" typeahead="state for state in states | filter:$viewValue | limitTo:8" class="form-control input-sm bg-light no-border rounded padder" placeholder="Search projects...">
-									<span class="input-group-btn">
-										<button type="submit" class="btn btn-sm bg-light rounded"><i class="fa fa-search"></i></button>
+				<!-- nabar right -->
+				<ul class="nav navbar-nav navbar-right">
+					<li class="dropdown"><a href="#" data-toggle="dropdown"
+						class="dropdown-toggle"> <i class="icon-bell fa-fw"></i> <span
+							class="visible-xs-inline">Notifications</span> <span
+							class="badge badge-sm up bg-danger pull-right-xs">2</span>
+					</a> <!-- dropdown -->
+						<div class="dropdown-menu w-xl animated fadeInUp">
+							<div class="panel bg-white">
+								<div class="panel-heading b-light bg-light">
+									<strong>You have <span>2</span> notifications
+									</strong>
+								</div>
+								<div class="list-group">
+									<a href class="list-group-item"> <span
+										class="pull-left m-r thumb-sm"> <img src="img/a0.jpg"
+											alt="..." class="img-circle">
+									</span> <span class="clear block m-b-none"> Use awesome
+											animate.css<br> <small class="text-muted">10
+												minutes ago</small>
 									</span>
+									</a> <a href class="list-group-item"> <span
+										class="clear block m-b-none"> 1.0 initial released<br>
+											<small class="text-muted">1 hour ago</small>
+									</span>
+									</a>
+								</div>
+								<div class="panel-footer text-sm">
+									<a href class="pull-right"><i class="fa fa-cog"></i></a> <a
+										href="#notes" data-toggle="class:show animated fadeInRight">See
+										all the notifications</a>
 								</div>
 							</div>
-						</form>
-						<!-- / search form -->
-
-						<!-- nabar right -->
-						<ul class="nav navbar-nav navbar-right">
-							<li class="dropdown">
-								<a href="#" data-toggle="dropdown" class="dropdown-toggle">
-									<i class="icon-bell fa-fw"></i>
-									<span class="visible-xs-inline">Notifications</span>
-									<span class="badge badge-sm up bg-danger pull-right-xs">2</span>
-								</a>
-								<!-- dropdown -->
-								<div class="dropdown-menu w-xl animated fadeInUp">
-									<div class="panel bg-white">
-										<div class="panel-heading b-light bg-light">
-											<strong>You have <span>2</span> notifications</strong>
-										</div>
-										<div class="list-group">
-											<a href class="list-group-item">
-												<span class="pull-left m-r thumb-sm">
-													<img src="img/a0.jpg" alt="..." class="img-circle">
-													</span>
-													<span class="clear block m-b-none">
-                      Use awesome animate.css<br>
-															<small class="text-muted">10 minutes ago</small>
-														</span>
-													</a>
-													<a href class="list-group-item">
-														<span class="clear block m-b-none">
-                      1.0 initial released<br>
-																<small class="text-muted">1 hour ago</small>
-															</span>
-														</a>
-													</div>
-													<div class="panel-footer text-sm">
-														<a href class="pull-right"><i class="fa fa-cog"></i></a>
-														<a href="#notes" data-toggle="class:show animated fadeInRight">See all the notifications</a>
-													</div>
-												</div>
-											</div>
-											<!-- / dropdown -->
-										</li>
-										<li class="dropdown">
-											
-												<span class="thumb-sm avatar pull-right m-t-n-sm m-b-n-sm m-l-sm">
-													<img src="img/user.png" alt="...">
-														<i class="on md b-white bottom"></i>
-													</span>
-													<span class="hidden-sm hidden-md">Walid.largou</span> <b class="caret"></b>
-												</a>
-												<!-- dropdown -->
-												<ul class="dropdown-menu animated fadeInRight w">
-													<li class="wrapper b-b m-b-sm bg-light m-t-n-xs">
-														<div>
-															<p>300mb of 500mb used</p>
-														</div>
-														<div class="progress progress-xs m-b-none dker">
-															<div class="progress-bar progress-bar-info" data-toggle="tooltip" data-original-title="50%" style="width: 50%"></div>
-														</div>
-													</li>
-													<li>
-														<a href>
-															<span class="badge bg-danger pull-right">30%</span>
-															<span>Settings</span>
-														</a>
-													</li>
-													<li>
-														<a ui-sref="app.page.profile">Profile</a>
-													</li>
-													<li>
-														<a ui-sref="app.docs">
-															<span class="label bg-info pull-right">new</span>
-                  Help
-														</a>
-													</li>
-													<li class="divider"></li>
-													<li>
-														<a ui-sref="access.signin">Logout</a>
-													</li>
-												</ul>
-												<!-- / dropdown -->
-											</li>
-										</ul>
-										<!-- / navbar right -->
+						</div> <!-- / dropdown --></li>
+					<li class="dropdown"><span
+						class="thumb-sm avatar pull-right m-t-n-sm m-b-n-sm m-l-sm">
+							<img src="img/user.png" alt="..."> <i
+							class="on md b-white bottom"></i>
+					</span> <span class="hidden-sm hidden-md">Walid.largou</span> <b
+						class="caret"></b> </a> <!-- dropdown -->
+						<ul class="dropdown-menu animated fadeInRight w">
+							<li class="wrapper b-b m-b-sm bg-light m-t-n-xs">
+								<div>
+									<p>300mb of 500mb used</p>
+								</div>
+								<div class="progress progress-xs m-b-none dker">
+									<div class="progress-bar progress-bar-info"
+										data-toggle="tooltip" data-original-title="50%"
+										style="width: 50%"></div>
+								</div>
+							</li>
+							<li><a href> <span class="badge bg-danger pull-right">30%</span>
+									<span>Settings</span>
+							</a></li>
+							<li><a ui-sref="app.page.profile">Profile</a></li>
+							<li><a ui-sref="app.docs"> <span
+									class="label bg-info pull-right">new</span> Help
+							</a></li>
+							<li class="divider"></li>
+							<li><a ui-sref="access.signin">Logout</a></li>
+						</ul> <!-- / dropdown --></li>
+				</ul>
+				<!-- / navbar right -->
+			</div>
+			<!-- / navbar collapse -->
+		</header>
+		<!-- / header -->
+		<!-- aside -->
+		<aside id="aside" class="app-aside hidden-xs bg-dark">
+			<div class="aside-wrap">
+				<div class="navi-wrap">
+					<!-- user -->
+					<div class="clearfix hidden-xs text-center hide" id="aside-user">
+						<div class="dropdown wrapper">
+							<a href="app.page.profile"><span
+								class="thumb-lg w-auto-folded avatar m-t-sm"><img
+									src="img/a0.jpg" class="img-full" alt="..."></span></a><a href="#"
+								data-toggle="dropdown" class="dropdown-toggle hidden-folded"><span
+								class="clear"><span class="block m-t-sm"><strong
+										class="font-bold text-lt">Walid.Largou</strong><b
+										class="caret"></b></span><span class="text-muted text-xs block">Manager</span></span></a>
+							<!-- dropdown -->
+							<ul class="dropdown-menu animated fadeInRight w hidden-folded">
+								<li class="wrapper b-b m-b-sm bg-info m-t-n-xs"><span
+									class="arrow top hidden-folded arrow-info"></span>
+									<div>
+										<p>300mb of 500mb used</p>
 									</div>
-									<!-- / navbar collapse -->
-								</header><!-- / header -->
-  <!-- aside -->
-  <aside id="aside" class="app-aside hidden-xs bg-dark">
-   <div class="aside-wrap">
-	<div class="navi-wrap"><!-- user -->
-	 <div class="clearfix hidden-xs text-center hide" id="aside-user">
-	  <div class="dropdown wrapper"><a href="app.page.profile"><span class="thumb-lg w-auto-folded avatar m-t-sm"><img src="img/a0.jpg" class="img-full" alt="..."></span></a><a href="#" data-toggle="dropdown" class="dropdown-toggle hidden-folded"><span class="clear"><span class="block m-t-sm"><strong class="font-bold text-lt">Walid.Largou</strong><b class="caret"></b></span><span class="text-muted text-xs block">Manager</span></span></a><!-- dropdown --><ul class="dropdown-menu animated fadeInRight w hidden-folded"><li class="wrapper b-b m-b-sm bg-info m-t-n-xs"><span class="arrow top hidden-folded arrow-info"></span><div><p>300mb of 500mb used</p></div><div class="progress progress-xs m-b-none dker"><div class="progress-bar bg-white" data-toggle="tooltip" data-original-title="50%" style="width: 50%"></div></div></li><li><a href>Settings</a></li>
-	  <li><a th:href="page_profile">Profile</a></li><li><a href><span class="badge bg-danger pull-right">3</span>Notifications</a></li><li class="divider"></li><li><a th:href="page_signin">Logout</a></li></ul><!-- / dropdown --></div>
-	  <div class="line dk hidden-folded"></div>
-	 </div><!-- / user --><!-- nav -->
-          <nav ui-nav class="navi clearfix">
-            <ul class="nav">
-              <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
-                <span>Main</span>
-              </li>
-              <li>
-                <a th:href="index" class="auto">      
-                  <i class="glyphicon glyphicon-stats icon text-primary-dker"></i>
-                  <span class="font-bold">Dashboard</span>
-                </a>
-               
-              </li>
-              <li>
-                <a th:href="mail">
-                  <b class="badge bg-info pull-right">9</b>
-                  <i class="glyphicon glyphicon-envelope icon text-info-lter"></i>
-                  <span class="font-bold">Email</span>
-                </a>
-              </li>
-              <li class="line dk"></li>
+									<div class="progress progress-xs m-b-none dker">
+										<div class="progress-bar bg-white" data-toggle="tooltip"
+											data-original-title="50%" style="width: 50%"></div>
+									</div></li>
+								<li><a href>Settings</a></li>
+								<li><a th:href="page_profile">Profile</a></li>
+								<li><a href><span class="badge bg-danger pull-right">3</span>Notifications</a></li>
+								<li class="divider"></li>
+								<li><a th:href="page_signin">Logout</a></li>
+							</ul>
+							<!-- / dropdown -->
+						</div>
+						<div class="line dk hidden-folded"></div>
+					</div>
+					<!-- / user -->
+					<!-- nav -->
+					<nav ui-nav class="navi clearfix">
+						<ul class="nav">
+							<li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
+								<span>Main</span>
+							</li>
+							<li><a th:href="index" class="auto"> <i
+									class="glyphicon glyphicon-stats icon text-primary-dker"></i> <span
+									class="font-bold">Dashboard</span>
+							</a></li>
+							<li><a th:href="mail"> <b
+									class="badge bg-info pull-right">9</b> <i
+									class="glyphicon glyphicon-envelope icon text-info-lter"></i> <span
+									class="font-bold">Email</span>
+							</a></li>
+							<li class="line dk"></li>
 
-              <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
-                <span>Management</span>
-              </li>
-              <li>
-                <a href class="auto">      
-                  <span class="pull-right text-muted">
-                    <i class="fa fa-fw fa-angle-right text"></i>
-                    <i class="fa fa-fw fa-angle-down text-active"></i>
-                  </span>
-                  <b class="badge bg-info pull-right">3</b>
-                  <i class="glyphicon glyphicon-briefcase"></i>
-                  <span>Customers</span>
-                </a>
-                <ul class="nav nav-sub dk">
-               
-                  <li>
-                    <a th:href="customer_manage">
-                      <span>Manage customer</span>
-                    </a>
-                  </li>
-          
-          <li>
-                    <a th:href="purchasing_customer_manage">
-                      <span>Puchasing contact</span>
-                    </a>
-                  </li>
-                    
-                </ul>
-              </li>
-           <li>
-                <a href class="auto">      
-                  <span class="pull-right text-muted">
-                    <i class="fa fa-fw fa-angle-right text"></i>
-                    <i class="fa fa-fw fa-angle-down text-active"></i>
-                  </span>
-                  <b class="badge bg-info pull-right">3</b>
-                  <i class="glyphicon glyphicon-user"></i>
-                  <span>Users</span>
-                </a>
-                <ul class="nav nav-sub dk">
-               
-                  <li>
-                    <a th:href="users">
-                      <span>Manage users</span>
-                    </a>
-                  </li>
-                                     <li>
-                    <a th:href="TypeUsers">
-                      <span>Manage Type users</span>
-                    </a>
-                  </li> 
-                </ul>
-              </li>
-              <li>
-                <a th:href="timesheets" class="auto">
-                  <i class="glyphicon glyphicon-calendar icon"></i>
-                  <span>TimeSheet</span>
-                </a>
+							<li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
+								<span>Management</span>
+							</li>
+							<li><a href class="auto"> <span
+									class="pull-right text-muted"> <i
+										class="fa fa-fw fa-angle-right text"></i> <i
+										class="fa fa-fw fa-angle-down text-active"></i>
+								</span> <b class="badge bg-info pull-right">3</b> <i
+									class="glyphicon glyphicon-briefcase"></i> <span>Customers</span>
+							</a>
+								<ul class="nav nav-sub dk">
 
-              </li>
-              <li>
-                <a href class="auto">
-                  <span class="pull-right text-muted">
-                    <i class="fa fa-fw fa-angle-right text"></i>
-                    <i class="fa fa-fw fa-angle-down text-active"></i>
-                  </span>
-                  <b class="label bg-primary pull-right">2</b>
-                  <i class="glyphicon glyphicon-list"></i>
-                  <span>Projects</span>
-                </a>
-                <ul class="nav nav-sub dk">
-                  <li class="s">
-                    <a th:href="projects_manage">
-                      <span>Manage Project</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a th:href="deliverable_manage">
-                      <span>Manage Deliverable</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a th:href="reference_manage">
-                      <span>Manage Reference</span>
-                    </a>
-                  </li>
-                </ul>
-              </li>
-              <li>
-                <a href class="auto">
-                  <span class="pull-right text-muted">
-                    <i class="fa fa-fw fa-angle-right text"></i>
-                    <i class="fa fa-fw fa-angle-down text-active"></i>
-                  </span>
-                  <i class="glyphicon  glyphicon-th"></i>
-                  <span>Assets</span>
-                </a>
-                <ul class="nav nav-sub dk">
-                  <li class="">
-                    <a th:href="assets_manage">
-                      <span>Manage Assets</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a th:href="assetstype_manage">
-                      <span>Manage Assets Type</span>
-                    </a>
-                  </li>
-          <li>
-                    <a th:href="firmware">
-                      <span>Firmware</span>
-                    </a>
-                  </li>
-          <li>
-                    <a th:href="vendor">
-                      <span>Vendor</span>
-                    </a>
-                  </li>
-                </ul>
-              </li>
-              <li>
-                <a th:href="tickets_manage">
-                  <i class="glyphicon glyphicon-tag"></i>
-                  <span>Tickets</span>
-                </a>
-              </li>
-        <li>
-                <a th:href="contract_manage">
-                  <i class="fa fa-legal"></i></i>
-                  <span>Contrats</span>
-                </a>
-              </li>
-        <li>
-                <a th:href="expense">
-                  <i class="glyphicon  glyphicon-usd"></i></i>
-                  <span>Expenses</span>
-                </a>
-              </li>
-              <li>
-                <a th:href="request_manage" class="auto">
-        <span class="pull-right text-muted">
-                    <i class="fa fa-fw fa-angle-right text"></i>
-                    <i class="fa fa-fw fa-angle-down text-active"></i>
-                  </span>
-                  <i class="glyphicon  glyphicon-save icon"></i>
-                  <span>Request</span>
-                </a>
-                 <ul class="nav nav-sub dk">
-                  <li class="s">
-                    <a th:href="internal_request_manage">
-                      <span>Internal Request</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a th:href="external_request_manage">
-                      <span>External Request</span>
-                    </a>
-                  </li>
-                </ul>
+									<li><a th:href="customer_manage"> <span>Manage
+												customer</span>
+									</a></li>
 
-               
-              </li>
-              <li class="line dk hidden-folded"></li>
+									<li><a th:href="purchasing_customer_manage"> <span>Puchasing
+												contact</span>
+									</a></li>
 
-              <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">          
-                <span>Your Stuff</span>
-              </li>  
-              <li>
-                <a th:href="page_profile">
-                  <i class="icon-user icon text-success-lter"></i>
-                  <b class="badge bg-success pull-right">30%</b>
-                  <span>Profile</span>
-                </a>
-              </li>
-              <li>
-                <a href>
-                  <i class="icon-question icon"></i>
-                  <span>Documents</span>
-                </a>
-              </li>
-            </ul>
-          </nav><!-- nav --><!-- aside footer --><!-- / aside footer -->
-	</div>
-   </div>
-  </aside><!-- / aside --><!-- content -->
-  <div id="content" class="app-content" role="main">
-   <div class="app-content-body ">
-    <div class="bg-light lter b-b wrapper-md"><h1 class="m-n font-bold h3">Firmware
-    
-    <a style="margin-top:-5px;" data-toggle="modal"  data-target="#AddFrim" class="btn btn-sm btn-primary pull-right"  role="button">
-    <b class="glyphicon-plus pull"> </b>Add Firmware</a></h1></div>
-	
-	<div class="row" style="margin:5px;background-color:#f0f3f4;">
-     
-	</div>
-	 
-	   <div class="table-responsive" style="background-color:white;margin:10px; padding:10px;">
-		<table ui-jq="dataTable" ui-options="{
+								</ul></li>
+							<li><a href class="auto"> <span
+									class="pull-right text-muted"> <i
+										class="fa fa-fw fa-angle-right text"></i> <i
+										class="fa fa-fw fa-angle-down text-active"></i>
+								</span> <b class="badge bg-info pull-right">3</b> <i
+									class="glyphicon glyphicon-user"></i> <span>Users</span>
+							</a>
+								<ul class="nav nav-sub dk">
+
+									<li><a th:href="users"> <span>Manage users</span>
+									</a></li>
+									<li><a th:href="TypeUsers"> <span>Manage Type
+												users</span>
+									</a></li>
+								</ul></li>
+							<li><a th:href="timesheets" class="auto"> <i
+									class="glyphicon glyphicon-calendar icon"></i> <span>TimeSheet</span>
+							</a></li>
+							<li><a href class="auto"> <span
+									class="pull-right text-muted"> <i
+										class="fa fa-fw fa-angle-right text"></i> <i
+										class="fa fa-fw fa-angle-down text-active"></i>
+								</span> <b class="label bg-primary pull-right">2</b> <i
+									class="glyphicon glyphicon-list"></i> <span>Projects</span>
+							</a>
+								<ul class="nav nav-sub dk">
+									<li class="s"><a th:href="projects_manage"> <span>Manage
+												Project</span>
+									</a></li>
+									<li><a th:href="deliverable_manage"> <span>Manage
+												Deliverable</span>
+									</a></li>
+									<li><a th:href="reference_manage"> <span>Manage
+												Reference</span>
+									</a></li>
+								</ul></li>
+							<li><a href class="auto"> <span
+									class="pull-right text-muted"> <i
+										class="fa fa-fw fa-angle-right text"></i> <i
+										class="fa fa-fw fa-angle-down text-active"></i>
+								</span> <i class="glyphicon  glyphicon-th"></i> <span>Assets</span>
+							</a>
+								<ul class="nav nav-sub dk">
+									<li class=""><a th:href="assets_manage"> <span>Manage
+												Assets</span>
+									</a></li>
+									<li><a th:href="assetstype_manage"> <span>Manage
+												Assets Type</span>
+									</a></li>
+									<li><a th:href="firmware"> <span>Firmware</span>
+									</a></li>
+									<li><a th:href="vendor"> <span>Vendor</span>
+									</a></li>
+								</ul></li>
+							<li><a th:href="tickets_manage"> <i
+									class="glyphicon glyphicon-tag"></i> <span>Tickets</span>
+							</a></li>
+							<li><a th:href="contract_manage"> <i class="fa fa-legal"></i></i>
+									<span>Contrats</span>
+							</a></li>
+							<li><a th:href="expense"> <i
+									class="glyphicon  glyphicon-usd"></i></i> <span>Expenses</span>
+							</a></li>
+							<li><a th:href="request_manage" class="auto"> <span
+									class="pull-right text-muted"> <i
+										class="fa fa-fw fa-angle-right text"></i> <i
+										class="fa fa-fw fa-angle-down text-active"></i>
+								</span> <i class="glyphicon  glyphicon-save icon"></i> <span>Request</span>
+							</a>
+								<ul class="nav nav-sub dk">
+									<li class="s"><a th:href="internal_request_manage"> <span>Internal
+												Request</span>
+									</a></li>
+									<li><a th:href="external_request_manage"> <span>External
+												Request</span>
+									</a></li>
+								</ul></li>
+							<li class="line dk hidden-folded"></li>
+
+							<li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
+								<span>Your Stuff</span>
+							</li>
+							<li><a th:href="page_profile"> <i
+									class="icon-user icon text-success-lter"></i> <b
+									class="badge bg-success pull-right">30%</b> <span>Profile</span>
+							</a></li>
+							<li><a href> <i class="icon-question icon"></i> <span>Documents</span>
+							</a></li>
+						</ul>
+					</nav>
+					<!-- nav -->
+					<!-- aside footer -->
+					<!-- / aside footer -->
+				</div>
+			</div>
+		</aside>
+		<!-- / aside -->
+		<!-- content -->
+		<div id="content" class="app-content" role="main">
+			<div class="app-content-body ">
+				<div class="bg-light lter b-b wrapper-md">
+					<h1 class="m-n font-bold h3">
+						Firmware <a style="margin-top: -5px;" data-toggle="modal"
+							data-target="#AddClient"
+							class="btn btn-sm btn-primary pull-right" role="button"><b
+							class="glyphicon-plus pull"> </b>Add Firmware</a>
+					</h1>
+				</div>
+
+				<div class="row" style="margin: 5px; background-color: #f0f3f4;">
+
+				</div>
+
+				<div class="table-responsive"
+					style="background-color: white; margin: 10px; padding: 10px;">
+					<table ui-jq="dataTable"
+						ui-options="{
 															aoColumns: [
 															
 															{ mData: 'browser' },
@@ -511,37 +488,61 @@ document.addEventListener('DOMContentLoaded', function() {
 															{ mData: 'version' },
 															{ mData: 'action' }
 															]
-															}" class="table  b-t b-b">
-	     <thead style="color:#23b7e5;">
-		  <tr>
-		   <th  style="width:25%"><center>Name</center></th>
-		   <th  style="width:40%"><center>Description</center></th>
-		   <th  style="width:25%"><center>Release Date</center></th>
-		   <th  style="width:10%"><center>Actions</center></th>
+															}"
+						class="table  b-t b-b">
+						<thead style="color: #23b7e5;">
+							<tr>
+								<th style="width: 25%"><center>Name</center></th>
+								<th style="width: 40%"><center>Description</center></th>
+								<th style="width: 25%"><center>Release Date</center></th>
+								<th style="width: 10%"><center>Actions</center></th>
 
-		  </tr>
-	     </thead>
-		 <tbody>
-		  <tr data-expanded="true">
-		   <td><center><b>JESA-IT-17072015</b></center></td>
-		   <td><center><span>There are a few easy ways to quickly get started with Bootstrap, each one ...</span>
-       <span class="text-muted hide" id="moreless1"> appealing to a different skill level and use case. Read through to see what suits your particular needs.</span></center>
-       <p>
-        <button class="btn btn-sm pull-right" ui-toggle-class="show" target="#moreless1">
-          <i class="fa fa-plus text"></i>
-          <span class="text">More</span>
-          <i class="fa fa-minus text-active"></i>
-          <span class="text-active">Less</span>
-        </button>
-       </p>
-      </td>
-		   <td><center>16-07-2020</center></td>
-		   <td><center><div class="btn-group dropdown"><button class="btn btn-default btn-xs" data-toggle="dropdown"><i class="glyphicon glyphicon-cog"></i> Action <span class="caret"></span></button><ul class="dropdown-menu"><li><a style="margin-top:-5px;" data-toggle="modal"  data-target="#Update" class="btn btn-sm btn-light" role="button">Update</a></li><li><a style="margin-top:-5px;" data-toggle="modal"  data-target="#Delete" class="btn btn-sm btn-light" role="button">Delete</a></li><li><a style="margin-top:-5px;" data-toggle="modal"  data-target="#Detail" class="btn btn-sm btn-light" role="button">Detail</a></li></ul></div></center></td>
-		  </tr>
-		 </tbody>
-		</table>
-	   </div>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="f : ${firmList}">
 
+
+								<td th:text="${f.name}"><center>
+										<b></b>
+									</center></td>
+								<td th:text="${f.description}"><center>
+										<span></span> <span class="text-muted hide" id="moreless1">
+										</span>
+									</center>
+									<p>
+										<button class="btn btn-sm pull-right" ui-toggle-class="show"
+											target="#moreless1">
+											<i class="fa fa-plus text"></i> <span class="text">More</span>
+											<i class="fa fa-minus text-active"></i> <span
+												class="text-active">Less</span>
+										</button>
+									</p></td>
+								<td th:text="${f.releaseDate}"><center></center></td>
+								<td><center>
+										<div class="btn-group dropdown">
+											<button class="btn btn-default btn-xs" data-toggle="dropdown">
+												<i class="glyphicon glyphicon-cog"></i> Action <span
+													class="caret"></span>
+											</button>
+											<ul class="dropdown-menu">
+												<li><a style="margin-top: -5px;" data-toggle="modal"
+													data-target="#Update" class="btn btn-sm btn-light"
+													role="button">Update</a></li>
+												<li><a style="margin-top: -5px;" data-toggle="modal"
+													data-target="#Delete" class="btn btn-sm btn-light"
+													role="button">Delete</a></li>
+												<li><a style="margin-top: -5px;" data-toggle="modal"
+													data-target="#Detail" class="btn btn-sm btn-light"
+													role="button">Detail</a></li>
+											</ul>
+										</div>
+									</center></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+=======
 <div class="col-sm-12">              
     <div class="row row-sm text-center">
      <div class="col-sm-6">
@@ -673,244 +674,551 @@ document.addEventListener('DOMContentLoaded', function() {
   </div>
  </footer><!-- / footer -->
 
-<div class="modal fade" role="dialog" id="Update">
-   <div class="modal-dialog modal-lg" >
-    <div class="modal-content">
-     <div class="modal-header" style="background-image:url(img/grf-bg.jpg);color:white;">
-      <button type="button" class="close pull-right" data-dismiss="modal">&times;</button>
-      <h1 class="m-n font-bold h3"> Update Firmware</h1>
-     </div>
-     <div class="modal-body">
-      <div class="row">
-       <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Firmware Name</b></label>
-       <div class="col-sm-8" style="margin: 5px 0px;">
-      <input type="text" class="form-control" placeholder="Entry Name of firmware" id="input-id-1">
-     </div>
-       <label class="col-sm-4 control-label" placeholder="Entry Notes" for="input-id-1"><b>Description</b></label>
-      <div class="col-sm-8">
-       <div class="form-group">
-      <div class="btn-toolbar m-b-sm btn-editor" data-role="editor-toolbar" data-target="#editor">
-       <div class="btn-group dropdown" dropdown="">
-        <a class="btn btn-default" dropdown-toggle="" tooltip="Font"><i class="fa fa-font"></i><b class="caret"></b></a>
-         <ul class="dropdown-menu">
-        <li><a href="" data-edit="fontName Serif" style="font-family:'Serif'">Serif</a></li> 
-        <li><a href="" data-edit="fontName Sans" style="font-family:'Sans'">Sans</a></li>
-        <li><a href="" data-edit="fontName Arial" style="font-family:'Arial'">Arial</a></li>
-         </ul>
-       </div>
-       <div class="btn-group dropdown" dropdown="">
-        <a class="btn btn-default" dropdown-toggle="" data-toggle="dropdown" tooltip="Font Size"><i class="fa fa-text-height"></i>&nbsp;<b class="caret"></b></a>
-        <ul class="dropdown-menu">
-         <li><a href="" data-edit="fontSize 5" style="font-size:24px">Huge</a></li>
-         <li><a href="" data-edit="fontSize 3" style="font-size:18px">Normal</a></li>
-         <li><a href="" data-edit="fontSize 1" style="font-size:14px">Small</a></li>
-        </ul>
-         </div>
-       <div class="btn-group">
-        <a class="btn btn-default" data-edit="bold" tooltip="Bold (Ctrl/Cmd+B)"><i class="fa fa-bold"></i></a>
-        <a class="btn btn-default" data-edit="italic" tooltip="Italic (Ctrl/Cmd+I)"><i class="fa fa-italic"></i></a>
-        <a class="btn btn-default" data-edit="strikethrough" tooltip="Strikethrough"><i class="fa fa-strikethrough"></i></a>
-        <a class="btn btn-default" data-edit="underline" tooltip="Underline (Ctrl/Cmd+U)"><i class="fa fa-underline"></i></a>
-       </div>
-       <div class="btn-group">
-        <a class="btn btn-default" data-edit="insertunorderedlist" tooltip="Bullet list"><i class="fa fa-list-ul"></i></a>
-        <a class="btn btn-default" data-edit="insertorderedlist" tooltip="Number list"><i class="fa fa-list-ol"></i></a>
-        <a class="btn btn-default" data-edit="outdent" tooltip="Reduce indent (Shift+Tab)"><i class="fa fa-dedent"></i></a>
-        <a class="btn btn-default" data-edit="indent" tooltip="Indent (Tab)"><i class="fa fa-indent"></i></a>
-         </div>
-       <div class="btn-group">
-        <a class="btn btn-default btn-info" data-edit="justifyleft" tooltip="Align Left (Ctrl/Cmd+L)"><i class="fa fa-align-left"></i></a>
-        <a class="btn btn-default" data-edit="justifycenter" tooltip="Center (Ctrl/Cmd+E)"><i class="fa fa-align-center"></i></a>
-        <a class="btn btn-default" data-edit="justifyright" tooltip="Align Right (Ctrl/Cmd+R)"><i class="fa fa-align-right"></i></a>
-        <a class="btn btn-default" data-edit="justifyfull" tooltip="Justify (Ctrl/Cmd+J)"><i class="fa fa-align-justify"></i></a>
-       </div>
-       <div class="btn-group dropdown" dropdown="">
-        <a class="btn btn-default" dropdown-toggle="" tooltip="Hyperlink"><i class="fa fa-link"></i></a>
-        <div class="dropdown-menu">
-         <div class="input-group m-l-xs m-r-xs">
-        <input class="form-control input-sm" id="LinkInput" placeholder="URL" type="text" data-edit="createLink">
-        <div class="input-group-btn">
-         <button class="btn btn-sm btn-default" type="button">Add</button>
-        </div>
-         </div>
-        </div>
-        <a class="btn btn-default" data-edit="unlink" tooltip="Remove Hyperlink"><i class="fa fa-cut"></i></a>
-       </div>
-             <div class="btn-group">
-        <a class="btn btn-default" tooltip="Insert picture (or just drag &amp; drop)" id="pictureBtn"><i class="fa fa-picture-o"></i></a>
-        <input type="file" data-edit="insertImage" style="position:absolute; opacity:0; width:41px; height:34px">
-       </div>
-       <div class="btn-group">
-        <a class="btn btn-default" data-edit="undo" tooltip="Undo (Ctrl/Cmd+Z)"><i class="fa fa-undo"></i></a>
-        <a class="btn btn-default" data-edit="redo" tooltip="Redo (Ctrl/Cmd+Y)"><i class="fa fa-repeat"></i></a>
-       </div>
-      </div>
-      <div ui-jq="wysiwyg" class="form-control" style="overflow:scroll;height:200px;max-height:200px" contenteditable="true"> 
-        Go ahead… 
-      </div>
-    </div>
-   </div>
-    <label class="col-sm-4 control-label" placeholder="Entry Year" for="input-id-1"><b>Release Date</b></label>
-       <div class="col-sm-8">
-      <form action="https://formden.com/post/MlKtmY4x/" class="form-horizontal" method="post">
-       <div class="form-group ">
-        <div class="col-sm-10">
-       <div class="input-group">
-        <div class="input-group-addon">
-         <i class="fa fa-calendar"></i>
-        </div>
-        <input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" type="text"/>
-         </div>
-        </div>
-       </div>
-      </form>
-       </div>
-      <div class="modal-footer">
-       <button style="margin:0px;" class="btn m-b-xs btn-sm btn-primary btn-addon"><i class="glyphicon glyphicon-ok"></i>Save</button>
-       <button style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon" data-dismiss="modal"><i class="glyphicon glyphicon-remove"></i>Annuler</button>
-      </div>
-     </div>
-    </div>
-    </div>
-     </div>
-    </div>
 
-<div class="modal fade" role="dialog" id="Delete" >
- <div class="modal-dialog modal-lg" >
-  <div class="modal-content">
-   <div class="modal-header" style="background-image:url(img/grf-bg.jpg);color:white;">
-  <button type="button" class="close pull-right" data-dismiss="modal">&times;</button>
-     <h1 class="m-n font-bold h3">Delete Firmware</h1>
-   </div>
-   <div class="modal-body">
-    Do you want to delete this Firmware ? 
-   </div>
-    <div class="modal-footer">
-   <button class="btn m-b-xs btn-sm btn-primary btn-addon"><i class="glyphicon glyphicon-ok"></i>Yes</button>
-   <button class="btn m-b-xs btn-sm btn-default btn-addon" data-dismiss="modal"><i class="glyphicon glyphicon-remove"></i>No</button>
-  </div>
-  </div>  
-</div>
-</div>
 
-<div class="modal fade" role="dialog" id="Detail" >
- <div class="modal-dialog modal-lg" >
-  <div class="modal-content">
-   <div class="modal-header" style="background-image:url(img/grf-bg.jpg);color:white;">
-  <button type="button" class="close pull-right" data-dismiss="modal">&times;</button>
-     <h1 class="m-n font-bold h3">Information Firmware</h1>
-   </div>
-   <div class="modal-body">
-          <p>
-            <span class="m-n font-thin h3 text-black" >Firmware Name:</span>
-            <span ng-repeat="nom in firmware"> {{ firmware.nomFirmware }} </br></span>
-            <span class="m-n font-thin h3 text-black">Release Date :</span>
-            <span ng-repeat="releaseDate in firmware"> {{ frimware.releaseDateFrimware }}</span></br>
-            <span class="m-n font-thin h3 text-black" >Description :</span>
-            <span ng-repeat="description in contract"> {{ contract.descriptionContract }} </br></span>
-          </p> 
-   </div>
-   <div class="modal-footer">
-   <button class="btn m-b-xs btn-sm btn-primary btn-addon" data-dismiss="modal">Return</button>
-  </div>
-  </div>  
-</div>
-</div>
-</div>
-<script src="../libs/jquery/jquery/dist/jquery.js"></script>
-<script src="../libs/jquery/bootstrap/dist/js/bootstrap.js"></script>
-<script src="js/ui-load.js"></script>
-<script src="js/ui-jp.config.js"></script>
-<script src="js/ui-jp.js"></script>
-<script src="js/ui-nav.js"></script>
-<script src="js/ui-toggle.js"></script>
-<script src="js/ui-client.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
-<script>
-  $(document).ready(function(){
-    var date_input=$('input[name="date"]'); //our date input has the name "date"
-    var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
-    date_input.datepicker({
-      format: 'mm/dd/yyyy',
-      container: container,
-      todayHighlight: true,
-      autoclose: true,
-    })
-  })
-</script>
-<script>
-                                          $('.count').each(function () {
-                                            $(this).prop('Counter',0).animate({
-                                              Counter: $(this).text()
-                                            }, {
-                                              duration: 1500,
-                                              easing: 'linear',
-                                              step: function (now) {
-                                                $(this).text(Math.ceil(now));
-                                              }
-                                            });
-                                          });
-                </script>
-<script type="text/javascript">
-  function changecolor() {
-       $('body,.wrapper,.content,.panel-default,.panel-heading,#content-h,#header,.modal-content').css("background-color", "#3a3f51");
-       $('.wrapper,.content,.panel-default,.panel-heading,#content-h').css("border-color", "#313639");
-		$('.h3,.h5,.wrapper,panel-default,#content-b,.panel-heading').css("color", "white");
-		          $('.panel-default,#content-b').css("background-color", "#3a3f51");
+				<div class="col-sm-12">
+					<div class="row row-sm text-center">
+						<div class="col-sm-6">
+							<div class="panel padder-v item">
+								<div class="h1 count text-info font-thin h1 pull-center"
+									th:text="${totalFirmware}"></div>
+								<span class="text-muted text-xs"><b> Total Firmware </b></span>
+								<span class="bottom text-right w-full"><i
+									class="glyphicon glyphicon-list text-muted m-r-sm"></i></span>
+							</div>
+						</div>
+						<div class="col-sm-6">
+							<a href class="block panel padder-v bg-primary item"> <span
+								class="h1 count text-white font-thin h1 block">93</span> <span
+								class="text-muted text-xs"><b> Firmware <small>[les
+											plus Utilises]</small>
+								</b></span> <span class="bottom text-right w-full"><i
+									class="glyphicon glyphicon-list text-muted m-r-sm"></i></span>
+							</a>
+						</div>
+					</div>
+				</div>
+				<div class="modal fade" role="dialog" id="AddClient">
+					<div class="modal-dialog modal-lg">
+						<div class="modal-content">
+							<div class="modal-header"
+								style="background-image: url(img/grf-bg.jpg); color: white;">
+								<button type="button" class="close pull-right"
+									data-dismiss="modal">&times;</button>
+								<h1 class="m-n font-bold h3">
+									<b class="glyphicon-plus pull"> </b> Add Firmware
+								</h1>
+							</div>
+							<!-- add -->
+							<form action="#" th:action="@{/addFirmware}" th:object="${obj}"
+								method="post">
+								<div class="modal-body">
+									<div class="row">
+										<label class="col-sm-4 control-label" style="margin: 5px 0px;"
+											for="input-id-1"><b>Firmware Name</b></label>
+										<div class="col-sm-8" style="margin: 5px 0px;">
+											<input type="text" class="form-control"
+												placeholder="Entry Name of firmware" id="input-id-1"
+												th:field="*{name}">
 
-	google.charts.load('current', {packages: ['corechart']});
-    google.charts.setOnLoadCallback(drawChart);
+										</div>
+										<label class="col-sm-4 control-label" for="input-id-1"><b>Asset</b></label>
+										<div class="col-sm-8">
+											<select name="account" class="form-control m-b">
+												<option>Asset1</option>
+												<option>Asset2</option>
+											</select>
+										</div>
+										<div class="col-sm-8" style="margin: 5px 5px;"> 
+										<label class="col-sm-4 control-label"
+											placeholder="Entry Notes" for="input-id-1"><b>Description</b></label>
+											<textarea class="form-control" id="description"
+																	th:field="*{description}" placeholder="Description"
+																	></textarea>
+										 
+											<!-- <div class="form-group">
+												<div class="btn-toolbar m-b-sm btn-editor"
+													data-role="editor-toolbar" data-target="#editor">
+													<div class="btn-group dropdown" dropdown="">
+														<a class="btn btn-default" dropdown-toggle=""
+															tooltip="Font"><i class="fa fa-font"></i><b
+															class="caret"></b></a>
+														<ul class="dropdown-menu">
+															 <li><a href="" data-edit="fontName Serif"
+																style="font-family: 'Serif'">Serif</a></li>
+															<li><a href="" data-edit="fontName Sans"
+																style="font-family: 'Sans'">Sans</a></li>
+															<li><a href="" data-edit="fontName Arial"
+																style="font-family: 'Arial'">Arial</a></li>
+														</ul>
+													</div>
+													<div class="btn-group dropdown" dropdown="">
+														<a class="btn btn-default" dropdown-toggle=""
+															data-toggle="dropdown" tooltip="Font Size"><i
+															class="fa fa-text-height"></i>&nbsp;<b class="caret"></b></a>
+														<ul class="dropdown-menu">
+															<li><a href="" data-edit="fontSize 5"
+																style="font-size: 24px">Huge</a></li>
+															<li><a href="" data-edit="fontSize 3"
+																style="font-size: 18px">Normal</a></li>
+															<li><a href="" data-edit="fontSize 1"
+																style="font-size: 14px">Small</a></li>
+														</ul>
+													</div>
+													<div class="btn-group">
+														<a class="btn btn-default" data-edit="bold"
+															tooltip="Bold (Ctrl/Cmd+B)"><i class="fa fa-bold"></i></a>
+														<a class="btn btn-default" data-edit="italic"
+															tooltip="Italic (Ctrl/Cmd+I)"><i class="fa fa-italic"></i></a>
+														<a class="btn btn-default" data-edit="strikethrough"
+															tooltip="Strikethrough"><i
+															class="fa fa-strikethrough"></i></a> <a
+															class="btn btn-default" data-edit="underline"
+															tooltip="Underline (Ctrl/Cmd+U)"><i
+															class="fa fa-underline"></i></a>
+													</div>
+													<div class="btn-group">
+														<a class="btn btn-default" data-edit="insertunorderedlist"
+															tooltip="Bullet list"><i class="fa fa-list-ul"></i></a> <a
+															class="btn btn-default" data-edit="insertorderedlist"
+															tooltip="Number list"><i class="fa fa-list-ol"></i></a> <a
+															class="btn btn-default" data-edit="outdent"
+															tooltip="Reduce indent (Shift+Tab)"><i
+															class="fa fa-dedent"></i></a> <a class="btn btn-default"
+															data-edit="indent" tooltip="Indent (Tab)"><i
+															class="fa fa-indent"></i></a>
+													</div>
+													<div class="btn-group">
+														<a class="btn btn-default btn-info"
+															data-edit="justifyleft" tooltip="Align Left (Ctrl/Cmd+L)"><i
+															class="fa fa-align-left"></i></a> <a class="btn btn-default"
+															data-edit="justifycenter" tooltip="Center (Ctrl/Cmd+E)"><i
+															class="fa fa-align-center"></i></a> <a
+															class="btn btn-default" data-edit="justifyright"
+															tooltip="Align Right (Ctrl/Cmd+R)"><i
+															class="fa fa-align-right"></i></a> <a class="btn btn-default"
+															data-edit="justifyfull" tooltip="Justify (Ctrl/Cmd+J)"><i
+															class="fa fa-align-justify"></i></a>
+													</div>
+													<div class="btn-group dropdown" dropdown="">
+														<a class="btn btn-default" dropdown-toggle=""
+															tooltip="Hyperlink"><i class="fa fa-link"></i></a>
+														<div class="dropdown-menu">
+															<div class="input-group m-l-xs m-r-xs">
+																<input class="form-control input-sm" id="LinkInput"
+																	placeholder="URL"
+																	type="text" data-edit="createLink">
+																<div class="input-group-btn">
+																	<button class="btn btn-sm btn-default" type="button">Add</button>
+																</div>
+															</div>
+														</div>
+														<a class="btn btn-default" data-edit="unlink"
+															tooltip="Remove Hyperlink"><i class="fa fa-cut"></i></a>
+													</div>
+													<div class="btn-group">
+														<a class="btn btn-default"
+															tooltip="Insert picture (or just drag &amp; drop)"
+															id="pictureBtn"><i class="fa fa-picture-o"></i></a> <input
+															type="file" data-edit="insertImage"
+															style="position: absolute; opacity: 0; width: 41px; height: 34px">
+													</div>
+													<div class="btn-group">
+														<a class="btn btn-default" data-edit="undo"
+															tooltip="Undo (Ctrl/Cmd+Z)"><i class="fa fa-undo"></i></a>
+														<a class="btn btn-default" data-edit="redo"
+															tooltip="Redo (Ctrl/Cmd+Y)"><i class="fa fa-repeat"></i></a>
+													</div>
+												</div>
+												<div ui-jq="wysiwyg" class="form-control"
+													style="overflow: scroll; height: 200px; max-height: 200px"
+													contenteditable="true">Go ahead…</div>
+											</div>
+										</div> -->
+										<label class="col-sm-4 control-label" placeholder="Entry Year"
+											for="input-id-1"><b>Release Date</b></label>
+											 <!--<input class="form-control" placeholder="MM/DD/YYYY"
+														th:field="*{releaseDate}"  th:text="${releaseDate}"/>-->
+											<!-- <input class="form-control" placeholder="MM/DD/YYYY"
+															 type="text" /> -->
+										<div class="col-sm-8">
+											<!--  <form action="https://formden.com/post/MlKtmY4x/"
+											class="form-horizontal" method="post">-->
+							 				<div class="form-group">
+												<div class="col-sm-10">
+													<div class="input-group">
+														<div class="input-group-addon">
+															<i class="fa fa-calendar"></i>
+														</div>
+														<!--  --><input class="form-control" placeholder="MM/DD/YYYY"
+														th:field="*{releaseDate}"  th:text="${releaseDate}"/> 
+													</div>
+												</div>
+											</div>
+											<!-- </form>-->
+										</div>
+										<div class="modal-footer">
+											<input style="margin: 0px;"
+												class="btn m-b-xs btn-sm btn-primary btn-addon" value="Save "
+												type="submit" /><i class="glyphicon glyphicon-ok"></i>
+											<button style="margin: 0px;"
+												class="btn m-b-xs btn-sm btn-default btn-addon"
+												data-dismiss="modal">
+												<i class="glyphicon glyphicon-remove"></i>Annuler
+											</button>
+										</div>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- /content -->
+		<!-- footer -->
+		<footer id="footer" class="app-footer" role="footer">
+			<div class="wrapper b-t bg-light">
+				<span class="pull-right">2.2.0 <a href ui-scroll="app"
+					class="m-l-sm text-muted"><i class="fa fa-long-arrow-up"></i></a></span>&copy;
+				PowerM 2020 Copyright.
+			</div>
+		</footer>
+		<!-- / footer -->
 
-    function drawChart() {
-      // Define the chart to be drawn.
-      var data = new google.visualization.DataTable();
-      data.addColumn('string', 'Element');
-      data.addColumn('number', 'Percentage');
-      data.addRows([
-        ['Configuration', 0.68],
-        ['Documentation', 0.11],
-        ['Maintenance', 0.11],
-        ['Installation', 0.10]
-      ]);
+		<div class="modal fade" role="dialog" id="Update">
+			<div class="modal-dialog modal-lg">
+				<div class="modal-content">
+					<div class="modal-header"
+						style="background-image: url(img/grf-bg.jpg); color: white;">
+						<button type="button" class="close pull-right"
+							data-dismiss="modal">&times;</button>
+						<h1 class="m-n font-bold h3">Update Firmware</h1>
+						
+					</div>
+					<div class="modal-body">
+						<div class="row">
+							<label class="col-sm-4 control-label" style="margin: 5px 0px;"
+								for="input-id-1"><b>Firmware Name</b></label>
+							<div class="col-sm-8" style="margin: 5px 0px;">
+								<input type="text" class="form-control"
+									placeholder="Entry Name of firmware" id="input-id-1">
+									>
+							</div>
+							<label class="col-sm-4 control-label" for="input-id-1"><b>Asset</b></label>
+							<div class="col-sm-8">
+								<select name="account" class="form-control m-b">
+									<option>Asset1</option>
+									<option>Asset2</option>
+								</select>
+							</div>
+							<label class="col-sm-4 control-label" placeholder="Entry Notes"
+								for="input-id-1"><b>Description</b></label>
+							<div class="col-sm-8">
+								<div class="form-group">
+									<div class="btn-toolbar m-b-sm btn-editor"
+										data-role="editor-toolbar" data-target="#editor">
+										<div class="btn-group dropdown" dropdown="">
+											<a class="btn btn-default" dropdown-toggle="" tooltip="Font"><i
+												class="fa fa-font"></i><b class="caret"></b></a>
+											<ul class="dropdown-menu">
+												<li><a href="" data-edit="fontName Serif"
+													style="font-family: 'Serif'">Serif</a></li>
+												<li><a href="" data-edit="fontName Sans"
+													style="font-family: 'Sans'">Sans</a></li>
+												<li><a href="" data-edit="fontName Arial"
+													style="font-family: 'Arial'">Arial</a></li>
+											</ul>
+										</div>
+										<div class="btn-group dropdown" dropdown="">
+											<a class="btn btn-default" dropdown-toggle=""
+												data-toggle="dropdown" tooltip="Font Size"><i
+												class="fa fa-text-height"></i>&nbsp;<b class="caret"></b></a>
+											<ul class="dropdown-menu">
+												<li><a href="" data-edit="fontSize 5"
+													style="font-size: 24px">Huge</a></li>
+												<li><a href="" data-edit="fontSize 3"
+													style="font-size: 18px">Normal</a></li>
+												<li><a href="" data-edit="fontSize 1"
+													style="font-size: 14px">Small</a></li>
+											</ul>
+										</div>
+										<div class="btn-group">
+											<a class="btn btn-default" data-edit="bold"
+												tooltip="Bold (Ctrl/Cmd+B)"><i class="fa fa-bold"></i></a> <a
+												class="btn btn-default" data-edit="italic"
+												tooltip="Italic (Ctrl/Cmd+I)"><i class="fa fa-italic"></i></a>
+											<a class="btn btn-default" data-edit="strikethrough"
+												tooltip="Strikethrough"><i class="fa fa-strikethrough"></i></a>
+											<a class="btn btn-default" data-edit="underline"
+												tooltip="Underline (Ctrl/Cmd+U)"><i
+												class="fa fa-underline"></i></a>
+										</div>
+										<div class="btn-group">
+											<a class="btn btn-default" data-edit="insertunorderedlist"
+												tooltip="Bullet list"><i class="fa fa-list-ul"></i></a> <a
+												class="btn btn-default" data-edit="insertorderedlist"
+												tooltip="Number list"><i class="fa fa-list-ol"></i></a> <a
+												class="btn btn-default" data-edit="outdent"
+												tooltip="Reduce indent (Shift+Tab)"><i
+												class="fa fa-dedent"></i></a> <a class="btn btn-default"
+												data-edit="indent" tooltip="Indent (Tab)"><i
+												class="fa fa-indent"></i></a>
+										</div>
+										<div class="btn-group">
+											<a class="btn btn-default btn-info" data-edit="justifyleft"
+												tooltip="Align Left (Ctrl/Cmd+L)"><i
+												class="fa fa-align-left"></i></a> <a class="btn btn-default"
+												data-edit="justifycenter" tooltip="Center (Ctrl/Cmd+E)"><i
+												class="fa fa-align-center"></i></a> <a class="btn btn-default"
+												data-edit="justifyright" tooltip="Align Right (Ctrl/Cmd+R)"><i
+												class="fa fa-align-right"></i></a> <a class="btn btn-default"
+												data-edit="justifyfull" tooltip="Justify (Ctrl/Cmd+J)"><i
+												class="fa fa-align-justify"></i></a>
+										</div>
+										<div class="btn-group dropdown" dropdown="">
+											<a class="btn btn-default" dropdown-toggle=""
+												tooltip="Hyperlink"><i class="fa fa-link"></i></a>
+											<div class="dropdown-menu">
+												<div class="input-group m-l-xs m-r-xs">
+													<input class="form-control input-sm" id="LinkInput"
+														placeholder="URL" type="text" data-edit="createLink">
+													<div class="input-group-btn">
+														<button class="btn btn-sm btn-default" type="button">Add</button>
+													</div>
+												</div>
+											</div>
+											<a class="btn btn-default" data-edit="unlink"
+												tooltip="Remove Hyperlink"><i class="fa fa-cut"></i></a>
+										</div>
+										<div class="btn-group">
+											<a class="btn btn-default"
+												tooltip="Insert picture (or just drag &amp; drop)"
+												id="pictureBtn"><i class="fa fa-picture-o"></i></a> <input
+												type="file" data-edit="insertImage"
+												style="position: absolute; opacity: 0; width: 41px; height: 34px">
+										</div>
+										<div class="btn-group">
+											<a class="btn btn-default" data-edit="undo"
+												tooltip="Undo (Ctrl/Cmd+Z)"><i class="fa fa-undo"></i></a> <a
+												class="btn btn-default" data-edit="redo"
+												tooltip="Redo (Ctrl/Cmd+Y)"><i class="fa fa-repeat"></i></a>
+										</div>
+									</div>
+									<div ui-jq="wysiwyg" class="form-control"
+										style="overflow: scroll; height: 200px; max-height: 200px"
+										contenteditable="true">Go ahead…</div>
+								</div>
+							</div>
+							<label class="col-sm-4 control-label" placeholder="Entry Year"
+								for="input-id-1"><b>Release Date</b></label>
+							<div class="col-sm-8">
+								<form action="https://formden.com/post/MlKtmY4x/"
+									class="form-horizontal" method="post">
+									<div class="form-group ">
+										<div class="col-sm-10">
+											<div class="input-group">
+												<div class="input-group-addon">
+													<i class="fa fa-calendar"></i>
+												</div>
+												<input class="form-control" id="date" name="date"
+													placeholder="MM/DD/YYYY" type="text" />
+											</div>
+										</div>
+									</div>
+								</form>
+							</div>
+							<div class="modal-footer">
+								<input style="margin: 0px;"
+									class="btn m-b-xs btn-sm btn-primary btn-addon" value="Save"
+									type="submit" /> <i class="glyphicon glyphicon-ok"></i>
+								<button style="margin: 0px;"
+									class="btn m-b-xs btn-sm btn-default btn-addon"
+									data-dismiss="modal">
+									<i class="glyphicon glyphicon-remove"></i>Annuler
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 
-      // Instantiate and draw the chart.
-      var chart = new google.visualization.PieChart(document.getElementById('myPieChart'));
-	  var options = {backgroundColor: '#3a3f51', colors: ['#6254b2', '#3289c8', '#27c24c','#ffbb3b'],legendTextStyle: { color: '#FFF' },is3D: true};
-      chart.draw(data, options);
-    }
+		<div class="modal fade" role="dialog" id="Delete">
+			<div class="modal-dialog modal-lg">
+				<div class="modal-content">
+					<div class="modal-header"
+						style="background-image: url(img/grf-bg.jpg); color: white;">
+						<button type="button" class="close pull-right"
+							data-dismiss="modal">&times;</button>
+						<h1 class="m-n font-bold h3">Delete Firmware</h1>
+					</div>
+					<div class="modal-body">Do you want to delete this Firmware ?
+					</div>
+					<div class="modal-footer">
+						<button class="btn m-b-xs btn-sm btn-primary btn-addon">
+							<i class="glyphicon glyphicon-ok"></i>Yes
+						</button>
+						<button class="btn m-b-xs btn-sm btn-default btn-addon"
+							data-dismiss="modal">
+							<i class="glyphicon glyphicon-remove"></i>No
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
 
-      };
-	  
-	    function lightmode() {
-       $('.wrapper,.content,.panel-heading,#content-h,#header,.modal-content').css("background-color", "#f0f3f4");
-          $('.panel-default,#content-b').css("background-color", "#f0f3f4");
-       $('.wrapper,.content,.panel-default,.panel-heading,#content-h').css("border-color", "#dee5e7");
-		$('.h3,.h5,.wrapper,panel-default,#content-b,.panel-heading').css("color", "#58666e");
+		<div class="modal fade" role="dialog" id="Detail">
+			<div class="modal-dialog modal-lg">
+				<div class="modal-content">
+					<div class="modal-header"
+						style="background-image: url(img/grf-bg.jpg); color: white;">
+						<button type="button" class="close pull-right"
+							data-dismiss="modal">&times;</button>
+						<h1 class="m-n font-bold h3">Information Firmware</h1>
+					</div>
+					<div class="modal-body">
+						<p>
+							<span class="m-n font-thin h3 text-black">Firmware Name:</span> <span
+								ng-repeat="nom in firmware"> {{ firmware.nomFirmware }} </br>
+							</span> <span class="m-n font-thin h3 text-black">Asset Name:</span> <span
+								ng-repeat="nom in asset"> {{ asset.nomAsset }}</span></br> <span
+								class="m-n font-thin h3 text-black">Release Date :</span> <span
+								ng-repeat="releaseDate in firmware"> {{
+								frimware.releaseDateFrimware }}</span></br> <span
+								class="m-n font-thin h3 text-black">Description :</span> <span
+								ng-repeat="description in contract"> {{
+								contract.descriptionContract }} </br>
+							</span>
+						</p>
+					</div>
+					<div class="modal-footer">
+						<button class="btn m-b-xs btn-sm btn-primary btn-addon"
+							data-dismiss="modal">Return</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="../libs/jquery/jquery/dist/jquery.js"></script>
+	<script src="../libs/jquery/bootstrap/dist/js/bootstrap.js"></script>
+	<script src="js/ui-load.js"></script>
+	<script src="js/ui-jp.config.js"></script>
+	<script src="js/ui-jp.js"></script>
+	<script src="js/ui-nav.js"></script>
+	<script src="js/ui-toggle.js"></script>
+	<script src="js/ui-client.js"></script>
+	<script type="text/javascript"
+		src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+	<link rel="stylesheet"
+		href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css" />
+	<script>
+		$(document).ready(
+				function() {
+					var date_input = $('input[name="date"]'); //our date input has the name "date"
+					var container = $('.bootstrap-iso form').length > 0 ? $(
+							'.bootstrap-iso form').parent() : "body";
+					date_input.datepicker({
+						format : 'mm/dd/yyyy',
+						container : container,
+						todayHighlight : true,
+						autoclose : true,
+					})
+				})
+	</script>
+	<script>
+		$('.count').each(function() {
+			$(this).prop('Counter', 0).animate({
+				Counter : $(this).text()
+			}, {
+				duration : 1500,
+				easing : 'linear',
+				step : function(now) {
+					$(this).text(Math.ceil(now));
+				}
+			});
+		});
+	</script>
+	<script type="text/javascript">
+		function changecolor() {
+			$(
+					'body,.wrapper,.content,.panel-default,.panel-heading,#content-h,#header,.modal-content')
+					.css("background-color", "#3a3f51");
+			$('.wrapper,.content,.panel-default,.panel-heading,#content-h')
+					.css("border-color", "#313639");
+			$('.h3,.h5,.wrapper,panel-default,#content-b,.panel-heading').css(
+					"color", "white");
+			$('.panel-default,#content-b').css("background-color", "#3a3f51");
 
-	google.charts.load('current', {packages: ['corechart']});
-    google.charts.setOnLoadCallback(drawChart);
+			google.charts.load('current', {
+				packages : [ 'corechart' ]
+			});
+			google.charts.setOnLoadCallback(drawChart);
 
-    function drawChart() {
-      // Define the chart to be drawn.
-      var data = new google.visualization.DataTable();
-      data.addColumn('string', 'Element');
-      data.addColumn('number', 'Percentage');
-      data.addRows([
-        ['Configuration', 0.68],
-        ['Documentation', 0.11],
-        ['Maintenance', 0.11],
-        ['Installation', 0.10]
-      ]);
+			function drawChart() {
+				// Define the chart to be drawn.
+				var data = new google.visualization.DataTable();
+				data.addColumn('string', 'Element');
+				data.addColumn('number', 'Percentage');
+				data.addRows([ [ 'Configuration', 0.68 ],
+						[ 'Documentation', 0.11 ], [ 'Maintenance', 0.11 ],
+						[ 'Installation', 0.10 ] ]);
 
-      // Instantiate and draw the chart.
-      var chart = new google.visualization.PieChart(document.getElementById('myPieChart'));
-	  var options = {backgroundColor: '#f0f3f4', colors: ['#6254b2', '#3289c8', '#27c24c','#ffbb3b'],legendTextStyle: { color: 'black' },is3D: true};
-      chart.draw(data, options);
-    }
+				// Instantiate and draw the chart.
+				var chart = new google.visualization.PieChart(document
+						.getElementById('myPieChart'));
+				var options = {
+					backgroundColor : '#3a3f51',
+					colors : [ '#6254b2', '#3289c8', '#27c24c', '#ffbb3b' ],
+					legendTextStyle : {
+						color : '#FFF'
+					},
+					is3D : true
+				};
+				chart.draw(data, options);
+			}
 
-      };
-		</script>
+		};
+
+		function lightmode() {
+			$(
+					'.wrapper,.content,.panel-heading,#content-h,#header,.modal-content')
+					.css("background-color", "#f0f3f4");
+			$('.panel-default,#content-b').css("background-color", "#f0f3f4");
+			$('.wrapper,.content,.panel-default,.panel-heading,#content-h')
+					.css("border-color", "#dee5e7");
+			$('.h3,.h5,.wrapper,panel-default,#content-b,.panel-heading').css(
+					"color", "#58666e");
+
+			google.charts.load('current', {
+				packages : [ 'corechart' ]
+			});
+			google.charts.setOnLoadCallback(drawChart);
+
+			function drawChart() {
+				// Define the chart to be drawn.
+				var data = new google.visualization.DataTable();
+				data.addColumn('string', 'Element');
+				data.addColumn('number', 'Percentage');
+				data.addRows([ [ 'Configuration', 0.68 ],
+						[ 'Documentation', 0.11 ], [ 'Maintenance', 0.11 ],
+						[ 'Installation', 0.10 ] ]);
+
+				// Instantiate and draw the chart.
+				var chart = new google.visualization.PieChart(document
+						.getElementById('myPieChart'));
+				var options = {
+					backgroundColor : '#f0f3f4',
+					colors : [ '#6254b2', '#3289c8', '#27c24c', '#ffbb3b' ],
+					legendTextStyle : {
+						color : 'black'
+					},
+					is3D : true
+				};
+				chart.draw(data, options);
+			}
+
+		};
+	</script>
 </body>
 </html>
-													

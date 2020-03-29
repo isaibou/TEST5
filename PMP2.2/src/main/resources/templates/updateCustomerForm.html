@@ -24,86 +24,85 @@
    </div>
    <div class="modal-body">
 	<div class="row">
-<form action="@{updateCustomer}" th:object="${customerUp}">
-	 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Comapny Logo</b></label>
-     <div class="col-sm-4" style="margin: 5px 0px;">
-      <input type="text" placeholder="Entry Name Logo"class="form-control" id="input-id-1"/>
-     </div>
-     <div class="col-sm-4" style="margin: 5px 0px;" >
-      <div class="btn-group">
-       <a class="btn btn-default" tooltip="Insert picture (or just drag &amp; drop)" id="pictureBtn"><i class="fa fa-picture-o"></i></a>
-       <input type="file" data-edit="insertImage" style="position:absolute; opacity:0; width:41px; height:34px"   />
-      </div> 
-        </div>
-         <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>ID</b></label>
+<form th:action="@{editCustomer}" method ="post" th:object="${customer}">
+   <div class="modal-body">
+    <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b></b></label>
      <div class="col-sm-8" style="margin: 5px 0px;" >
-      <input type="text" class="form-control" placeholder="Entry Name of Company" id="input-id-1"  th:field=*{Customer_ID}>
+      <input type="hidden" class="form-control" placeholder="Entry Name of Company" id="input-id-1"  required th:field=*{Customer_ID}>
+      <span class="text-danger" th:errors=*{Name}></span>
 	 </div>
+    <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Comapny Logo</b></label>
+     <div class="col-sm-4" style="margin: 5px 0px;">
+      <input type="text" placeholder="Entry Name Logo"class="form-control" id="input-id-1"   th:field=*{Logo}/>
+     </div>
+	<div class="row">
 	 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Comapny Name</b></label>
      <div class="col-sm-8" style="margin: 5px 0px;" >
-      <input type="text" class="form-control" placeholder="Entry Name of Company" id="input-id-1"  th:field=*{Name}>
+      <input type="text" class="form-control" placeholder="Entry Name of Company" id="input-id-1"  required th:field=*{Name}>
+      <span  th:errors=*{Name}></span>
 	 </div>
-	 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Address Company</b></label>
+	 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Address</b></label>
 	 <div class="col-sm-8" style="margin: 5px 0px;">
-	  <input type="text"  class="form-control" placeholder="Entry Address of Company"id="input-id-2" th:field=*{AdressCompany}>
+	  <input type="text"  class="form-control" placeholder="Entry Address of Company"id="input-id-2"  required th:field=*{AdressCompany}>
 	 </div>
-	 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Phone Company</b></label>
-	 <div class="col-sm-8" style="margin: 5px 0px;">
-	  <input type="tel" placeholder="Entry Phone of Company" class="form-control" id="input-id-1" required th:field=*{PhoneCompany}>
-	 </div>
-	 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Phone CIO</b></label>
-	 <div class="col-sm-8" style="margin: 5px 0px;">
-	  <input type="tel" placeholder="Entry Phone CIO"class="form-control" id="input-id-1" required  th:field=*{PhoneCIO}>
-	 </div>
-	 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Email CIO</b></label>
+	  <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Email CIO</b></label>
 	 <div class="col-sm-8" style="margin: 5px 0px;">
 	  <input type="email" placeholder="Entry Phone CIO"class="form-control" id="input-id-1" required th:field=*{EmailCIO}> 
 	 </div>
-	 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Country</b></label>
+	  <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Phone CIO</b></label>
 	 <div class="col-sm-8" style="margin: 5px 0px;">
-	  <select id="countryA" name ="country" class="form-control m-b"  th:field=*{Country}></select>
+	  <input type="tel" placeholder="Entry Phone CIO"class="form-control" id="input-id-1" required  th:field=*{PhoneCIO}>
+	 </div>
+	 <label class="col-sm-4 control-label" placeholder="Entry Country of Company" style="margin: 5px 0px;" for="input-id-1"><b>Country</b></label>
+	 <div class="col-sm-8" style="margin: 5px 0px;">
+	  <select id="countryA" name ="country" class="form-control m-b" ></select>
 	 </div>
 	 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>City</b></label>
 	 <div class="col-sm-8" style="margin: 5px 0px;">
-	  <select name ="state" id ="stateA" class="form-control m-b" th:field=*{City} ></select>
+	  <select name ="state" id ="stateA" class="form-control m-b" ></select>
+	 </div>
+	 <label class="col-sm-4 control-label" placeholder="Entry Phone of Company" style="margin: 5px 0px;" for="input-id-1"><b>Phone</b></label>
+	 <div class="col-sm-8" style="margin: 5px 0px;">
+	  <input type="tel" placeholder="Entry Phone of Company"class="form-control" id="input-id-1"  th:field=*{PhoneCompany}>
 	 </div>
 	 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Industry</b></label>
 	 <div class="col-sm-8" style="margin: 5px 0px;">
-	  <select name="account" class="form-control m-b">
-	   <option>Advertising</option>
-	   <option>Manufacturing</option>
-	   <option>Construction</option>
-	   <option>Education</option>
-	   <option>Entertainment</option>
-	   <option>Healthcare</option>
-	   <option>Government</option>
-	   <option>Technology</option>
-	   <option>Retail</option>
-	   <option>Wholesale</option>
-	   <option>Banking</option>
-	   <option>Finance</option>
-	   <option>Telecomunication</option>
-	   <option>Transportation</option>
+	  <select name="account" class="form-control m-b"  th:field=*{Industry} >
+	   <option th:value ="Advertising" th:text="Advertising"></option>
+	   <option th:value ="Manufacturing" th:text="Manufacturing"></option>
+	   <option th:value ="Construction" th:text="Construction"></option>
+	   <option th:value ="Education" th:text="Education"></option>
+	   <option th:value ="Entertainment" th:text="Entertainment"></option>
+	   <option th:value ="Healthcare" th:text="Healthcare"></option>
+	   <option th:value ="Government" th:text="Government"></option>
+	   <option th:value ="Technology" th:text="Technology"></option>
+	   <option th:value ="Retail" th:text="Retail"></option>
+	   <option th:value ="Wholesale" th:text="Wholesale"></option>
+	   <option th:value ="Banking" th:text="Banking"></option>
+	   <option th:value ="Finance" th:text="Finance"></option>
+	   <option th:value ="Telecomunication" th:text="Telecomunication"></option>
+	   <option th:value ="Transportation" th:text="Transportation"></option>
 	  </select>
 	 </div>
-     <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>VIP</b></label>
+	   <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>VIP</b></label>
 	 <div class="col-sm-8" style="margin: 5px 0px;">
-	  <div class="col-sm-4">
-	   <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked="">Yes</input>
-      </div>
-	  <div class="col-sm-4">
-	   <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked=""  >No</input>
-	  </div>
+	  <select name="VIP" class="form-control m-b" th:field=*{Vip}  >
+	  	 <option th:value="YES" th:text="YES"  ></option>
+   		 <option th:value="NO" th:text="NO" ></option>
+	  </select>
+	 </div>
+    
+    
 	 </div>
 	</div>
    </div>
    <div class="modal-footer">
 	<button style="margin:0px;" class="btn m-b-xs btn-sm btn-primary btn-addon"><i class="glyphicon glyphicon-ok"></i>Save</button>
 	<button style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon" data-dismiss="modal"><i class="glyphicon glyphicon-remove"  ></i>Annuler</button>
+		
    </div>
+   </form >
   </div>
-  </form>
- </div>
 </div>
 </div>
 

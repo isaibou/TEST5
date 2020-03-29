@@ -2,14 +2,19 @@ package com.example.demo.entities;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.hibernate.validator.constraints.UniqueElements;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.bind.DefaultValue;
+import org.springframework.format.annotation.NumberFormat;
 
 @Entity
 public class Customer implements Serializable{
@@ -33,18 +38,21 @@ public class Customer implements Serializable{
 	@Id
 	@GeneratedValue
 	private Integer Customer_ID;
-	@javax.validation.constraints.NotEmpty
-	@UniqueElements
+	@Column(name = "Name")
 	private String Name;
 	private String Industry;
 	private String Logo;
+
 	private String PhoneCompany;
 	private String AdressCompany;
-	private Boolean Vip;
+	private String Vip;
+
 	private String PhoneCIO;
-	@javax.validation.constraints.Email
+
 	private String EmailCIO;
+	
 	private String City;
+	
 	private String Country; 
 	
 	private String Status;
@@ -53,10 +61,8 @@ public class Customer implements Serializable{
 		super();
 	}
 
-	
-
-	public Customer(String name, String industry, String logo, String phoneCompany, String adressCompany, Boolean vip,
-			String phoneCIO, String emailCIO, String city, String country) {
+	public Customer(String name, String industry, String logo, String phoneCompany, String adressCompany, String vip,
+			String phoneCIO, String emailCIO, String city, String country, String status) {
 		super();
 		Name = name;
 		Industry = industry;
@@ -68,6 +74,7 @@ public class Customer implements Serializable{
 		EmailCIO = emailCIO;
 		City = city;
 		Country = country;
+		Status = status;
 	}
 
 	public Integer getCustomer_ID() {
@@ -118,11 +125,11 @@ public class Customer implements Serializable{
 		AdressCompany = adressCompany;
 	}
 
-	public Boolean getVip() {
+	public String getVip() {
 		return Vip;
 	}
 
-	public void setVip(Boolean vip) {
+	public void setVip(String vip) {
 		Vip = vip;
 	}
 
@@ -141,6 +148,17 @@ public class Customer implements Serializable{
 	public void setEmailCIO(String emailCIO) {
 		EmailCIO = emailCIO;
 	}
+
+	public String getStatus() {
+		return Status;
+	}
+
+	public void setStatus(String status) {
+		Status = status;
+	}
+
+	
+		
 	
 	
 

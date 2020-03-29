@@ -39,6 +39,7 @@ public class Customer implements Serializable{
 	@GeneratedValue
 	private Integer Customer_ID;
 	@Column(name = "Name")
+	@UniqueElements
 	private String Name;
 	private String Industry;
 	private String Logo;

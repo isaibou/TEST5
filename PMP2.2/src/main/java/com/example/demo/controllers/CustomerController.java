@@ -57,8 +57,10 @@ public class CustomerController {
 	}
 	
 	@RequestMapping(value = "/editCustomer",method= RequestMethod.POST)
-	public String updateCustomer(Model model, Customer cust){
-	cust= 	(Customer) model.getAttribute("customer");
+	public String updateCustomer(Model model, @Valid Customer cust, BindingResult bindingResult){
+	if (bindingResult.hasErrors()) {
+		return "updateCustomerForm";
+	}
 		customerrepository.save(cust);
 		
 		return "redirect:/customer_manage";

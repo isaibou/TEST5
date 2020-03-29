@@ -39,6 +39,7 @@ public class FrimwareController {
 
 		return "firmware";
 	}
+
 	@PostMapping("/addFirmware")
     public String addUser(@Valid Frimware obj, BindingResult result, Model model) {
        
@@ -78,6 +79,19 @@ public class FrimwareController {
 	// public String Save(Frimware frim) {
 	// frimwareRepository.save(frim);
 	// return "redirect:/firmware";
+
+
+		//les deux methode post et get
+		
+	
+		
+		@RequestMapping(value="/Savefirmware" , method= RequestMethod.POST)
+		public String Savefirmware(Frimware frimware) {
+			frimwareRepository.save(frimware);
+			return "redirect:/firmware";
+			
+		}
+		
 
 }
 

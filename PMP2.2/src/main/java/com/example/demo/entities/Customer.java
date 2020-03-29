@@ -6,6 +6,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotEmpty;
+import org.hibernate.validator.constraints.UniqueElements;
+import org.springframework.boot.context.properties.bind.DefaultValue;
+
 @Entity
 public class Customer implements Serializable{
 	
@@ -28,6 +33,8 @@ public class Customer implements Serializable{
 	@Id
 	@GeneratedValue
 	private Integer Customer_ID;
+	@javax.validation.constraints.NotEmpty
+	@UniqueElements
 	private String Name;
 	private String Industry;
 	private String Logo;
@@ -35,9 +42,12 @@ public class Customer implements Serializable{
 	private String AdressCompany;
 	private Boolean Vip;
 	private String PhoneCIO;
+	@javax.validation.constraints.Email
 	private String EmailCIO;
 	private String City;
 	private String Country; 
+	
+	private String Status;
 	
 	public Customer() {
 		super();

@@ -15,10 +15,12 @@ import com.example.demo.entities.AssetType;
 //<<<<<<< HEAD
 import com.example.demo.repository.AssetRepository;
 import com.example.demo.repository.AssetTypeRepository;
+import com.example.demo.repository.FrimwareRepository;
 //=======
 import com.example.demo.entities.Assets;
 
 import com.example.demo.entities.Customer;
+import com.example.demo.entities.Frimware;
 import com.example.demo.repository.AssetRepository;
 import com.example.demo.repository.AssetTypeRepository;
 
@@ -34,10 +36,14 @@ public class Application {
 		ApplicationContext ctx = SpringApplication.run(Application.class, args);
 		AssetTypeRepository assettypeRepository = ctx.getBean(AssetTypeRepository.class);
 		AssetRepository assetRepository = ctx.getBean(AssetRepository.class);
-		
+		FrimwareRepository frimwareRepository = ctx.getBean(FrimwareRepository.class);
 		
 		 
-		
+		 
+		 frimwareRepository.save(new Frimware(new Date(), "Frimware1", "frimware2"));
+		 
+		 frimwareRepository.save(new Frimware(new Date(), "Frimware3", "frimware4"));
+		 
 		 assettypeRepository.save(new AssetType("sasa", "ddd", new Date(), new Date(),"sss"));
 		
 		 assettypeRepository.save(new AssetType("sasa1", "ddd1", new Date(), new Date(),"sss1"));

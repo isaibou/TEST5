@@ -502,7 +502,6 @@
 						<tbody>
 							<tr th:each="f : ${firmList}">
 
-
 								<td th:text="${f.name}"><center>
 										<b></b>
 									</center></td>
@@ -542,138 +541,6 @@
 						</tbody>
 					</table>
 				</div>
-=======
-<div class="col-sm-12">              
-    <div class="row row-sm text-center">
-     <div class="col-sm-6">
-    <div class="panel padder-v item">
-     <div class="h1 count text-info font-thin h1 pull-center">521</div>
-      <span class="text-muted text-xs"><b> Total Firmware </b></span>
-      <span class="bottom text-right w-full"><i class="glyphicon glyphicon-list text-muted m-r-sm"></i></span>
-     </div>
-    </div>
-    <div class="col-sm-6">
-     <a href class="block panel padder-v bg-primary item">
-      <span class="h1 count text-white font-thin h1 block">93</span>
-      <span class="text-muted text-xs"><b> Firmware <small>[les plus Utilises]</small> </b></span>
-      <span class="bottom text-right w-full"><i class="glyphicon glyphicon-list text-muted m-r-sm"></i></span>
-     </a>
-    </div>
-    </div>
-     </div> 
-	<div class="modal fade" role="dialog" id="AddFrim" >
-	 <div class="modal-dialog modal-lg" >
-	  <div class="modal-content">
-	   <div class="modal-header" style="background-image:url(img/grf-bg.jpg);color:white;">
-	    <button type="button" class="close pull-right" data-dismiss="modal">&times;</button>
-	    <h1 class="m-n font-bold h3"> <b class="glyphicon-plus pull"> </b> Add Firmware</h1>
-	   </div>
-	   <form th:action="@{SaveFrimware}" class="form-horizontal" method="post" >
-     <div class="modal-body">
-      <div class="row">
-       <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Frimware Name</b></label>
-       <div class="col-sm-8" style="margin: 5px 0px;">
-      <input type="text"  class="form-control" placeholder="Entry Name of firmware" id="input-id-1">
-     </div>
-       
-       <label class="col-sm-4 control-label" placeholder="Entry Notes" for="input-id-1"><b>Description</b></label>
-      <div class="col-sm-8">
-       <div class="form-group">
-      <div class="btn-toolbar m-b-sm btn-editor" data-role="editor-toolbar" data-target="#editor">
-       <div class="btn-group dropdown" dropdown="">
-        <a class="btn btn-default" dropdown-toggle="" tooltip="Font"><i class="fa fa-font"></i><b class="caret"></b></a>
-         <ul class="dropdown-menu">
-        <li><a href="" data-edit="fontName Serif" style="font-family:'Serif'">Serif</a></li> 
-        <li><a href="" data-edit="fontName Sans" style="font-family:'Sans'">Sans</a></li>
-        <li><a href="" data-edit="fontName Arial" style="font-family:'Arial'">Arial</a></li>
-         </ul>
-       </div>
-       <div class="btn-group dropdown" dropdown="">
-        <a class="btn btn-default" dropdown-toggle="" data-toggle="dropdown" tooltip="Font Size"><i class="fa fa-text-height"></i>&nbsp;<b class="caret"></b></a>
-        <ul class="dropdown-menu">
-         <li><a href="" data-edit="fontSize 5" style="font-size:24px">Huge</a></li>
-         <li><a href="" data-edit="fontSize 3" style="font-size:18px">Normal</a></li>
-         <li><a href="" data-edit="fontSize 1" style="font-size:14px">Small</a></li>
-        </ul>
-         </div>
-       <div class="btn-group">
-        <a class="btn btn-default" data-edit="bold" tooltip="Bold (Ctrl/Cmd+B)"><i class="fa fa-bold"></i></a>
-        <a class="btn btn-default" data-edit="italic" tooltip="Italic (Ctrl/Cmd+I)"><i class="fa fa-italic"></i></a>
-        <a class="btn btn-default" data-edit="strikethrough" tooltip="Strikethrough"><i class="fa fa-strikethrough"></i></a>
-        <a class="btn btn-default" data-edit="underline" tooltip="Underline (Ctrl/Cmd+U)"><i class="fa fa-underline"></i></a>
-       </div>
-       <div class="btn-group">
-        <a class="btn btn-default" data-edit="insertunorderedlist" tooltip="Bullet list"><i class="fa fa-list-ul"></i></a>
-        <a class="btn btn-default" data-edit="insertorderedlist" tooltip="Number list"><i class="fa fa-list-ol"></i></a>
-        <a class="btn btn-default" data-edit="outdent" tooltip="Reduce indent (Shift+Tab)"><i class="fa fa-dedent"></i></a>
-        <a class="btn btn-default" data-edit="indent" tooltip="Indent (Tab)"><i class="fa fa-indent"></i></a>
-         </div>
-       <div class="btn-group">
-        <a class="btn btn-default btn-info" data-edit="justifyleft" tooltip="Align Left (Ctrl/Cmd+L)"><i class="fa fa-align-left"></i></a>
-        <a class="btn btn-default" data-edit="justifycenter" tooltip="Center (Ctrl/Cmd+E)"><i class="fa fa-align-center"></i></a>
-        <a class="btn btn-default" data-edit="justifyright" tooltip="Align Right (Ctrl/Cmd+R)"><i class="fa fa-align-right"></i></a>
-        <a class="btn btn-default" data-edit="justifyfull" tooltip="Justify (Ctrl/Cmd+J)"><i class="fa fa-align-justify"></i></a>
-       </div>
-       <div class="btn-group dropdown" dropdown="">
-        <a class="btn btn-default" dropdown-toggle="" tooltip="Hyperlink"><i class="fa fa-link"></i></a>
-        <div class="dropdown-menu">
-         <div class="input-group m-l-xs m-r-xs">
-        <input type="text"    data-edit="createLink">
-        <div  class="input-group-btn">
-         <button class="btn btn-sm btn-default" type="button">Add</button>
-        </div>
-         </div>
-        </div>
-        <a class="btn btn-default" data-edit="unlink" tooltip="Remove Hyperlink"><i class="fa fa-cut"></i></a>
-       </div>
-             <div class="btn-group">
-        <a class="btn btn-default" tooltip="Insert picture (or just drag &amp; drop)" id="pictureBtn"><i class="fa fa-picture-o"></i></a>
-        <input type="file" data-edit="insertImage" style="position:absolute; opacity:0; width:41px; height:34px">
-       </div>
-       <div class="btn-group">
-        <a class="btn btn-default" data-edit="undo" tooltip="Undo (Ctrl/Cmd+Z)"><i class="fa fa-undo"></i></a>
-        <a class="btn btn-default" data-edit="redo" tooltip="Redo (Ctrl/Cmd+Y)"><i class="fa fa-repeat"></i></a>
-       </div>
-      </div>
-      <div ui-jq="wysiwyg" class="form-control" style="overflow:scroll;height:200px;max-height:200px" contenteditable="true"> 
-        Go ahead… 
-      </div>
-    </div>
-   </div>
-    <label class="col-sm-4 control-label" placeholder="Entry Year" for="input-id-1"><b>Release Date</b></label>
-       <div class="col-sm-8">
-      
-       <div class="form-group ">
-        <div class="col-sm-10">
-       <div class="input-group">
-        <div class="input-group-addon">
-         <i class="fa fa-calendar"></i>
-        </div>
-        <input type="date"  class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" type="text"/>
-         </div>
-        </div>
-       </div>
-      </form>
-       </div>
-      <div class="modal-footer">
-       <button style="margin:0px;" class="btn m-b-xs btn-sm btn-primary btn-addon"><i class="glyphicon glyphicon-ok"></i>Save</button>
-       <button style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon" data-dismiss="modal"><i class="glyphicon glyphicon-remove"></i>Annuler</button>
-      </div>
-     </div>
-    </div>
-	  </div>
-     </div>
-    </div>
-</div>
-</div>
-  <!-- /content -->
- <!-- footer -->
- <footer id="footer" class="app-footer" role="footer">
-  <div class="wrapper b-t bg-light">
-   <span class="pull-right">2.2.0 <a href ui-scroll="app" class="m-l-sm text-muted"><i class="fa fa-long-arrow-up"></i></a></span>&copy; PowerM 2020 Copyright.
-  </div>
- </footer><!-- / footer -->
-
 
 
 				<div class="col-sm-12">
@@ -709,7 +576,6 @@
 									<b class="glyphicon-plus pull"> </b> Add Firmware
 								</h1>
 							</div>
-							<!-- add -->
 							<form action="#" th:action="@{/addFirmware}" th:object="${obj}"
 								method="post">
 								<div class="modal-body">
@@ -722,6 +588,7 @@
 												th:field="*{name}">
 
 										</div>
+										
 										<label class="col-sm-4 control-label" for="input-id-1"><b>Asset</b></label>
 										<div class="col-sm-8">
 											<select name="account" class="form-control m-b">
@@ -729,8 +596,9 @@
 												<option>Asset2</option>
 											</select>
 										</div>
-										<div class="col-sm-8" style="margin: 5px 5px;"> 
-										<label class="col-sm-4 control-label"
+										<div class="modal-body">
+										<div class="col-sm-8" style="margin: 5px 0px;"> 
+										<label class="col-sm-4 control-label" style="margin: 5px 0px;"
 											placeholder="Entry Notes" for="input-id-1"><b>Description</b></label>
 											<textarea class="form-control" id="description"
 																	th:field="*{description}" placeholder="Description"
@@ -894,7 +762,6 @@
 						<button type="button" class="close pull-right"
 							data-dismiss="modal">&times;</button>
 						<h1 class="m-n font-bold h3">Update Firmware</h1>
-						
 					</div>
 					<div class="modal-body">
 						<div class="row">
@@ -903,7 +770,6 @@
 							<div class="col-sm-8" style="margin: 5px 0px;">
 								<input type="text" class="form-control"
 									placeholder="Entry Name of firmware" id="input-id-1">
-									>
 							</div>
 							<label class="col-sm-4 control-label" for="input-id-1"><b>Asset</b></label>
 							<div class="col-sm-8">

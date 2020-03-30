@@ -17,14 +17,15 @@ import com.example.demo.repository.ProjetRepository;
 
 @Controller
 public class ProjectController {
+	
 	@Autowired
 	private ProjetRepository ProjectRepository;
 
 	@RequestMapping(value="/projects_manage")
-	public String ProjectsManage(Model model) {
+	public String AllProject(Model model, Project project) {
 		
-			List<Project> projet = ProjectRepository.findAll();
-			model.addAttribute("proj",projet);
+			List<Project> projs = ProjectRepository.findAll();
+			model.addAttribute("proj",projs);
 			model.addAttribute("project", new Project());
 			
 		return "projects_manage";
@@ -42,23 +43,23 @@ public class ProjectController {
 
 	@RequestMapping(value = "/editProject",method= RequestMethod.POST)
 	public String updateProject(Model model, Project proj){
-	proj= 	(Project) model.getAttribute("project");
+		
+	  proj= 	(Project) model.getAttribute("project");
 		ProjectRepository.save(proj);
 		
 		return "redirect:/projects_manage";
 	}
 	
-	@RequestMapping(value ="/UpdateProjectForm")
-	private String updateProject( Model model, Integer id ) {
+	@RequestMapping(value ="/updateProjectForm")
+	private String updateProjectForm( Model model, Integer id ) {
 		
 	Project	project = ProjectRepository.getOne(id);
 		 model.addAttribute("project",project);
 		 System.out.println(project.getName());
 		
-			return "UpdateProjectFrom";
+			return "updateProjectFrom";
 			
 	}
-
 
 	@RequestMapping(value ="/deleteProject" )
 	private String deleteProject( Model model, Integer id ) {
@@ -73,11 +74,10 @@ public class ProjectController {
 	
 	Project proj = ProjectRepository.getOne(id);
 	proj.setStatus("Archived");
-	proj.setName("Ibrahim");
+	proj.setName("Refonte");
 	ProjectRepository.save(proj);
 	System.out.println(proj.getStatus());
 		
 			return "redirect:/projects_manage";	
 	}
-
 }

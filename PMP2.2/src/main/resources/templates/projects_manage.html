@@ -494,7 +494,7 @@ document.addEventListener('DOMContentLoaded', function() {
   <div id="content" class="app-content" role="main">
    <div class="app-content-body ">
     <div class="bg-light lter b-b wrapper-md"><h1 class="m-n font-bold h3">Manage Projects
-    <a style="margin-top:-5px;" data-toggle="modal"  data-target="#AddProject" class="btn btn-sm btn-primary pull-right"  role="button"><b class="glyphicon-plus pull"> </b>Add Project</a></h1></div>
+    <a  style="margin-top:-5px;" data-toggle="modal"  data-target="#AddProject" class="btn btn-sm btn-primary pull-right"  role="button"><b class="glyphicon-plus pull"> </b>Add Project</a></h1></div>
 	
 	<div class="row" style="margin:5px;background-color:#f0f3f4;">
      <div class="col-sm-12">              
@@ -544,7 +544,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		   <th  style="width:15%"><center>Year</center></th>
 		   <th  style="width:15%"><center>Delivery Date</center></th>
 		   <th  style="width:10%"><center>Amount</center></th>
-		   <th  style="width:10%"><center>Technology Partners</center></th>
+		   <th  style="width:10%"><center>Status</center></th>
 		   <th  style="width:10%"><center>Actions</center></th>
 		  </tr>
 	     </thead>
@@ -555,11 +555,11 @@ document.addEventListener('DOMContentLoaded', function() {
 		   <td th:text ="${p.Year}"><center></center></td>
 		   <td th:text ="${p.DeliveryDate}"><center><span ></span></center></td>
 		   <td th:text ="${p.Amount}"><center></center></td>
-           <td th:text ="${p.TechnologyPartners}"><center><span class="label bg-info pull-center m-t-md"></span><span class="label bg-info pull-center m-t-md"></span></center></td>
+           <td th:text ="${p.Status}"><center><span class="label bg-info pull-center m-t-md"></span><span class="label bg-info pull-center m-t-md"></span></center></td>
 		   <td><center><div class="btn-group dropdown"><button class="btn btn-default btn-xs" data-toggle="dropdown">
 		     <i class="glyphicon glyphicon-cog"></i> Action <span class="caret"></span></button>
 		     <ul class="dropdown-menu">
-		     <li><a th:href="@{UpdateProjectForm(id=${p.Project_ID})}"  style="margin-top:-5px;"   class="btn btn-sm btn-light" role="button">Update</a></li>
+		     <li><a th:href="@{updateProjectForm(id=${p.Project_ID})}"  style="margin-top:-5px;"   class="btn btn-sm btn-light" role="button">Update</a></li>
 		     <li><a th:href="@{archiverProject(id=${p.Project_ID})}"  style="margin-top:-5px;"  class="btn btn-sm btn-light" role="button">Archive</a></li>
 		     <li><a style="margin-top:-5px;" data-toggle="modal"  data-target="#Detail" class="btn btn-sm btn-light" role="button">Detail</a></li></ul></div></center></td>
 		  </tr>
@@ -581,23 +581,29 @@ document.addEventListener('DOMContentLoaded', function() {
 	    <button type="button" class="close pull-right" data-dismiss="modal">&times;</button>
 	    <h1 class="m-n font-bold h3"> <b class="glyphicon-plus pull"> </b> Add Project</h1>
 	   </div>
-	   <form th:action="@{SaveProject}" method ="post" th:object="${project}">
+	 <form th:action="@{SaveProject}" method ="post" th:object="${project}">
 	   <div class="modal-body">
 	    <div class="row">
+	     <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b></b></label>
+     <div class="col-sm-8" style="margin: 5px 0px;" >
+      <input type="hidden" class="form-control" placeholder="Entry Name of Project" id="input-id-1"  required th:field=*{Project_ID}/>
+      <span class="text-danger" th:errors=*{Name}></span>
+	 </div>
 	     <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Project Name</b></label>
 	     <div class="col-sm-8" style="margin: 5px 0px;" >
-		  <input type="text" class="form-control" placeholder="Entry Name of Project" id="input-id-1" th:field=*{Name}>
+		  <input type="text" class="form-control" placeholder="Entry Name of Project" id="input-id-1" required th:field=*{Name}/>
+		  <span class="text-danger" th:errors=*{Name}></span>
 		 </div>
 	     <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Type Project</b></label>
 		 <div class="col-sm-8" style="margin: 5px 0px;" >
-		  <select name="account" class="form-control m-b">
-		   <option>Type1</option>
-		   <option>Type2</option>
+		  <select name="account" class="form-control m-b"  th:field=*{NameType_Project} >
+	       <option th:value ="Type1" th:text="Type1"></option>
+           <option th:value ="Type2" th:text="Type2"></option>
 		  </select>
 		 </div>
 		 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Amount</b></label>
 		 <div class="col-sm-8" style="margin: 5px 0px;">
-		  <input type="text" placeholder="Entry Amount of Project" class="form-control" id="input-id-1" th:field=*{Amount}>
+		  <input type="text" placeholder="Entry Amount of Project" class="form-control" id="input-id-1" required th:field=*{Amount}/>
 		 </div>
 		 <label class="col-sm-4 control-label" placeholder="Entry Year" style="margin: 5px 0px;" for="input-id-1"><b>Year</b></label>
 	     <div class="col-sm-8" style="margin: 5px 0px;">
@@ -608,7 +614,7 @@ document.addEventListener('DOMContentLoaded', function() {
 			  <div class="input-group-addon">
 			   <i class="fa fa-calendar"></i>
 			  </div>
-			  <input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" type="text" th:field=*{Year}/>
+			  <input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" type="text" required th:field=*{Year}/>
 		     </div>
 		    </div>
 		   </div>
@@ -623,7 +629,7 @@ document.addEventListener('DOMContentLoaded', function() {
 			  <div class="input-group-addon">
 			   <i class="fa fa-calendar"></i>
 			  </div>
-			  <input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" type="text" th:field=*{DeliveryDate}/>
+			  <input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" type="text" required th:field=*{DeliveryDate}/>
 			 </div>
 			</div>
 		   </div>
@@ -638,7 +644,7 @@ document.addEventListener('DOMContentLoaded', function() {
 			  <div class="input-group-addon">
 			   <i class="fa fa-calendar"></i>
 			  </div>
-		      <input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" type="text" th:field=*{TemporayAcceptanceDate}/>
+		      <input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" type="text" required th:field=*{TemporayAcceptanceDate}/>
 			 </div>
 			</div>
 		   </div>
@@ -653,7 +659,7 @@ document.addEventListener('DOMContentLoaded', function() {
 			  <div class="input-group-addon">
 			   <i class="fa fa-calendar"></i>
 			  </div>
-			  <input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" type="text" th:field=*{FinalTemporaryDate}/>
+			  <input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" type="text" required th:field=*{FinalTemporaryDate}/>
 			 </div>
 			</div>
 		   </div>
@@ -661,19 +667,19 @@ document.addEventListener('DOMContentLoaded', function() {
 	     </div>
 		 <label class="col-sm-4 control-label" placeholder="Entry Delivery Certificate" style="margin: 5px 0px;" for="input-id-1"><b>Delivery Certificate</b></label>
 		 <div class="col-sm-8" style="margin: 5px 0px;">
-		  <input type="text" placeholder="Entry Delivery Certificate"class="form-control" id="input-id-1" th:field=*{DeliveryCertificate}>
+		  <input type="text" placeholder="Entry Delivery Certificate"class="form-control" id="input-id-1" required th:field=*{DeliveryCertificate}/>
 		 </div>
 		 <label class="col-sm-4 control-label" placeholder="Entry Technology Partners" style="margin: 5px 0px;" for="input-id-1"><b>Technology Partners</b></label>
 		 <div class="col-sm-8" style="margin: 5px 0px;">
-		  <input type="text" placeholder="Entry Technology Partners"class="form-control" id="input-id-1" th:field=*{TechnologyPartners}>
+		  <input type="text" placeholder="Entry Technology Partners"class="form-control" id="input-id-1">
 		 </div>
 		 <label class="col-sm-4 control-label" placeholder="Entry Warranty" style="margin: 5px 0px;" for="input-id-1"><b>Warranty</b></label>
 		 <div class="col-sm-8" style="margin: 5px 0px;">
-		  <input type="text" placeholder="Entry Warranty"class="form-control" id="input-id-1" th:field=*{Warranty}>
+		  <input type="text" placeholder="Entry Warranty"class="form-control" id="input-id-1" th:field=*{Warranty}/>
 		 </div>
 		 <label class="col-sm-4 control-label" placeholder="Entry Execution Time" style="margin: 5px 0px;" for="input-id-1"><b>Execution Time</b></label>
 	     <div class="col-sm-8" style="margin: 5px 0px;">
-		  <input type="text" placeholder="Entry Execution Time"class="form-control" id="input-id-1" th:field=*{ExecutionTime}>
+		  <input type="text" placeholder="Entry Execution Time"class="form-control" id="input-id-1" th:field=*{ExecutionTime}/>
 		 </div>
 	     <label class="col-sm-4 control-label" placeholder="Entry Notes" style="margin: 5px 0px;" for="input-id-1"><b>Notes</b></label>
 		  <div class="col-sm-8" style="margin: 5px 0px;">
@@ -734,12 +740,12 @@ document.addEventListener('DOMContentLoaded', function() {
 			  <a class="btn btn-default" data-edit="redo" tooltip="Redo (Ctrl/Cmd+Y)"><i class="fa fa-repeat"></i></a>
 			 </div>
 			</div>
-			<div ui-jq="wysiwyg" class="form-control" style="overflow:scroll;height:200px;max-height:200px" contenteditable="true" th:field=*{Notes}> Go ahead… </div>
+			<div ui-jq="wysiwyg" class="form-control" style="overflow:scroll;height:200px;max-height:200px" contenteditable="true"> Go ahead… </div>
            </div>
 		  </div>
 		  <label class="col-sm-4 control-label" placeholder="Entry Status" style="margin: 5px 0px;" for="input-id-1"><b>Status</b></label>
 		  <div class="col-sm-8" style="margin: 5px 0px;">
-		   <input type="text" placeholder="Entry Status"class="form-control" id="input-id-1" th:field=*{Status}>
+		   <input type="text" placeholder="Entry Status"class="form-control" id="input-id-1">
 		  </div>
 		  <div class="modal-footer">
 		   <button style="margin:0px;" class="btn m-b-xs btn-sm btn-primary btn-addon"><i class="glyphicon glyphicon-ok"></i>Save</button>
@@ -747,7 +753,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		  </div>
 		 </div>
 		</div>
-		</form>
+	    </form>
 	  </div>
      </div>
     </div>

@@ -6,9 +6,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class SignInController {
 	
-	@RequestMapping(value="/index")
+	@RequestMapping(value="/Login")
 	public String Login() {
-		return "login";
+		return "Login";
 	}
 
 }

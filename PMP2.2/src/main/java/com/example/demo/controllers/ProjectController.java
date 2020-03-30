@@ -48,7 +48,7 @@ public class ProjectController {
 		return "redirect:/projects_manage";
 	}
 	
-	@RequestMapping(value ="/UpdateProjectForm" )
+	@RequestMapping(value ="/UpdateProjectForm")
 	private String updateProject( Model model, Integer id ) {
 		
 	Project	project = ProjectRepository.getOne(id);

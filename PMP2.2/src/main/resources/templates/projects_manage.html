@@ -551,7 +551,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		 <tbody>
 		  <tr data-expanded="true" th:each="p:${proj}">
 		   <td th:text ="${p.Name}"><center><b></b></center></td>
-		   <td><center></center></td>
+		   <td th:text ="${p.Notes}"><center><b></b></center></td>
 		   <td th:text ="${p.Year}"><center></center></td>
 		   <td th:text ="${p.DeliveryDate}"><center><span ></span></center></td>
 		   <td th:text ="${p.Amount}"><center></center></td>
@@ -593,13 +593,6 @@ document.addEventListener('DOMContentLoaded', function() {
 	     <div class="col-sm-8" style="margin: 5px 0px;" >
 		  <input type="text" class="form-control" placeholder="Entry Name of Project" id="input-id-1" required th:field=*{Name}/>
 		  <span class="text-danger" th:errors=*{Name}></span>
-		 </div>
-	     <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Type Project</b></label>
-		 <div class="col-sm-8" style="margin: 5px 0px;" >
-		  <select name="account" class="form-control m-b"  th:field=*{NameType_Project} >
-	       <option th:value ="Type1" th:text="Type1"></option>
-           <option th:value ="Type2" th:text="Type2"></option>
-		  </select>
 		 </div>
 		 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Amount</b></label>
 		 <div class="col-sm-8" style="margin: 5px 0px;">

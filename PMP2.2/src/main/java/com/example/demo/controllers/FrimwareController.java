@@ -28,11 +28,8 @@ public class FrimwareController {
 	public String frimware(Model model) {
 
 		List<Frimware> frimwareList = frimwareRepository.findAll();
-		/*for (Frimware f : frimwareList) {
-			System.out.println("-------------------------------" + f.getDescription() + " -- " + f.getName() + "--- "
-					+ f.getReleaseDate());
-		}*/
 		model.addAttribute("firmList", frimwareList);
+		
 		model.addAttribute("totalFirmware", frimwareList.size());
 
 		model.addAttribute("obj", new Frimware());
@@ -45,11 +42,11 @@ public class FrimwareController {
        
          
         frimwareRepository.save(obj);
-        System.out.println("-------------------------des:" + obj.getDescription() + "---name:" + obj.getName() + 
-        		"--date:" + obj.getReleaseDate());
+      
         List<Frimware> frimwareList = frimwareRepository.findAll();
         model.addAttribute("firmList", frimwareList);
-
+        
+//cette méthode pour calculer le totale de frimware
 		model.addAttribute("totalFirmware", frimwareList.size());
 
 		model.addAttribute("obj", new Frimware());
@@ -68,31 +65,12 @@ public class FrimwareController {
 	    return "redirect:/firmware";
 	}
 	 
-	// les deux methode post et get
-
-	// @RequestMapping(value="/firmware" ,method=RequestMethod.GET)
-	// public String Frimware(Model model) {
-	// model.addAttribute("frimware" ,new Frimware());
-	// return "firmware";
-	// }
-	// @RequestMapping(value="/SaveFrimware" , method= RequestMethod.POST)
-	// public String Save(Frimware frim) {
-	// frimwareRepository.save(frim);
-	// return "redirect:/firmware";
-
-
-		//les deux methode post et get
-		
+	
 	
 		
-		@RequestMapping(value="/Savefirmware" , method= RequestMethod.POST)
-		public String Savefirmware(Frimware frimware) {
-			frimwareRepository.save(frimware);
-			return "redirect:/firmware";
-			
-		}
+		
 		
 
 }
 
-//  }
+

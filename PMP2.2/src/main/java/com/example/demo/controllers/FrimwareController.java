@@ -32,6 +32,7 @@ public class FrimwareController {
 		List<Frimware> frime = frimwareRepository.findAll();
 		model.addAttribute("frim", frime);
 		model.addAttribute("frimware", new Frimware());
+		//cette methode pour claculet le totale de frimware et aprés on ajoute un truc dans la page htlm
 		model.addAttribute("totalFirmware", frime.size());
 		
 		return "firmware";

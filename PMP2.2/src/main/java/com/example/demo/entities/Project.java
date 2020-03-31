@@ -3,10 +3,20 @@ package com.example.demo.entities;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
+
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotEmpty;
+import org.hibernate.validator.constraints.UniqueElements;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.context.properties.bind.DefaultValue;
+import org.springframework.format.annotation.NumberFormat;
 
 @Entity
 public class Project implements Serializable{
@@ -15,6 +25,7 @@ public class Project implements Serializable{
 	@Id
 	@GeneratedValue
 	private Integer Project_ID;
+	@Column(name = "Name")
 	private String Name;
 	private Double Amount;
 	private Date Year;

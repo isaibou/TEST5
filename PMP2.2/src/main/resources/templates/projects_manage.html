@@ -18,7 +18,6 @@
 		<script src='../libs/packages/daygrid/main.js'></script>
 		<script src='../libs/packages/timegrid/main.js'></script>
 		<script src='../libs/packages/list/main.js'></script>
-
 		<link rel="stylesheet" href="css/font.css" type="text/css" />
 		<link rel="stylesheet" href="css/app.css" type="text/css" />
 		<script>
@@ -495,7 +494,7 @@ document.addEventListener('DOMContentLoaded', function() {
   <div id="content" class="app-content" role="main">
    <div class="app-content-body ">
     <div class="bg-light lter b-b wrapper-md"><h1 class="m-n font-bold h3">Manage Projects
-    <a style="margin-top:-5px;" data-toggle="modal"  data-target="#AddClient" class="btn btn-sm btn-primary pull-right"  role="button"><b class="glyphicon-plus pull"> </b>Add Project</a></h1></div>
+    <a  style="margin-top:-5px;" data-toggle="modal"  data-target="#AddProject" class="btn btn-sm btn-primary pull-right"  role="button"><b class="glyphicon-plus pull"> </b>Add Project</a></h1></div>
 	
 	<div class="row" style="margin:5px;background-color:#f0f3f4;">
      <div class="col-sm-12">              
@@ -545,19 +544,24 @@ document.addEventListener('DOMContentLoaded', function() {
 		   <th  style="width:15%"><center>Year</center></th>
 		   <th  style="width:15%"><center>Delivery Date</center></th>
 		   <th  style="width:10%"><center>Amount</center></th>
-		   <th  style="width:10%"><center>Technology Partners</center></th>
+		   <th  style="width:10%"><center>Status</center></th>
 		   <th  style="width:10%"><center>Actions</center></th>
 		  </tr>
 	     </thead>
 		 <tbody>
-		  <tr data-expanded="true">
-		   <td><center><b>PMP</b></center></td>
-		   <td><center>Projet refonte Plateforme IT</center></td>
-		   <td><center>2020</center></td>
-		   <td><center><span >30-07-2020</span></center></td>
-		   <td><center>1000000DH</center></td>
-       <td><center><span class="label bg-info pull-center m-t-md">bootstrap</span><span class="label bg-info pull-center m-t-md">JEE</span></center></td>
-		   <td><center><div class="btn-group dropdown"><button class="btn btn-default btn-xs" data-toggle="dropdown"><i class="glyphicon glyphicon-cog"></i> Action <span class="caret"></span></button><ul class="dropdown-menu"><li><a style="margin-top:-5px;" data-toggle="modal"  data-target="#Update" class="btn btn-sm btn-light" role="button">Update</a></li><li><a style="margin-top:-5px;" data-toggle="modal"  data-target="#Delete" class="btn btn-sm btn-light" role="button">Delete</a></li><li><a style="margin-top:-5px;" data-toggle="modal"  data-target="#Detail" class="btn btn-sm btn-light" role="button">Detail</a></li></ul></div></center></td>
+		  <tr data-expanded="true" th:each="p:${proj}">
+		   <td th:text ="${p.Name}"><center><b></b></center></td>
+		   <td th:text ="${p.Notes}"><center><b></b></center></td>
+		   <td th:text ="${p.Year}"><center></center></td>
+		   <td th:text ="${p.DeliveryDate}"><center><span ></span></center></td>
+		   <td th:text ="${p.Amount}"><center></center></td>
+           <td th:text ="${p.Status}"><center><span class="label bg-info pull-center m-t-md"></span><span class="label bg-info pull-center m-t-md"></span></center></td>
+		   <td><center><div class="btn-group dropdown"><button class="btn btn-default btn-xs" data-toggle="dropdown">
+		     <i class="glyphicon glyphicon-cog"></i> Action <span class="caret"></span></button>
+		     <ul class="dropdown-menu">
+		     <li><a th:href="@{updateProject(id=${p.Project_ID})}"  style="margin-top:-5px;"   class="btn btn-sm btn-light" role="button">Update</a></li>
+		     <li><a th:href="@{archiverProject(id=${p.Project_ID})}"  style="margin-top:-5px;"  class="btn btn-sm btn-light" role="button">Archive</a></li>
+		     <li><a style="margin-top:-5px;" data-toggle="modal"  data-target="#Detail" class="btn btn-sm btn-light" role="button">Detail</a></li></ul></div></center></td>
 		  </tr>
 		 </tbody>
 		</table>
@@ -570,93 +574,92 @@ document.addEventListener('DOMContentLoaded', function() {
 	    <center><h3 class="m-n font-bold h4">RFP Reponse Date & Time </h3></center>
 		<div id='calendar1'></div>
 	</div>
-	<div class="modal fade" role="dialog" id="AddClient" >
+	<div class="modal fade" role="dialog" id="AddProject" >
 	 <div class="modal-dialog modal-lg" >
 	  <div class="modal-content">
 	   <div class="modal-header" style="background-image:url(img/grf-bg.jpg);color:white;">
 	    <button type="button" class="close pull-right" data-dismiss="modal">&times;</button>
 	    <h1 class="m-n font-bold h3"> <b class="glyphicon-plus pull"> </b> Add Project</h1>
 	   </div>
+	   
+	 <form th:action="@{SaveProject}" method ="post" th:object="${project}">
 	   <div class="modal-body">
 	    <div class="row">
+	     <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b></b></label>
+     <div class="col-sm-8" style="margin: 5px 0px;" >
+      <input type="hidden" class="form-control" placeholder="Entry Name of Project" id="input-id-1"   th:field=*{Project_ID}/>
+      <span class="text-danger" th:errors=*{Name}></span>
+	 </div>
 	     <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Project Name</b></label>
 	     <div class="col-sm-8" style="margin: 5px 0px;" >
-		  <input type="text" class="form-control" placeholder="Entry Name of Project" id="input-id-1">
-		 </div>
-	     <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Type Project</b></label>
-		 <div class="col-sm-8" style="margin: 5px 0px;" >
-		  <select name="account" class="form-control m-b">
-		   <option>Type1</option>
-		   <option>Type2</option>
-		  </select>
+		  <input type="text" class="form-control" placeholder="Entry Name of Project" id="input-id-1" required th:field=*{Name}/>
+		  <span class="text-danger" th:errors=*{Name}></span>
 		 </div>
 		 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Amount</b></label>
 		 <div class="col-sm-8" style="margin: 5px 0px;">
-		  <input type="text" placeholder="Entry Amount of Project" class="form-control" id="input-id-1">
+		  <input type="text" placeholder="Entry Amount of Project" class="form-control" id="input-id-1" required th:field=*{Amount}/>
 		 </div>
 		 <label class="col-sm-4 control-label" placeholder="Entry Year" style="margin: 5px 0px;" for="input-id-1"><b>Year</b></label>
 	     <div class="col-sm-8" style="margin: 5px 0px;">
-		  <form action="https://formden.com/post/MlKtmY4x/" class="form-horizontal" method="post">
+		  
 		   <div class="form-group ">
 		    <div class="col-sm-10">
 			 <div class="input-group">
 			  <div class="input-group-addon">
 			   <i class="fa fa-calendar"></i>
 			  </div>
-			  <input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" type="text"/>
+			  <input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" type="text" required th:field=*{Year}/>
 		     </div>
 		    </div>
 		   </div>
-		  </form>
+		  
 	     </div>
 		 <label class="col-sm-4 control-label" placeholder="Entry Delivery Date" style="margin: 5px 0px;" for="input-id-1"><b>Delivery Date</b></label>
 		 <div class="col-sm-8" style="margin: 5px 0px;">
-	      <form action="https://formden.com/post/MlKtmY4x/" class="form-horizontal" method="post">
+	      
 		   <div class="form-group ">
 		    <div class="col-sm-10">
 			 <div class="input-group">
 			  <div class="input-group-addon">
 			   <i class="fa fa-calendar"></i>
 			  </div>
-			  <input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" type="text"/>
+			  <input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" type="text" required th:field=*{DeliveryDate}/>
 			 </div>
 			</div>
 		   </div>
-		  </form>
-		 </div>
+		   </div>
 	     <label class="col-sm-4 control-label" placeholder="Entry Temporay Acceptance Date" style="margin: 5px 0px;" for="input-id-1"><b>Temporay Acceptance Date</b></label>
 		 <div class="col-sm-8" style="margin: 5px 0px;">
-		  <form action="https://formden.com/post/MlKtmY4x/" class="form-horizontal" method="post">
+		  
 		   <div class="form-group ">
 		    <div class="col-sm-10">
 			 <div class="input-group">
 			  <div class="input-group-addon">
 			   <i class="fa fa-calendar"></i>
 			  </div>
-		      <input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" type="text"/>
+		      <input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" type="text" required th:field=*{TemporayAcceptanceDate}/>
 			 </div>
 			</div>
 		   </div>
-		  </form>
-		 </div>
+		   </div>
 		 <label class="col-sm-4 control-label" placeholder="Entry Final Temporary Date" style="margin: 5px 0px;" for="input-id-1"><b>Final Temporary Date</b></label>
 		 <div class="col-sm-8" style="margin: 5px 0px;">
-		  <form action="https://formden.com/post/MlKtmY4x/" class="form-horizontal" method="post">
+		  
 		   <div class="form-group ">
 			<div class="col-sm-10">
 		     <div class="input-group">
 			  <div class="input-group-addon">
 			   <i class="fa fa-calendar"></i>
 			  </div>
-			  <input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" type="text"/>
+			  <input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" type="text" required th:field=*{FinalTemporaryDate}/>
 			 </div>
 			</div>
 		   </div>
-		  </form>
+		  
 	     </div>
 		 <label class="col-sm-4 control-label" placeholder="Entry Delivery Certificate" style="margin: 5px 0px;" for="input-id-1"><b>Delivery Certificate</b></label>
 		 <div class="col-sm-8" style="margin: 5px 0px;">
-		  <input type="text" placeholder="Entry Delivery Certificate"class="form-control" id="input-id-1">
+		  <input type="text" placeholder="Entry Delivery Certificate"class="form-control" id="input-id-1" required th:field=*{DeliveryCertificate}/>
 		 </div>
 		 <label class="col-sm-4 control-label" placeholder="Entry Technology Partners" style="margin: 5px 0px;" for="input-id-1"><b>Technology Partners</b></label>
 		 <div class="col-sm-8" style="margin: 5px 0px;">
@@ -664,11 +667,11 @@ document.addEventListener('DOMContentLoaded', function() {
 		 </div>
 		 <label class="col-sm-4 control-label" placeholder="Entry Warranty" style="margin: 5px 0px;" for="input-id-1"><b>Warranty</b></label>
 		 <div class="col-sm-8" style="margin: 5px 0px;">
-		  <input type="text" placeholder="Entry Warranty"class="form-control" id="input-id-1">
+		  <input type="text" placeholder="Entry Warranty"class="form-control" id="input-id-1" th:field=*{Warranty}/>
 		 </div>
 		 <label class="col-sm-4 control-label" placeholder="Entry Execution Time" style="margin: 5px 0px;" for="input-id-1"><b>Execution Time</b></label>
 	     <div class="col-sm-8" style="margin: 5px 0px;">
-		  <input type="text" placeholder="Entry Execution Time"class="form-control" id="input-id-1">
+		  <input type="text" placeholder="Entry Execution Time"class="form-control" id="input-id-1" th:field=*{ExecutionTime}/>
 		 </div>
 	     <label class="col-sm-4 control-label" placeholder="Entry Notes" style="margin: 5px 0px;" for="input-id-1"><b>Notes</b></label>
 		  <div class="col-sm-8" style="margin: 5px 0px;">
@@ -742,6 +745,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		  </div>
 		 </div>
 		</div>
+	    </form>
 	  </div>
      </div>
     </div>
@@ -762,6 +766,7 @@ document.addEventListener('DOMContentLoaded', function() {
       <h1 class="m-n font-bold h3"> Update Project</h1>
      </div>
      <div class="modal-body">
+     
       <div class="row">
        <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Project Name</b></label>
        <div class="col-sm-8" style="margin: 5px 0px;" >

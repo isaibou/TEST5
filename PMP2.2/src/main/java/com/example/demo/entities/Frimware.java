@@ -3,9 +3,12 @@ package com.example.demo.entities;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -15,34 +18,38 @@ public class Frimware implements Serializable{
 	@Id
 	@GeneratedValue
 	private Integer frimware_ID;
+	@NotEmpty
 	private String name;
-	@DateTimeFormat(pattern = "MM/DD/YYYY")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date releaseDate;
 	private String description;
+	private String Status;
 	
 	public Frimware() {
 		super();
 
-		this.releaseDate = new Date();
+		//this.releaseDate = new Date();
 	}
 	
 	
 
-	public Frimware(Date releaseDate, String name, String description) {
+	public Frimware(Date releaseDate, String name, String description, String status) {
 		super();
 		this.name = name;
 		this.releaseDate = releaseDate;
 		this.description = description;
+		this.Status = status;
 	}
 
 
 
-	public Frimware(Integer frimware_ID, String name, Date releaseDate, String description) {
+	public Frimware(Integer frimware_ID, String name, Date releaseDate, String description, String status) {
 		super();
 		this.frimware_ID = frimware_ID;
 		this.name = name;
 		this.releaseDate = releaseDate;
 		this.description = description;
+		this.Status = status;
 	}
 
 
@@ -78,5 +85,13 @@ public class Frimware implements Serializable{
 	public void setDescription(String description) {
 		this.description = description;
 	}
+	public String getStatus() {
+		return Status;
+	}
+
+	public void setStatus(String status) {
+		Status = status;
+	}
+
 
 }

@@ -15,55 +15,71 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import com.example.demo.entities.Customer;
 import com.example.demo.entities.Frimware;
 import com.example.demo.repository.FrimwareRepository;
 
 @Controller
 public class FrimwareController {
-
 	@Autowired
 	private FrimwareRepository frimwareRepository;
+	
 
 	@RequestMapping(value = "/firmware")
-	public String frimware(Model model) {
-
-		List<Frimware> frimwareList = frimwareRepository.findAll();
-		model.addAttribute("firmList", frimwareList);
+	public String AllFrimware(Model model, Frimware frimware) {
 		
-		model.addAttribute("totalFirmware", frimwareList.size());
-
-		model.addAttribute("obj", new Frimware());
-
+		List<Frimware> frime = frimwareRepository.findAll();
+		model.addAttribute("frim", frime);
+		model.addAttribute("frimware", new Frimware());
+		model.addAttribute("totalFirmware", frime.size());
+		
 		return "firmware";
 	}
-
-	@PostMapping("/addFirmware")
-    public String addUser(@Valid Frimware obj, BindingResult result, Model model) {
-       
-         
-        frimwareRepository.save(obj);
-      
-        List<Frimware> frimwareList = frimwareRepository.findAll();
-        model.addAttribute("firmList", frimwareList);
-        
-//cette méthode pour calculer le totale de frimware
-		model.addAttribute("totalFirmware", frimwareList.size());
-
-		model.addAttribute("obj", new Frimware());
-        return "redirect:/firmware";
-    }
-	@PostMapping("/update/{id}")
-	public String updateFrimware(@PathVariable("id") Integer id, @Valid Frimware frimware, 
-	  BindingResult result, Model model) {
-	    if (result.hasErrors()) {
-	        frimware.setFrimware_ID(id);
-	        return "update-Frimware";
-	    }
-	         
-	    frimwareRepository.save(frimware);
-	    model.addAttribute("frimwareList", frimwareRepository.findAll());
-	    return "redirect:/firmware";
+	
+	@RequestMapping(value="/SaveFrimware" , method= RequestMethod.POST)
+	private String SaveFrimware(@Valid Frimware addFrim, BindingResult bindingResult) {
+		
+		
+		addFrim.setStatus("Actif");
+	
+		frimwareRepository.save(addFrim);
+		return "redirect:/firmware";
 	}
+	
+	@RequestMapping(value ="/updateFrimwareform" )
+	private String updateFrimwareform( Model model, Integer id ) {
+		
+	Frimware	frimware = frimwareRepository.getOne(id);
+		 model.addAttribute("frimware",frimware);
+		 System.out.println(frimware.getName());
+		
+			return "updateFrimwareForm";
+			
+	}
+	
+	@RequestMapping(value = "/editFrimware",method= RequestMethod.POST)
+	public String updateFrimware(Model model, Frimware frim){
+	frim= 	(Frimware) model.getAttribute("frimware");
+		frimwareRepository.save(frim);
+		
+		return "redirect:/firmware";
+	}
+	
+	
+	@RequestMapping(value ="/archiverFrimware" )
+	private String archiverFrimware( Model model, Integer id ) {
+	
+	Frimware Frim = frimwareRepository.getOne(id);
+	Frim.setStatus("Archived");
+	Frim.setName("Sarah");
+	frimwareRepository.save(Frim);
+	System.out.println(Frim.getStatus());
+		
+			return "redirect:/firmware";	}
+}
+
+	    		
 	 
 	
 	
@@ -71,6 +87,6 @@ public class FrimwareController {
 		
 		
 
-}
+
 
 

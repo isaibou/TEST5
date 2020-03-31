@@ -41,9 +41,9 @@ public class Application {
 
 		 
 		 
-		 frimwareRepository.save(new Frimware(new Date(), "Frimware1", "frimware2"));
+		 frimwareRepository.save(new Frimware(new Date(), "Frimware1", "frimware2","Status1"));
 		 
-		 frimwareRepository.save(new Frimware(new Date(), "Frimware3", "frimware4"));
+		 frimwareRepository.save(new Frimware(new Date(), "Frimware3", "frimware4","Status2"));
 		 
 
 

@@ -43,6 +43,7 @@ public class AssetTypeController
 		model.addAttribute("totalAssetType", assettyp.size());
 		
 		return "assetstype_manage";
+		
 	}
 	
 	@RequestMapping(value="/SaveAssetType" , method= RequestMethod.POST)

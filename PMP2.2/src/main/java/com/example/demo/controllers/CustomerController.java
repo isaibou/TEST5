@@ -72,7 +72,6 @@ public class CustomerController {
 	
 	Customer Cust = customerrepository.getOne(id);
 	Cust.setStatus("Archived");
-	Cust.setName("Ibrahim");
 	customerrepository.save(Cust);
 	System.out.println(Cust.getStatus());
 		

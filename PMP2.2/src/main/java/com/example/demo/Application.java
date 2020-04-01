@@ -41,24 +41,22 @@ public class Application {
 
 		 
 		 
-		 frimwareRepository.save(new Frimware(new Date(), "Frimware1", "frimware2"));
+		 frimwareRepository.save(new Frimware(new Date(), "Frimware1", "frimware2","Status1"));
 		 
-		 frimwareRepository.save(new Frimware(new Date(), "Frimware3", "frimware4"));
+		 
 		 
 
 
 		
 // branch 'master' of https://github.com/isaibou/TEST5
-		 assettypeRepository.save(new AssetType("sasa", "ddd", new Date(), new Date(),"sss"));
+		 assettypeRepository.save(new AssetType("sasa", "ddd", new Date(), new Date(),"sss", "Status1"));
 		
-		 assettypeRepository.save(new AssetType("sasa1", "ddd1", new Date(), new Date(),"sss1"));
-		
-		 assettypeRepository.save(new AssetType("sasa2", "ddd2", new Date(), new Date(),"sss2"));
+		 
 		
 		 
 		assetRepository.save(new Assets("asset1", "asset2", "asset3", "asset4", "asset5", new Date(), "asset6", "asset7", "asset8", 0, new Date()));
 		 
-		assetRepository.save(new Assets("asset1", "asset2", "asset3", "asset4", "asset5", new Date(), "asset6", "asset7", "asset8", 0, new Date()));
+		
 		
 		
 		
@@ -69,16 +67,11 @@ public class Application {
 	
 		 
 		
-		 assettypeRepository.save(new AssetType("sasa", "ddd", new Date(), new Date(),"sss"));
-		
-		 assettypeRepository.save(new AssetType("sasa1", "ddd1", new Date(), new Date(),"sss1"));
-		
-		 assettypeRepository.save(new AssetType("sasa2", "ddd2", new Date(), new Date(),"sss2"));
 		
 		 
 		assetRepository.save(new Assets("asset1", "asset2", "asset3", "asset4", "asset5", new Date(), "asset6", "asset7", "asset8", 0, new Date()));
 		 
-		assetRepository.save(new Assets("asset1", "asset2", "asset3", "asset4", "asset5", new Date(), "asset6", "asset7", "asset8", 0, new Date()));
+		
 		
 		
 		

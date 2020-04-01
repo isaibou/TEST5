@@ -6,6 +6,7 @@ import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.validation.constraints.NotEmpty;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -16,23 +17,29 @@ public class AssetType implements Serializable{
 	@Id
 	@GeneratedValue
 	private Integer AssetType_ID;
+	
 	private String Name;
 	private String Brand;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date EndOfSuportDate;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date EndSaleDate;
 	private String FRU;
+	private String Status;
 	
 	public AssetType() {
 		super();
 	}
 
-	public AssetType(String name, String brand, Date endOfSuportDate, Date endSaleDate, String fRU) {
+	public AssetType(String Name, String brand, Date endOfSuportDate, Date endSaleDate, String fRU, String status) {
 		super();
-		Name = name;
-		Brand = brand;
-		EndOfSuportDate = endOfSuportDate;
-		EndSaleDate = endSaleDate;
-		FRU = fRU;
+		this.AssetType_ID = AssetType_ID;
+		this.Name = Name;
+		this.Brand = brand;
+		this.EndOfSuportDate = endOfSuportDate;
+		this.EndSaleDate = endSaleDate;
+		this.FRU = fRU;
+		this.Status = status;
 	}
 
 	public Integer getAssetType_ID() {
@@ -47,8 +54,8 @@ public class AssetType implements Serializable{
 		return Name;
 	}
 
-	public void setName(String name) {
-		Name = name;
+	public void setName(String Name) {
+		this.Name = Name;
 	}
 
 	public String getBrand() {
@@ -81,6 +88,13 @@ public class AssetType implements Serializable{
 
 	public void setFRU(String fRU) {
 		FRU = fRU;
+	}
+	public String getStatus() {
+		return Status;
+	}
+
+	public void setStatus(String status) {
+		Status = status;
 	}
 	
 

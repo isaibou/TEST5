@@ -1,0 +1,63 @@
+
+
+<!DOCTYPE html>
+<html lang="en" class="">
+<head>
+  <meta charset="utf-8" />
+  <title>Update Frimware</title>
+  <meta name="description" content="app, web app, responsive, responsive layout, admin, admin panel, admin dashboard, flat, flat ui, ui kit, AngularJS, ui route, charts, widgets, components" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <link rel="stylesheet" href="../libs/assets/animate.css/animate.css" type="text/css" />
+  <link rel="stylesheet" href="../libs/assets/font-awesome/css/font-awesome.min.css" type="text/css" />
+  <link rel="stylesheet" href="../libs/assets/simple-line-icons/css/simple-line-icons.css" type="text/css" />
+  <link rel="stylesheet" href="../libs/jquery/bootstrap/dist/css/bootstrap.css" type="text/css" />
+
+  <link rel="stylesheet" href="css/font.css" type="text/css" />
+  <link rel="stylesheet" href="css/app.css" type="text/css" />
+
+</head>
+<body>
+<div class="app" >
+ <a href="" class="navbar-brand block m-t"><i class="fa fa-power-off"></i> <b>PowerM</b> </a>
+ <div>
+ <div class="modal-dialog modal-lg" >
+  <div class="modal-content">
+    <h1 class="m-n font-bold h3"> Update Frimware </h1>
+   </div>
+   <div class="modal-body">
+	<div class="row">
+<form th:action="@{editFrimware}" method ="post" th:object="${frimware}">
+	<div class="row">
+	 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b></b></label>
+     <div class="col-sm-8" style="margin: 5px 0px;" >
+      <input type="hidden" class="form-control" placeholder="Entry Name of frimware" id="input-id-1"  required th:field=*{frimware_ID}>
+      <span class="text-danger" th:errors=*{name}></span>
+	 </div>
+	 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Firmware Name</b></label>
+     <div class="col-sm-8" style="margin: 5px 0px;">
+      <input type="text" class="form-control" placeholder="Entry Name of frimware" id="input-id-1"  required th:field=*{name}>
+      <span  th:errors=*{name}></span>
+	 </div>  
+ <div class="col-sm-8" style="margin: 5px 0px;"> 
+<label class="col-sm-4 control-label" style="margin: 5px 0px;" placeholder="Entry Notes" for="input-id-1"><b>Description</b></label>
+<textarea class="form-control" id="description" required th:field=*{description} placeholder="Description"></textarea>
+<div class="form-group">
+<label class=" control-label"><b>Release Date</b></label>
+<input type="date" name="releaseDate" class="form-control" required th:field=*{releaseDate}  th:text="${releaseDate}"/> 
+</div>
+</div>
+        
+	 </div>
+	</div>
+   </div>
+   <div class="modal-footer">
+	<button style="margin:0px;" class="btn m-b-xs btn-sm btn-primary btn-addon"><i class="glyphicon glyphicon-ok"></i>Save</button>
+	<button style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon" data-dismiss="modal"><i class="glyphicon glyphicon-remove"  ></i>Annuler</button>
+		
+   </div>
+   </form >
+  </div>
+</div>
+</div>
+</body>
+</html>

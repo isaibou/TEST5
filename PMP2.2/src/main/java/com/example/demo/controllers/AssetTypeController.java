@@ -46,6 +46,7 @@ public class AssetTypeController
 		
 	}
 	
+	
 	@RequestMapping(value="/SaveAssetType" , method= RequestMethod.POST)
 	private String saveAssetType(@Valid AssetType addAssttyp, BindingResult bindingResult) {
 		

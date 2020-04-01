@@ -1,13 +1,15 @@
 package com.example.demo.entities;
 
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
@@ -38,6 +40,10 @@ public class Project implements Serializable{
 	private int ExecutionTime;
 	private String Notes;
 	private String Status;
+	@OneToOne
+	private Type_Project typeProject;
+	
+	
 	public Project() {
 		super();
 	}

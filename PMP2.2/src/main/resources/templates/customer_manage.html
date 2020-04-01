@@ -251,7 +251,7 @@
 																<a href>Settings</a>
 															</li>
 															<li>
-																<a href="page_profile.html">Profile</a>
+																<a th:href="@{/login?logout}">Profile</a>
 															</li>
 															<li>
 																<a href>
@@ -261,7 +261,7 @@
 															</li>
 															<li class="divider"></li>
 															<li>
-																<a href="page_signin.html">Logout</a>
+																<a th:href="@{/login?logout}">Logout</a>
 															</li>
 														</ul>
 														<!-- / dropdown -->
@@ -460,10 +460,10 @@
                 <span>Your Stuff</span>
               </li>  
               <li>
-                <a href="page_profile.html">
+                <a th:href="@{/login?logout}">
                   <i class="icon-user icon text-success-lter"></i>
                   <b class="badge bg-success pull-right">30%</b>
-                  <span>Profile</span>
+                  <span>[[${#httpServletRequest.remoteUser}]]</span>
                 </a>
               </li>
               <li>

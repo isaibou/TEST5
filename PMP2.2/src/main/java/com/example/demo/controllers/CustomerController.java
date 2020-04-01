@@ -6,6 +6,7 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -23,6 +24,7 @@ public class CustomerController {
 	@Autowired
 	private CustomerRepository customerrepository; 
 	
+	
 	@RequestMapping(value="/customer_manage")
 	public String AllCustomer(Model model, Customer customer) {
 		
@@ -32,8 +34,7 @@ public class CustomerController {
 		
 		return "customer_manage";
 	}
-	
-	
+
 	@RequestMapping(value="/SaveCustomer" , method= RequestMethod.POST)
 	private String SaveCustomer(@Valid Customer addCust, BindingResult bindingResult) {
 		

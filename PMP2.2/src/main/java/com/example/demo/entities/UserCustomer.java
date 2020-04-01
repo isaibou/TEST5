@@ -1,10 +1,12 @@
 package com.example.demo.entities;
 
 import java.io.Serializable;
+import java.util.Collection;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class UserCustomer implements Serializable{
@@ -17,6 +19,8 @@ public class UserCustomer implements Serializable{
 	private String Login;
 	private String Passwor;
 	private String Status;
+	@OneToMany
+	private Collection<Type_Project> projet; 
 	
 	
 	public UserCustomer() {

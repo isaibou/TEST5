@@ -1,10 +1,14 @@
 package com.example.demo.entities;
 
 import java.io.Serializable;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Roles implements Serializable{
@@ -12,6 +16,10 @@ public class Roles implements Serializable{
 	@GeneratedValue
 	private Integer Role_ID; 
 	private String NomRole;
+	@OneToMany(targetEntity = Employe.class, mappedBy = "role", cascade = CascadeType.ALL,
+			fetch = FetchType.LAZY)
+	private List<Employe> employee;
+	
 	
 	public Roles() {
 		super();
@@ -36,8 +44,16 @@ public class Roles implements Serializable{
 
 	public void setNomRole(String nomRole) {
 		NomRole = nomRole;
-	} 
-	
+	}
+
+	public List<Employe> getEmployee() {
+		return employee;
+	}
+
+	public void setEmployee(List<Employe> employee) {
+		this.employee = employee;
+	}
+
 	
 	
 	

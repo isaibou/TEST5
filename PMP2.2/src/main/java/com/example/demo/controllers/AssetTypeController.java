@@ -40,6 +40,8 @@ public class AssetTypeController
 		model.addAttribute("asstyp", assettyp);
 		model.addAttribute("assetstype", new AssetType());
 		
+		model.addAttribute("totalAssetType", assettyp.size());
+		
 		return "assetstype_manage";
 	}
 	

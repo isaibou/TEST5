@@ -584,7 +584,7 @@
 										<div class="col-sm-8" style="margin: 5px 0px;">
 											<input type="text" class="form-control"
 												placeholder="Entry Name of firmware" id="input-id-1"
-												th:field="*{name}">
+												required th:field="*{name}">
 												<span th:errors="*{name}"></span>
 
 										</div>
@@ -592,7 +592,7 @@
 										<label class="col-sm-4 control-label" style="margin: 5px 0px;"
 											placeholder="Entry Notes" for="input-id-1"><b>Description</b></label>
 											<textarea class="form-control" id="description"
-																	th:field="*{description}" placeholder="Description"
+																  required	th:field="*{description}" placeholder="Description"
 																	></textarea>
 																	<span th:errors="*{description}"></span>
 							 				<div class="form-group">
@@ -603,7 +603,7 @@
 														</div>
 														  <label class=" control-label"><b>Release Date</b></label>
 														<input type="date" name="releaseDate" placeholder="yyyy-MM-dd" class="form-control" 
-														 th:field=*{releaseDate}  th:text="${releaseDate}"/>
+														required th:field=*{releaseDate}  th:text="${releaseDate}"/>
 														 <span th:errors="*{releaseDate}"></span>
 														 
 													</div>
@@ -823,17 +823,13 @@
 						<h1 class="m-n font-bold h3">Information Firmware</h1>
 					</div>
 					<div class="modal-body">
-						<p>
-							<span class="m-n font-thin h3 text-black">Firmware Name:</span> <span
-								ng-repeat="nom in firmware"> {{ firmware.nomFirmware }} </br>
-							</span> <span class="m-n font-thin h3 text-black">Asset Name:</span> <span
-								ng-repeat="nom in asset"> {{ asset.nomAsset }}</span></br> <span
-								class="m-n font-thin h3 text-black">Release Date :</span> <span
-								ng-repeat="releaseDate in firmware"> {{
-								frimware.releaseDateFrimware }}</span></br> <span
-								class="m-n font-thin h3 text-black">Description :</span> <span
-								ng-repeat="description in contract"> {{
-								contract.descriptionContract }} </br>
+						<p th:each="f:${frim}" >
+							<span class="m-n font-thin h3 text-black">Firmware Name:</span>
+							<span th:text ="${f.name}" ng-repeat="nom in firmware"> </br></span>
+							<span class="m-n font-thin h3 text-black">Release Date :</span>
+							<span th:text ="${f.releaseDate}" ng-repeat="releaseDate in firmware"></br></span>
+                            <span class="m-n font-thin h3 text-black">Description :</span> 
+                            <span th:text ="${f.description}" ng-repeat="description in contract"></br>
 							</span>
 						</p>
 					</div>

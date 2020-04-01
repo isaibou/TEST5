@@ -8,6 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
@@ -43,11 +45,13 @@ public class Customer implements Serializable{
 	private String Name;
 	private String Industry;
 	private String Logo;
-
+    @Max(10) 
+    @Min(10)
 	private String PhoneCompany;
 	private String AdressCompany;
 	private String Vip;
-
+	@Max(10) 
+	@Min(10)
 	private String PhoneCIO;
 
 	private String EmailCIO;

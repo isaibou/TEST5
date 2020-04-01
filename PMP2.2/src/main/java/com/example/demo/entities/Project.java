@@ -10,9 +10,8 @@ import javax.persistence.Id;
 
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
+import javax.validation.constraints.*;
 
-import org.hibernate.validator.constraints.Email;
-import org.hibernate.validator.constraints.NotEmpty;
 import org.hibernate.validator.constraints.UniqueElements;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.bind.DefaultValue;
@@ -25,18 +24,32 @@ public class Project implements Serializable{
 	@Id
 	@GeneratedValue
 	private Integer Project_ID;
+	@NotNull 
 	@Column(name = "Name")
 	private String Name;
+	
+	private String TypeProject;
+	
 	private Double Amount;
+	
 	private Date Year;
+	 
 	private Date DeliveryDate;
+	
 	private Date TemporayAcceptanceDate;
+	
 	private Date FinalTemporaryDate;
+	
 	private String DeliveryCertificate;
+	
 	private String TechnologyPartners;
+	
 	private int Warranty;
+	
 	private int ExecutionTime;
+	
 	private String Notes;
+	
 	private String Status;
 	public Project() {
 		super();
@@ -135,6 +148,12 @@ public class Project implements Serializable{
 	}
 	public void setStatus(String status) {
 		Status = status;
+	}
+	public String getTypeProject() {
+		return TypeProject;
+	}
+	public void setTypeProject(String typeProject) {
+		TypeProject = typeProject;
 	}
 
 }

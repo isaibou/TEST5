@@ -19,12 +19,11 @@ public class AssetsController {
 	private AssetRepository assetRepository;
 	
 	@RequestMapping(value="/assets_manage")
-	public String ManageAsset(Model model) {
+	public String allAsset(Model model, Assets asset) {
 		
-		List<Assets> ListAssets = assetRepository.findAll();
-		model.addAttribute("Listassets",ListAssets);
-		model.addAttribute("assets", new Assets());
-		ListAssets.forEach(c->System.out.println(c.getSerielNumber()));
+		List<Assets> assets = assetRepository.findAll();
+		model.addAttribute("asset", assets);
+		model.addAttribute("assets", new AssetType());
 		
 		return "assets_manage";
 	}

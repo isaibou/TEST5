@@ -6,6 +6,7 @@ import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 import javax.persistence.Table;
@@ -15,6 +16,7 @@ import javax.validation.constraints.*;
 import org.hibernate.validator.constraints.UniqueElements;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.bind.DefaultValue;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.NumberFormat;
 
 @Entity
@@ -22,34 +24,46 @@ public class Project implements Serializable{
 	
 	
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer Project_ID;
 	@NotNull 
 	@Column(name = "Name")
 	private String Name;
 	
+	@Column(name = "TypeProject")
 	private String TypeProject;
 	
+	@Column(name = "Amount")
 	private Double Amount;
 	
+	@DateTimeFormat(pattern= "yyyy-mm-dd")
 	private Date Year;
-	 
+	
+	@DateTimeFormat(pattern= "yyyy-mm-dd")
 	private Date DeliveryDate;
 	
+	@DateTimeFormat(pattern= "yyyy-mm-dd")
 	private Date TemporayAcceptanceDate;
 	
+	@DateTimeFormat(pattern= "yyyy-mm-dd")
 	private Date FinalTemporaryDate;
 	
+	@Column(name = "DeliveryCertificate")
 	private String DeliveryCertificate;
 	
+	@Column(name = "TechnologyPartners")
 	private String TechnologyPartners;
 	
+	@Column(name = "Warranty")
 	private int Warranty;
 	
+	@Column(name = "ExecutionTime")
 	private int ExecutionTime;
 	
+	@Column(name = "Notes")
 	private String Notes;
 	
+	@Column(name = "Status")
 	private String Status;
 	public Project() {
 		super();

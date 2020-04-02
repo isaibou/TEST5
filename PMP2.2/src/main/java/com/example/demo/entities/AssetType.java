@@ -3,10 +3,12 @@ package com.example.demo.entities;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -15,16 +17,20 @@ import org.springframework.format.annotation.DateTimeFormat;
 public class AssetType implements Serializable{
 	
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer AssetType_ID;
-	
+	@NotNull 
+	@Column(name = "Name")
 	private String Name;
+	@Column(name = "Brand")
 	private String Brand;
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date EndOfSuportDate;
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date EndSaleDate;
+	@Column(name = "FRU")
 	private String FRU;
+	@Column(name = "Status")
 	private String Status;
 	
 	public AssetType() {

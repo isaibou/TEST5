@@ -580,10 +580,10 @@
 															</thead>
 															<tbody>
 																<tr data-expanded="true" th:each="c:${cust}">
-																	<td th:text ="${c.Name}"> </td>
-																		<td th:text ="${c.AdressCompany}"><center></center></td>
-																		<td th:text ="${c.Industry}"><center><center/></td>
-																		<td th:text ="${c.Status}"><center><span></span><center/></td>
+																	<td th:text ="${c.Name}" class="m-n font-thin h4 text-secondary"> </td>
+																		<td th:text ="${c.AdressCompany}" class="m-n font-thin h4 text-secondary"><center></center></td>
+																		<td th:text ="${c.Industry}" class="m-n font-thin h4 text-secondary"><center><center/></td>
+																		<td th:text ="${c.Status}" class="m-n font-thin h4 text-secondary"><center><span></span><center/></td>
 																				<td>
 																					<center>
 																						<div class="btn-group dropdown">
@@ -592,7 +592,7 @@
 																								<li>
 																									<a th:href="@{updateCustomerform(id=${c.Customer_ID})}"  style="margin-top:-5px;"   class="btn btn-sm btn-light" role="button">Update</a>						</li>
 																								<li>
-																									<a th:href="@{archiverCustomer(id=${c.Customer_ID})}"  style="margin-top:-5px;" data-toggle="modal"  class="btn btn-sm btn-light" role="button">Archive</a>
+																									<a th:href="@{archiverCustomer(id=${c.Customer_ID})}"  style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Archive</a>
 																								</li>
 																								<li>
 																									<a style="margin-top:-5px;" data-toggle="modal"  data-target="#Detail" class="btn btn-sm btn-light" role="button">Detail</a>
@@ -644,29 +644,45 @@
 	 <div class="col-sm-8" style="margin: 5px 0px;">
 	  <input type="text"  class="form-control" placeholder="Entry Address of Company"id="input-id-2"  required th:field=*{AdressCompany}>
 	 </div>
+	 <label class="col-sm-4 control-label" placeholder="Entry Phone of Company" style="margin: 5px 0px;" for="input-id-1"><b>Phone</b></label>
+	 <div class="col-sm-8" style="margin: 5px 0px;">
+	  <input type="tel" placeholder="Entry Phone of Company"class="form-control" id="input-id-1" required th:field=*{PhoneCompany}>
+	 </div>
+	 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Nom CIO</b></label>
+	 <div class="col-sm-8" style="margin: 5px 0px;">
+	  <input type="text" placeholder="Entry Nom CIO"class="form-control" id="input-id-1" required th:field=*{NomCIO}> 
+	 </div>
 	  <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Email CIO</b></label>
 	 <div class="col-sm-8" style="margin: 5px 0px;">
-	  <input type="email" placeholder="Entry Phone CIO"class="form-control" id="input-id-1" required th:field=*{EmailCIO}> 
+	  <input type="email" placeholder="Entry Email CIO"class="form-control" id="input-id-1" required th:field=*{EmailCIO}> 
 	 </div>
 	  <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Phone CIO</b></label>
 	 <div class="col-sm-8" style="margin: 5px 0px;">
 	  <input type="tel" placeholder="Entry Phone CIO"class="form-control" id="input-id-1" required  th:field=*{PhoneCIO}>
 	 </div>
+	 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Nom Technical</b></label>
+	 <div class="col-sm-8" style="margin: 5px 0px;">
+	  <input type="text" placeholder="Entry Nom Technical"class="form-control" id="input-id-1" required th:field=*{NomTechnical}> 
+	 </div>
+	 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Email Technical</b></label>
+	 <div class="col-sm-8" style="margin: 5px 0px;">
+	  <input type="email" placeholder="Entry Email Technical"class="form-control" id="input-id-1" required th:field=*{EmailTechnical}> 
+	 </div>
+	 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Phone Technical</b></label>
+	 <div class="col-sm-8" style="margin: 5px 0px;">
+	  <input type="tel" placeholder="Entry Phone Technical"class="form-control" id="input-id-1" required th:field=*{PhoneTechnical}> 
+	 </div>
 	 <label class="col-sm-4 control-label" placeholder="Entry Country of Company" style="margin: 5px 0px;" for="input-id-1"><b>Country</b></label>
 	 <div class="col-sm-8" style="margin: 5px 0px;">
-	  <select id="countryA" name ="country" class="form-control m-b" th:field=*{Country}></select>
+	  <select id="countryA" name ="Morocco" class="form-control" required th:field=*{Country}></select>
 	 </div>
 	 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>City</b></label>
 	 <div class="col-sm-8" style="margin: 5px 0px;">
-	  <select name ="state" id ="stateA" class="form-control m-b" th:field=*{City}></select>
-	 </div>
-	 <label class="col-sm-4 control-label" placeholder="Entry Phone of Company" style="margin: 5px 0px;" for="input-id-1"><b>Phone</b></label>
-	 <div class="col-sm-8" style="margin: 5px 0px;">
-	  <input type="tel" placeholder="Entry Phone of Company"class="form-control" id="input-id-1"  th:field=*{PhoneCompany}>
+	  <select name ="Rabat" id ="stateA" class="form-control" required th:field=*{City}></select>
 	 </div>
 	 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Industry</b></label>
 	 <div class="col-sm-8" style="margin: 5px 0px;">
-	  <select name="account" class="form-control m-b"  th:field=*{Industry} >
+	  <select name="account" class="form-control m-b" required th:field=*{Industry} >
 	   <option th:value ="Advertising" th:text="Advertising"></option>
 	   <option th:value ="Manufacturing" th:text="Manufacturing"></option>
 	   <option th:value ="Construction" th:text="Construction"></option>
@@ -685,7 +701,7 @@
 	 </div>
 	  <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>VIP</b></label>
 	 <div class="col-sm-8" style="margin: 5px 0px;">
-	  <select name="VIP" class="form-control m-b" th:field=*{Vip}  >
+	  <select name="VIP" class="form-control m-b" required th:field=*{Vip}  >
 	  	 <option th:value="YES" th:text="YES"  ></option>
    		 <option th:value="NO" th:text="NO" ></option>
 	  </select>
@@ -705,7 +721,6 @@
  </div>
 </div>
 
-
 <div class="modal fade" role="dialog" id="Detail" >
 	 <div class="modal-dialog modal-lg" >
   <div class="modal-content">
@@ -720,19 +735,19 @@
 	<div class="panel-body">
     <p th:each="c:${cust}">
      <span class="m-n font-thin h3 text-black" >Nom :</span>
-	 <span th:text ="${c.Name}"></span></br>
+	 <span th:text ="${c.Name}" class="m-n font-thin h4 text-secondary"></span></br>
 	 <span class="m-n font-thin h3 text-black">Logo :</span>
-	 <span th:text ="${c.Logo}"></span></br>
+	 <span th:text ="${c.Logo}" class="m-n font-thin h4 text-secondary"></span></br>
 	 <span class="m-n font-thin h3 text-black" >Adresse :</span> 
-	 <span th:text ="${c.AdressCompany}"></span></br>
+	 <span th:text ="${c.AdressCompany}" class="m-n font-thin h4 text-secondary"></span></br>
 	 <span class="m-n font-thin h3 text-black">Industry :</span>
-	 <span th:text ="${c.Industry}"></span></br>
+	 <span th:text ="${c.Industry}" class="m-n font-thin h4 text-secondary"></span></br>
 	 <span class="m-n font-thin h3 text-black">Phone :</span>
-	 <span th:text ="${c.PhoneCompany}"></span></br>
+	 <span th:text ="${c.PhoneCompany}" class="m-n font-thin h4 text-secondary"></span></br>
 	 <span class="m-n font-thin h3 text-black">Country community :</span>
-	 <span th:text ="${c.Country}"></span></br>
+	 <span th:text ="${c.Country}" class="m-n font-thin h4 text-secondary"></span></br>
 	 <span class="m-n font-thin h3 text-black">City community :</span>
-	 <span th:text ="${c.City}"></span></br>
+	 <span th:text ="${c.City}" class="m-n font-thin h4 text-secondary"></span></br>
 	</p>
 	</div>
 	<div class="panel-heading " >
@@ -741,24 +756,24 @@
 	<div class="panel-body">
 	 <p>
 	    <span class="m-n font-thin h3 text-black">Nom :</span>
-		<span ng-repeat="nomPurchasing in purchasing"></span></br>
+		<span ng-repeat="nomPurchasing in purchasing" class="m-n font-thin h4 text-secondary"></span></br>
 		<span class="m-n font-thin h3 text-black">Phone :</span>
-		<span ng-repeat="phonePurchasing in purchasing"></span></br>
+		<span ng-repeat="phonePurchasing in purchasing" class="m-n font-thin h4 text-secondary"></span></br>
 		<span class="m-n font-thin h3 text-black">Email :</span>
-		<span ng-repeat="emailPurchasing in purchasing"></span></br>
+		<span ng-repeat="emailPurchasing in purchasing" class="m-n font-thin h4 text-secondary"></span></br>
      </p>
 	</div>
 	<div class="panel-heading " >
          <span class="m-n font-thin h2 text-black">Information Technical</span>
     </div>
 	<div class="panel-body">
-	 <p>
+	 <p th:each="c:${cust}">
 	    <span class="m-n font-thin h3 text-black">Nom :</span>
-		<span ng-repeat="nomTechnical in technical"></span></br>
+		<span th:text ="${c.NomTechnical}" class="m-n font-thin h4 text-secondary"></span></br>
 		<span class="m-n font-thin h3 text-black">Phone :</span>
-	    <span ng-repeat="phoneTechnical in technical"></span></br>
+	    <span th:text ="${c.PhoneTechnical}" class="m-n font-thin h4 text-secondary"></span></br>
 	    <span class="m-n font-thin h3 text-black">Email :</span>
-		<span ng-repeat="emailTechnical in technical"></span>
+		<span th:text ="${c.EmailTechnical}" class="m-n font-thin h4 text-secondary"></span>
 	 </p>
 	</div>
 	<div class="panel-heading " >
@@ -767,18 +782,18 @@
 	<div class="panel-body">
 	 <p th:each="c:${cust}">
 		<span class="m-n font-thin h3 text-black">Nom : </span>
-		<span ng-repeat="nomCIO in CIO"></span></br>
+		<span th:text ="${c.NomCIO}" class="m-n font-thin h4 text-secondary"></span></br>
 		<span class="m-n font-thin h3 text-black">Phone : </span>
-		<span th:text ="${c.PhoneCIO}"></span></br>
+		<span th:text ="${c.PhoneCIO}" class="m-n font-thin h4 text-secondary"></span></br>
 		<span class="m-n font-thin h3 text-black">Email : </span>
-		<span th:text ="${c.EmailCIO}"> </span></br>
+		<span th:text ="${c.EmailCIO}" class="m-n font-thin h4 text-secondary"> </span></br>
 	 </p>
     </div>
     <div class="panel-heading">
            <span class="m-n font-thin h2 text-black">DataCentre</span>
 	</div>
 	<div class="panel-body">
-		<span ng-repeat="nom in company.DataCentre"></span></br>
+		<span ng-repeat="nom in company.DataCentre" class="m-n font-thin h4 text-secondary"></span></br>
 	</div>
    </div>
    <div class="modal-footer">

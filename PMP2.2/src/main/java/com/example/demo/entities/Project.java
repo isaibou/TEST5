@@ -69,11 +69,12 @@ public class Project implements Serializable{
 	public Project() {
 		super();
 	}
-	public Project(String name, Double amount, Date year, Date deliveryDate, Date temporayAcceptanceDate,
+	public Project(String name, String typeProject, Double amount, Date year, Date deliveryDate, Date temporayAcceptanceDate,
 			Date finalTemporaryDate, String deliveryCertificate, String technologyPartners, int warranty,
 			int executionTime, String notes, String status) {
 		super();
 		Name = name;
+		TypeProject = typeProject;
 		Amount = amount;
 		Year = year;
 		DeliveryDate = deliveryDate;

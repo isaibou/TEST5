@@ -45,13 +45,11 @@ public class Customer implements Serializable{
 	private String Name;
 	private String Industry;
 	private String Logo;
-    @Max(10) 
-    @Min(10)
+
 	private String PhoneCompany;
 	private String AdressCompany;
 	private String Vip;
-	@Max(10) 
-	@Min(10)
+
 	private String PhoneCIO;
 
 	private String EmailCIO;

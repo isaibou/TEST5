@@ -14,14 +14,10 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.example.demo.entities.AssetType;
-import com.example.demo.entities.Customer;
-import com.example.demo.entities.Frimware;
+import com.example.demo.entities.*;
 import com.example.demo.repository.AssetTypeRepository;
 
 import javassist.expr.NewArray;
-
-import com.example.demo.repository.AssetTypeRepository;
 
 
 @Controller

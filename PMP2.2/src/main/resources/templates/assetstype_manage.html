@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="utf-8"/>
+  <meta charset="utf-8" />
   <title>Assets Type Manage</title>
   <meta name="description" content="app, web app, responsive, responsive layout, admin, admin panel, admin dashboard, flat, flat ui, ui kit, AngularJS, ui route, charts, widgets, components" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
@@ -38,158 +38,157 @@
 <div class="app app-header-fixed ">
     <!-- header -->
   <header id="header" class="app-header navbar" role="menu">
-      <!-- navbar header -->
-      <div class="navbar-header bg-dark">
-        <button class="pull-right visible-xs dk" ui-toggle-class="show" target=".navbar-collapse">
-          <i class="glyphicon glyphicon-cog"></i>
-        </button>
-        <button class="pull-right visible-xs" ui-toggle-class="off-screen" target=".app-aside" ui-scroll="app">
-          <i class="glyphicon glyphicon-align-justify"></i>
-        </button>
-        <!-- brand -->
-        <a href="#/" class="navbar-brand text-lt">
-          <i class="fa fa-power-off"></i>
-          <span class="hidden-folded m-l-xs">PowerM</span>
-        </a>
-        <!-- / brand -->
-      </div>
-      <!-- / navbar header -->
-
-      <!-- navbar collapse -->
-      <div class="collapse pos-rlt navbar-collapse box-shadow bg-white-only">
-        <!-- buttons -->
-        <div class="nav navbar-nav hidden-xs">
-          <a href="#" class="btn no-shadow navbar-btn" ui-toggle-class="app-aside-folded" target=".app">
-            <i class="fa fa-dedent fa-fw text"></i>
-            <i class="fa fa-indent fa-fw text-active"></i>
+        <!-- navbar header -->
+        <div class="navbar-header bg-dark">
+          <button class="pull-right visible-xs dk" ui-toggle-class="show" target=".navbar-collapse">
+            <i class="glyphicon glyphicon-cog"></i>
+          </button>
+          <button class="pull-right visible-xs" ui-toggle-class="off-screen" target=".app-aside" ui-scroll="app">
+            <i class="glyphicon glyphicon-align-justify"></i>
+          </button>
+          <!-- brand -->
+          <a href="#/" class="navbar-brand text-lt">
+            <i class="fa fa-power-off"></i>
+            <span class="hidden-folded m-l-xs">PowerM</span>
           </a>
-          <a href="#" class="btn no-shadow navbar-btn" ui-toggle-class="show" target="#aside-user">
-            <i class="icon-user fa-fw"></i>
-          </a>
+          <!-- / brand -->
         </div>
-        <!-- / buttons -->
-        <!-- link and dropdown -->
-        <ul class="nav navbar-nav hidden-sm">
-          <li class="dropdown">
-            <a href="#" data-toggle="dropdown" class="dropdown-toggle">
-              <i class="fa fa-fw fa-plus visible-xs-inline-block"></i>
-              <span translate="header.navbar.new.NEW">New</span> <span class="caret"></span>
+        <!-- / navbar header -->
+
+        <!-- navbar collapse -->
+        <div class="collapse pos-rlt navbar-collapse box-shadow bg-white-only">
+          <!-- buttons -->
+          <div class="nav navbar-nav hidden-xs">
+            <a href="#" class="btn no-shadow navbar-btn" ui-toggle-class="app-aside-folded" target=".app">
+              <i class="fa fa-dedent fa-fw text"></i>
+              <i class="fa fa-indent fa-fw text-active"></i>
             </a>
-            <ul class="dropdown-menu" role="menu">
-              <li><a href="#" translate="header.navbar.new.PROJECT">Projects</a></li>
-              <li>
-                <a href>
-                  <span class="badge bg-info pull-right">5</span>
-                  <span translate="header.navbar.new.TASK">Task</span>
-                </a>
-              </li>
-              <li><a href translate="header.navbar.new.USER">User</a></li>
-              <li class="divider"></li>
-              <li>
-                <a href>
-                  <span class="badge bg-danger pull-right">4</span>
-                  <span translate="header.navbar.new.EMAIL">Email</span>
-                </a>
-              </li>
-            </ul>
-          </li>
-        </ul>
-        <!-- / link and dropdown -->
-        <!-- search form -->
-        <form class="navbar-form navbar-form-sm navbar-left shift" ui-shift="prependTo" data-target=".navbar-collapse" role="search" ng-controller="TypeaheadDemoCtrl">
-          <div class="form-group">
-            <div class="input-group">
-              <input type="text" ng-model="selected" typeahead="state for state in states | filter:$viewValue | limitTo:8" class="form-control input-sm bg-light no-border rounded padder" placeholder="Search projects...">
-              <span class="input-group-btn">
-                <button type="submit" class="btn btn-sm bg-light rounded"><i class="fa fa-search"></i></button>
-              </span>
-            </div>
+            <a href="#" class="btn no-shadow navbar-btn" ui-toggle-class="show" target="#aside-user">
+              <i class="icon-user fa-fw"></i>
+            </a>
           </div>
-        </form>
-        <!-- / search form -->
-        <!-- nabar right -->
-        <ul class="nav navbar-nav navbar-right">
-          <li class="dropdown">
-            <a href="#" data-toggle="dropdown" class="dropdown-toggle">
-              <i class="icon-bell fa-fw"></i>
-              <span class="visible-xs-inline">Notifications</span>
-              <span class="badge badge-sm up bg-danger pull-right-xs">2</span>
-            </a>
-            <!-- dropdown -->
-            <div class="dropdown-menu w-xl animated fadeInUp">
-              <div class="panel bg-white">
-                <div class="panel-heading b-light bg-light">
-                  <strong>You have <span>2</span> notifications</strong>
-                </div>
-                <div class="list-group">
-                  <a href class="list-group-item">
-                    <span class="pull-left m-r thumb-sm">
-                      <img src="img/a0.jpg" alt="..." class="img-circle">
-                    </span>
-                    <span class="clear block m-b-none">
-                      Use awesome animate.css<br>
-                      <small class="text-muted">10 minutes ago</small>
-                    </span>
-                  </a>
-                  <a href class="list-group-item">
-                    <span class="clear block m-b-none">
-                      1.0 initial released<br>
-                      <small class="text-muted">1 hour ago</small>
-                    </span>
-                  </a>
-                </div>
-                <div class="panel-footer text-sm">
-                  <a href class="pull-right"><i class="fa fa-cog"></i></a>
-                  <a href="#notes" data-toggle="class:show animated fadeInRight">See all the notifications</a>
+          <!-- / buttons -->
+
+          <!-- link and dropdown -->
+          <ul class="nav navbar-nav hidden-sm">
+            <li class="dropdown">
+              <a href="#" data-toggle="dropdown" class="dropdown-toggle">
+                <span translate="header.navbar.new.NEW"></span> <span class="fa fa-moon-o lb-warning"></span> 
+              </a>
+              <ul class="dropdown-menu" role="menu">
+                <li>
+                  <button type="button" name="button" id="darkmode" onclick="changecolor()">
+                    <span translate="header.navbar.new.TASK">ON</span>
+                  </button>
+                </li>
+                <li>
+                  <button  type="button" name="button" id="lightmode" onclick="lightmode()">
+                    <span translate="header.navbar.new.TASK">OFF</span>
+                  </button>
+                </li>
+                
+              </ul>
+            </li>
+          </ul>
+          <!-- / link and dropdown -->
+
+          <!-- search form -->
+          <form class="navbar-form navbar-form-sm navbar-left shift" ui-shift="prependTo" data-target=".navbar-collapse" role="search" ng-controller="TypeaheadDemoCtrl">
+            <div class="form-group">
+              <div class="input-group">
+                <input type="text" ng-model="selected" typeahead="state for state in states | filter:$viewValue | limitTo:8" class="form-control input-sm bg-light no-border rounded padder" placeholder="Search projects...">
+                  <span class="input-group-btn">
+                    <button type="submit" class="btn btn-sm bg-light rounded"><i class="fa fa-search"></i></button>
+                  </span>
                 </div>
               </div>
-            </div>
-            <!-- / dropdown -->
-          </li>
-          <li class="dropdown">
-              <span class="thumb-sm avatar pull-right m-t-n-sm m-b-n-sm m-l-sm">
-                <img src="img/user.png" alt="...">
-                <i class="on md b-white bottom"></i>
-              </span>
-              <span class="hidden-sm hidden-md">Walid.largou</span> <b class="caret"></b>
-            </a>
-            <!-- dropdown -->
-            <ul class="dropdown-menu animated fadeInRight w">
-              <li class="wrapper b-b m-b-sm bg-light m-t-n-xs">
-                <div>
-                  <p>300mb of 500mb used</p>
-                </div>
-                <div class="progress progress-xs m-b-none dker">
-                  <div class="progress-bar progress-bar-info" data-toggle="tooltip" data-original-title="50%" style="width: 50%"></div>
-                </div>
-              </li>
-              <li>
-                <a href>
-                  <span class="badge bg-danger pull-right">30%</span>
-                  <span>Settings</span>
+            </form>
+            <!-- / search form -->
+
+            <!-- nabar right -->
+            <ul class="nav navbar-nav navbar-right">
+              <li class="dropdown">
+                <a href="#" data-toggle="dropdown" class="dropdown-toggle">
+                  <i class="icon-bell fa-fw"></i>
+                  <span class="visible-xs-inline">Notifications</span>
+                  <span class="badge badge-sm up bg-danger pull-right-xs">2</span>
                 </a>
-              </li>
-              <li>
-                <a ui-sref="app.page.profile">Profile</a>
-              </li>
-              <li>
-                <a ui-sref="app.docs">
-                  <span class="label bg-info pull-right">new</span>
+                <!-- dropdown -->
+                <div class="dropdown-menu w-xl animated fadeInUp">
+                  <div class="panel bg-white">
+                    <div class="panel-heading b-light bg-light">
+                      <strong>You have <span>2</span> notifications</strong>
+                    </div>
+                    <div class="list-group">
+                      <a href class="list-group-item">
+                        <span class="pull-left m-r thumb-sm">
+                          <img src="img/a0.jpg" alt="..." class="img-circle">
+                          </span>
+                          <span class="clear block m-b-none">
+                      Use awesome animate.css<br>
+                              <small class="text-muted">10 minutes ago</small>
+                            </span>
+                          </a>
+                          <a href class="list-group-item">
+                            <span class="clear block m-b-none">
+                      1.0 initial released<br>
+                                <small class="text-muted">1 hour ago</small>
+                              </span>
+                            </a>
+                          </div>
+                          <div class="panel-footer text-sm">
+                            <a href class="pull-right"><i class="fa fa-cog"></i></a>
+                            <a href="#notes" data-toggle="class:show animated fadeInRight">See all the notifications</a>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- / dropdown -->
+                    </li>
+                    <li class="dropdown">
+                      <a href="#" class="dropdown-toggle clear" data-toggle="dropdown">
+                        <span class="thumb-sm avatar pull-right m-t-n-sm m-b-n-sm m-l-sm">
+                          <img src="img/user.png" alt="...">
+                            <i class="on md b-white bottom"></i>
+                          </span>
+                          <span class="hidden-sm hidden-md">Walid.largou</span> <b class="caret"></b>
+                        </a>
+                        <!-- dropdown -->
+                        <ul class="dropdown-menu animated fadeInRight w">
+                          <li class="wrapper b-b m-b-sm bg-light m-t-n-xs">
+                            <div>
+                              <p>300mb of 500mb used</p>
+                            </div>
+                            <div class="progress progress-xs m-b-none dker">
+                              <div class="progress-bar progress-bar-info" data-toggle="tooltip" data-original-title="50%" style="width: 50%"></div>
+                            </div>
+                          </li>
+                          <li>
+                            <a href>
+                              <span class="badge bg-danger pull-right">30%</span>
+                              <span>Settings</span>
+                            </a>
+                          </li>
+                          <li>
+                            <a ui-sref="app.page.profile">Profile</a>
+                          </li>
+                          <li>
+                            <a ui-sref="app.docs">
+                              <span class="label bg-info pull-right">new</span>
                   Help
-                </a>
-              </li>
-              <li class="divider"></li>
-              <li>
-                <a ui-sref="access.signin">Logout</a>
-              </li>
-            </ul>
-            <!-- / dropdown -->
-          </li>
-        </ul>
-        <!-- / navbar right -->
-      </div>
-      <!-- / navbar collapse -->
-  </header>
+                            </a>
+                          </li>
+                          <li class="divider"></li>
+                          <li>
+                            <a ui-sref="access.signin">Logout</a>
+                          </li>
+                        </ul>
+                        <!-- / dropdown -->
+                      </li>
+                    </ul>
+                    <!-- / navbar right -->
+                  </div>
+                  <!-- / navbar collapse -->
+                </header>
   <!-- / header -->
     <!-- aside -->
 <aside id="aside" class="app-aside hidden-xs bg-dark">
@@ -227,7 +226,7 @@
                   <a href>Settings</a>
                 </li>
                 <li>
-                  <a th:href="page_profile">Profile</a>
+                  <a href="page_profile.html">Profile</a>
                 </li>
                 <li>
                   <a href>
@@ -237,7 +236,7 @@
                 </li>
                 <li class="divider"></li>
                 <li>
-                  <a th:href="page_signin">Logout</a>
+                  <a href="page_signin.html">Logout</a>
                 </li>
               </ul>
               <!-- / dropdown -->
@@ -255,7 +254,8 @@
                 <a th:href="index" class="auto">      
                   <i class="glyphicon glyphicon-stats icon text-primary-dker"></i>
                   <span class="font-bold">Dashboard</span>
-                </a>               
+                </a>
+               
               </li>
               <li>
                 <a th:href="mail">
@@ -265,6 +265,7 @@
                 </a>
               </li>
               <li class="line dk"></li>
+
               <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
                 <span>Management</span>
               </li>
@@ -278,10 +279,42 @@
                   <i class="glyphicon glyphicon-briefcase"></i>
                   <span>Customers</span>
                 </a>
-                <ul class="nav nav-sub dk">              
+                <ul class="nav nav-sub dk">
+               
                   <li>
                     <a th:href="customer_manage">
                       <span>Manage customer</span>
+                    </a>
+                  </li>
+				  
+				  <li>
+                    <a th:href="purchasing_customer_manage">
+                      <span>Puchasing contact</span>
+                    </a>
+                  </li>
+                    
+                </ul>
+              </li>
+			     <li>
+                <a href class="auto">      
+                  <span class="pull-right text-muted">
+                    <i class="fa fa-fw fa-angle-right text"></i>
+                    <i class="fa fa-fw fa-angle-down text-active"></i>
+                  </span>
+                  <b class="badge bg-info pull-right">3</b>
+                  <i class="glyphicon glyphicon-user"></i>
+                  <span>Users</span>
+                </a>
+                <ul class="nav nav-sub dk">
+               
+                  <li>
+                    <a th:href="users">
+                      <span>Manage users</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a th:href="TypeUsers">
+                      <span>Manage Type users</span>
                     </a>
                   </li>
                 </ul>
@@ -291,6 +324,7 @@
                   <i class="glyphicon glyphicon-calendar icon"></i>
                   <span>TimeSheet</span>
                 </a>
+
               </li>
               <li>
                 <a href class="auto">
@@ -309,12 +343,12 @@
                     </a>
                   </li>
                   <li>
-                    <a th:href="projet_delivrable_manage">
-                      <span>Manage Delivrable</span>
+                    <a th:href="deliverable_manage">
+                      <span>Manage Deliverable</span>
                     </a>
                   </li>
                   <li>
-                    <a th:href="projects_reference_manage">
+                    <a th:href="reference_manage">
                       <span>Manage Reference</span>
                     </a>
                   </li>
@@ -340,12 +374,34 @@
                       <span>Manage Assets Type</span>
                     </a>
                   </li>
+				  <li>
+                    <a th:href="firmware">
+                      <span>Firmware</span>
+                    </a>
+                  </li>
+				  <li>
+                    <a th:href="vendor">
+                      <span>Vendor</span>
+                    </a>
+                  </li>
                 </ul>
               </li>
               <li>
                 <a th:href="tickets_manage">
                   <i class="glyphicon glyphicon-tag"></i>
                   <span>Tickets</span>
+                </a>
+              </li>
+			  <li>
+                <a th:href="contract_manage">
+                  <i class="fa fa-legal"></i></i>
+                  <span>Contracts</span>
+                </a>
+              </li>
+			  <li>
+                <a th:href="expense">
+                  <i class="glyphicon  glyphicon-usd"></i></i>
+                  <span>Expenses</span>
                 </a>
               </li>
               <li>
@@ -368,9 +424,12 @@
                       <span>External Request</span>
                     </a>
                   </li>
-                </ul>               
+                </ul>
+
+               
               </li>
               <li class="line dk hidden-folded"></li>
+
               <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">          
                 <span>Your Stuff</span>
               </li>  
@@ -401,14 +460,9 @@
  	<div class="hbox hbox-auto-xs hbox-auto-sm">
 												<div class="col">
  <div class="bg-light lter b-b wrapper-md">
-  <h1 class="m-n font-bold h3">Manage Assets Type</h1>
- </div>
-
- <div class="panel panel-default">
- <div class="panel-heading">
-  <small><a th:href="index">Home</a> </small>><small> Manage Assets Type</small>
-	<a style="margin-top:-5px;" data-toggle="modal"  data-target="#AddClient" class="btn btn-sm btn-primary pull-right"  role="button"><b class="glyphicon-plus pull"> </b>Add Assets Type</a> 
- </div>
+  <h1 class="m-n font-bold h3">Manage Assets Type
+  <a style="margin-top:-5px;" data-toggle="modal"  data-target="#AddClient" class="btn btn-sm btn-primary pull-right"  role="button"><b class="glyphicon-plus pull"> </b>Add Assets Type</a> 
+  </h1>
  </div>
 
 <div class="row" style="margin:5px;">
@@ -423,7 +477,7 @@
     </div>
     <div class="col-xs-4">
      <a href class="block panel padder-v bg-primary item">
-     <span class="text-white font-thin h1 count block"  >930</span>
+     <span class="text-white font-thin h1 count block">930</span>
      <span class="text-muted text-xs"><b>Total Revenue Reference <small>(current week)</small></b></span>
      <span class="bottom text-right w-full"><i class="glyphicon glyphicon-usd text-muted m-r-sm"></i></span>
      </a>
@@ -449,17 +503,14 @@
       </div>
       <div class="modal-body">
        <div class="row">
-		 <form th:action="@{SaveAssetType}" method ="post" th:object="${assetstype}"> 
-          
-         <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b> Name</b></label>
-     <div class="col-sm-8" style="margin: 5px 0px;">
-      <input type="text" class="form-control" placeholder="Entry Name of Asset" id="input-id-1"  required th:field=*{name}>
-      <span  th:errors=*{name}></span>
-	 </div>
-          <label class="col-sm-4 control-label"  for="input-id-1" style="margin-bottom:5px;"><b>Brand</b></label>
+		    <form>
+          <label class="col-sm-4 control-label"  for="input-id-1" style="margin-bottom:5px;"><b>Name</b></label>
           <div class="col-sm-8" style="margin-bottom:5px;">
-            <input type="text"  class="form-control" placeholder="Entry Band" id="input-id-2" required th:field="*{Brand}"/>
-            <span class="text-danger" th:errors=*{Brand}></span>
+            <input type="text"  class="form-control" placeholder="Entry Name" id="input-id-2">
+          </div>
+          <label class="col-sm-4 control-label"  for="input-id-1" style="margin-bottom:5px;"><b>Band</b></label>
+          <div class="col-sm-8" style="margin-bottom:5px;">
+            <input type="text"  class="form-control" placeholder="Entry Band" id="input-id-2">
           </div>
           <label class="col-sm-4 control-label" placeholder="Entry EndOfSupportDate" for="input-id-1" style="margin-bottom:5px;"><b>End Of Support Date</b></label>
           <div class="col-sm-8" style="margin-bottom:5px;">
@@ -467,8 +518,7 @@
             <div class="input-group-addon">
               <i class="fa fa-calendar"></i>
             </div>
-            <input class="form-control" id="date" name="date" placeholder="yyyy-MM-dd" type="date" required th:field="*{EndOfSuportDate}"/>
-            <span class="text-danger" th:errors=*{EndOfSuportDate}></span>
+            <input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" type="text"/>
            </div>
           </div>
           <label class="col-sm-4 control-label" placeholder="Entry EndSaleDate" for="input-id-1" style="margin-bottom:5px;"><b>End Sale Date</b></label>
@@ -477,98 +527,66 @@
              <div class="input-group-addon">
               <i class="fa fa-calendar"></i>
              </div>
-             <input type="date" name="releaseDate" placeholder="yyyy-MM-dd" class="form-control"  th:field=*{EndSaleDate}  th:text="*{EndSaleDate}"/>
-		     <span th:errors=*{EndSaleDate}></span>
+             <input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" type="text" width="100%"/>
             </div>   
           </div>
-            <label class="col-sm-4 control-label"  for="input-id-1" style="margin-bottom:5px;"><b>FRU</b></label>
-          <div class="col-sm-8" style="margin-bottom:5px;">
-            <input type="text"  class="form-control" placeholder="Entry FRU" id="input-id-2" required th:field=*{FRU}/>
-            <span th:errors=*{FRU}></span>
-          </div>
-           <div class="modal-footer">
-        <button style="margin:0px;" class="btn m-b-xs btn-sm btn-primary btn-addon"><i class="glyphicon glyphicon-ok"></i>Save</button>
-	    <button style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon" data-dismiss="modal"><i class="glyphicon glyphicon-remove"></i>Annuler</button>
-      </div>
 		    </form>
 		   </div>
-      
+       <div class="modal-footer">
+        <button style="margin:0px;" class="btn m-b-xs btn-sm btn-primary btn-addon"><i class="glyphicon glyphicon-ok"></i>Save</button>
+       <button style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon"  data-dismiss="modal"><i class="glyphicon glyphicon-remove"></i>Annuler</button>
+      </div>
 	  </div> 
   </div>
 </div>
 </div>
+<div class="table-responsive" style="background-color:white;margin:10px; padding:10px;">
+    <table ui-jq="dataTable" ui-options="{
+                              aoColumns: [
+                              
+                              { mData: 'browser' },
+                              { mData: 'platform' },
+                              { mData: 'version' },
+                              { mData: 'grade' },
+            
+                              { mData: 'action' }
+                              ]
+                              }" class="table  b-t b-b">
+       <thead style="color:#23b7e5;">
+      <tr>
+       <th  style="width:20%"><center>Asset Name</center></th>
+       <th  style="width:20%"><center>Band</center></th>
+       <th  style="width:15%"><center>End Of Support Date</center></th>
+       <th  style="width:15%"><center>End Sale Date</center></th>
+       <th  style="width:15%"><center>Actions</center></th>
 
-<div class="col-sm-12">
-
-                            <button class="btn btn-primary btn-block" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                              <i class="glyphicon glyphicon-play pull-left"></i><b>AMADEUS MAROC</b>
-                            </button>
-
-                            <div class="collapse" id="collapseExample">
-
-                              <div class="table-responsive">
-                                <table style="background-color:white;"class="table" ui-jq="footable" ui-options='{
-        "paging": {
-          "enabled": true
-        },
-        "filtering": {
-          "enabled": false
-        },
-        "sorting": {
-          "enabled": true
-        }}'>
-                                  <thead>
-                                    <tr>
-
-                                      
-                                      <th  style="width:15%"><center>Asset Name</center></th>
-                                      <th  style="width:15%"><center>Brand</center></th>
-                                      <th  style="width:15%"><center>End Of Support Date</center></th>
-                                      <th  style="width:15%"><center>End Sale Date</center></th>
-                                      <th  style="width:15%"><center>FRU</center></th>
-                                      <th  style="width:15%"><center>Actions</center></th>
-
-                                    </tr>
-                                  </thead>
-                                  <tbody>
-
-                                    <tr data-expanded="true" th:each="a:${asstyp}">
-                                      <td th:text="${a.Name}"><center></center></td>
-                                      <td th:text="${a.Brand}"><center></center></td>
-                                      <td th:text="${a.EndOfSuportDate}"><center></center></td>
-                                      <td th:text="${a.EndSaleDate}"><center><center/></td>
-                                      <td th:text="${a.FRU}"><center><center/></td>
-
-                                      <td><center>
-                                     <div class="btn-group dropdown">
-										 <button class="btn btn-default btn-xs" data-toggle="dropdown">
-												<i class="glyphicon glyphicon-cog"></i> Action <span
-													class="caret"></span>
-											</button>
-											<ul class="dropdown-menu">
-                                                  <a th:href="@{updateAseetTypeform(id=${a.AssetType_ID})}"  style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Update</a></li>
-                                                </li>
-                                                <li>
-                                                 <a th:href="@{archiverAseetType(id=${a.AssetType_ID})}"  style="margin-top:-5px;" data-toggle="modal"  class="btn btn-sm btn-light" role="button">Archive</a>
-                                                </li>
-                                      </ul></div></center>
-                                      </td>
-                                    </tr>
-                                  </tbody>
-                                 </table>
-                                </div> 
-                              </div>
-                            </div>
-                          </div>
-                        </div>
+      </tr>
+       </thead>
+     <tbody>
+      <tr data-expanded="true">
+       <td><center><b>ServeurH</b></center></td>
+       <td><center>IBM</center></td>
+       <td><center>22-02-2019</center></td>
+       <td><center>05-04-2019</center></td>
+       <td><center><div class="btn-group dropdown"><button class="btn btn-default btn-xs" data-toggle="dropdown"><i class="glyphicon glyphicon-cog"></i> Action <span class="caret"></span></button>
+        <ul class="dropdown-menu">
+          <li><a style="margin-top:-5px;" data-toggle="modal"  data-target="#Update" class="btn btn-sm btn-light" role="button">Update</a></li>
+          <li><a style="margin-top:-5px;" data-toggle="modal"  data-target="#Delete" class="btn btn-sm btn-light" role="button">Delete</a></li>
+          <li><a style="margin-top:-5px;" data-toggle="modal"  data-target="#Detail" class="btn btn-sm btn-light" role="button">Detail</a></li></ul></div>
+       </center></td>
+      </tr>
+     </tbody>
+    </table>
+     </div>
+  </div>
+ </div>
   <!-- /content -->
-
 <div class="modal fade" role="dialog" id="Update" >
   <div class="modal-dialog modal-lg" >
     <div class="modal-content">
       <div class="modal-header" style="background-image:url(img/grf-bg.jpg);color:white;">
         <button type="button" class="close pull-right" data-dismiss="modal">&times;</button>
-        <h1 class="m-n font-bold h3"> <b class="glyphicon-plus pull"> </b> Update Type Asset</h1>
+        <h1 class="m-n font-bold h3"> Update Type Asset</h1>
       </div>
       <div class="modal-body">
        <div class="row">
@@ -627,6 +645,31 @@
  </div>
 </div>
 </div>
+<div class="modal fade" role="dialog" id="Detail" >
+ <div class="modal-dialog modal-lg" >
+  <div class="modal-content">
+   <div class="modal-header" style="background-image:url(img/grf-bg.jpg);color:white;">
+    <button type="button" class="close pull-right" data-dismiss="modal">&times;</button>
+    <h1 class="m-n font-bold h3">Information Type Asset</h1>
+   </div>
+   <div class="modal-body">
+      <p>
+           <span class="m-n font-thin h3 text-black">Asset Name :</span>
+           <span ng-repeat="nom in asset"> {{ asset.NameAsset }}</span></br>
+           <span class="m-n font-thin h3 text-black">Band :</span>
+           <span ng-repeat="band in typeAsset"> {{ typeAsset.bandTypeAsset }}</span></br>
+           <span class="m-n font-thin h3 text-black">End Of Support Date :</span>
+           <span ng-repeat="endOfSupportDate in TypeAsset"> {{ typeAsset.endOfSupportDateTypeAsset }}</span></br>
+           <span class="m-n font-thin h3 text-black">End Sale Date :</span>
+           <span ng-repeat="endSaleDate in TypeAsset"> {{ typeAsset.endSaleDateTypeAsset }}</span></br>
+      </p>
+   </div>
+   <div class="modal-footer">
+   <button class="btn m-b-xs btn-sm btn-primary btn-addon" data-dismiss="modal">Return</button>
+  </div>
+  </div>  
+</div>
+</div>
 </center>
 </center>
 </td>
@@ -675,5 +718,66 @@
     })
   })
 </script>
+<script type="text/javascript">
+  function changecolor() {
+       $('body,.wrapper,.content,.panel-default,.panel-heading,#content-h,#header,.modal-content').css("background-color", "#3a3f51");
+       $('.wrapper,.content,.panel-default,.panel-heading,#content-h').css("border-color", "#313639");
+    $('.h3,.h5,.wrapper,panel-default,#content-b,.panel-heading').css("color", "white");
+              $('.panel-default,#content-b').css("background-color", "#3a3f51");
+
+  google.charts.load('current', {packages: ['corechart']});
+    google.charts.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+      // Define the chart to be drawn.
+      var data = new google.visualization.DataTable();
+      data.addColumn('string', 'Element');
+      data.addColumn('number', 'Percentage');
+      data.addRows([
+        ['Configuration', 0.68],
+        ['Documentation', 0.11],
+        ['Maintenance', 0.11],
+        ['Installation', 0.10]
+      ]);
+
+      // Instantiate and draw the chart.
+      var chart = new google.visualization.PieChart(document.getElementById('myPieChart'));
+    var options = {backgroundColor: '#3a3f51', colors: ['#6254b2', '#3289c8', '#27c24c','#ffbb3b'],legendTextStyle: { color: '#FFF' },is3D: true};
+      chart.draw(data, options);
+    }
+
+      };
+    
+      function lightmode() {
+       $('.wrapper,.content,.panel-heading,#content-h,#header,.modal-content').css("background-color", "#f0f3f4");
+          $('.panel-default,#content-b').css("background-color", "#f0f3f4");
+       $('.wrapper,.content,.panel-default,.panel-heading,#content-h').css("border-color", "#dee5e7");
+    $('.h3,.h5,.wrapper,panel-default,#content-b,.panel-heading').css("color", "#58666e");
+
+  google.charts.load('current', {packages: ['corechart']});
+    google.charts.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+      // Define the chart to be drawn.
+      var data = new google.visualization.DataTable();
+      data.addColumn('string', 'Element');
+      data.addColumn('number', 'Percentage');
+      data.addRows([
+        ['Configuration', 0.68],
+        ['Documentation', 0.11],
+        ['Maintenance', 0.11],
+        ['Installation', 0.10]
+      ]);
+
+      // Instantiate and draw the chart.
+      var chart = new google.visualization.PieChart(document.getElementById('myPieChart'));
+    var options = {backgroundColor: '#f0f3f4', colors: ['#6254b2', '#3289c8', '#27c24c','#ffbb3b'],legendTextStyle: { color: 'black' },is3D: true};
+      chart.draw(data, options);
+    }
+
+      };
+    
+ 
+    </script>
 </body>
 </html>

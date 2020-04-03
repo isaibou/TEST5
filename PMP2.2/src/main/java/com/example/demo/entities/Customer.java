@@ -40,17 +40,17 @@ public class Customer implements Serializable{
 	@Id
 	@GeneratedValue
 	private Integer Customer_ID;
-	
-	@Column(name = "Name")
+	@Column(unique=true)
 	private String Name;
 	private String Industry;
 	private String Logo;
-   
-    
+
+
 	private String PhoneCompany;
 	private String AdressCompany;
 	private String Vip;
-	
+
+
 	private String PhoneCIO;
 
 	private String EmailCIO;

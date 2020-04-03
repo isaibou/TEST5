@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="utf-8" />
   <title>Update Project</title>
@@ -11,7 +11,6 @@
   <link rel="stylesheet" href="../libs/jquery/bootstrap/dist/css/bootstrap.css" type="text/css" />
   <link rel="stylesheet" href="css/font.css" type="text/css" />
   <link rel="stylesheet" href="css/app.css" type="text/css" />
-
 </head>
 <body>
 <div class="app" >
@@ -72,15 +71,19 @@
 		 </div>
 		 <label class="col-sm-4 control-label" placeholder="Entry Warranty" style="margin: 5px 0px;" for="input-id-1"><b>Warranty</b></label>
 		 <div class="col-sm-8" style="margin: 5px 0px;">
-		  <input type="number" placeholder="Entry Warranty"class="form-control" id="input-id-1" th:field=*{Warranty}/>
+		  <input type="number" placeholder="Entry Warranty"class="form-control" id="input-id-1" required th:field=*{Warranty}/>
 		 </div>
 		 <label class="col-sm-4 control-label" placeholder="Entry Execution Time" style="margin: 5px 0px;" for="input-id-1"><b>Execution Time</b></label>
 	     <div class="col-sm-8" style="margin: 5px 0px;">
-		  <input type="number" placeholder="Entry Execution Time" class="form-control" id="input-id-1" th:field=*{ExecutionTime}/>
+		  <input type="number" placeholder="Entry Execution Time" class="form-control" id="input-id-1" required th:field=*{ExecutionTime}/>
 		 </div>
 	     <label class="col-sm-4 control-label" placeholder="Entry Notes" style="margin: 5px 0px;" for="input-id-1"><b>Notes</b></label>
 		  <div class="col-sm-8" style="margin: 5px 0px;">
-			<input type="text" class="form-control" placeholder="Entry ur notes " id="input-id-1" th:field=*{Notes} />
+			<input type="text" class="form-control" placeholder="Entry ur notes " id="input-id-1" required th:field=*{Notes} />
+          </div>
+          <label class="col-sm-4 control-label" placeholder="status" style="margin: 5px 0px;" for="input-id-1"><b>Status</b></label>
+		  <div class="col-sm-8" style="margin: 5px 0px;">
+			<input type="text" class="form-control" placeholder="status " id="input-id-1" required th:field=*{Status} />
           </div>
 		  <div class="modal-footer">
 		   <button style="margin:0px;" class="btn m-b-xs btn-sm btn-primary btn-addon"><i class="glyphicon glyphicon-ok"></i>Save</button>
@@ -92,7 +95,6 @@
 		</div>
 	  </div>
      </div>
-
 <script src="../libs/jquery/jquery/dist/jquery.js"></script>
 <script src="../libs/jquery/bootstrap/dist/js/bootstrap.js"></script>
 <script src="js/ui-load.js"></script>

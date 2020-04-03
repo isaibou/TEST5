@@ -26,6 +26,10 @@ public class Assets implements Serializable{
 	private int PasswordAsset;
 	private Date LastUpdate;
 	
+	//attribut customer de type Customer 
+	private Customer customer;
+	private Project project;
+	
 	
 	public Assets() {
 		super();

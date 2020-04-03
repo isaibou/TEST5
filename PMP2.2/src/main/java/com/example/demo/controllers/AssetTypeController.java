@@ -14,15 +14,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.example.demo.entities.AssetType;
-import com.example.demo.entities.Customer;
-import com.example.demo.entities.Frimware;
+import com.example.demo.entities.*;
 import com.example.demo.repository.AssetTypeRepository;
-
-import javassist.expr.NewArray;
-
-import com.example.demo.repository.AssetTypeRepository;
-
 
 @Controller
 
@@ -76,18 +69,25 @@ public class AssetTypeController
 		return "redirect:/assetstype_manage";
 	}
 	
-	@RequestMapping(value ="/archiverAseetType" )
-	private String archiverAseetType( Model model, Integer id ) {
+	//@RequestMapping(value ="/archiverAseetType" )
+	//private String archiverAseetType( Model model, Integer id ) {
 	
-	AssetType AssTyp = assetTypeRepository.getOne(id);
-	AssTyp.setStatus("Archived");
-	AssTyp.setName("Sara");
-	assetTypeRepository.save(AssTyp);
-	System.out.println(AssTyp.getStatus());
+	//AssetType AssTyp = assetTypeRepository.getOne(id);
+	//AssTyp.setStatus("Archived");
+	//AssTyp.setName("Sara");
+	//assetTypeRepository.save(AssTyp);
+	//System.out.println(AssTyp.getStatus());
 		
-			return "redirect:/assetstype_manage";	
+			//return "redirect:/assetstype_manage";	
 			
+	//}
+
+
+	@RequestMapping(value ="/deleteAssetType" )
+	private String deleteAssetType( Model model, Integer id ) {
+	
+		assetTypeRepository.deleteById(id);
+		
+		 return "redirect:/assetstype_manage";	
 	}
-
-
 }

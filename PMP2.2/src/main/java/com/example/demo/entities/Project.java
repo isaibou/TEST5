@@ -26,6 +26,7 @@ public class Project implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer Project_ID;
+ 
 	@NotNull 
 	@Column(name = "Name")
 	private String Name;

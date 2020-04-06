@@ -7,28 +7,28 @@
 	content="app, web app, responsive, responsive layout, admin, admin panel, admin dashboard, flat, flat ui, ui kit, AngularJS, ui route, charts, widgets, components" />
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, maximum-scale=1" />
-<link rel="stylesheet" href="../libs/assets/animate.css/animate.css"
+<link rel="stylesheet" href="/../libs/assets/animate.css/animate.css"
 	type="text/css" />
 <link rel="stylesheet"
-	href="../libs/assets/font-awesome/css/font-awesome.min.css"
+	href="/../libs/assets/font-awesome/css/font-awesome.min.css"
 	type="text/css" />
 <link rel="stylesheet"
-	href="../libs/assets/simple-line-icons/css/simple-line-icons.css"
+	href="/../libs/assets/simple-line-icons/css/simple-line-icons.css"
 	type="text/css" />
 <link rel="stylesheet"
 	href="../libs/jquery/bootstrap/dist/css/bootstrap.css" type="text/css" />
-<link href='../libs/packages/core/main.css' rel='stylesheet' />
-<link href='../libs/packages/daygrid/main.css' rel='stylesheet' />
-<link href='../libs/packages/timegrid/main.css' rel='stylesheet' />
-<link href='../libs/packages/list/main.css' rel='stylesheet' />
-<script src='../libs/packages/core/main.js'></script>
-<script src='../libs/packages/interaction/main.js'></script>
-<script src='../libs/packages/daygrid/main.js'></script>
-<script src='../libs/packages/timegrid/main.js'></script>
-<script src='../libs/packages/list/main.js'></script>
+<link href='/../libs/packages/core/main.css' rel='stylesheet' />
+<link href='/../libs/packages/daygrid/main.css' rel='stylesheet' />
+<link href='/../libs/packages/timegrid/main.css' rel='stylesheet' />
+<link href='/../libs/packages/list/main.css' rel='stylesheet' />
+<script src='/../libs/packages/core/main.js'></script>
+<script src='/../libs/packages/interaction/main.js'></script>
+<script src='/../libs/packages/daygrid/main.js'></script>
+<script src='/../libs/packages/timegrid/main.js'></script>
+<script src='/../libs/packages/list/main.js'></script>
 
-<link rel="stylesheet" href="css/font.css" type="text/css" />
-<link rel="stylesheet" href="css/app.css" type="text/css" />
+<link rel="stylesheet" href="/css/font.css" type="text/css" />
+<link rel="stylesheet" href="/css/app.css" type="text/css" />
 <script>
 	document
 			.addEventListener(
@@ -503,10 +503,13 @@
 							<li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
 								<span>Your Stuff</span>
 							</li>
-							<li><a th:href="page_profile"> <i
-									class="icon-user icon text-success-lter"></i> <b
-									class="badge bg-success pull-right">30%</b> <span>Profile</span>
-							</a></li>
+							  <li>
+                <a th:href="@{/login?logout}">
+                  <i class="icon-user icon text-success-lter"></i>
+                  <b class="badge bg-success pull-right">30%</b>
+                  <span>[[${#httpServletRequest.remoteUser}]]</span>
+                </a>
+              </li>
 							<li><a href> <i class="icon-question icon"></i> <span>Documents</span>
 							</a></li>
 						</ul>
@@ -557,7 +560,7 @@
 							</tr>
 						</thead>
 						<tbody>
-							<tr th:each="f : ${firmList}">
+							<tr th:each="f : ${frim}">
 
 								<td th:text="${f.name}"><center>
 										<b></b>
@@ -577,20 +580,19 @@
 								<td th:text="${f.releaseDate}"><center></center></td>
 								<td><center>
 										<div class="btn-group dropdown">
-											<button class="btn btn-default btn-xs" data-toggle="dropdown">
+										 <button class="btn btn-default btn-xs" data-toggle="dropdown">
 												<i class="glyphicon glyphicon-cog"></i> Action <span
 													class="caret"></span>
 											</button>
 											<ul class="dropdown-menu">
-												<li><a style="margin-top: -5px;" data-toggle="modal"
-													data-target="#Update" class="btn btn-sm btn-light"
-													role="button">Update</a></li>
-												<li><a style="margin-top: -5px;" data-toggle="modal"
-													data-target="#Delete" class="btn btn-sm btn-light"
-													role="button">Delete</a></li>
-												<li><a style="margin-top: -5px;" data-toggle="modal"
-													data-target="#Detail" class="btn btn-sm btn-light"
-													role="button">Detail</a></li>
+												<li>
+												<a th:href="@{updateFrimwareform(id=${f.frimware_ID})}"  style="margin-top:-5px;"   class="btn btn-sm btn-light" role="button">Update</a></li>
+												<li>
+												<a th:href="@{archiverFrimware(id=${f.frimware_ID})}"  style="margin-top:-5px;" data-toggle="modal"  class="btn btn-sm btn-light" role="button">Archive</a>
+												</li>
+												<li>
+												<a style="margin-top:-5px;" data-toggle="modal"  data-target="#Detail" class="btn btn-sm btn-light" role="button">Detail</a>
+												</li>
 											</ul>
 										</div>
 									</center></td>
@@ -763,7 +765,7 @@
 									<b class="glyphicon-plus pull"> </b> Add Firmware
 								</h1>
 							</div>
-							<form action="#" th:action="@{/addFirmware}" th:object="${obj}"
+							<form action="#" th:action="@{/SaveFrimware}" th:object="${frimware}"
 								method="post">
 								<div class="modal-body">
 									<div class="row">
@@ -773,155 +775,37 @@
 											<input type="text" class="form-control"
 												placeholder="Entry Name of firmware" id="input-id-1"
 												th:field="*{name}">
+												<span th:errors="*{name}"></span>
 
 										</div>
-										
-										<label class="col-sm-4 control-label" for="input-id-1"><b>Asset</b></label>
-										<div class="col-sm-8">
-											<select name="account" class="form-control m-b">
-												<option>Asset1</option>
-												<option>Asset2</option>
-											</select>
-										</div>
-										<div class="modal-body">
-										<div class="col-sm-8" style="margin: 5px 0px;"> 
+
 										<label class="col-sm-4 control-label" style="margin: 5px 0px;"
 											placeholder="Entry Notes" for="input-id-1"><b>Description</b></label>
 											<textarea class="form-control" id="description"
 																	th:field="*{description}" placeholder="Description"
 																	></textarea>
-										 
-											<!-- <div class="form-group">
-												<div class="btn-toolbar m-b-sm btn-editor"
-													data-role="editor-toolbar" data-target="#editor">
-													<div class="btn-group dropdown" dropdown="">
-														<a class="btn btn-default" dropdown-toggle=""
-															tooltip="Font"><i class="fa fa-font"></i><b
-															class="caret"></b></a>
-														<ul class="dropdown-menu">
-															 <li><a href="" data-edit="fontName Serif"
-																style="font-family: 'Serif'">Serif</a></li>
-															<li><a href="" data-edit="fontName Sans"
-																style="font-family: 'Sans'">Sans</a></li>
-															<li><a href="" data-edit="fontName Arial"
-																style="font-family: 'Arial'">Arial</a></li>
-														</ul>
-													</div>
-													<div class="btn-group dropdown" dropdown="">
-														<a class="btn btn-default" dropdown-toggle=""
-															data-toggle="dropdown" tooltip="Font Size"><i
-															class="fa fa-text-height"></i>&nbsp;<b class="caret"></b></a>
-														<ul class="dropdown-menu">
-															<li><a href="" data-edit="fontSize 5"
-																style="font-size: 24px">Huge</a></li>
-															<li><a href="" data-edit="fontSize 3"
-																style="font-size: 18px">Normal</a></li>
-															<li><a href="" data-edit="fontSize 1"
-																style="font-size: 14px">Small</a></li>
-														</ul>
-													</div>
-													<div class="btn-group">
-														<a class="btn btn-default" data-edit="bold"
-															tooltip="Bold (Ctrl/Cmd+B)"><i class="fa fa-bold"></i></a>
-														<a class="btn btn-default" data-edit="italic"
-															tooltip="Italic (Ctrl/Cmd+I)"><i class="fa fa-italic"></i></a>
-														<a class="btn btn-default" data-edit="strikethrough"
-															tooltip="Strikethrough"><i
-															class="fa fa-strikethrough"></i></a> <a
-															class="btn btn-default" data-edit="underline"
-															tooltip="Underline (Ctrl/Cmd+U)"><i
-															class="fa fa-underline"></i></a>
-													</div>
-													<div class="btn-group">
-														<a class="btn btn-default" data-edit="insertunorderedlist"
-															tooltip="Bullet list"><i class="fa fa-list-ul"></i></a> <a
-															class="btn btn-default" data-edit="insertorderedlist"
-															tooltip="Number list"><i class="fa fa-list-ol"></i></a> <a
-															class="btn btn-default" data-edit="outdent"
-															tooltip="Reduce indent (Shift+Tab)"><i
-															class="fa fa-dedent"></i></a> <a class="btn btn-default"
-															data-edit="indent" tooltip="Indent (Tab)"><i
-															class="fa fa-indent"></i></a>
-													</div>
-													<div class="btn-group">
-														<a class="btn btn-default btn-info"
-															data-edit="justifyleft" tooltip="Align Left (Ctrl/Cmd+L)"><i
-															class="fa fa-align-left"></i></a> <a class="btn btn-default"
-															data-edit="justifycenter" tooltip="Center (Ctrl/Cmd+E)"><i
-															class="fa fa-align-center"></i></a> <a
-															class="btn btn-default" data-edit="justifyright"
-															tooltip="Align Right (Ctrl/Cmd+R)"><i
-															class="fa fa-align-right"></i></a> <a class="btn btn-default"
-															data-edit="justifyfull" tooltip="Justify (Ctrl/Cmd+J)"><i
-															class="fa fa-align-justify"></i></a>
-													</div>
-													<div class="btn-group dropdown" dropdown="">
-														<a class="btn btn-default" dropdown-toggle=""
-															tooltip="Hyperlink"><i class="fa fa-link"></i></a>
-														<div class="dropdown-menu">
-															<div class="input-group m-l-xs m-r-xs">
-																<input class="form-control input-sm" id="LinkInput"
-																	placeholder="URL"
-																	type="text" data-edit="createLink">
-																<div class="input-group-btn">
-																	<button class="btn btn-sm btn-default" type="button">Add</button>
-																</div>
-															</div>
-														</div>
-														<a class="btn btn-default" data-edit="unlink"
-															tooltip="Remove Hyperlink"><i class="fa fa-cut"></i></a>
-													</div>
-													<div class="btn-group">
-														<a class="btn btn-default"
-															tooltip="Insert picture (or just drag &amp; drop)"
-															id="pictureBtn"><i class="fa fa-picture-o"></i></a> <input
-															type="file" data-edit="insertImage"
-															style="position: absolute; opacity: 0; width: 41px; height: 34px">
-													</div>
-													<div class="btn-group">
-														<a class="btn btn-default" data-edit="undo"
-															tooltip="Undo (Ctrl/Cmd+Z)"><i class="fa fa-undo"></i></a>
-														<a class="btn btn-default" data-edit="redo"
-															tooltip="Redo (Ctrl/Cmd+Y)"><i class="fa fa-repeat"></i></a>
-													</div>
-												</div>
-												<div ui-jq="wysiwyg" class="form-control"
-													style="overflow: scroll; height: 200px; max-height: 200px"
-													contenteditable="true">Go ahead…</div>
-											</div>
-										</div> -->
-										<label class="col-sm-4 control-label" placeholder="Entry Year"
-											for="input-id-1"><b>Release Date</b></label>
-											 <!--<input class="form-control" placeholder="MM/DD/YYYY"
-														th:field="*{releaseDate}"  th:text="${releaseDate}"/>-->
-											<!-- <input class="form-control" placeholder="MM/DD/YYYY"
-															 type="text" /> -->
-										<div class="col-sm-8">
-											<!--  <form action="https://formden.com/post/MlKtmY4x/"
-											class="form-horizontal" method="post">-->
+																	<span th:errors="*{description}"></span>
 							 				<div class="form-group">
 												<div class="col-sm-10">
 													<div class="input-group">
 														<div class="input-group-addon">
 															<i class="fa fa-calendar"></i>
 														</div>
-														<!--  --><input class="form-control" placeholder="MM/DD/YYYY"
-														th:field="*{releaseDate}"  th:text="${releaseDate}"/> 
+														  <label class=" control-label"><b>Release Date</b></label>
+														<input type="date" name="releaseDate" placeholder="yyyy-MM-dd" class="form-control" 
+														 th:field=*{releaseDate}  th:text="${releaseDate}"/>
+														 <span th:errors="*{releaseDate}"></span>
+														 
 													</div>
 												</div>
 											</div>
 											<!-- </form>-->
 										</div>
-										<div class="modal-footer">
-											<input style="margin: 0px;"
-												class="btn m-b-xs btn-sm btn-primary btn-addon" value="Save "
-												type="submit" /><i class="glyphicon glyphicon-ok"></i>
-											<button style="margin: 0px;"
-												class="btn m-b-xs btn-sm btn-default btn-addon"
-												data-dismiss="modal">
-												<i class="glyphicon glyphicon-remove"></i>Annuler
-											</button>
-										</div>
+										 <div class="modal-footer">
+	<button style="margin:0px;" class="btn m-b-xs btn-sm btn-primary btn-addon"><i class="glyphicon glyphicon-ok"></i>Save</button>
+	<button style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon" data-dismiss="modal"><i class="glyphicon glyphicon-remove"  ></i>Annuler</button>
+		
+   </div>
 									</div>
 								</div>
 							</form>
@@ -951,7 +835,9 @@
 						<h1 class="m-n font-bold h3">Update Firmware</h1>
 						<!--  -->
 					</div>
-					
+				<!-- 	<form  th:action="@{/update/{id}(id=${frimware_ID})}"  th:object="${frimware}"
+                             method="post"> -->
+   
 					<div class="modal-body">
 						<div class="row">
 							<label class="col-sm-4 control-label" style="margin: 5px 0px;"
@@ -960,13 +846,7 @@
 								<input type="text"  class="form-control"
 									placeholder="Entry Name of firmware" id="input-id-1">
 							</div>
-							<label class="col-sm-4 control-label" for="input-id-1"><b>Asset</b></label>
-							<div class="col-sm-8">
-								<select name="account" class="form-control m-b">
-									<option>Asset1</option>
-									<option>Asset2</option>
-								</select>
-							</div>
+						
 							<label class="col-sm-4 control-label" placeholder="Entry Notes"
 								for="input-id-1"><b>Description</b></label>
 							<div class="col-sm-8">
@@ -1077,7 +957,7 @@
 													<i class="fa fa-calendar"></i>
 												</div>
 												<input class="form-control" id="date" name="date"
-													placeholder="MM/DD/YYYY" type="text" />
+													placeholder="MM/DD/YYYY" type="text"/>
 											</div>
 										</div>
 									</div>
@@ -1085,8 +965,8 @@
 							</div>
 							<div class="modal-footer">
 								<input style="margin: 0px;"
-									class="btn m-b-xs btn-sm btn-primary btn-addon" value="Save"
-									type="submit" /> <i class="glyphicon glyphicon-ok"></i>
+									class="btn m-b-xs btn-sm btn-primary btn-addon"  value="Save"
+									type="submit"/> <i class="glyphicon glyphicon-ok"></i>
 								<button style="margin: 0px;"
 									class="btn m-b-xs btn-sm btn-default btn-addon"
 									data-dismiss="modal">

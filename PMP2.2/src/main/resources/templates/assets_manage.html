@@ -570,14 +570,14 @@ function drawChart() {
      </tr>
     </thead>
     <tbody>
-     <tr th:each="L:${Listassets}">
-      <td th:text="${L.Customers}"><center>AMADEUS MAROC</center></td>
-      <td th:text="${L.Project Name}"><center>CFG - Refronte Infrastructure IT</center></td>
-      <td th:text="${L.Asset S/N}"><center>JESA00063 00 16 A.2</center></td>
-      <td th:text="${L.Current Firmware}"><center>JESA-IT-17072015</center></td>    
-      <td th:text="${L.Asset Type}"><center><span class="label bg-success pull-center m-t-md">won</span></center></td>
-      <td th:text="${L.End Vendor Warranty}"><center>02-12-2020</center></td>
-      <td th:text="${a.End PM Warranty}"><center>15-06-2020</center></td>
+     <tr data-expanded="true" th:each="a:${asset}">
+      <td th:text="${a.Customers}"><center></center></td>
+      <td th:text="${a.Project Name}"><center></center></td>
+      <td th:text="${a.Asset S/N}"><center></center></td>
+      <td th:text="${a.Current Firmware}"><center></center></td>    
+      <td th:text="${a.Asset Type}"><center><span class="label bg-success pull-center m-t-md"></span></center></td>
+      <td th:text="${a.End Vendor Warranty}"><center></center></td>
+      <td th:text="${a.End PM Warranty}"><center></center></td>
       <td><center><div class="btn-group dropdown"><button class="btn btn-default btn-xs" data-toggle="dropdown"><i class="glyphicon glyphicon-cog"></i> Action <span class="caret"></span></button>
        <ul class="dropdown-menu">
         <li><a style="margin-top:-5px;" data-toggle="modal"  data-target="#Update" class="btn btn-sm btn-light" role="button">Update</a></li>

@@ -22,10 +22,10 @@
       <h1 class="m-n font-bold h3"> Update Project </h1>
      </div>
    <form th:action="@{editProject}" method ="post" th:object="${project}">
-	   <div class="modal-body">
+      <div class="modal-body">
 	    <div class="row">
 	     <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b></b></label>
-     <div class="col-sm-8" style="margin: 5px 0px;" >
+     <div class="col-sm-8" style="margin: 5px 0px;">
       <input type="hidden" class="form-control" placeholder="Entry Name of Project" id="input-id-1"  required th:field=*{Project_ID}/>
       <span class="text-danger" th:errors=*{Name}></span>
 	 </div>
@@ -36,160 +36,59 @@
 		 </div>
 	     <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Type Project</b></label>
 		 <div class="col-sm-8" style="margin: 5px 0px;" >
-		  <select name="account" class="form-control m-b"   >
-	       <option ></option>
-           <option ></option>
+		  <select name="account" class="form-control m-b" th:field=*{TypeProject}>
+	       <option th:value ="Type1" th:text="Type1"></option>
+	       <option th:value ="Typ2" th:text="Type2"></option>
 		  </select>
 		 </div>
 		 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Amount</b></label>
 		 <div class="col-sm-8" style="margin: 5px 0px;">
-		  <input type="text" placeholder="Entry Amount of Project" class="form-control" id="input-id-1" required th:field=*{Amount}/>
+		  <input type="number" placeholder="Entry Amount of Project" class="form-control" id="input-id-1" th:field=*{Amount}/>
+		  <span class="text-danger" th:errors=*{Amount}></span>
 		 </div>
 		 <label class="col-sm-4 control-label" placeholder="Entry Year" style="margin: 5px 0px;" for="input-id-1"><b>Year</b></label>
 	     <div class="col-sm-8" style="margin: 5px 0px;">
-		  <form action="https://formden.com/post/MlKtmY4x/" class="form-horizontal" method="post">
-		   <div class="form-group ">
-		    <div class="col-sm-10">
-			 <div class="input-group">
-			  <div class="input-group-addon">
-			   <i class="fa fa-calendar"></i>
-			  </div>
-			  <input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" type="text" required th:field=*{Year}/>
-		     </div>
-		    </div>
-		   </div>
-		  </form>
+			  <input type="date" class="form-control"  th:field=*{Year}/>
 	     </div>
 		 <label class="col-sm-4 control-label" placeholder="Entry Delivery Date" style="margin: 5px 0px;" for="input-id-1"><b>Delivery Date</b></label>
 		 <div class="col-sm-8" style="margin: 5px 0px;">
-	      <form action="https://formden.com/post/MlKtmY4x/" class="form-horizontal" method="post">
-		   <div class="form-group ">
-		    <div class="col-sm-10">
-			 <div class="input-group">
-			  <div class="input-group-addon">
-			   <i class="fa fa-calendar"></i>
-			  </div>
-			  <input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" type="text" required th:field=*{DeliveryDate}/>
-			 </div>
-			</div>
-		   </div>
-		  </form>
+			  <input type="date" class="form-control"  th:field=*{DeliveryDate}/>
 		 </div>
 	     <label class="col-sm-4 control-label" placeholder="Entry Temporay Acceptance Date" style="margin: 5px 0px;" for="input-id-1"><b>Temporay Acceptance Date</b></label>
 		 <div class="col-sm-8" style="margin: 5px 0px;">
-		  <form action="https://formden.com/post/MlKtmY4x/" class="form-horizontal" method="post">
-		   <div class="form-group ">
-		    <div class="col-sm-10">
-			 <div class="input-group">
-			  <div class="input-group-addon">
-			   <i class="fa fa-calendar"></i>
-			  </div>
-		      <input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" type="text" required th:field=*{TemporayAcceptanceDate}/>
-			 </div>
-			</div>
-		   </div>
-		  </form>
+		      <input type="date" class="form-control" th:field=*{TemporayAcceptanceDate}/>
 		 </div>
 		 <label class="col-sm-4 control-label" placeholder="Entry Final Temporary Date" style="margin: 5px 0px;" for="input-id-1"><b>Final Temporary Date</b></label>
 		 <div class="col-sm-8" style="margin: 5px 0px;">
-		  <form action="https://formden.com/post/MlKtmY4x/" class="form-horizontal" method="post">
-		   <div class="form-group ">
-			<div class="col-sm-10">
-		     <div class="input-group">
-			  <div class="input-group-addon">
-			   <i class="fa fa-calendar"></i>
-			  </div>
-			  <input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" type="text" required th:field=*{FinalTemporaryDate}/>
-			 </div>
-			</div>
-		   </div>
-		  </form>
-	     </div>
+		      <input type="date" class="form-control" th:field=*{FinalTemporaryDate}/>
+		 </div>
 		 <label class="col-sm-4 control-label" placeholder="Entry Delivery Certificate" style="margin: 5px 0px;" for="input-id-1"><b>Delivery Certificate</b></label>
 		 <div class="col-sm-8" style="margin: 5px 0px;">
 		  <input type="text" placeholder="Entry Delivery Certificate"class="form-control" id="input-id-1" required th:field=*{DeliveryCertificate}/>
 		 </div>
 		 <label class="col-sm-4 control-label" placeholder="Entry Technology Partners" style="margin: 5px 0px;" for="input-id-1"><b>Technology Partners</b></label>
 		 <div class="col-sm-8" style="margin: 5px 0px;">
-		  <input type="text" placeholder="Entry Technology Partners"class="form-control" id="input-id-1">
+		 <input type="text" data-role="tagsinput"  placeholder="Entry Technology Partners" class="form-control" id="input-id-1"  required th:field=*{TechnologyPartners}/>
 		 </div>
 		 <label class="col-sm-4 control-label" placeholder="Entry Warranty" style="margin: 5px 0px;" for="input-id-1"><b>Warranty</b></label>
 		 <div class="col-sm-8" style="margin: 5px 0px;">
-		  <input type="text" placeholder="Entry Warranty"class="form-control" id="input-id-1" th:field=*{Warranty}/>
+		  <input type="number" placeholder="Entry Warranty"class="form-control" id="input-id-1" th:field=*{Warranty}/>
 		 </div>
 		 <label class="col-sm-4 control-label" placeholder="Entry Execution Time" style="margin: 5px 0px;" for="input-id-1"><b>Execution Time</b></label>
 	     <div class="col-sm-8" style="margin: 5px 0px;">
-		  <input type="text" placeholder="Entry Execution Time"class="form-control" id="input-id-1" th:field=*{ExecutionTime}/>
+		  <input type="number" placeholder="Entry Execution Time" class="form-control" id="input-id-1" th:field=*{ExecutionTime}/>
 		 </div>
 	     <label class="col-sm-4 control-label" placeholder="Entry Notes" style="margin: 5px 0px;" for="input-id-1"><b>Notes</b></label>
 		  <div class="col-sm-8" style="margin: 5px 0px;">
-		   <div class="form-group">
-			<div class="btn-toolbar m-b-sm btn-editor" data-role="editor-toolbar" data-target="#editor">
-			 <div class="btn-group dropdown" dropdown="">
-			  <a class="btn btn-default" dropdown-toggle="" tooltip="Font"><i class="fa fa-font"></i><b class="caret"></b></a>
-			   <ul class="dropdown-menu">
-				<li><a href="" data-edit="fontName Serif" style="font-family:'Serif'">Serif</a></li> 
-				<li><a href="" data-edit="fontName Sans" style="font-family:'Sans'">Sans</a></li>
-				<li><a href="" data-edit="fontName Arial" style="font-family:'Arial'">Arial</a></li>
-			   </ul>
-			 </div>
-			 <div class="btn-group dropdown" dropdown="">
-			  <a class="btn btn-default" dropdown-toggle="" data-toggle="dropdown" tooltip="Font Size"><i class="fa fa-text-height"></i>&nbsp;<b class="caret"></b></a>
-			  <ul class="dropdown-menu">
-			   <li><a href="" data-edit="fontSize 5" style="font-size:24px">Huge</a></li>
-			   <li><a href="" data-edit="fontSize 3" style="font-size:18px">Normal</a></li>
-			   <li><a href="" data-edit="fontSize 1" style="font-size:14px">Small</a></li>
-			  </ul>
-		     </div>
-			 <div class="btn-group">
-			  <a class="btn btn-default" data-edit="bold" tooltip="Bold (Ctrl/Cmd+B)"><i class="fa fa-bold"></i></a>
-			  <a class="btn btn-default" data-edit="italic" tooltip="Italic (Ctrl/Cmd+I)"><i class="fa fa-italic"></i></a>
-			  <a class="btn btn-default" data-edit="strikethrough" tooltip="Strikethrough"><i class="fa fa-strikethrough"></i></a>
-			  <a class="btn btn-default" data-edit="underline" tooltip="Underline (Ctrl/Cmd+U)"><i class="fa fa-underline"></i></a>
-			 </div>
-			 <div class="btn-group">
-			  <a class="btn btn-default" data-edit="insertunorderedlist" tooltip="Bullet list"><i class="fa fa-list-ul"></i></a>
-			  <a class="btn btn-default" data-edit="insertorderedlist" tooltip="Number list"><i class="fa fa-list-ol"></i></a>
-			  <a class="btn btn-default" data-edit="outdent" tooltip="Reduce indent (Shift+Tab)"><i class="fa fa-dedent"></i></a>
-			  <a class="btn btn-default" data-edit="indent" tooltip="Indent (Tab)"><i class="fa fa-indent"></i></a>
-		     </div>
-			 <div class="btn-group">
-			  <a class="btn btn-default btn-info" data-edit="justifyleft" tooltip="Align Left (Ctrl/Cmd+L)"><i class="fa fa-align-left"></i></a>
-			  <a class="btn btn-default" data-edit="justifycenter" tooltip="Center (Ctrl/Cmd+E)"><i class="fa fa-align-center"></i></a>
-			  <a class="btn btn-default" data-edit="justifyright" tooltip="Align Right (Ctrl/Cmd+R)"><i class="fa fa-align-right"></i></a>
-			  <a class="btn btn-default" data-edit="justifyfull" tooltip="Justify (Ctrl/Cmd+J)"><i class="fa fa-align-justify"></i></a>
-			 </div>
-			 <div class="btn-group dropdown" dropdown="">
-			  <a class="btn btn-default" dropdown-toggle="" tooltip="Hyperlink"><i class="fa fa-link"></i></a>
-			  <div class="dropdown-menu">
-			   <div class="input-group m-l-xs m-r-xs">
-				<input class="form-control input-sm" id="LinkInput" placeholder="URL" type="text" data-edit="createLink">
-				<div class="input-group-btn">
-				 <button class="btn btn-sm btn-default" type="button">Add</button>
-				</div>
-			   </div>
-			  </div>
-			  <a class="btn btn-default" data-edit="unlink" tooltip="Remove Hyperlink"><i class="fa fa-cut"></i></a>
-			 </div>
-             <div class="btn-group">
-			  <a class="btn btn-default" tooltip="Insert picture (or just drag &amp; drop)" id="pictureBtn"><i class="fa fa-picture-o"></i></a>
-			  <input type="file" data-edit="insertImage" style="position:absolute; opacity:0; width:41px; height:34px">
-			 </div>
-			 <div class="btn-group">
-			  <a class="btn btn-default" data-edit="undo" tooltip="Undo (Ctrl/Cmd+Z)"><i class="fa fa-undo"></i></a>
-			  <a class="btn btn-default" data-edit="redo" tooltip="Redo (Ctrl/Cmd+Y)"><i class="fa fa-repeat"></i></a>
-			 </div>
-			</div>
-			<div ui-jq="wysiwyg" class="form-control" style="overflow:scroll;height:200px;max-height:200px" contenteditable="true"> Go ahead… </div>
-           </div>
-		  </div>
+			<input type="text" class="form-control" placeholder="Entry ur notes " id="input-id-1" th:field=*{Notes} />
+          </div>
 		  <label class="col-sm-4 control-label" placeholder="Entry Status" style="margin: 5px 0px;" for="input-id-1"><b>Status</b></label>
 		  <div class="col-sm-8" style="margin: 5px 0px;">
-		   <input type="text" placeholder="Entry Status"class="form-control" id="input-id-1">
+		   <input type="text" placeholder="Entry Status"class="form-control" id="input-id-1" th:field=*{Status}/>
 		  </div>
 		  <div class="modal-footer">
 		   <button style="margin:0px;" class="btn m-b-xs btn-sm btn-primary btn-addon"><i class="glyphicon glyphicon-ok"></i>Save</button>
-		   <button style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon" data-dismiss="modal"><i class="glyphicon glyphicon-remove"></i>Annuler</button>
+		   <button style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon"><a th:href="projects_manage"><i class="glyphicon glyphicon-remove"></i>Annuler</a></button>
 		  </div>
 		 </div>
 		</div>
@@ -206,23 +105,6 @@
 <script src="js/ui-nav.js"></script>
 <script src="js/ui-toggle.js"></script>
 <script src="js/ui-client.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
-<script language="javascript">
-	populateCountries("countryA", "stateA"); // first parameter is id of country drop-down and second parameter is id of state drop-down
-    populateCountries("countryU", "stateU");
-</script>
-<script>
-  $(document).ready(function(){
-    var date_input=$('input[name="date"]'); //our date input has the name "date"
-    var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
-    date_input.datepicker({
-      format: 'mm/dd/yyyy',
-      container: container,
-      todayHighlight: true,
-      autoclose: true,
-    })
-  })
-</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.min.js" integrity="sha256-tQ3x4V2JW+L0ew/P3v2xzL46XDjEWUExFkCDY0Rflqc=" crossorigin="anonymous"></script>
 </body>
 </html>

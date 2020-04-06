@@ -25,7 +25,7 @@ public class CustomerController {
 	private CustomerRepository customerrepository; 
 	
 	
-	@RequestMapping(value="/customer_manage")
+	@RequestMapping(value="/manager/customer_manage")
 	public String AllCustomer(Model model, Customer customer) {
 		
 		List<Customer> custs = customerrepository.findAll();
@@ -35,19 +35,19 @@ public class CustomerController {
 		return "customer_manage";
 	}
 
-	@RequestMapping(value="/SaveCustomer" , method= RequestMethod.POST)
+	@RequestMapping(value="/admin/SaveCustomer" , method= RequestMethod.POST)
 	private String SaveCustomer(@Valid Customer addCust, BindingResult bindingResult) {
 		
 		addCust.setStatus("Actif");
 	
 		customerrepository.save(addCust);
-		return "redirect:/customer_manage";
+		return "redirect:/manager/customer_manage";
 		
 		
 		
 	}
 	
-	@RequestMapping(value ="/updateCustomerform" )
+	@RequestMapping(value ="/admin/updateCustomerform" )
 	private String updateCustomerform( Model model, Integer id ) {
 	Customer	customer = customerrepository.getOne(id);
 		 model.addAttribute("customer",customer);
@@ -57,27 +57,27 @@ public class CustomerController {
 			
 	}
 	
-	@RequestMapping(value = "/editCustomer",method= RequestMethod.POST)
+	@RequestMapping(value = "/admin/editCustomer",method= RequestMethod.POST)
 	public String updateCustomer(Model model, @Valid Customer cust, BindingResult bindingResult){
 	if (bindingResult.hasErrors()) {
 		return "updateCustomerForm";
 	}
 		customerrepository.save(cust);
 		
-		return "redirect:/customer_manage";
+		return "redirect:/admin/customer_manage";
 	}
 
 
-	@RequestMapping(value ="/archiverCustomer" )
+	@RequestMapping(value ="/admin/archiverCustomer" )
 	private String archiverCustomer( Model model, Integer id ) {
 	
 	Customer Cust = customerrepository.getOne(id);
 	Cust.setStatus("Archived");
-	Cust.setName("Ibrahim");
+	
 	customerrepository.save(Cust);
-	System.out.println(Cust.getStatus());
+	
 		
-			return "redirect:/customer_manage";	}
+			return "redirect:/admin/customer_manage";	}
 
 }
  	

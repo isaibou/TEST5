@@ -32,7 +32,6 @@ public class ProjectController {
 
 	@RequestMapping(value="/SaveProject" , method= RequestMethod.POST)
 	private String SaveProject(@Valid Project addProj, BindingResult bindingResult) {
-		
 		addProj.setStatus("Actif");
 		
 		ProjectRepository.save(addProj);
@@ -40,10 +39,9 @@ public class ProjectController {
 		
 	}
 
-	@RequestMapping(value = "/editProject",method= RequestMethod.POST)
-	public String updateProject(Model model, Project proj){
-		
-	  proj= 	(Project) model.getAttribute("project");
+	@RequestMapping(value = "/editProject",method = { RequestMethod.GET, RequestMethod.POST })
+	public String updateProject(Model model, @Valid Project proj, BindingResult bindingResult){
+
 		ProjectRepository.save(proj);
 		
 		return "redirect:/projects_manage";
@@ -60,20 +58,11 @@ public class ProjectController {
 			
 	}
 
-	@RequestMapping(value ="/deleteProject" )
-	private String deleteProject( Model model, Integer id ) {
-	
-		ProjectRepository.deleteById(id);
-		
-			return "redirect:/projects_manage";	
-	}
-
 	@RequestMapping(value ="/archiverProject" )
 	private String archiverProject( Model model, Integer id ) {
 	
 	Project proj = ProjectRepository.getOne(id);
 	proj.setStatus("Archived");
-	proj.setName("Refonte");
 	ProjectRepository.save(proj);
 	System.out.println(proj.getStatus());
 		

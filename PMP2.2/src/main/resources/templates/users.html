@@ -9,8 +9,8 @@
 <link rel="stylesheet" href="../libs/assets/font-awesome/css/font-awesome.min.css" type="text/css" />
 <link rel="stylesheet" href="../libs/assets/simple-line-icons/css/simple-line-icons.css" type="text/css" />
 <link rel="stylesheet" href="../libs/jquery/bootstrap/dist/css/bootstrap.css" type="text/css" />
-<link rel="stylesheet" href="css/font.css" type="text/css" />
-<link rel="stylesheet" href="css/app.css" type="text/css" />
+<link rel="stylesheet" href="/css/font.css" type="text/css" />
+<link rel="stylesheet" href="/css/app.css" type="text/css" />
 <style>
 .hidetext { -webkit-text-security: square; }
 </style>
@@ -160,7 +160,7 @@
                 <ul class="nav nav-sub dk">
                
                   <li>
-                    <a th:href="customer_manage">
+                    <a th:href="@{admin/customer_manage}">
                       <span>Manage customer</span>
                     </a>
                   </li>
@@ -186,7 +186,7 @@
                 <ul class="nav nav-sub dk">
                
                   <li>
-                    <a th:href="users">
+                    <a th:href="@{admin/users}">
                       <span>Manage users</span>
                     </a>
                   </li>
@@ -312,7 +312,7 @@
                 <span>Your Stuff</span>
               </li>  
               <li>
-                <a th:href="page_profile">
+                <a th:href="@{/LoginVrai?logout}">
                   <i class="icon-user icon text-success-lter"></i>
                   <b class="badge bg-success pull-right">30%</b>
                   <span>Profile</span>
@@ -359,39 +359,40 @@
 											}" class="table  b-t b-b">
 		<thead>
 		 <tr>
-	     
-		  <th  style="width:10%"><center>Picture</center></th>
-		  <th  style="width:16%"><center>Name & Last Name</center></th>
-          <th  style="width:8%"><center>Telephone</center></th>
-		  <th  style="width:15%"><center>Status</center></th>
-		  <th  style="width:15%"><center>Password</center></th>
-	      <th  style="width:15%"><center>Actions</center></th>
+	    
+		  <th  style="width:10%"><center>Lastname</center></th>
+		  <th  style="width:16%"><center>Firstname</center></th>
+          <th  style="width:8%"><center>CIN</center></th>
+		  <th  style="width:15%"><center>Login</center></th>
+	      <th  style="width:15%"><center>Password</center></th>
+		  <th  style="width:15%"><center>Actions</center></th>
+		 
 		 </tr>
 		</thead>
 		<tbody>
-		 <tr data-expanded="true">
-		
-		  <td><img class="img-thumbnail" src="img/user.png" alt="logo_company" width="60px" height="60px"/></td>
-		  <td><h1 class="m-n font-bold h4">Walid Largou</h1> <small><i class="fa fa-phone"></i> (052) 299-9999 <br> <i  class="fa fa-envelope"/></i> walid.largou@powerm.ma</small></td>
-          <td><center>06000000</center></td>
-		  <td><center><center><span class="label bg-success pull-center m-t-md">enable</span><center/><center/></td>
-	   	  <td class="hidetext">password</td>
+	 <tr data-expanded="true" th:each="u:${users}">
+	
+		  <td th:text="${u.LastName}" ></td>
+		  <td th:text="${u.FirstName}"></center> <small><i class="fa fa-phone"></i> <br> <i class="fa fa-envelope"/></i></small></td>
+          <td th:text ="${u.CIN}"><center></center></td>
+          <td th:text = "${u.Login}"><center><center><span class="label bg-danger pull-center m-t-md"></span></center></center></td>
+		  <td th:text = "${u.Password}"></td>
 		  <td>
 		   <center>
-            <div class="btn-group dropdown">
-             <button class="btn btn-default btn-xs" data-toggle="dropdown">
-              <i class="glyphicon glyphicon-cog"></i> Action <span class="caret"></span>
-             </button>
-             <ul class="dropdown-menu">
-              <li><a style="margin-top:-5px;" data-toggle="modal"  data-target="#Update" class="btn btn-sm btn-light" role="button">Update</a></li>
-              <li><a style="margin-top:-5px;" data-toggle="modal"  data-target="#Delete" class="btn btn-sm btn-light" role="button">Delete</a></li>
-              <li><a style="margin-top:-5px;" data-toggle="modal"  data-target="#DetailM" class="btn btn-sm btn-light" role="button">Detail</a></li>
-             </ul>
-            </div>
-           </center>
-          </td>
+		   	<div class="btn-group dropdown">
+		     <button class="btn btn-default btn-xs" data-toggle="dropdown">
+		      <i class="glyphicon glyphicon-cog"></i> Action <span class="caret"></span>
+		     </button>
+		     <ul class="dropdown-menu">
+		      <li><a style="margin-top:-5px;" data-toggle="modal"  data-target="#Update" class="btn btn-sm btn-light" role="button">Update</a></li>
+		      <li><a th:href="@{desactiverUser(id=${u.Employe_ID})}" style="margin-top:-5px;"  role="button">Desactivate</a></li>
+		      <li><a style="margin-top:-5px;" data-toggle="modal"  data-target="#DetailE" class="btn btn-sm btn-light" role="button">Detail</a></li>
+		     </ul>
+		    </div>
+		   </center>
+		  </td>
 		 </tr>
-		</tbody>
+	</tbody>
 	   </table>
       </div>
      </div>
@@ -411,22 +412,22 @@
 		<thead>
 		 <tr>
 	
-		  <th  style="width:10%"><center>Picture</center></th>
-		  <th  style="width:16%"><center>Name & Last Name</center></th>
+		  <th  style="width:10%"><center>Lastname</center></th>
+		  <th  style="width:16%"><center>Firstname</center></th>
           <th  style="width:8%"><center>CIN</center></th>
-		  <th  style="width:15%"><center>Status</center></th>
+		  <th  style="width:15%"><center>Login</center></th>
 	      <th  style="width:15%"><center>Password</center></th>
 		  <th  style="width:15%"><center>Actions</center></th>
 		 </tr>
 		</thead>
 		<tbody>
-		 <tr data-expanded="true">
+		 <tr data-expanded="true" th:each="u:${users}">
 	
-		  <td><img class="img-thumbnail" src="img/user.png" alt="logo_company" width="60px" height="60px"/></td>
-		  <td><h1 class="m-n font-bold h4">Youssef Sbai idrissi</h1></center> <small><i class="fa fa-phone"></i> (052) 299-9999 <br> <i class="fa fa-envelope"/></i> youssef.sbai@powerm.ma</small></td>
-          <td><center>L000001</center></td>
-          <td><center><center><span class="label bg-danger pull-center m-t-md">disable</span></center></center></td>
-		  <td class="hidetext">password</td>
+		  <td th:text="${u.LastName}" ></td>
+		  <td th:text="${u.FirstName}"></center> <small><i class="fa fa-phone"></i> <br> <i class="fa fa-envelope"/></i></small></td>
+          <td th:text ="${u.CIN}"><center></center></td>
+          <td th:text = "${u.Login}"><center><center><span class="label bg-danger pull-center m-t-md"></span></center></center></td>
+		  <td th:text = "${u.Password}"></td>
 		  <td>
 		   <center>
 		   	<div class="btn-group dropdown">
@@ -435,7 +436,7 @@
 		     </button>
 		     <ul class="dropdown-menu">
 		      <li><a style="margin-top:-5px;" data-toggle="modal"  data-target="#Update" class="btn btn-sm btn-light" role="button">Update</a></li>
-		      <li><a style="margin-top:-5px;" data-toggle="modal"  data-target="#Delete" class="btn btn-sm btn-light" role="button">Delete</a></li>
+		      <li><a th:href="@{desactiverUser(id=${u.Employe_ID})}" style="margin-top:-5px;"  class="btn btn-sm btn-light" role="button">Desactiver</a></li>
 		      <li><a style="margin-top:-5px;" data-toggle="modal"  data-target="#DetailE" class="btn btn-sm btn-light" role="button">Detail</a></li>
 		     </ul>
 		    </div>
@@ -460,48 +461,40 @@
 	<button type="button" class="close pull-right" data-dismiss="modal">&times;</button>
 	<h1 class="m-n font-bold h3"> <b class="glyphicon-plus pull"> </b> Add User</h1>
    </div>
+   <form th:action="@{/SaveUser}" method="post" th:object="${addUser}">
    <div class="modal-body">
 	<div class="row">
 	 <label class="col-sm-4 control-label" for="input-id-1" style="margin:5px 0px;"><b>Nom :</b></label>
 	 <div class="col-sm-8" style="margin:5px 0px;" >
-	  <input type="text" placeholder="Entry Nom" class="form-control" id="input-id-1">
+	  <input type="text" placeholder="Entry Nom" class="form-control" id="input-id-1" th:field=*{LastName}>
 	 </div>
 	 <label class="col-sm-4 control-label" for="input-id-1" style="margin:5px 0px;"><b>Prenom :</b></label>
 	 <div class="col-sm-8" style="margin:5px 0px;" >
-	  <input type="text" placeholder="Entry Prenom" class="form-control" id="input-id-1">
+	  <input type="text" placeholder="Entry Prenom" class="form-control" id="input-id-1" th:field=*{FirstName}>
 	 </div>
-	 <label class="col-sm-4 control-label" for="input-id-1" style="margin:5px 0px;"><b>Telephone :</b></label>
+	 
+	 	 <label class="col-sm-4 control-label" for="input-id-1" style="margin:5px 0px;"><b>CIN :</b></label>
 	 <div class="col-sm-8" style="margin:5px 0px;" >
-	  <input type="text" placeholder="Entry Telephone" class="form-control" id="input-id-1">
+	  <input type="text" placeholder="Entry Prenom" class="form-control" id="input-id-1" th:field=*{CIN}>
 	 </div>
-	 <label class="col-sm-4 control-label" for="input-id-1" style="margin:5px 0px;"><b>Email :</b></label>
-	 <div class="col-sm-8" style="margin:5px 0px;" >
-	  <input type="text" placeholder="Entry Email" class="form-control" id="input-id-1">
-	 </div>
+	 
+	
 	 <label class="col-sm-4 control-label" for="input-id-1" style="margin:5px 0px;"><b>Login :</b></label>
 	 <div class="col-sm-8" style="margin:5px 0px;" >
-	  <input type="text" placeholder="Entry Login" class="form-control" id="input-id-1">
+	  <input type="text" placeholder="Entry Login" class="form-control" id="input-id-1"th:field=*{Login}>
 	 </div>
 	 <label class="col-sm-4 control-label" for="input-id-1" style="margin:5px 0px;"><b>Password :</b></label>
 	 <div class="col-sm-8" style="margin:5px 0px;" >
-	  <input type="text" placeholder="Entry Password" class="form-control" id="input-id-1">
+	  <input type="text" placeholder="Entry Password" class="form-control" id="input-id-1"th:field=*{Password}>
 	 </div>
-	 <label class="col-sm-4 control-label" style="margin:5px 0px;" for="input-id-1"><b>Type User</b></label>
-   <div class="col-sm-8" style="margin:5px 0px;">
-    <select name="account" class="form-control m-b">
-     <option>Employee</option>
-     <option>Manager</option>
-     <option>UserCustomer</option>
-    </select>
-   </div>
-	</div>
-   </div>
-   <div class="modal-footer">
+	<div class="modal-footer">
     <button style="margin:0px;" class="btn m-b-xs btn-sm btn-primary btn-addon"><i class="glyphicon glyphicon-ok"></i>Save</button>
 	<button style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon" data-dismiss="modal"><i class="glyphicon glyphicon-remove"></i>Annuler</button>
+	
    </div>
   </div>
  </div>
+ </form>
 </div>
 <div class="modal fade" role="dialog" id="Update" >
  <div class="modal-dialog modal-lg" >

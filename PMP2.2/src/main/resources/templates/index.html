@@ -267,7 +267,7 @@
                 <ul class="nav nav-sub dk">
                
                   <li>
-                    <a th:href="customer_manage">
+                    <a th:href="@{manager/customer_manage}">
                       <span>Manage customer</span>
                     </a>
                   </li>
@@ -293,7 +293,7 @@
                 <ul class="nav nav-sub dk">
                
                   <li>
-                    <a th:href="users">
+                    <a th:href="@{admin/users}">
                       <span>Manage users</span>
                     </a>
                   </li>
@@ -360,7 +360,7 @@
                     </a>
                   </li>
 				  <li>
-                    <a th:href="firmware">
+                    <a th:href="@{manager/firmware}">
                       <span>Firmware</span>
                     </a>
                   </li>
@@ -419,10 +419,10 @@
                 <span>Your Stuff</span>
               </li>  
               <li>
-                <a th:href="page_profile">
+                <a th:href="@{/LoginVrai?logout}">
                   <i class="icon-user icon text-success-lter"></i>
                   <b class="badge bg-success pull-right">30%</b>
-                  <span>Profile</span>
+                    <span>[[${#httpServletRequest.remoteUser}]]</span>
                 </a>
               </li>
               <li>

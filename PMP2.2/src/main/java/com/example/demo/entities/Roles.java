@@ -13,49 +13,48 @@ import javax.persistence.OneToMany;
 @Entity
 public class Roles implements Serializable{
 	@Id
-	@GeneratedValue
-	private Integer Role_ID; 
-	private String NomRole;
-	@OneToMany(targetEntity = Employe.class, mappedBy = "role", cascade = CascadeType.ALL,
-			fetch = FetchType.LAZY)
-	private List<Employe> employee;
+
+	private String role;
+	private String description;
+	 
 	
 	
 	public Roles() {
 		super();
 	}
 
-	public Roles( String nomRole) {
-		
-		NomRole = nomRole;
+
+
+	public Roles(String role, String description) {
+		super();
+		this.role = role;
+		this.description = description;
 	}
 
-	public Integer getRole_ID() {
-		return Role_ID;
+
+
+	public String getRole() {
+		return role;
 	}
 
-	public void setRole_ID(Integer role_ID) {
-		Role_ID = role_ID;
+
+
+	public void setRole(String role) {
+		this.role = role;
 	}
 
-	public String getNomRole() {
-		return NomRole;
+
+
+	public String getDescription() {
+		return description;
 	}
 
-	public void setNomRole(String nomRole) {
-		NomRole = nomRole;
+
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
-	public List<Employe> getEmployee() {
-		return employee;
-	}
-
-	public void setEmployee(List<Employe> employee) {
-		this.employee = employee;
-	}
-
-	
-	
 	
 
 	

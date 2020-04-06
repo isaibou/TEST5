@@ -24,15 +24,13 @@ import com.example.demo.entities.Frimware;
 import com.example.demo.repository.AssetRepository;
 import com.example.demo.repository.AssetTypeRepository;
 
-//>>>>>>> branch 'master' of https://github.com/isaibou/TEST5
+
 
 @SpringBootApplication
 public class Application {
 
 	public static void main(String[] args) {
-//<<<<<<< HEAD
-	
-//=======
+
 		ApplicationContext ctx = SpringApplication.run(Application.class, args);
 		AssetTypeRepository assettypeRepository = ctx.getBean(AssetTypeRepository.class);
 		AssetRepository assetRepository = ctx.getBean(AssetRepository.class);
@@ -47,8 +45,7 @@ public class Application {
 		 
 
 
-		
-// branch 'master' of https://github.com/isaibou/TEST5
+
 		 assettypeRepository.save(new AssetType("sasa", "ddd", new Date(), new Date(),"sss", "Status1"));
 		
 		 
@@ -76,17 +73,11 @@ public class Application {
 		
 		
 		
-		
-		
-//		List<Assets> assets = assetRepository.findAll();
-		
-//>>>>>>> branch 'master' of https://github.com/isaibou/TEST5
-		
 		 List<AssetType> assettype = assettypeRepository.findAll();
 		 
 		 
 		 //assettype.forEach(c->System.out.println(c.getName()));
-//>>>>>>> branch 'master' of https://github.com/isaibou/TEST5
+
 	}
 
 }

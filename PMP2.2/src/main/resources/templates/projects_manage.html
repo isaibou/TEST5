@@ -561,7 +561,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		     <ul class="dropdown-menu">
 		     <li><a th:href="@{updateProject(id=${p.Project_ID})}"  style="margin-top:-5px;"   class="btn btn-sm btn-light" role="button">Update</a></li>
 		     <li><a th:href="@{archiverProject(id=${p.Project_ID})}"  style="margin-top:-5px;"  class="btn btn-sm btn-light" role="button">Archive</a></li>
-		     <li><a style="margin-top:-5px;" data-toggle="modal"  data-target="#Detail" class="btn btn-sm btn-light" role="button">Detail</a></li></ul></div></center></td>
+		     <li><a th:href="@{detailProject(id=${p.Project_ID})}" style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Detail</a></li></ul></div></center></td>
 		  </tr>
 		 </tbody>
 		</table>
@@ -573,7 +573,10 @@ document.addEventListener('DOMContentLoaded', function() {
 	<div class="col-sm-6">
 	    <center><h3 class="m-n font-bold h4">RFP Reponse Date & Time </h3></center>
 		<div id='calendar1'></div>
-	</div>
+	</div>	
+	 <div th:if="${message}">
+		<h2 th:text="${message}"/>
+	</div>   
 	<div class="modal fade" role="dialog" id="AddProject" >
 	 <div class="modal-dialog modal-lg" >
 	  <div class="modal-content">
@@ -596,7 +599,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		 </div>
 	     <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Type Project</b></label>
 		 <div class="col-sm-8" style="margin: 5px 0px;" >
-		  <select name="account" class="form-control m-b" th:field=*{TypeProject}>
+		  <select name="account" class="form-control m-b"  required th:field=*{TypeProject}>
 	       <option th:value ="Type1" th:text="Type1"></option>
 	       <option th:value ="Typ2" th:text="Type2"></option>
 		  </select>
@@ -608,7 +611,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		 </div>
 		 <label class="col-sm-4 control-label" placeholder="Entry Year" style="margin: 5px 0px;" for="input-id-1"><b>Year</b></label>
 	     <div class="col-sm-8" style="margin: 5px 0px;">
-			  <input type="date" class="form-control" placeholder="MM/DD/YYYY"  required th:field=*{Year}/>
+			  <input type="date" class="form-control" placeholder="YYYY"  required th:field=*{Year}/>
 	     </div>
 		 <label class="col-sm-4 control-label" placeholder="Entry Delivery Date" style="margin: 5px 0px;" for="input-id-1"><b>Delivery Date</b></label>
 		 <div class="col-sm-8" style="margin: 5px 0px;">
@@ -622,10 +625,13 @@ document.addEventListener('DOMContentLoaded', function() {
 		 <div class="col-sm-8" style="margin: 5px 0px;">
 		      <input type="date" class="form-control"  placeholder="MM/DD/YYYY"  required th:field=*{FinalTemporaryDate}/>
 		 </div>
+		 <form method="POST" enctype="multipart/form-data" th:action="@{/upload-file}" th:object="${project}">
 		 <label class="col-sm-4 control-label" placeholder="Entry Delivery Certificate" style="margin: 5px 0px;" for="input-id-1"><b>Delivery Certificate</b></label>
-		 <div class="col-sm-8" style="margin: 5px 0px;">
-		  <input type="text" placeholder="Entry Delivery Certificate"class="form-control" id="input-id-1" required th:field=*{DeliveryCertificate}/>
-		 </div>
+		 <div class="col-sm-8">
+          <input type="file" placeholder="Upload Preview File"class="form-control" id="input-id-1">
+          <button type="submit">Submit</button>
+         </div>
+         </form>
 		 <label class="col-sm-4 control-label" placeholder="Entry Technology Partners" style="margin: 5px 0px;" for="input-id-1"><b>Technology Partners</b></label>
 		 <div class="col-sm-8" style="margin: 5px 0px;">
 		 <input type="text" data-role="tagsinput"  placeholder="Entry Technology Partners" class="form-control" id="input-id-1"  required th:field=*{TechnologyPartners}/>
@@ -661,49 +667,6 @@ document.addEventListener('DOMContentLoaded', function() {
    <span class="pull-right">2.2.0 <a href ui-scroll="app" class="m-l-sm text-muted"><i class="fa fa-long-arrow-up"></i></a></span>&copy; PowerM 2020 Copyright.
   </div>
  </footer><!-- / footer -->
-<div class="modal fade" role="dialog" id="Detail" >
- <div class="modal-dialog modal-lg" >
-  <div class="modal-content">
-   <div class="modal-header" style="background-image:url(img/grf-bg.jpg);color:white;">
-  <button type="button" class="close pull-right" data-dismiss="modal">&times;</button>
-     <h1 class="m-n font-bold h3">Information Project</h1>
-   </div>
-   <div class="modal-body">
-     <p th:each="p:${proj}">
-     <span class="m-n font-thin h3 text-black" >Project Name:</span>
-     <span th:text ="${p.Name}" class="m-n font-thin h4 text-secondary"></span></br>
-     <span class="m-n font-thin h3 text-black">Type Project:</span>
-     <span th:text ="${p.TypeProject}" class="m-n font-thin h4 text-secondary"></span></br>
-     <span class="m-n font-thin h3 text-black">Amount :</span>
-     <span th:text ="${p.Amount}" class="m-n font-thin h4 text-secondary"></span></br>
-     <span class="m-n font-thin h3 text-black" >Year :</span>
-     <span th:text ="${p.Year}" class="m-n font-thin h4 text-secondary"></span></br>
-     <span class="m-n font-thin h3 text-black">Delivery Date :</span>
-     <span th:text ="${p.DeliveryDate}" class="m-n font-thin h4 text-secondary"></span></br>
-     <span class="m-n font-thin h3 text-black">Temporary Acceptance Date :</span>
-     <span th:text ="${p.TemporayAcceptanceDate}" class="m-n font-thin h4 text-secondary"></span></br>
-     <span class="m-n font-thin h3 text-black" >Final Temporary Date :</span>
-     <span th:text ="${p.FinalTemporaryDate}" class="m-n font-thin h4 text-secondary"></span></br>
-     <span class="m-n font-thin h3 text-black" >Delivery Certificate  :</span>
-     <span th:text ="${p.DeliveryCertificate}" class="m-n font-thin h4 text-secondary"></span></br>
-     <span class="m-n font-thin h3 text-black" >Technology Partners :</span>
-     <span th:text ="${p.TechnologyPartners}" class="m-n font-thin h4 text-secondary"></span></br>
-     <span class="m-n font-thin h3 text-black">Warranty :</span>
-     <span th:text ="${p.Warranty}" class="m-n font-thin h4 text-secondary"></span></br>
-     <span class="m-n font-thin h3 text-black">Execution Time :</span>
-     <span th:text ="${p.ExecutionTime}" class="m-n font-thin h4 text-secondary"></span></br>
-     <span class="m-n font-thin h3 text-black">Notes :</span>
-     <span th:text ="${p.Notes}" class="m-n font-thin h4 text-secondary"></span></br>
-     <span class="m-n font-thin h3 text-black">Status :</span>  
-     <span th:text ="${p.Status}" class="m-n font-thin h4 text-secondary"></span></br>
-     </p>
-   </div>
-   <div class="modal-footer">
-   <button class="btn m-b-xs btn-sm btn-primary btn-addon" data-dismiss="modal">Return</button>
-  </div>
-  </div>  
-</div>
-</div>
 </div>
 <script src="../libs/jquery/jquery/dist/jquery.js"></script>
 <script src="../libs/jquery/bootstrap/dist/js/bootstrap.js"></script>

@@ -35,36 +35,42 @@
 		 </div>
 	     <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Type Project</b></label>
 		 <div class="col-sm-8" style="margin: 5px 0px;" >
-		  <select name="account" class="form-control m-b" th:field=*{TypeProject}>
+		  <select name="account" class="form-control m-b" required th:field=*{TypeProject}>
 	       <option th:value ="Type1" th:text="Type1"></option>
 	       <option th:value ="Typ2" th:text="Type2"></option>
 		  </select>
 		 </div>
 		 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Amount</b></label>
 		 <div class="col-sm-8" style="margin: 5px 0px;">
-		  <input type="number" placeholder="Entry Amount of Project" class="form-control" id="input-id-1" th:field=*{Amount}/>
+		  <input type="number" placeholder="Entry Amount of Project" class="form-control" id="input-id-1" required th:field=*{Amount}/>
 		  <span class="text-danger" th:errors=*{Amount}></span>
 		 </div>
 		 <label class="col-sm-4 control-label" placeholder="Entry Year" style="margin: 5px 0px;" for="input-id-1"><b>Year</b></label>
 	     <div class="col-sm-8" style="margin: 5px 0px;">
-			  <input type="date" class="form-control"  th:field=*{Year}/>
+			  <input type="date" class="form-control" required th:field=*{Year}/>
 	     </div>
 		 <label class="col-sm-4 control-label" placeholder="Entry Delivery Date" style="margin: 5px 0px;" for="input-id-1"><b>Delivery Date</b></label>
 		 <div class="col-sm-8" style="margin: 5px 0px;">
-			  <input type="date" class="form-control"  th:field=*{DeliveryDate}/>
+			  <input type="date" class="form-control" required th:field=*{DeliveryDate}/>
 		 </div>
 	     <label class="col-sm-4 control-label" placeholder="Entry Temporay Acceptance Date" style="margin: 5px 0px;" for="input-id-1"><b>Temporay Acceptance Date</b></label>
 		 <div class="col-sm-8" style="margin: 5px 0px;">
-		      <input type="date" class="form-control" th:field=*{TemporayAcceptanceDate}/>
+		      <input type="date" class="form-control" required th:field=*{TemporayAcceptanceDate}/>
 		 </div>
 		 <label class="col-sm-4 control-label" placeholder="Entry Final Temporary Date" style="margin: 5px 0px;" for="input-id-1"><b>Final Temporary Date</b></label>
 		 <div class="col-sm-8" style="margin: 5px 0px;">
-		      <input type="date" class="form-control" th:field=*{FinalTemporaryDate}/>
+		      <input type="date" class="form-control" required th:field=*{FinalTemporaryDate}/>
 		 </div>
 		 <label class="col-sm-4 control-label" placeholder="Entry Delivery Certificate" style="margin: 5px 0px;" for="input-id-1"><b>Delivery Certificate</b></label>
-		 <div class="col-sm-8" style="margin: 5px 0px;">
-		  <input type="text" placeholder="Entry Delivery Certificate"class="form-control" id="input-id-1" required th:field=*{DeliveryCertificate}/>
-		 </div>
+		 <div class="col-sm-7">
+          <input type="text" placeholder="Upload Preview File"class="form-control" id="input-id-1">
+         </div>
+         <div class="col-sm-1" >
+          <div class="btn-group">
+           <a class="btn btn-default" tooltip="Insert picture (or just drag &amp; drop)" id="pictureBtn"><i class="icon-paper-clip"></i></a>
+           <input type="file" style="position:absolute; opacity:0; width:41px; height:34px" required th:field=*{DeliveryCertificate}/>
+          </div>
+          </div>
 		 <label class="col-sm-4 control-label" placeholder="Entry Technology Partners" style="margin: 5px 0px;" for="input-id-1"><b>Technology Partners</b></label>
 		 <div class="col-sm-8" style="margin: 5px 0px;">
 		 <input type="text" data-role="tagsinput"  placeholder="Entry Technology Partners" class="form-control" id="input-id-1"  required th:field=*{TechnologyPartners}/>

@@ -29,6 +29,7 @@ public class CustomerController {
 		List<Customer> custs = customerrepository.findAll();
 		model.addAttribute("cust", custs);
 		model.addAttribute("customer", new Customer());
+		model.addAttribute("custs", customerrepository.findAll()); 
 		
 		return "customer_manage";
 	}

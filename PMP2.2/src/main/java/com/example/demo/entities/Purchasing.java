@@ -1,10 +1,13 @@
 package com.example.demo.entities;
 
 import java.io.Serializable;
+import java.util.Collection;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Purchasing implements Serializable{
@@ -16,12 +19,35 @@ public class Purchasing implements Serializable{
 	private String LastName;
 	private String Contact;
 	private String Email;
+	@OneToMany(mappedBy = "Purchasing",fetch = FetchType.LAZY)
+	private Collection<Customer> customer;
+	
+	public Purchasing(Collection<Customer> customer) {
+		super();
+		this.customer = customer;
+	}
+
+
+	//attribut customer de type Customer 
+	//private Customer customer;
 	
 	
+	
+
+
 	public Purchasing() {
 		super();
 	}
 
+
+	public Collection<Customer> getCustomer() {
+		return customer;
+	}
+
+
+	public void setCustomer(Collection<Customer> customer) {
+		this.customer = customer;
+	}
 
 	public Purchasing(String firstName, String lastName, String contact, String email) {
 		super();

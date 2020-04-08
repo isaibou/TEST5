@@ -6,6 +6,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.Max;
@@ -56,12 +58,23 @@ public class Customer implements Serializable{
 	@Column(name="Status")
 	private String Status;
 	
-	public Customer() {
-		super();
+	@ManyToOne
+	@JoinColumn(name="Purchasing_ID")
+	private Purchasing Purchasing;
+	 
+	
+
+	public Purchasing getPurchasing() {
+		return Purchasing;
 	}
 
+	public void setPurchasing(Purchasing purchasing) {
+		this.Purchasing = purchasing;
+	}
+
+
 	public Customer(String name, String industry, String logo, String phoneCompany, String adressCompany, String vip,
-			String nomCIO, String phoneCIO, String emailCIO, String nomTechnical, String emailTechnical, String phoneTechnical, String city, String country, String status) {
+			String nomCIO, String phoneCIO, String emailCIO, String nomTechnical, String emailTechnical, String phoneTechnical, String city, String country, String status, Purchasing purchasing) {
 		super();
 		Name = name;
 		Industry = industry;
@@ -78,6 +91,11 @@ public class Customer implements Serializable{
 		City = city;
 		Country = country;
 		Status = status;
+		Purchasing = purchasing;
+	}
+
+	public Customer() {
+		super();
 	}
 
 	public Integer getCustomer_ID() {

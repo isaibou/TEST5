@@ -30,6 +30,7 @@ public class Customer implements Serializable{
 	private String Industry;
 	@Column(name="Logo")
 	private String Logo;
+
 	@Column(name="PhoneCompany")
 	private String PhoneCompany;
 	@Column(name="AdressCompany")

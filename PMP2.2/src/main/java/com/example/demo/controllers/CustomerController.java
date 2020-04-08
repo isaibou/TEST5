@@ -24,8 +24,7 @@ public class CustomerController {
 	@Autowired
 	private CustomerRepository customerrepository; 
 	
-	
-	@RequestMapping(value="/manager/customer_manage")
+	@RequestMapping(value="/customer_manage")
 	public String AllCustomer(Model model, Customer customer) {
 		
 		List<Customer> custs = customerrepository.findAll();
@@ -41,13 +40,13 @@ public class CustomerController {
 		addCust.setStatus("Actif");
 	
 		customerrepository.save(addCust);
-		return "redirect:/manager/customer_manage";
+		return "redirect:/customer_manage";
 		
 		
 		
 	}
 	
-	@RequestMapping(value ="/admin/updateCustomerform" )
+	@RequestMapping(value ="updateCustomerform" )
 	private String updateCustomerform( Model model, Integer id ) {
 	Customer	customer = customerrepository.getOne(id);
 		 model.addAttribute("customer",customer);
@@ -68,7 +67,7 @@ public class CustomerController {
 	}
 
 
-	@RequestMapping(value ="/admin/archiverCustomer" )
+	@RequestMapping(value ="archiverCustomer" )
 	private String archiverCustomer( Model model, Integer id ) {
 	
 	Customer Cust = customerrepository.getOne(id);
@@ -77,7 +76,7 @@ public class CustomerController {
 	customerrepository.save(Cust);
 	
 		
-			return "redirect:/admin/customer_manage";	}
+			return "redirect:/customer_manage";	}
 
 }
  	

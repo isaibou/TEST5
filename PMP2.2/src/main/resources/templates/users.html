@@ -372,11 +372,11 @@
 		<tbody>
 	 <tr data-expanded="true" th:each="u:${users}">
 	
-		  <td th:text="${u.LastName}" ></td>
-		  <td th:text="${u.FirstName}"></center> <small><i class="fa fa-phone"></i> <br> <i class="fa fa-envelope"/></i></small></td>
+		  <td th:text="${u.lastName}" ></td>
+		  <td th:text="${u.firstName}"></center> <small><i class="fa fa-phone"></i> <br> <i class="fa fa-envelope"/></i></small></td>
           <td th:text ="${u.CIN}"><center></center></td>
-          <td th:text = "${u.Login}"><center><center><span class="label bg-danger pull-center m-t-md"></span></center></center></td>
-		  <td th:text = "${u.Password}"></td>
+          <td th:text = "${u.username}"><center><center><span class="label bg-danger pull-center m-t-md"></span></center></center></td>
+		  <td th:text = "${u.password}"></td>
 		  <td>
 		   <center>
 		   	<div class="btn-group dropdown">
@@ -385,7 +385,7 @@
 		     </button>
 		     <ul class="dropdown-menu">
 		      <li><a style="margin-top:-5px;" data-toggle="modal"  data-target="#Update" class="btn btn-sm btn-light" role="button">Update</a></li>
-		      <li><a th:href="@{desactiverUser(id=${u.Employe_ID})}" style="margin-top:-5px;"  role="button">Desactivate</a></li>
+		      <li><a th:href="@{desactiverUser(id=${u.username})}" style="margin-top:-5px;"  role="button">Desactivate</a></li>
 		      <li><a style="margin-top:-5px;" data-toggle="modal"  data-target="#DetailE" class="btn btn-sm btn-light" role="button">Detail</a></li>
 		     </ul>
 		    </div>
@@ -397,57 +397,7 @@
       </div>
      </div>
 	</div>
-    <div class="tab-pane" id="tab_default_2" style="padding:20px 15px;margin:0px 2px;border-top:2px #19a9d5 solid;background-color:white;">
-	 <div class="panel panel-default">
-      <div class="table-responsive">
-	   <table ui-jq="dataTable" ui-options="{aoColumns: [
-												
-												{ mData: 'Picture' },
-												{ mData: 'Name & Last Name' },
-												{ mData: 'CIN' },
-												{ mData: 'Status' },
-												{ mData: 'password' },
-												{ mData: 'action' }]
-											}" class="table  b-t b-b">
-		<thead>
-		 <tr>
-	
-		  <th  style="width:10%"><center>Lastname</center></th>
-		  <th  style="width:16%"><center>Firstname</center></th>
-          <th  style="width:8%"><center>CIN</center></th>
-		  <th  style="width:15%"><center>Login</center></th>
-	      <th  style="width:15%"><center>Password</center></th>
-		  <th  style="width:15%"><center>Actions</center></th>
-		 </tr>
-		</thead>
-		<tbody>
-		 <tr data-expanded="true" th:each="u:${users}">
-	
-		  <td th:text="${u.LastName}" ></td>
-		  <td th:text="${u.FirstName}"></center> <small><i class="fa fa-phone"></i> <br> <i class="fa fa-envelope"/></i></small></td>
-          <td th:text ="${u.CIN}"><center></center></td>
-          <td th:text = "${u.Login}"><center><center><span class="label bg-danger pull-center m-t-md"></span></center></center></td>
-		  <td th:text = "${u.Password}"></td>
-		  <td>
-		   <center>
-		   	<div class="btn-group dropdown">
-		     <button class="btn btn-default btn-xs" data-toggle="dropdown">
-		      <i class="glyphicon glyphicon-cog"></i> Action <span class="caret"></span>
-		     </button>
-		     <ul class="dropdown-menu">
-		      <li><a style="margin-top:-5px;" data-toggle="modal"  data-target="#Update" class="btn btn-sm btn-light" role="button">Update</a></li>
-		      <li><a th:href="@{desactiverUser(id=${u.Employe_ID})}" style="margin-top:-5px;"  class="btn btn-sm btn-light" role="button">Desactiver</a></li>
-		      <li><a style="margin-top:-5px;" data-toggle="modal"  data-target="#DetailE" class="btn btn-sm btn-light" role="button">Detail</a></li>
-		     </ul>
-		    </div>
-		   </center>
-		  </td>
-		 </tr>
-		</tbody>
-	   </table>
-      </div>
-	 </div>
-	</div>
+    
    </div>
   </div>
  </div>
@@ -461,16 +411,16 @@
 	<button type="button" class="close pull-right" data-dismiss="modal">&times;</button>
 	<h1 class="m-n font-bold h3"> <b class="glyphicon-plus pull"> </b> Add User</h1>
    </div>
-   <form th:action="@{/SaveUser}" method="post" th:object="${addUser}">
+   <form th:action="@{/saveUsers}" method="post" th:object="${addUser}">
    <div class="modal-body">
 	<div class="row">
 	 <label class="col-sm-4 control-label" for="input-id-1" style="margin:5px 0px;"><b>Nom :</b></label>
 	 <div class="col-sm-8" style="margin:5px 0px;" >
-	  <input type="text" placeholder="Entry Nom" class="form-control" id="input-id-1" th:field=*{LastName}>
+	  <input type="text" placeholder="Entry Nom" class="form-control" id="input-id-1" th:field=*{lastName}>
 	 </div>
 	 <label class="col-sm-4 control-label" for="input-id-1" style="margin:5px 0px;"><b>Prenom :</b></label>
 	 <div class="col-sm-8" style="margin:5px 0px;" >
-	  <input type="text" placeholder="Entry Prenom" class="form-control" id="input-id-1" th:field=*{FirstName}>
+	  <input type="text" placeholder="Entry Prenom" class="form-control" id="input-id-1" th:field=*{firstName}>
 	 </div>
 	 
 	 	 <label class="col-sm-4 control-label" for="input-id-1" style="margin:5px 0px;"><b>CIN :</b></label>
@@ -481,11 +431,11 @@
 	
 	 <label class="col-sm-4 control-label" for="input-id-1" style="margin:5px 0px;"><b>Login :</b></label>
 	 <div class="col-sm-8" style="margin:5px 0px;" >
-	  <input type="text" placeholder="Entry Login" class="form-control" id="input-id-1"th:field=*{Login}>
+	  <input type="text" placeholder="Entry Login" class="form-control" id="input-id-1"th:field=*{username}>
 	 </div>
 	 <label class="col-sm-4 control-label" for="input-id-1" style="margin:5px 0px;"><b>Password :</b></label>
 	 <div class="col-sm-8" style="margin:5px 0px;" >
-	  <input type="text" placeholder="Entry Password" class="form-control" id="input-id-1"th:field=*{Password}>
+	  <input type="text" placeholder="Entry Password" class="form-control" id="input-id-1"th:field=*{password}>
 	 </div>
 	<div class="modal-footer">
     <button style="margin:0px;" class="btn m-b-xs btn-sm btn-primary btn-addon"><i class="glyphicon glyphicon-ok"></i>Save</button>

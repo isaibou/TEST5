@@ -1,13 +1,17 @@
 package com.example.demo;
 
 import java.util.Date;
-
 import java.util.List;
-
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import com.example.demo.storage.StorageProperties;
 import org.springframework.context.ApplicationContext;
+
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.context.annotation.Bean;
 
 import com.example.demo.entities.AssetType;
 
@@ -22,10 +26,11 @@ import com.example.demo.entities.Frimware;
 import com.example.demo.entities.Purchasing;
 import com.example.demo.repository.AssetRepository;
 import com.example.demo.repository.AssetTypeRepository;
-
-
+import com.example.demo.entities.*;
+import com.example.demo.repository.*;
 
 @SpringBootApplication
+@EnableConfigurationProperties(StorageProperties.class)
 public class Application {
 
 	public static void main(String[] args) {
@@ -60,7 +65,7 @@ public class Application {
 		
 		
 		
-		List<Assets> assets = assetRepository.findAll();
+		//List<Assets> assets = assetRepository.findAll();
 	
 		 
 		
@@ -78,11 +83,10 @@ public class Application {
 //		List<Assets> assets = assetRepository.findAll();
 		
 		
-		 List<AssetType> assettype = assettypeRepository.findAll();
+		// List<AssetType> assettype = assettypeRepository.findAll();
 		 
 		 
-		 //assettype.forEach(c->System.out.println(c.getName()));
-
+		 
 	}
 
 }

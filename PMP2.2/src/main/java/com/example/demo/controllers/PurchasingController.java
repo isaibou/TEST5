@@ -35,7 +35,7 @@ public class PurchasingController {
 		model.addAttribute("purch",purcha);
 		model.addAttribute("purchasing", new Purchasing());
 		
-		//la liste déroulante pour récupérer la liste des customers
+		//Afficher la liste déroulante pour récupérer la liste des customers
 		model.addAttribute("customer", customerRepository.findAll());		
 		return "purchasing_customer_manage";
 	
@@ -87,7 +87,7 @@ public class PurchasingController {
 		 purchasing.getCustomer().getName();
 		 
 	
-		 //affichage du customer qui j ai a partir de la liste dérulante dans détail
+		 //Affichage du customer qui j ai a partir de la liste dérulante dans détail
 		model.addAttribute("customer",  purchasing.getCustomer());
 		 //System.out.println(Purchasing.getFirstName());
 		

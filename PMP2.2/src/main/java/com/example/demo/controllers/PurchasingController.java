@@ -87,7 +87,7 @@ public class PurchasingController {
 		 purchasing.getCustomer().getName();
 		 
 	
-		 //affichage de la liste dérulante dans détail
+		 //affichage du customer qui j ai a partir de la liste dérulante dans détail
 		model.addAttribute("customer",  purchasing.getCustomer());
 		 //System.out.println(Purchasing.getFirstName());
 		

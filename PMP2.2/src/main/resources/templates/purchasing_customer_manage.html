@@ -619,6 +619,7 @@
 	 </div>
 	 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Customer</b></label>
 	 <div class="col-sm-8" style="margin: 5px 0px;">
+	 <!-- ici on met une boucle sur le customer pour avoir récupérer la liste des customer  -->
 	  <select name="Customer_ID" class="form-control m-b" th:field=*{customer}>
 	   <option th:each ="c:${customer}" 
 	   th:text="${c.name}"

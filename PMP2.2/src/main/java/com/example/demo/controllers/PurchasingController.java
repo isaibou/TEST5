@@ -21,6 +21,8 @@ import com.example.demo.repository.PurchisingRepository;
 
 @Controller
 public class PurchasingController {
+	// ici on a besoin de déclarer le repository du customer pour avoir, 
+	//appeller a le modéle qui va afficher la liste déroulante 
 	@Autowired
 	private CustomerRepository customerRepository;
 	

@@ -1,8 +1,13 @@
 package com.example.demo.entities;
 
 import java.io.Serializable;
+
+
 import java.util.Collection;
 import java.util.Date;
+
+import java.util.*;
+
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,11 +17,12 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
+
+import javax.persistence.*;
+
 import javax.validation.constraints.*;
 
-import org.hibernate.validator.constraints.UniqueElements;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.context.properties.bind.DefaultValue;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.NumberFormat;
 
 @Entity
@@ -24,57 +30,88 @@ public class Project implements Serializable{
 	
 	
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer Project_ID;
+ 
 	@NotNull 
-	@Column(name = "Name")
+	@Column(unique=true)
 	private String Name;
 	
+	@Column(name = "TypeProject")
 	private String TypeProject;
 	
+	@NumberFormat(pattern = "#,###,###,###.##")
 	private Double Amount;
 	
+	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(pattern= "yyyy")
 	private Date Year;
-	 
+	
+	@DateTimeFormat(pattern= "yyyy-mm-dd")
 	private Date DeliveryDate;
 	
+	
+	@DateTimeFormat(pattern= "yyyy-mm-dd")
 	private Date TemporayAcceptanceDate;
 	
+
+	@DateTimeFormat(pattern= "yyyy-mm-dd")
 	private Date FinalTemporaryDate;
 	
 	private String DeliveryCertificate;
+	private String Uri;
+    private String Type;
+    private long Size;
 	
+	@Column(name = "TechnologyPartners")
 	private String TechnologyPartners;
-	
+
+	@NumberFormat(pattern = "#,###")
 	private int Warranty;
 	
+	@NumberFormat(pattern = "#,###")
 	private int ExecutionTime;
 	
+	@Column(name = "Notes")
 	private String Notes;
 	
+	@Column(name = "Status")
 	private String Status;
 	
+
 	
-	
-	public Project() {
+
+	public Project(String deliveryCertificate, String uri, String type, long size) {
+
 		super();
+		DeliveryCertificate = deliveryCertificate;
+		Uri = uri;
+		Type =type;
+		Size = size;
 	}
-	public Project(String name, Double amount, Date year, Date deliveryDate, Date temporayAcceptanceDate,
-			Date finalTemporaryDate, String deliveryCertificate, String technologyPartners, int warranty,
+	public Project(String name, String typeProject, Double amount, Date year, Date deliveryDate, Date temporayAcceptanceDate,
+			Date finalTemporaryDate, String deliveryCertificate, String uri, String type, long size, String technologyPartners, int warranty,
 			int executionTime, String notes, String status) {
 		super();
 		Name = name;
+		TypeProject = typeProject;
 		Amount = amount;
 		Year = year;
 		DeliveryDate = deliveryDate;
 		TemporayAcceptanceDate = temporayAcceptanceDate;
 		FinalTemporaryDate = finalTemporaryDate;
 		DeliveryCertificate = deliveryCertificate;
+		Uri = uri;
+		Type =type;
+		Size = size;
 		TechnologyPartners = technologyPartners;
 		Warranty = warranty;
 		ExecutionTime = executionTime;
 		Notes = notes;
 		Status = status;
+	}
+	public Project() {
+		super();
 	}
 	public Integer getProject_ID() {
 		return Project_ID;
@@ -88,6 +125,31 @@ public class Project implements Serializable{
 	public void setName(String name) {
 		Name = name;
 	}
+
+	public String getUri() {
+		return Uri;
+	}
+
+	public void setUri(String uri) {
+		this.Uri = uri;
+	}
+
+	public String getType() {
+		return Type;
+	}
+
+	public void setType(String type) {
+		this.Type = type;
+	}
+
+	public long getSize() {
+		return Size;
+	}
+
+	public void setSize(long size) {
+		this.Size = size;
+	}
+	
 	public Double getAmount() {
 		return Amount;
 	}

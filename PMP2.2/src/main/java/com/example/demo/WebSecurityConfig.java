@@ -26,7 +26,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		.usersByUsernameQuery("select username as principal, password as credentials, actived from users where username =?").passwordEncoder(encoder)
 	
 		.authoritiesByUsernameQuery("select users_username as principal, roles_role as role from users_roles where users_username =?")
-		//.rolePrefix("ROLE_")
+		.rolePrefix("ROLE_")
 		.dataSource(dataSource);
 		
 	}
@@ -39,8 +39,13 @@ protected void configure(HttpSecurity http) throws Exception {
 	.and()
 	.formLogin()
 	.loginPage("/LoginVrai")
-	.defaultSuccessUrl("/index")
-	.permitAll();
+	.successForwardUrl("/index")
+	.permitAll()
+	.and()
+	.logout()
+	.logoutUrl("/logout")
+	.logoutSuccessUrl("/LoginVrai");
+	
 }
 
 	

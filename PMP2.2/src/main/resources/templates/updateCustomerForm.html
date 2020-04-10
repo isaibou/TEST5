@@ -46,29 +46,45 @@
 	 <div class="col-sm-8" style="margin: 5px 0px;">
 	  <input type="text"  class="form-control" placeholder="Entry Address of Company"id="input-id-2"  required th:field=*{AdressCompany}>
 	 </div>
+	 <label class="col-sm-4 control-label" placeholder="Entry Phone of Company" style="margin: 5px 0px;" for="input-id-1"><b>Phone</b></label>
+	 <div class="col-sm-8" style="margin: 5px 0px;">
+	  <input type="tel" placeholder="Entry Phone of Company"class="form-control" id="input-id-1"  required th:field=*{PhoneCompany}>
+	 </div>
+	 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Nom CIO</b></label>
+	 <div class="col-sm-8" style="margin: 5px 0px;">
+	  <input type="text" placeholder="Entry Nom CIO"class="form-control" id="input-id-1" required th:field=*{NomCIO}> 
+	 </div>
 	  <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Email CIO</b></label>
 	 <div class="col-sm-8" style="margin: 5px 0px;">
-	  <input type="email" placeholder="Entry Phone CIO"class="form-control" id="input-id-1" required th:field=*{EmailCIO}> 
+	  <input type="email" placeholder="Entry Email CIO"class="form-control" id="input-id-1" required th:field=*{EmailCIO}> 
 	 </div>
 	  <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Phone CIO</b></label>
 	 <div class="col-sm-8" style="margin: 5px 0px;">
 	  <input type="tel" placeholder="Entry Phone CIO"class="form-control" id="input-id-1" required  th:field=*{PhoneCIO}>
 	 </div>
+	 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Nom Technical</b></label>
+	 <div class="col-sm-8" style="margin: 5px 0px;">
+	  <input type="text" placeholder="Entry Nom Technical"class="form-control" id="input-id-1" required th:field=*{NomTechnical}> 
+	 </div>
+	 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Email Technical</b></label>
+	 <div class="col-sm-8" style="margin: 5px 0px;">
+	  <input type="email" placeholder="Entry Email Technical"class="form-control" id="input-id-1" required th:field=*{EmailTechnical}> 
+	 </div>
+	 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Phone Technical</b></label>
+	 <div class="col-sm-8" style="margin: 5px 0px;">
+	  <input type="tel" placeholder="Entry Phone Technical"class="form-control" id="input-id-1" required th:field=*{PhoneTechnical}> 
+	 </div>
 	 <label class="col-sm-4 control-label" placeholder="Entry Country of Company" style="margin: 5px 0px;" for="input-id-1"><b>Country</b></label>
 	 <div class="col-sm-8" style="margin: 5px 0px;">
-	  <select id="countryA" name ="country" class="form-control m-b" ></select>
+	  <select id="countryA" name ="Morocco" class="form-control" required th:field=*{Country}></select>
 	 </div>
 	 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>City</b></label>
 	 <div class="col-sm-8" style="margin: 5px 0px;">
-	  <select name ="state" id ="stateA" class="form-control m-b" ></select>
-	 </div>
-	 <label class="col-sm-4 control-label" placeholder="Entry Phone of Company" style="margin: 5px 0px;" for="input-id-1"><b>Phone</b></label>
-	 <div class="col-sm-8" style="margin: 5px 0px;">
-	  <input type="tel" placeholder="Entry Phone of Company"class="form-control" id="input-id-1"  th:field=*{PhoneCompany}>
+	  <select name ="Rabat" id ="stateA" class="form-control" required th:field=*{City}></select>
 	 </div>
 	 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Industry</b></label>
 	 <div class="col-sm-8" style="margin: 5px 0px;">
-	  <select name="account" class="form-control m-b"  th:field=*{Industry} >
+	  <select name="account" class="form-control m-b" required th:field=*{Industry} >
 	   <option th:value ="Advertising" th:text="Advertising"></option>
 	   <option th:value ="Manufacturing" th:text="Manufacturing"></option>
 	   <option th:value ="Construction" th:text="Construction"></option>
@@ -87,11 +103,15 @@
 	 </div>
 	   <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>VIP</b></label>
 	 <div class="col-sm-8" style="margin: 5px 0px;">
-	  <select name="VIP" class="form-control m-b" th:field=*{Vip}  >
+	  <select name="VIP" class="form-control m-b" required th:field=*{Vip}  >
 	  	 <option th:value="YES" th:text="YES"  ></option>
    		 <option th:value="NO" th:text="NO" ></option>
 	  </select>
 	 </div> 
+	 <label class="col-sm-4 control-label" placeholder="status" style="margin: 5px 0px;" for="input-id-1"><b>Status</b></label>
+		  <div class="col-sm-8" style="margin: 5px 0px;">
+			<input type="text" class="form-control" placeholder="status " id="input-id-1" required th:field=*{Status} />
+          </div>
 	 </div>
 	</div>
    <div class="modal-footer">

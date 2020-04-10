@@ -5,8 +5,10 @@ import java.util.Collection;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -20,6 +22,9 @@ public class Users implements Serializable {
 	private String lastName;
 	private String firstName;
 	private String CIN; 
+	@ManyToOne
+	@JoinColumn(name = "customer_ID")
+	private Customer customer;
 	
 	@ManyToMany
 	@JoinTable(name="USERS_ROLES")
@@ -31,8 +36,13 @@ public class Users implements Serializable {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
+	
 
-	public Users(String username, String password, boolean actived, String lastName, String firstName, String cIN) {
+	
+	
+	public Users(String username, String password, boolean actived, String lastName, String firstName, String cIN,
+			Customer customer, Collection<Roles> roles) {
 		super();
 		this.username = username;
 		this.password = password;
@@ -40,7 +50,27 @@ public class Users implements Serializable {
 		this.lastName = lastName;
 		this.firstName = firstName;
 		CIN = cIN;
+		this.customer = customer;
+		this.roles = roles;
 	}
+
+
+
+
+
+	public Users(String username, String password, boolean actived, String lastName, String firstName, String cIN,
+			Customer customer) {
+		super();
+		this.username = username;
+		this.password = password;
+		this.actived = actived;
+		this.lastName = lastName;
+		this.firstName = firstName;
+		CIN = cIN;
+		this.customer = customer;
+	}
+
+
 
 	public String getUsername() {
 		return username;
@@ -98,6 +128,14 @@ public class Users implements Serializable {
 
 	public void setActived(boolean actived) {
 		this.actived = actived;
+	}
+
+	public Customer getCustomer() {
+		return customer;
+	}
+
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
 	} 
 	
 	

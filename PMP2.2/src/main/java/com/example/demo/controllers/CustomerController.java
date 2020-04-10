@@ -72,11 +72,13 @@ public class CustomerController {
 	
 	Customer Cust = customerrepository.getOne(id);
 	Cust.setStatus("Archived");
-	
+
 	customerrepository.save(Cust);
 	
 		
-			return "redirect:/customer_manage";	}
+			return "redirect:/customer_manage";	
+			
+}
 
 }
  	

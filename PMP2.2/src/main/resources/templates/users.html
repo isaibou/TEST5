@@ -1,5 +1,6 @@
  <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" 
+xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
 <meta charset="utf-8" />
 <title>Users</title>
@@ -160,7 +161,7 @@
                 <ul class="nav nav-sub dk">
                
                   <li>
-                    <a th:href="@{admin/customer_manage}">
+                    <a th:href="@{/customer_manage}">
                       <span>Manage customer</span>
                     </a>
                   </li>
@@ -186,7 +187,7 @@
                 <ul class="nav nav-sub dk">
                
                   <li>
-                    <a th:href="@{admin/users}">
+                    <a th:href="@{/users}">
                       <span>Manage users</span>
                     </a>
                   </li>
@@ -360,23 +361,25 @@
 		<thead>
 		 <tr>
 	    
-		  <th  style="width:10%"><center>Lastname</center></th>
-		  <th  style="width:16%"><center>Firstname</center></th>
+		  <th  style="width:7%"><center>Lastname</center></th>
           <th  style="width:8%"><center>CIN</center></th>
-		  <th  style="width:15%"><center>Login</center></th>
-	      <th  style="width:15%"><center>Password</center></th>
+		  <th  style="width:12%"><center>Login</center></th>
+	      <th  style="width:12%"><center>Password</center></th>
+	      <th  style="width:12%"><center>Company</center></th>
+	      
 		  <th  style="width:15%"><center>Actions</center></th>
 		 
 		 </tr>
 		</thead>
 		<tbody>
-	 <tr data-expanded="true" th:each="u:${users}">
+	 <tr sec:authorize="hasRole('ROLE_ADMIN')" data-expanded="true" th:each="u:${users}">
 	
 		  <td th:text="${u.lastName}" ></td>
-		  <td th:text="${u.firstName}"></center> <small><i class="fa fa-phone"></i> <br> <i class="fa fa-envelope"/></i></small></td>
           <td th:text ="${u.CIN}"><center></center></td>
           <td th:text = "${u.username}"><center><center><span class="label bg-danger pull-center m-t-md"></span></center></center></td>
-		  <td th:text = "${u.password}"></td>
+		  <td th:text = "${u.actived}"></td>
+		  <td th:text = "${u.customer}"></td>
+		  
 		  <td>
 		   <center>
 		   	<div class="btn-group dropdown">
@@ -385,7 +388,8 @@
 		     </button>
 		     <ul class="dropdown-menu">
 		      <li><a style="margin-top:-5px;" data-toggle="modal"  data-target="#Update" class="btn btn-sm btn-light" role="button">Update</a></li>
-		      <li><a th:href="@{desactiverUser(id=${u.username})}" style="margin-top:-5px;"  role="button">Desactivate</a></li>
+		      <li><a th:href="@{desactiverUser(id=${u.username})}" style="margin-top:-5px;"  class="btn btn-sm btn-light" role="button">Desactivate</a></li>
+		      <li><a th:href="@{activerUser(id=${u.username})}" style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Activate</a></li>
 		      <li><a style="margin-top:-5px;" data-toggle="modal"  data-target="#DetailE" class="btn btn-sm btn-light" role="button">Detail</a></li>
 		     </ul>
 		    </div>
@@ -437,6 +441,23 @@
 	 <div class="col-sm-8" style="margin:5px 0px;" >
 	  <input type="text" placeholder="Entry Password" class="form-control" id="input-id-1"th:field=*{password}>
 	 </div>
+	 
+	  <label class="col-sm-4 control-label" for="input-id-1" style="margin:5px 0px;"><b>Company :</b></label>
+	 <div class="col-sm-8" style="margin:5px 0px;" >
+	 <select name ="Customer_ID" class="form-control" th:field="*{customer}" >
+	 <option th:each="c:${customer}" th:text="${c.Name}" th:value="${c.Customer_ID}" ></option>
+	 </select>
+	 </div>
+	 
+	   <label class="col-sm-4 control-label" for="input-id-1"  style="margin:5px 0px;"><b>Role :</b></label>
+	 <div class="col-sm-8" style="margin:5px 0px;" >
+	 <select name ="role" class="form-control" th:field="*{roles}">
+	 <option th:each="r:${allRoles}" th:text="${r.role}" th:value="${r.role}"></option>
+	 </select>
+	 </div>
+	
+	
+	
 	<div class="modal-footer">
     <button style="margin:0px;" class="btn m-b-xs btn-sm btn-primary btn-addon"><i class="glyphicon glyphicon-ok"></i>Save</button>
 	<button style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon" data-dismiss="modal"><i class="glyphicon glyphicon-remove"></i>Annuler</button>

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 
 <html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
 	>
 	<head>
 		<meta charset="utf-8" />
@@ -335,7 +336,7 @@
                 <ul class="nav nav-sub dk">
                
                   <li>
-                    <a th:href="@{/admin/users}">
+                    <a th:href="@{/users}">
                       <span>Manage users</span>
                     </a>
                   </li>
@@ -585,7 +586,7 @@
 																		<td th:text ="${c.AdressCompany}"><center></center></td>
 																		<td th:text ="${c.Industry}"><center><center/></td>
 																		<td th:text ="${c.Status}"><center><span></span><center/></td>
-																				<td sec:authorize="hasRole('ROLE_ADMIN')">
+																				<td sec:authorize="hasRole('ROLE_ADMIN')" >
 																					<center>
 																						<div class="btn-group dropdown">
 																							<button class="btn btn-default btn-xs" data-toggle="dropdown"><i class="glyphicon glyphicon-cog"></i> Action <span class="caret"></span></button>

@@ -414,12 +414,12 @@ document.addEventListener('DOMContentLoaded', function() {
                     </a>
                   </li>
           <li>
-                    <a th:href="assetstype_manage">
+                    <a th:href="frimware">
                       <span>Firmware</span>
                     </a>
                   </li>
           <li>
-                    <a th:href="assetstype_manage">
+                    <a th:href="ventor">
                       <span>Vendor</span>
                     </a>
                   </li>
@@ -434,11 +434,11 @@ document.addEventListener('DOMContentLoaded', function() {
         <li>
                 <a th:href="contract_manage">
                   <i class="fa fa-legal"></i></i>
-                  <span>Contrats</span>
+                  <span>Contracts</span>
                 </a>
               </li>
         <li>
-                <a th:href="tickets_manage">
+                <a th:href="expense">
                   <i class="glyphicon  glyphicon-usd"></i></i>
                   <span>Expenses</span>
                 </a>
@@ -550,18 +550,18 @@ document.addEventListener('DOMContentLoaded', function() {
 	     </thead>
 		 <tbody>
 		  <tr data-expanded="true" th:each="p:${proj}">
-		   <td th:text ="${p.Name}"><center><b></b></center></td>
-		   <td th:text ="${p.Notes}"><center><b></b></center></td>
-		   <td th:text ="${p.DeliveryDate}"><center></center></td>
-		   <td th:text ="${p.TechnologyPartners}"><center><span ></span></center></td>
-		   <td th:text ="${p.Amount}"><center></center></td>
-           <td th:text ="${p.Status}"><center><span class="label bg-info pull-center m-t-md"></span><span class="label bg-info pull-center m-t-md"></span></center></td>
+		   <td th:text ="${p.Name}" class="m-n font-thin h4 text-secondary"><center><b></b></center></td>
+		   <td th:text ="${p.Notes}" class="m-n font-thin h4 text-secondary"><center><b></b></center></td>
+		   <td th:text ="${p.DeliveryDate}" class="m-n font-thin h4 text-secondary"><center></center></td>
+		   <td th:text ="${p.TechnologyPartners}" class="m-n font-thin h4 text-secondary"><center><span></span></center></td>
+		   <td th:text ="${p.Amount}" class="m-n font-thin h4 text-secondary"><center></center></td>
+           <td th:text ="${p.Status}" class="m-n font-thin h4 text-secondary"><center><span></span></center></td>
 		   <td><center><div class="btn-group dropdown"><button class="btn btn-default btn-xs" data-toggle="dropdown">
 		     <i class="glyphicon glyphicon-cog"></i> Action <span class="caret"></span></button>
 		     <ul class="dropdown-menu">
 		     <li><a th:href="@{updateProject(id=${p.Project_ID})}"  style="margin-top:-5px;"   class="btn btn-sm btn-light" role="button">Update</a></li>
 		     <li><a th:href="@{archiverProject(id=${p.Project_ID})}"  style="margin-top:-5px;"  class="btn btn-sm btn-light" role="button">Archive</a></li>
-		     <li><a style="margin-top:-5px;" data-toggle="modal"  data-target="#Detail" class="btn btn-sm btn-light" role="button">Detail</a></li></ul></div></center></td>
+		     <li><a th:href="@{detailProject(id=${p.Project_ID})}" style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Detail</a></li></ul></div></center></td>
 		  </tr>
 		 </tbody>
 		</table>
@@ -573,7 +573,10 @@ document.addEventListener('DOMContentLoaded', function() {
 	<div class="col-sm-6">
 	    <center><h3 class="m-n font-bold h4">RFP Reponse Date & Time </h3></center>
 		<div id='calendar1'></div>
-	</div>
+	</div>	
+	 <div th:if="${message}">
+		<h2 th:text="${message}"/>
+	</div>   
 	<div class="modal fade" role="dialog" id="AddProject" >
 	 <div class="modal-dialog modal-lg" >
 	  <div class="modal-content">
@@ -596,7 +599,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		 </div>
 	     <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Type Project</b></label>
 		 <div class="col-sm-8" style="margin: 5px 0px;" >
-		  <select name="account" class="form-control m-b" th:field=*{TypeProject}>
+		  <select name="account" class="form-control m-b"  required th:field=*{TypeProject}>
 	       <option th:value ="Type1" th:text="Type1"></option>
 	       <option th:value ="Typ2" th:text="Type2"></option>
 		  </select>
@@ -606,35 +609,38 @@ document.addEventListener('DOMContentLoaded', function() {
 		  <input type="number" placeholder="Entry Amount of Project" class="form-control" id="input-id-1" required th:field=*{Amount}/>
 		  <span class="text-danger" th:errors=*{Amount}></span>
 		 </div>
-		 <label class="col-sm-4 control-label" placeholder="Entry Year" style="margin: 5px 0px;" for="input-id-1"><b>Year</b></label>
+		 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Year</b></label>
 	     <div class="col-sm-8" style="margin: 5px 0px;">
-			  <input type="date" class="form-control" placeholder="MM/DD/YYYY"  required th:field=*{Year}/>
+			  <input type="date" class="form-control" placeholder="YYYY"  required th:field=*{Year}/>
 	     </div>
-		 <label class="col-sm-4 control-label" placeholder="Entry Delivery Date" style="margin: 5px 0px;" for="input-id-1"><b>Delivery Date</b></label>
+		 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Delivery Date</b></label>
 		 <div class="col-sm-8" style="margin: 5px 0px;">
 			  <input type="date" class="form-control" placeholder="MM/DD/YYYY"  required th:field=*{DeliveryDate}/>
 		 </div>
-	     <label class="col-sm-4 control-label" placeholder="Entry Temporay Acceptance Date" style="margin: 5px 0px;" for="input-id-1"><b>Temporay Acceptance Date</b></label>
+	     <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Temporay Acceptance Date</b></label>
 		 <div class="col-sm-8" style="margin: 5px 0px;">
 		      <input type="date" class="form-control" placeholder="MM/DD/YYYY"  required th:field=*{TemporayAcceptanceDate}/>
 		 </div>
-		 <label class="col-sm-4 control-label" placeholder="Entry Final Temporary Date" style="margin: 5px 0px;" for="input-id-1"><b>Final Temporary Date</b></label>
+		 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Final Temporary Date</b></label>
 		 <div class="col-sm-8" style="margin: 5px 0px;">
 		      <input type="date" class="form-control"  placeholder="MM/DD/YYYY"  required th:field=*{FinalTemporaryDate}/>
 		 </div>
-		 <label class="col-sm-4 control-label" placeholder="Entry Delivery Certificate" style="margin: 5px 0px;" for="input-id-1"><b>Delivery Certificate</b></label>
-		 <div class="col-sm-8" style="margin: 5px 0px;">
-		  <input type="text" placeholder="Entry Delivery Certificate"class="form-control" id="input-id-1" required th:field=*{DeliveryCertificate}/>
-		 </div>
-		 <label class="col-sm-4 control-label" placeholder="Entry Technology Partners" style="margin: 5px 0px;" for="input-id-1"><b>Technology Partners</b></label>
+		 <form method="POST" enctype="multipart/form-data" th:action="@{/upload-file}" th:object="${project}">
+		 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Delivery Certificate</b></label>
+		 <div class="col-sm-8">
+          <input type="file" placeholder="Upload Preview File" class="form-control" id="input-id-1">
+          <button type="submit">Submit</button>
+         </div>
+         </form>
+		 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Technology Partners</b></label>
 		 <div class="col-sm-8" style="margin: 5px 0px;">
 		 <input type="text" data-role="tagsinput"  placeholder="Entry Technology Partners" class="form-control" id="input-id-1"  required th:field=*{TechnologyPartners}/>
 		 </div>
-		 <label class="col-sm-4 control-label" placeholder="Entry Warranty" style="margin: 5px 0px;" for="input-id-1"><b>Warranty</b></label>
+		 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Warranty</b></label>
 		 <div class="col-sm-8" style="margin: 5px 0px;">
 		  <input type="number" placeholder="Entry Warranty"class="form-control" id="input-id-1" required th:field=*{Warranty}/>
 		 </div>
-		 <label class="col-sm-4 control-label" placeholder="Entry Execution Time" style="margin: 5px 0px;" for="input-id-1"><b>Execution Time</b></label>
+		 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Execution Time</b></label>
 	     <div class="col-sm-8" style="margin: 5px 0px;">
 		  <input type="number" placeholder="Entry Execution Time" class="form-control" id="input-id-1" required th:field=*{ExecutionTime}/>
 		 </div>
@@ -642,10 +648,6 @@ document.addEventListener('DOMContentLoaded', function() {
 		  <div class="col-sm-8" style="margin: 5px 0px;">
 			<input type="text" class="form-control" placeholder="Entry ur notes " id="input-id-1" required th:field=*{Notes} />
           </div>
-		  <label class="col-sm-4 control-label" placeholder="Entry Status" style="margin: 5px 0px;" for="input-id-1"><b>Status</b></label>
-		  <div class="col-sm-8" style="margin: 5px 0px;">
-		   <input type="text" placeholder="Entry Status"class="form-control" id="input-id-1" th:field=*{Status}/>
-		  </div>
 		  <div class="modal-footer">
 		   <button style="margin:0px;" class="btn m-b-xs btn-sm btn-primary btn-addon"><i class="glyphicon glyphicon-ok"></i>Save</button>
 		   <button style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon" data-dismiss="modal"><i class="glyphicon glyphicon-remove"></i>Annuler</button>
@@ -665,49 +667,6 @@ document.addEventListener('DOMContentLoaded', function() {
    <span class="pull-right">2.2.0 <a href ui-scroll="app" class="m-l-sm text-muted"><i class="fa fa-long-arrow-up"></i></a></span>&copy; PowerM 2020 Copyright.
   </div>
  </footer><!-- / footer -->
-<div class="modal fade" role="dialog" id="Detail" >
- <div class="modal-dialog modal-lg" >
-  <div class="modal-content">
-   <div class="modal-header" style="background-image:url(img/grf-bg.jpg);color:white;">
-  <button type="button" class="close pull-right" data-dismiss="modal">&times;</button>
-     <h1 class="m-n font-bold h3">Information Project</h1>
-   </div>
-   <div class="modal-body">
-     <p th:each="p:${proj}">
-     <span class="m-n font-thin h3 text-black" >Project Name:</span>
-     <span th:text ="${p.Name}"></span></br>
-     <span class="m-n font-thin h3 text-black">Type Project:</span>
-     <span th:text ="${p.TypeProject}"></span></br>
-     <span class="m-n font-thin h3 text-black">Amount :</span>
-     <span th:text ="${p.Amount}"></span></br>
-     <span class="m-n font-thin h3 text-black" >Year :</span>
-     <span th:text ="${p.Year}"></span></br>
-     <span class="m-n font-thin h3 text-black">Delivery Date :</span>
-     <span th:text ="${p.DeliveryDate}"></span></br>
-     <span class="m-n font-thin h3 text-black">Temporary Acceptance Date :</span>
-     <span th:text ="${p.TemporayAcceptanceDate}"></span></br>
-     <span class="m-n font-thin h3 text-black" >Final Temporary Date :</span>
-     <span th:text ="${p.FinalTemporaryDate}"></span></br>
-     <span class="m-n font-thin h3 text-black" >Delivery Certificate  :</span>
-     <span th:text ="${p.DeliveryCertificate}"></span></br>
-     <span class="m-n font-thin h3 text-black" >Technology Partners :</span>
-     <span th:text ="${p.TechnologyPartners}"></span></br>
-     <span class="m-n font-thin h3 text-black">Warranty :</span>
-     <span th:text ="${p.Warranty}"></span></br>
-     <span class="m-n font-thin h3 text-black">Execution Time :</span>
-     <span th:text ="${p.ExecutionTime}"></span></br>
-     <span class="m-n font-thin h3 text-black">Notes :</span>
-     <span th:text ="${p.Notes}"></span></br>
-     <span class="m-n font-thin h3 text-black">Status :</span>  
-     <span th:text ="${p.Status}"></span></br>
-     </p>
-   </div>
-   <div class="modal-footer">
-   <button class="btn m-b-xs btn-sm btn-primary btn-addon" data-dismiss="modal">Return</button>
-  </div>
-  </div>  
-</div>
-</div>
 </div>
 <script src="../libs/jquery/jquery/dist/jquery.js"></script>
 <script src="../libs/jquery/bootstrap/dist/js/bootstrap.js"></script>
@@ -717,20 +676,6 @@ document.addEventListener('DOMContentLoaded', function() {
 <script src="js/ui-nav.js"></script>
 <script src="js/ui-toggle.js"></script>
 <script src="js/ui-client.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
-<script>
-  $(document).ready(function(){
-    var date_input=$('input[name="date"]'); //our date input has the name "date"
-    var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
-    date_input.datepicker({
-      format: 'mm/dd/yyyy',
-      container: container,
-      todayHighlight: true,
-      autoclose: true,
-    })
-  })
-</script>
 <script type="text/javascript">
   function changecolor() {
        $('body,.wrapper,.content,.panel-default,.panel-heading,#content-h,#header,.modal-content').css("background-color", "#3a3f51");
@@ -790,7 +735,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
       };
 		</script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.min.js" integrity="sha256-tQ3x4V2JW+L0ew/P3v2xzL46XDjEWUExFkCDY0Rflqc=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.min.js" integrity="sha256-tQ3x4V2JW+L0ew/P3v2xzL46XDjEWUExFkCDY0Rflqc=" crossorigin="anonymous"></script>
 </body>
 </html>
 													

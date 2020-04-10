@@ -34,7 +34,7 @@ public class FrimwareController {
 		List<Frimware> frime = frimwareRepository.findAll();
 		model.addAttribute("frim", frime);
 		model.addAttribute("frimware", new Frimware());
-		//cette methode pour claculet le totale de frimware et aprés on ajoute un truc dans la page htlm
+		//cette methode pour claculet le totale de frimware et aprés on ajoute un truc dans la page htlm.
 		model.addAttribute("totalFirmware", frime.size());
 		
 		return "firmware";
@@ -50,7 +50,7 @@ public class FrimwareController {
 		return "redirect:/firmware";
 	}
 	
-	@RequestMapping(value ="/updateFrimwareform" )
+	@RequestMapping(value ="/updateFrimware" )
 	private String updateFrimwareform( Model model, Integer id ) {
 		
 	Frimware	frimware = frimwareRepository.getOne(id);
@@ -69,17 +69,13 @@ public class FrimwareController {
 		return "redirect:/firmware";
 	}
 	
+	@RequestMapping(value ="/deleteFrim" )
+	private String deleteFrim( Model model, Integer id ) {
 	
-	@RequestMapping(value ="/archiverFrimware" )
-	private String archiverFrimware( Model model, Integer id ) {
-	
-	Frimware Frim = frimwareRepository.getOne(id);
-	Frim.setStatus("Archived");
-	Frim.setName("Sarah");
-	frimwareRepository.save(Frim);
-	System.out.println(Frim.getStatus());
+		frimwareRepository.deleteById(id);
 		
-			return "redirect:/firmware";	}
+		 return "redirect:/firmware";	
+	}
 }
 
 	    		

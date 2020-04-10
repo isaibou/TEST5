@@ -492,31 +492,32 @@
 						class="table  b-t b-b">
 						<thead style="color: #23b7e5;">
 							<tr>
-								<th style="width: 25%"><center>Name</center></th>
-								<th style="width: 40%"><center>Description</center></th>
-								<th style="width: 25%"><center>Release Date</center></th>
-								<th style="width: 10%"><center>Actions</center></th>
+								<th style="width: 25%">Name</th>
+								<th style="width: 25%">Description</th>
+								<th style="width: 15%">Release Date</th>
+								<th  style="width:5%"><center>Status</center></th>
+								
+								<th style="width: 15%"><center>Actions</center></th>
 
 							</tr>
 						</thead>
 						<tbody>
 							<tr th:each="f:${frim}">
 
-								<td th:text="${f.name}" class="m-n font-thin h4 text-secondary"><center>
-										<b></b>
-									</center></td>
-								<td th:text="${f.description}" class="m-n font-thin h4 text-secondary"><center>
-										<span></span> <span>
-										</span>
-									</center>
-								</td>
+								<td th:text="${f.name}" class="m-n font-thin h4 text-secondary"></td>
+								<td th:text="${f.description}" class="m-n font-thin h4 text-secondary"><center></center></td>
 								<td th:text="${f.releaseDate}" class="m-n font-thin h4 text-secondary"><center></center></td>
-								<td><center><div class="btn-group dropdown">
+								<td th:text ="${f.Status}" class="m-n font-thin h4 text-secondary"><center><span></span><center/></td>
+								<td>
+									<center>
+										<div class="btn-group dropdown">
+								
 								 <button class="btn btn-default btn-xs" data-toggle="dropdown"><i class="glyphicon glyphicon-cog"></i> Action <span class="caret"></span></button>
 								  <ul class="dropdown-menu">
 								   <li><a th:href="@{updateFrimware(id=${f.frimware_ID})}"  style="margin-top:-5px;"   class="btn btn-sm btn-light" role="button">Update</a></li>
-								   <li><a th:href="@{deleteFrim(id=${f.frimware_ID})}"  style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Delete</a></li>
-								   <li><a style="margin-top:-5px;" data-toggle="modal"  data-target="#Detail" class="btn btn-sm btn-light" role="button">Detail</a></li>
+								   <li><a th:href="@{archiverFrimware(id=${f.frimware_ID})}"  style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Archive</a></li>
+								   <li><a th:href="@{detailFrimware(id=${f.frimware_ID})}" style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Detail</a></li></ul></div></center></td>
+								   
 								  </ul>
 							     </div></center></td>
 							</tr>

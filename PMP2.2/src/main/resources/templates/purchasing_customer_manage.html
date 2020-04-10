@@ -534,38 +534,36 @@
 															<thead>
 																<tr style="color:#23b7e5;">
 																	
-																	<th  style="width:30%;"><center>Name & Last name</center></th>
-																	<th  style="width:30%"><center>Phone</center></th>
+																	<th  style="width:30%;"><center> FirstName</center></th>
+																	<th  style="width:30%;"><center> LastName</center></th>
+																	<th  style="width:30%"><center>Contact</center></th>
 																	<th  style="width:30%;"><center>Email</center></th>
 																	<th  style="width:10%;">Actions</th>
 																</tr>
 															</thead>
 															<tbody>
-																<tr data-expanded="true">
+																<tr data-expanded="true" th:each="p:${purch}">
 									
-																	<td> 	
-																		
-																			
-																			<b>Ahmed Ahmed</b>
-
-																			
+																	<td th:text ="${p.FirstName}"> 
+																			<b></b>
 																		</td>
-																		<td><center>0698986766</center></td>
+																		<td th:text ="${p.LastName}"> 
+																			<b></b>
+																		</td>
+																		<td th:text ="${p.Contact}"><center></center></td>
 																		
-																			<td><center>ahmed.test@powerm.ma</center></td>
+																			<td th:text ="${p.Email}"><center></center></td>
 																				<td>
 																					<center>
 																						<div class="btn-group dropdown">
 																							<button class="btn btn-default btn-xs" data-toggle="dropdown"><i class="glyphicon glyphicon-cog"></i> Action <span class="caret"></span></button>
 																							<ul class="dropdown-menu">
 																								<li>
-																									<a style="margin-top:-5px;" data-toggle="modal"  data-target="#Update" class="btn btn-sm btn-light" role="button">Update</a>
+																									 <li><a th:href="@{updatePurchasing(id=${p.Purchasing_ID})}"  style="margin-top:-5px;"   class="btn btn-sm btn-light" role="button">Update</a></li>
 																								</li>
+																								<li><a th:href="@{deletePurchasing(id=${p.Purchasing_ID})}"  style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Delete</a></li>
 																								<li>
-																									<a style="margin-top:-5px;" data-toggle="modal"  data-target="#Delete" class="btn btn-sm btn-light" role="button">Delete</a>
-																								</li>
-																								<li>
-																									<a style="margin-top:-5px;" data-toggle="modal"  data-target="#Detail" class="btn btn-sm btn-light" role="button">Detail</a>
+																									<li><a th:href="@{detailPurchasing(id=${p.Purchasing_ID})}" style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Detail</a></li></ul></div></center></td>
 																								</li>
 																							</ul>
 																						</div>
@@ -592,26 +590,39 @@
 	<button type="button" class="close pull-right" data-dismiss="modal">&times;</button>
     <h1 class="m-n font-bold h3"> <b class="glyphicon-plus pull"> </b> Add Purchasing Customer</h1>
    </div>
+    <form th:action="@{SavePurchasing}" method ="post" th:object="${purchasing}">
    <div class="modal-body">
 	<div class="row">
-	 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Purchasing Name</b></label>
+	<label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b></b></label>
+     <div class="col-sm-8" style="margin: 5px 0px;">
+      <input type="hidden" class="form-control" placeholder="Entry Name of Project" id="input-id-1"  required th:field=*{Purchasing_ID}/>
+      </div>
+	 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Purchasing First Name</b></label>
      <div class="col-sm-8" style="margin: 5px 0px;" >
-      <input type="text" class="form-control" placeholder="Entry Name of Purchasing" id="input-id-1">
+      <input type="text" class="form-control" placeholder="Entry First Name of Purchasing" id="input-id-1" required th:field=*{FirstName}>
+       <span class="text-danger" th:errors=*{FirstName}></span>
+	 </div>
+	 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Purchasing Last Name</b></label>
+     <div class="col-sm-8" style="margin: 5px 0px;" >
+      <input type="text" class="form-control" placeholder="Entry Last Name of Purchasing" id="input-id-1" required th:field=*{LastName}>
+       <span class="text-danger" th:errors=*{LastName}></span>
 	 </div>
 	 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Purchasing Telephone</b></label>
 	 <div class="col-sm-8" style="margin: 5px 0px;">
-	  <input type="text"  class="form-control" placeholder="Entry Telephone of Purchasing"id="input-id-2">
+	  <input type="text"  class="form-control" placeholder="Entry Telephone of Purchasing"id="input-id-2" required th:field=*{Contact}>
+	  <span class="text-danger" th:errors=*{Contact}></span>
 	 </div>
      <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Purchasing Email</b></label>
 	 <div class="col-sm-8" style="margin: 5px 0px;">
-	  <input type="text" placeholder="Entry City of Company" class="form-control" id="input-id-1">
+	  <input type="text" placeholder="Entry Email of Company" class="form-control" id="input-id-1" required th:field=*{Email}>
+	  <span class="text-danger" th:errors=*{Email}></span>
 	 </div>
 	 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Customer</b></label>
 	 <div class="col-sm-8" style="margin: 5px 0px;">
-	  <select name="account" class="form-control m-b">
-	   <option>Customer1</option>
-	   <option>Customer2</option>
-	   <option>Customer3</option>
+	  <select name="Customer_ID" class="form-control m-b" th:field=*{customer}>
+	   <option th:each ="c:${customer}" 
+	   th:text="${c.name}"
+	   th:value ="${c.Customer_ID}"></option>
 	  </select>
 	 </div>
 	 </div>
@@ -690,15 +701,17 @@
      <h1 class="m-n font-bold h3">Information Purchasing Contract</h1>
    </div>
    <div class="modal-body">
-          <p>
-            <span class="m-n font-thin h3 text-black" >Purchasing Name:</span>
-            <span ng-repeat="nom in purchasing"> {{ purchasing.nomPurchasing }} </br></span>
+          <p th:each="p:${purch}">
+            <span class="m-n font-thin h3 text-black" >Purchasing First Name:</span>
+            <span th:text ="${p.FirstName}" class="m-n font-thin h4 text-secondary"></span></br>
+            <span class="m-n font-thin h3 text-black" >Purchasing Last Name:</span>
+            <span th:text ="${p.LastName}" class="m-n font-thin h4 text-secondary"></span></br>
             <span class="m-n font-thin h3 text-black">Purchasing Telephone:</span>
-            <span ng-repeat="telephone in typeAsset"> {{ purchasing.telephonePurchasing }}</span></br>
+            <span th:text ="${p.Contact}" class="m-n font-thin h4 text-secondary"></span></br>
             <span class="m-n font-thin h3 text-black">Purchasing Email:</span>
-            <span ng-repeat="email in purchasing"> {{ purchasing.emailPurchasing }}</span></br>
+            <span th:text ="${p.Email}" class="m-n font-thin h4 text-secondary"></span></br>
             <span class="m-n font-thin h3 text-black" >Customer:</span>
-            <span ng-repeat="nom in customer"> {{ customer.nomCustomer }} </br></span>
+           <span th:text ="${p.customer}" class="m-n font-thin h4 text-secondary"></span></br>
           </p> 
    </div>
    <div class="modal-footer">

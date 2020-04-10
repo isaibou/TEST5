@@ -64,30 +64,41 @@ public class AssetTypeController
 	@RequestMapping(value = "/editAseetType",method= RequestMethod.POST)
 	public String updateAseetType(Model model, AssetType assetT){
 		
+		assetT.setStatus("Actif");
 		assetTypeRepository.save(assetT);
 		
 		return "redirect:/assetstype_manage";
 	}
 	
-	//@RequestMapping(value ="/archiverAseetType" )
-	//private String archiverAseetType( Model model, Integer id ) {
+	@RequestMapping(value ="/archiverAseetT" )
+	private String archiverCustomer( Model model, Integer id ) {
 	
-	//AssetType AssTyp = assetTypeRepository.getOne(id);
-	//AssTyp.setStatus("Archived");
-	//AssTyp.setName("Sara");
-	//assetTypeRepository.save(AssTyp);
-	//System.out.println(AssTyp.getStatus());
+		AssetType Assttyp = assetTypeRepository.getOne(id);
+		Assttyp.setStatus("Archived");
+		assetTypeRepository.save(Assttyp);
+	    System.out.println(Assttyp.getStatus());
 		
-			//return "redirect:/assetstype_manage";	
+			return "redirect:/assetstype_manage";	}
+	
+	@RequestMapping(value ="/detailAseetType")
+	public String detailAseetT( Model model, Integer id ) {
+		
+		AssetType	assettype = assetTypeRepository.getOne(id);
+		 model.addAttribute("assettype",assettype);
+		 System.out.println(assettype.getName());
+		
+			return "detailAseetType";
+			
+	}
 			
 	//}
 
 
-	@RequestMapping(value ="/deleteAssetType" )
-	private String deleteAssetType( Model model, Integer id ) {
+	//@RequestMapping(value ="/deleteAssetType" )
+	//private String deleteAssetType( Model model, Integer id ) {
 	
-		assetTypeRepository.deleteById(id);
+	//	assetTypeRepository.deleteById(id);
 		
-		 return "redirect:/assetstype_manage";	
-	}
+		// return "redirect:/assetstype_manage";	
+	//}
 }

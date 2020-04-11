@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="utf-8" />
-  <title>Detail Purchasing</title>
+  <title>Detail Contrat</title>
   <meta name="description" content="app, web app, responsive, responsive layout, admin, admin panel, admin dashboard, flat, flat ui, ui kit, AngularJS, ui route, charts, widgets, components" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <link rel="stylesheet" href="../libs/assets/animate.css/animate.css" type="text/css" />
@@ -18,7 +18,7 @@
  <div th:action="@{detailPurchasing}" method ="post" th:object="${Purchasing}">
   <div class="modal-dialog modal-lg" >
    <div class="modal-content">
-    <h1 class="m-n font-bold h3"> Informations Purchasing </h1>
+    <h1 class="m-n font-bold h3"> Informations Contrat </h1>
    </div>
    <div  class="modal-body">
     <div style="background-color:white;margin:10px; padding:10px;">
@@ -32,34 +32,31 @@
 		   <th  style="width:80%"><center>Content </center></th>
 		  </tr>
 	  </thead>
-	  <tbody th:each="p:${Purchasing}">
+	  <tbody th:each="c:${contrat}">
 		  <tr data-expanded="true">
-		   <td style="color:#23b7e5;"><center>Purchasing First Name </center></th>
-		   <td th:text ="${p.FirstName}" class="m-n font-thin h4 text-secondary"><center><b></b></center></td>
+		   <td style="color:#23b7e5;"><center>Contract Title </center></th>
+		   <td th:text ="${c.Title}" class="m-n font-thin h4 text-secondary"><center><b></b></center></td>
 		  </tr>
-		  <tr >
-		   <td style="color:#23b7e5;"><center>Purchasing Last Name </center></th>
-		   <td th:text ="${p.LastName}" class="m-n font-thin h4 text-secondary"><center><b></b></center></td>
-		  </tr>
-		   <tr >
-		   <td style="color:#23b7e5;"><center>Purchasing Telephone </center></th>
-		   <td th:text ="${p.Contact}" class="m-n font-thin h4 text-secondary"><center></center></td>
-		   </tr>
-		   <tr >
-		   <td style="color:#23b7e5;"><center>Purchasing Email </center></th>
-		   <td th:text ="${p.Email}" class="m-n font-thin h4 text-secondary"><center><span></span></center></td>
-		   </tr>
-		   <tr> 
+		 <tr> 
 		   <td style="color:#23b7e5;"><center>Customer </center></th>
-		   <!-- Comment appeler a le customer qui j ai choisi a partir du la liste déroulante des customer  -->
-		   <td   th:text="${p.Customer.Name}"  class="m-n font-thin h4 text-secondary"><center></center></td>
-		   </tr>  
+		   <!-- comment appeler a le customer qui j ai choisi a partir du la liste déroulante des customer  -->
+		   <td   th:text="${c.Customer.Name}"  class="m-n font-thin h4 text-secondary"><center></center></td>
+		   </tr>
+		   <tr >
+		   <td style="color:#23b7e5;"><center>Description </center></th>
+		   <td th:text ="${c.Description}" class="m-n font-thin h4 text-secondary"><center></center></td>
+		   </tr>
+		   <tr >
+		   <td style="color:#23b7e5;"><center>Delivery Date </center></th>
+		   <td th:text ="${c.DeliveryDate}" class="m-n font-thin h4 text-secondary"><center><span></span></center></td>
+		   </tr>
+		     
 	  </tbody>
      </table>
 	</div>
    </div>
    <div class="modal-footer">
-     <button class="btn m-b-xs btn-sm btn-primary btn-addon"><a th:href="purchasing_customer_manage">Return</a></button>
+     <button class="btn m-b-xs btn-sm btn-primary btn-addon"><a th:href="contract_manage">Return</a></button>
    </div>
   </div>  
  </div>

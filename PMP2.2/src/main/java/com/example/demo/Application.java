@@ -40,7 +40,10 @@ public class Application {
 		AssetRepository assetRepository = ctx.getBean(AssetRepository.class);
 		FrimwareRepository frimwareRepository = ctx.getBean(FrimwareRepository.class);
 		PurchisingRepository purchisingRepository =ctx.getBean(PurchisingRepository.class);
-
+		ContratRepository contratRepository =ctx.getBean(ContratRepository.class);
+		
+		
+		 contratRepository.save(new Contrat("contract1", "contract2", new Date()));
 		 
 		 purchisingRepository.save(new Purchasing("purch1", "purch2", "purch3", "purch4"));
 		 

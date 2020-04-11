@@ -1,17 +1,21 @@
 package com.example.demo.entities;
 
 import java.io.Serializable;
+import java.util.Collection;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
+
 
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
@@ -58,23 +62,31 @@ public class Customer implements Serializable{
 	@Column(name="Status")
 	private String Status;
 	
-	@ManyToOne
-	@JoinColumn(name="Purchasing_ID")
-	private Purchasing Purchasing;
+	@OneToMany
+	private Collection <Purchasing> Purchasing;
+	@OneToMany
+	private Collection <Contrat> contrat;
 	 
-	
 
-	public Purchasing getPurchasing() {
+
+	public Collection<Contrat> getContrat() {
+		return contrat;
+	}
+
+	public void setContrat(Collection<Contrat> contrat) {
+		this.contrat = contrat;
+	}
+
+	public Collection<Purchasing> getPurchasing() {
 		return Purchasing;
 	}
 
-	public void setPurchasing(Purchasing purchasing) {
-		this.Purchasing = purchasing;
+	public void setPurchasing(Collection<Purchasing> purchasing) {
+		Purchasing = purchasing;
 	}
 
-
 	public Customer(String name, String industry, String logo, String phoneCompany, String adressCompany, String vip,
-			String nomCIO, String phoneCIO, String emailCIO, String nomTechnical, String emailTechnical, String phoneTechnical, String city, String country, String status, Purchasing purchasing) {
+			String nomCIO, String phoneCIO, String emailCIO, String nomTechnical, String emailTechnical, String phoneTechnical, String city, String country, String status) {
 		super();
 		Name = name;
 		Industry = industry;
@@ -91,7 +103,7 @@ public class Customer implements Serializable{
 		City = city;
 		Country = country;
 		Status = status;
-		Purchasing = purchasing;
+		
 	}
 
 	public Customer() {

@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Collection;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
@@ -15,13 +16,14 @@ import javax.persistence.Table;
 @Table(name="users")
 public class Users implements Serializable {
 	@Id
-
+	
 	private  String username;
 	private String password; 
 	private boolean actived;
 	private String lastName;
 	private String firstName;
 	private String CIN; 
+	private String Phone;
 	@ManyToOne
 	@JoinColumn(name = "customer_ID")
 	private Customer customer;
@@ -41,8 +43,13 @@ public class Users implements Serializable {
 
 	
 	
+
+
+
+
+
 	public Users(String username, String password, boolean actived, String lastName, String firstName, String cIN,
-			Customer customer, Collection<Roles> roles) {
+			String phone, Customer customer, Collection<Roles> roles) {
 		super();
 		this.username = username;
 		this.password = password;
@@ -50,9 +57,15 @@ public class Users implements Serializable {
 		this.lastName = lastName;
 		this.firstName = firstName;
 		CIN = cIN;
+		Phone = phone;
 		this.customer = customer;
 		this.roles = roles;
 	}
+
+
+
+
+
 
 
 
@@ -136,6 +149,20 @@ public class Users implements Serializable {
 
 	public void setCustomer(Customer customer) {
 		this.customer = customer;
+	}
+
+
+
+	public String getPhone() {
+		return Phone;
+	}
+
+
+
+
+
+	public void setPhone(String phone) {
+		Phone = phone;
 	} 
 	
 	

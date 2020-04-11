@@ -29,8 +29,11 @@
           
       </div>
       <div class="list-group list-group-sm">
+      <div th:if="${param.error}" class="alert alert-danger">    
+  	  Invalid username and password.
+	  </div>
         <div class="list-group-item">
-          <input type="text" placeholder="Email" name="username" class="form-control no-border" ng-model="user.email" required/>
+          <input type="email" placeholder="Email" name="username" class="form-control no-border" ng-model="user.email" required/>
         </div>
         <div class="list-group-item">
            <input type="password" placeholder="password" class="form-control no-border" ng-model="user.password" name="password" required/>

@@ -56,14 +56,14 @@ public class CustomerController {
 			
 	}
 	
-	@RequestMapping(value = "/admin/editCustomer",method= RequestMethod.POST)
+	@RequestMapping(value = "/editCustomer",method= RequestMethod.POST)
 	public String updateCustomer(Model model, @Valid Customer cust, BindingResult bindingResult){
 	if (bindingResult.hasErrors()) {
 		return "updateCustomerForm";
 	}
 		customerrepository.save(cust);
 		
-		return "redirect:/admin/customer_manage";
+		return "redirect:/customer_manage";
 	}
 
 

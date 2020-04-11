@@ -34,6 +34,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 protected void configure(HttpSecurity http) throws Exception {
 	http
 	.authorizeRequests()
+	.antMatchers("/css/**","/js/**","/libs/**","/fonts/**","/src/**").permitAll()
 	.anyRequest()
 	.authenticated()
 	.and()
@@ -43,7 +44,7 @@ protected void configure(HttpSecurity http) throws Exception {
 	.permitAll()
 	.and()
 	.logout()
-	.logoutUrl("/logout")
+	.logoutUrl("/LoginVrai?logout")
 	.logoutSuccessUrl("/LoginVrai");
 	
 }

@@ -7,8 +7,10 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.Max;
@@ -25,7 +27,8 @@ import org.springframework.format.annotation.NumberFormat;
 public class Customer implements Serializable{
 	
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "my_seq_id")
+	@SequenceGenerator(name = "my_seq_id", sequenceName = "my_seq_id", allocationSize = 100)
 	private Integer Customer_ID;
 	
 	@NotNull 
@@ -39,7 +42,6 @@ public class Customer implements Serializable{
 	private String Logo;
 
     
-
 	@NotNull
 	private String PhoneCompany;
 	
@@ -78,9 +80,6 @@ public class Customer implements Serializable{
 	private String Country;
 	
 	@NotNull
-	private String DataCenter;
-	
-	@NotNull
 	private String Status;
 	
 	@OneToMany(mappedBy = "customer", fetch = FetchType.LAZY)
@@ -90,7 +89,7 @@ public class Customer implements Serializable{
 		super();
 	}
 
-	public Customer(String name, String industry, String logo, String phoneCompany, String adressCompany, String vip, String dataCenter,
+	public Customer(String name, String industry, String logo, String phoneCompany, String adressCompany, String vip, 
 			String nomCIO, String phoneCIO, String emailCIO, String nomTechnical, String emailTechnical, String phoneTechnical, String city, String country, String status) {
 		super();
 		Name = name;
@@ -99,7 +98,6 @@ public class Customer implements Serializable{
 		PhoneCompany = phoneCompany;
 		AdressCompany = adressCompany;
 		Vip = vip;
-		DataCenter= dataCenter;
 		NomCIO= nomCIO;
 		PhoneCIO = phoneCIO;
 		EmailCIO = emailCIO;
@@ -237,14 +235,6 @@ public class Customer implements Serializable{
 
 	public void setEmailTechnical(String emailTechnical) {
 		EmailTechnical = emailTechnical;
-	}
-	
-	public void setDataCenter(String dataCenter) {
-		DataCenter = dataCenter;
-	}
-
-	public String getDataCenter() {
-		return DataCenter;
 	}
 
 	public Collection<Users> getUsers() {

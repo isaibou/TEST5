@@ -1,12 +1,8 @@
 package com.example.demo;
 
-<<<<<<< HEAD
-=======
 import java.util.Date;
-
 import java.util.List;
 
->>>>>>> branch 'master' of https://github.com/isaibou/TEST5
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;

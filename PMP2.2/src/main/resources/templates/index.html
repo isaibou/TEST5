@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
   <meta charset="utf-8" />
   <title>Portail PowerM</title>
@@ -267,7 +268,7 @@
                 <ul class="nav nav-sub dk">
                
                   <li>
-                    <a th:href="customer_manage">
+                    <a th:href="@{/customer_manage}">
                       <span>Manage customer</span>
                     </a>
                   </li>
@@ -280,7 +281,7 @@
                     
                 </ul>
               </li>
-			     <li>
+			     <li sec:authorize="hasRole('ROLE_ADMIN')">
                 <a href class="auto">      
                   <span class="pull-right text-muted">
                     <i class="fa fa-fw fa-angle-right text"></i>
@@ -288,12 +289,12 @@
                   </span>
                   <b class="badge bg-info pull-right">3</b>
                   <i class="glyphicon glyphicon-user"></i>
-                  <span>Users</span>
+                  <span >Users</span>
                 </a>
-                <ul class="nav nav-sub dk">
+                <ul  class="nav nav-sub dk">
                
-                  <li>
-                    <a th:href="users">
+                  <li >
+                    <a  th:href="@{/users}">
                       <span>Manage users</span>
                     </a>
                   </li>
@@ -360,7 +361,7 @@
                     </a>
                   </li>
 				  <li>
-                    <a th:href="firmware">
+                    <a th:href="@{manager/firmware}">
                       <span>Firmware</span>
                     </a>
                   </li>
@@ -419,10 +420,10 @@
                 <span>Your Stuff</span>
               </li>  
               <li>
-                <a th:href="page_profile">
+                <a th:href="@{/logout}">
                   <i class="icon-user icon text-success-lter"></i>
                   <b class="badge bg-success pull-right">30%</b>
-                  <span>Profile</span>
+                    <span>[[${#httpServletRequest.remoteUser}]]</span>
                 </a>
               </li>
               <li>

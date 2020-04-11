@@ -10,6 +10,8 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;
+import org.springframework.security.access.annotation.Secured;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -22,8 +24,6 @@ import org.apache.commons.io.IOUtils;
 
 import com.example.demo.entities.*;
 import com.example.demo.repository.CustomerRepository;
-
-
 
 @Controller
 public class CustomerController {
@@ -43,9 +43,8 @@ public class CustomerController {
 		
 		return "customer_manage";
 	}
-	
-	
-	@RequestMapping(value="/SaveCustomer" , method= RequestMethod.POST)
+
+    @RequestMapping(value="/admin/SaveCustomer" , method= RequestMethod.POST)
 	private String SaveCustomer(@Valid Customer addCust, BindingResult bindingResult, @RequestParam(name="picture")MultipartFile file) {
 		
 		/*if(bindingResult.hasErrors()) {
@@ -88,7 +87,7 @@ public class CustomerController {
 		return new byte[0] ;	 
 	}
 	
-	@RequestMapping(value ="/updateCustomerform" )
+	@RequestMapping(value ="updateCustomerform" )
 	private String updateCustomerform( Model model, Integer id ) {
 	Customer customer = customerrepository.getOne(id);
 		 model.addAttribute("customer",customer);
@@ -98,13 +97,12 @@ public class CustomerController {
 			
 	}
 	
-	@RequestMapping(value="/editCustomer" , method= RequestMethod.POST)
+    @RequestMapping(value = "/admin/editCustomer",method= RequestMethod.POST)
 	private String updateCustomer(@Valid Customer addCust, BindingResult bindingResult, @RequestParam(name="picture")MultipartFile file) {
-		
-		/*if(bindingResult.hasErrors()) {
-			return "updateCustomerForm";
-		}*/
-		
+
+	if (bindingResult.hasErrors()) {
+		return "updateCustomerForm";
+	}
 		if(!(file.isEmpty())) {
 			addCust.setLogo(file.getOriginalFilename());
 			addCust.setStatus("Actif");
@@ -121,10 +119,8 @@ public class CustomerController {
 			}
 			
 		}
-		
-		return "redirect:/customer_manage";	
+		return "redirect:/admin/customer_manage";
 	}
-
 	@RequestMapping(value ="/detailCustomer")
 	public String detailCustomer( Model model, Integer id ) {
 		Customer customer = customerrepository.getOne(id);
@@ -139,10 +135,13 @@ public class CustomerController {
 	
 	Customer Cust = customerrepository.getOne(id);
 	Cust.setStatus("Archived");
+
 	customerrepository.save(Cust);
-	System.out.println(Cust.getStatus());
+	
 		
-			return "redirect:/customer_manage";	}
+			return "redirect:/customer_manage";	
+			
+}
 
 }
  	

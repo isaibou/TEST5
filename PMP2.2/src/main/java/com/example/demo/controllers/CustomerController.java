@@ -98,7 +98,7 @@ public class CustomerController {
 	}
 	
     @RequestMapping(value = "/admin/editCustomer",method= RequestMethod.POST)
-	private String updateCustomer(@Valid Customer addCust, BindingResult bindingResult, @RequestParam(name="picture")MultipartFile file) {
+	private String updateCustomer(Model model, @Valid Customer addCust, BindingResult bindingResult, @RequestParam(name="picture")MultipartFile file) {
 
 	/*if (bindingResult.hasErrors()) {
 		return "updateCustomerForm";
@@ -119,10 +119,10 @@ public class CustomerController {
 			}
 			
 		}
-		return "redirect:/admin/customer_manage";
+		return "redirect:/customer_manage";
 	}
     
-	@RequestMapping(value ="/admin/detailCustomer")
+	@RequestMapping(value ="/detailCustomer")
 	public String detailCustomer( Model model, Integer id ) {
 		Customer customer = customerrepository.getOne(id);
 		 model.addAttribute("customer",customer);
@@ -140,7 +140,7 @@ public class CustomerController {
 	customerrepository.save(Cust);
 	
 		
-			return "redirect:/admin/customer_manage";	
+			return "redirect:/customer_manage";	
 			
 }
 

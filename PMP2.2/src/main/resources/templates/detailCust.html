@@ -15,7 +15,7 @@
 <body>
 <div class="app" >
  <a href="" class="navbar-brand block m-t"><i class="fa fa-power-off"></i> <b>PowerM</b> </a>
- <div th:action="@{admin/detailCustomer}" method ="post" th:object="${customer}">
+ <div th:action="@{detailCustomer}" method ="post" th:object="${customer}">
   <div class="modal-dialog modal-lg" >
    <div class="modal-content">
     <h1 class="m-n font-bold h3"> Informations Customer </h1>
@@ -48,10 +48,6 @@
 		   <tr >
 		   <td style="color:#23b7e5;"><center>Company Phone </center></th>
 		   <td th:text ="${c.PhoneCompany}" class="m-n font-thin h4 text-secondary"></td>
-		   </tr>
-		   <tr> 
-		   <td style="color:#23b7e5;"><center>Data Center </center></th>
-		   <td th:text ="${c.DataCenter}" class="m-n font-thin h4 text-secondary"></td>
 		   </tr>
 		   <tr >
 		   <td style="color:#23b7e5;"><center>CIO Name</center></th>

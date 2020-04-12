@@ -10,11 +10,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import javax.persistence.SequenceGenerator;
-import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.Email;
@@ -27,8 +22,7 @@ import org.springframework.format.annotation.NumberFormat;
 public class Customer implements Serializable{
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "my_seq_id")
-	@SequenceGenerator(name = "my_seq_id", sequenceName = "my_seq_id", allocationSize = 100)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer Customer_ID;
 	
 	@NotNull 
@@ -43,6 +37,7 @@ public class Customer implements Serializable{
 
     
 	@NotNull
+	@NumberFormat(pattern = "##########")
 	private String PhoneCompany;
 	
 	@NotNull
@@ -52,10 +47,11 @@ public class Customer implements Serializable{
 	private String Vip;
 	
 	@NotNull
-	@Column(name="NomTechnical")
+	@Column(name="NomTechnical",length=30)
 	private String NomTechnical;
 	
 	@NotNull
+	@NumberFormat(pattern = "##########")
 	private String PhoneTechnical;
 	
 	@NotNull
@@ -63,10 +59,11 @@ public class Customer implements Serializable{
 	private String EmailTechnical;
 	
 	@NotNull
-	@Column(name="NomCIO")
+	@Column(name="NomCIO",length=30)
 	private String NomCIO;
 	
 	@NotNull
+	@NumberFormat(pattern = "##########")
 	private String PhoneCIO;
 	
 	@NotNull

@@ -13,9 +13,9 @@ import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.Email;
-import org.hibernate.validator.constraints.NotEmpty;
 import org.hibernate.validator.constraints.UniqueElements;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.bind.DefaultValue;
@@ -27,38 +27,59 @@ public class Customer implements Serializable{
 	@Id
 	@GeneratedValue
 	private Integer Customer_ID;
-	@Column(unique=true)
+	
+	@NotNull 
+	@Column(name="Name",length=30,unique=true)
 	private String Name;
-	@Column(name="Industry")
+	
+	@NotNull
 	private String Industry;
-	@Column(name="Logo")
+	
+
 	private String Logo;
 
     
 
-	@Column(name="PhoneCompany")
+	@NotNull
 	private String PhoneCompany;
-	@Column(name="AdressCompany")
+	
+	@NotNull
 	private String AdressCompany;
-	@Column(name="Vip")
+	
+	@NotNull
 	private String Vip;
+	
+	@NotNull
 	@Column(name="NomTechnical")
 	private String NomTechnical;
-	@Column(name="PhoneTechnical")
+	
+	@NotNull
 	private String PhoneTechnical;
-	@Column(name="EmailTechnical")
+	
+	@NotNull
+	@Email
 	private String EmailTechnical;
+	
+	@NotNull
 	@Column(name="NomCIO")
 	private String NomCIO;
-	@Column(name="PhoneCIO")
+	
+	@NotNull
 	private String PhoneCIO;
-	@Column(name="EmailCIO")
+	
+	@NotNull
+	@Email
 	private String EmailCIO;
-	@Column(name="City")
+	
+	@NotNull
 	private String City;
-	@Column(name="Country")
-	private String Country; 
-	@Column(name="Status")
+	
+	@NotNull
+	private String Country;
+	
+	
+	
+	@NotNull
 	private String Status;
 	
 	@OneToMany(mappedBy = "customer", fetch = FetchType.LAZY)
@@ -67,9 +88,16 @@ public class Customer implements Serializable{
 	public Customer() {
 		super();
 	}
-
-	public Customer(String name, String industry, String logo, String phoneCompany, String adressCompany, String vip,
-			String nomCIO, String phoneCIO, String emailCIO, String nomTechnical, String emailTechnical, String phoneTechnical, String city, String country, String status) {
+	
+	
+	
+	
+	
+	public Customer(@NotNull String name, @NotNull String industry, String logo, @NotNull String phoneCompany,
+			@NotNull String adressCompany, @NotNull String vip, @NotNull String nomTechnical,
+			@NotNull String phoneTechnical, @NotNull @Email String emailTechnical, @NotNull String nomCIO,
+			@NotNull String phoneCIO, @NotNull @Email String emailCIO, @NotNull String city, @NotNull String country,
+			@NotNull String status) {
 		super();
 		Name = name;
 		Industry = industry;
@@ -77,16 +105,20 @@ public class Customer implements Serializable{
 		PhoneCompany = phoneCompany;
 		AdressCompany = adressCompany;
 		Vip = vip;
-		NomCIO= nomCIO;
+		NomTechnical = nomTechnical;
+		PhoneTechnical = phoneTechnical;
+		EmailTechnical = emailTechnical;
+		NomCIO = nomCIO;
 		PhoneCIO = phoneCIO;
 		EmailCIO = emailCIO;
-		NomTechnical= nomTechnical;
-		EmailTechnical= emailTechnical;
-		PhoneTechnical= phoneTechnical;
 		City = city;
 		Country = country;
 		Status = status;
 	}
+
+
+
+
 
 	public Integer getCustomer_ID() {
 		return Customer_ID;
@@ -215,7 +247,8 @@ public class Customer implements Serializable{
 	public void setEmailTechnical(String emailTechnical) {
 		EmailTechnical = emailTechnical;
 	}
-
+	
+	
 	public Collection<Users> getUsers() {
 		return users;
 	}

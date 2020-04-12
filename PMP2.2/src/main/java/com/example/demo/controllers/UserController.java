@@ -48,6 +48,7 @@ public class UserController {
 	model.addAttribute("addUser",new Users());
 	model.addAttribute("customer", customerRepository.findAll());
 	model.addAttribute("allRoles", roleRepository.findAll());	
+	
 		
 		
 		return "users";

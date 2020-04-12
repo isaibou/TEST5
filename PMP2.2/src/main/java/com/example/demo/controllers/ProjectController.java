@@ -26,7 +26,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import com.example.demo.entities.*;
 import com.example.demo.exception.OrderDate;
 import com.example.demo.repository.ProjetRepository;
-import com.example.demo.storage.StorageService;
+//import com.example.demo.storage.StorageService;
 
 @Controller
 public class ProjectController {
@@ -64,7 +64,7 @@ public class ProjectController {
 		return "redirect:/projects_manage";	
 	}
 
-	private StorageService storageService;
+	/*private StorageService storageService;
 
     public ProjectController(StorageService storageService) {
         this.storageService = storageService;
@@ -107,7 +107,7 @@ public class ProjectController {
 
         ProjectRepository.save(addProj);
         return new Project(deliveryCertificate, uri, file.getContentType(), file.getSize());
-    }
+    }*/
 
    /* @PostMapping("/upload-multiple-files")
     @ResponseBody

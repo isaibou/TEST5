@@ -571,7 +571,7 @@
 															}" class="table table-striped b-t b-b">
 															<thead>
 																<tr >
-																
+																    <th  style="width:15%"><center>Logo</center></th>
 																	<th  style="width:25%"><center>Customer</center></th>
 																	<th  style="width:25%"><center>Address</center></th>
 																	<th  style="width:15%"><center>Industry</center></th>
@@ -582,11 +582,12 @@
 															</thead>
 															<tbody>
 																<tr data-expanded="true" th:each="c:${cust}">
-																	<td th:text ="${c.Name}"> </td>
-																		<td th:text ="${c.AdressCompany}"><center></center></td>
-																		<td th:text ="${c.Industry}"><center><center/></td>
-																		<td th:text ="${c.Status}"><center><span></span><center/></td>
-																				<td sec:authorize="hasRole('ROLE_ADMIN')" >
+																    <td><img class="img-circle" th:src="@{getLogo(id=${c.Customer_ID})}" width="100" height="100"/></td>
+																	<td th:text ="${c.Name}" class="m-n font-thin h4 text-secondary"> </td>
+																		<td th:text ="${c.AdressCompany}" class="m-n font-thin h4 text-secondary"><center></center></td>
+																		<td th:text ="${c.Industry}" class="m-n font-thin h4 text-secondary"><center><center/></td>
+																		<td th:text ="${c.Status}" class="m-n font-thin h4 text-secondary"><center><span></span><center/></td>
+																				<td>
 																					<center>
 																						<div class="btn-group dropdown">
 																							<button class="btn btn-default btn-xs" data-toggle="dropdown"><i class="glyphicon glyphicon-cog"></i> Action <span class="caret"></span></button>
@@ -597,7 +598,7 @@
 																									<a th:href="@{archiverCustomer(id=${c.Customer_ID})}"  style="margin-top:-5px;" data-toggle="modal"  class="btn btn-sm btn-light" role="button">Archive</a>
 																								</li>
 																								<li>
-																									<a style="margin-top:-5px;" data-toggle="modal"  data-target="#Detail" class="btn btn-sm btn-light" role="button">Detail</a>
+																									<a th:href="@{detailCustomer(id=${c.Customer_ID})}" style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Detail</a>
 																								</li>
 																							</ul>
 																						</div>
@@ -619,7 +620,6 @@
 </div>
 </div>
 </div>
-
 <div class="modal fade" role="dialog" id="AddClient" >
  <div class="modal-dialog modal-lg" >
   <div class="modal-content">
@@ -627,44 +627,68 @@
 	<button type="button" class="close pull-right" data-dismiss="modal">&times;</button>
     <h1 class="m-n font-bold h3"> <b class="glyphicon-plus pull"> </b> Add Company</h1>
    </div>
-   <form th:action="@{/admin/SaveCustomer}" method ="post" th:object="${customer}">
+   <form th:action="@{/admin/SaveCustomer}" enctype="multipart/form-data" method ="post" th:object="${customer}">
    <div class="modal-body">
 	<div class="row">
-	<label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Comapny Logo</b></label>
+	<label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Company Logo</b></label>
      <div class="col-sm-8" style="margin: 5px 0px;">
-      <div class="btn-group">
-      <a class="btn btn-default" tooltip="Insert picture (or just drag &amp; drop)" id="pictureBtn"><i class="fa fa-picture-o"></i></a>
-      <input type="file" data-edit="insertImage" style="position:absolute; opacity:0; width:41px; height:34px" />
+        <input type="file" name="picture" class="form-control" id="input-id-1">
+        <span class="text-danger" th:errors=*{Logo}></span>
      </div>
-     </div>
-	 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Comapny Name</b></label>
+	 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Company Name</b></label>
      <div class="col-sm-8" style="margin: 5px 0px;" >
       <input type="text" class="form-control" placeholder="Entry Name of Company" id="input-id-1"  required th:field=*{Name}/>
       <span class="text-danger" th:errors=*{Name}></span>
 	 </div>
-	 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Address</b></label>
+	 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Company Address</b></label>
 	 <div class="col-sm-8" style="margin: 5px 0px;">
-	  <input type="text"  class="form-control" placeholder="Entry Address of Company"id="input-id-2"  required th:field=*{AdressCompany}>
+	  <input type="text"  class="form-control" placeholder="Entry Address of Company"id="input-id-2"  required th:field=*{AdressCompany}/>
+	  <span class="text-danger" th:errors=*{AdressCompany}></span>
 	 </div>
-	  <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Email CIO</b></label>
+	 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Company Phone</b></label>
 	 <div class="col-sm-8" style="margin: 5px 0px;">
-	  <input type="email" placeholder="Entry Phone CIO"class="form-control" id="input-id-1" required th:field=*{EmailCIO}> 
+	  <input type="tel" placeholder="Entry Phone of Company"class="form-control" id="input-id-1" required th:field=*{PhoneCompany}/>
+	  <span class="text-danger" th:errors=*{PhoneCompany}></span>
 	 </div>
-	  <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Phone CIO</b></label>
+	 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>CIO Name</b></label>
 	 <div class="col-sm-8" style="margin: 5px 0px;">
-	  <input type="tel" placeholder="Entry Phone CIO"class="form-control" id="input-id-1" required  th:field=*{PhoneCIO}>
+	  <input type="text" placeholder="Entry Nom CIO"class="form-control" id="input-id-1" required th:field=*{NomCIO}/> 
+	  <span class="text-danger" th:errors=*{NomCIO}></span>
 	 </div>
-	 <label class="col-sm-4 control-label" placeholder="Entry Country of Company" style="margin: 5px 0px;" for="input-id-1"><b>Country</b></label>
+	  <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>CIO Email </b></label>
 	 <div class="col-sm-8" style="margin: 5px 0px;">
-	  <select id="countryA" name ="country" class="form-control m-b" th:field=*{Country}></select>
+	  <input type="email" placeholder="Entry Email CIO"class="form-control" id="input-id-1" required th:field=*{EmailCIO}/> 
+	  <span class="text-danger" th:errors=*{EmailCIO}></span>
 	 </div>
-	 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>City</b></label>
+	  <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>CIO Phone </b></label>
 	 <div class="col-sm-8" style="margin: 5px 0px;">
-	  <select name ="state" id ="stateA" class="form-control m-b" th:field=*{City}></select>
+	  <input type="tel" placeholder="Entry Phone CIO"class="form-control" id="input-id-1" required  th:field=*{PhoneCIO}/>
+	  <span class="text-danger" th:errors=*{PhoneCIO}></span>
 	 </div>
-	 <label class="col-sm-4 control-label" placeholder="Entry Phone of Company" style="margin: 5px 0px;" for="input-id-1"><b>Phone</b></label>
+	 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Technical Name</b></label>
 	 <div class="col-sm-8" style="margin: 5px 0px;">
-	  <input type="tel" placeholder="Entry Phone of Company"class="form-control" id="input-id-1"  th:field=*{PhoneCompany}>
+	  <input type="text" placeholder="Entry Nom Technical"class="form-control" id="input-id-1" required th:field=*{NomTechnical}> 
+	  <span class="text-danger" th:errors=*{NomTechnical}></span>
+	 </div>
+	 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Technical Email </b></label>
+	 <div class="col-sm-8" style="margin: 5px 0px;">
+	  <input type="email" placeholder="Entry Email Technical"class="form-control" id="input-id-1" required th:field=*{EmailTechnical}/> 
+	  <span class="text-danger" th:errors=*{EmailTechnical}></span>
+	 </div>
+	 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Technical Phone </b></label>
+	 <div class="col-sm-8" style="margin: 5px 0px;">
+	  <input type="tel" placeholder="Entry Phone Technical"class="form-control" id="input-id-1" required th:field=*{PhoneTechnical}/> 
+	  <span class="text-danger" th:errors=*{PhoneTechnical}></span>
+	 </div>
+	 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Country Company</b></label>
+	 <div class="col-sm-8" style="margin: 5px 0px;">
+	  <select id="countryA" name ="Morocco" class="form-control" required th:field=*{Country}></select>
+	  <span class="text-danger" th:errors=*{Country}></span>
+	 </div>
+	 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>City Company</b></label>
+	 <div class="col-sm-8" style="margin: 5px 0px;">
+	  <select name ="Rabat" id ="stateA" class="form-control" required th:field=*{City}></select>
+	  <span class="text-danger" th:errors=*{City}></span>
 	 </div>
 	 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Industry</b></label>
 	 <div class="col-sm-8" style="margin: 5px 0px;">
@@ -684,111 +708,27 @@
 	   <option th:value ="Telecomunication" th:text="Telecomunication"></option>
 	   <option th:value ="Transportation" th:text="Transportation"></option>
 	  </select>
+	  <span class="text-danger" th:errors=*{Industry}></span>
 	 </div>
 	  <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>VIP</b></label>
 	 <div class="col-sm-8" style="margin: 5px 0px;">
-	  <select name="VIP" class="form-control m-b" th:field=*{Vip}  >
+	  <select name="VIP" class="form-control m-b" required th:field=*{Vip}>
 	  	 <option th:value="YES" th:text="YES"  ></option>
    		 <option th:value="NO" th:text="NO" ></option>
 	  </select>
-	 </div>
-    
-    
+	  <span class="text-danger" th:errors=*{Vip}></span>
+	 </div>   
 	 </div>
 	</div>
-   </div>
    <div class="modal-footer">
 	<button style="margin:0px;" class="btn m-b-xs btn-sm btn-primary btn-addon"><i class="glyphicon glyphicon-ok"></i>Save</button>
-	<button style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon" data-dismiss="modal"><i class="glyphicon glyphicon-remove"  ></i>Annuler</button>
-		
+	<button style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon" data-dismiss="modal"><i class="glyphicon glyphicon-remove"></i>Annuler</button>		
    </div>
-   </form >
+   </form>
   </div>
  </div>
 </div>
-
-
-<div class="modal fade" role="dialog" id="Detail" >
-	 <div class="modal-dialog modal-lg" >
-  <div class="modal-content">
-   <div class="modal-header" style="background-image:url(img/grf-bg.jpg);color:white;">
-  <button type="button" class="close pull-right" data-dismiss="modal">&times;</button>
-     <h1 class="m-n font-bold h3">Information Customer</h1>
-   </div>
-   <div class="modal-body">
-   	<div class="panel-heading">
-          <span class="m-n font-thin h2 text-black">Information Customer</span>
-	</div>
-	<div class="panel-body">
-    <p th:each="c:${cust}">
-     <span class="m-n font-thin h3 text-black" >Nom :</span>
-	 <span th:text ="${c.Name}"></span></br>
-	 <span class="m-n font-thin h3 text-black">Logo :</span>
-	 <span th:text ="${c.Logo}"></span></br>
-	 <span class="m-n font-thin h3 text-black" >Adresse :</span> 
-	 <span th:text ="${c.AdressCompany}"></span></br>
-	 <span class="m-n font-thin h3 text-black">Industry :</span>
-	 <span th:text ="${c.Industry}"></span></br>
-	 <span class="m-n font-thin h3 text-black">Phone :</span>
-	 <span th:text ="${c.PhoneCompany}"></span></br>
-	 <span class="m-n font-thin h3 text-black">Country community :</span>
-	 <span th:text ="${c.Country}"></span></br>
-	 <span class="m-n font-thin h3 text-black">City community :</span>
-	 <span th:text ="${c.City}"></span></br>
-	</p>
-	</div>
-	<div class="panel-heading " >
-         <span class="m-n font-thin h2 text-black">Information Purchasing</span>
-	</div>
-	<div class="panel-body">
-	 <p>
-	    <span class="m-n font-thin h3 text-black">Nom :</span>
-		<span ng-repeat="nomPurchasing in purchasing"></span></br>
-		<span class="m-n font-thin h3 text-black">Phone :</span>
-		<span ng-repeat="phonePurchasing in purchasing"></span></br>
-		<span class="m-n font-thin h3 text-black">Email :</span>
-		<span ng-repeat="emailPurchasing in purchasing"></span></br>
-     </p>
-	</div>
-	<div class="panel-heading " >
-         <span class="m-n font-thin h2 text-black">Information Technical</span>
-    </div>
-	<div class="panel-body">
-	 <p>
-	    <span class="m-n font-thin h3 text-black">Nom :</span>
-		<span ng-repeat="nomTechnical in technical"></span></br>
-		<span class="m-n font-thin h3 text-black">Phone :</span>
-	    <span ng-repeat="phoneTechnical in technical"></span></br>
-	    <span class="m-n font-thin h3 text-black">Email :</span>
-		<span ng-repeat="emailTechnical in technical"></span>
-	 </p>
-	</div>
-	<div class="panel-heading " >
-         <span class="m-n font-thin h2 text-black">Information CIO</span>
-	</div>
-	<div class="panel-body">
-	 <p th:each="c:${cust}">
-		<span class="m-n font-thin h3 text-black">Nom : </span>
-		<span ng-repeat="nomCIO in CIO"></span></br>
-		<span class="m-n font-thin h3 text-black">Phone : </span>
-		<span th:text ="${c.PhoneCIO}"></span></br>
-		<span class="m-n font-thin h3 text-black">Email : </span>
-		<span th:text ="${c.EmailCIO}"> </span></br>
-	 </p>
-    </div>
-    <div class="panel-heading">
-           <span class="m-n font-thin h2 text-black">DataCentre</span>
-	</div>
-	<div class="panel-body">
-		<span ng-repeat="nom in company.DataCentre"></span></br>
-	</div>
-   </div>
-   <div class="modal-footer">
-   <button class="btn m-b-xs btn-sm btn-primary btn-addon" data-dismiss="modal">Return</button>
-  </div>
-  </div>  
-</div>
-</div>
+<!-- <a onclick="return confirm('Save')"></a> -->
 									<!-- /content -->
 
 									<!-- footer -->

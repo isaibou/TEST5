@@ -8,17 +8,19 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 
 
 import org.hibernate.validator.constraints.Email;
-import org.hibernate.validator.constraints.NotEmpty;
 import org.hibernate.validator.constraints.UniqueElements;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.bind.DefaultValue;
@@ -30,37 +32,62 @@ public class Customer implements Serializable{
 	@Id
 	@GeneratedValue
 	private Integer Customer_ID;
-	@Column(unique=true)
+	
+	@NotNull 
+	@Column(name="Name",length=30,unique=true)
 	private String Name;
-	@Column(name="Industry")
+	
+	@NotNull
 	private String Industry;
-	@Column(name="Logo")
+	
+
 	private String Logo;
 
-	@Column(name="PhoneCompany")
+    
+
+	@NotNull
 	private String PhoneCompany;
-	@Column(name="AdressCompany")
+	
+	@NotNull
 	private String AdressCompany;
-	@Column(name="Vip")
+	
+	@NotNull
 	private String Vip;
+	
+	@NotNull
 	@Column(name="NomTechnical")
 	private String NomTechnical;
-	@Column(name="PhoneTechnical")
+	
+	@NotNull
 	private String PhoneTechnical;
-	@Column(name="EmailTechnical")
+	
+	@NotNull
+	@Email
 	private String EmailTechnical;
+	
+	@NotNull
 	@Column(name="NomCIO")
 	private String NomCIO;
-	@Column(name="PhoneCIO")
+	
+	@NotNull
 	private String PhoneCIO;
-	@Column(name="EmailCIO")
+	
+	@NotNull
+	@Email
 	private String EmailCIO;
-	@Column(name="City")
+	
+	@NotNull
 	private String City;
-	@Column(name="Country")
-	private String Country; 
-	@Column(name="Status")
+	
+	@NotNull
+	private String Country;
+	
+	
+	
+	@NotNull
 	private String Status;
+	
+//la reletion entre purchaising et contract
 	
 	@OneToMany
 	private Collection <Purchasing> Purchasing;
@@ -85,7 +112,15 @@ public class Customer implements Serializable{
 		Purchasing = purchasing;
 	}
 
-	public Customer(String name, String industry, String logo, String phoneCompany, String adressCompany, String vip,
+	@OneToMany(mappedBy = "customer", fetch = FetchType.LAZY)
+	private Collection<Users> users;
+	
+	public Customer() {
+		super();
+
+	}
+
+	public Customer(String name, String industry, String logo, String phoneCompany, String adressCompany, String vip, 
 			String nomCIO, String phoneCIO, String emailCIO, String nomTechnical, String emailTechnical, String phoneTechnical, String city, String country, String status) {
 		super();
 		Name = name;
@@ -94,6 +129,7 @@ public class Customer implements Serializable{
 		PhoneCompany = phoneCompany;
 		AdressCompany = adressCompany;
 		Vip = vip;
+		
 		NomCIO= nomCIO;
 		PhoneCIO = phoneCIO;
 		EmailCIO = emailCIO;
@@ -106,9 +142,7 @@ public class Customer implements Serializable{
 		
 	}
 
-	public Customer() {
-		super();
-	}
+	
 
 	public Integer getCustomer_ID() {
 		return Customer_ID;
@@ -237,5 +271,16 @@ public class Customer implements Serializable{
 	public void setEmailTechnical(String emailTechnical) {
 		EmailTechnical = emailTechnical;
 	}
+	
+	
 
+	public Collection<Users> getUsers() {
+		return users;
+	}
+
+	public void setUsers(Collection<Users> users) {
+		this.users = users;
+	}
+
+	
 }

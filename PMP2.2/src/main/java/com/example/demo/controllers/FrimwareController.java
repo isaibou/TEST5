@@ -6,6 +6,7 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -27,7 +28,8 @@ public class FrimwareController {
 	private FrimwareRepository frimwareRepository;
 	
 
-	@RequestMapping(value = "/firmware")
+	
+	@RequestMapping(value = "/manager/firmware")
 	public String AllFrimware(Model model, Frimware frimware) {
 		
 		List<Frimware> frime = frimwareRepository.findAll();

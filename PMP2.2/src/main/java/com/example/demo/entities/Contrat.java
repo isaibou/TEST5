@@ -26,6 +26,7 @@ public class Contrat implements Serializable{
 	private String Description;
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date DeliveryDate;
+	//les relation avec customer
 	@ManyToOne
 	@JoinColumn
 	private Customer customer;

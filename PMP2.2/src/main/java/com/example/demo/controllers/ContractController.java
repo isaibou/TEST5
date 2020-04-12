@@ -21,7 +21,7 @@ import com.example.demo.repository.CustomerRepository;
 @Controller
 public class ContractController {
 	
-	// ici on a besoin de déclarer le repository du customer pour avoir, 
+	// Ici on a besoin de déclarer le repository du customer pour avoir
 		//appeller a le modéle qui va afficher la liste déroulante 
 		@Autowired
 		private CustomerRepository customerRepository;

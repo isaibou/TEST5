@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 	<head>
 		<meta charset="utf-8" />
 		<title> Manage Purchasing Customers </title>
@@ -559,7 +560,8 @@
 																							<button class="btn btn-default btn-xs" data-toggle="dropdown"><i class="glyphicon glyphicon-cog"></i> Action <span class="caret"></span></button>
 																							<ul class="dropdown-menu">
 																								<li>
-																									 <li><a th:href="@{updatePurchasing(id=${p.Purchasing_ID})}"  style="margin-top:-5px;"   class="btn btn-sm btn-light" role="button">Update</a></li>
+																								  <li>
+																								  <a th:href="@{updatePurchasing(id=${p.Purchasing_ID})}"  style="margin-top:-5px;"   class="btn btn-sm btn-light" role="button">Update</a></li>
 																								</li>
 																								<li><a th:href="@{deletePurchasing(id=${p.Purchasing_ID})}"  style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Delete</a></li>
 																								<li>
@@ -619,7 +621,7 @@
 	 </div>
 	 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Customer</b></label>
 	 <div class="col-sm-8" style="margin: 5px 0px;">
-	 <!-- Ici on met une boucle sur le customer pour avoir récupérer la liste des customer  -->
+	 <!-- ici on met une boucle sur le customer pour avoir récupérer la liste des customer  -->
 	  <select name="Customer_ID" class="form-control m-b" th:field=*{customer}>
 	   <option th:each ="c:${customer}" 
 	   th:text="${c.name}"

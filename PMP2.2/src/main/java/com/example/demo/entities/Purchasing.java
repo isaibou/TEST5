@@ -21,6 +21,7 @@ public class Purchasing implements Serializable{
 	private String LastName;
 	private String Contact;
 	private String Email;
+	//les relation avec customer
 	@ManyToOne
 	@JoinColumn
 	private Customer customer;

@@ -91,14 +91,5 @@ public class AssetTypeController
 			
 	}
 			
-	//}
-
-
-	//@RequestMapping(value ="/deleteAssetType" )
-	//private String deleteAssetType( Model model, Integer id ) {
 	
-	//	assetTypeRepository.deleteById(id);
-		
-		// return "redirect:/assetstype_manage";	
-	//}
 }

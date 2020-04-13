@@ -296,28 +296,11 @@
                 </ul>
               </li>
 			     <li>
-                <a href class="auto">      
-                  <span class="pull-right text-muted">
-                    <i class="fa fa-fw fa-angle-right text"></i>
-                    <i class="fa fa-fw fa-angle-down text-active"></i>
-                  </span>
-                  <b class="badge bg-info pull-right">3</b>
-                  <i class="glyphicon glyphicon-user"></i>
+                <a th:href="users" class="auto">
+                  <i class="glyphicon glyphicon-user icon"></i>
                   <span>Users</span>
                 </a>
-                <ul class="nav nav-sub dk">
-               
-                  <li>
-                    <a th:href="users">
-                      <span>Manage users</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a th:href="TypeUsers">
-                      <span>Manage Type users</span>
-                    </a>
-                  </li>
-                </ul>
+
               </li>
               <li>
                 <a th:href="timesheets" class="auto">
@@ -461,10 +444,12 @@
 												<div class="col">
  <div class="bg-light lter b-b wrapper-md">
   <h1 class="m-n font-bold h3">Manage Assets Type
-  <a style="margin-top:-5px;" data-toggle="modal"  data-target="#AddClient" class="btn btn-sm btn-primary pull-right"  role="button"><b class="glyphicon-plus pull"> </b>Add Assets Type</a> 
+  <a style="margin-top:-5px;" data-toggle="modal"  data-target="#AddClient" class="btn btn-sm btn-primary pull-right"  role="button">
+  <b class="glyphicon-plus pull"> </b>Add Assets Type</a> 
   </h1>
  </div>
-
+	<div class="row" style="margin:5px;background-color:#f0f3f4;"> </div>
+	
 <div class="row" style="margin:5px;">
  <div class="col-sm-12">              
   <div class="row row-sm text-center">
@@ -492,59 +477,8 @@
    </div>
 </div> 
 </div>
-</div>
-</div>
-<div class="modal fade" role="dialog" id="AddClient" >
-  <div class="modal-dialog modal-lg" >
-    <div class="modal-content">
-      <div class="modal-header" style="background-image:url(img/grf-bg.jpg);color:white;">
-        <button type="button" class="close pull-right" data-dismiss="modal">&times;</button>
-        <h1 class="m-n font-bold h3"> <b class="glyphicon-plus pull"> </b> Add Type Asset</h1>
-      </div>
-      <!-- la forme -->
-      <form th:action="@{SaveAssetType}" method ="post" th:object="${assetstype}">
-      <div class="modal-body">
-       <div class="row">        
-        <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b></b></label>
-     <div class="col-sm-8" style="margin: 5px 0px;">
-      <input type="hidden" class="form-control" placeholder="Entry Name of Project" id="input-id-1"  required th:field=*{AssetType_ID}/>
-      <span class="text-danger" th:errors=*{Name}></span>
-	 </div>  
-         <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b> Name</b></label>
-         <div class="col-sm-8" style="margin: 5px 0px;">
-          <input type="text" class="form-control" placeholder="Entry Name of Asset" id="input-id-1"  required th:field=*{name}>
-          <span  th:errors=*{name}></span>
-	     </div>
-          <label class="col-sm-4 control-label"  for="input-id-1" style="margin-bottom:5px;"><b>Brand</b></label>
-          <div class="col-sm-8" style="margin-bottom:5px;">
-            <input type="text"  class="form-control" placeholder="Entry Band" id="input-id-2" required th:field=*{Brand}/>
-            <span th:errors=*{Brand}></span>
-          </div>
-          <label class="col-sm-4 control-label" placeholder="Entry EndOfSupportDate" for="input-id-1" style="margin-bottom:5px;"><b>End Of Support Date</b></label>
-          <div class="col-sm-8" style="margin-bottom:5px;">
-            <input class="form-control" placeholder="yyyy-MM-dd" type="date" required th:field=*{EndOfSuportDate}/>
-            <span class="text-danger" th:errors=*{EndOfSuportDate}></span>
-          </div>
-          <label class="col-sm-4 control-label" placeholder="Entry EndSaleDate" for="input-id-1" style="margin-bottom:5px;"><b>End Sale Date</b></label>
-          <div class="col-sm-8" style="margin-bottom:5px;">         
-             <input type="date" placeholder="yyyy-MM-dd" class="form-control" required th:field=*{EndSaleDate}/>
-		     <span th:errors=*{EndSaleDate}></span>
-            </div>   
-            <label class="col-sm-4 control-label"  for="input-id-1" style="margin-bottom:5px;"><b>FRU</b></label>
-          <div class="col-sm-8" style="margin-bottom:5px;">
-            <input type="text"  class="form-control" placeholder="Entry FRU" id="input-id-2" required th:field=*{FRU}/>
-            <span th:errors=*{FRU}></span>
-          </div>
-           <div class="modal-footer">
-        <button style="margin:0px;" class="btn m-b-xs btn-sm btn-primary btn-addon"><i class="glyphicon glyphicon-ok"></i>Save</button>
-	    <button style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon" data-dismiss="modal"><i class="glyphicon glyphicon-remove"></i>Annuler</button>
-      </div>
-    </div>
-    </div>
-     </form>  
-  </div>
-</div>
-</div>
+
+	
 <div class="table-responsive" style="background-color:white;margin:10px; padding:10px;">
     <table ui-jq="dataTable" ui-options="{
                               aoColumns: [
@@ -562,8 +496,7 @@
        <th  style="width:20%"><center>Brand</center></th>
        <th  style="width:15%"><center>End Of Support Date</center></th>
        <th  style="width:15%"><center>End Sale Date</center></th>
-       <th  style="width:5%"><center>Status</center></th>
-       
+       <th  style="width:15%"><center>Status</center></th>     
        <th  style="width:15%"><center>Actions</center></th>
       </tr>
        </thead>
@@ -588,34 +521,62 @@
      </tbody>
     </table>
      </div>
+</div>
+</div>
+
+<div class="modal fade" role="dialog" id="AddClient" >
+  <div class="modal-dialog modal-lg" >
+    <div class="modal-content">
+      <div class="modal-header" style="background-image:url(img/grf-bg.jpg);color:white;">
+        <button type="button" class="close pull-right" data-dismiss="modal">&times;</button>
+        <h1 class="m-n font-bold h3"> <b class="glyphicon-plus pull"> </b> Add Type Asset</h1>
+      </div>
+      <form th:action="@{SaveAssetType}" method ="post" th:object="${assetstype}">
+      <div class="modal-body">
+       <div class="row">        
+        <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b></b></label>
+     <div class="col-sm-8" style="margin: 5px 0px;">
+      <input type="hidden" class="form-control" placeholder="Entry Name of Project" id="input-id-1"  required th:field=*{AssetType_ID}/>
+      <span class="text-danger" th:errors=*{Name}></span>
+	 </div>  
+         <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b> Name</b></label>
+         <div class="col-sm-8" style="margin: 5px 0px;">
+          <input type="text" class="form-control" placeholder="Entry Name of Asset" id="input-id-1"  required th:field=*{name}>
+          <span  th:errors=*{name}></span>
+	     </div>
+          <label class="col-sm-4 control-label"  for="input-id-1" style="margin-bottom:5px;"><b>Brand</b></label>
+          <div class="col-sm-8" style="margin-bottom:5px;">
+            <input type="text"  class="form-control" placeholder="Entry Band" id="input-id-2" required th:field=*{Brand}/>
+            <span th:errors=*{Brand}></span>
+          </div>
+          <label class="col-sm-4 control-label" for="input-id-1" style="margin-bottom:5px;"><b>End Of Support Date</b></label>
+          <div class="col-sm-8" style="margin-bottom:5px;">
+            <input class="form-control" placeholder="yyyy-MM-dd" type="date" required th:field=*{EndOfSuportDate}/>
+            <span class="text-danger" th:errors=*{EndOfSuportDate}></span>
+          </div>
+          <label class="col-sm-4 control-label" for="input-id-1" style="margin-bottom:5px;"><b>End Sale Date</b></label>
+          <div class="col-sm-8" style="margin-bottom:5px;">         
+             <input type="date" placeholder="yyyy-MM-dd" class="form-control" required th:field=*{EndSaleDate}/>
+		     <span th:errors=*{EndSaleDate}></span>
+            </div>   
+            <label class="col-sm-4 control-label"  for="input-id-1" style="margin-bottom:5px;"><b>FRU</b></label>
+          <div class="col-sm-8" style="margin-bottom:5px;">
+            <input type="text"  class="form-control" placeholder="Entry FRU" id="input-id-2" required th:field=*{FRU}/>
+            <span th:errors=*{FRU}></span>
+          </div>
+           <div class="modal-footer">
+        <button style="margin:0px;" class="btn m-b-xs btn-sm btn-primary btn-addon"><i class="glyphicon glyphicon-ok"></i>Save</button>
+	    <button style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon" data-dismiss="modal"><i class="glyphicon glyphicon-remove"></i>Annuler</button>
+      </div>
+    </div>
+    </div>
+     </form>  
+  </div>
+</div>
+</div>
   </div>
  </div>
   <!-- /content -->
-<div class="modal fade" role="dialog" id="Detail" >
- <div class="modal-dialog modal-lg" >
-  <div class="modal-content">
-   <div class="modal-header" style="background-image:url(img/grf-bg.jpg);color:white;">
-    <button type="button" class="close pull-right" data-dismiss="modal">&times;</button>
-    <h1 class="m-n font-bold h3">Information Type Asset</h1>
-   </div>
-   <div class="modal-body">
-      <p th:each="a:${asstyp}">
-           <span class="m-n font-thin h3 text-black">Asset Name :</span>
-           <span th:text="${a.Name}" class="m-n font-thin h4 text-secondary"></span></br>
-           <span class="m-n font-thin h3 text-black">Band :</span>
-           <span th:text="${a.Brand}" class="m-n font-thin h4 text-secondary"></span></br>
-           <span class="m-n font-thin h3 text-black">End Of Support Date :</span>
-           <span th:text="${a.EndOfSuportDate}" class="m-n font-thin h4 text-secondary"></span></br>
-           <span class="m-n font-thin h3 text-black">End Sale Date :</span>
-           <span th:text="${a.EndSaleDate}" class="m-n font-thin h4 text-secondary"></span></br>
-      </p>
-   </div>
-   <div class="modal-footer">
-   <button class="btn m-b-xs btn-sm btn-primary btn-addon" data-dismiss="modal">Return</button>
-  </div>
-  </div>  
-</div>
-</div>
   <!-- footer -->
   <footer id="footer" class="app-footer" role="footer">
     <div class="wrapper b-t bg-light">

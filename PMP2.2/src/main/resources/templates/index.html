@@ -13,6 +13,9 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 
   <link rel="stylesheet" href="css/font.css" type="text/css" />
   <link rel="stylesheet" href="css/app.css" type="text/css" />
+  
+  
+  
 
 </head>
 <body>
@@ -275,38 +278,21 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 				  
 				  <li>
                     <a th:href="purchasing_customer_manage">
-                      <span>Puchasing contact</span>
+                      <span>Purchasing contact</span>
                     </a>
                   </li>
                     
                 </ul>
               </li>
-			     <li sec:authorize="hasRole('ROLE_ADMIN')">
-                <a href class="auto">      
-                  <span class="pull-right text-muted">
-                    <i class="fa fa-fw fa-angle-right text"></i>
-                    <i class="fa fa-fw fa-angle-down text-active"></i>
-                  </span>
-                  <b class="badge bg-info pull-right">3</b>
-                  <i class="glyphicon glyphicon-user"></i>
-                  <span >Users</span>
+			     <li>
+                <a th:href="users" class="auto">
+                  <i class="glyphicon glyphicon-user icon"></i>
+                  <span>Users</span>
                 </a>
-                <ul  class="nav nav-sub dk">
-               
-                  <li >
-                    <a  th:href="@{/users}">
-                      <span>Manage users</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a th:href="TypeUsers">
-                      <span>Manage Type users</span>
-                    </a>
-                  </li>
-                </ul>
+
               </li>
-              <li>
-                <a th:href="timesheets" class="auto">
+               <li>
+				 <a th:href="timesheets" class="auto">
                   <i class="glyphicon glyphicon-calendar icon"></i>
                   <span>TimeSheet</span>
                 </a>
@@ -318,7 +304,7 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
                     <i class="fa fa-fw fa-angle-right text"></i>
                     <i class="fa fa-fw fa-angle-down text-active"></i>
                   </span>
-                  <b class="label bg-primary pull-right">2</b>
+                  <b class="label bg-primary pull-right"></b>
                   <i class="glyphicon glyphicon-list"></i>
                   <span>Projects</span>
                 </a>
@@ -361,7 +347,7 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
                     </a>
                   </li>
 				  <li>
-                    <a th:href="@{manager/firmware}">
+                    <a th:href="@{firmware}">
                       <span>Firmware</span>
                     </a>
                   </li>
@@ -420,16 +406,16 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
                 <span>Your Stuff</span>
               </li>  
               <li>
-                <a th:href="@{/logout}">
+                <a th:href="@{/LoginVrai?logout}">
                   <i class="icon-user icon text-success-lter"></i>
-                  <b class="badge bg-success pull-right">30%</b>
-                    <span>[[${#httpServletRequest.remoteUser}]]</span>
+                  <b class="badge bg-success pull-right"></b>
+                    <span>Logout</span>
                 </a>
               </li>
               <li>
                 <a href>
                   <i class="icon-question icon"></i>
-                  <span>Documents</span>
+                    <span>[[${#httpServletRequest.remoteUser}]]</span>
                 </a>
               </li>
             </ul>

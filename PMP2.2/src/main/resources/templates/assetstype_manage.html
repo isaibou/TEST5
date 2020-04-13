@@ -501,6 +501,7 @@
         <button type="button" class="close pull-right" data-dismiss="modal">&times;</button>
         <h1 class="m-n font-bold h3"> <b class="glyphicon-plus pull"> </b> Add Type Asset</h1>
       </div>
+      <!-- la forme -->
       <form th:action="@{SaveAssetType}" method ="post" th:object="${assetstype}">
       <div class="modal-body">
        <div class="row">        
@@ -551,17 +552,18 @@
                               { mData: 'browser' },
                               { mData: 'platform' },
                               { mData: 'version' },
-                              { mData: 'grade' },
-            
+                              { mData: 'grade' },        
                               { mData: 'action' }
                               ]
                               }" class="table  b-t b-b">
        <thead style="color:#23b7e5;">
       <tr>
        <th  style="width:20%"><center>Asset Name</center></th>
-       <th  style="width:20%"><center>Band</center></th>
+       <th  style="width:20%"><center>Brand</center></th>
        <th  style="width:15%"><center>End Of Support Date</center></th>
        <th  style="width:15%"><center>End Sale Date</center></th>
+       <th  style="width:5%"><center>Status</center></th>
+       
        <th  style="width:15%"><center>Actions</center></th>
       </tr>
        </thead>
@@ -570,14 +572,18 @@
       <td th:text="${a.Name}" class="m-n font-thin h4 text-secondary"><center></center></td>
       <td th:text="${a.Brand}" class="m-n font-thin h4 text-secondary"><center></center></td>
       <td th:text="${a.EndOfSuportDate}" class="m-n font-thin h4 text-secondary"><center></center></td>
-      <td th:text="${a.EndSaleDate}" class="m-n font-thin h4 text-secondary"><center><center/></td>
-      <td><center><div class="btn-group dropdown"><button class="btn btn-default btn-xs" data-toggle="dropdown"><i class="glyphicon glyphicon-cog"></i> Action <span class="caret"></span></button>
+      <td th:text="${a.EndSaleDate}" class="m-n font-thin h4 text-secondary"><center></center></td>
+      <td th:text ="${a.Status}" class="m-n font-thin h4 text-secondary"><center><span></span></center></td>    
+      <td><center>
+      <div class="btn-group dropdown">
+       <button class="btn btn-default btn-xs" data-toggle="dropdown"><i class="glyphicon glyphicon-cog"></i> Action <span class="caret"></span></button>
        <ul class="dropdown-menu">
          <li><a th:href="@{updateAseetTypeform(id=${a.AssetType_ID})}"  style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Update</a></li>
-         <li><a th:href="@{deleteAssetType(id=${a.AssetType_ID})}"  style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Delete</a></li>
-         <li><a style="margin-top:-5px;" data-toggle="modal"  data-target="#Detail" class="btn btn-sm btn-light" role="button">Detail</a></li>
-       </ul></div>                             
-      </center></td>
+         <li><a th:href="@{archiverAseetT(id=${a.AssetType_ID})}"  style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Archive</a></li>
+         <li><a th:href="@{detailAseetType(id=${a.AssetType_ID})}" style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Detail</a></li>
+         </ul>
+        </div>
+         </center></td>       
      </tr>
      </tbody>
     </table>

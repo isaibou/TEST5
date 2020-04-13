@@ -31,8 +31,9 @@ public class CustomerController {
 	@Autowired
 	private CustomerRepository customerrepository; 
 	
-	@Value("${storage.location}")
-	private String StorageLocation;
+	@Autowired
+	@Value(value="${location}")
+	private String Location;
 	
 	@RequestMapping(value="/customer_manage")
 	public String AllCustomer(Model model, Customer customer) {
@@ -40,11 +41,12 @@ public class CustomerController {
 		List<Customer> custs = customerrepository.findAll();
 		model.addAttribute("cust", custs);
 		model.addAttribute("customer", new Customer());
+		model.addAttribute("totalCustomer", custs.size());
 		
 		return "customer_manage";
 	}
 
-    @RequestMapping(value="/admin/SaveCustomer" , method= RequestMethod.POST)
+    @RequestMapping(value="/SaveCustomer" , method= RequestMethod.POST)
 	private String SaveCustomer(@Valid Customer addCust, BindingResult bindingResult, @RequestParam(name="picture")MultipartFile file) {
 		
 		/*if(bindingResult.hasErrors()) {
@@ -56,11 +58,12 @@ public class CustomerController {
 			addCust.setStatus("Actif");
 			customerrepository.save(addCust);
 			try {		
-				//file.transferTo(new File(StorageLocation+ addCust.getCustomer_ID()));
-				File f=new File(StorageLocation+ "/"+ addCust.getCustomer_ID());
-				System.out.println(f.getAbsolutePath());
-				file.transferTo(f);
 				addCust.setLogo(file.getOriginalFilename());
+				//file.transferTo(new File(StorageLocation+ addCust.getCustomer_ID()));
+				File f=new File(Location + addCust.getCustomer_ID());
+				System.out.println(f.getAbsolutePath());
+				if(f.exists()==false) f.mkdir();
+				file.transferTo(f);
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -75,7 +78,7 @@ public class CustomerController {
 	@ResponseBody
 	public byte[] getLogo(Integer Customer_ID) {
 		try {
-			File f=new File(StorageLocation + Customer_ID);
+			File f=new File(Location + Customer_ID);
 			return IOUtils.toByteArray(new FileInputStream(f));
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
@@ -97,22 +100,20 @@ public class CustomerController {
 			
 	}
 	
-    @RequestMapping(value = "/admin/editCustomer",method= RequestMethod.POST)
-	private String updateCustomer(Model model, @Valid Customer addCust, BindingResult bindingResult, @RequestParam(name="picture")MultipartFile file) {
+    @RequestMapping(value = "/editCustomer",method= RequestMethod.POST)
+	private String updateCustomer(@Valid Customer addCust, BindingResult bindingResult, @RequestParam(name="picture")MultipartFile file) {
 
-	/*if (bindingResult.hasErrors()) {
-		return "updateCustomerForm";
-	}*/
 		if(!(file.isEmpty())) {
 			addCust.setLogo(file.getOriginalFilename());
 			addCust.setStatus("Actif");
 			customerrepository.save(addCust);
-			try {		
-				//file.transferTo(new File(StorageLocation+ addCust.getCustomer_ID()));
-				File f=new File(StorageLocation+ "/"+ addCust.getCustomer_ID());
-				System.out.println(f.getAbsolutePath());
-				file.transferTo(f);
+			try {	
 				addCust.setLogo(file.getOriginalFilename());
+				//file.transferTo(new File(StorageLocation+ addCust.getCustomer_ID()));
+				File f=new File(Location + addCust.getCustomer_ID());
+				System.out.println(f.getAbsolutePath());
+				if(f.exists()==false) f.mkdir();
+				file.transferTo(f);
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -121,14 +122,14 @@ public class CustomerController {
 		}
 		return "redirect:/customer_manage";
 	}
-    
+
 	@RequestMapping(value ="/detailCustomer")
 	public String detailCustomer( Model model, Integer id ) {
 		Customer customer = customerrepository.getOne(id);
 		 model.addAttribute("customer",customer);
 		 System.out.println(customer.getName());	
 			return "detailCust";
-			
+
 	}
 	
 	@RequestMapping(value ="/archiverCustomer" )

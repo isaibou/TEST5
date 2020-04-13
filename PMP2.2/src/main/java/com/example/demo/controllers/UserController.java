@@ -48,6 +48,7 @@ public class UserController {
 	model.addAttribute("addUser",new Users());
 	model.addAttribute("customer", customerRepository.findAll());
 	model.addAttribute("allRoles", roleRepository.findAll());	
+	
 		
 		
 		return "users";
@@ -62,15 +63,37 @@ public class UserController {
 		return "redirect:/users";
 	}
 
+	
+	
+	@RequestMapping(value ="/editUsers" )
+	public String editUsers(Users u, Model model) {
+		String pass=  u.getPassword();
+		u.setPassword(encoder.encode(pass));
+		u.setActived(true);
+		userRepository.save(u);
+		return "redirect:/users";
+	}
+	
+	@RequestMapping(value ="updateUserform" )
+	private String updateUserform( Model model, String id ) {
+	Users	user = userRepository.getOne(id);
+		 model.addAttribute("user",user);
+		 model.addAttribute("customer", customerRepository.findAll());
+			model.addAttribute("allRoles", roleRepository.findAll());
+		
+			return "updateUsers";
+			
+	}
+
+	
 	@RequestMapping(value ="activerUser" )
 	private String activerUser( Model model, String id ) {
 	
 	Users user = userRepository.getOne(id);
 	user.setActived(true);
-
-userRepository.save(user);	
+	userRepository.save(user);	
 		
-			return "redirect:/users";	
+	return "redirect:/users";	
 			
 	}	
 	
@@ -85,6 +108,32 @@ userRepository.save(user);
 			return "redirect:/users";	
 			
 	}
+	
+	@RequestMapping(value ="detailsUser" )
+	private String detailsUser( Model model, String id ) {
+	
+	Users user = userRepository.getOne(id);
+	model.addAttribute("user", user);
+	user.getCustomer().getName();
+	user.getRoles();
+	model.addAttribute("roro", user.getRoles());
+	model.addAttribute("customer", user.getCustomer());
+	
+	return "detailsUsers";	
+			
+	}
+	
+	@RequestMapping(value="/LoginVrai?logout", method = RequestMethod.GET)
+	public String logoutPage (HttpServletRequest request, HttpServletResponse response) {
+	    Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+	    if (auth != null){    
+	        new SecurityContextLogoutHandler().logout(request, response, auth);
+	    }
+	    return "redirect:/LoginVrai?logout";
+	}
+	
+	
+
 
 
 	

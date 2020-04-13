@@ -10,6 +10,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.Email;
@@ -22,7 +24,7 @@ import org.springframework.format.annotation.NumberFormat;
 public class Customer implements Serializable{
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue
 	private Integer Customer_ID;
 	
 	@NotNull 
@@ -36,6 +38,7 @@ public class Customer implements Serializable{
 	private String Logo;
 
     
+
 	@NotNull
 	@NumberFormat(pattern = "##########")
 	private String PhoneCompany;
@@ -69,15 +72,20 @@ public class Customer implements Serializable{
 	@NotNull
 	@Email
 	private String EmailCIO;
-	
-	@NotNull
+
 	private String City;
-	
-	@NotNull
+
 	private String Country;
 	
 	@NotNull
 	private String Status;
+	
+	@OneToMany
+	private Collection <Purchasing> Purchasing;
+	
+	@OneToMany
+	private Collection <Contrat> contrat;
+
 	
 	@OneToMany(mappedBy = "customer", fetch = FetchType.LAZY)
 	private Collection<Users> users;
@@ -85,9 +93,12 @@ public class Customer implements Serializable{
 	public Customer() {
 		super();
 	}
-
-	public Customer(String name, String industry, String logo, String phoneCompany, String adressCompany, String vip, 
-			String nomCIO, String phoneCIO, String emailCIO, String nomTechnical, String emailTechnical, String phoneTechnical, String city, String country, String status) {
+	
+	public Customer(@NotNull String name, @NotNull String industry, String logo, @NotNull String phoneCompany,
+			@NotNull String adressCompany, @NotNull String vip, @NotNull String nomTechnical,
+			@NotNull String phoneTechnical, @NotNull @Email String emailTechnical, @NotNull String nomCIO,
+			@NotNull String phoneCIO, @NotNull @Email String emailCIO, String city, String country,
+			@NotNull String status) {
 		super();
 		Name = name;
 		Industry = industry;
@@ -95,12 +106,12 @@ public class Customer implements Serializable{
 		PhoneCompany = phoneCompany;
 		AdressCompany = adressCompany;
 		Vip = vip;
-		NomCIO= nomCIO;
+		NomTechnical = nomTechnical;
+		PhoneTechnical = phoneTechnical;
+		EmailTechnical = emailTechnical;
+		NomCIO = nomCIO;
 		PhoneCIO = phoneCIO;
 		EmailCIO = emailCIO;
-		NomTechnical= nomTechnical;
-		EmailTechnical= emailTechnical;
-		PhoneTechnical= phoneTechnical;
 		City = city;
 		Country = country;
 		Status = status;
@@ -233,7 +244,8 @@ public class Customer implements Serializable{
 	public void setEmailTechnical(String emailTechnical) {
 		EmailTechnical = emailTechnical;
 	}
-
+	
+	
 	public Collection<Users> getUsers() {
 		return users;
 	}
@@ -242,5 +254,19 @@ public class Customer implements Serializable{
 		this.users = users;
 	}
 
-	
+	public Collection<Contrat> getContrat() {
+		return contrat;
+	}
+
+	public void setContrat(Collection<Contrat> contrat) {
+		this.contrat = contrat;
+	}
+
+	public Collection<Purchasing> getPurchasing() {
+		return Purchasing;
+	}
+
+	public void setPurchasing(Collection<Purchasing> purchasing) {
+		Purchasing = purchasing;
+	}
 }

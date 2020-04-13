@@ -29,7 +29,7 @@ public class FrimwareController {
 	
 
 	
-	@RequestMapping(value = "/manager/firmware")
+	@RequestMapping(value = "/firmware")
 	public String AllFrimware(Model model, Frimware frimware) {
 		
 		List<Frimware> frime = frimwareRepository.findAll();

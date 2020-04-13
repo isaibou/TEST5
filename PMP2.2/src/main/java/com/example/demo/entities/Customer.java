@@ -7,8 +7,10 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.Max;
@@ -25,7 +27,8 @@ import org.springframework.format.annotation.NumberFormat;
 public class Customer implements Serializable{
 	
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "my_seq_id")
+	@SequenceGenerator(name = "my_seq_id", sequenceName = "my_seq_id", allocationSize = 100)
 	private Integer Customer_ID;
 	
 	@NotNull 
@@ -39,7 +42,6 @@ public class Customer implements Serializable{
 	private String Logo;
 
     
-
 	@NotNull
 	private String PhoneCompany;
 	
@@ -77,8 +79,7 @@ public class Customer implements Serializable{
 	@NotNull
 	private String Country;
 	
-	
-	
+
 	@NotNull
 	private String Status;
 	
@@ -88,7 +89,7 @@ public class Customer implements Serializable{
 	public Customer() {
 		super();
 	}
-	
+
 	
 	
 	
@@ -98,7 +99,8 @@ public class Customer implements Serializable{
 			@NotNull String phoneTechnical, @NotNull @Email String emailTechnical, @NotNull String nomCIO,
 			@NotNull String phoneCIO, @NotNull @Email String emailCIO, @NotNull String city, @NotNull String country,
 			@NotNull String status) {
-		super();
+
+
 		Name = name;
 		Industry = industry;
 		Logo = logo;
@@ -109,6 +111,7 @@ public class Customer implements Serializable{
 		PhoneTechnical = phoneTechnical;
 		EmailTechnical = emailTechnical;
 		NomCIO = nomCIO;
+		NomCIO= nomCIO;
 		PhoneCIO = phoneCIO;
 		EmailCIO = emailCIO;
 		City = city;
@@ -247,8 +250,8 @@ public class Customer implements Serializable{
 	public void setEmailTechnical(String emailTechnical) {
 		EmailTechnical = emailTechnical;
 	}
-	
-	
+
+
 	public Collection<Users> getUsers() {
 		return users;
 	}

@@ -546,77 +546,49 @@
                               }" class="table table-striped b-t b-b">
                               <thead>
                                 <tr>
-                                
+                                  
                                   <th  style="width:20%"><center>Vendor</center></th>
                                   <th  style="width:20%"><center>Address</center></th>
+                                  <th  style="width:15%"><center>Phone</center></th>
                                   <th  style="width:15%"><center>Industry</center></th>
                                   <th  style="width:20%"><center>Partnership Certificate</center></th>
                                   <th  style="width:15%"><center>Actions</center></th>
                                 </tr>
                               </thead>
                               <tbody>
-                                <tr data-expanded="true">
+                                <tr data-expanded="true" th:each="v:${vend}">
                                 
-                                  <td>  
+                                  <td th:text ="${v.NameVendor}"><center></center>  
                                     <div class="row">
                                       <div class="col-sm-3"><img class="img-thumbnail" src="https://upload.wikimedia.org/wikipedia/fr/9/91/ATW.PNG" alt="logo_company" width="60px" height="60px"/></div>
-                                      <div class="col-sm-9"><b>IBM<br> (052) 299-9999</b></div>
+                                      <div class="col-sm-9"><b><br></b></div>
 
                                       </div>
                                     </td>
-                                    <td><center>119 RUE RABAT AGADAL</center></td>
-                                    <td><center>Banking<center/></td>
-                                    <td><center><a  data-toggle="modal"  data-target="#imgpreview"><img class="img-thumbnail" width="80px" height="60px"src="https://www.prefamaroc.ma/img/attestations/mojazine.jpg" ><a/><center/></td>
+                                    <td th:text ="${v.Adress}"><center></center></td>
+                                    <td th:text ="${v.Phone}"><center></center></td>
+                                    <td th:text ="${v.Industry}" class="m-n font-thin h4 text-secondary"><center><center/></td>
+                                    <td th:text ="${v.PartnershipCertificate}"><center><a  data-toggle="modal"  data-target="#imgpreview"><img class="img-thumbnail" width="80px" height="60px"src="https://www.prefamaroc.ma/img/attestations/mojazine.jpg" ><a/><center/></td>
                                         <td>
                                           <center>
                                             <div class="btn-group dropdown">
                                               <button class="btn btn-default btn-xs" data-toggle="dropdown"><i class="glyphicon glyphicon-cog"></i> Action <span class="caret"></span></button>
                                               <ul class="dropdown-menu">
                                                 <li>
-                                                  <a style="margin-top:-5px;" data-toggle="modal"  data-target="#Update" class="btn btn-sm btn-light" role="button">Update</a>
+                                                  <a th:href="@{updateVendor(id=${v.Vendor_ID})}"  style="margin-top:-5px;"   class="btn btn-sm btn-light" role="button">Update</a></li>
                                                 </li>
                                                 <li>
-                                                  <a style="margin-top:-5px;" data-toggle="modal"  data-target="#Delete" class="btn btn-sm btn-light" role="button">Delete</a>
+                                                  <li><a th:href="@{deleteVendor(id=${v.Vendor_ID})}"  style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Delete</a></li>
                                                 </li>
                                                 <li>
-                                                  <a style="margin-top:-5px;" data-toggle="modal"  data-target="#Detail" class="btn btn-sm btn-light" role="button">Detail</a>
+                                                  <li><a th:href="@{detailVendor(id=${v.Vendor_ID})}" style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Detail</a></li></ul></div></center></td>
                                                 </li>
                                               </ul>
                                             </div>
                                           </center>
                                         </td>
                                       </tr>
-                                      <tr data-expanded="true">
                                       
-                                        <td>  
-                                          <div class="row">
-                                            <div class="col-sm-3"><img class="img-thumbnail" src="https://upload.wikimedia.org/wikipedia/commons/d/df/Logo_CFG_BANK-.jpg" alt="logo_company" width="60px" height="60px"/></div>
-                                            <div class="col-sm-9"><b>Dell<br> (052) 299-9999</b></div>
-
-                                            </div>
-                                          </td>
-                                          <td><center>119 RUE RABAT AGADAL</center></td>
-                                         <td><center>Banking<center/></td>
-                                          <td><center><a  data-toggle="modal"  data-target="#imgpreview"><img class="img-thumbnail" width="80px" height="60px"src="https://www.prefamaroc.ma/img/attestations/mojazine.jpg" ><a/><center/></td>
-                                              <td>
-                                                <center>
-                                                  <div class="btn-group dropdown">
-                                                    <button class="btn btn-default btn-xs" data-toggle="dropdown"><i class="glyphicon glyphicon-cog"></i> Action <span class="caret"></span></button>
-                                                    <ul class="dropdown-menu">
-                                                      <li>
-                                                        <a style="margin-top:-5px;" data-toggle="modal"  data-target="#Update" class="btn btn-sm btn-light" role="button">Update</a>
-                                                      </li>
-                                                      <li>
-                                                        <a style="margin-top:-5px;" data-toggle="modal"  data-target="#Delete" class="btn btn-sm btn-light" role="button">Delete</a>
-                                                      </li>
-                                                      <li>
-                                                        <a style="margin-top:-5px;" data-toggle="modal"  data-target="#Detail" class="btn btn-sm btn-light" role="button">Detail</a>
-                                                      </li>
-                                                    </ul>
-                                                  </div>
-                                                </center>
-                                              </td>
-                                            </tr>
                                           </tbody>
                                         </table>
 
@@ -644,7 +616,7 @@
    <div class="modal-footer">
     <button style="margin:0px;" class="btn m-b-xs btn-sm btn-primary btn-addon"><i class="glyphicon glyphicon-print"></i>Print</button>
     <button style="margin:0px;" class="btn m-b-xs btn-sm btn-primary btn-addon"><i class="glyphicon glyphicon-download-alt"></i>Download</button>
-    <button style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon" data-dismiss="modal" data-dismiss="modal"><i class="glyphicon glyphicon-remove"></i>Cancel</button>
+    <button style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon" data-dismiss="modal"><i class="glyphicon glyphicon-remove"></i>Cancel</button>
    </div>
   </div>
  </div>
@@ -657,53 +629,57 @@
   <button type="button" class="close pull-right" data-dismiss="modal">&times;</button>
     <h1 class="m-n font-bold h3"> <b class="glyphicon-plus pull"> </b> Add Vendor</h1>
    </div>
-   <div class="modal-body">
+   <form th:action="@{SaveVendor}" method ="post" th:object="${vendor}">
+   <div class="modal-body" >
   <div class="row">
+  <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b></b></label>
+     <div class="col-sm-8" style="margin: 5px 0px;">
+      <input type="hidden" class="form-control" placeholder="Entry Name of Vendor" id="input-id-1"  required th:field=*{Vendor_ID}/>
+      </div>
    <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Vendor Name</b></label>
      <div class="col-sm-8" style="margin: 5px 0px;" >
-      <input type="text" class="form-control" placeholder="Entry Name of Vendor" id="input-id-1">
+      <input type="text" class="form-control" placeholder="Entry Name of Vendor" id="input-id-1" required th:field=*{NameVendor}>
    </div>
    <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Address</b></label>
    <div class="col-sm-8" style="margin: 5px 0px;">
-    <input type="text"  class="form-control" placeholder="Entry Address of Vendor"id="input-id-2">
+    <input type="text"  class="form-control" placeholder="Entry Address of Vendor"id="input-id-2" required th:field=*{Adress}>
    </div>
-   <label class="col-sm-4 control-label" placeholder="Entry Phone of Company" style="margin: 5px 0px;" for="input-id-1"><b>Phone</b></label>
+   <label class="col-sm-4 control-label" placeholder="Entry Phone of Vendor" style="margin: 5px 0px;" for="input-id-1"><b>Phone</b></label>
    <div class="col-sm-8" style="margin: 5px 0px;">
-    <input type="tel" placeholder="Entry Phone of Vendor"class="form-control" id="input-id-1" required>
+    <input type="tel" placeholder="Entry Phone of Vendor"class="form-control" id="input-id-1" required th:field=*{Phone}>
    </div>
-   <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Industry</b></label>
-   <div class="col-sm-8" style="margin: 5px 0px;">
-    <select name="account" class="form-control m-b">
-     <option>Advertising</option>
-     <option>Manufacturing</option>
-     <option>Construction</option>
-     <option>Education</option>
-     <option>Entertainment</option>
-     <option>Healthcare</option>
-     <option>Government</option>
-     <option>Technology</option>
-     <option>Retail</option>
-     <option>Wholesale</option>
-     <option>Banking</option>
-     <option>Finance</option>
-     <option>Telecomunication</option>
-     <option>Transportation</option>
-    </select>
-   </div>
+    <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Industry</b></label>
+	 <div class="col-sm-8" style="margin: 5px 0px;">
+	  <select name="account" class="form-control m-b"  th:field=*{Industry} >
+	   <option th:value ="Advertising" th:text="Advertising"></option>
+	   <option th:value ="Manufacturing" th:text="Manufacturing"></option>
+	   <option th:value ="Construction" th:text="Construction"></option>
+	   <option th:value ="Education" th:text="Education"></option>
+	   <option th:value ="Entertainment" th:text="Entertainment"></option>
+	   <option th:value ="Healthcare" th:text="Healthcare"></option>
+	   <option th:value ="Government" th:text="Government"></option>
+	   <option th:value ="Technology" th:text="Technology"></option>
+	   <option th:value ="Retail" th:text="Retail"></option>
+	   <option th:value ="Wholesale" th:text="Wholesale"></option>
+	   <option th:value ="Banking" th:text="Banking"></option>
+	   <option th:value ="Finance" th:text="Finance"></option>
+	   <option th:value ="Telecomunication" th:text="Telecomunication"></option>
+	   <option th:value ="Transportation" th:text="Transportation"></option>
+	  </select>
+	  <span class="text-danger" th:errors=*{Industry}></span>
+	 </div>
    <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Partnership Certificate</b></label>
   <div class="col-sm-4">
-    <input type="text" placeholder="Entry Partnership Certificate File"class="form-control" id="input-id-1">
+    <input type="file" placeholder="Entry Partnership Certificate File"class="form-control" id="input-id-1" required th:field=*{PartnershipCertificate}>
   </div>
-  <div class="btn-group">
-    <a class="btn btn-default" tooltip="Insert picture (or just drag &amp; drop)" id="pictureBtn"><i class="icon-paper-clip"></i></a>
-    <input type="file" data-edit="insertImage" style="position:absolute; opacity:0; width:41px; height:34px">
-  </div> 
+   
   </div>
    </div>
    <div class="modal-footer">
   <button style="margin:0px;" class="btn m-b-xs btn-sm btn-primary btn-addon"><i class="glyphicon glyphicon-ok"></i>Save</button>
-  <button style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon" data-dismiss="modal"><i class="glyphicon glyphicon-remove"  ></i>Annuler</button>
+  <button style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon" data-dismiss="modal"><i class="glyphicon glyphicon-remove" ></i>Annuler</button>
    </div>
+   </form>
   </div>
  </div>
 </div>

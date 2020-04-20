@@ -16,11 +16,18 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.example.demo.entities.*;
 import com.example.demo.repository.AssetTypeRepository;
+import com.example.demo.repository.FrimwareRepository;
+import com.example.demo.repository.VendorRepository;
 
 @Controller
 
 public class AssetTypeController
 {
+	@Autowired
+	private FrimwareRepository frimwareRepository;
+	
+	@Autowired
+	private VendorRepository vendorRepository;
 
 	@Autowired
 	private AssetTypeRepository assetTypeRepository;
@@ -34,6 +41,9 @@ public class AssetTypeController
 		model.addAttribute("assetstype", new AssetType());
 		
 		model.addAttribute("totalAssetType", assettyp.size());
+		
+		model.addAttribute("frimware", frimwareRepository.findAll());
+		model.addAttribute("vendor", vendorRepository.findAll());
 		
 		return "assetstype_manage";
 		
@@ -53,8 +63,13 @@ public class AssetTypeController
 	
 	@RequestMapping(value ="/updateAseetTypeform" )
 	private String updateAseetTypeform( Model model, Integer id ) {
-	AssetType	assettype = assetTypeRepository.getOne(id);
+		
+	     AssetType	assettype = assetTypeRepository.getOne(id);
 		 model.addAttribute("assetstype",assettype);
+		 
+		 model.addAttribute("frimware", frimwareRepository.findAll());
+		 model.addAttribute("vendor", vendorRepository.findAll());
+		 
 		 System.out.println(assettype.getName());
 		
 			return "updateAseetTypeForm";
@@ -85,11 +100,12 @@ public class AssetTypeController
 		
 		AssetType	assettype = assetTypeRepository.getOne(id);
 		 model.addAttribute("assettype",assettype);
-		 System.out.println(assettype.getName());
+		 
+		
+		 //System.out.println(assettype.getName());
 		
 			return "detailAseetType";
 			
-	}
-			
+	}		
 	
 }

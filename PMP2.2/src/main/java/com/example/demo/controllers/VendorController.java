@@ -35,7 +35,7 @@ public class VendorController {
 	
 	@RequestMapping(value="/SaveVendor" , method= RequestMethod.POST)
 	private String SaveVendor(@Valid Vendor addVen, BindingResult bindingResult) {
-		//addProj.setStatus("Actif");
+		addVen.setStatus("Actif");
 		
 		vendorRepository.save(addVen);
 		return "redirect:/vendor";
@@ -44,7 +44,8 @@ public class VendorController {
 	
 	@RequestMapping(value = "/editVendor",method = { RequestMethod.GET, RequestMethod.POST })
 	public String updateVendor(Model model, @Valid Vendor vend, BindingResult bindingResult){
-
+        
+		vend.setStatus("Actif");
 		vendorRepository.save(vend);
 		
 		return "redirect:/vendor";
@@ -61,12 +62,16 @@ public class VendorController {
 			
 	}
 	
-	@RequestMapping(value ="/deleteVendor" )
-	private String deleteVendor( Model model, Integer id ) {
+	@RequestMapping(value ="/archiverVendor" )
+	private String archiverAssets( Model model, Integer id ) {
 	
-		vendorRepository.deleteById(id);
+		Vendor vendor = vendorRepository.getOne(id);
+		vendor.setStatus("Archived");
+		vendorRepository.save(vendor);
+	    System.out.println(vendor.getStatus());
 		
-		 return "redirect:/vendor";	
+			return "redirect:/vendor";	
+			
 	}
 	
 	@RequestMapping(value ="/detailVendor")

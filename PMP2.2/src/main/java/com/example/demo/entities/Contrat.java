@@ -18,7 +18,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 public class Contrat implements Serializable{
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue
 	private Integer Contrat_ID;
 	@NotNull 
 	@Column(unique=true)

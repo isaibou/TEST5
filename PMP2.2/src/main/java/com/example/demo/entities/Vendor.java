@@ -1,10 +1,12 @@
 package com.example.demo.entities;
 
 import java.io.Serializable;
+import java.util.Collection;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 
 @Entity
 public class Vendor implements Serializable{
@@ -18,15 +20,29 @@ public class Vendor implements Serializable{
 	private String LogoCompony;
 	private String Phone;
 	private String Adress;
+	private String Status;
+	
+	@ManyToMany
+	private Collection <AssetType> assettype;
 	
 	
+	public Collection<AssetType> getAssettype() {
+		return assettype;
+	}
+
+
+	public void setAssettype(Collection<AssetType> assettype) {
+		this.assettype = assettype;
+	}
+
+
 	public Vendor() {
 		super();
 	}
 
 
 	public Vendor(String partnershipCertificate, String nameVendor, String industry, String logoCompony, String phone,
-			String adress) {
+			String adress, String status) {
 		super();
 		PartnershipCertificate = partnershipCertificate;
 		NameVendor = nameVendor;
@@ -34,6 +50,17 @@ public class Vendor implements Serializable{
 		LogoCompony = logoCompony;
 		Phone = phone;
 		Adress = adress;
+		this.Status = status;
+	}
+
+
+	public String getStatus() {
+		return Status;
+	}
+
+
+	public void setStatus(String status) {
+		Status = status;
 	}
 
 

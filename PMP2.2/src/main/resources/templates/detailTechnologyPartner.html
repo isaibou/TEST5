@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="utf-8" />
-  <title>Detail Vendor</title>
+  <title>Detail Technology Partner</title>
   <meta name="description" content="app, web app, responsive, responsive layout, admin, admin panel, admin dashboard, flat, flat ui, ui kit, AngularJS, ui route, charts, widgets, components" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <link rel="stylesheet" href="../libs/assets/animate.css/animate.css" type="text/css" />
@@ -15,10 +15,10 @@
 <body>
 <div class="app" >
  <a href="" class="navbar-brand block m-t"><i class="fa fa-power-off"></i> <b>PowerM</b> </a>
- <div th:action="@{detailVendor}" method ="post" th:object="${Vendor}">
+ <div th:action="@{detailProject}" method ="post" th:object="${project}">
   <div class="modal-dialog modal-lg" >
    <div class="modal-content">
-    <h1 class="m-n font-bold h3"> Informations Vendor </h1>
+    <h1 class="m-n font-bold h3"> Informations Technology Partner </h1>
    </div>
    <div  class="modal-body">
     <div style="background-color:white;margin:10px; padding:10px;">
@@ -32,37 +32,22 @@
 		   <th  style="width:80%"><center>Content </center></th>
 		  </tr>
 	  </thead>
-	  <tbody th:each="v:${Vendor}">
+	  <tbody th:each="t:${technolgpartn}">
 		  <tr data-expanded="true">
-		   <td style="color:#23b7e5;"><center>Vendor Name </center></th>
-		   <td th:text ="${v.NameVendor}" class="m-n font-thin h4 text-secondary"></td>
+		   <td style="color:#23b7e5;"><center>Name Technology Partner </center></th>
+		   <td th:text ="${t.NameTechnologyPartner}" class="m-n font-thin h4 text-secondary"></td>
 		  </tr>
-		   <tr >
-		   <td style="color:#23b7e5;"><center>Address</center></th>
-		   <td th:text ="${v.Adress}" class="m-n font-thin h4 text-secondary"></td>
-		   </tr>
-		   <tr >
-		   <td style="color:#23b7e5;"><center>Phone </center></th>
-		   <td th:text ="${v.Phone}" class="m-n font-thin h4 text-secondary"></td>
-		   </tr>
-           <tr >
-		   <td style="color:#23b7e5;"><center>Industry </center></th>
-           <td th:text ="${v.Industry}" class="m-n font-thin h4 text-secondary"></td>
-           </tr>
-           <tr >
-		   <td style="color:#23b7e5;"><center>Partnership Certificate </center></th>
-           <td th:text ="${v.PartnershipCertificate}" class="m-n font-thin h4 text-secondary"></td>
-           </tr> 
-           <tr >
+		  
+           <tr>
 		   <td style="color:#23b7e5;"><center>Status </center></th>
-		   <td th:text ="${v.Status}" class="m-n font-thin h4 text-secondary"><center><span></span></center></td>
-		   </tr>     
+           <td th:text ="${t.Status}" class="m-n font-thin h4 text-secondary"></td>
+           </tr>        
 	  </tbody>
      </table>
 	</div>
    </div>
    <div class="modal-footer">
-     <button class="btn m-b-xs btn-sm btn-primary btn-addon"><a th:href="vendor">Return</a></button>
+     <button class="btn m-b-xs btn-sm btn-primary btn-addon"><a th:href="Technology_Partner">Return</a></button>
    </div>
   </div>  
  </div>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8" />
+  <title>Detail Customer</title>
+  <meta name="description" content="app, web app, responsive, responsive layout, admin, admin panel, admin dashboard, flat, flat ui, ui kit, AngularJS, ui route, charts, widgets, components" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <link rel="stylesheet" href="../libs/assets/animate.css/animate.css" type="text/css" />
+  <link rel="stylesheet" href="../libs/assets/font-awesome/css/font-awesome.min.css" type="text/css" />
+  <link rel="stylesheet" href="../libs/assets/simple-line-icons/css/simple-line-icons.css" type="text/css" />
+  <link rel="stylesheet" href="../libs/jquery/bootstrap/dist/css/bootstrap.css" type="text/css" />
+  <link rel="stylesheet" href="css/font.css" type="text/css" />
+  <link rel="stylesheet" href="css/app.css" type="text/css" />
+</head>
+<body>
+<div class="app" >
+ <a href="" class="navbar-brand block m-t"><i class="fa fa-power-off"></i> <b>PowerM</b> </a>
+ <div th:action="@{detailCustomer}" method ="post" th:object="${customer}">
+  <div class="modal-dialog modal-lg" >
+   <div class="modal-content">
+    <h1 class="m-n font-bold h3"> Informations Customer </h1>
+   </div>
+   <div  class="modal-body">
+    <div style="background-color:white;margin:10px; padding:10px;">
+	 <table  ui-options="{aoColumns: [
+						    { mData: 'browser' },
+					        { mData: 'action' }
+						   ]}" class="table  b-t b-b">
+	  <thead style="color:#23b7e5;">
+	     <tr>
+		   <th  style="width:20%"><center>Element </center></th>
+		   <th  style="width:80%"><center>Content </center></th>
+		  </tr>
+	  </thead>
+	  <tbody th:each="c:${customer}">
+		  <tr data-expanded="true">
+		   <td style="color:#23b7e5;"><center>Company Logo </center></th>
+		   <td><img class="img-circle" th:src="@{getLogo(id=${c.Customer_ID})}" width="100" height="100"/></td>
+		  </tr>
+		  <tr >
+		   <td style="color:#23b7e5;"><center>Company Name </center></th>
+		   <td th:text ="${c.Name}" class="m-n font-thin h4 text-secondary"></td>
+		  </tr>
+		   <tr >
+		   <td style="color:#23b7e5;"><center>Company Address </center></th>
+		   <td th:text ="${c.AdressCompany}" class="m-n font-thin h4 text-secondary"></td>
+		   </tr>
+		   <tr >
+		   <td style="color:#23b7e5;"><center>Company Phone </center></th>
+		   <td th:text ="${c.PhoneCompany}" class="m-n font-thin h4 text-secondary"></td>
+		   </tr>
+		   <tr >
+		   <td style="color:#23b7e5;"><center>CIO Name</center></th>
+           <td th:text ="${c.NomCIO}" class="m-n font-thin h4 text-secondary"></td>
+           </tr>
+           <tr>
+		   <td style="color:#23b7e5;"><center>CIO Email</center></th>
+           <td th:text ="${c.EmailCIO}" class="m-n font-thin h4 text-secondary"></td>
+           </tr>
+           <tr >
+		   <td style="color:#23b7e5;"><center>CIO Phone </center></th>
+           <td th:text ="${c.PhoneCIO}" class="m-n font-thin h4 text-secondary"></td>
+           </tr>
+           <tr >
+		   <td style="color:#23b7e5;"><center>Technical Name </center></th>
+           <td th:text ="${c.NomTechnical}" class="m-n font-thin h4 text-secondary"></td>
+           </tr>
+           <tr >
+		   <td style="color:#23b7e5;"><center>Technical Email </center></th>
+           <td th:text ="${c.EmailTechnical}" class="m-n font-thin h4 text-secondary"></td>
+           </tr>
+           <tr >
+		   <td style="color:#23b7e5;"><center>Technical Phone </center></th>
+           <td th:text ="${c.PhoneTechnical}" class="m-n font-thin h4 text-secondary"></td>
+           </tr>
+           <tr >
+		   <td style="color:#23b7e5;"><center>Country Company </center></th>
+           <td th:text ="${c.Country}" class="m-n font-thin h4 text-secondary"></td>
+           </tr>
+           <tr >
+		   <td style="color:#23b7e5;"><center>City Company </center></th>
+           <td th:text ="${c.City}" class="m-n font-thin h4 text-secondary"></td>
+           </tr>
+           <tr >
+		   <td style="color:#23b7e5;"><center>Industry </center></th>
+           <td th:text ="${c.Industry}" class="m-n font-thin h4 text-secondary"></td>
+           </tr>
+           <tr >
+		   <td style="color:#23b7e5;"><center>VIP </center></th>
+           <td th:text ="${c.Vip}" class="m-n font-thin h4 text-secondary"></td>
+           </tr>
+           <tr>
+		   <td style="color:#23b7e5;"><center>Status </center></th>
+           <td th:text ="${c.Status}" class="m-n font-thin h4 text-secondary"></td>
+           </tr>        
+	  </tbody>
+     </table>
+	</div>
+   </div>
+   <div class="modal-footer">
+     <button class="btn m-b-xs btn-sm btn-primary btn-addon"><a th:href="customer_manage">Return</a></button>
+   </div>
+  </div>  
+ </div>
+</div>
+<script src="../libs/jquery/jquery/dist/jquery.js"></script>
+<script src="../libs/jquery/bootstrap/dist/js/bootstrap.js"></script>
+<script src="js/ui-load.js"></script>
+<script src="js/ui-jp.config.js"></script>
+<script src="js/ui-jp.js"></script>
+<script src="js/ui-nav.js"></script>
+<script src="js/ui-toggle.js"></script>
+<script src="js/ui-client.js"></script>
+</body>
+</html>

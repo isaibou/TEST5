@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-
 	<head>
 		<meta charset="utf-8" />
-		<title>Manage Contracts</title>
+		<title>RFP</title>
 		<meta name="description" content="app, web app, responsive, responsive layout, admin, admin panel, admin dashboard, flat, flat ui, ui kit, AngularJS, ui route, charts, widgets, components" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 		<link rel="stylesheet" href="../libs/assets/animate.css/animate.css" type="text/css" />
@@ -19,7 +18,6 @@
 		<script src='../libs/packages/daygrid/main.js'></script>
 		<script src='../libs/packages/timegrid/main.js'></script>
 		<script src='../libs/packages/list/main.js'></script>
-
 		<link rel="stylesheet" href="css/font.css" type="text/css" />
 		<link rel="stylesheet" href="css/app.css" type="text/css" />
 		<script>
@@ -286,7 +284,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	  <li><a th:href="page_profile">Profile</a></li><li><a href><span class="badge bg-danger pull-right">3</span>Notifications</a></li><li class="divider"></li><li><a th:href="page_signin">Logout</a></li></ul><!-- / dropdown --></div>
 	  <div class="line dk hidden-folded"></div>
 	 </div><!-- / user --><!-- nav -->
-          <nav ui-nav class="navi clearfix">
+            <nav ui-nav class="navi clearfix">
             <ul class="nav">
               <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
                 <span>Main</span>
@@ -330,7 +328,7 @@ document.addEventListener('DOMContentLoaded', function() {
           
           <li>
                     <a th:href="purchasing_customer_manage">
-                      <span>Puchasing contact</span>
+                      <span>Purchasing contact</span>
                     </a>
                   </li>
                     
@@ -353,11 +351,11 @@ document.addEventListener('DOMContentLoaded', function() {
                       <span>Manage users</span>
                     </a>
                   </li>
-                                     <li>
+                                    <li>
                     <a th:href="TypeUsers">
                       <span>Manage Type users</span>
                     </a>
-                  </li> 
+                  </li>  
                 </ul>
               </li>
               <li>
@@ -406,7 +404,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 </a>
                 <ul class="nav nav-sub dk">
                   <li class="">
-                    <a th:href="assets_manag">
+                    <a th:href="assets_manage">
                       <span>Manage Assets</span>
                     </a>
                   </li>
@@ -416,12 +414,12 @@ document.addEventListener('DOMContentLoaded', function() {
                     </a>
                   </li>
           <li>
-                    <a th:href="assetstype_manage">
+                    <a th:href="frimware">
                       <span>Firmware</span>
                     </a>
                   </li>
           <li>
-                    <a th:href="assetstype_manage">
+                    <a th:href="ventor">
                       <span>Vendor</span>
                     </a>
                   </li>
@@ -433,14 +431,21 @@ document.addEventListener('DOMContentLoaded', function() {
                   <span>Tickets</span>
                 </a>
               </li>
+              <li>
+                <a th:href="RFP">
+                  <i class="glyphicon glyphicon-tag"></i>
+                  <span>RFP</span>
+                </a>
+              </li>
+
         <li>
                 <a th:href="contract_manage">
                   <i class="fa fa-legal"></i></i>
-                  <span>Contrats</span>
+                  <span>Contracts</span>
                 </a>
               </li>
         <li>
-                <a th:href="tickets_manage">
+                <a th:href="expense">
                   <i class="glyphicon  glyphicon-usd"></i></i>
                   <span>Expenses</span>
                 </a>
@@ -488,18 +493,37 @@ document.addEventListener('DOMContentLoaded', function() {
                 </a>
               </li>
             </ul>
-          </nav><!-- nav --><!-- aside footer --><!-- / aside footer -->
+          </nav>
+  <!-- nav --><!-- aside footer --><!-- / aside footer -->
 	</div>
    </div>
   </aside><!-- / aside --><!-- content -->
   <div id="content" class="app-content" role="main">
    <div class="app-content-body ">
-    <div class="bg-light lter b-b wrapper-md"><h1 class="m-n font-bold h3">Manage Contracts
-    <a style="margin-top:-5px;" data-toggle="modal"  data-target="#AddClient" class="btn btn-sm btn-primary pull-right"  role="button"><b class="glyphicon-plus pull"> </b>Add Contract</a></h1></div>
+    <div class="bg-light lter b-b wrapper-md"><h1 class="m-n font-bold h3">RFP
+    <a  style="margin-top:-5px;" data-toggle="modal"  data-target="#AddRFP" class="btn btn-sm btn-primary pull-right"  role="button"><b class="glyphicon-plus pull"> </b>Add RFP</a></h1></div>
 	
-	<div class="row" style="margin:5px;background-color:#f0f3f4;">
-     
-	</div>
+	                 <div class="row text-center" style="margin: 10px 5px;">
+                              <div class="col-sm-6">
+                                <div class="panel padder-v item">
+                                  <div class="h1 count text-info font-thin h1 pull-center">121</div>
+                                  <span class="text-muted text-xs"><b> Total RFP Customer </b></span>
+                                  <span class="bottom text-right w-full">
+                                    <i class="glyphicon   glyphicon-tower text-muted m-r-sm"></i>
+                                  </span>
+                                </div>
+                              </div>
+
+                              <div class="col-sm-6">
+                                <a href="" class="block panel padder-v bg-primary item">
+                                  <span class="text-white count font-thin h1 block">80</span>
+                                  <span class="text-muted text-xs"><b> RFP Actifs </b></span>
+                                  <span class="bottom text-right w-full">
+                                    <i class="glyphicon glyphicon-briefcase text-muted m-r-sm"></i>
+                                  </span>
+                                </a>
+                              </div>
+                            </div>
 	 
 	   <div class="table-responsive" style="background-color:white;margin:10px; padding:10px;">
 		<table ui-jq="dataTable" ui-options="{
@@ -508,123 +532,116 @@ document.addEventListener('DOMContentLoaded', function() {
 															{ mData: 'browser' },
 															{ mData: 'platform' },
 															{ mData: 'version' },
+															{ mData: 'grade' },
+															{ mData: 'grade1' },
+															{ mData: 'grade2' },
 															{ mData: 'action' }
 															]
 															}" class="table  b-t b-b">
 	     <thead style="color:#23b7e5;">
 		  <tr>
-		   
-		   <th  style="width:20%"><center>Contract Name</center></th>
+		   <th  style="width:20%"><center>Title </center></th>
 		   <th  style="width:20%"><center>Description</center></th>
-		   <th  style="width:20%"><center>Delivery Date</center></th>
-		   
-		   <th  style="width:15%"><center>Actions</center></th>
-
+		   <th  style="width:15%"><center>Realase Date</center></th>
+		   <th  style="width:15%"><center>Reponse Date Time</center></th>
+		   <th  style="width:10%"><center>Notification Date</center></th>
+		   <th  style="width:10%"><center>Status RFP</center></th>
+		   <th  style="width:10%"><center>Actions</center></th>
 		  </tr>
 	     </thead>
 		 <tbody>
-		  <tr data-expanded="true" th:each="c:${con}">
-		   <td th:text ="${c.Title}"><center><b></b></center></td>
-		   <td th:text ="${c.Description}"><center></center></td>
-		   <td th:text ="${c.DeliveryDate}"><center></center></td>
-		 
-		
-		   <td>
-		   <center>
-		   <div class="btn-group dropdown">
-																							<button class="btn btn-default btn-xs" data-toggle="dropdown"><i class="glyphicon glyphicon-cog"></i> Action <span class="caret"></span></button>
-																							<ul class="dropdown-menu">
-																								<li>
-																									 <li><a th:href="@{updateContrat(id=${c.Contrat_ID})}"  style="margin-top:-5px;"   class="btn btn-sm btn-light" role="button">Update</a></li>
-																								</li>
-																								<li><a th:href="@{deleteContrat(id=${c.Contrat_ID})}"  style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Delete</a></li>
-																								<li>
-																									<li><a th:href="@{detailContrat(id=${c.Contrat_ID})}" style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Detail</a></li></ul></div></center></td>
-																								</li>
-																							</ul>
-																						</div>
-		   </center>
-		   </td>
+		  <tr data-expanded="true" th:each="r:${rfp}">
+		   <td th:text ="${r.Title}" class="m-n font-thin h4 text-secondary"><center><b></b></center></td> 
+		   <td th:text ="${r.Description}" class="m-n font-thin h4 text-secondary"><center><b></b></center></td> 
+		   <td th:text ="${r.RealaseDate}" class="m-n font-thin h4 text-secondary"><center></center></td> 
+		   <td th:text ="${r.ReponseDateTime}" class="m-n font-thin h4 text-secondary"><center><span></span></center></td> 
+		   <td th:text ="${r.NotificationDate}" class="m-n font-thin h4 text-secondary"><center></center></td> 
+           <td th:text ="${r.StatusRFP}" class="m-n font-thin h4 text-secondary"><center><span></span></center></td> 
+		   <td><center><div class="btn-group dropdown"><button class="btn btn-default btn-xs" data-toggle="dropdown">
+		     <i class="glyphicon glyphicon-cog"></i> Action <span class="caret"></span></button>
+		     <ul class="dropdown-menu">
+		     <li><a th:href="@{updateRFP(id=${r.RFP_ID})}"  style="margin-top:-5px;"   class="btn btn-sm btn-light" role="button">Update</a></li></li> 
+		    <li><a th:href="@{archiverRFP(id=${r.RFP_ID})}"  style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Archive</a></li>
+		     <li><a th:href="@{detailRFP(id=${r.RFP_ID})}" style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Detail</a></li></ul></div></center></td>
 		  </tr>
 		 </tbody>
 		</table>
 	   </div>
-	  
-<div class="col-sm-6">              
-    <div class="row row-sm text-center">
-     <div class="col-sm-12">
-    <div class="panel padder-v item">
-     <div class="h1 text-info font-thin h1 pull-center">521</div>
-      <span class="text-muted text-xs"><b> Contracts <small>(current week)</small></b></span>
-      <span class="bottom text-right w-full"><i class="glyphicon glyphicon-list text-muted m-r-sm"></i></span>
-     </div>
-    </div>
-    <div class="col-sm-12">
-     <a href class="block panel padder-v bg-primary item">
-      <span class="text-white font-thin h1 block">930</span>
-      <span class="text-muted text-xs"><b> Active Contracts <small>(current week)</small></b></span>
-      <span class="bottom text-right w-full"><i class="glyphicon glyphicon-list text-muted m-r-sm"></i></span>
-     </a>
-    </div>
-    <div class="col-sm-12">
-     <div class="panel padder-v bg-info item">
-      <div class="h1 text-white font-thin h1 pull-center">521</div>
-       <span class="text-muted text-xs"><b>Expired Contracts <small>(current week)</small></b></span>
-       <span class="bottom text-right w-full"><i class="glyphicon glyphicon-list text-muted m-r-sm"></i></span>
-      </div>
-     </div>
-    </div>
-     </div> 
-
 	<div class="col-sm-6">
-	    <center><h3 class="m-n font-bold h4">Delivery Date </h3></center>
-		<div id='calendar1'></div>
+	    <center><h3 class="m-n font-bold h4">Expected Temporaray Date </h3></center>
+		<div id='calendar'></div>
 	</div>
-	<div class="modal fade" role="dialog" id="AddClient" >
+	<div class="col-sm-6">
+	    <center><h3 class="m-n font-bold h4">RFP Reponse Date & Time </h3></center>
+		<div id='calendar1'></div>
+	</div>	
+	 <div th:if="${message}">
+		<h2 th:text="${message}"/>
+	</div>   
+	<div class="modal fade" role="dialog" id="AddRFP" >
 	 <div class="modal-dialog modal-lg" >
 	  <div class="modal-content">
 	   <div class="modal-header" style="background-image:url(img/grf-bg.jpg);color:white;">
 	    <button type="button" class="close pull-right" data-dismiss="modal">&times;</button>
-	    <h1 class="m-n font-bold h3"> <b class="glyphicon-plus pull"> </b> Add Contract</h1>
-	   </div>
-	<form th:action="@{SaveContrat}" method ="post" th:object="${contrat}">
+	    <h1 class="m-n font-bold h3"> <b class="glyphicon-plus pull"> </b> Add RFP</h1>
+	   </div>	   
+    <form th:action="@{SaveRFP}" method ="post" th:object="${rf}"> 
      <div class="modal-body">
-      <div class="row">
-      <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b></b></label>
+	    <div class="row">
+	    <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b></b></label>
      <div class="col-sm-8" style="margin: 5px 0px;">
-      <input type="hidden" class="form-control" placeholder="Entry Name of Contrat" id="input-id-1"  required th:field=*{Contrat_ID}/>
-      </div>
-       <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Contract Title</b></label>
-       <div class="col-sm-8" style="margin: 5px 0px;">
-      <input type="text" class="form-control" placeholder="Entry Name of Contract" id="input-id-1" required th:field=*{Title}>
-       
-     </div>
-       <label class="col-sm-4 control-label"  for="input-id-1"><b>Customer Name</b></label>
-     <div class="col-sm-8"  >
-      <select name="Customer_ID" class="form-control m-b" th:field=*{customer}>
-       <option th:each ="c:${customer}" 
-	   th:text="${c.name}"
-	   th:value ="${c.Customer_ID}"></option>
-      </select>
-     </div>
-     <label class="col-sm-4 control-label" style="margin: 5px 0px;" placeholder="Entry Description" for="input-id-1"><b>Description</b></label>
-     <div class="col-sm-8" style="margin: 5px 0px;">
-	   <input type="text" class="form-control" placeholder="Entry Description " id="input-id-1" required th:field=*{Description}>
-     </div>
-     <label class="col-sm-4 control-label" placeholder="Entry Delivery Date" style="margin: 5px 0px;" for="input-id-1"><b>Delivery Date</b></label>
-     <div class="col-sm-8" style="margin: 5px 0px;">
-      <input type="date" class="form-control" id="input-id-1" required th:field=*{DeliveryDate}>
-     </div>
-     </div>
-      <div class="modal-footer">
-       <button style="margin:0px;" class="btn m-b-xs btn-sm btn-primary btn-addon"><i class="glyphicon glyphicon-ok"></i>Save</button>
-       <button style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon" data-dismiss="modal"><i class="glyphicon glyphicon-remove"></i>Annuler</button>
-      </div>
-      
-      </form>
-     </div>
-    </div>
+      <input type="hidden" class="form-control" placeholder="Entry Name of Project" id="input-id-1"  required th:field=*{RFP_ID}/>
     
+	 </div> 
+	     <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Title</b></label>
+	     <div class="col-sm-8" style="margin: 5px 0px;" >
+		  <input type="text" class="form-control" placeholder="Entry Name of RFP" id="input-id-1" required th:field=*{Title}/> 
+	
+		 </div>
+	     <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Customer</b></label>
+	     <div class="col-sm-8" style="margin: 5px 0px;">
+	 <!-- ici on met une boucle sur le customer pour avoir récupérer la liste des customer  -->
+	      <select name="Customer_ID" class="form-control m-b" th:field=*{customer}>
+	         <option th:each ="c:${customer}" 
+	                 th:text="${c.name}"
+	                 th:value ="${c.Customer_ID}"></option>
+	      </select>
+	     </div>
+		 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Description</b></label>
+		 <div class="col-sm-8" style="margin: 5px 0px;">
+	   <input type="text" class="form-control" placeholder="Entry Description " id="input-id-1" required th:field=*{Description}/>
+       </div>
+		 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Realase Date</b></label>
+	     <div class="col-sm-8" style="margin: 5px 0px;">
+            <input type="date" class="form-control" id="input-id-1" required th:field=*{RealaseDate}/> 
+         </div>
+		 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Reponse Date Time</b></label>
+		 <div class="col-sm-8" style="margin: 5px 0px;">
+            <input type="date" class="form-control" id="input-id-1" required th:field=*{ReponseDateTime}/>
+         </div>
+	     <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Notification Date</b></label>
+		 <div class="col-sm-8" style="margin: 5px 0px;">
+            <input type="date" class="form-control" id="input-id-1" required th:field=*{NotificationDate}/>
+         </div>
+		 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Request Of Execution Date</b></label>
+		 <div class="col-sm-8" style="margin: 5px 0px;">
+            <input type="date" class="form-control" id="input-id-1" required th:field=*{RequestOfExecutionDate}/>
+         </div>
+		 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Request File</b></label>
+		 <div class="col-sm-8">
+          <input type="file" placeholder="Upload Preview File" class="form-control" id="input-id-1" required th:field=*{RequestFile}/>
+         </div>
+		 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Response File</b></label>
+		 <div class="col-sm-8">
+          <input type="file" placeholder="Upload Preview File" class="form-control" id="input-id-1" required th:field=*{ResponseFile}/>
+         </div>
+		  <div class="modal-footer">
+		   <button style="margin:0px;" class="btn m-b-xs btn-sm btn-primary btn-addon"><i class="glyphicon glyphicon-ok"></i>Save</button>
+		   <button style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon" data-dismiss="modal"><i class="glyphicon glyphicon-remove"></i>Annuler</button>
+		  </div>
+		 </div>
+		</div>
+	    </form>
 	  </div>
      </div>
     </div>
@@ -637,158 +654,6 @@ document.addEventListener('DOMContentLoaded', function() {
    <span class="pull-right">2.2.0 <a href ui-scroll="app" class="m-l-sm text-muted"><i class="fa fa-long-arrow-up"></i></a></span>&copy; PowerM 2020 Copyright.
   </div>
  </footer><!-- / footer -->
- <div class="modal fade" role="dialog" id="Update" >
-   <div class="modal-dialog modal-lg" >
-    <div class="modal-content">
-     <div class="modal-header" style="background-image:url(img/grf-bg.jpg);color:white;">
-      <button type="button" class="close pull-right" data-dismiss="modal">&times;</button>
-      <h1 class="m-n font-bold h3"> Update Contract</h1>
-     </div>
-     <div class="modal-body">
-      <div class="row">
-       <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Contract Title</b></label>
-       <div class="col-sm-8" style="margin: 5px 0px;">
-      <input type="text" class="form-control" placeholder="Entry Name of Project" id="input-id-1">
-     </div>
-       <label class="col-sm-4 control-label"  for="input-id-1"><b>Customer Name</b></label>
-     <div class="col-sm-8"  >
-      <select name="account" class="form-control m-b">
-       <option>Customer1</option>
-       <option>Customer2</option>
-      </select>
-     </div>
-       <label class="col-sm-4 control-label" placeholder="Entry Notes" for="input-id-1"><b>Description</b></label>
-      <div class="col-sm-8">
-       <div class="form-group">
-      <div class="btn-toolbar m-b-sm btn-editor" data-role="editor-toolbar" data-target="#editor">
-       <div class="btn-group dropdown" dropdown="">
-        <a class="btn btn-default" dropdown-toggle="" tooltip="Font"><i class="fa fa-font"></i><b class="caret"></b></a>
-         <ul class="dropdown-menu">
-        <li><a href="" data-edit="fontName Serif" style="font-family:'Serif'">Serif</a></li> 
-        <li><a href="" data-edit="fontName Sans" style="font-family:'Sans'">Sans</a></li>
-        <li><a href="" data-edit="fontName Arial" style="font-family:'Arial'">Arial</a></li>
-         </ul>
-       </div>
-       <div class="btn-group dropdown" dropdown="">
-        <a class="btn btn-default" dropdown-toggle="" data-toggle="dropdown" tooltip="Font Size"><i class="fa fa-text-height"></i>&nbsp;<b class="caret"></b></a>
-        <ul class="dropdown-menu">
-         <li><a href="" data-edit="fontSize 5" style="font-size:24px">Huge</a></li>
-         <li><a href="" data-edit="fontSize 3" style="font-size:18px">Normal</a></li>
-         <li><a href="" data-edit="fontSize 1" style="font-size:14px">Small</a></li>
-        </ul>
-         </div>
-       <div class="btn-group">
-        <a class="btn btn-default" data-edit="bold" tooltip="Bold (Ctrl/Cmd+B)"><i class="fa fa-bold"></i></a>
-        <a class="btn btn-default" data-edit="italic" tooltip="Italic (Ctrl/Cmd+I)"><i class="fa fa-italic"></i></a>
-        <a class="btn btn-default" data-edit="strikethrough" tooltip="Strikethrough"><i class="fa fa-strikethrough"></i></a>
-        <a class="btn btn-default" data-edit="underline" tooltip="Underline (Ctrl/Cmd+U)"><i class="fa fa-underline"></i></a>
-       </div>
-       <div class="btn-group">
-        <a class="btn btn-default" data-edit="insertunorderedlist" tooltip="Bullet list"><i class="fa fa-list-ul"></i></a>
-        <a class="btn btn-default" data-edit="insertorderedlist" tooltip="Number list"><i class="fa fa-list-ol"></i></a>
-        <a class="btn btn-default" data-edit="outdent" tooltip="Reduce indent (Shift+Tab)"><i class="fa fa-dedent"></i></a>
-        <a class="btn btn-default" data-edit="indent" tooltip="Indent (Tab)"><i class="fa fa-indent"></i></a>
-         </div>
-       <div class="btn-group">
-        <a class="btn btn-default btn-info" data-edit="justifyleft" tooltip="Align Left (Ctrl/Cmd+L)"><i class="fa fa-align-left"></i></a>
-        <a class="btn btn-default" data-edit="justifycenter" tooltip="Center (Ctrl/Cmd+E)"><i class="fa fa-align-center"></i></a>
-        <a class="btn btn-default" data-edit="justifyright" tooltip="Align Right (Ctrl/Cmd+R)"><i class="fa fa-align-right"></i></a>
-        <a class="btn btn-default" data-edit="justifyfull" tooltip="Justify (Ctrl/Cmd+J)"><i class="fa fa-align-justify"></i></a>
-       </div>
-       <div class="btn-group dropdown" dropdown="">
-        <a class="btn btn-default" dropdown-toggle="" tooltip="Hyperlink"><i class="fa fa-link"></i></a>
-        <div class="dropdown-menu">
-         <div class="input-group m-l-xs m-r-xs">
-        <input class="form-control input-sm" id="LinkInput" placeholder="URL" type="text" data-edit="createLink">
-        <div class="input-group-btn">
-         <button class="btn btn-sm btn-default" type="button">Add</button>
-        </div>
-         </div>
-        </div>
-        <a class="btn btn-default" data-edit="unlink" tooltip="Remove Hyperlink"><i class="fa fa-cut"></i></a>
-       </div>
-             <div class="btn-group">
-        <a class="btn btn-default" tooltip="Insert picture (or just drag &amp; drop)" id="pictureBtn"><i class="fa fa-picture-o"></i></a>
-        <input type="file" data-edit="insertImage" style="position:absolute; opacity:0; width:41px; height:34px">
-       </div>
-       <div class="btn-group">
-        <a class="btn btn-default" data-edit="undo" tooltip="Undo (Ctrl/Cmd+Z)"><i class="fa fa-undo"></i></a>
-        <a class="btn btn-default" data-edit="redo" tooltip="Redo (Ctrl/Cmd+Y)"><i class="fa fa-repeat"></i></a>
-       </div>
-      </div>
-      <div ui-jq="wysiwyg" class="form-control" style="overflow:scroll;height:200px;max-height:200px" contenteditable="true"> 
-        Go ahead… 
-      </div>
-    </div>
-   </div>
-    <label class="col-sm-4 control-label" placeholder="Entry Year" for="input-id-1"><b>Delivery Date</b></label>
-       <div class="col-sm-8">
-      <form action="https://formden.com/post/MlKtmY4x/" class="form-horizontal" method="post">
-       <div class="form-group ">
-        <div class="col-sm-10">
-       <div class="input-group">
-        <div class="input-group-addon">
-         <i class="fa fa-calendar"></i>
-        </div>
-        <input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" type="text"/>
-         </div>
-        </div>
-       </div>
-      </form>
-       </div>
-      <div class="modal-footer">
-       <button style="margin:0px;" class="btn m-b-xs btn-sm btn-primary btn-addon"><i class="glyphicon glyphicon-ok"></i>Save</button>
-       <button style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon" data-dismiss="modal"><i class="glyphicon glyphicon-remove"></i>Annuler</button>
-      </div>
-     </div>
-    </div>
-    </div>
-     </div>
-    </div>
-
-<div class="modal fade" role="dialog" id="Delete" >
- <div class="modal-dialog modal-lg" >
-  <div class="modal-content">
-   <div class="modal-header" style="background-image:url(img/grf-bg.jpg);color:white;">
-  <button type="button" class="close pull-right" data-dismiss="modal">&times;</button>
-     <h1 class="m-n font-bold h3">Delete Contract</h1>
-   </div>
-   <div class="modal-body">
-    Do you want to delete this Contract ? 
-   </div>
-    <div class="modal-footer">
-   <button class="btn m-b-xs btn-sm btn-primary btn-addon"><i class="glyphicon glyphicon-ok"></i>Yes</button>
-   <button class="btn m-b-xs btn-sm btn-default btn-addon" data-dismiss="modal"><i class="glyphicon glyphicon-remove"></i>No</button>
-  </div>
-  </div>  
-</div>
-</div>
-
-<div class="modal fade" role="dialog" id="Detail" >
- <div class="modal-dialog modal-lg" >
-  <div class="modal-content">
-   <div class="modal-header" style="background-image:url(img/grf-bg.jpg);color:white;">
-  <button type="button" class="close pull-right" data-dismiss="modal">&times;</button>
-     <h1 class="m-n font-bold h3">Information Contract</h1>
-   </div>
-   <div class="modal-body">
-          <p>
-            <span class="m-n font-thin h3 text-black" >Contract Title:</span>
-            <span ng-repeat="nom in contract"> {{ contract.nomContract }} </br></span>
-            <span class="m-n font-thin h3 text-black">Customer Name:</span>
-            <span ng-repeat="nom in customer"> {{ customer.nomCustomer }}</span></br>
-            <span class="m-n font-thin h3 text-black">Delivery Date :</span>
-            <span ng-repeat="deliveryDate in contract"> {{ contract.deliveryDateContract }}</span></br>
-            <span class="m-n font-thin h3 text-black" >Description :</span>
-            <span ng-repeat="description in contract"> {{ contract.descriptionContract }} </br></span>
-          </p> 
-   </div>
-   <div class="modal-footer">
-   <button class="btn m-b-xs btn-sm btn-primary btn-addon" data-dismiss="modal">Return</button>
-  </div>
-  </div>  
-</div>
-</div>
 </div>
 <script src="../libs/jquery/jquery/dist/jquery.js"></script>
 <script src="../libs/jquery/bootstrap/dist/js/bootstrap.js"></script>
@@ -798,20 +663,6 @@ document.addEventListener('DOMContentLoaded', function() {
 <script src="js/ui-nav.js"></script>
 <script src="js/ui-toggle.js"></script>
 <script src="js/ui-client.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
-<script>
-  $(document).ready(function(){
-    var date_input=$('input[name="date"]'); //our date input has the name "date"
-    var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
-    date_input.datepicker({
-      format: 'mm/dd/yyyy',
-      container: container,
-      todayHighlight: true,
-      autoclose: true,
-    })
-  })
-</script>
 <script type="text/javascript">
   function changecolor() {
        $('body,.wrapper,.content,.panel-default,.panel-heading,#content-h,#header,.modal-content').css("background-color", "#3a3f51");
@@ -871,6 +722,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
       };
 		</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.min.js" integrity="sha256-tQ3x4V2JW+L0ew/P3v2xzL46XDjEWUExFkCDY0Rflqc=" crossorigin="anonymous"></script>
 </body>
 </html>
-													

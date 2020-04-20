@@ -1,6 +1,9 @@
 package com.example.demo.entities;
 
 import java.io.Serializable;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 import javax.persistence.*;
@@ -28,9 +31,9 @@ public class Project implements Serializable{
 	@NumberFormat(pattern = "#,###,###,###.##")
 	private Double Amount;
 	
-	@Temporal(TemporalType.DATE)
-	@DateTimeFormat(pattern= "yyyy")
-	private Date Year;
+	//@Temporal(TemporalType.DATE)
+	//@DateTimeFormat(pattern= "yyyy")
+	private DateFormat  Year= new SimpleDateFormat("yyyy") ;
 	
 	@DateTimeFormat(pattern= "yyyy-mm-dd")
 	private Date DeliveryDate;
@@ -63,14 +66,34 @@ public class Project implements Serializable{
 	@Column(name = "Status")
 	private String Status;
 	
+	@OneToMany
+	private Collection <Assets> assets;
+	
+	@ManyToMany(mappedBy = "Project")
+	private List<TechnologyPartner> technologypartner;  
+
+	
+	public List<TechnologyPartner> getTechnologypartner() {
+		return technologypartner;
+	}
+	public void setTechnologypartner(List<TechnologyPartner> technologypartner) {
+		this.technologypartner = technologypartner;
+	}
+	public Collection<Assets> getAssets() {
+		return assets;
+	}
+	public void setAssets(Collection<Assets> assets) {
+		this.assets = assets;
+	}
 	public Project(String deliveryCertificate, String uri, String type, long size) {
+
 		super();
 		DeliveryCertificate = deliveryCertificate;
 		Uri = uri;
 		Type =type;
 		Size = size;
 	}
-	public Project(String name, String typeProject, Double amount, Date year, Date deliveryDate, Date temporayAcceptanceDate,
+	public Project(String name, String typeProject, Double amount, DateFormat year, Date deliveryDate, Date temporayAcceptanceDate,
 			Date finalTemporaryDate, String deliveryCertificate, String uri, String type, long size, String technologyPartners, int warranty,
 			int executionTime, String notes, String status) {
 		super();
@@ -137,10 +160,10 @@ public class Project implements Serializable{
 	public void setAmount(Double amount) {
 		Amount = amount;
 	}
-	public Date getYear() {
+	public DateFormat getYear() {
 		return Year;
 	}
-	public void setYear(Date year) {
+	public void setYear(DateFormat year) {
 		Year = year;
 	}
 	public Date getDeliveryDate() {

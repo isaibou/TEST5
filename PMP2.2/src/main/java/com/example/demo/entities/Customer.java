@@ -93,8 +93,17 @@ public class Customer implements Serializable{
 	private Collection <Purchasing> Purchasing;
 	@OneToMany
 	private Collection <Contrat> contrat;
-	 
+	@OneToMany
+	private Collection <RFP> rfp;
 
+	
+	public Collection<RFP> getRfp() {
+		return rfp;
+	}
+
+	public void setRfp(Collection<RFP> rfp) {
+		this.rfp = rfp;
+	}
 
 	public Collection<Contrat> getContrat() {
 		return contrat;

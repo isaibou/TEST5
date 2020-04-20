@@ -26,10 +26,14 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import com.example.demo.entities.*;
 import com.example.demo.exception.OrderDate;
 import com.example.demo.repository.ProjetRepository;
-import com.example.demo.storage.StorageService;
+import com.example.demo.repository.TechnologiePartnerRepository;
+//import com.example.demo.storage.StorageService;
 
 @Controller
 public class ProjectController {
+	
+	@Autowired
+	private TechnologiePartnerRepository technologiepartnerRepository;
 	
 	@Autowired
 	private ProjetRepository ProjectRepository;
@@ -40,6 +44,8 @@ public class ProjectController {
 			List<Project> projs = ProjectRepository.findAll();
 			model.addAttribute("proj",projs);
 			model.addAttribute("project", new Project());
+			
+			model.addAttribute("TechnologiePartnerRepository", technologiepartnerRepository.findAll());
 			
 		return "projects_manage";
 	}
@@ -64,7 +70,7 @@ public class ProjectController {
 		return "redirect:/projects_manage";	
 	}
 
-	private StorageService storageService;
+	/*private StorageService storageService;
 
     public ProjectController(StorageService storageService) {
         this.storageService = storageService;
@@ -107,7 +113,7 @@ public class ProjectController {
 
         ProjectRepository.save(addProj);
         return new Project(deliveryCertificate, uri, file.getContentType(), file.getSize());
-    }
+    }*/
 
    /* @PostMapping("/upload-multiple-files")
     @ResponseBody
@@ -130,6 +136,9 @@ public class ProjectController {
 		
 	Project	project = ProjectRepository.getOne(id);
 		 model.addAttribute("project",project);
+		 
+		 model.addAttribute("TechnologiePartnerRepository", technologiepartnerRepository.findAll());
+		 
 		 System.out.println(project.getName());
 		
 			return "updateProj";

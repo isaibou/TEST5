@@ -36,11 +36,7 @@
           <input type="text" class="form-control" placeholder="Entry Name of Asset" id="input-id-1"  required th:field=*{name}>
           <span  th:errors=*{name}></span>
 	     </div>
-          <label class="col-sm-4 control-label"  for="input-id-1" style="margin-bottom:5px;"><b>Brand</b></label>
-          <div class="col-sm-8" style="margin-bottom:5px;">
-            <input type="text"  class="form-control" placeholder="Entry Band" id="input-id-2" required th:field=*{Brand}/>
-            <span th:errors=*{Brand}></span>
-          </div>
+          
           <label class="col-sm-4 control-label" placeholder="Entry EndOfSupportDate" for="input-id-1" style="margin-bottom:5px;"><b>End Of Support Date</b></label>
           <div class="col-sm-8" style="margin-bottom:5px;">
             <input class="form-control" placeholder="yyyy-MM-dd" type="date" required th:field=*{EndOfSuportDate}/>
@@ -56,6 +52,16 @@
             <input type="text"  class="form-control" placeholder="Entry FRU" id="input-id-2" required th:field=*{FRU}/>
             <span th:errors=*{FRU}></span>
           </div>
+          <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Vendor</b></label>
+	      <div class="col-sm-8" style="margin: 5px 0px;">
+	 <!-- ici on met une boucle sur le customer pour avoir récupérer la liste des vendor  -->
+	     <select name="Vendor_ID" class="form-control m-b" th:field=*{vendor}>
+	     <option th:each ="v:${vendor}" 
+	      th:text="${v.NameVendor}"
+	      th:value ="${v.Vendor_ID}"></option>
+	     </select>
+	     </div>
+          
            <div class="modal-footer">
         <button style="margin:0px;" class="btn m-b-xs btn-sm btn-primary btn-addon"><i class="glyphicon glyphicon-ok"></i>Save</button>
 	    <button style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon"><a th:href="assetstype_manage"><i class="glyphicon glyphicon-remove"></i>Annuler</a></button>

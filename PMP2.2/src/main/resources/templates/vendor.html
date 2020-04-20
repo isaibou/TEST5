@@ -537,10 +537,13 @@
                             <table ui-jq="dataTable" ui-options="{
                               aoColumns: [
                               
+                              { mData: 'engine' },
+                              
                               { mData: 'browser' },
                               { mData: 'platform' },
                               { mData: 'version' },
                               { mData: 'grade' },
+                              { mData: 'grade1' },
                               { mData: 'action' }
                               ]
                               }" class="table table-striped b-t b-b">
@@ -552,6 +555,7 @@
                                   <th  style="width:15%"><center>Phone</center></th>
                                   <th  style="width:15%"><center>Industry</center></th>
                                   <th  style="width:20%"><center>Partnership Certificate</center></th>
+                                  <th  style="width:5%"><center>Status</center></th>
                                   <th  style="width:15%"><center>Actions</center></th>
                                 </tr>
                               </thead>
@@ -569,6 +573,7 @@
                                     <td th:text ="${v.Phone}"><center></center></td>
                                     <td th:text ="${v.Industry}" class="m-n font-thin h4 text-secondary"><center><center/></td>
                                     <td th:text ="${v.PartnershipCertificate}"><center><a  data-toggle="modal"  data-target="#imgpreview"><img class="img-thumbnail" width="80px" height="60px"src="https://www.prefamaroc.ma/img/attestations/mojazine.jpg" ><a/><center/></td>
+                                    <td th:text ="${v.Status}" class="m-n font-thin h4 text-secondary"><center><span></span><center/></td>
                                         <td>
                                           <center>
                                             <div class="btn-group dropdown">
@@ -578,7 +583,7 @@
                                                   <a th:href="@{updateVendor(id=${v.Vendor_ID})}"  style="margin-top:-5px;"   class="btn btn-sm btn-light" role="button">Update</a></li>
                                                 </li>
                                                 <li>
-                                                  <li><a th:href="@{deleteVendor(id=${v.Vendor_ID})}"  style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Delete</a></li>
+                                                  <li><a th:href="@{archiverVendor(id=${v.Vendor_ID})}"  style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Archive</a></li>
                                                 </li>
                                                 <li>
                                                   <li><a th:href="@{detailVendor(id=${v.Vendor_ID})}" style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Detail</a></li></ul></div></center></td>

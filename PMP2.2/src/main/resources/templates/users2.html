@@ -1,6 +1,5 @@
  <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" 
-xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<html lang="en" class="">
 <head>
 <meta charset="utf-8" />
 <title>Users</title>
@@ -10,8 +9,8 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <link rel="stylesheet" href="../libs/assets/font-awesome/css/font-awesome.min.css" type="text/css" />
 <link rel="stylesheet" href="../libs/assets/simple-line-icons/css/simple-line-icons.css" type="text/css" />
 <link rel="stylesheet" href="../libs/jquery/bootstrap/dist/css/bootstrap.css" type="text/css" />
-<link rel="stylesheet" href="/css/font.css" type="text/css" />
-<link rel="stylesheet" href="/css/app.css" type="text/css" />
+<link rel="stylesheet" href="css/font.css" type="text/css" />
+<link rel="stylesheet" href="css/app.css" type="text/css" />
 <style>
 .hidetext { -webkit-text-security: square; }
 </style>
@@ -61,14 +60,13 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
    <div class="dropdown-menu w-xl animated fadeInUp">
    	<div class="panel bg-white">
    	 <div class="panel-heading b-light bg-light">
+   	  <strong>You have <span>2</span> notifications</strong>
      </div>
      <div class="list-group">
       <a href class="list-group-item">
        <span class="pull-left m-r thumb-sm"><img src="img/a0.jpg" alt="..." class="img-circle"></span>
        <span class="clear block m-b-none">Use awesome animate.css<br><small class="text-muted">10 minutes ago</small></span>
       </a>
-      
-      
       <a href class="list-group-item">
        <span class="clear block m-b-none">1.0 initial released<br><small class="text-muted">1 hour ago</small></span>
       </a>
@@ -81,11 +79,10 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
    </div><!-- / dropdown -->
   </li>
   <li class="dropdown">
-   
    	<span class="thumb-sm avatar pull-right m-t-n-sm m-b-n-sm m-l-sm">
      <img src="img/user.png" alt="..."><i class="on md b-white bottom"></i>
     </span>
-    <span class="hidden-sm hidden-md"th:text ="   ${user.firstName   } + . +  ${user.LastName   }   "></span><b class="caret"></b>
+    <span class="hidden-sm hidden-md">Walid.largou</span><b class="caret"></b>
    </a><!-- dropdown -->
    <ul class="dropdown-menu animated fadeInRight w">
    	<li class="wrapper b-b m-b-sm bg-light m-t-n-xs">
@@ -112,15 +109,15 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 	  <span class="thumb-lg w-auto-folded avatar m-t-sm"><img src="img/a0.jpg" class="img-full" alt="..."></span>
 	 </a>
 	 <a href="#" data-toggle="dropdown" class="dropdown-toggle hidden-folded">
-	  <span class="clear"><span class="block m-t-sm"><strong class="font-bold text-lt"th:text ="   ${user.firstName   } + . +  ${user.LastName   }   "></strong><b class="caret"></b></span><span class="text-muted text-xs block">Manager</span></span>
+	  <span class="clear"><span class="block m-t-sm"><strong class="font-bold text-lt">Walid.Largou</strong><b class="caret"></b></span><span class="text-muted text-xs block">Manager</span></span>
 	 </a><!-- dropdown -->
 	 <ul class="dropdown-menu animated fadeInRight w hidden-folded">
 	  <li class="wrapper b-b m-b-sm bg-info m-t-n-xs"><span class="arrow top hidden-folded arrow-info"></span><div><p>300mb of 500mb used</p></div><div class="progress progress-xs m-b-none dker"><div class="progress-bar bg-white" data-toggle="tooltip" data-original-title="50%" style="width: 50%"></div></div></li>
 	  <li><a href>Settings</a></li>
-	  <li><a th:href="page_profile">Profile</a></li>
+	  <li><a href="page_profile.html">Profile</a></li>
 	  <li><a href><span class="badge bg-danger pull-right">3</span>Notifications</a></li>
 	  <li class="divider"></li>
-	  <li><a th:href="page_signin">Logout</a></li>
+	  <li><a href="page_signin.html">Logout</a></li>
      </ul><!-- / dropdown -->
 	</div>
 	<div class="line dk hidden-folded"></div>
@@ -131,14 +128,14 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
                 <span>Main</span>
               </li>
               <li>
-                <a th:href="index" class="auto">      
+                <a href="index.html" class="auto">      
                   <i class="glyphicon glyphicon-stats icon text-primary-dker"></i>
                   <span class="font-bold">Dashboard</span>
                 </a>
                
               </li>
               <li>
-                <a th:href="mail">
+                <a href="mail.html">
                   <b class="badge bg-info pull-right">9</b>
                   <i class="glyphicon glyphicon-envelope icon text-info-lter"></i>
                   <span class="font-bold">Email</span>
@@ -162,28 +159,45 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
                 <ul class="nav nav-sub dk">
                
                   <li>
-                    <a th:href="@{/customer_manage}">
+                    <a href="customer_manage.html">
                       <span>Manage customer</span>
                     </a>
                   </li>
           
           <li>
-                    <a th:href="purchasing_customer_manage">
-                      <span>Purchasing contact</span>
+                    <a href="purchasing_customer_manage.html">
+                      <span>Puchasing contact</span>
                     </a>
                   </li>
                     
                 </ul>
               </li>
            <li>
-                <a th:href="users" class="auto">
-                  <i class="glyphicon glyphicon-user icon"></i>
+                <a href class="auto">      
+                  <span class="pull-right text-muted">
+                    <i class="fa fa-fw fa-angle-right text"></i>
+                    <i class="fa fa-fw fa-angle-down text-active"></i>
+                  </span>
+                  <b class="badge bg-info pull-right">3</b>
+                  <i class="glyphicon glyphicon-user"></i>
                   <span>Users</span>
                 </a>
-
+                <ul class="nav nav-sub dk">
+               
+                  <li>
+                    <a href="users.html">
+                      <span>Manage users</span>
+                    </a>
+                  </li>
+                                    <li>
+                    <a href="TypeUsers.html">
+                      <span>Manage Type users</span>
+                    </a>
+                  </li>  
+                </ul>
               </li>
-    <li>
-                <a th:href="timesheets" class="auto">
+              <li>
+                <a href="timesheets.html" class="auto">
                   <i class="glyphicon glyphicon-calendar icon"></i>
                   <span>TimeSheet</span>
                 </a>
@@ -201,17 +215,17 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
                 </a>
                 <ul class="nav nav-sub dk">
                   <li class="s">
-                    <a th:href="projects_manage">
+                    <a href="projects_manage.html">
                       <span>Manage Project</span>
                     </a>
                   </li>
                   <li>
-                    <a th:href="deliverable_manage">
+                    <a href="deliverable_manage.html">
                       <span>Manage Deliverable</span>
                     </a>
                   </li>
                   <li>
-                    <a th:href="reference_manage">
+                    <a href="reference_manage.html">
                       <span>Manage Reference</span>
                     </a>
                   </li>
@@ -228,47 +242,47 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
                 </a>
                 <ul class="nav nav-sub dk">
                   <li class="">
-                    <a th:href="assets_manage">
+                    <a href="assets_manage.html">
                       <span>Manage Assets</span>
                     </a>
                   </li>
                   <li>
-                    <a th:href="assetstype_manage">
+                    <a href="assetstype_manage.html">
                       <span>Manage Assets Type</span>
                     </a>
                   </li>
           <li>
-                    <a th:href="assetstype_manage">
+                    <a href="firmware.html">
                       <span>Firmware</span>
                     </a>
                   </li>
           <li>
-                    <a th:href="assetstype_manage">
+                    <a href="vendor.html">
                       <span>Vendor</span>
                     </a>
                   </li>
                 </ul>
               </li>
               <li>
-                <a th:href="tickets_manage">
+                <a href="tickets_manage.html">
                   <i class="glyphicon glyphicon-tag"></i>
                   <span>Tickets</span>
                 </a>
               </li>
         <li>
-                <a th:href="contract_manage">
+                <a href="contract_manage.html">
                   <i class="fa fa-legal"></i></i>
                   <span>Contrats</span>
                 </a>
               </li>
         <li>
-                <a th:href="tickets_manage">
+                <a href="expense.html">
                   <i class="glyphicon  glyphicon-usd"></i></i>
                   <span>Expenses</span>
                 </a>
               </li>
               <li>
-                <a th:href="request_manage" class="auto">
+                <a href="request_manage.html" class="auto">
         <span class="pull-right text-muted">
                     <i class="fa fa-fw fa-angle-right text"></i>
                     <i class="fa fa-fw fa-angle-down text-active"></i>
@@ -278,12 +292,12 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
                 </a>
                  <ul class="nav nav-sub dk">
                   <li class="s">
-                    <a th:href="internal_request_manage">
+                    <a href="internal_request_manage.html">
                       <span>Internal Request</span>
                     </a>
                   </li>
                   <li>
-                    <a th:href="external_request_manage">
+                    <a href="external_request_manage.html">
                       <span>External Request</span>
                     </a>
                   </li>
@@ -297,7 +311,7 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
                 <span>Your Stuff</span>
               </li>  
               <li>
-                <a th:href="@{/logout}">
+                <a href="page_profile.html">
                   <i class="icon-user icon text-success-lter"></i>
                   <b class="badge bg-success pull-right">30%</b>
                   <span>Profile</span>
@@ -322,11 +336,11 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 	<div class="bg-light lter b-b wrapper-md">
 	 <h1 class="m-n font-bold h3">Manage Users
 	 <a style="margin-top:-5px;" data-toggle="modal"  data-target="#AddUser" class="btn btn-sm btn-primary pull-right"  role="button"><b class="glyphicon-plus pull"> </b> Add User </a></h1>
-	</div><!-- <div class="panel-heading"><small><a th:href="index">Home</a> </small>><small> Manage users</small> </div>-->
+	</div><!-- <div class="panel-heading"><small><a href="index.html">Home</a> </small>><small> Manage users</small> </div>-->
 	<div class="wrapper bg-white b-b">
 	 <ul class="nav nav-pills nav-sm">
-	  <li class="active"><a href="#tab_default_1" data-toggle="tab">Employee</a></li>
-	  <li><a href="#tab_default_2" data-toggle="tab">Customer</a></li>
+	  <li class="active"><a href="#tab_default_1" data-toggle="tab">Customers</a></li>
+	  <li><a href="#tab_default_2" data-toggle="tab">Employes</a></li>
      </ul>
 	</div>
     <div class="tab-content" >
@@ -344,59 +358,51 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 											}" class="table  b-t b-b">
 		<thead>
 		 <tr>
-	    
+	     
 		  <th  style="width:10%"><center>Picture</center></th>
-          <th  style="width:8%"><center>Firstname & Lastname</center></th>
-		  <th  style="width:12%"><center>Login</center></th>
-	      <th  style="width:12%"><center>CIN</center></th>
-	      <th  style="width:12%"><center>Status</center></th>
-	      
-		  <th  style="width:15%"><center>Actions</center></th>
-		 
+		  <th  style="width:16%"><center>Name & Last Name</center></th>
+          <th  style="width:8%"><center>Telephone</center></th>
+		  <th  style="width:15%"><center>Status</center></th>
+		  <th  style="width:15%"><center>Password</center></th>
+	      <th  style="width:15%"><center>Actions</center></th>
 		 </tr>
 		</thead>
 		<tbody>
-	 <tr sec:authorize="hasRole('ROLE_ADMIN')" data-expanded="true" th:each="u:${users}">
-	
+		 <tr data-expanded="true">
+		
 		  <td><img class="img-thumbnail" src="img/user.png" alt="logo_company" width="60px" height="60px"/></td>
-          <td th:text ="${u.firstName}+.+${u.lastName}"><center></center></td>
-          <td th:text = "${u.username}"><center><center><span class="label bg-danger pull-center m-t-md"></span></center></center></td>
-		  <td th:text = "${u.CIN}"></td>
-		  <td>
-		  
-		   <span th:if="${u.actived == true}" class="label bg-success pull-center m-t-md">Enabled</span>
-   		   <span th:unless="${u.actived == true}" class="label bg-danger pull-center m-t-md">Disabled</span> </td>
-		  
-		  </td>
-		  
+		  <td><h1 class="m-n font-bold h4">Walid Largou</h1> <small><i class="fa fa-phone"></i> (052) 299-9999 <br> <i  class="fa fa-envelope"/></i> walid.largou@powerm.ma</small></td>
+          <td><center>06000000</center></td>
+		  <td><center><center><span class="label bg-success pull-center m-t-md">enable</span><center/><center/></td>
+	   	  <td class="hidetext">password</td>
 		  <td>
 		   <center>
-		   	<div class="btn-group dropdown">
-		     <button class="btn btn-default btn-xs" data-toggle="dropdown">
-		      <i class="glyphicon glyphicon-cog"></i> Action <span class="caret"></span>
-		     </button>
-		     <ul class="dropdown-menu">
-		      <li><a th:href="@{updateUserform(id=${u.username})}"style="margin-top:-5px;"  class="btn btn-sm btn-light" role="button">Update</a></li>
-		      <li><a th:href="@{desactiverUser(id=${u.username})}" style="margin-top:-5px;"  class="btn btn-sm btn-light" role="button">Desactivate</a></li>
-		      <li><a th:href="@{activerUser(id=${u.username})}" style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Activate</a></li>
-		      <li><a th:href="@{detailsUser(id=${u.username})}" style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Details</a></li>
-		     </ul>
-		    </div>
-		   </center>
-		  </td>
+            <div class="btn-group dropdown">
+             <button class="btn btn-default btn-xs" data-toggle="dropdown">
+              <i class="glyphicon glyphicon-cog"></i> Action <span class="caret"></span>
+             </button>
+             <ul class="dropdown-menu">
+              <li><a style="margin-top:-5px;" data-toggle="modal"  data-target="#Update" class="btn btn-sm btn-light" role="button">Update</a></li>
+              <li><a style="margin-top:-5px;" data-toggle="modal"  data-target="#Delete" class="btn btn-sm btn-light" role="button">Delete</a></li>
+              <li><a style="margin-top:-5px;" data-toggle="modal"  data-target="#DetailM" class="btn btn-sm btn-light" role="button">Detail</a></li>
+             </ul>
+            </div>
+           </center>
+          </td>
 		 </tr>
-	</tbody>
+		</tbody>
 	   </table>
       </div>
      </div>
 	</div>
-     <div class="tab-pane" id="tab_default_2" style="padding:20px 15px;margin:0px 2px;border-top:2px #19a9d5 solid;background-color:white;">
+    <div class="tab-pane" id="tab_default_2" style="padding:20px 15px;margin:0px 2px;border-top:2px #19a9d5 solid;background-color:white;">
 	 <div class="panel panel-default">
       <div class="table-responsive">
 	   <table ui-jq="dataTable" ui-options="{aoColumns: [
 												
-												
+												{ mData: 'Picture' },
 												{ mData: 'Name & Last Name' },
+												{ mData: 'CIN' },
 												{ mData: 'Status' },
 												{ mData: 'password' },
 												{ mData: 'action' }]
@@ -404,22 +410,22 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 		<thead>
 		 <tr>
 	
+		  <th  style="width:10%"><center>Picture</center></th>
 		  <th  style="width:16%"><center>Name & Last Name</center></th>
+          <th  style="width:8%"><center>CIN</center></th>
 		  <th  style="width:15%"><center>Status</center></th>
 	      <th  style="width:15%"><center>Password</center></th>
 		  <th  style="width:15%"><center>Actions</center></th>
 		 </tr>
 		</thead>
 		<tbody>
-	 <tr sec:authorize="hasRole('ROLE_ADMIN')" data-expanded="true" th:each="u:${userC}">
+		 <tr data-expanded="true">
 	
-          <td th:text ="${u.firstName}+.+${u.lastName}"><center></center></td>
-          <td th:text = "${u.username}"><center><center><span class="label bg-danger pull-center m-t-md"></span></center></center></td>
-		  <td th:text = "${u.CIN}"></td>
-		  <td  >  
-		   <span th:if="${u.actived == true}" class="label bg-success pull-center m-t-md">Enabled</span>
-   		   <span th:unless="${u.actived == true}" class="label bg-danger pull-center m-t-md">Disabled</span> </td>
-		  
+		  <td><img class="img-thumbnail" src="img/user.png" alt="logo_company" width="60px" height="60px"/></td>
+		  <td><h1 class="m-n font-bold h4">Youssef Sbai idrissi</h1></center> <small><i class="fa fa-phone"></i> (052) 299-9999 <br> <i class="fa fa-envelope"/></i> youssef.sbai@powerm.ma</small></td>
+          <td><center>L000001</center></td>
+          <td><center><center><span class="label bg-danger pull-center m-t-md">disable</span></center></center></td>
+		  <td class="hidetext">password</td>
 		  <td>
 		   <center>
 		   	<div class="btn-group dropdown">
@@ -427,16 +433,15 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 		      <i class="glyphicon glyphicon-cog"></i> Action <span class="caret"></span>
 		     </button>
 		     <ul class="dropdown-menu">
-		      <li><a th:href="@{updateUserform(id=${u.username})}"style="margin-top:-5px;"  class="btn btn-sm btn-light" role="button">Update</a></li>
-		      <li><a th:href="@{desactiverUser(id=${u.username})}" style="margin-top:-5px;"  class="btn btn-sm btn-light" role="button">Desactivate</a></li>
-		      <li><a th:href="@{activerUser(id=${u.username})}" style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Activate</a></li>
-		      <li><a th:href="@{detailsUser(id=${u.username})}" style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Details</a></li>
+		      <li><a style="margin-top:-5px;" data-toggle="modal"  data-target="#Update" class="btn btn-sm btn-light" role="button">Update</a></li>
+		      <li><a style="margin-top:-5px;" data-toggle="modal"  data-target="#Delete" class="btn btn-sm btn-light" role="button">Delete</a></li>
+		      <li><a style="margin-top:-5px;" data-toggle="modal"  data-target="#DetailE" class="btn btn-sm btn-light" role="button">Detail</a></li>
 		     </ul>
 		    </div>
 		   </center>
 		  </td>
 		 </tr>
-	</tbody>
+		</tbody>
 	   </table>
       </div>
 	 </div>
@@ -454,66 +459,178 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 	<button type="button" class="close pull-right" data-dismiss="modal">&times;</button>
 	<h1 class="m-n font-bold h3"> <b class="glyphicon-plus pull"> </b> Add User</h1>
    </div>
-   <form th:action="@{/saveUsers}" method="post" th:object="${addUser}">
    <div class="modal-body">
 	<div class="row">
 	 <label class="col-sm-4 control-label" for="input-id-1" style="margin:5px 0px;"><b>Nom :</b></label>
 	 <div class="col-sm-8" style="margin:5px 0px;" >
-	  <input type="text" placeholder="Entry Nom" class="form-control" id="input-id-1"  required th:field=*{lastName}>
+	  <input type="text" placeholder="Entry Nom" class="form-control" id="input-id-1">
 	 </div>
 	 <label class="col-sm-4 control-label" for="input-id-1" style="margin:5px 0px;"><b>Prenom :</b></label>
 	 <div class="col-sm-8" style="margin:5px 0px;" >
-	  <input type="text" placeholder="Entry Prenom" class="form-control" id="input-id-1"  required th:field=*{firstName}>
+	  <input type="text" placeholder="Entry Prenom" class="form-control" id="input-id-1">
 	 </div>
-	 
-	 	 <label class="col-sm-4 control-label" for="input-id-1" style="margin:5px 0px;"><b>CIN :</b></label>
+	 <label class="col-sm-4 control-label" for="input-id-1" style="margin:5px 0px;"><b>Telephone :</b></label>
 	 <div class="col-sm-8" style="margin:5px 0px;" >
-	  <input type="text" placeholder="Entry CIN" class="form-control" id="input-id-1"  required th:field=*{CIN}>
+	  <input type="text" placeholder="Entry Telephone" class="form-control" id="input-id-1">
 	 </div>
-	 
-	  <label class="col-sm-4 control-label" for="input-id-1" style="margin:5px 0px;"><b>Phone :</b></label>
+	 <label class="col-sm-4 control-label" for="input-id-1" style="margin:5px 0px;"><b>Email :</b></label>
 	 <div class="col-sm-8" style="margin:5px 0px;" >
-	  <input type="text" placeholder="Entry Phone" class="form-control" id="input-id-1"  required th:field=*{Phone}>
+	  <input type="text" placeholder="Entry Email" class="form-control" id="input-id-1">
 	 </div>
-	 
-	
 	 <label class="col-sm-4 control-label" for="input-id-1" style="margin:5px 0px;"><b>Login :</b></label>
 	 <div class="col-sm-8" style="margin:5px 0px;" >
-	  <input type="email" placeholder="Entry Login" class="form-control" id="input-id-1"  required th:field=*{username}>
+	  <input type="text" placeholder="Entry Login" class="form-control" id="input-id-1">
 	 </div>
-	 
-	  <label class="col-sm-4 control-label" for="input-id-1" style="margin:5px 0px;"><b>Company :</b></label>
+	 <label class="col-sm-4 control-label" for="input-id-1" style="margin:5px 0px;"><b>Password :</b></label>
 	 <div class="col-sm-8" style="margin:5px 0px;" >
-	 <select name ="Customer_ID" class="form-control" th:field="*{customer}" >
-	 <option th:each="c:${customer}" th:text="${c.Name}" th:value="${c.Customer_ID}" ></option>
-	 </select>
+	  <input type="text" placeholder="Entry Password" class="form-control" id="input-id-1">
 	 </div>
-	 
-	   <label class="col-sm-4 control-label" for="input-id-1"  style="margin:5px 0px;"><b>Role :</b></label>
-	 <div class="col-sm-8" style="margin:5px 0px;" >
-	 <select name ="role" class="form-control" th:field="*{roles}">
-	 <option th:each="r:${allRoles}" th:text="${r.role}" th:value="${r.role}"></option>
-	 </select>
-	 </div>
-	 </div>
-	
-	
-	
-	<div class="modal-footer">
+	 <label class="col-sm-4 control-label" style="margin:5px 0px;" for="input-id-1"><b>Type User</b></label>
+   <div class="col-sm-8" style="margin:5px 0px;">
+    <select name="account" class="form-control m-b">
+     <option>Employee</option>
+     <option>Manager</option>
+     <option>UserCustomer</option>
+    </select>
+   </div>
+	</div>
+   </div>
+   <div class="modal-footer">
     <button style="margin:0px;" class="btn m-b-xs btn-sm btn-primary btn-addon"><i class="glyphicon glyphicon-ok"></i>Save</button>
 	<button style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon" data-dismiss="modal"><i class="glyphicon glyphicon-remove"></i>Annuler</button>
-	
    </div>
   </div>
  </div>
- </form>
 </div>
-
-
-
-
-
-
+<div class="modal fade" role="dialog" id="Update" >
+ <div class="modal-dialog modal-lg" >
+  <div class="modal-content">
+   <div class="modal-header" style="background-image:url(img/grf-bg.jpg);color:white;">
+  <button type="button" class="close pull-right" data-dismiss="modal">&times;</button>
+  <h1 class="m-n font-bold h3"> Update User</h1>
+   </div>
+   <div class="modal-body">
+  <div class="row">
+   <label class="col-sm-4 control-label" for="input-id-1" style="margin:5px 0px;"><b>Nom :</b></label>
+   <div class="col-sm-8" style="margin:5px 0px;" >
+    <input type="text" placeholder="Entry Nom" class="form-control" id="input-id-1">
+   </div>
+   <label class="col-sm-4 control-label" for="input-id-1" style="margin:5px 0px;"><b>Prenom :</b></label>
+   <div class="col-sm-8" style="margin:5px 0px;" >
+    <input type="text" placeholder="Entry Prenom" class="form-control" id="input-id-1">
+   </div>
+   <label class="col-sm-4 control-label" for="input-id-1" style="margin:5px 0px;"><b>Telephone :</b></label>
+   <div class="col-sm-8" style="margin:5px 0px;" >
+    <input type="text" placeholder="Entry Telephone" class="form-control" id="input-id-1">
+   </div>
+   <label class="col-sm-4 control-label" for="input-id-1" style="margin:5px 0px;"><b>Email :</b></label>
+   <div class="col-sm-8" style="margin:5px 0px;" >
+    <input type="text" placeholder="Entry Email" class="form-control" id="input-id-1">
+   </div>
+   <label class="col-sm-4 control-label" for="input-id-1" style="margin:5px 0px;"><b>Login :</b></label>
+   <div class="col-sm-8" style="margin:5px 0px;" >
+    <input type="text" placeholder="Entry Login" class="form-control" id="input-id-1">
+   </div>
+   <label class="col-sm-4 control-label" for="input-id-1" style="margin:5px 0px;"><b>Password :</b></label>
+   <div class="col-sm-8" style="margin:5px 0px;" >
+    <input type="text" placeholder="Entry Password" class="form-control" id="input-id-1">
+   </div>
+   <label class="col-sm-4 control-label" style="margin:5px 0px;" for="input-id-1"><b>Type User</b></label>
+   <div class="col-sm-8" style="margin:5px 0px;">
+    <select name="account" class="form-control m-b">
+     <option>Employee</option>
+     <option>Manager</option>
+     <option>UserCustomer</option>
+    </select>
+   </div>
+  </div>
+   </div>
+   <div class="modal-footer">
+    <button style="margin:0px;" class="btn m-b-xs btn-sm btn-primary btn-addon"><i class="glyphicon glyphicon-ok"></i>Save</button>
+  <button style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon" data-dismiss="modal"><i class="glyphicon glyphicon-remove"></i>Annuler</button>
+   </div>
+  </div>
+ </div>
+</div>
+<div class="modal fade" role="dialog" id="Delete" >
+ <div class="modal-dialog modal-lg" >
+  <div class="modal-content">
+   <div class="modal-header" style="background-image:url(img/grf-bg.jpg);color:white;">
+  <button type="button" class="close pull-right" data-dismiss="modal">&times;</button>
+     <h1 class="m-n font-bold h3">Delete User</h1>
+   </div>
+   <div class="modal-body">
+    Do you want to delete this User ? 
+   </div>
+    <div class="modal-footer">
+   <button class="btn m-b-xs btn-sm btn-primary btn-addon"><i class="glyphicon glyphicon-ok"></i>Yes</button>
+   <button class="btn m-b-xs btn-sm btn-default btn-addon" data-dismiss="modal"><i class="glyphicon glyphicon-remove"></i>No</button>
+  </div>
+  </div>  
+</div>
+</div>
+<div class="modal fade" role="dialog" id="DetailE" >
+ <div class="modal-dialog modal-lg" >
+  <div class="modal-content">
+   <div class="modal-header" style="background-image:url(img/grf-bg.jpg);color:white;">
+  <button type="button" class="close pull-right" data-dismiss="modal">&times;</button>
+     <h1 class="m-n font-bold h3">Information Employe</h1>
+   </div>
+   <div class="modal-body">
+          <p>
+            <span class="m-n font-thin h3 text-black" >Employe Name:</span>
+            <span ng-repeat="nom in employe"> {{ employe.nomEmploye }} </br></span>
+            <span class="m-n font-thin h3 text-black" >Employe type:</span>
+            <span ng-repeat="type in employe"> {{ employe.typeEmploye }} </br></span>
+            <span class="m-n font-thin h3 text-black">Employe CIN:</span>
+            <span ng-repeat="CIN in employe"> {{ employe.CINEmploye }}</span></br>
+            <span class="m-n font-thin h3 text-black">Employe Telephone:</span>
+            <span ng-repeat="phone in employe"> {{ employe.phoneEmploye }}</span></br>
+            <span class="m-n font-thin h3 text-black">Login:</span>
+            <span ng-repeat="login in employe"> {{ employe.loginEmploye }}</span></br>
+            <span class="m-n font-thin h3 text-black">Password:</span>
+            <span ng-repeat="password in employe"> {{ employe.passwordEmploye }}</span></br>
+            <span class="m-n font-thin h3 text-black">Status:</span>
+            <span ng-repeat="status in employe"> {{ employe.statusEmploye }}</span></br>
+          </p> 
+   </div>
+   <div class="modal-footer">
+   <button class="btn m-b-xs btn-sm btn-primary btn-addon" data-dismiss="modal">Return</button>
+  </div>
+  </div>  
+</div>
+</div>
+<div class="modal fade" role="dialog" id="DetailM" >
+ <div class="modal-dialog modal-lg" >
+  <div class="modal-content">
+   <div class="modal-header" style="background-image:url(img/grf-bg.jpg);color:white;">
+  <button type="button" class="close pull-right" data-dismiss="modal">&times;</button>
+     <h1 class="m-n font-bold h3">Information User Customer</h1>
+   </div>
+   <div class="modal-body">
+        <p>
+            <span class="m-n font-thin h3 text-black" >User Customer Name:</span>
+            <span ng-repeat="nom in userCustomer"> {{ userCustomer.nomUserCustomer }} </br></span>
+            <span class="m-n font-thin h3 text-black" >User Customer Type:</span>
+            <span ng-repeat="type in userCustomer"> {{ userCustomer.typeUserCustomer }} </br></span>
+            <span class="m-n font-thin h3 text-black">Customer Name:</span>
+            <span ng-repeat="nom in customer"> {{ customer.nomCustomer }}</span></br>
+            <span class="m-n font-thin h3 text-black">User Customer Telephone:</span>
+            <span ng-repeat="phone in userCustomer"> {{ userCustomer.phoneUserCustomer }}</span></br>
+            <span class="m-n font-thin h3 text-black">Login:</span>
+            <span ng-repeat="login in userCustomer"> {{ userCustomer.loginUserCustomer }}</span></br>
+            <span class="m-n font-thin h3 text-black">Password:</span>
+            <span ng-repeat="password in userCustomer"> {{ userCustomer.passwordUserCustomer }}</span></br>
+            <span class="m-n font-thin h3 text-black">Status:</span>
+            <span ng-repeat="status in UserCustomer"> {{ userCustomer.statusUserCustomer }}</span></br>
+          </p> 
+   </div>
+   <div class="modal-footer">
+   <button class="btn m-b-xs btn-sm btn-primary btn-addon" data-dismiss="modal">Return</button>
+  </div>
+  </div>  
+</div>
+</div>
 <!-- footer -->
 <footer id="footer" class="app-footer" role="footer">
  <div class="wrapper b-t bg-light">

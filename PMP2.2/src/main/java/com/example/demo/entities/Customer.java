@@ -1,6 +1,7 @@
 package com.example.demo.entities;
 
 import java.io.Serializable;
+
 import java.util.Collection;
 
 import javax.persistence.Column;
@@ -9,12 +10,13 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
+
+
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.Email;
@@ -29,6 +31,7 @@ public class Customer implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "my_seq_id")
 	@SequenceGenerator(name = "my_seq_id", sequenceName = "my_seq_id", allocationSize = 100)
+	
 	private Integer Customer_ID;
 	
 	@NotNull 
@@ -43,6 +46,7 @@ public class Customer implements Serializable{
 
     
 	@NotNull
+	@NumberFormat(pattern = "##########")
 	private String PhoneCompany;
 	
 	@NotNull
@@ -52,10 +56,11 @@ public class Customer implements Serializable{
 	private String Vip;
 	
 	@NotNull
-	@Column(name="NomTechnical")
+	@Column(name="NomTechnical",length=30)
 	private String NomTechnical;
 	
 	@NotNull
+	@NumberFormat(pattern = "##########")
 	private String PhoneTechnical;
 	
 	@NotNull
@@ -63,25 +68,31 @@ public class Customer implements Serializable{
 	private String EmailTechnical;
 	
 	@NotNull
-	@Column(name="NomCIO")
+	@Column(name="NomCIO",length=30)
 	private String NomCIO;
 	
 	@NotNull
+	@NumberFormat(pattern = "##########")
 	private String PhoneCIO;
 	
 	@NotNull
 	@Email
 	private String EmailCIO;
-	
-	@NotNull
+
 	private String City;
-	
-	@NotNull
+
 	private String Country;
 	
 
 	@NotNull
 	private String Status;
+	
+	@OneToMany
+	private Collection <Purchasing> Purchasing;
+	
+	@OneToMany
+	private Collection <Contrat> contrat;
+
 	
 	@OneToMany(mappedBy = "customer", fetch = FetchType.LAZY)
 	private Collection<Users> users;
@@ -91,13 +102,10 @@ public class Customer implements Serializable{
 	}
 
 	
-	
-	
-	
 	public Customer(@NotNull String name, @NotNull String industry, String logo, @NotNull String phoneCompany,
 			@NotNull String adressCompany, @NotNull String vip, @NotNull String nomTechnical,
 			@NotNull String phoneTechnical, @NotNull @Email String emailTechnical, @NotNull String nomCIO,
-			@NotNull String phoneCIO, @NotNull @Email String emailCIO, @NotNull String city, @NotNull String country,
+			@NotNull String phoneCIO, @NotNull @Email String emailCIO, String city, String country,
 			@NotNull String status) {
 
 
@@ -118,10 +126,6 @@ public class Customer implements Serializable{
 		Country = country;
 		Status = status;
 	}
-
-
-
-
 
 	public Integer getCustomer_ID() {
 		return Customer_ID;
@@ -260,5 +264,19 @@ public class Customer implements Serializable{
 		this.users = users;
 	}
 
-	
+	public Collection<Contrat> getContrat() {
+		return contrat;
+	}
+
+	public void setContrat(Collection<Contrat> contrat) {
+		this.contrat = contrat;
+	}
+
+	public Collection<Purchasing> getPurchasing() {
+		return Purchasing;
+	}
+
+	public void setPurchasing(Collection<Purchasing> purchasing) {
+		Purchasing = purchasing;
+	}
 }

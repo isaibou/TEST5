@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.example.demo.entities.Customer;
 import com.example.demo.entities.Frimware;
+import com.example.demo.entities.Project;
 import com.example.demo.repository.FrimwareRepository;
 
 @Controller
@@ -28,7 +29,7 @@ public class FrimwareController {
 	
 
 	
-	@RequestMapping(value = "/manager/firmware")
+	@RequestMapping(value = "/firmware")
 	public String AllFrimware(Model model, Frimware frimware) {
 		
 		List<Frimware> frime = frimwareRepository.findAll();
@@ -56,6 +57,7 @@ public class FrimwareController {
 	Frimware	frimware = frimwareRepository.getOne(id);
 		 model.addAttribute("frimware",frimware);
 		 System.out.println(frimware.getName());
+		 
 		
 			return "updateFrimwareForm";
 			
@@ -64,18 +66,40 @@ public class FrimwareController {
 	@RequestMapping(value = "/editFrimware",method= RequestMethod.POST)
 	public String updateFrimware(Model model, Frimware frim){
 	frim= 	(Frimware) model.getAttribute("frimware");
+	frim.setStatus("Actif");
 		frimwareRepository.save(frim);
 		
 		return "redirect:/firmware";
 	}
 	
-	@RequestMapping(value ="/deleteFrim" )
-	private String deleteFrim( Model model, Integer id ) {
+	@RequestMapping(value ="/archiverFrimware" )
+	private String archiverCustomer( Model model, Integer id ) {
 	
-		frimwareRepository.deleteById(id);
+		Frimware Frim = frimwareRepository.getOne(id);
+		Frim.setStatus("Archived");
+	    frimwareRepository.save(Frim);
+	    System.out.println(Frim.getStatus());
 		
-		 return "redirect:/firmware";	
+			return "redirect:/firmware";	}
+	
+	@RequestMapping(value ="/detailFrimware")
+	public String detailFrimware( Model model, Integer id ) {
+		
+		Frimware	frimware = frimwareRepository.getOne(id);
+		 model.addAttribute("frimware",frimware);
+		 System.out.println(frimware.getName());
+		
+			return "detailFrimware";
+			
 	}
+	
+	//@RequestMapping(value ="/deleteFrim" )
+	//private String deleteFrim( Model model, Integer id ) {
+	
+		//frimwareRepository.deleteById(id);
+		
+		// return "redirect:/firmware";	
+	//}
 }
 
 	    		

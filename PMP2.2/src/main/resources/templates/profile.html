@@ -127,12 +127,11 @@
                       <!-- / dropdown -->
                     </li>
                     <li class="dropdown">
-                      <a href="#" data-toggle="dropdown" class="dropdown-toggle clear" data-toggle="dropdown">
                         <span class="thumb-sm avatar pull-right m-t-n-sm m-b-n-sm m-l-sm">
                           <img src="img/user.png" alt="...">
                             <i class="on md b-white bottom"></i>
                           </span>
-                          <span class="hidden-sm hidden-md">Walid.largou</span> <b class="caret"></b>
+                          <span class="hidden-sm hidden-md"th:text ="   ${user.firstName   } + . +  ${user.LastName   }   "></span> <b class="caret"></b>
                         </a>
                         <!-- dropdown -->
                         <ul class="dropdown-menu animated fadeInRight w">
@@ -189,7 +188,7 @@
 														<a href="#" data-toggle="dropdown" class="dropdown-toggle hidden-folded">
 															<span class="clear">
 																<span class="block m-t-sm">
-																	<strong class="font-bold text-lt">Walid.Largou</strong> 
+																	<strong class="font-bold text-lt" th:text ="   ${user.firstName   } + . +  ${user.LastName   }   "></strong> 
 																	<b class="caret"></b>
 																</span>
 																<span class="text-muted text-xs block">Manager</span>
@@ -419,7 +418,7 @@
                 <span>Your Stuff</span>
               </li>  
               <li>
-                <a th:href="page_profile">
+                <a th:href="@{profile}">
                   <i class="icon-user icon text-success-lter"></i>
                   <b class="badge bg-success pull-right">30%</b>
                   <span>Profile</span>
@@ -460,8 +459,8 @@
 																		</a>
 																		<div class="">
 																			<div class="m-b m-t-sm" style="padding-top:20px;">
-																				<span class="h3 text-white">Walid Largou</span>
-																				<p><small class="m-l">Manager, PowerM</small></p>
+																				<span class="h3 text-white" th:text ="   ${user.firstName   } + . +  ${user.LastName   }   " ></span>
+																				<p><small class="m-l"  ></small></p>
 																			</div>
 																			<!-- <a href class="btn btn-sm btn-success btn-rounded">Follow</a> -->
 																		</div>
@@ -492,29 +491,43 @@
 														</div>
 														<div class="padder " style="margin-left:0px;margin-right:0px;padding:0px 0px;" >      
 															<div class="tab-content" >
+															<form th:action="@{changePassword(id=${user.password})}" th:object="${user}">
 																<div class="tab-pane active" id="tab_default_1" style="height:180px;padding:20px 15px;border-top:2px #19a9d5 solid;background-color:white;">
-
-																	<div class="col-xs-4" ><label ><b>Email</b></label></div>
+																
+																
+																																
+																			
+																
+																						<div class="col-xs-4" ><label ><b>Login</b></label></div>
 																	<div class="col-sm-8"  >
-																			<input type="text" class="form-control" value="employee@powerm.ma" id="input-email" disabled>
+																			<input type="text" class="form-control"   disabled  th:field="*{username}">
+																			</div>
+																
+																
+																			
+																					<div class="col-xs-4" ><label ><b>Phone</b></label></div>
+																	<div class="col-sm-8"  >
+																			<input type ="text" class="form-control"  id="input-pass"  th:field="*{Phone}">
 																			</div>
 																			
-																			<div class="col-xs-4" ><label ><b>Phone</b></label></div>
-																	<div class="col-sm-8"  >
-																			<input type="text" class="form-control" value="066666666666" id="input-phone" disabled>
+																			<div class="col-xs-4"   >Password<label ><b></b></label></div>
+																	<div class="col-sm-8"    >
+																			<input class="form-control"  type="password"   id="input-phone"  disabled th:field="*{password}">
 																			</div>
+																
+																	
 																			
-																			<div class="col-xs-4" ><label ><b>Password</b></label></div>
-																	<div class="col-sm-8"  >
-																			<input type="password" class="form-control" value="066666666666" id="input-pwd" disabled>
-																			</div>
-																			<button id="btnupdt" style="margin-top:12px;margin-left:5px;" class="btn m-b-xs btn-sm btn-info btn-addon pull-right" onclick=""><i class="glyphicon  glyphicon-cog"></i> Update</button> 
-																			<button id="btncancel" style="margin-top:12px;margin-left:5px;" class="btn m-b-xs btn-sm btn-secondry btn-addon pull-right invisible"><i class="glyphicon glyphicon-floppy-remove"></i> Cancel</button>
+																	
 																			<button id="btnsave" style="margin-top:12px;" class="btn m-b-xs btn-sm btn-primary btn-addon pull-right invisible" onclick=""><i class="glyphicon   glyphicon-floppy-save"></i> Save</button>
 																			
 
 
 																</div>
+																</form>
+																	<button  th:href="@{/profile}" id="btncancel" style="margin-top:12px;margin-left:5px;" class="btn m-b-xs btn-sm btn-secondry btn-addon pull-right invisible"><i class="glyphicon glyphicon-floppy-remove"></i> Cancel</button>
+																
+																	<button id="btnupdt" style="margin-top:12px;margin-left:5px;" class="btn m-b-xs btn-sm btn-info btn-addon pull-right" onclick=""><i class="glyphicon  glyphicon-cog"></i> Update</button> 
+																
 
 																	<div class="tab-pane" id="tab_default_2" style="padding:0px 15px;border-top:2px #19a9d5 solid;background-color:white;">
 																		<p>

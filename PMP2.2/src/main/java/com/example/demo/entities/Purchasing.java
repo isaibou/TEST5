@@ -1,10 +1,15 @@
 package com.example.demo.entities;
 
 import java.io.Serializable;
+import java.util.Collection;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Purchasing implements Serializable{
@@ -16,12 +21,37 @@ public class Purchasing implements Serializable{
 	private String LastName;
 	private String Contact;
 	private String Email;
+	//les relation avec customer
+	@ManyToOne
+	@JoinColumn
+	private Customer customer;
+	
+	public Purchasing(Customer customer) {
+		super();
+		this.customer = customer;
+	}
+
+
+	//attribut customer de type Customer 
+	//private Customer customer;
 	
 	
+	
+
+
 	public Purchasing() {
 		super();
 	}
 
+
+	public Customer getCustomer() {
+		return customer;
+	}
+
+
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
+	}
 
 	public Purchasing(String firstName, String lastName, String contact, String email) {
 		super();

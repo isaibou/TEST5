@@ -3,20 +3,12 @@
 <head>
 <meta charset="utf-8" />
 <title>Firmware</title>
-<meta name="description"
-	content="app, web app, responsive, responsive layout, admin, admin panel, admin dashboard, flat, flat ui, ui kit, AngularJS, ui route, charts, widgets, components" />
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, maximum-scale=1" />
-<link rel="stylesheet" href="/../libs/assets/animate.css/animate.css"
-	type="text/css" />
-<link rel="stylesheet"
-	href="/../libs/assets/font-awesome/css/font-awesome.min.css"
-	type="text/css" />
-<link rel="stylesheet"
-	href="/../libs/assets/simple-line-icons/css/simple-line-icons.css"
-	type="text/css" />
-<link rel="stylesheet"
-	href="../libs/jquery/bootstrap/dist/css/bootstrap.css" type="text/css" />
+<meta name="description" content="app, web app, responsive, responsive layout, admin, admin panel, admin dashboard, flat, flat ui, ui kit, AngularJS, ui route, charts, widgets, components" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+<link rel="stylesheet" href="/../libs/assets/animate.css/animate.css" type="text/css" />
+<link rel="stylesheet" href="/../libs/assets/font-awesome/css/font-awesome.min.css" type="text/css" />
+<link rel="stylesheet" href="/../libs/assets/simple-line-icons/css/simple-line-icons.css" type="text/css" />
+<link rel="stylesheet" href="../libs/jquery/bootstrap/dist/css/bootstrap.css" type="text/css" />
 <link href='/../libs/packages/core/main.css' rel='stylesheet' />
 <link href='/../libs/packages/daygrid/main.css' rel='stylesheet' />
 <link href='/../libs/packages/timegrid/main.css' rel='stylesheet' />
@@ -372,73 +364,18 @@
                 </ul>
               </li>
            <li>
-                <a href class="auto">      
-                  <span class="pull-right text-muted">
-                    <i class="fa fa-fw fa-angle-right text"></i>
-                    <i class="fa fa-fw fa-angle-down text-active"></i>
-                  </span>
-                  <b class="badge bg-info pull-right">3</b>
-                  <i class="glyphicon glyphicon-user"></i>
+                <a th:href="users" class="auto">
+                  <i class="glyphicon glyphicon-user icon"></i>
                   <span>Users</span>
                 </a>
-                <ul class="nav nav-sub dk">
-               
-                  <li>
-                    <a th:href="users">
-                      <span>Manage users</span>
-                    </a>
-                  </li>
-                                     <li>
-                    <a th:href="TypeUsers">
-                      <span>Manage Type users</span>
-                    </a>
-                  </li> 
-                </ul>
+
               </li>
               <li>
                 <a th:href="timesheets" class="auto">
                   <i class="glyphicon glyphicon-calendar icon"></i>
                   <span>TimeSheet</span>
                 </a>
-							<li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
-								<span>Management</span>
-							</li>
-							<li><a href class="auto"> <span
-									class="pull-right text-muted"> <i
-										class="fa fa-fw fa-angle-right text"></i> <i
-										class="fa fa-fw fa-angle-down text-active"></i>
-								</span> <b class="badge bg-info pull-right">3</b> <i
-									class="glyphicon glyphicon-briefcase"></i> <span>Customers</span>
-							</a>
-								<ul class="nav nav-sub dk">
 
-									<li><a th:href="customer_manage"> <span>Manage
-												customer</span>
-									</a></li>
-
-									<li><a th:href="purchasing_customer_manage"> <span>Puchasing
-												contact</span>
-									</a></li>
-
-								</ul></li>
-							<li><a href class="auto"> <span
-									class="pull-right text-muted"> <i
-										class="fa fa-fw fa-angle-right text"></i> <i
-										class="fa fa-fw fa-angle-down text-active"></i>
-								</span> <b class="badge bg-info pull-right">3</b> <i
-									class="glyphicon glyphicon-user"></i> <span>Users</span>
-							</a>
-								<ul class="nav nav-sub dk">
-
-									<li><a th:href="users"> <span>Manage users</span>
-									</a></li>
-									<li><a th:href="TypeUsers"> <span>Manage Type
-												users</span>
-									</a></li>
-								</ul></li>
-							<li><a th:href="timesheets" class="auto"> <i
-									class="glyphicon glyphicon-calendar icon"></i> <span>TimeSheet</span>
-							</a></li>
 							<li><a href class="auto"> <span
 									class="pull-right text-muted"> <i
 										class="fa fa-fw fa-angle-right text"></i> <i
@@ -527,14 +464,15 @@
 				<div class="bg-light lter b-b wrapper-md">
 					<h1 class="m-n font-bold h3">
 						Firmware <a style="margin-top: -5px;" data-toggle="modal"
-							data-target="#AddClient"
+							data-target="#AddFrim"
 							class="btn btn-sm btn-primary pull-right" role="button"><b
 							class="glyphicon-plus pull"> </b>Add Firmware</a>
 					</h1>
 				</div>
 
-				<div class="row" style="margin: 5px; background-color: #f0f3f4;">
+				<div class="row" style="margin: 5px; background-color: #f0f3f4;"> </div>
 
+<<<<<<< HEAD
 				</div>
 
 				<div class="table-responsive"
@@ -586,6 +524,8 @@
 							</tr>
 						</tbody>
 
+=======
+>>>>>>> branch 'master' of https://github.com/isaibou/TEST5
 				<div class="col-sm-12">
 					<div class="row row-sm text-center">
 						<div class="col-sm-6">
@@ -608,7 +548,57 @@
 						</div>
 					</div>
 				</div>
-				<div class="modal fade" role="dialog" id="AddClient">
+
+				<div class="table-responsive"
+					style="background-color: white; margin: 10px; padding: 10px;">
+					<table ui-jq="dataTable"
+						ui-options="{
+															aoColumns: [
+															
+															{ mData: 'browser' },
+															{ mData: 'platform' },
+															{ mData: 'version' },
+															{ mData: 'action' }
+															]
+															}"
+						class="table  b-t b-b">
+						<thead style="color: #23b7e5;">
+							<tr>
+								<th style="width: 25%">Name</th>
+								<th style="width: 25%">Description</th>
+								<th style="width: 15%">Release Date</th>
+								<th  style="width:5%"><center>Status</center></th>
+								
+								<th style="width: 15%"><center>Actions</center></th>
+
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="f:${frim}">
+
+								<td th:text="${f.name}" class="m-n font-thin h4 text-secondary"></td>
+								<td th:text="${f.description}" class="m-n font-thin h4 text-secondary"><center></center></td>
+								<td th:text="${f.releaseDate}" class="m-n font-thin h4 text-secondary"><center></center></td>
+								<td th:text ="${f.Status}" class="m-n font-thin h4 text-secondary"><center><span></span><center/></td>
+								<td>
+									<center>
+										<div class="btn-group dropdown">
+								
+								 <button class="btn btn-default btn-xs" data-toggle="dropdown"><i class="glyphicon glyphicon-cog"></i> Action <span class="caret"></span></button>
+								  <ul class="dropdown-menu">
+								   <li><a th:href="@{updateFrimware(id=${f.frimware_ID})}"  style="margin-top:-5px;"   class="btn btn-sm btn-light" role="button">Update</a></li>
+								   <!-- archiver pour frimware -->
+								   <li><a th:href="@{archiverFrimware(id=${f.frimware_ID})}"  style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Archive</a></li>
+								   <li><a th:href="@{detailFrimware(id=${f.frimware_ID})}" style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Detail</a></li></ul></div></center></td>
+								   
+								  </ul>
+							     </div></center></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+
+				<div class="modal fade" role="dialog" id="AddFrim">
 					<div class="modal-dialog modal-lg">
 						<div class="modal-content">
 							<div class="modal-header"
@@ -619,7 +609,7 @@
 									<b class="glyphicon-plus pull"> </b> Add Firmware
 								</h1>
 							</div>
-<form action="#" th:action="@{/SaveFrimware}" method="post" th:object="${frimware}" >
+<form th:action="@{/SaveFrimware}" method="post" th:object="${frimware}" >
  <div class="modal-body">
 	<div class="row">
 	 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b></b></label>

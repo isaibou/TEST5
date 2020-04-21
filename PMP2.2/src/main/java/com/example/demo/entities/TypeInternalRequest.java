@@ -1,10 +1,15 @@
 package com.example.demo.entities;
 
 import java.io.Serializable;
+import java.util.Collection;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class TypeInternalRequest implements Serializable{
@@ -13,6 +18,10 @@ public class TypeInternalRequest implements Serializable{
 	@GeneratedValue
 	private Integer TypeInternalRequest_ID;
 	private String NameTypeInternalRequest;
+	
+	@OneToMany(mappedBy = "typeInternalRequest" , fetch = FetchType.LAZY)
+
+	private Collection<InternalRequest> internal;
 	
 	public TypeInternalRequest() {
 		super();
@@ -37,6 +46,14 @@ public class TypeInternalRequest implements Serializable{
 
 	public void setNameTypeInternalRequest(String nameTypeInternalRequest) {
 		NameTypeInternalRequest = nameTypeInternalRequest;
+	}
+
+	public Collection<InternalRequest> getInternal() {
+		return internal;
+	}
+
+	public void setInternal(Collection<InternalRequest> internal) {
+		this.internal = internal;
 	}
 
 

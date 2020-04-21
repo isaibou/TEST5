@@ -1,24 +1,28 @@
 package com.example.demo.entities;
 
 import java.io.Serializable;
+
 import java.util.Collection;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+
+
 import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
+
+
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
-
 
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.UniqueElements;
@@ -30,7 +34,9 @@ import org.springframework.format.annotation.NumberFormat;
 public class Customer implements Serializable{
 	
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "my_seq_id")
+	@SequenceGenerator(name = "my_seq_id", sequenceName = "my_seq_id", allocationSize = 100)
+	
 	private Integer Customer_ID;
 	
 	@NotNull 
@@ -44,8 +50,8 @@ public class Customer implements Serializable{
 	private String Logo;
 
     
-
 	@NotNull
+	@NumberFormat(pattern = "##########")
 	private String PhoneCompany;
 	
 	@NotNull
@@ -55,10 +61,11 @@ public class Customer implements Serializable{
 	private String Vip;
 	
 	@NotNull
-	@Column(name="NomTechnical")
+	@Column(name="NomTechnical",length=30)
 	private String NomTechnical;
 	
 	@NotNull
+	@NumberFormat(pattern = "##########")
 	private String PhoneTechnical;
 	
 	@NotNull
@@ -66,67 +73,38 @@ public class Customer implements Serializable{
 	private String EmailTechnical;
 	
 	@NotNull
-	@Column(name="NomCIO")
+	@Column(name="NomCIO",length=30)
 	private String NomCIO;
 	
 	@NotNull
+	@NumberFormat(pattern = "##########")
 	private String PhoneCIO;
 	
 	@NotNull
 	@Email
 	private String EmailCIO;
-	
-	@NotNull
+
 	private String City;
-	
-	@NotNull
+
 	private String Country;
 	
-	
-	
+
 	@NotNull
 	private String Status;
 	
-//la reletion entre purchaising et contract
-	
+
 	@OneToMany
 	private Collection <Purchasing> Purchasing;
+	
 	@OneToMany
 	private Collection <Contrat> contrat;
-	@OneToMany
-	private Collection <RFP> rfp;
 
 	
-	public Collection<RFP> getRfp() {
-		return rfp;
-	}
-
-	public void setRfp(Collection<RFP> rfp) {
-		this.rfp = rfp;
-	}
-
-	public Collection<Contrat> getContrat() {
-		return contrat;
-	}
-
-	public void setContrat(Collection<Contrat> contrat) {
-		this.contrat = contrat;
-	}
-
-	public Collection<Purchasing> getPurchasing() {
-		return Purchasing;
-	}
-
-	public void setPurchasing(Collection<Purchasing> purchasing) {
-		Purchasing = purchasing;
-	}
-
 	@OneToMany(mappedBy = "customer", fetch = FetchType.LAZY)
 	private Collection<Users> users;
 	
 	public Customer() {
 		super();
-
 	}
 
 	public Customer(String name, String industry, String logo, String phoneCompany, String adressCompany, String vip, 
@@ -139,19 +117,17 @@ public class Customer implements Serializable{
 		AdressCompany = adressCompany;
 		Vip = vip;
 		
+		NomTechnical = nomTechnical;
+		PhoneTechnical = phoneTechnical;
+		EmailTechnical = emailTechnical;
+		NomCIO = nomCIO;
 		NomCIO= nomCIO;
 		PhoneCIO = phoneCIO;
 		EmailCIO = emailCIO;
-		NomTechnical= nomTechnical;
-		EmailTechnical= emailTechnical;
-		PhoneTechnical= phoneTechnical;
 		City = city;
 		Country = country;
 		Status = status;
-		
 	}
-
-	
 
 	public Integer getCustomer_ID() {
 		return Customer_ID;
@@ -283,6 +259,8 @@ public class Customer implements Serializable{
 	
 	
 
+
+
 	public Collection<Users> getUsers() {
 		return users;
 	}
@@ -291,5 +269,19 @@ public class Customer implements Serializable{
 		this.users = users;
 	}
 
-	
+	public Collection<Contrat> getContrat() {
+		return contrat;
+	}
+
+	public void setContrat(Collection<Contrat> contrat) {
+		this.contrat = contrat;
+	}
+
+	public Collection<Purchasing> getPurchasing() {
+		return Purchasing;
+	}
+
+	public void setPurchasing(Collection<Purchasing> purchasing) {
+		Purchasing = purchasing;
+	}
 }

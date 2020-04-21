@@ -1,23 +1,29 @@
 package com.example.demo.entities;
 
 import java.io.Serializable;
+import java.util.Collection;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
-public class TypeExternelRequest implements Serializable{
+public class TypeExternalRequest implements Serializable{
 	@Id
 	@GeneratedValue
 	private Integer TypeExternelRequest_ID;
 	private String NameTypeExternelRequest;
 	
-	public TypeExternelRequest() {
+	@OneToMany(mappedBy = "typeExternalRequest", fetch = FetchType.LAZY)
+	private Collection<ExternalRequest> externalrequest;
+	
+	public TypeExternalRequest() {
 		super();
 	}
 
-	public TypeExternelRequest(String nameTypeExternelRequest) {
+	public TypeExternalRequest(String nameTypeExternelRequest) {
 		super();
 		NameTypeExternelRequest = nameTypeExternelRequest;
 	}
@@ -36,6 +42,14 @@ public class TypeExternelRequest implements Serializable{
 
 	public void setNameTypeExternelRequest(String nameTypeExternelRequest) {
 		NameTypeExternelRequest = nameTypeExternelRequest;
+	}
+
+	public Collection<ExternalRequest> getExternalrequest() {
+		return externalrequest;
+	}
+
+	public void setExternalrequest(Collection<ExternalRequest> externalrequest) {
+		this.externalrequest = externalrequest;
 	}
 	
 

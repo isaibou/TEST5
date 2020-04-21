@@ -100,12 +100,19 @@ public class AssetTypeController
 		
 		AssetType	assettype = assetTypeRepository.getOne(id);
 		 model.addAttribute("assettype",assettype);
+
 		 
 		
 		 //System.out.println(assettype.getName());
+		 System.out.println(assettype.getName());
+
 		
 			return "detailAseetType";
-			
+		
 	}		
+
+	}
+			
+
 	
-}
+

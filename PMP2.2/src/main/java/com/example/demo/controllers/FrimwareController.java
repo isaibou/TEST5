@@ -81,8 +81,11 @@ public class FrimwareController {
 	    frimwareRepository.save(Frim);
 	    System.out.println(Frim.getStatus());
 		
+
 			return "redirect:/firmware";	
 			}
+
+			
 	
 	@RequestMapping(value ="/detailFrimware")
 	public String detailFrimware( Model model, Integer id ) {
@@ -95,7 +98,17 @@ public class FrimwareController {
 			
 	}
 	
+
 	
+
+	//@RequestMapping(value ="/deleteFrim" )
+	//private String deleteFrim( Model model, Integer id ) {
+	
+		//frimwareRepository.deleteById(id);
+		
+		// return "redirect:/firmware";	
+	//}
+
 }
 
 	    		

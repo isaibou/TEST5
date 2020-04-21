@@ -2,12 +2,28 @@ package com.example.demo.entities;
 
 import java.io.Serializable;
 
+
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+
+import java.util.Collection;
+import java.util.Date;
+
 import java.util.*;
 
-import javax.persistence.*;
 
+
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
+
+import javax.persistence.*;
 import javax.validation.constraints.*;
 
 import org.springframework.format.annotation.DateTimeFormat;
@@ -22,7 +38,7 @@ public class Project implements Serializable{
 	private Integer Project_ID;
  
 	@NotNull 
-	@Column(unique=true)
+	@Column(name="Name",length=30,unique=true)
 	private String Name;
 	
 	@Column(name = "TypeProject")
@@ -32,8 +48,8 @@ public class Project implements Serializable{
 	private Double Amount;
 	
 	//@Temporal(TemporalType.DATE)
-	//@DateTimeFormat(pattern= "yyyy")
-	private DateFormat  Year= new SimpleDateFormat("yyyy") ;
+	@DateTimeFormat(pattern= "yyyy")
+	private Date  Year;
 	
 	@DateTimeFormat(pattern= "yyyy-mm-dd")
 	private Date DeliveryDate;
@@ -93,7 +109,7 @@ public class Project implements Serializable{
 		Type =type;
 		Size = size;
 	}
-	public Project(String name, String typeProject, Double amount, DateFormat year, Date deliveryDate, Date temporayAcceptanceDate,
+	public Project(String name, String typeProject, Double amount, Date year, Date deliveryDate, Date temporayAcceptanceDate,
 			Date finalTemporaryDate, String deliveryCertificate, String uri, String type, long size, String technologyPartners, int warranty,
 			int executionTime, String notes, String status) {
 		super();
@@ -160,10 +176,10 @@ public class Project implements Serializable{
 	public void setAmount(Double amount) {
 		Amount = amount;
 	}
-	public DateFormat getYear() {
+	public Date getYear() {
 		return Year;
 	}
-	public void setYear(DateFormat year) {
+	public void setYear(Date year) {
 		Year = year;
 	}
 	public Date getDeliveryDate() {

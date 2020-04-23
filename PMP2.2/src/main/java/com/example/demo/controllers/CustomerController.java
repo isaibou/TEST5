@@ -98,7 +98,7 @@ public class CustomerController {
 	  
 	  @RequestMapping(value = "/editCustomer",method= RequestMethod.POST) private
 	  String updateCustomer(@Valid Customer addCust, BindingResult
-	  bindingResult, @RequestParam(name="picture")MultipartFile file) throws Exception, IOException {
+	  bindingResult, @RequestParam(name="photo")MultipartFile file) throws Exception, IOException {
 	  
 
 			if (!(file.isEmpty())) {

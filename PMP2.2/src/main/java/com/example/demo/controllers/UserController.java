@@ -145,7 +145,6 @@ if (!(file.isEmpty())) {
 	
 	Users user = userRepository.getOne(id);
 	user.setActived(true);
-	user.setIsCustomer(false);
 
 	userRepository.save(user);	
 		
@@ -194,11 +193,19 @@ if (!(file.isEmpty())) {
 	
 
 	@RequestMapping(value ="/editUsers" )
-	public String editUsers(Users u, Model model) {
+	public String editUsers(Users u, Model model,@RequestParam(name = "photo") MultipartFile file) throws IllegalStateException, IOException {
 	
 		
+		u.setActived(true);
 		u.setIsCustomer(false);
 		userRepository.save(u);
+		
+if (!(file.isEmpty())) {
+			
+			u.setPicture((file.getOriginalFilename()));
+
+			file.transferTo(new File(images+u.getUsername()));
+		}
 		return "redirect:/users";
 	}
 	

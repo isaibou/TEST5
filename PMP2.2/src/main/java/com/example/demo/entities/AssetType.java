@@ -1,13 +1,21 @@
 package com.example.demo.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 
 import org.springframework.format.annotation.DateTimeFormat;
@@ -33,6 +41,45 @@ public class AssetType implements Serializable{
 	@Column(name = "Status")
 	private String Status;
 	
+	@OneToMany
+	private Collection <Assets> assets;
+	
+	
+	public Collection<Assets> getAssets() {
+		return assets;
+	}
+
+	public void setAssets(Collection<Assets> assets) {
+		this.assets = assets;
+	}
+
+	@ManyToMany(mappedBy = "assetType")
+	private List<Frimware> frimware;
+	
+	
+
+	@ManyToMany
+	private Collection <Vendor> Vendor;
+	
+
+	public List<Frimware> getFrimware() {
+		return frimware;
+	}
+
+	public void setFrimware(List<Frimware> frimware) {
+		this.frimware = frimware;
+	}
+
+	public Collection<Vendor> getVendor() {
+		return Vendor;
+	}
+
+	public void setVendor(Collection<Vendor> vendor) {
+		Vendor = vendor;
+	}
+
+	
+
 	public AssetType() {
 		super();
 	}

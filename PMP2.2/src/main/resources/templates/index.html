@@ -318,6 +318,11 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
                       <span>Manage Reference</span>
                     </a>
                   </li>
+                  <li>
+                    <a th:href="Technology_Partner">
+                      <span>Technology Partner</span>
+                    </a>
+                  </li>
                 </ul>
               </li> -->
               <li>
@@ -346,7 +351,7 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
                     </a>
                   </li>
 				  <li>
-                    <a th:href="vendor">
+                    <a th:href="@{vendor}">
                       <span>Vendor</span>
                     </a>
                   </li>
@@ -358,6 +363,13 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
                   <span>Tickets</span>
                 </a>
               </li> -->
+			  <li>
+			   <li>
+                <a th:href="RFP">
+                  <i class="glyphicon glyphicon-tag"></i>
+                  <span>RFP</span>
+                </a>
+              </li>
 			  <li>
                 <a th:href="contract_manage">
                   <i class="fa fa-legal"></i></i>

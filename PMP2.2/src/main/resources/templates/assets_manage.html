@@ -538,30 +538,32 @@ function drawChart() {
                                     }" class="table table-striped b-t b-b">
     <thead>
      <tr>
-                                      <th  style="width:15%"><center>Customers</center></th>
-                                      <th  style="width:15%"><center>Project Name</center></th>
-                                      <th  style="width:13%"><center>Asset S/N</center></th>
-                                      <th  style="width:13%"><center>Current Firmware</center></th>
-                                      <th  style="width:10%"><center>Asset Type</center></th>
-                                      <th  style="width:10%"><center>End Vendor Warranty</center></th>
-                                      <th  style="width:10%"><center>End PM Warranty</center></th>
+                                      <th  style="width:15%"><center>Interface Asset</center></th>
+                                      <th  style="width:15%"><center>Seriel Number</center></th>
+                                      <th  style="width:13%"><center>Description</center></th>
+                                      <th  style="width:13%"><center>Must Gather</center></th>
+                                      
+                                      <th  style="width:10%"><center>End Of Vendor Warranty</center></th>
+                                      <th  style="width:10%"><center>End PowerM Warranty</center></th>
+                                      <th  style="width:5%"><center>Status</center></th>
                                       <th  style="width:14%"><center>Actions</center></th>
      </tr>
     </thead>
     <tbody>
-     <tr data-expanded="true" th:each="a:${asset}">
-      <td th:text="${a.Customers}"><center></center></td>
-      <td th:text="${a.Project Name}"><center></center></td>
-      <td th:text="${a.Asset S/N}"><center></center></td>
-      <td th:text="${a.Current Firmware}"><center></center></td>    
-      <td th:text="${a.Asset Type}"><center><span class="label bg-success pull-center m-t-md"></span></center></td>
-      <td th:text="${a.End Vendor Warranty}"><center></center></td>
-      <td th:text="${a.End PM Warranty}"><center></center></td>
+     <tr data-expanded="true" th:each="a:${asset}" >
+      <td th:text ="${a.InterfaceAasset}"><center></center></td>
+      <td th:text ="${a.SerielNumber}"><center></center></td>
+      <td th:text ="${a.Description}"><center></center></td>
+      <td th:text ="${a.MustGather}"><center></center></td>    
+      <td th:text ="${a.EndOfVendorWarranty}"><center><span class="label bg-success pull-center m-t-md"></span></center></td>
+      <td th:text ="${a.EndPowermWarranty}"><center></center></td>
+      <td th:text ="${a.Status}" class="m-n font-thin h4 text-secondary"><center><span></span><center/></td>
+     <!-- <td th:text ="${a.SerielNumber}"><center></center></td> -->
       <td><center><div class="btn-group dropdown"><button class="btn btn-default btn-xs" data-toggle="dropdown"><i class="glyphicon glyphicon-cog"></i> Action <span class="caret"></span></button>
        <ul class="dropdown-menu">
-        <li><a style="margin-top:-5px;" data-toggle="modal"  data-target="#Update" class="btn btn-sm btn-light" role="button">Update</a></li>
-        <li><a style="margin-top:-5px;" data-toggle="modal"  data-target="#Delete" class="btn btn-sm btn-light" role="button">Delete</a></li>
-        <li><a style="margin-top:-5px;" data-toggle="modal"  data-target="#Detail" class="btn btn-sm btn-light" role="button">Detail</a></li>
+        <li><a th:href="@{updateAssets(id=${a.Assets_ID})}"  style="margin-top:-5px;"   class="btn btn-sm btn-light" role="button">Update</a></li>
+        <li><a th:href="@{archiverAssets(id=${a.Assets_ID})}"  style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Archive</a></li>
+        <li><a th:href="@{detailAssets(id=${a.Assets_ID})}" style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Detail</a></li></ul></div></center></td>
        </ul></div></center>
       </td>
      </tr>
@@ -578,211 +580,71 @@ function drawChart() {
         <button type="button" class="close pull-right" data-dismiss="modal">&times;</button>
           <h1 class="m-n font-bold h3"> <b class="glyphicon-plus pull"> </b> Add Asset</h1>
       </div>
+       <form th:action="@{SaveAssets}" method ="post" th:object="${assets}">
       <div class="modal-body">
         <div class="row">
+        <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b></b></label>
+     <div class="col-sm-8" style="margin: 5px 0px;">
+      <input type="hidden" class="form-control" placeholder="Entry Name of Project" id="input-id-1"  required th:field=*{Assets_ID}/>
+      </div>
           <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Interface Asset</b></label>
           <div class="col-sm-8" style="margin: 5px 0px;">
-            <input type="text"  class="form-control" placeholder="Entry Interface Asset"id="input-id-2">
+            <input type="text"  class="form-control" placeholder="Entry Interface Asset"id="input-id-2" required th:field=*{InterfaceAasset}>
           </div>
           <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Login Asset</b></label>
           <div class="col-sm-8" style="margin: 5px 0px;">
-            <input type="text"  class="form-control" placeholder="Entry Login Asset"id="input-id-2">
+            <input type="text"  class="form-control" placeholder="Entry Login Asset"id="input-id-2" required th:field=*{LoginAsset}>
           </div>
           <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Password Asset</b></label>
           <div class="col-sm-8" style="margin: 5px 0px;">
-             <input type="password" class="form-control" placeholder="Password" id="input-id-2">
+             <input type="password" class="form-control" placeholder="Password" id="input-id-2" required th:field=*{PasswordAsset}>
           </div>
           <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Asset Type</b></label>
-          <div class="col-sm-8" style="margin: 5px 0px;" >
-            <select name="account" class="form-control m-b">
-              <option>Type1</option>
-              <option>Type2</option>
-            </select>
-          </div>
-          <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Frimware</b></label>
           <div class="col-sm-8" style="margin: 5px 0px;">
-            <input type="text"  class="form-control" placeholder="Entry Frimware"id="input-id-2">
+          <select name="AssetType_ID" class="form-control m-b" th:field=*{assettype}>
+	      <option th:each ="a:${assettype}" 
+	        th:text="${a.name}"
+	        th:value ="${a.AssetType_ID}"></option>
+	      </select>
           </div>
+          
           <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Project</b></label>
           <div class="col-sm-8" style="margin: 5px 0px;">
-            <select name="account" class="form-control m-b">
-              <option>Project1</option>
-              <option>Project2</option>
-            </select>
+            <select name="Project_ID" class="form-control m-b" th:field=*{project}>
+	      <option th:each ="p:${project}" 
+	        th:text="${p.name}"
+	        th:value ="${p.Project_ID}"></option>
+	      </select>
           </div>
           <label class="col-sm-4 control-label" placeholder="Entry Seriel Number" style="margin: 5px 0px;" for="input-id-1"><b>Seriel Number</b></label>
           <div class="col-sm-8" style="margin: 5px 0px;">
-            <input type="text"  class="form-control" placeholder="Entry Seriel Number"id="input-id-2">
+            <input type="text"  class="form-control" placeholder="Entry Seriel Number"id="input-id-2" required th:field=*{SerielNumber}>
           </div>
-          <label class="col-sm-4 control-label" placeholder="Entry Description" style="margin: 5px 0px;" for="input-id-1"><b>Description</b></label>
-          <div class="col-sm-8" style="margin: 5px 0px;">
-            <div class="form-group">
-            <div class="btn-toolbar m-b-sm btn-editor" data-role="editor-toolbar" data-target="#editor">
-              <div class="btn-group dropdown" dropdown="">
-                <a class="btn btn-default" dropdown-toggle="" tooltip="Font"><i class="fa fa-font"></i><b class="caret"></b></a>
-                <ul class="dropdown-menu">
-                  <li><a href="" data-edit="fontName Serif" style="font-family:'Serif'">Serif</a></li> 
-                  <li><a href="" data-edit="fontName Sans" style="font-family:'Sans'">Sans</a></li>
-                  <li><a href="" data-edit="fontName Arial" style="font-family:'Arial'">Arial</a></li></ul>
-              </div>
-              <div class="btn-group dropdown" dropdown="">
-                <a class="btn btn-default" dropdown-toggle="" data-toggle="dropdown" tooltip="Font Size"><i class="fa fa-text-height"></i>&nbsp;<b class="caret"></b></a>
-                <ul class="dropdown-menu">
-                  <li><a href="" data-edit="fontSize 5" style="font-size:24px">Huge</a></li>
-                  <li><a href="" data-edit="fontSize 3" style="font-size:18px">Normal</a></li>
-                  <li><a href="" data-edit="fontSize 1" style="font-size:14px">Small</a></li>
-                </ul>
-              </div>
-              <div class="btn-group">
-                <a class="btn btn-default" data-edit="bold" tooltip="Bold (Ctrl/Cmd+B)"><i class="fa fa-bold"></i></a>
-                <a class="btn btn-default" data-edit="italic" tooltip="Italic (Ctrl/Cmd+I)"><i class="fa fa-italic"></i></a>
-                <a class="btn btn-default" data-edit="strikethrough" tooltip="Strikethrough"><i class="fa fa-strikethrough"></i></a>
-                <a class="btn btn-default" data-edit="underline" tooltip="Underline (Ctrl/Cmd+U)"><i class="fa fa-underline"></i></a>
-              </div>
-              <div class="btn-group">
-                <a class="btn btn-default" data-edit="insertunorderedlist" tooltip="Bullet list"><i class="fa fa-list-ul"></i></a>
-                <a class="btn btn-default" data-edit="insertorderedlist" tooltip="Number list"><i class="fa fa-list-ol"></i></a>
-                <a class="btn btn-default" data-edit="outdent" tooltip="Reduce indent (Shift+Tab)"><i class="fa fa-dedent"></i></a>
-                <a class="btn btn-default" data-edit="indent" tooltip="Indent (Tab)"><i class="fa fa-indent"></i></a>
-              </div>
-              <div class="btn-group">
-                <a class="btn btn-default btn-info" data-edit="justifyleft" tooltip="Align Left (Ctrl/Cmd+L)"><i class="fa fa-align-left"></i></a>
-                <a class="btn btn-default" data-edit="justifycenter" tooltip="Center (Ctrl/Cmd+E)"><i class="fa fa-align-center"></i></a>
-                <a class="btn btn-default" data-edit="justifyright" tooltip="Align Right (Ctrl/Cmd+R)"><i class="fa fa-align-right"></i></a>
-                <a class="btn btn-default" data-edit="justifyfull" tooltip="Justify (Ctrl/Cmd+J)"><i class="fa fa-align-justify"></i></a>
-              </div>
-              <div class="btn-group dropdown" dropdown="">
-                <a class="btn btn-default" dropdown-toggle="" tooltip="Hyperlink"><i class="fa fa-link"></i></a>
-                <div class="dropdown-menu">
-                  <div class="input-group m-l-xs m-r-xs">
-                    <input class="form-control input-sm" id="LinkInput" placeholder="URL" type="text" data-edit="createLink">
-                    <div class="input-group-btn">
-                      <button class="btn btn-sm btn-default" type="button">Add</button>
-                    </div>
-                  </div>
-                </div>
-                <a class="btn btn-default" data-edit="unlink" tooltip="Remove Hyperlink"><i class="fa fa-cut"></i></a>
-              </div>
-              
-              <div class="btn-group">
-                <a class="btn btn-default" tooltip="Insert picture (or just drag &amp; drop)" id="pictureBtn"><i class="fa fa-picture-o"></i></a>
-                <input type="file" data-edit="insertImage" style="position:absolute; opacity:0; width:41px; height:34px">
-              </div>
-              <div class="btn-group">
-                <a class="btn btn-default" data-edit="undo" tooltip="Undo (Ctrl/Cmd+Z)"><i class="fa fa-undo"></i></a>
-                <a class="btn btn-default" data-edit="redo" tooltip="Redo (Ctrl/Cmd+Y)"><i class="fa fa-repeat"></i></a>
-              </div>
-            </div>
-            <div ui-jq="wysiwyg" class="form-control" style="overflow:scroll;height:200px;max-height:200px" contenteditable="true">
-              Go ahead…
-            </div>
+          
+         <label class="col-sm-4 control-label" style="margin: 5px 0px;" placeholder="Entry Description" for="input-id-1"><b>Description</b></label>
+         <div class="col-sm-8" style="margin: 5px 0px;">
+	        <input type="text" class="form-control" placeholder="Entry Description " id="input-id-1" required th:field=*{Description}/>
           </div>
-        </div>
           <label class="col-sm-4 control-label" placeholder="Entry Configuration File" style="margin: 5px 0px;" for="input-id-1"><b>Configuration File</b></label>
-          <div class="col-sm-4" style="margin: 5px 0px;">
-            <input type="text" placeholder="Entry Configuration File"class="form-control" id="input-id-1">
-          </div>
-          <div class="btn-group" style="margin: 5px 0px;">
-                <a class="btn btn-default" tooltip="Insert picture (or just drag &amp; drop)" id="pictureBtn"><i class="icon-paper-clip"></i></a>
-                <input type="file" data-edit="insertImage" style="position:absolute; opacity:0; width:41px; height:34px">
-              </div> 
-          <label class="col-sm-4 control-label" placeholder="Entry MustGather" style="margin: 5px 0px;" for="input-id-1"><b>MustGather</b></label>
           <div class="col-sm-8" style="margin: 5px 0px;">
-            <div class="form-group">
-            <div class="btn-toolbar m-b-sm btn-editor" data-role="editor-toolbar" data-target="#editor">
-              <div class="btn-group dropdown" dropdown="">
-                <a class="btn btn-default" dropdown-toggle="" tooltip="Font"><i class="fa fa-font"></i><b class="caret"></b></a>
-                <ul class="dropdown-menu">
-                  <li><a href="" data-edit="fontName Serif" style="font-family:'Serif'">Serif</a></li> 
-                  <li><a href="" data-edit="fontName Sans" style="font-family:'Sans'">Sans</a></li>
-                  <li><a href="" data-edit="fontName Arial" style="font-family:'Arial'">Arial</a></li></ul>
-              </div>
-              <div class="btn-group dropdown" dropdown="">
-                <a class="btn btn-default" dropdown-toggle="" data-toggle="dropdown" tooltip="Font Size"><i class="fa fa-text-height"></i>&nbsp;<b class="caret"></b></a>
-                <ul class="dropdown-menu">
-                  <li><a href="" data-edit="fontSize 5" style="font-size:24px">Huge</a></li>
-                  <li><a href="" data-edit="fontSize 3" style="font-size:18px">Normal</a></li>
-                  <li><a href="" data-edit="fontSize 1" style="font-size:14px">Small</a></li>
-                </ul>
-              </div>
-              <div class="btn-group">
-                <a class="btn btn-default" data-edit="bold" tooltip="Bold (Ctrl/Cmd+B)"><i class="fa fa-bold"></i></a>
-                <a class="btn btn-default" data-edit="italic" tooltip="Italic (Ctrl/Cmd+I)"><i class="fa fa-italic"></i></a>
-                <a class="btn btn-default" data-edit="strikethrough" tooltip="Strikethrough"><i class="fa fa-strikethrough"></i></a>
-                <a class="btn btn-default" data-edit="underline" tooltip="Underline (Ctrl/Cmd+U)"><i class="fa fa-underline"></i></a>
-              </div>
-              <div class="btn-group">
-                <a class="btn btn-default" data-edit="insertunorderedlist" tooltip="Bullet list"><i class="fa fa-list-ul"></i></a>
-                <a class="btn btn-default" data-edit="insertorderedlist" tooltip="Number list"><i class="fa fa-list-ol"></i></a>
-                <a class="btn btn-default" data-edit="outdent" tooltip="Reduce indent (Shift+Tab)"><i class="fa fa-dedent"></i></a>
-                <a class="btn btn-default" data-edit="indent" tooltip="Indent (Tab)"><i class="fa fa-indent"></i></a>
-              </div>
-              <div class="btn-group">
-                <a class="btn btn-default btn-info" data-edit="justifyleft" tooltip="Align Left (Ctrl/Cmd+L)"><i class="fa fa-align-left"></i></a>
-                <a class="btn btn-default" data-edit="justifycenter" tooltip="Center (Ctrl/Cmd+E)"><i class="fa fa-align-center"></i></a>
-                <a class="btn btn-default" data-edit="justifyright" tooltip="Align Right (Ctrl/Cmd+R)"><i class="fa fa-align-right"></i></a>
-                <a class="btn btn-default" data-edit="justifyfull" tooltip="Justify (Ctrl/Cmd+J)"><i class="fa fa-align-justify"></i></a>
-              </div>
-              <div class="btn-group dropdown" dropdown="">
-                <a class="btn btn-default" dropdown-toggle="" tooltip="Hyperlink"><i class="fa fa-link"></i></a>
-                <div class="dropdown-menu">
-                  <div class="input-group m-l-xs m-r-xs">
-                    <input class="form-control input-sm" id="LinkInput" placeholder="URL" type="text" data-edit="createLink">
-                    <div class="input-group-btn">
-                      <button class="btn btn-sm btn-default" type="button">Add</button>
-                    </div>
-                  </div>
-                </div>
-                <a class="btn btn-default" data-edit="unlink" tooltip="Remove Hyperlink"><i class="fa fa-cut"></i></a>
-              </div>
-              
-              <div class="btn-group">
-                <a class="btn btn-default" tooltip="Insert picture (or just drag &amp; drop)" id="pictureBtn"><i class="fa fa-picture-o"></i></a>
-                <input type="file" data-edit="insertImage" style="position:absolute; opacity:0; width:41px; height:34px">
-              </div>
-              <div class="btn-group">
-                <a class="btn btn-default" data-edit="undo" tooltip="Undo (Ctrl/Cmd+Z)"><i class="fa fa-undo"></i></a>
-                <a class="btn btn-default" data-edit="redo" tooltip="Redo (Ctrl/Cmd+Y)"><i class="fa fa-repeat"></i></a>
-              </div>
-            </div>
-            <div ui-jq="wysiwyg" class="form-control" style="overflow:scroll;height:200px;max-height:200px" contenteditable="true">
-              Go ahead…
-            </div>
+            <input type="file" placeholder="Entry Configuration File"class="form-control" id="input-id-1" required th:field=*{ConfigurationFille}/>
           </div>
-        </div>
+ 
+          <label class="col-sm-4 control-label" placeholder="Entry MustGather" style="margin: 5px 0px;" for="input-id-1"><b>Must Gather</b></label>
+          <div class="col-sm-8" style="margin: 5px 0px;">
+	        <input type="text" class="form-control" placeholder="Entry Must Gather " id="input-id-1" required th:field=*{MustGather}/>
+          </div>
           <label class="col-sm-4 control-label" placeholder="Entry EndOfVendorWarranty" style="margin: 5px 0px;" for="input-id-1"><b>End Of Vendor Warranty</b></label>
-          <div class="col-sm-8" style="margin: 5px 0px;">
-            <form action="https://formden.com/post/MlKtmY4x/" class="form-horizontal" method="post">
-            <div class="form-group ">
-            <div class="col-sm-10">
-            <div class="input-group">
-            <div class="input-group-addon">
-              <i class="fa fa-calendar"></i>
-            </div>
-            <input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" type="text"/>
-            </div>
-            </div>
-            </div>
-            </form>
-          </div>
+           <div class="col-sm-8" style="margin: 5px 0px;">
+             <input type="date" class="form-control" id="input-id-1" required th:field=*{EndPowermWarranty}/>
+           </div>
           <label class="col-sm-4 control-label" placeholder="Entry EndPowermWarranty" style="margin: 5px 0px;" for="input-id-1"><b>End PowerM Warranty</b></label>
           <div class="col-sm-8" style="margin: 5px 0px;">
-            <form action="https://formden.com/post/MlKtmY4x/" class="form-horizontal" method="post">
-            <div class="form-group ">
-            <div class="col-sm-10">
-            <div class="input-group">
-            <div class="input-group-addon">
-              <i class="fa fa-calendar"></i>
-            </div>
-            <input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" type="text"/>
-            </div>
-            </div>
-            </div>
-            </form>
-          </div>
+             <input type="date" class="form-control" id="input-id-1" required th:field=*{EndOfVendorWarranty}/>
+           </div>
           <label class="col-sm-4 control-label" placeholder="Entry SLA" style="margin: 5px 0px;" for="input-id-1"><b>SLA</b></label>
           <div class="col-sm-4" style="margin: 5px 0px;">
-            <input type="text" placeholder="Entry SLA"class="form-control" id="input-id-1">
+            <input type="text" placeholder="Entry SLA"class="form-control" id="input-id-1" required th:field=*{SLA}/>
           </div>
           <div class="col-sm-4" style="margin: 5px 0px;" >
           <div class="btn-group">
@@ -798,10 +660,10 @@ function drawChart() {
       </div>
     </div>
   </div>
+  </form>
 </div>
 </div>
 </div>
-
 
   <!-- /content -->
   

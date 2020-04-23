@@ -11,6 +11,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+
+
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 
@@ -87,6 +92,7 @@ public class Customer implements Serializable{
 	@NotNull
 	private String Status;
 	
+
 	@OneToMany
 	private Collection <Purchasing> Purchasing;
 	
@@ -101,20 +107,16 @@ public class Customer implements Serializable{
 		super();
 	}
 
-	
-	public Customer(@NotNull String name, @NotNull String industry, String logo, @NotNull String phoneCompany,
-			@NotNull String adressCompany, @NotNull String vip, @NotNull String nomTechnical,
-			@NotNull String phoneTechnical, @NotNull @Email String emailTechnical, @NotNull String nomCIO,
-			@NotNull String phoneCIO, @NotNull @Email String emailCIO, String city, String country,
-			@NotNull String status) {
-
-
+	public Customer(String name, String industry, String logo, String phoneCompany, String adressCompany, String vip, 
+			String nomCIO, String phoneCIO, String emailCIO, String nomTechnical, String emailTechnical, String phoneTechnical, String city, String country, String status) {
+		super();
 		Name = name;
 		Industry = industry;
 		Logo = logo;
 		PhoneCompany = phoneCompany;
 		AdressCompany = adressCompany;
 		Vip = vip;
+		
 		NomTechnical = nomTechnical;
 		PhoneTechnical = phoneTechnical;
 		EmailTechnical = emailTechnical;
@@ -254,6 +256,9 @@ public class Customer implements Serializable{
 	public void setEmailTechnical(String emailTechnical) {
 		EmailTechnical = emailTechnical;
 	}
+	
+	
+
 
 
 	public Collection<Users> getUsers() {

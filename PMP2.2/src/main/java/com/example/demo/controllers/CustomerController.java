@@ -2,17 +2,18 @@ package com.example.demo.controllers;
 
 import java.io.File;
 
+
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.List;
+
 import javax.validation.Valid;
 
 import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;
-import org.springframework.security.access.annotation.Secured;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,8 +24,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
-
-import com.example.demo.entities.*;
+import com.example.demo.entities.Customer;
 import com.example.demo.repository.CustomerRepository;
 
 @Controller
@@ -43,14 +43,19 @@ public class CustomerController {
 		List<Customer> custs = customerrepository.findAll();
 		model.addAttribute("cust", custs);
 		model.addAttribute("customer", new Customer());
+
+		model.addAttribute("custs", customerrepository.findAll()); 
+
 		model.addAttribute("totalCustomer", custs.size());
 
 		return "customer_manage";
 	}
 
+
 	@RequestMapping(value = "/SaveCustomer", method = RequestMethod.POST)
 	private String SaveCustomer(@Valid Customer addCust, BindingResult bindingResult,
 			@RequestParam(name = "picture") MultipartFile file) throws Exception, IOException {
+
 
 		
 		if (!(file.isEmpty())) {

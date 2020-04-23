@@ -527,6 +527,7 @@
         <button type="button" class="close pull-right" data-dismiss="modal">&times;</button>
         <h1 class="m-n font-bold h3"> <b class="glyphicon-plus pull"> </b> Add Type Asset</h1>
       </div>
+      <!-- la forme -->
       <form th:action="@{SaveAssetType}" method ="post" th:object="${assetstype}">
       <div class="modal-body">
        <div class="row">        
@@ -540,12 +541,17 @@
           <input type="text" class="form-control" placeholder="Entry Name of Asset" id="input-id-1"  required th:field=*{name}>
           <span  th:errors=*{name}></span>
 	     </div>
+<<<<<<< HEAD
+          
+          <label class="col-sm-4 control-label" placeholder="Entry EndOfSupportDate" for="input-id-1" style="margin-bottom:5px;"><b>End Of Support Date</b></label>
+=======
           <label class="col-sm-4 control-label"  for="input-id-1" style="margin-bottom:5px;"><b>Brand</b></label>
           <div class="col-sm-8" style="margin-bottom:5px;">
             <input type="text"  class="form-control" placeholder="Entry Band" id="input-id-2" required th:field=*{Brand}/>
             <span th:errors=*{Brand}></span>
           </div>
           <label class="col-sm-4 control-label" for="input-id-1" style="margin-bottom:5px;"><b>End Of Support Date</b></label>
+>>>>>>> branch 'master' of https://github.com/isaibou/TEST5
           <div class="col-sm-8" style="margin-bottom:5px;">
             <input class="form-control" placeholder="yyyy-MM-dd" type="date" required th:field=*{EndOfSuportDate}/>
             <span class="text-danger" th:errors=*{EndOfSuportDate}></span>
@@ -560,6 +566,16 @@
             <input type="text"  class="form-control" placeholder="Entry FRU" id="input-id-2" required th:field=*{FRU}/>
             <span th:errors=*{FRU}></span>
           </div>
+          <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Vendor</b></label>
+	      <div class="col-sm-8" style="margin: 5px 0px;">
+	 <!-- ici on met une boucle sur le customer pour avoir récupérer la liste des vendor  -->
+	     <select name="Vendor_ID"  class="form-control m-b" th:field=*{vendor}>
+	     <option th:each ="v:${vendor}" 
+	      th:text="${v.NameVendor}"
+	      th:value ="${v.Vendor_ID}"></option>
+	     </select>
+	     </div>
+         
            <div class="modal-footer">
         <button style="margin:0px;" class="btn m-b-xs btn-sm btn-primary btn-addon"><i class="glyphicon glyphicon-ok"></i>Save</button>
 	    <button style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon" data-dismiss="modal"><i class="glyphicon glyphicon-remove"></i>Annuler</button>
@@ -570,6 +586,54 @@
   </div>
 </div>
 </div>
+<<<<<<< HEAD
+<div class="table-responsive" style="background-color:white;margin:10px; padding:10px;">
+    <table ui-jq="dataTable" ui-options="{
+                              aoColumns: [
+                              
+                              { mData: 'engine' },
+                              { mData: 'browser' },
+                              { mData: 'platform' },
+                              { mData: 'version' },
+                              { mData: 'grade' },
+            
+                              { mData: 'action' }
+                              ]
+                              }" class="table  b-t b-b">
+       <thead style="color:#23b7e5;">
+      <tr>
+       <th  style="width:20%"><center>Asset Name</center></th>
+       
+       <th  style="width:15%"><center>End Of Support Date</center></th>
+       <th  style="width:15%"><center>End Sale Date</center></th>
+       <th  style="width:5%"><center>Status</center></th>
+       
+       <th  style="width:15%"><center>Actions</center></th>
+      </tr>
+       </thead>
+     <tbody>
+     <tr data-expanded="true" th:each="a:${asstyp}">
+      <td th:text="${a.Name}" class="m-n font-thin h4 text-secondary"><center></center></td>
+      
+      <td th:text="${a.EndOfSuportDate}" class="m-n font-thin h4 text-secondary"><center></center></td>
+      <td th:text="${a.EndSaleDate}" class="m-n font-thin h4 text-secondary"><center><center/></td>
+      <td th:text ="${a.Status}" class="m-n font-thin h4 text-secondary"><center><span></span><center/></td>
+      
+      <td><center><div class="btn-group dropdown"><button class="btn btn-default btn-xs" data-toggle="dropdown"><i class="glyphicon glyphicon-cog"></i> Action <span class="caret"></span></button>
+       <ul class="dropdown-menu">
+         <li><a th:href="@{updateAseetTypeform(id=${a.AssetType_ID})}"  style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Update</a></li>
+        
+       <li><a th:href="@{archiverAseetT(id=${a.AssetType_ID})}"  style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Archive</a></li>
+         <li><a th:href="@{detailAseetType(id=${a.AssetType_ID})}" style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Detail</a></li></ul></div></center></td>
+        
+       </ul></div>                             
+      </center></td>
+     </tr>
+     </tbody>
+    </table>
+     </div>
+=======
+>>>>>>> branch 'master' of https://github.com/isaibou/TEST5
   </div>
  </div>
   <!-- /content -->

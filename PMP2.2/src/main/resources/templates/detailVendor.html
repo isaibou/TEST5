@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="utf-8" />
-  <title>Detail AseetType</title>
+  <title>Detail Vendor</title>
   <meta name="description" content="app, web app, responsive, responsive layout, admin, admin panel, admin dashboard, flat, flat ui, ui kit, AngularJS, ui route, charts, widgets, components" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <link rel="stylesheet" href="../libs/assets/animate.css/animate.css" type="text/css" />
@@ -13,13 +13,12 @@
   <link rel="stylesheet" href="css/app.css" type="text/css" />
 </head>
 <body>
-<!-- detail -->
 <div class="app" >
  <a href="" class="navbar-brand block m-t"><i class="fa fa-power-off"></i> <b>PowerM</b> </a>
- <div th:action="@{detailPurchasing}" method ="post" th:object="${Purchasing}">
+ <div th:action="@{detailVendor}" method ="post" th:object="${Vendor}">
   <div class="modal-dialog modal-lg" >
    <div class="modal-content">
-    <h1 class="m-n font-bold h3"> Informations AseetType </h1>
+    <h1 class="m-n font-bold h3"> Informations Vendor </h1>
    </div>
    <div  class="modal-body">
     <div style="background-color:white;margin:10px; padding:10px;">
@@ -33,54 +32,37 @@
 		   <th  style="width:80%"><center>Content </center></th>
 		  </tr>
 	  </thead>
-	  <tbody th:each="a:${assettype}">
+	  <tbody th:each="v:${Vendor}">
 		  <tr data-expanded="true">
-		   <td style="color:#23b7e5;"><center>Asset Name </center></th>
-		   <td th:text ="${a.Name}" class="m-n font-thin h4 text-secondary"><center><b></b></center></td>
-		  </tr>
-<<<<<<< HEAD
-		  
-		   <tr >
-		   <td style="color:#23b7e5;"><center>End Of Support Date </center></th>
-		   <td th:text ="${a.EndOfSuportDate}" class="m-n font-thin h4 text-secondary"><center></center></td>
-		   </tr>
-		   <tr >
-		   <td style="color:#23b7e5;"><center>End Sale Date </center></th>
-		   <td th:text ="${a.EndSaleDate}" class="m-n font-thin h4 text-secondary"><center></center></td>
-		   </tr>
-		   <tr >
-		   <td style="color:#23b7e5;"><center>Status </center></th>
-		   <td th:text ="${a.Status}" class="m-n font-thin h4 text-secondary"><center><span></span></center></td>
-		   </tr>  
-		   <td style="color:#23b7e5;"><center>Vendor </center></th>
-		   <!-- Comment j ai appeler  le customer qui j ai choisi a partir du la liste déroulante des customers  -->
-		   <td th:each ="v:${assettype.Vendor}"   th:text="${v.NameVendor}"  class="m-n font-thin h4 text-secondary"><center></center></td>
-		   </tr>
-		   
-=======
-		  <tr >
-		   <td style="color:#23b7e5;"><center>Brand </center></th>
-		   <td th:text ="${a.Brand}" class="m-n font-thin h4 text-secondary"><center><b></b></center></td>
+		   <td style="color:#23b7e5;"><center>Vendor Name </center></th>
+		   <td th:text ="${v.NameVendor}" class="m-n font-thin h4 text-secondary"></td>
 		  </tr>
 		   <tr >
-		   <td style="color:#23b7e5;"><center>End Of Support Date </center></th>
-		   <td th:text ="${a.EndOfSuportDate}" class="m-n font-thin h4 text-secondary"><center></center></td>
+		   <td style="color:#23b7e5;"><center>Address</center></th>
+		   <td th:text ="${v.Adress}" class="m-n font-thin h4 text-secondary"></td>
 		   </tr>
 		   <tr >
-		   <td style="color:#23b7e5;"><center>End Sale Date </center></th>
-		   <td th:text ="${a.EndSaleDate}" class="m-n font-thin h4 text-secondary"><center></center></td>
+		   <td style="color:#23b7e5;"><center>Phone </center></th>
+		   <td th:text ="${v.Phone}" class="m-n font-thin h4 text-secondary"></td>
 		   </tr>
-		   <tr >
+           <tr >
+		   <td style="color:#23b7e5;"><center>Industry </center></th>
+           <td th:text ="${v.Industry}" class="m-n font-thin h4 text-secondary"></td>
+           </tr>
+           <tr >
+		   <td style="color:#23b7e5;"><center>Partnership Certificate </center></th>
+           <td th:text ="${v.PartnershipCertificate}" class="m-n font-thin h4 text-secondary"></td>
+           </tr> 
+           <tr >
 		   <td style="color:#23b7e5;"><center>Status </center></th>
-		   <td th:text ="${a.Status}" class="m-n font-thin h4 text-secondary"><center><span></span></center></td>
-		   </tr>  
->>>>>>> branch 'master' of https://github.com/isaibou/TEST5
+		   <td th:text ="${v.Status}" class="m-n font-thin h4 text-secondary"><center><span></span></center></td>
+		   </tr>     
 	  </tbody>
      </table>
 	</div>
    </div>
    <div class="modal-footer">
-     <button class="btn m-b-xs btn-sm btn-primary btn-addon"><a th:href="assetstype_manage">Return</a></button>
+     <button class="btn m-b-xs btn-sm btn-primary btn-addon"><a th:href="vendor">Return</a></button>
    </div>
   </div>  
  </div>

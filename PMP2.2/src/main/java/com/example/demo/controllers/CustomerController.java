@@ -1,6 +1,8 @@
 package com.example.demo.controllers;
 
 import java.io.File;
+
+
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -12,6 +14,7 @@ import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -28,15 +31,15 @@ import com.example.demo.repository.CustomerRepository;
 public class CustomerController {
 
 	@Autowired
-	private CustomerRepository customerrepository; 
-	
-	@Autowired
-	@Value(value="${location}")
-	private String Location;
-	
-	@RequestMapping(value="/customer_manage")
-	public String AllCustomer(Model model, Customer customer) {
-		
+	private CustomerRepository customerrepository;
+
+	@Value("${dir.logo}")
+	private String images;
+
+
+	@RequestMapping(value = "/customer_manage")
+	public String AllCustomer(Model model) {
+
 		List<Customer> custs = customerrepository.findAll();
 		model.addAttribute("cust", custs);
 		model.addAttribute("customer", new Customer());
@@ -45,128 +48,110 @@ public class CustomerController {
 
 		model.addAttribute("totalCustomer", custs.size());
 
-		
 		return "customer_manage";
 	}
 
-    @RequestMapping(value="/SaveCustomer" , method= RequestMethod.POST)
-	private String SaveCustomer(@Valid Customer addCust, BindingResult bindingResult, @RequestParam(name="picture")MultipartFile file) {
+
+	@RequestMapping(value = "/SaveCustomer", method = RequestMethod.POST)
+	private String SaveCustomer(@Valid Customer addCust, BindingResult bindingResult,
+			@RequestParam(name = "picture") MultipartFile file) throws Exception, IOException {
+
+
 		
-		/*if(bindingResult.hasErrors()) {
-			return "customer_manage";
-		}*/
-		
-		if(!(file.isEmpty())) {
+		if (!(file.isEmpty())) {
 			addCust.setLogo(file.getOriginalFilename());
-			addCust.setStatus("Actif");
-			customerrepository.save(addCust);
-			try {		
-				addCust.setLogo(file.getOriginalFilename());
-				//file.transferTo(new File(StorageLocation+ addCust.getCustomer_ID()));
-				File f=new File(Location + addCust.getCustomer_ID());
-				System.out.println(f.getAbsolutePath());
-				if(f.exists()==false) f.mkdir();
-				file.transferTo(f);
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			
+			System.out.println(addCust.getLogo());
 		}
-		
-		return "redirect:/customer_manage";	
-	}
-	
-	@RequestMapping(value="/getLogo",produces=MediaType.IMAGE_JPEG_VALUE)
-	@ResponseBody
-	public byte[] getLogo(Integer Customer_ID) {
-		try {
-			File f=new File(Location + Customer_ID);
-			return IOUtils.toByteArray(new FileInputStream(f));
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return new byte[0] ;	 
-	}
-	
-	@RequestMapping(value ="updateCustomerform" )
-	private String updateCustomerform( Model model, Integer id ) {
-	Customer customer = customerrepository.getOne(id);
-		 model.addAttribute("customer",customer);
-		 System.out.println(customer.getName());
-		
-			return "updateCustomerForm";
+		addCust.setStatus("Actif");
+		customerrepository.save(addCust);
+		System.out.println(addCust.getLogo());
+
+		if (!(file.isEmpty())) {
 			
-			
-	}
-	
-    @RequestMapping(value = "/editCustomer",method = { RequestMethod.GET, RequestMethod.POST })
-
-   // @RequestMapping(value = "/editCustomer",method= RequestMethod.POST)
-
-	private String updateCustomer(@Valid Customer addCust, BindingResult bindingResult, @RequestParam(name="picture")MultipartFile file) {
-
-
-	//if (bindingResult.hasErrors()) {
-		//return "updateCustomerForm";
-	//}
-
-
-
-	
-
-
-	/*if (bindingResult.hasErrors()) {
-		return "updateCustomerForm";
-	}*/
-
-
-		if(!(file.isEmpty())) {
 			addCust.setLogo(file.getOriginalFilename());
-			addCust.setStatus("Actif");
-			customerrepository.save(addCust);
-			try {	
-				addCust.setLogo(file.getOriginalFilename());
-				//file.transferTo(new File(StorageLocation+ addCust.getCustomer_ID()));
-				File f=new File(Location + addCust.getCustomer_ID());
-				System.out.println(f.getAbsolutePath());
-				if(f.exists()==false) f.mkdir();
-				file.transferTo(f);
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			
+			System.out.println(addCust.getLogo());
+
+			file.transferTo(new File(images+addCust.getCustomer_ID()));
 		}
 
 		return "redirect:/customer_manage";
 	}
-	@RequestMapping(value ="/detailCustomer")
-
-	public String detailCustomer( Model model, Integer id ) {
-		Customer customer = customerrepository.getOne(id);
-		 model.addAttribute("customer",customer);
-		 System.out.println(customer.getName());	
-			return "detailCust";
-
+	
+	@RequestMapping(value="/getLogo" , produces= MediaType.IMAGE_JPEG_VALUE)
+	@ResponseBody
+	private byte[] getLogo(Integer id) throws  IOException {
+		File f = new File(images+id);
+		return  IOUtils.toByteArray(new FileInputStream(f));
 	}
-	
-	@RequestMapping(value ="/archiverCustomer" )
-	private String archiverCustomer( Model model, Integer id ) {
-	
-	Customer Cust = customerrepository.getOne(id);
-	Cust.setStatus("Archived");
 
-	customerrepository.save(Cust);
+	
+	  @RequestMapping(value ="updateCustomerform" )
+	  private String  updateCustomerform( Model model, Integer id ) 
+	  {
+		  Customer customer =  customerrepository.getOne(id);
+		  model.addAttribute("customer",customer);
+	  System.out.println(customer.getName());
+	  
+	  return "updateCustomerForm";
+	  
+	  }
+	  
+	  @RequestMapping(value = "/editCustomer",method= RequestMethod.POST) private
+	  String updateCustomer(@Valid Customer addCust, BindingResult
+	  bindingResult, @RequestParam(name="picture")MultipartFile file) throws Exception, IOException {
+	  
+
+			if (!(file.isEmpty())) {
+				addCust.setLogo(file.getOriginalFilename());
+				System.out.println(addCust.getLogo());
+			}
+			addCust.setStatus("Actif");
+			customerrepository.save(addCust);
+			System.out.println(addCust.getLogo());
+
+			if (!(file.isEmpty())) {
+				
+				addCust.setLogo(file.getOriginalFilename());
+				System.out.println(addCust.getLogo());
+
+				file.transferTo(new File(images+addCust.getCustomer_ID()));
+			}
+
+			return "redirect:/customer_manage";
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  }
+	 	  
+	
 	
 		
-			return "redirect:/admin/customer_manage";	
-			
+		@RequestMapping(value="detailCustomer")
+	  public String detailCustomer( Model model, Integer id ) {
+		  
+		  Customer customer = customerrepository.getOne(id);
+		  model.addAttribute("customer",customer);
+	  System.out.println(customer.getName());
+	  return "detailCust";
+	  
+	  }
+	  
+	  @RequestMapping(value ="/archiverCustomer" ) private String archiverCustomer(
+	  Model model, Integer id ) {
+	  
+	  Customer Cust = customerrepository.getOne(id);
+	  
+	  Cust.setStatus("Archived");
+	  
+	  customerrepository.save(Cust);
+	  
+	  
+	  return "redirect:/customer_manage";
+	  
+	  }
+	 
 }
-
-}
- 	

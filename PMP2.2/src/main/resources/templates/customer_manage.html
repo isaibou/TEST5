@@ -273,7 +273,11 @@
 												<!-- / user -->
 
 												<!-- nav -->
+<<<<<<< HEAD
 <nav ui-nav class="navi clearfix">
+=======
+        <nav ui-nav class="navi clearfix">
+>>>>>>> branch 'master' of https://github.com/isaibou/TEST5
             <ul class="nav">
               <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
                 <span>Main</span>
@@ -542,11 +546,12 @@
 														<table ui-jq="dataTable" ui-options="{
 															aoColumns: [
 															
-															{ mData: 'engine' },
+
+															{ mData: 'logo' 
+															 mData: 'engine' },
 															{ mData: 'browser' },
 															{ mData: 'platform' },
 															{ mData: 'version' },
-															{ mData: 'grade' },
 															{ mData: 'action' }
 															]
 															}" class="table table-striped b-t b-b">
@@ -563,8 +568,9 @@
 															</thead>
 															<tbody>
 																<tr data-expanded="true" th:each="c:${cust}">
-																    <td><img class="img-circle" th:src="@{getLogo(id=${c.Customer_ID})}" width="100" height="100"/></td>
-																	<td th:text ="${c.Name}" class="m-n font-thin h4 text-secondary"> </td>
+																				<td>  <img class="img-thumbnail"  th:src="@{getLogo(id=${c.Customer_ID})}"  width="50" height="50" > </td>
+																
+				 													<td th:text ="${c.Name}" class="m-n font-thin h4 text-secondary"> </td>
 																		<td th:text ="${c.AdressCompany}" class="m-n font-thin h4 text-secondary"><center></center></td>
 																		<td th:text ="${c.Industry}" class="m-n font-thin h4 text-secondary"><center><center/></td>
 																		<td th:text ="${c.Status}" class="m-n font-thin h4 text-secondary"><center><span></span><center/></td>
@@ -608,17 +614,13 @@
 	<button type="button" class="close pull-right" data-dismiss="modal">&times;</button>
     <h1 class="m-n font-bold h3"> <b class="glyphicon-plus pull"> </b> Add Company</h1>
    </div>
-<<<<<<< HEAD
-   <form th:action="@{admin/SaveCustomer}" enctype="multipart/form-data" method ="post" th:object="${customer}">
-=======
+
    <form th:action="@{SaveCustomer}" enctype="multipart/form-data" method ="post" th:object="${customer}">
->>>>>>> branch 'master' of https://github.com/isaibou/TEST5
    <div class="modal-body">
 	<div class="row">
 	<label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Company Logo</b></label>
      <div class="col-sm-8" style="margin: 5px 0px;">
-        <input type="file" name="picture" class="form-control" id="input-id-1">
-        <span class="text-danger" th:errors=*{Logo}></span>
+        <input type="file"  name="picture" class="form-control" id="input-id-1" >
      </div>
 	 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Company Name</b></label>
      <div class="col-sm-8" style="margin: 5px 0px;" >

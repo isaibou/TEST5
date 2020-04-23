@@ -1,5 +1,7 @@
 package com.example.demo.controllers;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -40,6 +42,7 @@ public class InternalRequestController {
 	@Autowired
 	UserRepository userRepository;
 
+	DateFormat df = new SimpleDateFormat("yyyy-	MM-dd");
 
 	
 	@RequestMapping(value="/request")
@@ -59,8 +62,8 @@ public class InternalRequestController {
 		model.addAttribute("extAll", extAll.size());
 		model.addAttribute("typeInternal", typeInternalRequestrepository.findAll());
 		model.addAttribute("typeExternal", typeExternalRequestrepository.findAll());
-
 		
+	
 		return "request";
 	}
 
@@ -78,6 +81,17 @@ public class InternalRequestController {
 	}
 	
 	
+	@RequestMapping(value="/answer")
+	public String answer( Integer  id ) {
+		
+		InternalRequest  iR = internalRequestrepository.getOne(id);
+		iR.setStatus(true);
+		
+		
+	internalRequestrepository.delete(iR);
+		//internalRequestrepository.save(iR);
+		return"redirect:/request";
+	}
 	
 	
 	

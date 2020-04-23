@@ -24,7 +24,7 @@ public class Users implements Serializable {
 	private String password; 
 	private boolean actived;
 	private String lastName;
-	
+	private Boolean isCustomer;
 	private String Picture;
 	private String firstName;
 	private String CIN; 
@@ -56,6 +56,31 @@ public class Users implements Serializable {
 
 	
 	
+
+
+
+
+
+	public Users(String username, String password, boolean actived, String lastName, Boolean isCustomer, String picture,
+			String firstName, String cIN, String phone, Customer customer, Collection<Roles> roles) {
+		super();
+		this.username = username;
+		this.password = password;
+		this.actived = actived;
+		this.lastName = lastName;
+		this.isCustomer = isCustomer;
+		Picture = picture;
+		this.firstName = firstName;
+		CIN = cIN;
+		Phone = phone;
+		this.customer = customer;
+		this.roles = roles;
+	}
+
+
+
+
+
 
 
 
@@ -239,6 +264,32 @@ public class Users implements Serializable {
 
 	public void setExternalRequest(Collection<ExternalRequest> externalRequest) {
 		this.externalRequest = externalRequest;
+	}
+
+
+
+
+
+
+
+
+
+
+	public Boolean getIsCustomer() {
+		return isCustomer;
+	}
+
+
+
+
+
+
+
+
+
+
+	public void setIsCustomer(Boolean isCustomer) {
+		this.isCustomer = isCustomer;
 	}
 
 	

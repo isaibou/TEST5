@@ -123,7 +123,11 @@
 	</div>
 	<div class="line dk hidden-folded"></div>
    </div><!-- / user --><!-- nav -->
+<<<<<<< HEAD
 <nav ui-nav class="navi clearfix">
+=======
+                <nav ui-nav class="navi clearfix">
+>>>>>>> branch 'master' of https://github.com/isaibou/TEST5
             <ul class="nav">
               <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
                 <span>Main</span>
@@ -341,8 +345,8 @@
 
                               <div class="col-sm-6">
                                 <a href="" class="block panel padder-v bg-primary item">
-                                  <span class="text-white count font-thin h1 block">80</span>
-                                  <span class="text-muted text-xs"><b> Customer Actifs</b></span>
+                                  <span class="text-white count font-thin h1 block" ></span>
+                                  <span class="text-muted text-xs"><b> Request Waiting</b></span>
                                   <span class="bottom text-right w-full">
                                     <i class="glyphicon glyphicon-briefcase text-muted m-r-sm"></i>
                                   </span>
@@ -361,6 +365,7 @@
 												{ mData: 'description' },
 												{ mData: 'Demandeur' },
 												{ mData: 'Status' },
+												{ mData: 'Date' },
 												{ mData: 'action' }]
 											}" class="table  b-t b-b">
 		<thead>
@@ -368,9 +373,9 @@
 	    
           <th  style="width:8%"><center>Type</center></th>
 		  <th  style="width:12%"><center>Description</center></th>
-	      <th  style="width:12%"><center>Demandeur</center></th>
+	      <th  style="width:12%"><center>LastName & FirstName</center></th>
+	      <th  style="width:12%"><center>Submited Date</center></th>
 	      <th  style="width:12%"><center>Status</center></th>
-	      
 		  <th  style="width:15%"><center>Actions</center></th>
 		 
 		 </tr>
@@ -379,12 +384,13 @@
 	 <tr  data-expanded="true" th:each="i:${listInt}">
 		  <td th:text="${i.typeInternalRequest.NameTypeInternalRequest}" ></td>
           <td th:text ="${i.Description}"><center></center></td>
-          <td th:text="${i.userEmployee.lastName}" ><center><center></center></center></td>
+          <td th:text="${i.userEmployee.lastName} + . + ${i.userEmployee.firstName}" ><center><center></center></center></td>
+          <td th:text ="${i.SubmitedDate}"><center></center></td>
 		  
 		  <td>
 		  
-		   <span th:if="${i.Status == true}" class="label bg-success pull-center m-t-md">Enabled</span>
-   		   <span th:unless="${i.Status == true}" class="label bg-danger pull-center m-t-md">Disabled</span> 
+		   <span th:if="${i.Status == true}" class="label bg-success pull-center m-t-md">Answered</span>
+   		   <span th:unless="${i.Status == true}" class="label bg-danger pull-center m-t-md"> Waiting</span> 
    		   </td>
 		  
 		 
@@ -396,9 +402,7 @@
 		      <i class="glyphicon glyphicon-cog"></i> Action <span class="caret"></span>
 		     </button>
 		     <ul class="dropdown-menu">
-		      <li><a th:href="@{updateUserform(id=${i.InternalRequest_ID})}"style="margin-top:-5px;"  class="btn btn-sm btn-light" role="button">Update</a></li>
-		      <li><a th:href="@{desactiverUser(id=${i.InternalRequest_ID})}" style="margin-top:-5px;"  class="btn btn-sm btn-light" role="button">Desactivate</a></li>
-		      <li><a th:href="@{activerUser(id=${i.InternalRequest_ID})}" style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Activate</a></li>
+		      <li><a th:href="@{answer(id=${i.InternalRequest_ID})}" style="margin-top:-5px;"  class="btn btn-sm btn-light" role="button">Answer</a></li>
 		     </ul>
 		    </div>
 		   </center>
@@ -415,7 +419,7 @@
                             <div class="row text-center" style="margin: 10px 5px;">
                               <div class="col-sm-6">
                                 <div class="panel padder-v item">
-                                  <div class="h1 count text-info font-thin h1 pull-center" th:text="${extAll}">121</div>
+                                  <div class="h1 count text-info font-thin h1 pull-center" th:text="${extAll}"></div>
                                   <span class="text-muted text-xs"><b> Total Request </b></span>
                                   <span class="bottom text-right w-full">
                                     <i class="glyphicon   glyphicon-tower text-muted m-r-sm"></i>
@@ -425,8 +429,8 @@
 
                               <div class="col-sm-6">
                                 <a href="" class="block panel padder-v bg-primary item">
-                                  <span class="text-white count font-thin h1 block">80</span>
-                                  <span class="text-muted text-xs"><b> Customer Actifs</b></span>
+                                  <span class="text-white count font-thin h1 block" >80</span>
+                                  <span class="text-muted text-xs"><b> Request Waiting</b></span>
                                   <span class="bottom text-right w-full">
                                     <i class="glyphicon glyphicon-briefcase text-muted m-r-sm"></i>
                                   </span>
@@ -448,6 +452,7 @@
 												{ mData: 'description' },
 												{ mData: 'Demandeur' },
 												{ mData: 'Status' },
+												{ mData: 'date' },
 												{ mData: 'action' }]
 											}" class="table  b-t b-b">
 		<thead>
@@ -456,6 +461,7 @@
           <th  style="width:8%"><center>Type</center></th>
 		  <th  style="width:12%"><center>Description</center></th>
 	      <th  style="width:12%"><center>Company</center></th>
+	      <th  style="width:12%"><center>Submited Date</center></th>
 	      <th  style="width:12%"><center>Status</center></th>
 	      
 		  <th  style="width:15%"><center>Actions</center></th>
@@ -467,11 +473,11 @@
 		  <td th:text="${e.typeExternalRequest.NameTypeExternelRequest}"></td>
           <td th:text ="${e.Description}"><center></center></td>
           <td  th:text="${e.userCustomer.customer.Name}"><center><center><span class="label bg-danger pull-center m-t-md">Company</span></center></center></td>
+          <td th:text ="${e.SubmitedDate}"><center></center></td>
+		  		  <td>
 		  
-		  <td>
-		  
-		   <span th:if="${e.Status == true}" class="label bg-success pull-center m-t-md">Enabled</span>
-   		   <span th:unless="${e.Status == true}" class="label bg-danger pull-center m-t-md">Disabled</span> 
+		   <span th:if="${e.Status == true}" class="label bg-success pull-center m-t-md">Answered</span>
+   		   <span th:unless="${e.Status == true}" class="label bg-danger pull-center m-t-md">Waiting</span> 
    		   </td>
 		  
 		 
@@ -483,9 +489,7 @@
 		      <i class="glyphicon glyphicon-cog"></i> Action <span class="caret"></span>
 		     </button>
 		     <ul class="dropdown-menu">
-		      <li><a th:href="@{updateUserform(id=${e.ExternalRequest_ID})}"style="margin-top:-5px;"  class="btn btn-sm btn-light" role="button">Update</a></li>
-		      <li><a th:href="@{desactiverUser(id=${e.ExternalRequest_ID})}" style="margin-top:-5px;"  class="btn btn-sm btn-light" role="button">Desactivate</a></li>
-		      <li><a th:href="@{activerUser(id=${e.ExternalRequest_ID})}" style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Activate</a></li>
+		      <li><a th:href="@{answerC(id=${e.ExternalRequest_ID})}" style="margin-top:-5px;"  class="btn btn-sm btn-light" role="button">Answer</a></li>
 		     </ul>
 		    </div>
 		   </center>

@@ -37,6 +37,19 @@ public class ExternalRequestController {
 	}
 
 	
+	
+	@RequestMapping(value="/answerC")
+	public String answserC( Integer  id ) {
+		
+		ExternalRequest  eR = externalRequestRepository.getOne(id);
+		eR.setStatus(true);
+		
+		externalRequestRepository.delete(eR);
+		
+	
+		//externalRequestRepository.save(eR);
+		return"redirect:/request";
+	}
 	}
 
 

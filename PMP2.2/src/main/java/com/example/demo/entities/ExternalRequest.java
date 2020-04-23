@@ -16,7 +16,7 @@ public class ExternalRequest implements Serializable{
 	@GeneratedValue
 	private Integer ExternalRequest_ID;
 	private String Description;
-	private String Status; 
+	private Boolean Status; 
 	private Date SubmitedDate;
 	
 	@ManyToOne
@@ -38,12 +38,18 @@ public class ExternalRequest implements Serializable{
 	
 	
 
-	public ExternalRequest(String description, String status, Date submitedDate) {
+
+
+
+	public ExternalRequest(String description, Boolean status, Date submitedDate) {
 		super();
 		Description = description;
 		Status = status;
 		SubmitedDate = submitedDate;
 	}
+
+
+
 
 
 
@@ -63,13 +69,25 @@ public class ExternalRequest implements Serializable{
 		Description = description;
 	}
 
-	public String getStatus() {
+	
+
+	public Boolean getStatus() {
 		return Status;
 	}
 
-	public void setStatus(String status) {
+
+
+
+
+
+	public void setStatus(Boolean status) {
 		Status = status;
 	}
+
+
+
+
+
 
 	public Date getSubmitedDate() {
 		return SubmitedDate;

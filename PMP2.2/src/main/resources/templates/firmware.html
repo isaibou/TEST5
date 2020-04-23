@@ -18,7 +18,6 @@
 <script src='/../libs/packages/daygrid/main.js'></script>
 <script src='/../libs/packages/timegrid/main.js'></script>
 <script src='/../libs/packages/list/main.js'></script>
-
 <link rel="stylesheet" href="/css/font.css" type="text/css" />
 <link rel="stylesheet" href="/css/app.css" type="text/css" />
 <script>
@@ -440,8 +439,8 @@
 							<li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
 								<span>Your Stuff</span>
 							</li>
-							  <li>
-                <a th:href="@{/login?logout}">
+							 <li>
+                <a th:href="@{/LoginVrai?logout}">
                   <i class="icon-user icon text-success-lter"></i>
                   <b class="badge bg-success pull-right">30%</b>
                   <span>[[${#httpServletRequest.remoteUser}]]</span>

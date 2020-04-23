@@ -7,17 +7,12 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 
-import org.hibernate.validator.constraints.Email;
-import org.hibernate.validator.constraints.UniqueElements;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.context.properties.bind.DefaultValue;
+//import org.hibernate.validator.constraints.Email;
 import org.springframework.format.annotation.NumberFormat;
 
 @Entity
@@ -27,7 +22,7 @@ public class Customer implements Serializable{
 	@GeneratedValue
 	private Integer Customer_ID;
 	
-	@NotNull 
+	@NotNull(message="this name is exist")
 	@Column(name="Name",length=30,unique=true)
 	private String Name;
 	
@@ -37,40 +32,38 @@ public class Customer implements Serializable{
 
 	private String Logo;
 
-    
-
-	@NotNull
+	@NotNull(message="u shoud entry the phone number")
 	@NumberFormat(pattern = "##########")
 	private String PhoneCompany;
 	
-	@NotNull
+	@NotNull(message="u shoud entry the Adress Company")
 	private String AdressCompany;
 	
 	@NotNull
 	private String Vip;
 	
-	@NotNull
+	@NotNull(message="u shoud entry the technical name")
 	@Column(name="NomTechnical",length=30)
 	private String NomTechnical;
 	
-	@NotNull
+	@NotNull(message="u shoud entry the Phone Technical")
 	@NumberFormat(pattern = "##########")
 	private String PhoneTechnical;
 	
-	@NotNull
-	@Email
+	@NotNull(message="u shoud entry the Email")
+	@Email(message="Email invalid")
 	private String EmailTechnical;
 	
-	@NotNull
+	@NotNull(message="u shoud entry the CIO Name")
 	@Column(name="NomCIO",length=30)
 	private String NomCIO;
 	
-	@NotNull
+	@NotNull(message="u shoud entry the Phone CIO")
 	@NumberFormat(pattern = "##########")
 	private String PhoneCIO;
 	
-	@NotNull
-	@Email
+	@NotNull(message="u shoud entry the Email")
+	@Email(message="Email invalid")
 	private String EmailCIO;
 
 	private String City;

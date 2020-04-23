@@ -417,10 +417,10 @@
                 <span>Your Stuff</span>
               </li>  
               <li>
-                <a th:href="page_profile">
+                <a th:href="@{/LoginVrai?logout}">
                   <i class="icon-user icon text-success-lter"></i>
                   <b class="badge bg-success pull-right">30%</b>
-                  <span>Profile</span>
+                  <span>[[${#httpServletRequest.remoteUser}]]</span>
                 </a>
               </li>
               <li>

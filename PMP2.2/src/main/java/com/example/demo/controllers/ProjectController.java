@@ -1,32 +1,20 @@
 package com.example.demo.controllers;
 
-import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.Resource;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+
 
 import com.example.demo.entities.*;
-import com.example.demo.exception.OrderDate;
 import com.example.demo.repository.ProjetRepository;
-//import com.example.demo.storage.StorageService;
 
 @Controller
 public class ProjectController {
@@ -52,14 +40,14 @@ public class ProjectController {
 			ProjectRepository.save(addProj);
 		}
 	 else {
-		try {
+		/*try {
 		 throw new OrderDate("Vous devez saisir DeliveryDate sub a TemporayAcceptanceDate ou TemporayAcceptanceDate inf a FinalTemporaryDate" );
 		 } 
 
 		 catch (Exception e) {
 				
 			throw new OrderDate("Vous devez saisir DeliveryDate sub a TemporayAcceptanceDate ou TemporayAcceptanceDate inf a FinalTemporaryDate", e);
-		}
+		}*/
 	 }	
 		return "redirect:/projects_manage";	
 	}

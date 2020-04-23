@@ -1,6 +1,7 @@
 package com.example.demo.entities;
 
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -8,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -32,6 +34,17 @@ public class RFP implements Serializable{
 	private String ResponseFile;
 	private String StatusRFP;
 	
+	@OneToMany
+	private Collection <Contrat> Contrat;
+	
+	
+	public Collection<Contrat> getContrat() {
+		return Contrat;
+	}
+
+	public void setContrat(Collection<Contrat> contrat) {
+		Contrat = contrat;
+	}
 	@ManyToOne
 	@JoinColumn
 	private Customer customer;

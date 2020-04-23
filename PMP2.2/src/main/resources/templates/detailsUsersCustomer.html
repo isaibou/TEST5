@@ -42,13 +42,10 @@
 		   <td style="color:#23b7e5;"><center> Last Name </center></td>
 		   <td th:text ="${u.lastName}" class="m-n font-thin h4 text-secondary"><center><b></b></center></td>
 		  </tr>
-		   <tr >
-		   <td style="color:#23b7e5;"><center>CIN </center></td>
-		   <td th:text ="${u.CIN}" class="m-n font-thin h4 text-secondary"><center></center></td>
-		   </tr>
+		
 		   <tr >
 		   <td style="color:#23b7e5;"><center>Username </center></td>
-		   <td th:text ="${u.username}" class="m-n font-thin h4 text-secondary"><center><span></span></center></td>
+		   <td  th:text ="${u.username}" class="m-n font-thin h4 text-secondary"><center><span></span></center></td>
 		   </tr>
 		    <tr >
 		   <td style="color:#23b7e5;"><center>Phone </center></td>
@@ -67,7 +64,7 @@
 		   
 		     <tr> 
 		   <td style="color:#23b7e5;"><center>Roles </center></th>
-	   <td> <select name ="roro" class="m-n font-thin h4 text-secondary">
+*		   <td> <select name ="roro" class="m-n font-thin h4 text-secondary">
 			 <option th:each="r:${roro}" class="m-n font-thin h4 text-secondary"  th:text="${r.role}" ></option>
 			 </select>
 			 </td>

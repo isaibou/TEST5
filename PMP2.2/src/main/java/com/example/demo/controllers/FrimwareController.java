@@ -20,10 +20,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.example.demo.entities.Customer;
 import com.example.demo.entities.Frimware;
 import com.example.demo.entities.Project;
+import com.example.demo.repository.AssetTypeRepository;
 import com.example.demo.repository.FrimwareRepository;
 
 @Controller
 public class FrimwareController {
+	
+	@Autowired
+	private AssetTypeRepository assetTypeRepository;
 	
 	@Autowired
 	private FrimwareRepository frimwareRepository;
@@ -36,8 +40,11 @@ public class FrimwareController {
 		List<Frimware> frime = frimwareRepository.findAll();
 		model.addAttribute("frim", frime);
 		model.addAttribute("frimware", new Frimware());
+		
 		//cette methode pour claculet le totale de frimware et aprés on ajoute un truc dans la page htlm.
 		model.addAttribute("totalFirmware", frime.size());
+		
+		model.addAttribute("assettype", assetTypeRepository.findAll());
 		
 		return "firmware";
 	}
@@ -52,25 +59,30 @@ public class FrimwareController {
 		return "redirect:/firmware";
 	}
 	
-	@RequestMapping(value ="/updateFrimware" )
+	@RequestMapping(value ="/updateFrimwareform" )
 	private String updateFrimwareform( Model model, Integer id ) {
 		
-	Frimware	frimware = frimwareRepository.getOne(id);
+	     Frimware	frimware = frimwareRepository.getOne(id);
 		 model.addAttribute("frimware",frimware);
 		 System.out.println(frimware.getName());
 		 
-		
-			return "updateFrimwareForm";
+		 model.addAttribute("assettype", assetTypeRepository.findAll());
+		 
+		 return "updateFrimwareForm";
 			
 	}
 	
 	@RequestMapping(value = "/editFrimware",method= RequestMethod.POST)
 	public String updateFrimware(Model model, Frimware frim){
-	frim= 	(Frimware) model.getAttribute("frimware");
-	frim.setStatus("Actif");
+	
+		
+	    frim.setStatus("Actif");
+	    System.out.println(frim.getFrimware_ID());
 		frimwareRepository.save(frim);
+		System.out.println(frim.getFrimware_ID());
 		
 		return "redirect:/firmware";
+		
 	}
 	
 	@RequestMapping(value ="/archiverFrimware" )
@@ -90,24 +102,18 @@ public class FrimwareController {
 	@RequestMapping(value ="/detailFrimware")
 	public String detailFrimware( Model model, Integer id ) {
 		
-		Frimware	frimware = frimwareRepository.getOne(id);
+		 Frimware	frimware = frimwareRepository.getOne(id);
 		 model.addAttribute("frimware",frimware);
+		
 		 System.out.println(frimware.getName());
+		 
+		 model.addAttribute("assettype", assetTypeRepository.findAll());
 		
 			return "detailFrimware";
 			
 	}
 	
 
-	
-
-	//@RequestMapping(value ="/deleteFrim" )
-	//private String deleteFrim( Model model, Integer id ) {
-	
-		//frimwareRepository.deleteById(id);
-		
-		// return "redirect:/firmware";	
-	//}
 
 }
 

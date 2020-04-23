@@ -271,7 +271,11 @@
                         <!-- / user -->
 
                         <!-- nav -->
+<<<<<<< HEAD
+<nav ui-nav class="navi clearfix">
+=======
               <nav ui-nav class="navi clearfix">
+>>>>>>> branch 'master' of https://github.com/isaibou/TEST5
             <ul class="nav">
               <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
                 <span>Main</span>
@@ -551,7 +555,7 @@
                                     <td th:text ="${v.Adress}"><center></center></td>
                                     <td th:text ="${v.Phone}"><center></center></td>
                                     <td th:text ="${v.Industry}" class="m-n font-thin h4 text-secondary"><center><center/></td>
-                                    <td th:text ="${v.PartnershipCertificate}"><center><a  data-toggle="modal"  data-target="#imgpreview"><img class="img-thumbnail" width="80px" height="60px"src="https://www.prefamaroc.ma/img/attestations/mojazine.jpg" ><a/><center/></td>
+                                    <td th:text ="${v.PartnershipCertificate}"><center><a  ></a> <img class="img-thumbnail" width="80px" height="60px"src="https://www.prefamaroc.ma/img/attestations/mojazine.jpg" ><a/><center/></td>
                                     <td th:text ="${v.Status}" class="m-n font-thin h4 text-secondary"><center><span></span><center/></td>
                                         <td>
                                           <center>
@@ -563,6 +567,9 @@
                                                 </li>
                                                 <li>
                                                   <li><a th:href="@{archiverVendor(id=${v.Vendor_ID})}"  style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Archive</a></li>
+                                                </li>
+                                                  <li>
+                                                  <li><a th:href="@{'/file/'+${v.PartnershipCertificate}}"  style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Download</a></li>
                                                 </li>
                                                 <li>
                                                   <li><a th:href="@{detailVendor(id=${v.Vendor_ID})}" style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Detail</a></li></ul></div></center></td>
@@ -613,7 +620,7 @@
   <button type="button" class="close pull-right" data-dismiss="modal">&times;</button>
     <h1 class="m-n font-bold h3"> <b class="glyphicon-plus pull"> </b> Add Vendor</h1>
    </div>
-   <form th:action="@{SaveVendor}" method ="post" th:object="${vendor}">
+   <form th:action="@{SaveVendor}" enctype="multipart/form-data"  method ="post" th:object="${vendor}">
    <div class="modal-body" >
   <div class="row">
   <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b></b></label>
@@ -654,7 +661,7 @@
 	 </div>
    <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Partnership Certificate</b></label>
   <div class="col-sm-4">
-    <input type="file" placeholder="Entry Partnership Certificate File"class="form-control" id="input-id-1" required th:field=*{PartnershipCertificate}>
+    <input type="file" placeholder="Entry Partnership  Certificate File"class="form-control"  name ="certificate"id="input-id-1" required >
   </div>
    
   </div>

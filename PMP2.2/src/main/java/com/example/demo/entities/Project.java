@@ -96,8 +96,8 @@ public class Project implements Serializable{
 		this.technologypartner = technologypartner;
 	}
 	public Collection<Assets> getAssets() {
-		return assets;
-	}
+	   return assets;
+   }
 	public void setAssets(Collection<Assets> assets) {
 		this.assets = assets;
 	}

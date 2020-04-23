@@ -286,7 +286,11 @@ document.addEventListener('DOMContentLoaded', function() {
 	  <li><a th:href="page_profile">Profile</a></li><li><a href><span class="badge bg-danger pull-right">3</span>Notifications</a></li><li class="divider"></li><li><a th:href="page_signin">Logout</a></li></ul><!-- / dropdown --></div>
 	  <div class="line dk hidden-folded"></div>
 	 </div><!-- / user --><!-- nav -->
+<<<<<<< HEAD
+<nav ui-nav class="navi clearfix">
+=======
                 <nav ui-nav class="navi clearfix">
+>>>>>>> branch 'master' of https://github.com/isaibou/TEST5
             <ul class="nav">
               <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
                 <span>Main</span>
@@ -468,7 +472,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 </a>
               </li>
             </ul>
-          </nav><!-- nav --><!-- aside footer --><!-- / aside footer -->
+          </nav>
+          <!-- nav --><!-- aside footer --><!-- / aside footer -->
 	</div>
    </div>
   </aside><!-- / aside --><!-- content -->
@@ -484,30 +489,21 @@ document.addEventListener('DOMContentLoaded', function() {
 															
 															{ mData: 'browser' },
 															{ mData: 'platform' },
-<<<<<<< HEAD
+
 															{ mData: 'version' },
-=======
-															{ mData: 'version' },		
->>>>>>> branch 'master' of https://github.com/isaibou/TEST5
+		
 															{ mData: 'action' }
 															]
 															}" class="table  b-t b-b">
 	     <thead style="color:#23b7e5;">
 		  <tr>
-		   
-<<<<<<< HEAD
-		   <th  style="width:20%"><center>Contract Name</center></th>
-		   <th  style="width:20%"><center>Description</center></th>
-		   <th  style="width:20%"><center>Delivery Date</center></th>
-		   
-		   <th  style="width:15%"><center>Actions</center></th>
-=======
+		  
 		   <th  style="width:23%"><center>Contract Name</center></th>
 		   <th  style="width:31%"><center>Description</center></th>
-		   <th  style="width:23%"><center>Delivery Date</center></th>
+		   <th  style="width:23%"><center>Signed Date</center></th>
 		   
 		   <th  style="width:23%"><center>Actions</center></th>
->>>>>>> branch 'master' of https://github.com/isaibou/TEST5
+
 
 		  </tr>
 	     </thead>
@@ -515,7 +511,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		  <tr data-expanded="true" th:each="c:${con}">
 		   <td th:text ="${c.Title}"><center><b></b></center></td>
 		   <td th:text ="${c.Description}"><center></center></td>
-		   <td th:text ="${c.DeliveryDate}"><center></center></td>
+		   <td th:text ="${c.SignedDate}"><center></center></td>
 		 
 		
 		   <td>
@@ -576,7 +572,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	    <button type="button" class="close pull-right" data-dismiss="modal">&times;</button>
 	    <h1 class="m-n font-bold h3"> <b class="glyphicon-plus pull"> </b> Add Contract</h1>
 	   </div>
-	<form th:action="@{SaveContrat}" method ="post" th:object="${contrat}">
+	<form th:action="@{SaveContrat}" enctype="multipart/form-data"   method ="post" th:object="${contrat}">
      <div class="modal-body">
       <div class="row">
       <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b></b></label>
@@ -596,14 +592,26 @@ document.addEventListener('DOMContentLoaded', function() {
 	   th:value ="${c.Customer_ID}"></option>
       </select>
      </div>
+      <label class="col-sm-4 control-label"  for="input-id-1"><b>Title RFP</b></label>
+     <div class="col-sm-8"  >
+      <select name="RFP_ID" class="form-control m-b" th:field=*{rfp}>
+       <option th:each ="r:${rfp}" 
+	   th:text="${r.Title}"
+	   th:value ="${r.RFP_ID}"></option>
+      </select>
+     </div>
      <label class="col-sm-4 control-label" style="margin: 5px 0px;" placeholder="Entry Description" for="input-id-1"><b>Description</b></label>
      <div class="col-sm-8" style="margin: 5px 0px;">
 	   <input type="text" class="form-control" placeholder="Entry Description " id="input-id-1" required th:field=*{Description}>
      </div>
-     <label class="col-sm-4 control-label" placeholder="Entry Delivery Date" style="margin: 5px 0px;" for="input-id-1"><b>Delivery Date</b></label>
+     <label class="col-sm-4 control-label" placeholder="Entry Signed Date" style="margin: 5px 0px;" for="input-id-1"><b>Signed Date</b></label>
      <div class="col-sm-8" style="margin: 5px 0px;">
-      <input type="date" class="form-control" id="input-id-1" required th:field=*{DeliveryDate}>
+      <input type="date" class="form-control" id="input-id-1" required th:field=*{SignedDate}>
      </div>
+     <label class="col-sm-4 control-label" placeholder="Entry Configuration File" style="margin: 5px 0px;" for="input-id-1"><b>ContractFile</b></label>
+       <div class="col-sm-8" style="margin: 5px 0px;">
+         <input type="file" placeholder="Entry Contract File"class="form-control" name="contractFile" id="input-id-1" required />
+       </div>
      </div>
       <div class="modal-footer">
        <button style="margin:0px;" class="btn m-b-xs btn-sm btn-primary btn-addon"><i class="glyphicon glyphicon-ok"></i>Save</button>

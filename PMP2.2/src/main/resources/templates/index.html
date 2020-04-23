@@ -234,7 +234,7 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
           <!-- / user -->
 
           <!-- nav -->
-          <nav ui-nav class="navi clearfix">
+<nav ui-nav class="navi clearfix">
             <ul class="nav">
               <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
                 <span>Main</span>
@@ -318,11 +318,6 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
                       <span>Manage Reference</span>
                     </a>
                   </li>
-                  <li>
-                    <a th:href="Technology_Partner">
-                      <span>Technology Partner</span>
-                    </a>
-                  </li>
                 </ul>
               </li> -->
               <li>
@@ -351,7 +346,7 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
                     </a>
                   </li>
 				  <li>
-                    <a th:href="@{vendor}">
+                    <a th:href="vendor">
                       <span>Vendor</span>
                     </a>
                   </li>
@@ -363,6 +358,8 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
                   <span>Tickets</span>
                 </a>
               </li> -->
+<<<<<<< HEAD
+=======
 			  <li>
 			   <li>
                 <a th:href="RFP">
@@ -370,18 +367,19 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
                   <span>RFP</span>
                 </a>
               </li>
+>>>>>>> branch 'master' of https://github.com/isaibou/TEST5
 			  <li>
                 <a th:href="contract_manage">
                   <i class="fa fa-legal"></i></i>
                   <span>Contracts</span>
                 </a>
               </li>
-			  <li>
+			<!--   <li>
                 <a th:href="expense">
                   <i class="glyphicon  glyphicon-usd"></i></i>
                   <span>Expenses</span>
                 </a>
-              </li>
+              </li> -->
               <li>
                 <a th:href="request_manage" class="auto">
 				<span class="pull-right text-muted">

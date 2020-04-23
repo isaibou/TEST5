@@ -174,9 +174,20 @@ if (!(file.isEmpty())) {
 		model.addAttribute("customer", u.getCustomer());
 		model.addAttribute("allRoles", u.getRoles());	
 		
-		u.setActived(true);
-		userRepository.save(u);
+	
 		return "updateUsers";
+	}
+	
+	@RequestMapping(value ="/updateUserformC" )
+	public String updateUsersC(String id , Model model) {
+		
+		Users u = userRepository.getOne(id);
+		model.addAttribute("user", u);
+		model.addAttribute("customer", u.getCustomer());
+		model.addAttribute("allRoles", u.getRoles());	
+		
+	
+		return "updateUsersCustomer";
 	}
 	
 	@RequestMapping(value ="/detailsUser" )
@@ -189,6 +200,18 @@ if (!(file.isEmpty())) {
 		
 	
 		return "detailsUsers";
+	}
+	
+	@RequestMapping(value ="/detailsUserC" )
+	public String detailsUserC(String id , Model model) {
+		
+		Users u = userRepository.getOne(id);
+		model.addAttribute("user", u);
+		model.addAttribute("customer", u.getCustomer());
+		model.addAttribute("roro", u.getRoles());	
+		
+	
+		return "detailsUsersCustomer";
 	}
 	
 

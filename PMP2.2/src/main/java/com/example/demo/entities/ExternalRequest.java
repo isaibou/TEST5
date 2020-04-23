@@ -19,6 +19,9 @@ public class ExternalRequest implements Serializable{
 	private Boolean Status; 
 	private Date SubmitedDate;
 	
+	private String Commentaire;
+
+	
 	@ManyToOne
 	@JoinColumn(name ="typeExternal_ID")
 	private TypeExternalRequest typeExternalRequest;

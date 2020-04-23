@@ -30,6 +30,8 @@ public class InternalRequest implements Serializable{
 	@DateTimeFormat()
 	private Date SubmitedDate;
 	
+	private String Commentaire;
+	
 
 	
 	@ManyToOne

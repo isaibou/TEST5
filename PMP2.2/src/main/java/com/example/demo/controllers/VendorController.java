@@ -89,7 +89,7 @@ if (!(file.isEmpty())) {
 	
 	@RequestMapping(value="/file/{fileName}")
 	@ResponseBody
-	public void getFile(@PathVariable("fileName")String fileName, HttpServletResponse response) {
+	public void getFileCertificate(@PathVariable("fileName")String fileName, HttpServletResponse response) {
 		
 		if (fileName.indexOf(".doc")>-1) response.setContentType("application/msword");
 		if (fileName.indexOf(".docx")>-1) response.setContentType("application/msword");

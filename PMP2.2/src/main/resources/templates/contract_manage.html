@@ -286,11 +286,8 @@ document.addEventListener('DOMContentLoaded', function() {
 	  <li><a th:href="page_profile">Profile</a></li><li><a href><span class="badge bg-danger pull-right">3</span>Notifications</a></li><li class="divider"></li><li><a th:href="page_signin">Logout</a></li></ul><!-- / dropdown --></div>
 	  <div class="line dk hidden-folded"></div>
 	 </div><!-- / user --><!-- nav -->
-<<<<<<< HEAD
-<nav ui-nav class="navi clearfix">
-=======
+
                 <nav ui-nav class="navi clearfix">
->>>>>>> branch 'master' of https://github.com/isaibou/TEST5
             <ul class="nav">
               <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
                 <span>Main</span>
@@ -491,7 +488,7 @@ document.addEventListener('DOMContentLoaded', function() {
 															{ mData: 'platform' },
 
 															{ mData: 'version' },
-		
+															{ mData: 'contratFile' },
 															{ mData: 'action' }
 															]
 															}" class="table  b-t b-b">
@@ -501,8 +498,8 @@ document.addEventListener('DOMContentLoaded', function() {
 		   <th  style="width:23%"><center>Contract Name</center></th>
 		   <th  style="width:31%"><center>Description</center></th>
 		   <th  style="width:23%"><center>Signed Date</center></th>
-		   
-		   <th  style="width:23%"><center>Actions</center></th>
+		   		   <th  style="width:23%"><center>Contracfile</center></th>
+		   		   <th  style="width:23%"><center>Actions</center></th>
 
 
 		  </tr>
@@ -512,6 +509,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		   <td th:text ="${c.Title}"><center><b></b></center></td>
 		   <td th:text ="${c.Description}"><center></center></td>
 		   <td th:text ="${c.SignedDate}"><center></center></td>
+		 <td th:text ="${c.ContractFille}"><center></center></td>
 		 
 		
 		   <td>
@@ -519,6 +517,9 @@ document.addEventListener('DOMContentLoaded', function() {
 		   <div class="btn-group dropdown">
 																							<button class="btn btn-default btn-xs" data-toggle="dropdown"><i class="glyphicon glyphicon-cog"></i> Action <span class="caret"></span></button>
 																							<ul class="dropdown-menu">
+																								 <li>
+														                                                  <li><a th:href="@{'/contratfile/'+${c.ContractFille}}"  style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Download</a></li>
+														                                               </li>
 																								<li>
 																									 <li><a th:href="@{updateContrat(id=${c.Contrat_ID})}"  style="margin-top:-5px;"   class="btn btn-sm btn-light" role="button">Update</a></li>
 																								</li>
@@ -526,6 +527,7 @@ document.addEventListener('DOMContentLoaded', function() {
 																								<li>
 																									<li><a th:href="@{detailContrat(id=${c.Contrat_ID})}" style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Detail</a></li></ul></div></center></td>
 																								</li>
+																								  
 																							</ul>
 																						</div>
 		   </center>

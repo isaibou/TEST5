@@ -42,6 +42,15 @@
      <div class="col-sm-8" style="margin: 5px 0px;">
       <input type="date" class="form-control" id="input-id-1" th:field=*{releaseDate}/>
      </div>
+      <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Asset Type </b></label>
+	   <div class="col-sm-8" style="margin: 5px 0px;">
+	 <!-- ici on met une boucle sur le customer pour avoir récupérer la liste des vendor  -->
+	     <select name="AssetType_ID"  class="form-control m-b" th:field=*{assettype}>
+	     <option th:each ="a:${assettype}" 
+	      th:text="${a.name}"
+	      th:value ="${a.AssetType_ID}"></option>
+	     </select>
+	    </div>
      <div class="modal-footer">
 	<button style="margin:0px;" class="btn m-b-xs btn-sm btn-primary btn-addon"><i class="glyphicon glyphicon-ok"></i>Save</button>
 	<button style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon"><a th:href="firmware"><i class="glyphicon glyphicon-remove"></i>Annuler</a></button>		

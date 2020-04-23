@@ -122,25 +122,19 @@
 	</div>
 	<div class="line dk hidden-folded"></div>
    </div><!-- / user --><!-- nav -->
-          <nav ui-nav class="navi clearfix">
+<nav ui-nav class="navi clearfix">
             <ul class="nav">
               <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
                 <span>Main</span>
               </li>
               <li>
-                <a href="index.html" class="auto">      
+                <a th:href="index" class="auto">      
                   <i class="glyphicon glyphicon-stats icon text-primary-dker"></i>
                   <span class="font-bold">Dashboard</span>
                 </a>
                
               </li>
-              <li>
-                <a href="mail.html">
-                  <b class="badge bg-info pull-right">9</b>
-                  <i class="glyphicon glyphicon-envelope icon text-info-lter"></i>
-                  <span class="font-bold">Email</span>
-                </a>
-              </li>
+             
               <li class="line dk"></li>
 
               <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
@@ -152,85 +146,68 @@
                     <i class="fa fa-fw fa-angle-right text"></i>
                     <i class="fa fa-fw fa-angle-down text-active"></i>
                   </span>
-                  <b class="badge bg-info pull-right">3</b>
+                  <b class="badge bg-info pull-right"></b>
                   <i class="glyphicon glyphicon-briefcase"></i>
                   <span>Customers</span>
                 </a>
                 <ul class="nav nav-sub dk">
                
                   <li>
-                    <a href="customer_manage.html">
+                    <a th:href="@{/customer_manage}">
                       <span>Manage customer</span>
                     </a>
                   </li>
-          
-          <li>
-                    <a href="purchasing_customer_manage.html">
-                      <span>Puchasing contact</span>
+				  
+				  <li>
+                    <a th:href="purchasing_customer_manage">
+                      <span>Purchasing contact</span>
                     </a>
                   </li>
                     
                 </ul>
               </li>
-           <li>
-                <a href class="auto">      
-                  <span class="pull-right text-muted">
-                    <i class="fa fa-fw fa-angle-right text"></i>
-                    <i class="fa fa-fw fa-angle-down text-active"></i>
-                  </span>
-                  <b class="badge bg-info pull-right">3</b>
-                  <i class="glyphicon glyphicon-user"></i>
+			     <li>
+                <a th:href="users" class="auto">
+                  <i class="glyphicon glyphicon-user icon"></i>
                   <span>Users</span>
                 </a>
-                <ul class="nav nav-sub dk">
-               
-                  <li>
-                    <a href="users.html">
-                      <span>Manage users</span>
-                    </a>
-                  </li>
-                                    <li>
-                    <a href="TypeUsers.html">
-                      <span>Manage Type users</span>
-                    </a>
-                  </li>  
-                </ul>
+
               </li>
-              <li>
-                <a href="timesheets.html" class="auto">
+            <!--    <li>
+				 <a th:href="timesheets" class="auto">
                   <i class="glyphicon glyphicon-calendar icon"></i>
                   <span>TimeSheet</span>
                 </a>
 
-              </li>
-              <li>
+              </li> -->
+           <!--    <li>
                 <a href class="auto">
                   <span class="pull-right text-muted">
                     <i class="fa fa-fw fa-angle-right text"></i>
                     <i class="fa fa-fw fa-angle-down text-active"></i>
                   </span>
-                  <b class="label bg-primary pull-right">2</b>
+                  <b class="label bg-primary pull-right"></b>
                   <i class="glyphicon glyphicon-list"></i>
                   <span>Projects</span>
                 </a>
                 <ul class="nav nav-sub dk">
                   <li class="s">
-                    <a href="projects_manage.html">
+                    <a th:href="projects_manage">
                       <span>Manage Project</span>
                     </a>
                   </li>
                   <li>
-                    <a href="deliverable_manage.html">
+                    <a th:href="deliverable_manage">
                       <span>Manage Deliverable</span>
                     </a>
                   </li>
                   <li>
-                    <a href="reference_manage.html">
+                    <a th:href="reference_manage">
                       <span>Manage Reference</span>
                     </a>
                   </li>
                 </ul>
-              </li>
+              </li> -->
               <li>
                 <a href class="auto">
                   <span class="pull-right text-muted">
@@ -242,48 +219,48 @@
                 </a>
                 <ul class="nav nav-sub dk">
                   <li class="">
-                    <a href="assets_manage.html">
+                    <a th:href="assets_manage">
                       <span>Manage Assets</span>
                     </a>
                   </li>
                   <li>
-                    <a href="assetstype_manage.html">
+                    <a th:href="assetstype_manage">
                       <span>Manage Assets Type</span>
                     </a>
                   </li>
-          <li>
-                    <a href="firmware.html">
+				  <li>
+                    <a th:href="@{firmware}">
                       <span>Firmware</span>
                     </a>
                   </li>
-          <li>
-                    <a href="vendor.html">
+				  <li>
+                    <a th:href="vendor">
                       <span>Vendor</span>
                     </a>
                   </li>
                 </ul>
               </li>
-              <li>
-                <a href="tickets_manage.html">
+            <!--   <li>
+                <a th:href="tickets_manage">
                   <i class="glyphicon glyphicon-tag"></i>
                   <span>Tickets</span>
                 </a>
-              </li>
-        <li>
-                <a href="contract_manage.html">
+              </li> -->
+			  <li>
+                <a th:href="contract_manage">
                   <i class="fa fa-legal"></i></i>
-                  <span>Contrats</span>
+                  <span>Contracts</span>
                 </a>
               </li>
-        <li>
-                <a href="expense.html">
+			<!--   <li>
+                <a th:href="expense">
                   <i class="glyphicon  glyphicon-usd"></i></i>
                   <span>Expenses</span>
                 </a>
-              </li>
+              </li> -->
               <li>
-                <a href="request_manage.html" class="auto">
-        <span class="pull-right text-muted">
+                <a th:href="request_manage" class="auto">
+				<span class="pull-right text-muted">
                     <i class="fa fa-fw fa-angle-right text"></i>
                     <i class="fa fa-fw fa-angle-down text-active"></i>
                   </span>
@@ -291,16 +268,19 @@
                   <span>Request</span>
                 </a>
                  <ul class="nav nav-sub dk">
-                  <li class="s">
-                    <a href="internal_request_manage.html">
-                      <span>Internal Request</span>
+                 
+                   <li class="s">
+                    <a th:href="typeRequest">
+                      <span> Type  Request</span>
                     </a>
                   </li>
+                  
                   <li>
-                    <a href="external_request_manage.html">
-                      <span>External Request</span>
+                    <a th:href="request">
+                      <span> Request</span>
                     </a>
                   </li>
+                 
                 </ul>
 
                
@@ -311,16 +291,16 @@
                 <span>Your Stuff</span>
               </li>  
               <li>
-                <a href="page_profile.html">
+                 <a th:href="@{profile}">
                   <i class="icon-user icon text-success-lter"></i>
-                  <b class="badge bg-success pull-right">30%</b>
+                  <b class="badge bg-success pull-right"></b>
                   <span>Profile</span>
                 </a>
-              </li>
+               </li>
               <li>
-                <a href>
-                  <i class="icon-question icon"></i>
-                  <span>Documents</span>
+                <a th:href="@{/logout}">
+                  <i class="icon-question icon"> </i>
+                   <span>Logout</span>
                 </a>
               </li>
             </ul>

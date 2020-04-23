@@ -23,8 +23,7 @@ import com.example.demo.repository.VendorRepository;
 
 public class AssetTypeController
 {
-	@Autowired
-	private FrimwareRepository frimwareRepository;
+	
 	
 	@Autowired
 	private VendorRepository vendorRepository;
@@ -42,7 +41,7 @@ public class AssetTypeController
 		
 		model.addAttribute("totalAssetType", assettyp.size());
 		
-		model.addAttribute("frimware", frimwareRepository.findAll());
+		
 		model.addAttribute("vendor", vendorRepository.findAll());
 		
 		return "assetstype_manage";
@@ -67,7 +66,7 @@ public class AssetTypeController
 	     AssetType	assettype = assetTypeRepository.getOne(id);
 		 model.addAttribute("assetstype",assettype);
 		 
-		 model.addAttribute("frimware", frimwareRepository.findAll());
+	
 		 model.addAttribute("vendor", vendorRepository.findAll());
 		 
 		 System.out.println(assettype.getName());
@@ -98,12 +97,12 @@ public class AssetTypeController
 	@RequestMapping(value ="/detailAseetType")
 	public String detailAseetT( Model model, Integer id ) {
 		
-		AssetType	assettype = assetTypeRepository.getOne(id);
+		 AssetType	assettype = assetTypeRepository.getOne(id);
 		 model.addAttribute("assettype",assettype);
 
-		 
+		 model.addAttribute("vendor", vendorRepository.findAll());
 		
-		 //System.out.println(assettype.getName());
+		
 		 System.out.println(assettype.getName());
 
 		

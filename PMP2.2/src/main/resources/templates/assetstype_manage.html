@@ -245,7 +245,7 @@
           </div>
           <!-- / user -->
           <!-- nav -->
-          <nav ui-nav class="navi clearfix">
+<nav ui-nav class="navi clearfix">
             <ul class="nav">
               <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
                 <span>Main</span>
@@ -257,13 +257,7 @@
                 </a>
                
               </li>
-              <li>
-                <a th:href="mail">
-                  <b class="badge bg-info pull-right">9</b>
-                  <i class="glyphicon glyphicon-envelope icon text-info-lter"></i>
-                  <span class="font-bold">Email</span>
-                </a>
-              </li>
+             
               <li class="line dk"></li>
 
               <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
@@ -275,14 +269,14 @@
                     <i class="fa fa-fw fa-angle-right text"></i>
                     <i class="fa fa-fw fa-angle-down text-active"></i>
                   </span>
-                  <b class="badge bg-info pull-right">3</b>
+                  <b class="badge bg-info pull-right"></b>
                   <i class="glyphicon glyphicon-briefcase"></i>
                   <span>Customers</span>
                 </a>
                 <ul class="nav nav-sub dk">
                
                   <li>
-                    <a th:href="customer_manage">
+                    <a th:href="@{/customer_manage}">
                       <span>Manage customer</span>
                     </a>
                   </li>
@@ -302,20 +296,20 @@
                 </a>
 
               </li>
-              <li>
-                <a th:href="timesheets" class="auto">
+            <!--    <li>
+				 <a th:href="timesheets" class="auto">
                   <i class="glyphicon glyphicon-calendar icon"></i>
                   <span>TimeSheet</span>
                 </a>
 
-              </li>
-              <li>
+              </li> -->
+           <!--    <li>
                 <a href class="auto">
                   <span class="pull-right text-muted">
                     <i class="fa fa-fw fa-angle-right text"></i>
                     <i class="fa fa-fw fa-angle-down text-active"></i>
                   </span>
-                  <b class="label bg-primary pull-right">2</b>
+                  <b class="label bg-primary pull-right"></b>
                   <i class="glyphicon glyphicon-list"></i>
                   <span>Projects</span>
                 </a>
@@ -336,7 +330,7 @@
                     </a>
                   </li>
                 </ul>
-              </li>
+              </li> -->
               <li>
                 <a href class="auto">
                   <span class="pull-right text-muted">
@@ -358,7 +352,7 @@
                     </a>
                   </li>
 				  <li>
-                    <a th:href="firmware">
+                    <a th:href="@{firmware}">
                       <span>Firmware</span>
                     </a>
                   </li>
@@ -369,24 +363,24 @@
                   </li>
                 </ul>
               </li>
-              <li>
+            <!--   <li>
                 <a th:href="tickets_manage">
                   <i class="glyphicon glyphicon-tag"></i>
                   <span>Tickets</span>
                 </a>
-              </li>
+              </li> -->
 			  <li>
                 <a th:href="contract_manage">
                   <i class="fa fa-legal"></i></i>
                   <span>Contracts</span>
                 </a>
               </li>
-			  <li>
+			<!--   <li>
                 <a th:href="expense">
                   <i class="glyphicon  glyphicon-usd"></i></i>
                   <span>Expenses</span>
                 </a>
-              </li>
+              </li> -->
               <li>
                 <a th:href="request_manage" class="auto">
 				<span class="pull-right text-muted">
@@ -397,16 +391,19 @@
                   <span>Request</span>
                 </a>
                  <ul class="nav nav-sub dk">
-                  <li class="s">
-                    <a th:href="internal_request_manage">
-                      <span>Internal Request</span>
+                 
+                   <li class="s">
+                    <a th:href="typeRequest">
+                      <span> Type  Request</span>
                     </a>
                   </li>
+                  
                   <li>
-                    <a th:href="external_request_manage">
-                      <span>External Request</span>
+                    <a th:href="request">
+                      <span> Request</span>
                     </a>
                   </li>
+                 
                 </ul>
 
                
@@ -417,16 +414,16 @@
                 <span>Your Stuff</span>
               </li>  
               <li>
-                <a th:href="page_profile">
+                 <a th:href="@{profile}">
                   <i class="icon-user icon text-success-lter"></i>
-                  <b class="badge bg-success pull-right">30%</b>
+                  <b class="badge bg-success pull-right"></b>
                   <span>Profile</span>
                 </a>
-              </li>
+               </li>
               <li>
-                <a href>
-                  <i class="icon-question icon"></i>
-                  <span>Documents</span>
+                <a th:href="@{/logout}">
+                  <i class="icon-question icon"> </i>
+                   <span>Logout</span>
                 </a>
               </li>
             </ul>
@@ -479,50 +476,6 @@
 </div>
 
 	
-<div class="table-responsive" style="background-color:white;margin:10px; padding:10px;">
-    <table ui-jq="dataTable" ui-options="{
-                              aoColumns: [
-                              
-                              { mData: 'browser' },
-                              { mData: 'platform' },
-                              { mData: 'version' },
-                              { mData: 'grade' },        
-                              { mData: 'action' }
-                              ]
-                              }" class="table  b-t b-b">
-       <thead style="color:#23b7e5;">
-      <tr>
-       <th  style="width:20%"><center>Asset Name</center></th>
-       <th  style="width:20%"><center>Brand</center></th>
-       <th  style="width:15%"><center>End Of Support Date</center></th>
-       <th  style="width:15%"><center>End Sale Date</center></th>
-       <th  style="width:15%"><center>Status</center></th>     
-       <th  style="width:15%"><center>Actions</center></th>
-      </tr>
-       </thead>
-     <tbody>
-     <tr data-expanded="true" th:each="a:${asstyp}">
-      <td th:text="${a.Name}" class="m-n font-thin h4 text-secondary"><center></center></td>
-      <td th:text="${a.Brand}" class="m-n font-thin h4 text-secondary"><center></center></td>
-      <td th:text="${a.EndOfSuportDate}" class="m-n font-thin h4 text-secondary"><center></center></td>
-      <td th:text="${a.EndSaleDate}" class="m-n font-thin h4 text-secondary"><center></center></td>
-      <td th:text ="${a.Status}" class="m-n font-thin h4 text-secondary"><center><span></span></center></td>    
-      <td><center>
-      <div class="btn-group dropdown">
-       <button class="btn btn-default btn-xs" data-toggle="dropdown"><i class="glyphicon glyphicon-cog"></i> Action <span class="caret"></span></button>
-       <ul class="dropdown-menu">
-         <li><a th:href="@{updateAseetTypeform(id=${a.AssetType_ID})}"  style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Update</a></li>
-         <li><a th:href="@{archiverAseetT(id=${a.AssetType_ID})}"  style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Archive</a></li>
-         <li><a th:href="@{detailAseetType(id=${a.AssetType_ID})}" style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Detail</a></li>
-         </ul>
-        </div>
-         </center></td>       
-     </tr>
-     </tbody>
-    </table>
-     </div>
-</div>
-</div>
 
 <div class="modal fade" role="dialog" id="AddClient" >
   <div class="modal-dialog modal-lg" >
@@ -545,17 +498,8 @@
           <input type="text" class="form-control" placeholder="Entry Name of Asset" id="input-id-1"  required th:field=*{name}>
           <span  th:errors=*{name}></span>
 	     </div>
-<<<<<<< HEAD
-          
+
           <label class="col-sm-4 control-label" placeholder="Entry EndOfSupportDate" for="input-id-1" style="margin-bottom:5px;"><b>End Of Support Date</b></label>
-=======
-          <label class="col-sm-4 control-label"  for="input-id-1" style="margin-bottom:5px;"><b>Brand</b></label>
-          <div class="col-sm-8" style="margin-bottom:5px;">
-            <input type="text"  class="form-control" placeholder="Entry Band" id="input-id-2" required th:field=*{Brand}/>
-            <span th:errors=*{Brand}></span>
-          </div>
-          <label class="col-sm-4 control-label" for="input-id-1" style="margin-bottom:5px;"><b>End Of Support Date</b></label>
->>>>>>> branch 'master' of https://github.com/isaibou/TEST5
           <div class="col-sm-8" style="margin-bottom:5px;">
             <input class="form-control" placeholder="yyyy-MM-dd" type="date" required th:field=*{EndOfSuportDate}/>
             <span class="text-danger" th:errors=*{EndOfSuportDate}></span>
@@ -590,7 +534,7 @@
   </div>
 </div>
 </div>
-<<<<<<< HEAD
+
 <div class="table-responsive" style="background-color:white;margin:10px; padding:10px;">
     <table ui-jq="dataTable" ui-options="{
                               aoColumns: [
@@ -599,8 +543,7 @@
                               { mData: 'browser' },
                               { mData: 'platform' },
                               { mData: 'version' },
-                              { mData: 'grade' },
-            
+                              
                               { mData: 'action' }
                               ]
                               }" class="table  b-t b-b">
@@ -636,8 +579,7 @@
      </tbody>
     </table>
      </div>
-=======
->>>>>>> branch 'master' of https://github.com/isaibou/TEST5
+
   </div>
  </div>
   <!-- /content -->

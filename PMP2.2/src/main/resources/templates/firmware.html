@@ -3,24 +3,32 @@
 <head>
 <meta charset="utf-8" />
 <title>Firmware</title>
-<meta name="description" content="app, web app, responsive, responsive layout, admin, admin panel, admin dashboard, flat, flat ui, ui kit, AngularJS, ui route, charts, widgets, components" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-<link rel="stylesheet" href="/../libs/assets/animate.css/animate.css" type="text/css" />
-<link rel="stylesheet" href="/../libs/assets/font-awesome/css/font-awesome.min.css" type="text/css" />
-<link rel="stylesheet" href="/../libs/assets/simple-line-icons/css/simple-line-icons.css" type="text/css" />
-<link rel="stylesheet" href="../libs/jquery/bootstrap/dist/css/bootstrap.css" type="text/css" />
-<link href='/../libs/packages/core/main.css' rel='stylesheet' />
-<link href='/../libs/packages/daygrid/main.css' rel='stylesheet' />
-<link href='/../libs/packages/timegrid/main.css' rel='stylesheet' />
-<link href='/../libs/packages/list/main.css' rel='stylesheet' />
-<script src='/../libs/packages/core/main.js'></script>
-<script src='/../libs/packages/interaction/main.js'></script>
-<script src='/../libs/packages/daygrid/main.js'></script>
-<script src='/../libs/packages/timegrid/main.js'></script>
-<script src='/../libs/packages/list/main.js'></script>
+<meta name="description"
+	content="app, web app, responsive, responsive layout, admin, admin panel, admin dashboard, flat, flat ui, ui kit, AngularJS, ui route, charts, widgets, components" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, maximum-scale=1" />
+<link rel="stylesheet" href="../libs/assets/animate.css/animate.css"
+	type="text/css" />
+<link rel="stylesheet"
+	href="../libs/assets/font-awesome/css/font-awesome.min.css"
+	type="text/css" />
+<link rel="stylesheet"
+	href="../libs/assets/simple-line-icons/css/simple-line-icons.css"
+	type="text/css" />
+<link rel="stylesheet"
+	href="../libs/jquery/bootstrap/dist/css/bootstrap.css" type="text/css" />
+<link href='../libs/packages/core/main.css' rel='stylesheet' />
+<link href='../libs/packages/daygrid/main.css' rel='stylesheet' />
+<link href='../libs/packages/timegrid/main.css' rel='stylesheet' />
+<link href='../libs/packages/list/main.css' rel='stylesheet' />
+<script src='../libs/packages/core/main.js'></script>
+<script src='../libs/packages/interaction/main.js'></script>
+<script src='../libs/packages/daygrid/main.js'></script>
+<script src='../libs/packages/timegrid/main.js'></script>
+<script src='../libs/packages/list/main.js'></script>
 
-<link rel="stylesheet" href="/css/font.css" type="text/css" />
-<link rel="stylesheet" href="/css/app.css" type="text/css" />
+<link rel="stylesheet" href="css/font.css" type="text/css" />
+<link rel="stylesheet" href="css/app.css" type="text/css" />
 <script>
 	document
 			.addEventListener(
@@ -319,21 +327,21 @@
 					</div>
 					<!-- / user -->
 					<!-- nav -->
-					<nav ui-nav class="navi clearfix">
-						<ul class="nav">
-							<li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
-								<span>Main</span>
-							</li>
-							<li><a th:href="index" class="auto"> <i
-									class="glyphicon glyphicon-stats icon text-primary-dker"></i> <span
-									class="font-bold">Dashboard</span>
-							</a></li>
-							<li><a th:href="mail"> <b
-									class="badge bg-info pull-right">9</b> <i
-									class="glyphicon glyphicon-envelope icon text-info-lter"></i> <span
-									class="font-bold">Email</span>
-							</a></li>
-							<li class="line dk"></li>
+<nav ui-nav class="navi clearfix">
+            <ul class="nav">
+              <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
+                <span>Main</span>
+              </li>
+              <li>
+                <a th:href="index" class="auto">      
+                  <i class="glyphicon glyphicon-stats icon text-primary-dker"></i>
+                  <span class="font-bold">Dashboard</span>
+                </a>
+               
+              </li>
+             
+              <li class="line dk"></li>
+
               <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
                 <span>Management</span>
               </li>
@@ -343,19 +351,19 @@
                     <i class="fa fa-fw fa-angle-right text"></i>
                     <i class="fa fa-fw fa-angle-down text-active"></i>
                   </span>
-                  <b class="badge bg-info pull-right">3</b>
+                  <b class="badge bg-info pull-right"></b>
                   <i class="glyphicon glyphicon-briefcase"></i>
                   <span>Customers</span>
                 </a>
                 <ul class="nav nav-sub dk">
                
                   <li>
-                    <a th:href="customer_manage">
+                    <a th:href="@{/customer_manage}">
                       <span>Manage customer</span>
                     </a>
                   </li>
-          
-          <li>
+				  
+				  <li>
                     <a th:href="purchasing_customer_manage">
                       <span>Purchasing contact</span>
                     </a>
@@ -363,94 +371,145 @@
                     
                 </ul>
               </li>
-           <li>
+			     <li>
                 <a th:href="users" class="auto">
                   <i class="glyphicon glyphicon-user icon"></i>
                   <span>Users</span>
                 </a>
 
               </li>
-              <li>
-                <a th:href="timesheets" class="auto">
+            <!--    <li>
+				 <a th:href="timesheets" class="auto">
                   <i class="glyphicon glyphicon-calendar icon"></i>
                   <span>TimeSheet</span>
                 </a>
 
-							<li><a href class="auto"> <span
-									class="pull-right text-muted"> <i
-										class="fa fa-fw fa-angle-right text"></i> <i
-										class="fa fa-fw fa-angle-down text-active"></i>
-								</span> <b class="label bg-primary pull-right">2</b> <i
-									class="glyphicon glyphicon-list"></i> <span>Projects</span>
-							</a>
-								<ul class="nav nav-sub dk">
-									<li class="s"><a th:href="projects_manage"> <span>Manage
-												Project</span>
-									</a></li>
-									<li><a th:href="deliverable_manage"> <span>Manage
-												Deliverable</span>
-									</a></li>
-									<li><a th:href="reference_manage"> <span>Manage
-												Reference</span>
-									</a></li>
-								</ul></li>
-							<li><a href class="auto"> <span
-									class="pull-right text-muted"> <i
-										class="fa fa-fw fa-angle-right text"></i> <i
-										class="fa fa-fw fa-angle-down text-active"></i>
-								</span> <i class="glyphicon  glyphicon-th"></i> <span>Assets</span>
-							</a>
-								<ul class="nav nav-sub dk">
-									<li class=""><a th:href="assets_manage"> <span>Manage
-												Assets</span>
-									</a></li>
-									<li><a th:href="assetstype_manage"> <span>Manage
-												Assets Type</span>
-									</a></li>
-									<li><a th:href="firmware"> <span>Firmware</span>
-									</a></li>
-									<li><a th:href="vendor"> <span>Vendor</span>
-									</a></li>
-								</ul></li>
-							<li><a th:href="tickets_manage"> <i
-									class="glyphicon glyphicon-tag"></i> <span>Tickets</span>
-							</a></li>
-							<li><a th:href="contract_manage"> <i class="fa fa-legal"></i></i>
-									<span>Contrats</span>
-							</a></li>
-							<li><a th:href="expense"> <i
-									class="glyphicon  glyphicon-usd"></i></i> <span>Expenses</span>
-							</a></li>
-							<li><a th:href="request_manage" class="auto"> <span
-									class="pull-right text-muted"> <i
-										class="fa fa-fw fa-angle-right text"></i> <i
-										class="fa fa-fw fa-angle-down text-active"></i>
-								</span> <i class="glyphicon  glyphicon-save icon"></i> <span>Request</span>
-							</a>
-								<ul class="nav nav-sub dk">
-									<li class="s"><a th:href="internal_request_manage"> <span>Internal
-												Request</span>
-									</a></li>
-									<li><a th:href="external_request_manage"> <span>External
-												Request</span>
-									</a></li>
-								</ul></li>
-							<li class="line dk hidden-folded"></li>
-
-							<li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
-								<span>Your Stuff</span>
-							</li>
-							  <li>
-                <a th:href="@{/login?logout}">
-                  <i class="icon-user icon text-success-lter"></i>
-                  <b class="badge bg-success pull-right">30%</b>
-                  <span>[[${#httpServletRequest.remoteUser}]]</span>
+              </li> -->
+           <!--    <li>
+                <a href class="auto">
+                  <span class="pull-right text-muted">
+                    <i class="fa fa-fw fa-angle-right text"></i>
+                    <i class="fa fa-fw fa-angle-down text-active"></i>
+                  </span>
+                  <b class="label bg-primary pull-right"></b>
+                  <i class="glyphicon glyphicon-list"></i>
+                  <span>Projects</span>
+                </a>
+                <ul class="nav nav-sub dk">
+                  <li class="s">
+                    <a th:href="projects_manage">
+                      <span>Manage Project</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a th:href="deliverable_manage">
+                      <span>Manage Deliverable</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a th:href="reference_manage">
+                      <span>Manage Reference</span>
+                    </a>
+                  </li>
+                </ul>
+              </li> -->
+              <li>
+                <a href class="auto">
+                  <span class="pull-right text-muted">
+                    <i class="fa fa-fw fa-angle-right text"></i>
+                    <i class="fa fa-fw fa-angle-down text-active"></i>
+                  </span>
+                  <i class="glyphicon  glyphicon-th"></i>
+                  <span>Assets</span>
+                </a>
+                <ul class="nav nav-sub dk">
+                  <li class="">
+                    <a th:href="assets_manage">
+                      <span>Manage Assets</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a th:href="assetstype_manage">
+                      <span>Manage Assets Type</span>
+                    </a>
+                  </li>
+				  <li>
+                    <a th:href="@{firmware}">
+                      <span>Firmware</span>
+                    </a>
+                  </li>
+				  <li>
+                    <a th:href="vendor">
+                      <span>Vendor</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+            <!--   <li>
+                <a th:href="tickets_manage">
+                  <i class="glyphicon glyphicon-tag"></i>
+                  <span>Tickets</span>
+                </a>
+              </li> -->
+			  <li>
+                <a th:href="contract_manage">
+                  <i class="fa fa-legal"></i></i>
+                  <span>Contracts</span>
                 </a>
               </li>
-							<li><a href> <i class="icon-question icon"></i> <span>Documents</span>
-							</a></li>
-						</ul>
-					</nav>
+			<!--   <li>
+                <a th:href="expense">
+                  <i class="glyphicon  glyphicon-usd"></i></i>
+                  <span>Expenses</span>
+                </a>
+              </li> -->
+              <li>
+                <a th:href="request_manage" class="auto">
+				<span class="pull-right text-muted">
+                    <i class="fa fa-fw fa-angle-right text"></i>
+                    <i class="fa fa-fw fa-angle-down text-active"></i>
+                  </span>
+                  <i class="glyphicon  glyphicon-save icon"></i>
+                  <span>Request</span>
+                </a>
+                 <ul class="nav nav-sub dk">
+                 
+                   <li class="s">
+                    <a th:href="typeRequest">
+                      <span> Type  Request</span>
+                    </a>
+                  </li>
+                  
+                  <li>
+                    <a th:href="request">
+                      <span> Request</span>
+                    </a>
+                  </li>
+                 
+                </ul>
+
+               
+              </li>
+              <li class="line dk hidden-folded"></li>
+
+              <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">          
+                <span>Your Stuff</span>
+              </li>  
+              <li>
+                 <a th:href="@{profile}">
+                  <i class="icon-user icon text-success-lter"></i>
+                  <b class="badge bg-success pull-right"></b>
+                  <span>Profile</span>
+                </a>
+               </li>
+              <li>
+                <a th:href="@{/logout}">
+                  <i class="icon-question icon"> </i>
+                   <span>Logout</span>
+                </a>
+              </li>
+            </ul>
+          </nav>
 					<!-- nav -->
 					<!-- aside footer -->
 					<!-- / aside footer -->
@@ -464,15 +523,14 @@
 				<div class="bg-light lter b-b wrapper-md">
 					<h1 class="m-n font-bold h3">
 						Firmware <a style="margin-top: -5px;" data-toggle="modal"
-							data-target="#AddFrim"
+							data-target="#AddClient"
 							class="btn btn-sm btn-primary pull-right" role="button"><b
 							class="glyphicon-plus pull"> </b>Add Firmware</a>
 					</h1>
 				</div>
 
-				<div class="row" style="margin: 5px; background-color: #f0f3f4;"> </div>
+				<div class="row" style="margin: 5px; background-color: #f0f3f4;">
 
-<<<<<<< HEAD
 				</div>
 
 				<div class="table-responsive"
@@ -484,48 +542,61 @@
 															{ mData: 'browser' },
 															{ mData: 'platform' },
 															{ mData: 'version' },
-															{ mData: 'grade' },
 															{ mData: 'action' }
 															]
 															}"
 						class="table  b-t b-b">
 						<thead style="color: #23b7e5;">
 							<tr>
-								<th style="width: 25%">Name</th>
-								<th style="width: 25%">Description</th>
-								<th style="width: 15%">Release Date</th>
+								<th style="width: 25%"><center>Name</center></th>
+								<th style="width: 40%"><center>Description</center></th>
+								<th style="width: 25%"><center>Release Date</center></th>
 								<th  style="width:5%"><center>Status</center></th>
-								
-								<th style="width: 15%"><center>Actions</center></th>
+								<th style="width: 10%"><center>Actions</center></th>
 
 							</tr>
 						</thead>
 						<tbody>
-							<tr th:each="f:${frim}">
+							<tr th:each="f : ${frim}">
 
-								<td th:text="${f.name}" class="m-n font-thin h4 text-secondary"></td>
-								<td th:text="${f.description}" class="m-n font-thin h4 text-secondary"><center></center></td>
-								<td th:text="${f.releaseDate}" class="m-n font-thin h4 text-secondary"><center></center></td>
+								<td th:text="${f.name}"><center>
+										<b></b>
+									</center></td>
+								<td th:text="${f.description}"><center>
+										<span></span> <span class="text-muted hide" id="moreless1">
+										</span>
+									</center>
+									<p>
+										<button class="btn btn-sm pull-right" ui-toggle-class="show"
+											target="#moreless1">
+											<i class="fa fa-plus text"></i> <span class="text">More</span>
+											<i class="fa fa-minus text-active"></i> <span
+												class="text-active">Less</span>
+										</button>
+									</p></td>
+								<td th:text="${f.releaseDate}"><center></center></td>
 								<td th:text ="${f.Status}" class="m-n font-thin h4 text-secondary"><center><span></span><center/></td>
-								<td>
-									<center>
+								<td><center>
 										<div class="btn-group dropdown">
-								
-								 <button class="btn btn-default btn-xs" data-toggle="dropdown"><i class="glyphicon glyphicon-cog"></i> Action <span class="caret"></span></button>
-								  <ul class="dropdown-menu">
-								   <li><a th:href="@{updateFrimware(id=${f.frimware_ID})}"  style="margin-top:-5px;"   class="btn btn-sm btn-light" role="button">Update</a></li>
-								   <!-- archiver pour frimware -->
-								   
-								     <li><a th:href="@{archiverFrimware(id=${f.frimware_ID})}"  style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Archive</a></li>
-								   <li><a th:href="@{detailFrimware(id=${f.frimware_ID})}" style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Detail</a></li></ul></div></center></td>
-								   
-								  </ul>
-							     </div></center></td>
+										 <button class="btn btn-default btn-xs" data-toggle="dropdown">
+												<i class="glyphicon glyphicon-cog"></i> Action <span
+													class="caret"></span>
+											</button>
+											<ul class="dropdown-menu">
+												<li>
+												<a th:href="@{updateFrimwareform(id=${f.frimware_ID})}"  style="margin-top:-5px;"   class="btn btn-sm btn-light" role="button">Update</a></li>
+												<li>
+												<a th:href="@{archiverFrimware(id=${f.frimware_ID})}"  style="margin-top:-5px;" data-toggle="modal"  class="btn btn-sm btn-light" role="button">Archive</a>
+												</li>
+												 <li><a th:href="@{detailFrimware(id=${f.frimware_ID})}" style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Detail</a></li></ul></div></center></td>
+										</div>
+									</center></td>
 							</tr>
 						</tbody>
+					</table>
+				</div>
 
-=======
->>>>>>> branch 'master' of https://github.com/isaibou/TEST5
+
 				<div class="col-sm-12">
 					<div class="row row-sm text-center">
 						<div class="col-sm-6">
@@ -548,57 +619,7 @@
 						</div>
 					</div>
 				</div>
-
-				<div class="table-responsive"
-					style="background-color: white; margin: 10px; padding: 10px;">
-					<table ui-jq="dataTable"
-						ui-options="{
-															aoColumns: [
-															
-															{ mData: 'browser' },
-															{ mData: 'platform' },
-															{ mData: 'version' },
-															{ mData: 'action' }
-															]
-															}"
-						class="table  b-t b-b">
-						<thead style="color: #23b7e5;">
-							<tr>
-								<th style="width: 25%">Name</th>
-								<th style="width: 25%">Description</th>
-								<th style="width: 15%">Release Date</th>
-								<th  style="width:5%"><center>Status</center></th>
-								
-								<th style="width: 15%"><center>Actions</center></th>
-
-							</tr>
-						</thead>
-						<tbody>
-							<tr th:each="f:${frim}">
-
-								<td th:text="${f.name}" class="m-n font-thin h4 text-secondary"></td>
-								<td th:text="${f.description}" class="m-n font-thin h4 text-secondary"><center></center></td>
-								<td th:text="${f.releaseDate}" class="m-n font-thin h4 text-secondary"><center></center></td>
-								<td th:text ="${f.Status}" class="m-n font-thin h4 text-secondary"><center><span></span><center/></td>
-								<td>
-									<center>
-										<div class="btn-group dropdown">
-								
-								 <button class="btn btn-default btn-xs" data-toggle="dropdown"><i class="glyphicon glyphicon-cog"></i> Action <span class="caret"></span></button>
-								  <ul class="dropdown-menu">
-								   <li><a th:href="@{updateFrimware(id=${f.frimware_ID})}"  style="margin-top:-5px;"   class="btn btn-sm btn-light" role="button">Update</a></li>
-								   <!-- archiver pour frimware -->
-								   <li><a th:href="@{archiverFrimware(id=${f.frimware_ID})}"  style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Archive</a></li>
-								   <li><a th:href="@{detailFrimware(id=${f.frimware_ID})}" style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Detail</a></li></ul></div></center></td>
-								   
-								  </ul>
-							     </div></center></td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-
-				<div class="modal fade" role="dialog" id="AddFrim">
+				<div class="modal fade" role="dialog" id="AddClient">
 					<div class="modal-dialog modal-lg">
 						<div class="modal-content">
 							<div class="modal-header"
@@ -609,9 +630,10 @@
 									<b class="glyphicon-plus pull"> </b> Add Firmware
 								</h1>
 							</div>
-<form th:action="@{/SaveFrimware}" method="post" th:object="${frimware}" >
- <div class="modal-body">
-	<div class="row">
+							<form action="#" th:action="@{/SaveFrimware}" th:object="${frimware}"
+								method="post">
+								<div class="modal-body">
+									<div class="row">
 	 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b></b></label>
      <div class="col-sm-8" style="margin: 5px 0px;" >
       <input type="hidden" class="form-control" placeholder="Entry Name of frimware" id="input-id-1"  required th:field=*{frimware_ID}>
@@ -630,6 +652,16 @@
      <div class="col-sm-8" style="margin: 5px 0px;">
       <input type="date" class="form-control" id="input-id-1" th:field=*{releaseDate}/>
      </div>
+     <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Asset Type </b></label>
+	      <div class="col-sm-8" style="margin: 5px 0px;">
+	 <!-- ici on met une boucle sur le customer pour avoir récupérer la liste des vendor  -->
+	     <select name="AssetType_ID"  class="form-control m-b" th:field=*{assettype}>
+	     <option th:each ="a:${assettype}" 
+	      th:text="${a.name}"
+	      th:value ="${a.AssetType_ID}"></option>
+	     </select>
+	     
+	     </div>
      <div class="modal-footer">
 	<button style="margin:0px;" class="btn m-b-xs btn-sm btn-primary btn-addon"><i class="glyphicon glyphicon-ok"></i>Save</button>
 	<button style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon" data-dismiss="modal"><i class="glyphicon glyphicon-remove"  ></i>Annuler</button>
@@ -654,6 +686,7 @@
 		</footer>
 		<!-- / footer -->
 
+
 		<div class="modal fade" role="dialog" id="Detail">
 			<div class="modal-dialog modal-lg">
 				<div class="modal-content">
@@ -664,13 +697,18 @@
 						<h1 class="m-n font-bold h3">Information Firmware</h1>
 					</div>
 					<div class="modal-body">
-						<p th:each="f:${frim}">
-							<span class="m-n font-thin h3 text-black">Firmware Name:</span>
-							<span th:text ="${f.name}" class="m-n font-thin h4 text-secondary"></span></br>
-							<span class="m-n font-thin h3 text-black">Release Date :</span>
-							<span th:text ="${f.releaseDate}" class="m-n font-thin h4 text-secondary"></span></br>
-                            <span class="m-n font-thin h3 text-black">Description :</span> 
-                            <span th:text ="${f.description}" class="m-n font-thin h4 text-secondary"></span></br>
+						<p>
+							<span class="m-n font-thin h3 text-black">Firmware Name:</span> <span
+								ng-repeat="nom in firmware"> {{ firmware.nomFirmware }} </br>
+							</span> <span class="m-n font-thin h3 text-black">Asset Name:</span> <span
+								ng-repeat="nom in asset"> {{ asset.nomAsset }}</span></br> <span
+								class="m-n font-thin h3 text-black">Release Date :</span> <span
+								ng-repeat="releaseDate in firmware"> {{
+								frimware.releaseDateFrimware }}</span></br> <span
+								class="m-n font-thin h3 text-black">Description :</span> <span
+								ng-repeat="description in contract"> {{
+								contract.descriptionContract }} </br>
+							</span>
 						</p>
 					</div>
 					<div class="modal-footer">
@@ -689,6 +727,37 @@
 	<script src="js/ui-nav.js"></script>
 	<script src="js/ui-toggle.js"></script>
 	<script src="js/ui-client.js"></script>
+	<script type="text/javascript"
+		src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+	<link rel="stylesheet"
+		href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css" />
+	<script>
+		$(document).ready(
+				function() {
+					var date_input = $('input[name="date"]'); //our date input has the name "date"
+					var container = $('.bootstrap-iso form').length > 0 ? $(
+							'.bootstrap-iso form').parent() : "body";
+					date_input.datepicker({
+						format : 'mm/dd/yyyy',
+						container : container,
+						todayHighlight : true,
+						autoclose : true,
+					})
+				})
+	</script>
+	<script>
+		$('.count').each(function() {
+			$(this).prop('Counter', 0).animate({
+				Counter : $(this).text()
+			}, {
+				duration : 1500,
+				easing : 'linear',
+				step : function(now) {
+					$(this).text(Math.ceil(now));
+				}
+			});
+		});
+	</script>
 	<script type="text/javascript">
 		function changecolor() {
 			$(

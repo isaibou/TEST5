@@ -15,11 +15,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.example.demo.entities.*;
 import com.example.demo.repository.AssetRepository;
 import com.example.demo.repository.AssetTypeRepository;
+import com.example.demo.repository.FrimwareRepository;
 import com.example.demo.repository.ProjetRepository;
 
 
 @Controller
 public class AssetsController {
+	
+	@Autowired
+	private FrimwareRepository frimwareRepository;
 	
 	@Autowired
 	private ProjetRepository projetRepository;
@@ -30,7 +34,7 @@ public class AssetsController {
 	@Autowired
 	private AssetRepository assetRepository;
 	
-	@Secured(value = "ROLE_MANAGER")
+	//@Secured(value = "ROLE_MANAGER")
 	@RequestMapping(value="/assets_manage")
 	public String allAsset(Model model, Assets asset) {
 		
@@ -40,6 +44,7 @@ public class AssetsController {
 		
 		model.addAttribute("assettype", assetTypeRepository.findAll());
 		model.addAttribute("project", projetRepository.findAll());
+		model.addAttribute("frimware", frimwareRepository.findAll());
 		
 		return "assets_manage";
 	}
@@ -49,7 +54,7 @@ public class AssetsController {
 		addAss.setStatus("Actif");
 		
 		assetRepository.save(addAss);
-		return "redirect:/assets_manage";
+		return "redirect:/assets_manage"; //$NON-NLS-1$
 		
 	}
 	@RequestMapping(value = "/editAssets",method = { RequestMethod.GET, RequestMethod.POST })

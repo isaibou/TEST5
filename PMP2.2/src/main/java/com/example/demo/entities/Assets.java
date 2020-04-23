@@ -42,7 +42,19 @@ public class Assets implements Serializable{
 	@JoinColumn
 	private Project project;
 	
+	@ManyToOne
+	@JoinColumn
+	private Frimware frimware;
 	
+	
+	public Frimware getFrimware() {
+		return frimware;
+	}
+
+	public void setFrimware(Frimware frimware) {
+		this.frimware = frimware;
+	}
+
 	public Project getProject() {
 		return project;
 	}

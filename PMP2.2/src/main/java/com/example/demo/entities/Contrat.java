@@ -25,7 +25,24 @@ public class Contrat implements Serializable{
 	private String Title;
 	private String Description;
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	private Date DeliveryDate;
+	private Date SignedDate;
+	private String ContractFille;
+	@ManyToOne
+	@JoinColumn
+	private RFP rfp;
+	
+	public Contrat(RFP rfp) {
+		super();
+		this.rfp = rfp;
+	}
+	public RFP getRfp() {
+		return rfp;
+	}
+
+
+	public void setRfp(RFP rfp) {
+		this.rfp = rfp;
+	}
 	//les relation avec customer
 	@ManyToOne
 	@JoinColumn
@@ -56,13 +73,24 @@ public class Contrat implements Serializable{
 	public Contrat() {
 		super();
 	}
-	public Contrat(String title, String description, Date deliveryDate) {
+	public Contrat(String title, String description, Date signedDate, String  contractFille) {
 		super();
 		this.Contrat_ID = Contrat_ID;
 		this.Title = title;
 		this.Description = description;
-		this.DeliveryDate = deliveryDate;
+		this.SignedDate = signedDate;
+		this.ContractFille = contractFille;
 	}
+	public String getContractFille() {
+		return ContractFille;
+	}
+
+
+	public void setContractFille(String contractFille) {
+		ContractFille = contractFille;
+	}
+
+
 	public Integer getContract_ID() {
 		return Contrat_ID;
 	}
@@ -81,11 +109,11 @@ public class Contrat implements Serializable{
 	public void setDescription(String description) {
 		Description = description;
 	}
-	public Date getDeliveryDate() {
-		return DeliveryDate;
+	public Date getSignedDate() {
+		return SignedDate;
 	}
-	public void setDeliveryDate(Date deliveryDate) {
-		DeliveryDate = deliveryDate;
+	public void setSignedDate(Date signedDate) {
+		SignedDate = signedDate;
 	}
 	
 	

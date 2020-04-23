@@ -15,16 +15,20 @@ import com.example.demo.entities.*;
 
 import com.example.demo.repository.ContratRepository;
 import com.example.demo.repository.CustomerRepository;
+import com.example.demo.repository.RFPRepository;
 
 
 
 @Controller
 public class ContractController {
 	
-	// Ici on a besoin de déclarer le repository du customer pour avoir
-		//appeller a le modéle qui va afficher la liste déroulante 
-		@Autowired
-		private CustomerRepository customerRepository;
+	 
+	
+	@Autowired
+	private RFPRepository rfpRepository;
+	
+	@Autowired
+	private CustomerRepository customerRepository;
 
 	@Autowired
 	private ContratRepository contratrepository; 
@@ -37,7 +41,8 @@ public class ContractController {
 		model.addAttribute("contrat", new Contrat());
 		
 		//Afficher la liste déroulante pour récupérer la liste des customers
-		model.addAttribute("customer", customerRepository.findAll());	
+		model.addAttribute("customer", customerRepository.findAll());
+		model.addAttribute("rfp", rfpRepository.findAll());
 		
 		return "contract_manage";
 	}
@@ -45,7 +50,7 @@ public class ContractController {
 	@RequestMapping(value="/SaveContrat" , method= RequestMethod.POST)
 	private String SaveContrat(@Valid Contrat addCont, BindingResult bindingResult) {
 		
-		//addCust.setStatus("Actif");
+		
 	
 		contratrepository.save(addCont);
 		return "redirect:/contract_manage";
@@ -67,6 +72,7 @@ public class ContractController {
 		 model.addAttribute("contrat",contrat);
 		 
 		 model.addAttribute("customer", customerRepository.findAll());	
+		 model.addAttribute("rfp", rfpRepository.findAll());
 		 System.out.println(contrat.getTitle());
 		
 			return "updateContratForm";
@@ -87,11 +93,13 @@ public class ContractController {
 		 Contrat	contrat = contratrepository.getOne(id);
 		 model.addAttribute("contrat",contrat);
 		 contrat.getCustomer().getName();
+		 contrat.getRfp().getTitle();
 		 
 	
 		 //Affichage du customer qui j ai a partir de la liste dérulante dans détail
 		model.addAttribute("customer",  contrat.getCustomer());
-		 //System.out.println(Purchasing.getFirstName());
+		model.addAttribute("rfp", rfpRepository.findAll());
+		 
 		
 			return "detailContrat";
 			

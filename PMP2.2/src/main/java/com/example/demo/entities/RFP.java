@@ -1,11 +1,17 @@
 package com.example.demo.entities;
 
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 
 @Entity
@@ -16,17 +22,53 @@ public class RFP implements Serializable{
 	private Integer RFP_ID;
 	private String Title;
 	private String Description;
-	private int RealaseDate;
+	
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private Date RealaseDate;
+	
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date ReponseDateTime;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date NotificationDate;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date RequestOfExecutionDate;
+	
 	private String RequestFile;
 	private String ResponseFile;
 	private String StatusRFP;
+	
+	@OneToMany
+	private Collection <Contrat> Contrat;
+	
+	
+	public Collection<Contrat> getContrat() {
+		return Contrat;
+	}
+
+	public void setContrat(Collection<Contrat> contrat) {
+		Contrat = contrat;
+	}
+	@ManyToOne
+	@JoinColumn
+	private Customer customer;
+	
+	public RFP(Customer customer) {
+		super();
+		this.customer = customer;
+	}
+	
+	public Customer getCustomer() {
+		return customer;
+	}
+
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
+}
+
 	public RFP() {
 		super();
 	}
-	public RFP(String title, String description, int realaseDate, Date reponseDateTime, Date notificationDate,
+	public RFP(String title, String description, Date realaseDate, Date reponseDateTime, Date notificationDate,
 			Date requestOfExecutionDate, String requestFile, String responseFile, String statusRFP) {
 		super();
 		Title = title;
@@ -57,10 +99,10 @@ public class RFP implements Serializable{
 	public void setDescription(String description) {
 		Description = description;
 	}
-	public int getRealaseDate() {
+	public Date getRealaseDate() {
 		return RealaseDate;
 	}
-	public void setRealaseDate(int realaseDate) {
+	public void setRealaseDate(Date realaseDate) {
 		RealaseDate = realaseDate;
 	}
 	public Date getReponseDateTime() {

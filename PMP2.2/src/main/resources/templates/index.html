@@ -136,7 +136,7 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
                           <img src="img/user.png" alt="...">
                             <i class="on md b-white bottom"></i>
                           </span>
-                          <span class="hidden-sm hidden-md">Walid.largou</span> <b class="caret"></b>
+                          <span class="hidden-sm hidden-md"></span> <b class="caret"></b>
                         </a>
                         <!-- dropdown -->
                         <ul class="dropdown-menu animated fadeInRight w">
@@ -165,7 +165,7 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
                           </li>
                           <li class="divider"></li>
                           <li>
-                            <a ui-sref="access.signin">Logout</a>
+                            <a th:href="@{/logout}">Logout</a>
                           </li>
                         </ul>
                         <!-- / dropdown -->
@@ -193,7 +193,7 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
               <a href="#" data-toggle="dropdown" class="dropdown-toggle hidden-folded">
                 <span class="clear">
                   <span class="block m-t-sm">
-                    <strong class="font-bold text-lt">Walid.Largou</strong> 
+                    <strong class="font-bold text-lt"></strong> 
                     <b class="caret"></b>
                   </span>
                   <span class="text-muted text-xs block">Manager</span>
@@ -234,7 +234,7 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
           <!-- / user -->
 
           <!-- nav -->
-          <nav ui-nav class="navi clearfix">
+<nav ui-nav class="navi clearfix">
             <ul class="nav">
               <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
                 <span>Main</span>
@@ -246,13 +246,7 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
                 </a>
                
               </li>
-              <li>
-                <a th:href="mail">
-                  <b class="badge bg-info pull-right">9</b>
-                  <i class="glyphicon glyphicon-envelope icon text-info-lter"></i>
-                  <span class="font-bold">Email</span>
-                </a>
-              </li>
+             
               <li class="line dk"></li>
 
               <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
@@ -264,7 +258,7 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
                     <i class="fa fa-fw fa-angle-right text"></i>
                     <i class="fa fa-fw fa-angle-down text-active"></i>
                   </span>
-                  <b class="badge bg-info pull-right">3</b>
+                  <b class="badge bg-info pull-right"></b>
                   <i class="glyphicon glyphicon-briefcase"></i>
                   <span>Customers</span>
                 </a>
@@ -291,14 +285,14 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
                 </a>
 
               </li>
-               <li>
+            <!--    <li>
 				 <a th:href="timesheets" class="auto">
                   <i class="glyphicon glyphicon-calendar icon"></i>
                   <span>TimeSheet</span>
                 </a>
 
-              </li>
-              <li>
+              </li> -->
+           <!--    <li>
                 <a href class="auto">
                   <span class="pull-right text-muted">
                     <i class="fa fa-fw fa-angle-right text"></i>
@@ -325,7 +319,7 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
                     </a>
                   </li>
                 </ul>
-              </li>
+              </li> -->
               <li>
                 <a href class="auto">
                   <span class="pull-right text-muted">
@@ -358,10 +352,18 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
                   </li>
                 </ul>
               </li>
-              <li>
+            <!--   <li>
                 <a th:href="tickets_manage">
                   <i class="glyphicon glyphicon-tag"></i>
                   <span>Tickets</span>
+                </a>
+              </li> -->
+
+			  <li>
+			   <li>
+                <a th:href="RFP">
+                  <i class="glyphicon glyphicon-tag"></i>
+                  <span>RFP</span>
                 </a>
               </li>
 			  <li>
@@ -370,12 +372,12 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
                   <span>Contracts</span>
                 </a>
               </li>
-			  <li>
+			<!--   <li>
                 <a th:href="expense">
                   <i class="glyphicon  glyphicon-usd"></i></i>
                   <span>Expenses</span>
                 </a>
-              </li>
+              </li> -->
               <li>
                 <a th:href="request_manage" class="auto">
 				<span class="pull-right text-muted">
@@ -386,16 +388,19 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
                   <span>Request</span>
                 </a>
                  <ul class="nav nav-sub dk">
-                  <li class="s">
-                    <a th:href="internal_request_manage">
-                      <span>Internal Request</span>
+                 
+                   <li class="s">
+                    <a th:href="typeRequest">
+                      <span> Type  Request</span>
                     </a>
                   </li>
+                  
                   <li>
-                    <a th:href="external_request_manage">
-                      <span>External Request</span>
+                    <a th:href="request">
+                      <span> Request</span>
                     </a>
                   </li>
+                 
                 </ul>
 
                
@@ -406,16 +411,16 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
                 <span>Your Stuff</span>
               </li>  
               <li>
-                <a th:href="@{/LoginVrai?logout}">
+                 <a th:href="@{profile}">
                   <i class="icon-user icon text-success-lter"></i>
                   <b class="badge bg-success pull-right"></b>
-                    <span>Logout</span>
+                  <span>Profile</span>
                 </a>
-              </li>
+               </li>
               <li>
-                <a href>
-                  <i class="icon-question icon"></i>
-                    <span>[[${#httpServletRequest.remoteUser}]]</span>
+                <a th:href="@{/logout}">
+                  <i class="icon-question icon"> </i>
+                   <span>Logout</span>
                 </a>
               </li>
             </ul>

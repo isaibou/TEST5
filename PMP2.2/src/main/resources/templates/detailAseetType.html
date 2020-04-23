@@ -16,7 +16,7 @@
 <!-- detail -->
 <div class="app" >
  <a href="" class="navbar-brand block m-t"><i class="fa fa-power-off"></i> <b>PowerM</b> </a>
- <div th:action="@{detailPurchasing}" method ="post" th:object="${Purchasing}">
+ <div th:action="@{detailAseetType}" method ="post" th:object="${assettype}">
   <div class="modal-dialog modal-lg" >
    <div class="modal-content">
     <h1 class="m-n font-bold h3"> Informations AseetType </h1>
@@ -38,10 +38,8 @@
 		   <td style="color:#23b7e5;"><center>Asset Name </center></th>
 		   <td th:text ="${a.Name}" class="m-n font-thin h4 text-secondary"><center><b></b></center></td>
 		  </tr>
-		  <tr >
-		   <td style="color:#23b7e5;"><center>Brand </center></th>
-		   <td th:text ="${a.Brand}" class="m-n font-thin h4 text-secondary"><center><b></b></center></td>
-		  </tr>
+
+		  
 		   <tr >
 		   <td style="color:#23b7e5;"><center>End Of Support Date </center></th>
 		   <td th:text ="${a.EndOfSuportDate}" class="m-n font-thin h4 text-secondary"><center></center></td>
@@ -54,6 +52,11 @@
 		   <td style="color:#23b7e5;"><center>Status </center></th>
 		   <td th:text ="${a.Status}" class="m-n font-thin h4 text-secondary"><center><span></span></center></td>
 		   </tr>  
+		   <td style="color:#23b7e5;"><center>Vendor </center></th>
+		   <!-- Comment j ai appeler  le customer qui j ai choisi a partir du la liste déroulante des customers  -->
+		   <td th:each ="v:${assettype.Vendor}"   th:text="${v.NameVendor}"  class="m-n font-thin h4 text-secondary"><center></center></td>
+		   </tr>
+	
 	  </tbody>
      </table>
 	</div>

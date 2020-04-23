@@ -16,7 +16,7 @@
 <body>
 <div class="app" >
  <a href="" class="navbar-brand block m-t"><i class="fa fa-power-off"></i> <b>PowerM</b> </a>
- <div th:action="@{detailPurchasing}" method ="post" th:object="${Purchasing}">
+ <div th:action="@{detailContrat}" method ="post" th:object="${contrat}">
   <div class="modal-dialog modal-lg" >
    <div class="modal-content">
     <h1 class="m-n font-bold h3"> Informations Contrat </h1>
@@ -43,14 +43,21 @@
 		   <!-- Comment appeler a le customer qui j ai choisi a partir du la liste déroulante des customer  -->
 		   <td   th:text="${c.Customer.Name}"  class="m-n font-thin h4 text-secondary"><center></center></td>
 		   </tr>
+		   <td style="color:#23b7e5;"><center>RFP </center></th>
+		   <!-- Comment appeler a le customer qui j ai choisi a partir du la liste déroulante des customer  -->
+		   <td   th:text="${c.rfp.Title}"  class="m-n font-thin h4 text-secondary"><center></center></td>
+		   </tr>
 		   <tr >
 		   <td style="color:#23b7e5;"><center>Description </center></th>
 		   <td th:text ="${c.Description}" class="m-n font-thin h4 text-secondary"><center></center></td>
 		   </tr>
 		   <tr >
-		   <td style="color:#23b7e5;"><center>Delivery Date </center></th>
-		   <td th:text ="${c.DeliveryDate}" class="m-n font-thin h4 text-secondary"><center><span></span></center></td>
+		   <td style="color:#23b7e5;"><center>Signed Date </center></th>
+		   <td th:text ="${c.SignedDate}" class="m-n font-thin h4 text-secondary"><center><span></span></center></td>
 		   </tr>
+		   <td style="color:#23b7e5;"><center>ContractFile </center></th>
+           <td th:text ="${c.ContractFille}" class="m-n font-thin h4 text-secondary"></td>
+           </tr> 
 		     
 	  </tbody>
      </table>

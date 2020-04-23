@@ -2,8 +2,8 @@ package com.example.demo.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.example.demo.entities.TypeExternelRequest;
+import com.example.demo.entities.TypeExternalRequest;
 
-public interface TypeExternalRequestRepository extends JpaRepository<TypeExternelRequest, Integer>{
+public interface TypeExternalRequestRepository extends JpaRepository<TypeExternalRequest, Integer>{
 
 }

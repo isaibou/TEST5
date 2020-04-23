@@ -1,16 +1,26 @@
 package com.example.demo.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
 public class Frimware implements Serializable{
@@ -25,6 +35,42 @@ public class Frimware implements Serializable{
 	private String description;
 	private String Status;
 	
+	
+	@ManyToMany
+	private List<AssetType> assettype = new ArrayList<AssetType>(); 
+
+	@ManyToMany
+	@JoinTable(name = "assetType_frimware",
+			joinColumns = @JoinColumn(name = "AssetType_ID"),
+			inverseJoinColumns = @JoinColumn(name = "frimware_ID"))
+	private Set<AssetType> assetType;
+	
+	
+	public List<AssetType> getAssettype() {
+		return assettype;
+	}
+
+	@ManyToMany
+	private List<Assets> assets = new ArrayList<Assets>(); 
+
+	@ManyToMany
+	@JoinTable(name = "assets_frimware",
+			joinColumns = @JoinColumn(name = "frimware_ID"),
+			inverseJoinColumns = @JoinColumn(name = "Assets_ID"))
+	private Set<Assets> asset;
+	
+	public List<Assets> getAssets() {
+		return assets;
+	}
+
+
+
+	public void setAssettype(List<AssetType> assettype) {
+		this.assets = assets;
+	}
+
+
+
 	public Frimware() {
 		super();
 

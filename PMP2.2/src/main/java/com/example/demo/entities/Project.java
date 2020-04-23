@@ -2,9 +2,17 @@ package com.example.demo.entities;
 
 import java.io.Serializable;
 
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+
 import java.util.Collection;
 import java.util.Date;
+
 import java.util.*;
+
+
+
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,6 +22,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
+
 import javax.persistence.*;
 import javax.validation.constraints.*;
 
@@ -73,9 +82,25 @@ public class Project implements Serializable{
 	@Column(name = "Status")
 	private String Status;
 	
+	@OneToMany
+	private Collection <Assets> assets;
+	
+	@ManyToMany(mappedBy = "Project")
+	private List<TechnologyPartner> technologypartner;  
 
 	
-
+	public List<TechnologyPartner> getTechnologypartner() {
+		return technologypartner;
+	}
+	public void setTechnologypartner(List<TechnologyPartner> technologypartner) {
+		this.technologypartner = technologypartner;
+	}
+	public Collection<Assets> getAssets() {
+	   return assets;
+   }
+	public void setAssets(Collection<Assets> assets) {
+		this.assets = assets;
+	}
 	public Project(String deliveryCertificate, String uri, String type, long size) {
 
 		super();

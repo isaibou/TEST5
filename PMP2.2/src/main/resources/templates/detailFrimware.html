@@ -16,7 +16,7 @@
 <body>
 <div class="app" >
  <a href="" class="navbar-brand block m-t"><i class="fa fa-power-off"></i> <b>PowerM</b> </a>
- <div th:action="@{detailPurchasing}" method ="post" th:object="${Purchasing}">
+ <div th:action="@{detailFrimware}" method ="post" th:object="${frimware}">
   <div class="modal-dialog modal-lg" >
    <div class="modal-content">
     <h1 class="m-n font-bold h3"> Informations Frimware </h1>
@@ -49,7 +49,12 @@
 		   <tr >
 		   <td style="color:#23b7e5;"><center>Status </center></th>
 		   <td th:text ="${f.Status}" class="m-n font-thin h4 text-secondary"><center><span></span></center></td>
-		   </tr>  
+		   </tr> 
+		   <td style="color:#23b7e5;"><center>Aseet Type </center></th>
+		   <!-- Comment j ai appeler  le customer qui j ai choisi a partir du la liste déroulante des customers  -->
+		   <td th:each ="a:${frimware.assettype}"  
+		    th:text="${a.Nameassettype}"  class="m-n font-thin h4 text-secondary"><center></center></td>
+		   </tr> 
 	  </tbody>
      </table>
 	</div>

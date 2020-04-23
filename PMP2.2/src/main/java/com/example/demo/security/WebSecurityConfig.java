@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.demo.security;
 
 import javax.sql.DataSource;
 
@@ -23,7 +23,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		auth.jdbcAuthentication()
 		
 		.passwordEncoder(encoder)
-		.usersByUsernameQuery("select username as principal, password as credentials, actived from users where username =?").passwordEncoder(encoder)
+		.usersByUsernameQuery("select username as principal, password as credentials, actived from users where username =?")
 	
 		.authoritiesByUsernameQuery("select users_username as principal, roles_role as role from users_roles where users_username =?")
 		.rolePrefix("ROLE_")
@@ -34,7 +34,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 protected void configure(HttpSecurity http) throws Exception {
 	http
 	.authorizeRequests()
-	.antMatchers("/css/**","/js/**","/libs/**","/fonts/**","/src/**").permitAll()
+	.antMatchers("/css/**","/js/**","/libs/**","/fonts/**","/src/**","/forgotPassword","/resetPassword").permitAll()
 	.anyRequest()
 	.authenticated()
 	.and()
@@ -42,6 +42,7 @@ protected void configure(HttpSecurity http) throws Exception {
 	.loginPage("/LoginVrai")
 	.successForwardUrl("/index")
 	.permitAll()
+	
 	.and()
 	.logout()
 	.logoutUrl("/LoginVrai?logout")

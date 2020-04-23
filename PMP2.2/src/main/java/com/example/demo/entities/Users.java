@@ -4,13 +4,16 @@ import java.io.Serializable;
 import java.util.Collection;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name="users")
@@ -21,6 +24,8 @@ public class Users implements Serializable {
 	private String password; 
 	private boolean actived;
 	private String lastName;
+	private Boolean isCustomer;
+	private String Picture;
 	private String firstName;
 	private String CIN; 
 	private String Phone;
@@ -31,6 +36,14 @@ public class Users implements Serializable {
 	@ManyToMany
 	@JoinTable(name="USERS_ROLES")
 	private Collection<Roles> roles;
+	
+
+	@OneToMany(mappedBy =   "userEmployee" , fetch = FetchType.LAZY)
+	private Collection<InternalRequest> internalRequest;
+	
+
+	@OneToMany(mappedBy =   "userCustomer" , fetch = FetchType.LAZY)
+	private Collection<ExternalRequest> externalRequest;
 	
 	
 
@@ -43,6 +56,31 @@ public class Users implements Serializable {
 
 	
 	
+
+
+
+
+
+	public Users(String username, String password, boolean actived, String lastName, Boolean isCustomer, String picture,
+			String firstName, String cIN, String phone, Customer customer, Collection<Roles> roles) {
+		super();
+		this.username = username;
+		this.password = password;
+		this.actived = actived;
+		this.lastName = lastName;
+		this.isCustomer = isCustomer;
+		Picture = picture;
+		this.firstName = firstName;
+		CIN = cIN;
+		Phone = phone;
+		this.customer = customer;
+		this.roles = roles;
+	}
+
+
+
+
+
 
 
 
@@ -163,8 +201,97 @@ public class Users implements Serializable {
 
 	public void setPhone(String phone) {
 		Phone = phone;
-	} 
-	
+	}
+
+
+
+	public String getPicture() {
+		return Picture;
+	}
+
+
+	public void setPicture(String picture) {
+		Picture = picture;
+	}
+
+
+
+
+
+
+
+
+
+
+	public Collection<InternalRequest> getInternalRequest() {
+		return internalRequest;
+	}
+
+
+
+
+
+
+
+
+
+
+	public void setInternalRequest(Collection<InternalRequest> internalRequest) {
+		this.internalRequest = internalRequest;
+	}
+
+
+
+
+
+
+
+
+
+
+	public Collection<ExternalRequest> getExternalRequest() {
+		return externalRequest;
+	}
+
+
+
+
+
+
+
+
+
+
+	public void setExternalRequest(Collection<ExternalRequest> externalRequest) {
+		this.externalRequest = externalRequest;
+	}
+
+
+
+
+
+
+
+
+
+
+	public Boolean getIsCustomer() {
+		return isCustomer;
+	}
+
+
+
+
+
+
+
+
+
+
+	public void setIsCustomer(Boolean isCustomer) {
+		this.isCustomer = isCustomer;
+	}
+
 	
 	
 	

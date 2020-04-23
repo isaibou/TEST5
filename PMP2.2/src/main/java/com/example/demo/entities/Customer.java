@@ -1,15 +1,25 @@
 package com.example.demo.entities;
 
 import java.io.Serializable;
+
 import java.util.Collection;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.Email;
+
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
+
+
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
 
 //import org.hibernate.validator.constraints.Email;
@@ -19,7 +29,9 @@ import org.springframework.format.annotation.NumberFormat;
 public class Customer implements Serializable{
 	
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "my_seq_id")
+	@SequenceGenerator(name = "my_seq_id", sequenceName = "my_seq_id", allocationSize = 100)
+	
 	private Integer Customer_ID;
 	
 	@NotNull(message="this name is exist")
@@ -70,9 +82,11 @@ public class Customer implements Serializable{
 
 	private String Country;
 	
+
 	@NotNull
 	private String Status;
 	
+
 	@OneToMany
 	private Collection <Purchasing> Purchasing;
 	
@@ -86,12 +100,9 @@ public class Customer implements Serializable{
 	public Customer() {
 		super();
 	}
-	
-	public Customer(@NotNull String name, @NotNull String industry, String logo, @NotNull String phoneCompany,
-			@NotNull String adressCompany, @NotNull String vip, @NotNull String nomTechnical,
-			@NotNull String phoneTechnical, @NotNull @Email String emailTechnical, @NotNull String nomCIO,
-			@NotNull String phoneCIO, @NotNull @Email String emailCIO, String city, String country,
-			@NotNull String status) {
+
+	public Customer(String name, String industry, String logo, String phoneCompany, String adressCompany, String vip, 
+			String nomCIO, String phoneCIO, String emailCIO, String nomTechnical, String emailTechnical, String phoneTechnical, String city, String country, String status) {
 		super();
 		Name = name;
 		Industry = industry;
@@ -99,10 +110,12 @@ public class Customer implements Serializable{
 		PhoneCompany = phoneCompany;
 		AdressCompany = adressCompany;
 		Vip = vip;
+		
 		NomTechnical = nomTechnical;
 		PhoneTechnical = phoneTechnical;
 		EmailTechnical = emailTechnical;
 		NomCIO = nomCIO;
+		NomCIO= nomCIO;
 		PhoneCIO = phoneCIO;
 		EmailCIO = emailCIO;
 		City = city;
@@ -239,6 +252,9 @@ public class Customer implements Serializable{
 	}
 	
 	
+
+
+
 	public Collection<Users> getUsers() {
 		return users;
 	}

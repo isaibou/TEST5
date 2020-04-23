@@ -6,6 +6,10 @@ import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 
 @Entity
@@ -14,32 +18,84 @@ public class Assets implements Serializable{
 	@Id
 	@GeneratedValue
 	private Integer Assets_ID;
+	//private String AssetsName;
 	private String SerielNumber;
 	private String Description;
 	private String ConfigurationFille;
 	private String MustGather;
 	private String EndOfVendorWarranty;
+	@DateTimeFormat(pattern =  "yyyy-MM-dd")
 	private Date EndPowermWarranty;
 	private String SLA;
 	private String InterfaceAasset;
 	private String LoginAsset;
 	private int PasswordAsset;
 	private Date LastUpdate;
+	private String Status;
 	
-	//attribut customer de type Customer 
-	private Customer customer;
+	
+	@ManyToOne
+	@JoinColumn
+	private AssetType assettype;
+	
+	@ManyToOne
+	@JoinColumn
 	private Project project;
 	
+	@ManyToOne
+	@JoinColumn
+	private Frimware frimware;
 	
+	
+	public Frimware getFrimware() {
+		return frimware;
+	}
+
+	public void setFrimware(Frimware frimware) {
+		this.frimware = frimware;
+	}
+
+	public Project getProject() {
+		return project;
+	}
+
+	public void setProject(Project project) {
+		this.project = project;
+	}
+
+	public Assets(Project project) {
+		super();
+		this.project = project;
+	}
+	
+	public Assets(AssetType assettype) {
+		super();
+		this.assettype = assettype;
+	}
+	
+	//attribut customer de type Customer 
+	//private Customer customer;
+	//private Project project;
+	
+	
+	public AssetType getAssettype() {
+		return assettype;
+	}
+
+	public void setAssettype(AssetType assettype) {
+		this.assettype = assettype;
+	}
+
 	public Assets() {
 		super();
 	}
 	
 	public Assets(String serielNumber, String description, String configurationFille, String mustGather,
 			String endOfVendorWarranty, Date endPowermWarranty, String sLA, String interfaceAasset, String loginAsset,
-			int passwordAsset, Date lastUpdate) {
+			int passwordAsset, Date lastUpdate, String status) {
 		super();
 		SerielNumber = serielNumber;
+		//AssetsName = assetsName;
 		Description = description;
 		ConfigurationFille = configurationFille;
 		MustGather = mustGather;
@@ -50,8 +106,25 @@ public class Assets implements Serializable{
 		LoginAsset = loginAsset;
 		PasswordAsset = passwordAsset;
 		LastUpdate = lastUpdate;
+		this.Status = status;
 	}
 	
+	//public String getAssetsName() {
+		//return AssetsName;
+//	}
+
+	//public void setAssetsName(String assetsName) {
+		//AssetsName = assetsName;
+	//}
+
+	public String getStatus() {
+		return Status;
+	}
+
+	public void setStatus(String status) {
+		Status = status;
+	}
+
 	public Integer getAssets_ID() {
 		return Assets_ID;
 	}

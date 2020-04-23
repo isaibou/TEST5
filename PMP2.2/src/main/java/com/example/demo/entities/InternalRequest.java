@@ -1,8 +1,12 @@
 package com.example.demo.entities;
 
 import java.io.Serializable;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import javax.persistence.Column;
+import javax.persistence.Convert;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -11,14 +15,19 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 @Entity
+
 public class InternalRequest implements Serializable{
 	
 	@Id
 	@GeneratedValue
 	private Integer InternalRequest_ID;
+	@Column(length=30)
 	private String Description;
-	private String Status; 
+	private boolean Status; 
+	@DateTimeFormat()
 	private Date SubmitedDate;
 	
 
@@ -34,13 +43,18 @@ public class InternalRequest implements Serializable{
 	public InternalRequest() {
 		super();
 	}
-
-	public InternalRequest(String description, String status, Date submitedDate) {
+	
+	
+	
+	public InternalRequest(String description, boolean status, Date submitedDate) {
 		super();
 		Description = description;
 		Status = status;
 		SubmitedDate = submitedDate;
 	}
+
+
+
 
 	public Integer getInternalRequest_ID() {
 		return InternalRequest_ID;
@@ -58,13 +72,17 @@ public class InternalRequest implements Serializable{
 		Description = description;
 	}
 
-	public String getStatus() {
+	
+
+	public boolean isStatus() {
 		return Status;
 	}
 
-	public void setStatus(String status) {
+
+	public void setStatus(boolean status) {
 		Status = status;
 	}
+
 
 	public Date getSubmitedDate() {
 		return SubmitedDate;

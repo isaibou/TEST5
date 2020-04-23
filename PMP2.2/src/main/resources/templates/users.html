@@ -125,7 +125,7 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 	</div>
 	<div class="line dk hidden-folded"></div>
    </div><!-- / user --><!-- nav -->
-          <nav ui-nav class="navi clearfix">
+         <nav ui-nav class="navi clearfix">
             <ul class="nav">
               <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
                 <span>Main</span>
@@ -137,13 +137,7 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
                 </a>
                
               </li>
-              <li>
-                <a th:href="mail">
-                  <b class="badge bg-info pull-right">9</b>
-                  <i class="glyphicon glyphicon-envelope icon text-info-lter"></i>
-                  <span class="font-bold">Email</span>
-                </a>
-              </li>
+             
               <li class="line dk"></li>
 
               <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
@@ -155,7 +149,7 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
                     <i class="fa fa-fw fa-angle-right text"></i>
                     <i class="fa fa-fw fa-angle-down text-active"></i>
                   </span>
-                  <b class="badge bg-info pull-right">3</b>
+                  <b class="badge bg-info pull-right"></b>
                   <i class="glyphicon glyphicon-briefcase"></i>
                   <span>Customers</span>
                 </a>
@@ -166,8 +160,8 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
                       <span>Manage customer</span>
                     </a>
                   </li>
-          
-          <li>
+				  
+				  <li>
                     <a th:href="purchasing_customer_manage">
                       <span>Purchasing contact</span>
                     </a>
@@ -175,27 +169,27 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
                     
                 </ul>
               </li>
-           <li>
+			     <li>
                 <a th:href="users" class="auto">
                   <i class="glyphicon glyphicon-user icon"></i>
                   <span>Users</span>
                 </a>
 
               </li>
-    <li>
-                <a th:href="timesheets" class="auto">
+            <!--    <li>
+				 <a th:href="timesheets" class="auto">
                   <i class="glyphicon glyphicon-calendar icon"></i>
                   <span>TimeSheet</span>
                 </a>
 
-              </li>
-              <li>
+              </li> -->
+           <!--    <li>
                 <a href class="auto">
                   <span class="pull-right text-muted">
                     <i class="fa fa-fw fa-angle-right text"></i>
                     <i class="fa fa-fw fa-angle-down text-active"></i>
                   </span>
-                  <b class="label bg-primary pull-right">2</b>
+                  <b class="label bg-primary pull-right"></b>
                   <i class="glyphicon glyphicon-list"></i>
                   <span>Projects</span>
                 </a>
@@ -216,7 +210,7 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
                     </a>
                   </li>
                 </ul>
-              </li>
+              </li> -->
               <li>
                 <a href class="auto">
                   <span class="pull-right text-muted">
@@ -237,39 +231,39 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
                       <span>Manage Assets Type</span>
                     </a>
                   </li>
-          <li>
-                    <a th:href="assetstype_manage">
+				  <li>
+                    <a th:href="@{firmware}">
                       <span>Firmware</span>
                     </a>
                   </li>
-          <li>
-                    <a th:href="assetstype_manage">
+				  <li>
+                    <a th:href="vendor">
                       <span>Vendor</span>
                     </a>
                   </li>
                 </ul>
               </li>
-              <li>
+            <!--   <li>
                 <a th:href="tickets_manage">
                   <i class="glyphicon glyphicon-tag"></i>
                   <span>Tickets</span>
                 </a>
-              </li>
-        <li>
+              </li> -->
+			  <li>
                 <a th:href="contract_manage">
                   <i class="fa fa-legal"></i></i>
-                  <span>Contrats</span>
+                  <span>Contracts</span>
                 </a>
               </li>
-        <li>
-                <a th:href="tickets_manage">
+			  <li>
+                <a th:href="expense">
                   <i class="glyphicon  glyphicon-usd"></i></i>
                   <span>Expenses</span>
                 </a>
               </li>
               <li>
                 <a th:href="request_manage" class="auto">
-        <span class="pull-right text-muted">
+				<span class="pull-right text-muted">
                     <i class="fa fa-fw fa-angle-right text"></i>
                     <i class="fa fa-fw fa-angle-down text-active"></i>
                   </span>
@@ -277,16 +271,19 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
                   <span>Request</span>
                 </a>
                  <ul class="nav nav-sub dk">
-                  <li class="s">
-                    <a th:href="internal_request_manage">
-                      <span>Internal Request</span>
+                 
+                   <li class="s">
+                    <a th:href="typeRequest">
+                      <span> Type  Request</span>
                     </a>
                   </li>
+                  
                   <li>
-                    <a th:href="external_request_manage">
-                      <span>External Request</span>
+                    <a th:href="request">
+                      <span> Request</span>
                     </a>
                   </li>
+                 
                 </ul>
 
                
@@ -297,16 +294,16 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
                 <span>Your Stuff</span>
               </li>  
               <li>
-                <a th:href="@{/logout}">
+                 <a th:href="@{profile}">
                   <i class="icon-user icon text-success-lter"></i>
-                  <b class="badge bg-success pull-right">30%</b>
+                  <b class="badge bg-success pull-right"></b>
                   <span>Profile</span>
                 </a>
-              </li>
+               </li>
               <li>
-                <a href>
-                  <i class="icon-question icon"></i>
-                  <span>Documents</span>
+                <a th:href="@{/logout}">
+                  <i class="icon-question icon"> </i>
+                   <span>Logout</span>
                 </a>
               </li>
             </ul>
@@ -321,7 +318,9 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
    <div class="col">
 	<div class="bg-light lter b-b wrapper-md">
 	 <h1 class="m-n font-bold h3">Manage Users
-	 <a style="margin-top:-5px;" data-toggle="modal"  data-target="#AddUser" class="btn btn-sm btn-primary pull-right"  role="button"><b class="glyphicon-plus pull"> </b> Add User </a></h1>
+	 	 <a style="margin-top:-5px;" data-toggle="modal"  data-target="#AddC" class="btn btn-sm btn-primary pull-right"  role="button"><b class="glyphicon-plus pull"> </b> Add User Customer </a>
+	 
+	 <a style="margin-top:-5px;" data-toggle="modal"  data-target="#AddUser" class="btn btn-sm btn-primary pull-right"  role="button"><b class="glyphicon-plus pull"> </b> Add Employee </a></h1>
 	</div><!-- <div class="panel-heading"><small><a th:href="index">Home</a> </small>><small> Manage users</small> </div>-->
 	<div class="wrapper bg-white b-b">
 	 <ul class="nav nav-pills nav-sm">
@@ -356,16 +355,16 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 		 </tr>
 		</thead>
 		<tbody>
-	 <tr sec:authorize="hasRole('ROLE_ADMIN')" data-expanded="true" th:each="u:${users}">
+	 <tr sec:authorize="hasRole('ROLE_ADMIN')" data-expanded="true" th:each="e:${uE}">
 	
-		  <td><img class="img-thumbnail" src="img/user.png" alt="logo_company" width="60px" height="60px"/></td>
-          <td th:text ="${u.firstName}+.+${u.lastName}"><center></center></td>
-          <td th:text = "${u.username}"><center><center><span class="label bg-danger pull-center m-t-md"></span></center></center></td>
-		  <td th:text = "${u.CIN}"></td>
+		  <td><img class="img-thumbnail" th:src="@{getPhoto(id=${e.username})}" width="60px" height="60px"/></td>
+          <td th:text ="${e.firstName}+.+${e.lastName}"><center></center></td>
+          <td th:text = "${e.username}"><center><center><span class="label bg-danger pull-center m-t-md"></span></center></center></td>
+		  <td th:text = "${e.CIN}"></td>
 		  <td>
 		  
-		   <span th:if="${u.actived == true}" class="label bg-success pull-center m-t-md">Enabled</span>
-   		   <span th:unless="${u.actived == true}" class="label bg-danger pull-center m-t-md">Disabled</span> </td>
+		   <span th:if="${e.actived == true}" class="label bg-success pull-center m-t-md">Enabled</span>
+   		   <span th:unless="${e.actived == true}" class="label bg-danger pull-center m-t-md">Disabled</span> </td>
 		  
 		  </td>
 		  
@@ -376,10 +375,10 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 		      <i class="glyphicon glyphicon-cog"></i> Action <span class="caret"></span>
 		     </button>
 		     <ul class="dropdown-menu">
-		      <li><a th:href="@{updateUserform(id=${u.username})}"style="margin-top:-5px;"  class="btn btn-sm btn-light" role="button">Update</a></li>
-		      <li><a th:href="@{desactiverUser(id=${u.username})}" style="margin-top:-5px;"  class="btn btn-sm btn-light" role="button">Desactivate</a></li>
-		      <li><a th:href="@{activerUser(id=${u.username})}" style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Activate</a></li>
-		      <li><a th:href="@{detailsUser(id=${u.username})}" style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Details</a></li>
+		      <li><a th:href="@{updateUserform(id=${e.username})}"style="margin-top:-5px;"  class="btn btn-sm btn-light" role="button">Update</a></li>
+		      <li><a th:href="@{desactiverUser(id=${e.username})}" style="margin-top:-5px;"  class="btn btn-sm btn-light" role="button">Desactivate</a></li>
+		      <li><a th:href="@{activerUser(id=${e.username})}" style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Activate</a></li>
+		      <li><a th:href="@{detailsUser(id=${e.username})}" style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Details</a></li>
 		     </ul>
 		    </div>
 		   </center>
@@ -396,26 +395,31 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 	   <table ui-jq="dataTable" ui-options="{aoColumns: [
 												
 												
-												{ mData: 'Name & Last Name' },
-												{ mData: 'Status' },
-												{ mData: 'password' },
-												{ mData: 'action' }]
+												{ pData: 'Name ' },
+												{ pData: 'Login' },
+												{ pData: 'Company' },
+												{ pData: 'Statut' },
+												
+												{ pData: 'actions' }]
 											}" class="table  b-t b-b">
 		<thead>
 		 <tr>
 	
 		  <th  style="width:16%"><center>Name & Last Name</center></th>
+		  
 		  <th  style="width:15%"><center>Status</center></th>
-	      <th  style="width:15%"><center>Password</center></th>
+	      <th  style="width:15%"><center>Company</center></th>
+	      <th  style="width:15%"><center>Statut</center></th>
+	      
 		  <th  style="width:15%"><center>Actions</center></th>
 		 </tr>
 		</thead>
 		<tbody>
-	 <tr sec:authorize="hasRole('ROLE_ADMIN')" data-expanded="true" th:each="u:${userC}">
+	 <tr sec:authorize="hasRole('ROLE_ADMIN')" data-expanded="true" th:each="u:${uC}">
 	
           <td th:text ="${u.firstName}+.+${u.lastName}"><center></center></td>
           <td th:text = "${u.username}"><center><center><span class="label bg-danger pull-center m-t-md"></span></center></center></td>
-		  <td th:text = "${u.CIN}"></td>
+		  <td th:text = "${u.customer.Name}"></td>
 		  <td  >  
 		   <span th:if="${u.actived == true}" class="label bg-success pull-center m-t-md">Enabled</span>
    		   <span th:unless="${u.actived == true}" class="label bg-danger pull-center m-t-md">Disabled</span> </td>
@@ -452,11 +456,18 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
   <div class="modal-content">
    <div class="modal-header" style="background-image:url(img/grf-bg.jpg);color:white;">
 	<button type="button" class="close pull-right" data-dismiss="modal">&times;</button>
-	<h1 class="m-n font-bold h3"> <b class="glyphicon-plus pull"> </b> Add User</h1>
+	<h1 class="m-n font-bold h3"> <b class="glyphicon-plus pull"> </b> Add Employee</h1>
    </div>
-   <form th:action="@{/saveUsers}" method="post" th:object="${addUser}">
+   <form th:action="@{/saveUsers}"  enctype="multipart/form-data"  method="post" th:object="${addUser}">
    <div class="modal-body">
 	<div class="row">
+	
+	
+	<label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Picture</b></label>
+     <div class="col-sm-8" style="margin: 5px 0px;">
+        <input type="file"  name="photo" class="form-control" id="input-id-1" >
+     </div>
+	
 	 <label class="col-sm-4 control-label" for="input-id-1" style="margin:5px 0px;"><b>Nom :</b></label>
 	 <div class="col-sm-8" style="margin:5px 0px;" >
 	  <input type="text" placeholder="Entry Nom" class="form-control" id="input-id-1"  required th:field=*{lastName}>
@@ -509,9 +520,72 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
  </form>
 </div>
 
+</div>
 
 
 
+<div class="modal fade" role="dialog" id="AddC" >
+ <div class="modal-dialog modal-lg" >
+  <div class="modal-content">
+   <div class="modal-header" style="background-image:url(img/grf-bg.jpg);color:white;">
+	<button type="button" class="close pull-right" data-dismiss="modal">&times;</button>
+	<h1 class="m-n font-bold h3"> <b class="glyphicon-plus pull"> </b> Add User Customer</h1>
+   </div>
+   <form th:action="@{/saveUsersC}" method="post" th:object="${addUserC}">
+   <div class="modal-body">
+	<div class="row">
+	
+	
+	
+	 <label class="col-sm-4 control-label" for="input-id-1" style="margin:5px 0px;"><b>Nom :</b></label>
+	 <div class="col-sm-8" style="margin:5px 0px;" >
+	  <input type="text" placeholder="Entry Nom" class="form-control" id="input-id-1"  required th:field=*{lastName}>
+	 </div>
+	 <label class="col-sm-4 control-label" for="input-id-1" style="margin:5px 0px;"><b>Prenom :</b></label>
+	 <div class="col-sm-8" style="margin:5px 0px;" >
+	  <input type="text" placeholder="Entry Prenom" class="form-control" id="input-id-1"  required th:field=*{firstName}>
+	 </div>
+	 
+	 
+	  <label class="col-sm-4 control-label" for="input-id-1" style="margin:5px 0px;"><b>Phone :</b></label>
+	 <div class="col-sm-8" style="margin:5px 0px;" >
+	  <input type="text" placeholder="Entry Phone" class="form-control" id="input-id-1"  required th:field=*{Phone}>
+	 </div>
+	 
+	
+	 <label class="col-sm-4 control-label" for="input-id-1" style="margin:5px 0px;"><b>Login :</b></label>
+	 <div class="col-sm-8" style="margin:5px 0px;" >
+	  <input type="email" placeholder="Entry Login" class="form-control" id="input-id-1"  required th:field=*{username}>
+	 </div>
+	 
+	  <label class="col-sm-4 control-label" for="input-id-1" style="margin:5px 0px;"><b>Company :</b></label>
+	 <div class="col-sm-8" style="margin:5px 0px;" >
+	 <select name ="Customer_ID" class="form-control" th:field="*{customer}" >
+	 <option th:each="c:${customer}" th:text="${c.Name}" th:value="${c.Customer_ID}" ></option>
+	 </select>
+	 </div>
+	 
+	   <label class="col-sm-4 control-label" for="input-id-1"  style="margin:5px 0px;"><b>Role :</b></label>
+	 <div class="col-sm-8" style="margin:5px 0px;" >
+	 <select name ="role" class="form-control" th:field="*{roles}">
+	 <option th:each="r:${allRoles}" th:text="${r.role}" th:value="${r.role}"></option>
+	 </select>
+	 </div>
+	 </div>
+	
+	
+	
+	<div class="modal-footer">
+    <button style="margin:0px;" class="btn m-b-xs btn-sm btn-primary btn-addon"><i class="glyphicon glyphicon-ok"></i>Save</button>
+	<button style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon" data-dismiss="modal"><i class="glyphicon glyphicon-remove"></i>Annuler</button>
+	
+   </div>
+  </div>
+ </div>
+ </form>
+</div>
+
+</div>
 
 
 <!-- footer -->

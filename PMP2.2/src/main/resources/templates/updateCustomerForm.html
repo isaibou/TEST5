@@ -21,13 +21,11 @@
  <div class="modal-dialog modal-lg" >
   <div class="modal-content">
     <h1 class="m-n font-bold h3"> Update Customer </h1>
-<<<<<<< HEAD
+
    </div>
-   <form th:action="@{admin/editCustomer}" enctype="multipart/form-data" method ="post" th:object="${customer}">
-=======
+
    </div>
    <form th:action="@{editCustomer}" enctype="multipart/form-data" method ="post" th:object="${customer}">
->>>>>>> branch 'master' of https://github.com/isaibou/TEST5
    <div class="modal-body">
 	<div class="row">
 	<label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b></b></label>
@@ -38,7 +36,6 @@
 	<label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Comapny Logo</b></label>
      <div class="col-sm-8" style="margin: 5px 0px;">
         <input type="file" name="picture" class="form-control" id="input-id-1">
-        <span class="text-danger" th:errors=*{Logo}></span>
         <img class="img-circle" th:src="@{getLogo(id=${customer.Customer_ID})}" width="100" height="100"/>
      </div>
 	 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Comapny Name</b></label>

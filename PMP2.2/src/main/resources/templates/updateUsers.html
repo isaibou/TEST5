@@ -22,9 +22,17 @@
   <div class="modal-content">
     <h1 class="m-n font-bold h3"> Update Users </h1>
    </div>
-    <form th:action="@{/editUsers}" method="post" th:object="${user}">
+    <form th:action="@{/editUsers}"  enctype="multipart/form-data"  method="post" th:object="${user}">
    <div class="modal-body">
 	<div class="row">
+	
+	<label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Picture</b></label>
+     <div class="col-sm-8" style="margin: 5px 0px;">
+        <input type="file"  name="photo" class="form-control" id="input-id-1" >
+        <img class="img-thumbnail" th:src="@{getPhoto(id=${user.username})}" width="60px" height="60px"/>
+        
+     </div>
+	
 	
 	 <label class="col-sm-4 control-label" for="input-id-1" style="margin:5px 0px;"><b>Nom :</b></label>
 	 <div class="col-sm-8" style="margin:5px 0px;" >

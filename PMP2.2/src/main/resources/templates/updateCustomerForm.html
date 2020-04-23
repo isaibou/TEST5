@@ -9,27 +9,21 @@
   <link rel="stylesheet" href="../libs/assets/font-awesome/css/font-awesome.min.css" type="text/css" />
   <link rel="stylesheet" href="../libs/assets/simple-line-icons/css/simple-line-icons.css" type="text/css" />
   <link rel="stylesheet" href="../libs/jquery/bootstrap/dist/css/bootstrap.css" type="text/css" />
-
   <link rel="stylesheet" href="css/font.css" type="text/css" />
   <link rel="stylesheet" href="css/app.css" type="text/css" />
-
 </head>
 <body>
 <div class="app" >
  <a href="" class="navbar-brand block m-t"><i class="fa fa-power-off"></i> <b>PowerM</b> </a>
- <div>
- <div class="modal-dialog modal-lg" >
-  <div class="modal-content">
-    <h1 class="m-n font-bold h3"> Update Customer </h1>
-
-   </div>
-
-   </div>
-   <form th:action="@{editCustomer}" enctype="multipart/form-data" method ="post" th:object="${customer}">
+<div>
+<div class="modal-dialog modal-lg" >
+ <div class="modal-content">
+  <h1 class="m-n font-bold h3"> Update Customer </h1>
+ </div>
+<form th:action="@{editCustomer}" enctype="multipart/form-data" method ="post" th:object="${customer}">
    <div class="modal-body">
 	<div class="row">
 	<label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b></b></label>
-
      <div class="col-sm-8" style="margin: 5px 0px;">
       <input type="hidden" class="form-control" id="input-id-1"  required th:field=*{Customer_ID}/>
       <span class="text-danger" th:errors=*{Name}></span>
@@ -39,7 +33,6 @@
         <input type="file" name="photo" class="form-control" id="input-id-1">
         <img class="img-circle" th:src="@{getLogo(id=${customer.Customer_ID})}" width="100" height="100"/>
      </div>
-
 	 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Comapny Name</b></label>
      <div class="col-sm-8" style="margin: 5px 0px;" >
       <input type="text" class="form-control" placeholder="Entry Name of Company" id="input-id-1"  required th:field=*{Name}/>

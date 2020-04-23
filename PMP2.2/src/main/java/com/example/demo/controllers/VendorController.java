@@ -43,7 +43,7 @@ public class VendorController {
 		List<Vendor> vendo = vendorRepository.findAll();
 		model.addAttribute("vend",vendo);
 		model.addAttribute("vendor", new Vendor());
-		
+		model.addAttribute("totalVendor", vendo.size());
 		return "vendor";
 	}
 	

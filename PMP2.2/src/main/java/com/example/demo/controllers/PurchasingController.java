@@ -38,7 +38,8 @@ public class PurchasingController {
 		model.addAttribute("purchasing", new Purchasing());
 		
 		//Afficher la liste déroulante pour récupérer la liste des customers
-		model.addAttribute("customer", customerRepository.findAll());		
+		model.addAttribute("customer", customerRepository.findAll());	
+		model.addAttribute("totalCPurchasing", purcha.size());
 		return "purchasing_customer_manage";
 	
 	}

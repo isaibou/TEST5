@@ -271,11 +271,7 @@
                         <!-- / user -->
 
                         <!-- nav -->
-<<<<<<< HEAD
 <nav ui-nav class="navi clearfix">
-=======
-              <nav ui-nav class="navi clearfix">
->>>>>>> branch 'master' of https://github.com/isaibou/TEST5
             <ul class="nav">
               <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
                 <span>Main</span>
@@ -495,7 +491,7 @@
                             <div class="row text-center">
                               <div class="col-sm-12">
                                 <div class="panel padder-v item">
-                                  <div class="h1 count text-info font-thin h1 pull-center">121</div>
+                                  <div class="h1 count text-info font-thin h1 pull-center" th:text="${totalVendor}" ></div>
                                   <span class="text-muted text-xs"><b>Total Vendors</b></span>
                                   <span class="bottom text-right w-full">
                                     <i class="glyphicon   glyphicon-tower text-muted m-r-sm"></i>
@@ -515,7 +511,7 @@
                             </div>
                           </div>
                         </div>
-                        <div class="panel panel-default">
+                        <div class="panel panel-default" style="margin: 15px 10px;">
                           <div class="table-responsive">
                             <table ui-jq="dataTable" ui-options="{
                               aoColumns: [
@@ -533,13 +529,13 @@
                               <thead>
                                 <tr>
                                   
-                                  <th  style="width:20%"><center>Vendor</center></th>
-                                  <th  style="width:20%"><center>Address</center></th>
-                                  <th  style="width:15%"><center>Phone</center></th>
-                                  <th  style="width:15%"><center>Industry</center></th>
+                                  <th  style="width:12%"><center>Vendor</center></th>
+                                  <th  style="width:12%"><center>Address</center></th>
+                                  <th  style="width:12%"><center>Phone</center></th>
+                                  <th  style="width:14%"><center>Industry</center></th>
                                   <th  style="width:20%"><center>Partnership Certificate</center></th>
-                                  <th  style="width:5%"><center>Status</center></th>
-                                  <th  style="width:15%"><center>Actions</center></th>
+                                  <th  style="width:10%"><center>Status</center></th>
+                                  <th  style="width:20%"><center>Actions</center></th>
                                 </tr>
                               </thead>
                               <tbody>

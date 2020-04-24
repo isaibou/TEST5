@@ -23,6 +23,8 @@
     <h1 class="m-n font-bold h3"> Update Users </h1>
    </div>
     <form th:action="@{/editUsers}"  enctype="multipart/form-data"  method="post" th:object="${user}">
+    	  <input type="hidden" placeholder="Entry Login" class="form-control" id="input-id-1"    th:field=*{username}>
+    
    <div class="modal-body">
 	<div class="row">
 	
@@ -54,10 +56,6 @@
 	 </div>
 	 
 	
-	 <label class="col-sm-4 control-label" for="input-id-1" style="margin:5px 0px;"><b>Login :</b></label>
-	 <div class="col-sm-8" style="margin:5px 0px;" >
-	  <input type="email" placeholder="Entry Login" class="form-control" id="input-id-1"   th:field=*{username}>
-	 </div>
 	 
 	  <label class="col-sm-4 control-label" for="input-id-1" style="margin:5px 0px;"><b>Company :</b></label>
 	 <div class="col-sm-8" style="margin:5px 0px;" >
@@ -68,7 +66,7 @@
 	 
 	   <label class="col-sm-4 control-label" for="input-id-1"  style="margin:5px 0px;"><b>Role :</b></label>
 	 <div class="col-sm-8" style="margin:5px 0px;" >
-	 <select name ="role" class="form-control" th:field="*{roles}">
+	 <select name ="role" class="form-control" multiple="multiple" th:field="*{roles}">
 	 <option th:each="r:${allRoles}" th:text="${r.role}" th:value="${r.role}"></option>
 	 </select>
 	 </div>

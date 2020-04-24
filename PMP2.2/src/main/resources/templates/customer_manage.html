@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html xmlns:th="http://www.thymeleaf.org"
 	  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
 	>
@@ -171,10 +170,10 @@
 										</li>
 										<li class="dropdown">
 												<span class="thumb-sm avatar pull-right m-t-n-sm m-b-n-sm m-l-sm">
-													<img src="img/user.png" alt="...">
+													<img class="img-thumbnail" th:src="@{getPhoto(id=${user.username})}" width="60px" height="60px">
 														<i class="on md b-white bottom"></i>
 													</span>
-													<span class="hidden-sm hidden-md">Walid.largou</span> <b class="caret"></b>
+													<span th:text ="   ${user.firstName   } + . +  ${user.LastName   }   "></span> <b class="caret"></b>
 												</a>
 												<!-- dropdown -->
 												<ul class="dropdown-menu animated fadeInRight w">
@@ -226,7 +225,7 @@
 												<div class="dropdown wrapper">
 													<a href="app.page.profile">
 														<span class="thumb-lg w-auto-folded avatar m-t-sm">
-															<img src="img/a0.jpg" class="img-full" alt="...">
+															<img class="img-thumbnail" th:src="@{getPhoto(id=${user.username})}" width="60px" height="60px">
 															</span>
 														</a>
 														<a href="#" data-toggle="dropdown" class="dropdown-toggle hidden-folded">
@@ -272,12 +271,23 @@
 												</div>
 												<!-- / user -->
 
+<<<<<<< HEAD
 												<!-- nav -->
 
 <nav ui-nav class="navi clearfix">
 
+=======
+<<<<<<< HEAD
+>>>>>>> branch 'master' of https://github.com/isaibou/TEST5
         <nav ui-nav class="navi clearfix">
+<<<<<<< HEAD
 
+=======
+=======
+												<!-- nav -->
+<nav ui-nav class="navi clearfix">
+>>>>>>> branch 'master' of https://github.com/isaibou/TEST5
+>>>>>>> branch 'master' of https://github.com/isaibou/TEST5
             <ul class="nav">
               <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
                 <span>Main</span>
@@ -401,6 +411,12 @@
                   <span>Tickets</span>
                 </a>
               </li> -->
+               <li>
+                <a th:href="RFP">
+                  <i class="glyphicon glyphicon-tag"></i>
+                  <span>RFP</span>
+                </a>
+              </li>
 			  <li>
                 <a th:href="contract_manage">
                   <i class="fa fa-legal"></i></i>
@@ -543,18 +559,17 @@
 												</div>
 												<div class="panel panel-default">
 													<div class="table-responsive" >
-														<table ui-jq="dataTable" ui-options="{
-															aoColumns: [
-															
-
-															{ mData: 'logo' 
-															 mData: 'engine' },
-															{ mData: 'browser' },
-															{ mData: 'platform' },
-															{ mData: 'version' },
-															{ mData: 'action' }
-															]
-															}" class="table table-striped b-t b-b">
+														<table  ui-jq="dataTable" ui-options="{aoColumns: [
+												
+												
+												{ pData: 'Name ' },
+												{ pData: 'Login' },
+													{ pData: 'Login' },
+												{ pData: 'Company' },
+												{ pData: 'Statut' },
+												
+												{ pData: 'actions' }]
+											}" class="table  b-t b-b">
 															<thead>
 																<tr >
 																    <th  style="width:15%"><center>Logo</center></th>
@@ -568,12 +583,17 @@
 															</thead>
 															<tbody>
 																<tr data-expanded="true" th:each="c:${cust}">
-																				<td>  <img class="img-thumbnail"  th:src="@{getLogo(id=${c.Customer_ID})}"  width="50" height="50" > </td>
-																
+																				<td>  <img class="img-thumbnail"  th:src="@{getLogo(id=${c.Customer_ID})}"  width="50" height="50" > </td>														
 				 													<td th:text ="${c.Name}" class="m-n font-thin h4 text-secondary"> </td>
 																		<td th:text ="${c.AdressCompany}" class="m-n font-thin h4 text-secondary"><center></center></td>
 																		<td th:text ="${c.Industry}" class="m-n font-thin h4 text-secondary"><center><center/></td>
-																		<td th:text ="${c.Status}" class="m-n font-thin h4 text-secondary"><center><span></span><center/></td>
+																		
+		<td th:switch="${c.Status}">
+    <span th:case="'Actif'" class="label bg-success pull-center m-t-md"  >Actif</span>
+    <span th:case="'Archived'"  class="label bg-danger pull-center m-t-md">Archived </span>
+    <div th:case="** "></div>
+     
+</td>
 																				<td>
 																					<center>
 																						<div class="btn-group dropdown">
@@ -582,7 +602,7 @@
 																								<li>
 																									<a th:href="@{updateCustomerform(id=${c.Customer_ID})}"  style="margin-top:-5px;"   class="btn btn-sm btn-light" role="button">Update</a>						</li>
 																								<li>
-																									<a th:href="@{archiverCustomer(id=${c.Customer_ID})}"  style="margin-top:-5px;" data-toggle="modal"  class="btn btn-sm btn-light" role="button">Archive</a>
+																									<a th:href="@{archiverCustomer(id=${c.Customer_ID})}" style="margin-top:-5px;" onClick="Message()"  class="btn btn-sm btn-light" role="button">Archive</a>
 																								</li>
 																								<li>
 																									<a th:href="@{detailCustomer(id=${c.Customer_ID})}" style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Detail</a>
@@ -611,10 +631,9 @@
  <div class="modal-dialog modal-lg" >
   <div class="modal-content">
    <div class="modal-header" style="background-image:url(img/grf-bg.jpg);color:white;">
-	<button type="button" class="close pull-right" data-dismiss="modal">&times;</button>
-    <h1 class="m-n font-bold h3"> <b class="glyphicon-plus pull"> </b> Add Company</h1>
+	<button type="button" class="close pull-right" data-dismiss="modal"> &times;</button>
+    <h1 class="m-n font-bold h3"> <b class="glyphicon-plus pull"> </b> Add Company </h1>
    </div>
-
    <form th:action="@{SaveCustomer}" enctype="multipart/form-data" method ="post" th:object="${customer}">
    <div class="modal-body">
 	<div class="row">
@@ -644,7 +663,7 @@
 	 </div>
 	  <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>CIO Email </b></label>
 	 <div class="col-sm-8" style="margin: 5px 0px;">
-	  <input type="email" placeholder="Entry Email CIO"class="form-control" id="input-id-1" required th:field=*{EmailCIO}/> 
+	  <input type="email" placeholder="Entry Email CIO" class="form-control" id="input-id-1" required th:field=*{EmailCIO}/> 
 	  <span class="text-danger" th:errors=*{EmailCIO}></span>
 	 </div>
 	  <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>CIO Phone </b></label>
@@ -707,6 +726,13 @@
 	 </div>   
 	 </div>
 	</div>
+	<span th:utext="${successMessage}" ></span>
+	<div class="alert alert-danger alert-dismissible col-sm-12" th:if="${(bindingResult != null && bindingResult.getAllErrors() != null)}">
+       <button type="button" class="close" data-dismiss="alert" aria-hidden="true"></button>
+       <ul th:each="data : ${bindingResult.getAllErrors()}">
+        <li th:text="${data.getObjectName() + ' :: ' + data.getDefaultMessage()}"></li>
+       </ul>
+    </div> 
    <div class="modal-footer">
 	<button style="margin:0px;" class="btn m-b-xs btn-sm btn-primary btn-addon"><i class="glyphicon glyphicon-ok"></i>Save</button>
 	<button style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon" data-dismiss="modal"><i class="glyphicon glyphicon-remove"></i>Annuler</button>		
@@ -715,7 +741,6 @@
   </div>
  </div>
 </div>
-<!-- <a onclick="return confirm('Save')"></a> -->
 									<!-- /content -->
 
 									<!-- footer -->
@@ -726,10 +751,21 @@
 										</div>
 									</footer>
 									<!-- / footer -->
+</div>
 
-								</div>
-
-
+<script type="text/javascript">
+   function Message() {
+       var msg="The Customer Archived";
+       alert(msg);
+   }
+</script>
+<script type="text/javascript">
+   function ConfirmMessage() {
+       if (confirm("Do you want save thid customer ?")) {
+          //
+       }
+   }
+</script>
 
 								<script src="../libs/jquery/jquery/dist/jquery.js"></script>
 								<script src="../libs/jquery/bootstrap/dist/js/bootstrap.js"></script>
@@ -818,9 +854,49 @@
 	  
  
 		</script>
-						
-
-
-	</body>
-						</html>
+	<script>
+	/*$(document).ready(function(){
+		$("#simpleUpload").click(function(){
+			$.ajax({
+				url:'/create',
+				success:function(){
+					alert("image upload complete");
+				}
+			});
+		});
+	
+		$("#simpleDownload").click(function(){
+			$.ajax({
+				url:'/download',
+				success:function(){
+					alert("image download complete");
+				}
+			});
+		});
+		
+	    $("#refreshFile").click(function(){
+			$.ajax({
+				url:'/listfiles',	
+			}).done(function(data){
+				console.dir(data);
+				var fileHTML = "";
+				for(file of data) {
+					fileHTML += '<li class="list-group-item"><img src="' + file.thumbnailLink + '">' + file.name + '<button onclick="deleteFile(\'' + file.id + '\')"> Delete</button></li>';
+				}
+				$("#listFiles").html(fileHTML);
+		  });
+	    });
+	
+	});
+	function deleteFile(id){
+		$.ajax({
+			url: '/deletefile/' + id,
+			method: 'DELETE'
+		}).done(function(){
+			alert('File has been deleted. Please refresh the list');
+		});
+	}*/
+	</script>					
+  </body>
+ </html>
 						

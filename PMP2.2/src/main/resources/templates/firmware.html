@@ -3,32 +3,24 @@
 <head>
 <meta charset="utf-8" />
 <title>Firmware</title>
-<meta name="description"
-	content="app, web app, responsive, responsive layout, admin, admin panel, admin dashboard, flat, flat ui, ui kit, AngularJS, ui route, charts, widgets, components" />
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, maximum-scale=1" />
-<link rel="stylesheet" href="../libs/assets/animate.css/animate.css"
-	type="text/css" />
-<link rel="stylesheet"
-	href="../libs/assets/font-awesome/css/font-awesome.min.css"
-	type="text/css" />
-<link rel="stylesheet"
-	href="../libs/assets/simple-line-icons/css/simple-line-icons.css"
-	type="text/css" />
-<link rel="stylesheet"
-	href="../libs/jquery/bootstrap/dist/css/bootstrap.css" type="text/css" />
-<link href='../libs/packages/core/main.css' rel='stylesheet' />
-<link href='../libs/packages/daygrid/main.css' rel='stylesheet' />
-<link href='../libs/packages/timegrid/main.css' rel='stylesheet' />
-<link href='../libs/packages/list/main.css' rel='stylesheet' />
-<script src='../libs/packages/core/main.js'></script>
-<script src='../libs/packages/interaction/main.js'></script>
-<script src='../libs/packages/daygrid/main.js'></script>
-<script src='../libs/packages/timegrid/main.js'></script>
-<script src='../libs/packages/list/main.js'></script>
+<meta name="description" content="app, web app, responsive, responsive layout, admin, admin panel, admin dashboard, flat, flat ui, ui kit, AngularJS, ui route, charts, widgets, components" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+<link rel="stylesheet" href="/../libs/assets/animate.css/animate.css" type="text/css" />
+<link rel="stylesheet" href="/../libs/assets/font-awesome/css/font-awesome.min.css" type="text/css" />
+<link rel="stylesheet" href="/../libs/assets/simple-line-icons/css/simple-line-icons.css" type="text/css" />
+<link rel="stylesheet" href="../libs/jquery/bootstrap/dist/css/bootstrap.css" type="text/css" />
+<link href='/../libs/packages/core/main.css' rel='stylesheet' />
+<link href='/../libs/packages/daygrid/main.css' rel='stylesheet' />
+<link href='/../libs/packages/timegrid/main.css' rel='stylesheet' />
+<link href='/../libs/packages/list/main.css' rel='stylesheet' />
+<script src='/../libs/packages/core/main.js'></script>
+<script src='/../libs/packages/interaction/main.js'></script>
+<script src='/../libs/packages/daygrid/main.js'></script>
+<script src='/../libs/packages/timegrid/main.js'></script>
+<script src='/../libs/packages/list/main.js'></script>
+<link rel="stylesheet" href="/css/font.css" type="text/css" />
+<link rel="stylesheet" href="/css/app.css" type="text/css" />
 
-<link rel="stylesheet" href="css/font.css" type="text/css" />
-<link rel="stylesheet" href="css/app.css" type="text/css" />
 <script>
 	document
 			.addEventListener(
@@ -257,11 +249,12 @@
 								</div>
 							</div>
 						</div> <!-- / dropdown --></li>
-					<li class="dropdown"><span
-						class="thumb-sm avatar pull-right m-t-n-sm m-b-n-sm m-l-sm">
-							<img src="img/user.png" alt="..."> <i
-							class="on md b-white bottom"></i>
-					</span> <span class="hidden-sm hidden-md">Walid.largou</span> <b
+					<li class="dropdown">
+						<span class="thumb-sm avatar pull-right m-t-n-sm m-b-n-sm m-l-sm">
+													<img class="img-thumbnail" th:src="@{getPhoto(id=${user.username})}" width="60px" height="60px">
+														<i class="on md b-white bottom"></i>
+													</span>
+													<span th:text ="   ${user.firstName   } + . +  ${user.LastName   }   "></span> <b
 						class="caret"></b> </a> <!-- dropdown -->
 						<ul class="dropdown-menu animated fadeInRight w">
 							<li class="wrapper b-b m-b-sm bg-light m-t-n-xs">
@@ -326,12 +319,25 @@
 						<div class="line dk hidden-folded"></div>
 					</div>
 					<!-- / user -->
+<<<<<<< HEAD
 					<!-- nav -->
 
 <nav ui-nav class="navi clearfix">
+=======
+<<<<<<< HEAD
+					<!-- nav -->
+>>>>>>> branch 'master' of https://github.com/isaibou/TEST5
 
 				        <nav ui-nav class="navi clearfix">
+<<<<<<< HEAD
 
+=======
+=======
+					<!-- nav -->
+<nav ui-nav class="navi clearfix">
+
+>>>>>>> branch 'master' of https://github.com/isaibou/TEST5
+>>>>>>> branch 'master' of https://github.com/isaibou/TEST5
             <ul class="nav">
               <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
                 <span>Main</span>
@@ -387,8 +393,7 @@
                   <i class="glyphicon glyphicon-calendar icon"></i>
                   <span>TimeSheet</span>
                 </a>
-
-              </li> -->
+                </li> -->
            <!--    <li>
                 <a href class="auto">
                   <span class="pull-right text-muted">
@@ -455,6 +460,12 @@
                   <span>Tickets</span>
                 </a>
               </li> -->
+               <li>
+                <a th:href="RFP">
+                  <i class="glyphicon glyphicon-tag"></i>
+                  <span>RFP</span>
+                </a>
+              </li>
 			  <li>
                 <a th:href="contract_manage">
                   <i class="fa fa-legal"></i></i>
@@ -512,13 +523,26 @@
                    <span>Logout</span>
                 </a>
               </li>
+<<<<<<< HEAD
             </ul>
 
           </nav>
 					<!-- nav -->
+=======
+<<<<<<< HEAD
+            </ul>
+>>>>>>> branch 'master' of https://github.com/isaibou/TEST5
 
           </nav>					<!-- nav -->
+<<<<<<< HEAD
 
+=======
+=======
+            </ul>
+          </nav>
+					<!-- nav -->
+>>>>>>> branch 'master' of https://github.com/isaibou/TEST5
+>>>>>>> branch 'master' of https://github.com/isaibou/TEST5
 					<!-- aside footer -->
 					<!-- / aside footer -->
 				</div>
@@ -693,39 +717,6 @@
 			</div>
 		</footer>
 		<!-- / footer -->
-
-
-		<div class="modal fade" role="dialog" id="Detail">
-			<div class="modal-dialog modal-lg">
-				<div class="modal-content">
-					<div class="modal-header"
-						style="background-image: url(img/grf-bg.jpg); color: white;">
-						<button type="button" class="close pull-right"
-							data-dismiss="modal">&times;</button>
-						<h1 class="m-n font-bold h3">Information Firmware</h1>
-					</div>
-					<div class="modal-body">
-						<p>
-							<span class="m-n font-thin h3 text-black">Firmware Name:</span> <span
-								ng-repeat="nom in firmware"> {{ firmware.nomFirmware }} </br>
-							</span> <span class="m-n font-thin h3 text-black">Asset Name:</span> <span
-								ng-repeat="nom in asset"> {{ asset.nomAsset }}</span></br> <span
-								class="m-n font-thin h3 text-black">Release Date :</span> <span
-								ng-repeat="releaseDate in firmware"> {{
-								frimware.releaseDateFrimware }}</span></br> <span
-								class="m-n font-thin h3 text-black">Description :</span> <span
-								ng-repeat="description in contract"> {{
-								contract.descriptionContract }} </br>
-							</span>
-						</p>
-					</div>
-					<div class="modal-footer">
-						<button class="btn m-b-xs btn-sm btn-primary btn-addon"
-							data-dismiss="modal">Return</button>
-					</div>
-				</div>
-			</div>
-		</div>
 	</div>
 	<script src="../libs/jquery/jquery/dist/jquery.js"></script>
 	<script src="../libs/jquery/bootstrap/dist/js/bootstrap.js"></script>

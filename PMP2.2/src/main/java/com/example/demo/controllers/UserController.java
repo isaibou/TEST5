@@ -145,7 +145,6 @@ if (!(file.isEmpty())) {
 	
 	Users user = userRepository.getOne(id);
 	user.setActived(true);
-	user.setIsCustomer(false);
 
 	userRepository.save(user);	
 		
@@ -175,9 +174,20 @@ if (!(file.isEmpty())) {
 		model.addAttribute("customer", u.getCustomer());
 		model.addAttribute("allRoles", u.getRoles());	
 		
-		u.setActived(true);
-		userRepository.save(u);
+	
 		return "updateUsers";
+	}
+	
+	@RequestMapping(value ="/updateUserformC" )
+	public String updateUsersC(String id , Model model) {
+		
+		Users u = userRepository.getOne(id);
+		model.addAttribute("user", u);
+		model.addAttribute("customer", u.getCustomer());
+		model.addAttribute("allRoles", u.getRoles());	
+		
+	
+		return "updateUsersCustomer";
 	}
 	
 	@RequestMapping(value ="/detailsUser" )
@@ -192,13 +202,33 @@ if (!(file.isEmpty())) {
 		return "detailsUsers";
 	}
 	
+	@RequestMapping(value ="/detailsUserC" )
+	public String detailsUserC(String id , Model model) {
+		
+		Users u = userRepository.getOne(id);
+		model.addAttribute("user", u);
+		model.addAttribute("customer", u.getCustomer());
+		model.addAttribute("roro", u.getRoles());	
+		
+	
+		return "detailsUsersCustomer";
+	}
+	
 
 	@RequestMapping(value ="/editUsers" )
-	public String editUsers(Users u, Model model) {
+	public String editUsers(Users u, Model model,@RequestParam(name = "photo") MultipartFile file) throws IllegalStateException, IOException {
 	
 		
+		u.setActived(true);
 		u.setIsCustomer(false);
 		userRepository.save(u);
+		
+if (!(file.isEmpty())) {
+			
+			u.setPicture((file.getOriginalFilename()));
+
+			file.transferTo(new File(images+u.getUsername()));
+		}
 		return "redirect:/users";
 	}
 	
@@ -220,6 +250,7 @@ if (!(file.isEmpty())) {
 		String login = authentication.getName();
 		Users u = userRepository.getOne(login);
 		model.addAttribute("user",u);
+		System.out.println(u.getPhone());
 		
 		return "profile";
 	}
@@ -233,10 +264,11 @@ if (!(file.isEmpty())) {
 	}
 	
 	@RequestMapping(value ="/changePassword" )
-	public String changePassword(String password , Authentication auth) {
-	 String  login = 	auth.getName();
+	public String changePassword(String password ,@RequestParam(name="Phone") String phone, Authentication auth) {
+	 String  login = 	auth.getName(); 
 		Users u = userRepository.getOne(login);
 		u.setPassword(encoder.encode(password));
+		u.setPhone(phone);
 	
 		userRepository.save(u);
 		return "redirect:/profile";

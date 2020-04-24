@@ -22,12 +22,16 @@
   <div class="modal-content">
     <h1 class="m-n font-bold h3"> Update Users </h1>
    </div>
-    <form th:action="@{/editUsersC}"    method="post" th:object="${user}">
-    <input type="hidden" placeholder="Entry Login" class="form-control" id="input-id-1"    th:field=*{username}>
-    
+    <form th:action="@{/editUsers}"  enctype="multipart/form-data"  method="post" th:object="${user}">
    <div class="modal-body">
 	<div class="row">
 	
+	<label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Picture</b></label>
+     <div class="col-sm-8" style="margin: 5px 0px;">
+        <input type="file"  name="photo" class="form-control" id="input-id-1" >
+        <img class="img-thumbnail" th:src="@{getPhoto(id=${user.username})}" width="60px" height="60px"/>
+        
+     </div>
 	
 	
 	 <label class="col-sm-4 control-label" for="input-id-1" style="margin:5px 0px;"><b>Nom :</b></label>
@@ -39,7 +43,10 @@
 	  <input type="text" placeholder="Entry Prenom" class="form-control" id="input-id-1"   th:field=*{firstName}>
 	 </div>
 	 
-	
+	 	 <label class="col-sm-4 control-label" for="input-id-1" style="margin:5px 0px;"><b>CIN :</b></label>
+	 <div class="col-sm-8" style="margin:5px 0px;" >
+	  <input type="text" placeholder="Entry CIN" class="form-control" id="input-id-1"   th:field=*{CIN}>
+	 </div>
 	 
 	  <label class="col-sm-4 control-label" for="input-id-1" style="margin:5px 0px;"><b>Phone :</b></label>
 	 <div class="col-sm-8" style="margin:5px 0px;" >
@@ -47,6 +54,11 @@
 	 </div>
 	 
 	
+	 <label class="col-sm-4 control-label" for="input-id-1" style="margin:5px 0px;"><b>Login :</b></label>
+	 <div class="col-sm-8" style="margin:5px 0px;" >
+	  <input type="email" placeholder="Entry Login" class="form-control" id="input-id-1"   th:field=*{username}>
+	 </div>
+	 
 	  <label class="col-sm-4 control-label" for="input-id-1" style="margin:5px 0px;"><b>Company :</b></label>
 	 <div class="col-sm-8" style="margin:5px 0px;" >
 	 <select name ="Customer_ID" class="form-control" th:field="*{customer}" >

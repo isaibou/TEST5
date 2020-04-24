@@ -22,7 +22,7 @@
   <div class="modal-content">
     <h1 class="m-n font-bold h3"> Update Vendor </h1>
    </div>
-   <form th:action="@{editVendor}" method ="post" th:object="${vendor}">
+   <form th:action="@{editVendor}" enctype="multipart/form-data"  method ="post" th:object="${vendor}">
    <div class="modal-body">
 	<div class="row">
 	<label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b></b></label>
@@ -63,7 +63,7 @@
 	 </div>
    <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Partnership Certificate</b></label>
   <div class="col-sm-4">
-    <input type="file" placeholder="Entry Partnership Certificate File"class="form-control" id="input-id-1" required th:field=*{PartnershipCertificate}>
+    <input type="file" placeholder="Entry Partnership Certificate File" name="certificate" class="form-control" id="input-id-1" required>
   </div>
    
   </div>

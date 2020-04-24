@@ -233,10 +233,10 @@ document.addEventListener('DOMContentLoaded', function() {
 										<li class="dropdown">
 											
 												<span class="thumb-sm avatar pull-right m-t-n-sm m-b-n-sm m-l-sm">
-													<img src="img/user.png" alt="...">
+													<img class="img-thumbnail" th:src="@{getPhoto(id=${user.username})}" width="60px" height="60px">
 														<i class="on md b-white bottom"></i>
 													</span>
-													<span class="hidden-sm hidden-md">Walid.largou</span> <b class="caret"></b>
+													<span th:text ="   ${user.firstName   } + . +  ${user.LastName   }   "></span> <b class="caret"></b>
 												</a>
 												<!-- dropdown -->
 												<ul class="dropdown-menu animated fadeInRight w">
@@ -408,6 +408,12 @@ document.addEventListener('DOMContentLoaded', function() {
                   <span>Tickets</span>
                 </a>
               </li> -->
+               <li>
+                <a th:href="RFP">
+                  <i class="glyphicon glyphicon-tag"></i>
+                  <span>RFP</span>
+                </a>
+              </li>
 			  <li>
                 <a th:href="contract_manage">
                   <i class="fa fa-legal"></i></i>
@@ -533,6 +539,10 @@ document.addEventListener('DOMContentLoaded', function() {
 		   <td><center><div class="btn-group dropdown"><button class="btn btn-default btn-xs" data-toggle="dropdown">
 		     <i class="glyphicon glyphicon-cog"></i> Action <span class="caret"></span></button>
 		     <ul class="dropdown-menu">
+		      <li><li><a th:href="@{'/rfpfile/'+${r.RequestFile}}"  style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Download RequestFile</a></li>
+														                                               </li>
+	 		      <li><li><a th:href="@{'/rfpfile/'+${r.ResponseFile}}"  style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Download ResponseFile</a></li>
+														                                               
 		     <li><a th:href="@{updateRFP(id=${r.RFP_ID})}"  style="margin-top:-5px;"   class="btn btn-sm btn-light" role="button">Update</a></li></li> 
 		    <li><a th:href="@{archiverRFP(id=${r.RFP_ID})}"  style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Archive</a></li>
 		     <li><a th:href="@{detailRFP(id=${r.RFP_ID})}" style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Detail</a></li></ul></div></center></td>
@@ -558,7 +568,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	    <button type="button" class="close pull-right" data-dismiss="modal">&times;</button>
 	    <h1 class="m-n font-bold h3"> <b class="glyphicon-plus pull"> </b> Add RFP</h1>
 	   </div>	   
-    <form th:action="@{SaveRFP}" method ="post" th:object="${rf}"> 
+    <form th:action="@{SaveRFP}" enctype="multipart/form-data"   method ="post" th:object="${rf}"> 
      <div class="modal-body">
 	    <div class="row">
 	    <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b></b></label>
@@ -602,11 +612,11 @@ document.addEventListener('DOMContentLoaded', function() {
          </div>
 		 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Request File</b></label>
 		 <div class="col-sm-8">
-          <input type="file" placeholder="Upload Preview File" class="form-control" id="input-id-1" required th:field=*{RequestFile}/>
+          <input type="file" placeholder="Upload Preview File" name="request" class="form-control" id="input-id-1"  />
          </div>
 		 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Response File</b></label>
 		 <div class="col-sm-8">
-          <input type="file" placeholder="Upload Preview File" class="form-control" id="input-id-1" required th:field=*{ResponseFile}/>
+          <input type="file" placeholder="Upload Preview File" name="response" class="form-control" id="input-id-1" />
          </div>
 		  <div class="modal-footer">
 		   <button style="margin:0px;" class="btn m-b-xs btn-sm btn-primary btn-addon"><i class="glyphicon glyphicon-ok"></i>Save</button>

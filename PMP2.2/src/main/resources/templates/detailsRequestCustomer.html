@@ -15,10 +15,10 @@
 <body>
 <div class="app" >
  <a href="" class="navbar-brand block m-t"><i class="fa fa-power-off"></i> <b>PowerM</b> </a>
- <div th:action="@{detailPurchasing}" method ="post" th:object="${user}">
+ <div >
   <div class="modal-dialog modal-lg" >
    <div class="modal-content">
-    <h1 class="m-n font-bold h3"> Informations Users </h1>
+    <h1 class="m-n font-bold h3"> Informations Request Customer </h1>
    </div>
    
    <div  class="modal-body">
@@ -33,52 +33,30 @@
 		   <th  style="width:80%"><center>Content </center></th>
 		  </tr>
 	  </thead>
-	  <tbody th:each="u:${user}">
+	  <tbody th:each="e:${eR}">
 		  <tr data-expanded="true">
-		   <td style="color:#23b7e5;"><center>First Name </center></td>
-		   <td th:text ="${u.firstName}" class="m-n font-thin h4 text-secondary"><center><b></b></center></td>
+		   <td style="color:#23b7e5;"><center>Type request </center></td>
+		   <td th:text ="${e.typeExternalRequest.NameTypeExternelRequest}" class="m-n font-thin h4 text-secondary"><center><b></b></center></td>
 		  </tr>
 		  <tr >
-		   <td style="color:#23b7e5;"><center> Last Name </center></td>
-		   <td th:text ="${u.lastName}" class="m-n font-thin h4 text-secondary"><center><b></b></center></td>
+		   <td style="color:#23b7e5;"><center> Company </center></td>
+		   <td th:text ="${e.userCustomer.customer.Name}" class="m-n font-thin h4 text-secondary"><center><b></b></center></td>
 		  </tr>
 		   <tr >
-		   <td style="color:#23b7e5;"><center>CIN </center></td>
-		   <td th:text ="${u.CIN}" class="m-n font-thin h4 text-secondary"><center></center></td>
+		   <td style="color:#23b7e5;"><center>Description </center></td>
+		   <td th:text ="${e.description}" class="m-n font-thin h4 text-secondary"><center></center></td>
 		   </tr>
 		   <tr >
-		   <td style="color:#23b7e5;"><center>Username </center></td>
-		   <td th:text ="${u.username}" class="m-n font-thin h4 text-secondary"><center><span></span></center></td>
+		   <td style="color:#23b7e5;"><center>Commentaire </center></td>
+		   <td th:text ="${e.Commentaire}" class="m-n font-thin h4 text-secondary"><center><span></span></center></td>
 		   </tr>
-		    <tr >
-		   <td style="color:#23b7e5;"><center>Phone </center></td>
-		   <td th:text ="${u.Phone}" class="m-n font-thin h4 text-secondary"><center><span></span></center></td>
-		   </tr>
-		   <tr >
-		   <td style="color:#23b7e5;"><center>Status </center></td>
-		   <td th:text ="${u.actived}" class="m-n font-thin h4 text-secondary"><center><span></span></center></td>
-		   </tr>
-		   
-		   <tr> 
-		   <td style="color:#23b7e5;"><center>Company </center></td>
-		   <!-- comment appeler a le customer qui j ai choisi a partir du la liste déroulante des customer  -->
-		   <td   th:text="${u.customer.Name}"  class="m-n font-thin h4 text-secondary"><center></center></td>
-		   </tr>  
-		   
-		     <tr> 
-		   <td style="color:#23b7e5;"><center>Roles </center></th>
-	   <td> <select name ="roro" class="m-n font-thin h4 text-secondary">
-			 <option th:each="r:${roro}" class="m-n font-thin h4 text-secondary"  th:text="${r.role}" ></option>
-			 </select>
-			 </td>
-			  </tr> 
-	 
+		 
 	  </tbody>
      </table>
 	</div>
    </div>
    <div class="modal-footer">
-     <button class="btn m-b-xs btn-sm btn-primary btn-addon"><a th:href="users">Return</a></button>
+     <button class="btn m-b-xs btn-sm btn-primary btn-addon"><a th:href="request">Return</a></button>
    </div>
   </div>  
  </div>

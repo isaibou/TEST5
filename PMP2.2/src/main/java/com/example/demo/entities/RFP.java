@@ -22,14 +22,17 @@ public class RFP implements Serializable{
 	private Integer RFP_ID;
 	private String Title;
 	private String Description;
+	
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date RealaseDate;
+	
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date ReponseDateTime;
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date NotificationDate;
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date RequestOfExecutionDate;
+	
 	private String RequestFile;
 	private String ResponseFile;
 	private String StatusRFP;

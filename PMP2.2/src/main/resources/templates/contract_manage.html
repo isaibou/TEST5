@@ -235,10 +235,10 @@ document.addEventListener('DOMContentLoaded', function() {
 										<li class="dropdown">
 											
 												<span class="thumb-sm avatar pull-right m-t-n-sm m-b-n-sm m-l-sm">
-													<img src="img/user.png" alt="...">
+													<img class="img-thumbnail" th:src="@{getPhoto(id=${user.username})}" width="60px" height="60px">
 														<i class="on md b-white bottom"></i>
 													</span>
-													<span class="hidden-sm hidden-md">Walid.largou</span> <b class="caret"></b>
+													<span th:text ="   ${user.firstName   } + . +  ${user.LastName   }   "></span> <b class="caret"></b>
 												</a>
 												<!-- dropdown -->
 												<ul class="dropdown-menu animated fadeInRight w">
@@ -411,6 +411,12 @@ document.addEventListener('DOMContentLoaded', function() {
                   <span>Tickets</span>
                 </a>
               </li> -->
+               <li>
+                <a th:href="RFP">
+                  <i class="glyphicon glyphicon-tag"></i>
+                  <span>RFP</span>
+                </a>
+              </li>
 			  <li>
                 <a th:href="contract_manage">
                   <i class="fa fa-legal"></i></i>

@@ -44,11 +44,14 @@ public class ExternalRequest implements Serializable{
 
 
 
-	public ExternalRequest(String description, Boolean status, Date submitedDate) {
+	public ExternalRequest(String description, String commentaire, Boolean status, Date submitedDate) {
 		super();
 		Description = description;
 		Status = status;
 		SubmitedDate = submitedDate;
+		Commentaire = commentaire;
+
+		
 	}
 
 
@@ -122,6 +125,24 @@ public class ExternalRequest implements Serializable{
 
 	public void setUserCustomer(Users userCustomer) {
 		this.userCustomer = userCustomer;
+	}
+
+
+
+
+
+
+	public String getCommentaire() {
+		return Commentaire;
+	}
+
+
+
+
+
+
+	public void setCommentaire(String commentaire) {
+		Commentaire = commentaire;
 	}
 
 

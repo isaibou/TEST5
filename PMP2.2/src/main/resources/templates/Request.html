@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="utf-8" />
-<title>Type  Request</title>
+<title> Request</title>
 <meta name="description" content="app, web app, responsive, responsive layout, admin, admin panel, admin dashboard, flat, flat ui, ui kit, AngularJS, ui route, charts, widgets, components" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 <link rel="stylesheet" href="../libs/assets/animate.css/animate.css" type="text/css" />
@@ -13,6 +13,8 @@
 <link rel="stylesheet" href="css/app.css" type="text/css" />
 <style>
 .hidetext { -webkit-text-security: square; }
+
+
 </style>
 </head>
 <body>
@@ -29,7 +31,8 @@
   <i class="fa fa-power-off"></i>
   <span class="hidden-folded m-l-xs">PowerM</span>
  </a><!-- / brand -->
-</div><!-- / navbar header --><!-- navbar collapse -->
+</div>
+  <!-- / navbar header --><!-- navbar collapse -->
 <div class="collapse pos-rlt navbar-collapse box-shadow bg-white-only"><!-- buttons -->
  <div class="nav navbar-nav hidden-xs">
   <a href="#" class="btn no-shadow navbar-btn" ui-toggle-class="app-aside-folded" target=".app">
@@ -79,11 +82,11 @@
    </div><!-- / dropdown -->
   </li>
   <li class="dropdown">
-   
    	<span class="thumb-sm avatar pull-right m-t-n-sm m-b-n-sm m-l-sm">
-     <img src="img/user.png" alt="..."><i class="on md b-white bottom"></i>
-    </span>
-    <span class="hidden-sm hidden-md">Walid.largou</span><b class="caret"></b>
+													<img class="img-thumbnail" th:src="@{getPhoto(id=${user.username})}" width="60px" height="60px">
+														<i class="on md b-white bottom"></i>
+													</span>
+													<span th:text ="   ${user.firstName   } + . +  ${user.LastName   }   "></span><b class="caret"></b>
    </a><!-- dropdown -->
    <ul class="dropdown-menu animated fadeInRight w">
    	<li class="wrapper b-b m-b-sm bg-light m-t-n-xs">
@@ -123,11 +126,9 @@
 	</div>
 	<div class="line dk hidden-folded"></div>
    </div><!-- / user --><!-- nav -->
-<<<<<<< HEAD
-<nav ui-nav class="navi clearfix">
-=======
+
+
                 <nav ui-nav class="navi clearfix">
->>>>>>> branch 'master' of https://github.com/isaibou/TEST5
             <ul class="nav">
               <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
                 <span>Main</span>
@@ -251,6 +252,12 @@
                   <span>Tickets</span>
                 </a>
               </li> -->
+               <li>
+                <a th:href="RFP">
+                  <i class="glyphicon glyphicon-tag"></i>
+                  <span>RFP</span>
+                </a>
+              </li>
 			  <li>
                 <a th:href="contract_manage">
                   <i class="fa fa-legal"></i></i>
@@ -387,12 +394,14 @@
           <td th:text="${i.userEmployee.lastName} + . + ${i.userEmployee.firstName}" ><center><center></center></center></td>
           <td th:text ="${i.SubmitedDate}"><center></center></td>
 		  
-		  <td>
-		  
-		   <span th:if="${i.Status == true}" class="label bg-success pull-center m-t-md">Answered</span>
-   		   <span th:unless="${i.Status == true}" class="label bg-danger pull-center m-t-md"> Waiting</span> 
-   		   </td>
-		  
+		
+		 
+		 	<td th:switch="${i.Status}">
+    <span th:case="'Answered'" class="label bg-success pull-center m-t-md" >Answered</span>
+    <span th:case="'Waiting'" class="label bg-danger pull-center m-t-md" >Waiting </span>
+    <div th:case="'Confirmed'" class="label bg-danger pull-center m-t-md" >Confirmed</div>
+     
+</td>
 		 
 		  
 		  <td>
@@ -402,7 +411,18 @@
 		      <i class="glyphicon glyphicon-cog"></i> Action <span class="caret"></span>
 		     </button>
 		     <ul class="dropdown-menu">
+		     <li>
+		       
+				<a th:href="@{updateRequestEmployee(id=${i.InternalRequest_ID})}"  style="margin-top:-5px;"   class="btn btn-sm btn-light" role="button">Update</a>						</li>
+																								<li>
+					
+		      <li><a th:href="@{confirm(id=${i.InternalRequest_ID})}" style="margin-top:-5px;"  class="btn btn-sm btn-light" role="button">Confirm</a></li>
+		           <li>
 		      <li><a th:href="@{answer(id=${i.InternalRequest_ID})}" style="margin-top:-5px;"  class="btn btn-sm btn-light" role="button">Answer</a></li>
+		           <li>
+			<a th:href="@{detailsRequestEmployee(id=${i.InternalRequest_ID})}" style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Details</a>
+																								</li>
+		      
 		     </ul>
 		    </div>
 		   </center>
@@ -481,6 +501,8 @@
    		   </td>
 		  
 		 
+		 
+		 
 		  
 		  <td>
 		   <center>
@@ -489,7 +511,13 @@
 		      <i class="glyphicon glyphicon-cog"></i> Action <span class="caret"></span>
 		     </button>
 		     <ul class="dropdown-menu">
+		       <li>
+				<a th:href="@{updateRequestCustomer(id=${e.ExternalRequest_ID})}"  style="margin-top:-5px;"   class="btn btn-sm btn-light" role="button">Update</a>						</li>
+																								<li>
 		      <li><a th:href="@{answerC(id=${e.ExternalRequest_ID})}" style="margin-top:-5px;"  class="btn btn-sm btn-light" role="button">Answer</a></li>
+		      <li>
+			<a th:href="@{detailsRequestCustomer(id=${e.ExternalRequest_ID})}" style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Details</a>
+																								</li>
 		     </ul>
 		    </div>
 		   </center>

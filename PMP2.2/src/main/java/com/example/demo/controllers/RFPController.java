@@ -46,12 +46,13 @@ public class RFPController {
 	public String AllRFP(Model model ) {
 		
 		List<RFP> rf = rfpRepository.findAll();
+		RFP rfp ;
 		model.addAttribute("rfp", rf);
 		model.addAttribute("rf", new RFP());
 		
 		//Afficher la liste déroulante pour récupérer la liste des customers
 		model.addAttribute("customer", customerRepository.findAll());
-		
+		model.addAttribute("totalRFP", rf.size());
 		return "RFP";
 	}
 	
@@ -131,14 +132,62 @@ if (!(responseFile.isEmpty())) {
 			
 	}
 	
+	@RequestMapping(value ="/newRFP" )
+	private String newRFP( Model model, Integer id ) {
+	
+		RFP rfp = rfpRepository.getOne(id);
+		rfp.setStatusRFP("New");
+		rfpRepository.save(rfp);
+	    System.out.println(rfp.getStatusRFP());
+	    
+	    
+			return "redirect:/RFP";	
+			
+	}
+	
+	@RequestMapping(value ="/submitedRFP" )
+	private String submitedRFP( Model model, Integer id ) {
+	
+		RFP rfp = rfpRepository.getOne(id);
+		rfp.setStatusRFP("Submited");
+		rfpRepository.save(rfp);
+	    System.out.println(rfp.getStatusRFP());
+		
+			return "redirect:/RFP";	
+			
+	}
+	
+	@RequestMapping(value ="/wonRFP" )
+	private String wonRFP( Model model, Integer id ) {
+	
+		RFP rfp = rfpRepository.getOne(id);
+		rfp.setStatusRFP("Won");
+		rfpRepository.save(rfp);
+	    System.out.println(rfp.getStatusRFP());
+		
+			return "redirect:/RFP";	
+			
+	}
+	
+	@RequestMapping(value ="/lostRFP" )
+	private String lostRFP( Model model, Integer id ) {
+	
+		RFP rfp = rfpRepository.getOne(id);
+		rfp.setStatusRFP("Lost");
+		rfpRepository.save(rfp);
+	    System.out.println(rfp.getStatusRFP());
+		
+			return "redirect:/RFP";	
+			
+	}
+	
+	
 	@RequestMapping(value ="/detailRFP")
 	public String detailRFP( Model model, Integer id ) {
 		
 		 RFP	rfp = rfpRepository.getOne(id);
 		 model.addAttribute("RFP",rfp);
 		 rfp.getCustomer().getName();
-		 
-	
 		 //Affichage du customer qui j ai choisir a partir de la liste dérulante dans détail
 		model.addAttribute("customer",  rfp.getCustomer());
 		 //System.out.println(Purchasing.getFirstName());
@@ -146,10 +195,6 @@ if (!(responseFile.isEmpty())) {
 			return "detailRFP";
 			
 	}
-	
-	
-	
-
 	
 	@RequestMapping(value="/rfpfile/{fileName}")
 	@ResponseBody

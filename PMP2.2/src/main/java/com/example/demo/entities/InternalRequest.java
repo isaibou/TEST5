@@ -26,7 +26,7 @@ public class InternalRequest implements Serializable{
 	private Integer InternalRequest_ID;
 	@Column(length=30)
 	private String Description;
-	private boolean Status; 
+	private String Status; 
 	@DateTimeFormat()
 	private Date SubmitedDate;
 	
@@ -47,13 +47,21 @@ public class InternalRequest implements Serializable{
 	}
 	
 	
-	
-	public InternalRequest(String description, boolean status, Date submitedDate) {
+
+
+
+
+	public InternalRequest(String description, String status, Date submitedDate, String commentaire,
+			TypeInternalRequest typeInternalRequest) {
 		super();
 		Description = description;
 		Status = status;
 		SubmitedDate = submitedDate;
+		Commentaire = commentaire;
+		this.typeInternalRequest = typeInternalRequest;
 	}
+
+
 
 
 
@@ -76,14 +84,23 @@ public class InternalRequest implements Serializable{
 
 	
 
-	public boolean isStatus() {
+
+	public String getStatus() {
 		return Status;
 	}
 
 
-	public void setStatus(boolean status) {
+
+
+
+
+	public void setStatus(String status) {
 		Status = status;
 	}
+
+
+
+
 
 
 	public Date getSubmitedDate() {
@@ -108,6 +125,18 @@ public class InternalRequest implements Serializable{
 
 	public void setUserEmployee(Users userEmployee) {
 		this.userEmployee = userEmployee;
+	}
+
+
+
+	public String getCommentaire() {
+		return Commentaire;
+	}
+
+
+
+	public void setCommentaire(String commentaire) {
+		Commentaire = commentaire;
 	}
 
 	

@@ -170,10 +170,10 @@
 										</li>
 										<li class="dropdown">
 												<span class="thumb-sm avatar pull-right m-t-n-sm m-b-n-sm m-l-sm">
-													<img src="img/user.png" alt="...">
+													<img class="img-thumbnail" th:src="@{getPhoto(id=${user.username})}" width="60px" height="60px">
 														<i class="on md b-white bottom"></i>
 													</span>
-													<span class="hidden-sm hidden-md">Walid.largou</span> <b class="caret"></b>
+													<span th:text ="   ${user.firstName   } + . +  ${user.LastName   }   "></span> <b class="caret"></b>
 												</a>
 												<!-- dropdown -->
 												<ul class="dropdown-menu animated fadeInRight w">
@@ -225,7 +225,7 @@
 												<div class="dropdown wrapper">
 													<a href="app.page.profile">
 														<span class="thumb-lg w-auto-folded avatar m-t-sm">
-															<img src="img/a0.jpg" class="img-full" alt="...">
+															<img class="img-thumbnail" th:src="@{getPhoto(id=${user.username})}" width="60px" height="60px">
 															</span>
 														</a>
 														<a href="#" data-toggle="dropdown" class="dropdown-toggle hidden-folded">
@@ -270,8 +270,6 @@
 													<div class="line dk hidden-folded"></div>
 												</div>
 												<!-- / user -->
-
-												<!-- nav -->
 <nav ui-nav class="navi clearfix">
             <ul class="nav">
               <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
@@ -572,7 +570,13 @@
 				 													<td th:text ="${c.Name}" class="m-n font-thin h4 text-secondary"> </td>
 																		<td th:text ="${c.AdressCompany}" class="m-n font-thin h4 text-secondary"><center></center></td>
 																		<td th:text ="${c.Industry}" class="m-n font-thin h4 text-secondary"><center><center/></td>
-																		<td th:text ="${c.Status}" class="m-n font-thin h4 text-secondary"><center><span></span><center/></td>
+																		
+		<td th:switch="${c.Status}">
+    <span th:case="'Actif'" class="label bg-success pull-center m-t-md"  >Actif</span>
+    <span th:case="'Archived'"  class="label bg-danger pull-center m-t-md">Archived </span>
+    <div th:case="** "></div>
+     
+</td>
 																				<td>
 																					<center>
 																						<div class="btn-group dropdown">

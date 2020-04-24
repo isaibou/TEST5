@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.entities.*;
 import com.example.demo.repository.ExternalRequestRepository;
@@ -30,6 +31,7 @@ public class ExternalRequestController {
 		Users u =  userRepository.getOne(login);
 		external.setUserCustomer(u);
 		external.setSubmitedDate(new Date());
+		external.setCommentaire("");
 		
 	
 		externalRequestRepository.save(external);
@@ -50,6 +52,49 @@ public class ExternalRequestController {
 		//externalRequestRepository.save(eR);
 		return"redirect:/request";
 	}
+	
+	@RequestMapping(value ="/updateRequestCustomer" )
+	public String updateRequestCustomer(Integer id , Model model) {
+		
+		ExternalRequest  eR = externalRequestRepository.getOne(id);
+		model.addAttribute("customerR", eR);
+		//model.addAttribute("customer", u.getCustomer());
+		//model.addAttribute("allRoles", u.getRoles());	
+		
+	
+		return "updateRequestCustomer";
+	}
+	
+	@RequestMapping(value ="/editCustomerRequest" )
+	public String editCustomerRequest(Integer id , Model model, @RequestParam(name="commentaire")String commentaire) {
+		
+	ExternalRequest eR = externalRequestRepository.getOne(id);
+	String previousCom= eR.getCommentaire();
+	String NomCompany =  eR.getUserCustomer().getCustomer().getName();
+	String com = NomCompany + " :  " + commentaire;
+	String newCom = previousCom + "  -----------------------------------------------        " + com; 
+	eR.setCommentaire(newCom);
+	externalRequestRepository.save(eR);
+		
+	
+		return "redirect:/request";
+	}
+	
+	@RequestMapping(value ="/detailsRequestCustomer" )
+	public String detailsCustomerRequest(Integer id , Model model) {
+		
+		ExternalRequest eR = externalRequestRepository.getOne(id);
+		model.addAttribute("eR", eR);
+		
+		
+	
+		return "detailsRequestCustomer";
+	}
+	
+	
+	
+	
+	
 	}
 
 

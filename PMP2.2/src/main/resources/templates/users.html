@@ -81,11 +81,11 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
    </div><!-- / dropdown -->
   </li>
   <li class="dropdown">
-   
    	<span class="thumb-sm avatar pull-right m-t-n-sm m-b-n-sm m-l-sm">
-     <img src="img/user.png" alt="..."><i class="on md b-white bottom"></i>
-    </span>
-    <span class="hidden-sm hidden-md"th:text ="   ${user.firstName   } + . +  ${user.LastName   }   "></span><b class="caret"></b>
+													<img class="img-thumbnail" th:src="@{getPhoto(id=${user.username})}" width="60px" height="60px">
+														<i class="on md b-white bottom"></i>
+													</span>
+													<span th:text ="   ${user.firstName   } + . +  ${user.LastName   }   "></span><b class="caret"></b>
    </a><!-- dropdown -->
    <ul class="dropdown-menu animated fadeInRight w">
    	<li class="wrapper b-b m-b-sm bg-light m-t-n-xs">
@@ -125,9 +125,7 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 	</div>
 	<div class="line dk hidden-folded"></div>
    </div><!-- / user --><!-- nav -->
-
-
-         <nav ui-nav class="navi clearfix">
+<nav ui-nav class="navi clearfix">
             <ul class="nav">
               <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
                 <span>Main</span>
@@ -507,14 +505,14 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 	 
 	  <label class="col-sm-4 control-label" for="input-id-1" style="margin:5px 0px;"><b>Company :</b></label>
 	 <div class="col-sm-8" style="margin:5px 0px;" >
-	 <select name ="Customer_ID" class="form-control" th:field="*{customer}" >
+	 <select name ="Customer_ID" class="form-control" multiple="multiple" th:field="*{customer}" >
 	 <option th:each="c:${customer}" th:text="${c.Name}" th:value="${c.Customer_ID}" ></option>
 	 </select>
 	 </div>
 	 
 	   <label class="col-sm-4 control-label" for="input-id-1"  style="margin:5px 0px;"><b>Role :</b></label>
 	 <div class="col-sm-8" style="margin:5px 0px;" >
-	 <select name ="role" class="form-control" th:field="*{roles}">
+	 <select name ="role" class="form-control m-b" th:field="*{roles}">
 	 <option th:each="r:${allRoles}" th:text="${r.role}" th:value="${r.role}"></option>
 	 </select>
 	 </div>

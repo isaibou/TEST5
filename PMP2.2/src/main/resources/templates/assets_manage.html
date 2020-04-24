@@ -140,11 +140,11 @@
                     </li>
                     <li class="dropdown">
                       
-                        <span class="thumb-sm avatar pull-right m-t-n-sm m-b-n-sm m-l-sm">
-                          <img src="img/user.png" alt="...">
-                            <i class="on md b-white bottom"></i>
-                          </span>
-                          <span class="hidden-sm hidden-md">Walid.largou</span> <b class="caret"></b>
+                        	<span class="thumb-sm avatar pull-right m-t-n-sm m-b-n-sm m-l-sm">
+													<img class="img-thumbnail" th:src="@{getPhoto(id=${user.username})}" width="60px" height="60px">
+														<i class="on md b-white bottom"></i>
+													</span>
+													<span th:text ="   ${user.firstName   } + . +  ${user.LastName   }   "></span><b class="caret"></b>
                         </a>
                         <!-- dropdown -->
                         <ul class="dropdown-menu animated fadeInRight w">
@@ -242,7 +242,7 @@
           <!-- / user -->
 
           <!-- nav -->
-          <nav ui-nav class="navi clearfix">
+<nav ui-nav class="navi clearfix">
             <ul class="nav">
               <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
                 <span>Main</span>
@@ -613,14 +613,7 @@ function drawChart() {
 	        th:value ="${a.AssetType_ID}"></option>
 	      </select>
 	       </div>
-	       <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Firmware</b></label>
-          <div class="col-sm-8" style="margin: 5px 0px;">
-            <select name="frimware_ID" class="form-control m-b" th:field=*{frimware}>
-	      <option th:each ="f:${frimware}" 
-	        th:text="${f.name}"
-	        th:value ="${f.frimware_ID}"></option>
-	      </select>
-          </div>
+	       
           <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Project</b></label>
           <div class="col-sm-8" style="margin: 5px 0px;">
             <select name="Project_ID" class="form-control m-b" th:field=*{project}>

@@ -1,9 +1,8 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">   
 <head>
   <meta charset="utf-8" />
-  <!-- detail -->
-  <title>Detail Frimware</title>
+  <title>Details Users</title>
   <meta name="description" content="app, web app, responsive, responsive layout, admin, admin panel, admin dashboard, flat, flat ui, ui kit, AngularJS, ui route, charts, widgets, components" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <link rel="stylesheet" href="../libs/assets/animate.css/animate.css" type="text/css" />
@@ -16,11 +15,12 @@
 <body>
 <div class="app" >
  <a href="" class="navbar-brand block m-t"><i class="fa fa-power-off"></i> <b>PowerM</b> </a>
- <div th:action="@{detailFrimware}" method ="post" th:object="${frimware}">
+ <div >
   <div class="modal-dialog modal-lg" >
    <div class="modal-content">
-    <h1 class="m-n font-bold h3"> Informations Frimware </h1>
+    <h1 class="m-n font-bold h3"> Informations Request Customer </h1>
    </div>
+   
    <div  class="modal-body">
     <div style="background-color:white;margin:10px; padding:10px;">
 	 <table  ui-options="{aoColumns: [
@@ -33,34 +33,30 @@
 		   <th  style="width:80%"><center>Content </center></th>
 		  </tr>
 	  </thead>
-	  <tbody th:each="f:${frimware}">
+	  <tbody th:each="i:${iR}">
 		  <tr data-expanded="true">
-		   <td style="color:#23b7e5;"><center>Name </center></th>
-		   <td th:text ="${f.name}" class="m-n font-thin h4 text-secondary"><center><b></b></center></td>
+		   <td style="color:#23b7e5;"><center>Type request </center></td>
+		   <td th:text ="${i.typeInternalRequest.NameTypeInternalRequest}" class="m-n font-thin h4 text-secondary"><center><b></b></center></td>
 		  </tr>
 		  <tr >
-		   <td style="color:#23b7e5;"><center>Description </center></th>
-		   <td th:text ="${f.description}" class="m-n font-thin h4 text-secondary"><center><b></b></center></td>
+		   <td style="color:#23b7e5;"><center> Company </center></td>
+		   <td th:text ="${i.userEmployee.customer.Name}" class="m-n font-thin h4 text-secondary"><center><b></b></center></td>
 		  </tr>
 		   <tr >
-		   <td style="color:#23b7e5;"><center>Release Date </center></th>
-		   <td th:text ="${f.releaseDate}" class="m-n font-thin h4 text-secondary"><center></center></td>
+		   <td style="color:#23b7e5;"><center>Description </center></td>
+		   <td th:text ="${i.description}" class="m-n font-thin h4 text-secondary"><center></center></td>
 		   </tr>
 		   <tr >
-		   <td style="color:#23b7e5;"><center>Status </center></th>
-		   <td th:text ="${f.Status}" class="m-n font-thin h4 text-secondary"><center><span></span></center></td>
-		   </tr> 
-		   <td style="color:#23b7e5;"><center>Aseet Type </center></th>
-		   <!-- Comment j ai appeler  le customer qui j ai choisi a partir du la liste déroulante des customers  -->
-		   <td th:each ="a:${frimware.assettype}"  
-		    th:text="${a.Name}"  class="m-n font-thin h4 text-secondary"><center></center></td>
-		   </tr> 
+		   <td style="color:#23b7e5;"><center>Commentaire </center></td>
+		   <td th:text ="${i.Commentaire}" class="m-n font-thin h4 text-secondary"><center><span></span></center></td>
+		   </tr>
+		 
 	  </tbody>
      </table>
 	</div>
    </div>
    <div class="modal-footer">
-     <button class="btn m-b-xs btn-sm btn-primary btn-addon"><a th:href="firmware">Return</a></button>
+     <button class="btn m-b-xs btn-sm btn-primary btn-addon"><a th:href="request">Return</a></button>
    </div>
   </div>  
  </div>

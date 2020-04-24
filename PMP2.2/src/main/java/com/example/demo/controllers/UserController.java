@@ -250,6 +250,7 @@ if (!(file.isEmpty())) {
 		String login = authentication.getName();
 		Users u = userRepository.getOne(login);
 		model.addAttribute("user",u);
+		System.out.println(u.getPhone());
 		
 		return "profile";
 	}
@@ -263,10 +264,11 @@ if (!(file.isEmpty())) {
 	}
 	
 	@RequestMapping(value ="/changePassword" )
-	public String changePassword(String password , Authentication auth) {
-	 String  login = 	auth.getName();
+	public String changePassword(String password ,@RequestParam(name="Phone") String phone, Authentication auth) {
+	 String  login = 	auth.getName(); 
 		Users u = userRepository.getOne(login);
 		u.setPassword(encoder.encode(password));
+		u.setPhone(phone);
 	
 		userRepository.save(u);
 		return "redirect:/profile";

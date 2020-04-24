@@ -6,6 +6,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -16,8 +17,10 @@ import com.example.demo.entities.Assets;
 import com.example.demo.entities.Customer;
 import com.example.demo.entities.Project;
 import com.example.demo.entities.Purchasing;
+import com.example.demo.entities.Users;
 import com.example.demo.repository.CustomerRepository;
 import com.example.demo.repository.PurchisingRepository;
+import com.example.demo.repository.UserRepository;
 
 @Controller
 public class PurchasingController {
@@ -28,10 +31,14 @@ public class PurchasingController {
 	
 	@Autowired
 	private PurchisingRepository purchisingRepository;
+	@Autowired
+	private UserRepository userRepository;
 	
 	
 	@RequestMapping(value="/purchasing_customer_manage")
-	public String allPurString(Model model, Purchasing purchasing) {
+	public String allPurString(Model model, Authentication auth, Purchasing purchasing) {
+		Users u = userRepository.getOne(auth.getName());
+		model.addAttribute("user", u);
 		
 		List<Purchasing> purcha = purchisingRepository.findAll();
 		model.addAttribute("purch",purcha);

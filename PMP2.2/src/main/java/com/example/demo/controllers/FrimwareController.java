@@ -7,6 +7,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -20,8 +21,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.example.demo.entities.Customer;
 import com.example.demo.entities.Frimware;
 import com.example.demo.entities.Project;
+import com.example.demo.entities.Users;
 import com.example.demo.repository.AssetTypeRepository;
 import com.example.demo.repository.FrimwareRepository;
+import com.example.demo.repository.UserRepository;
 
 @Controller
 public class FrimwareController {
@@ -31,11 +34,16 @@ public class FrimwareController {
 	
 	@Autowired
 	private FrimwareRepository frimwareRepository;
+	@Autowired
+	private UserRepository userRepository;
 	
 
 	
 	@RequestMapping(value = "/firmware")
-	public String AllFrimware(Model model, Frimware frimware) {
+	public String AllFrimware(Model model, Frimware frimware, Authentication auth) {
+		
+		Users u = userRepository.getOne(auth.getName());
+		model.addAttribute("user", u);
 		
 		List<Frimware> frime = frimwareRepository.findAll();
 		model.addAttribute("frim", frime);
@@ -54,6 +62,8 @@ public class FrimwareController {
 		
 		
 		addFrim.setStatus("Actif");
+		
+		//System.out.println("name ="+addFrim.getAssettype().get(0).getName());
 	
 		frimwareRepository.save(addFrim);
 		return "redirect:/firmware";

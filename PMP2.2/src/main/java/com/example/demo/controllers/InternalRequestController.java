@@ -10,6 +10,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.entities.Customer;
 import com.example.demo.entities.ExternalRequest;
@@ -43,10 +44,14 @@ public class InternalRequestController {
 	UserRepository userRepository;
 
 	DateFormat df = new SimpleDateFormat("yyyy-	MM-dd");
+	
+	
 
 	
 	@RequestMapping(value="/request")
-	public String AllCustomer(Model model, Customer customer) {
+	public String AllCustomer(Model model, Customer customer, Authentication auth) {
+		Users u = userRepository.getOne(auth.getName());
+		model.addAttribute("user", u);
 		
 		List<InternalRequest> intAll = internalRequestrepository.findAll();
 		List<ExternalRequest> extAll = externalRequestrepository.findAll();
@@ -74,6 +79,7 @@ public class InternalRequestController {
 		Users u =  userRepository.getOne(login);
 		internal.setUserEmployee(u);
 		internal.setSubmitedDate(new Date());
+		internal.setStatus("Waiting");
 		
 	
 		internalRequestrepository.save(internal);
@@ -85,16 +91,67 @@ public class InternalRequestController {
 	public String answer( Integer  id ) {
 		
 		InternalRequest  iR = internalRequestrepository.getOne(id);
-		iR.setStatus(true);
+		iR.setStatus("Answered");
 		
 		
-	internalRequestrepository.delete(iR);
-		//internalRequestrepository.save(iR);
+		internalRequestrepository.save(iR);
+		return"redirect:/request";
+	}
+	
+	
+
+	@RequestMapping(value="/confirm")
+	public String confirm( Integer  id ) {
+		
+		InternalRequest  iR = internalRequestrepository.getOne(id);
+		iR.setStatus("Confirmed");
+		
+		
+		internalRequestrepository.save(iR);
 		return"redirect:/request";
 	}
 	
 	
 	
+	@RequestMapping(value ="/updateRequestEmployee" )
+	public String updateRequestEmployee(Integer id , Model model) {
+		
+		InternalRequest  iR = internalRequestrepository.getOne(id);
+		model.addAttribute("employeeR", iR);
+		//model.addAttribute("customer", u.getCustomer());
+		//model.addAttribute("allRoles", u.getRoles());	
+		
+	
+		return "updateRequestEmployee";
+	}
+	
+	@RequestMapping(value ="/editEmployeeRequest" )
+	public String editEmployeeRequest(Integer id , Model model, @RequestParam(name="commentaire")String commentaire) {
+		
+	InternalRequest iR = internalRequestrepository.getOne(id);
+	String previousCom= iR.getCommentaire();
+	String NomCompany =  iR.getUserEmployee().getCustomer().getName();
+	String com = NomCompany + " :  " + commentaire;
+	String newCom = previousCom + "  -----------------------------------------------        " + com; 
+	iR.setCommentaire(newCom);
+	iR.setStatus("Confirmed");
+	internalRequestrepository.save(iR);
+	
+		
+	
+		return "redirect:/request";
+	}
+	
+	@RequestMapping(value ="/detailsRequestEmployee" )
+	public String detailsRequestEmployee(Integer id , Model model) {
+		
+		InternalRequest iR = internalRequestrepository.getOne(id);
+		model.addAttribute("iR", iR);
+		
+		
+	
+		return "detailsRequestEmployee";
+	}
 	
 	
 	

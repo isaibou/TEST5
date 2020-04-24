@@ -13,7 +13,9 @@ import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
+import org.springframework.http.MediaType;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -25,23 +27,33 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import com.example.demo.entities.Customer;
+import com.example.demo.entities.Users;
 import com.example.demo.repository.CustomerRepository;
+import com.example.demo.repository.UserRepository;
 import com.example.demo.service.customerService;
 
 @Controller
 public class CustomerController {
 
+	
 	@Autowired
-	private CustomerRepository customerrepository; 
+	private CustomerRepository customerrepository;
+	@Autowired
+	private UserRepository userRepository;
 
-	@Autowired
 	private customerService customerService;
 
 	@Value("${dir.logo}")
 	private String images;
 
 	@RequestMapping(value = "/customer_manage")
-	public String AllCustomer(Model model) {
+	public String AllCustomer(Model model, Authentication auth) {
+		Users u = userRepository.getOne(auth.getName());
+		model.addAttribute("user", u);
+		
+
+
+	
 		List<Customer> custs = customerrepository.findAll();
 		model.addAttribute("cust", custs);
 		model.addAttribute("customer", new Customer());

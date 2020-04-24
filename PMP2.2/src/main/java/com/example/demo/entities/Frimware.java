@@ -50,23 +50,8 @@ public class Frimware implements Serializable{
 		return assettype;
 	}
 
-	@ManyToMany
-	private List<Assets> assets = new ArrayList<Assets>(); 
-
-	@ManyToMany
-	@JoinTable(name = "assets_frimware",
-			joinColumns = @JoinColumn(name = "frimware_ID"),
-			inverseJoinColumns = @JoinColumn(name = "Assets_ID"))
-	private Set<Assets> asset;
-	
-	public List<Assets> getAssets() {
-		return assets;
-	}
-
-
-
 	public void setAssettype(List<AssetType> assettype) {
-		this.assets = assets;
+		this.assettype = assettype;
 	}
 
 
@@ -77,15 +62,6 @@ public class Frimware implements Serializable{
 		//this.releaseDate = new Date();
 	}
 	
-	
-
-	public Frimware(Date releaseDate, String name, String description, String status) {
-		super();
-		this.name = name;
-		this.releaseDate = releaseDate;
-		this.description = description;
-		this.Status = status;
-	}
 
 
 

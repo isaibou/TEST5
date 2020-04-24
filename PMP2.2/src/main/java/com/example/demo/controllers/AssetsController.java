@@ -6,6 +6,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -17,6 +18,7 @@ import com.example.demo.repository.AssetRepository;
 import com.example.demo.repository.AssetTypeRepository;
 import com.example.demo.repository.FrimwareRepository;
 import com.example.demo.repository.ProjetRepository;
+import com.example.demo.repository.UserRepository;
 
 
 @Controller
@@ -33,10 +35,15 @@ public class AssetsController {
 	
 	@Autowired
 	private AssetRepository assetRepository;
+	@Autowired
+	private UserRepository userRepository;
 	
 	//@Secured(value = "ROLE_MANAGER")
 	@RequestMapping(value="/assets_manage")
-	public String allAsset(Model model, Assets asset) {
+	public String allAsset(Model model, Assets asset, Authentication auth) {
+		
+		Users u = userRepository.getOne(auth.getName());
+		model.addAttribute("user", u);
 		
 		List<Assets> assets = assetRepository.findAll();
 		model.addAttribute("asset", assets);

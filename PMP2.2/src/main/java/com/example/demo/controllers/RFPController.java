@@ -11,6 +11,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -25,8 +26,10 @@ import com.example.demo.entities.AssetType;
 import com.example.demo.entities.Frimware;
 import com.example.demo.entities.Purchasing;
 import com.example.demo.entities.RFP;
+import com.example.demo.entities.Users;
 import com.example.demo.repository.CustomerRepository;
 import com.example.demo.repository.RFPRepository;
+import com.example.demo.repository.UserRepository;
 
 @Controller
 public class RFPController {
@@ -36,14 +39,17 @@ public class RFPController {
 	
 	@Autowired
 	private RFPRepository rfpRepository;
-	
-
+	@Autowired
+	private UserRepository userRepository;
 
 	@Value("${dir.RFP}")
 	private String rfpFile;
 	
 	@RequestMapping(value = "/RFP")
-	public String AllRFP(Model model ) {
+	public String AllRFP(Model model , Authentication auth) {
+		
+		Users u = userRepository.getOne(auth.getName());
+		model.addAttribute("user", u);
 		
 		List<RFP> rf = rfpRepository.findAll();
 		RFP rfp ;
@@ -229,11 +235,6 @@ if (!(responseFile.isEmpty())) {
 		}
 		
 	}
-	
-
-	
-
-	
 	
 	}
 

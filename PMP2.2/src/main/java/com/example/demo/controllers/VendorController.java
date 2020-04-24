@@ -11,6 +11,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -23,8 +24,10 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.example.demo.entities.Assets;
 import com.example.demo.entities.Purchasing;
+import com.example.demo.entities.Users;
 import com.example.demo.entities.Vendor;
 import com.example.demo.repository.AssetRepository;
+import com.example.demo.repository.UserRepository;
 import com.example.demo.repository.VendorRepository;
 
 @Controller
@@ -32,13 +35,18 @@ public class VendorController {
 	
 	@Autowired
 	private VendorRepository vendorRepository;
+	@Autowired
+	private UserRepository userRepositoty;
 	
 
 	@Value("${dir.vendor}")
 	private String certificate;
 	
 	@RequestMapping(value="/vendor")
-	public String vendor(Model model, Vendor vendor) {
+	public String vendor(Model model, Vendor vendor, Authentication auth) {
+		
+		Users u = userRepositoty.getOne(auth.getName());
+		model.addAttribute("user", u);
 		
 		List<Vendor> vendo = vendorRepository.findAll();
 		model.addAttribute("vend",vendo);

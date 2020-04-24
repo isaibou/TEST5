@@ -327,11 +327,11 @@
 					</div>
 					<!-- / user -->
 					<!-- nav -->
-<<<<<<< HEAD
+
 <nav ui-nav class="navi clearfix">
-=======
+
 				        <nav ui-nav class="navi clearfix">
->>>>>>> branch 'master' of https://github.com/isaibou/TEST5
+
             <ul class="nav">
               <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
                 <span>Main</span>
@@ -513,12 +513,12 @@
                 </a>
               </li>
             </ul>
-<<<<<<< HEAD
+
           </nav>
 					<!-- nav -->
-=======
+
           </nav>					<!-- nav -->
->>>>>>> branch 'master' of https://github.com/isaibou/TEST5
+
 					<!-- aside footer -->
 					<!-- / aside footer -->
 				</div>
@@ -663,7 +663,7 @@
      <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Asset Type </b></label>
 	      <div class="col-sm-8" style="margin: 5px 0px;">
 	 <!-- ici on met une boucle sur le customer pour avoir récupérer la liste des vendor  -->
-	     <select name="AssetType_ID"  class="form-control m-b" th:field=*{assettype}>
+	     <select name="AssetType_ID" multiple="multiple" class="form-control m-b" th:field=*{assettype}>
 	     <option th:each ="a:${assettype}" 
 	      th:text="${a.name}"
 	      th:value ="${a.AssetType_ID}"></option>

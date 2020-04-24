@@ -53,18 +53,8 @@ public class AssetType implements Serializable{
 		this.assets = assets;
 	}
 
-	@ManyToMany
-	private List<Frimware> firmware;
 	
-	public List<Frimware> getFirmware() {
-		return firmware;
-	}
-
-	public void setFirmware(List<Frimware> firmware) {
-		this.firmware = firmware;
-	}
-
-	@ManyToMany(mappedBy = "assets")
+	@ManyToMany(mappedBy = "assetType")
 	private List<Frimware> frimware;
 
 	@ManyToMany

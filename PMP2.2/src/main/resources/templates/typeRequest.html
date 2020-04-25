@@ -122,6 +122,7 @@
 	  <li><a th:href="page_signin">Logout</a></li>
      </ul><!-- / dropdown -->
 	</div>
+
 	<div class="line dk hidden-folded"></div>
 
    </div><!-- / user --><!-- nav -->
@@ -130,8 +131,13 @@
 <nav ui-nav class="navi clearfix">
 
 
+
+	<div class="line dk hidden-folded"></div>
+
    </div><!-- / user --><!-- nav -->
 <nav ui-nav class="navi clearfix">
+
+
 
             <ul class="nav">
               <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
@@ -254,12 +260,17 @@
                 <a th:href="tickets_manage">
                   <i class="glyphicon glyphicon-tag"></i>
                   <span>Tickets</span>
+
                 </a>
 
               </li> -->
               <li>
 
               </li> 
+
+                </a>
+              </li> -->
+
               <li>
                 <a th:href="RFP">
                   <i class="glyphicon glyphicon-tag"></i>
@@ -349,13 +360,16 @@
     </div>
 	 <div class="col-sm-12" style="padding:20px 15px;margin:0px 2px;border-top:2px #19a9d5 solid;background-color:white;">
 	  <div class="panel panel-default">
-       <div class="table-responsive">
-		<table  class="table  b-t b-b">
+       <div class="table-responsive" style="background-color:white;margin:10px; padding:10px;">
+		<table ui-jq="dataTable" ui-options="{aoColumns: [
+											  { mData: 'browser' },
+											  { mData: 'action' }
+											]}" class="table  b-t b-b">
 		<thead>
 		 <tr> 
 		    
-		  <th  ><center>Nom</center></th>
-	   	  <th  ><center>Actions</center></th>
+		  <th  style="width:50%" ><center><b>Nom</b></center></th>
+	   	  <th  style="width:50%" ><center>Actions</center></th>
 		 </tr>
 		 
 		</thead>
@@ -386,12 +400,15 @@
     <div class="col-sm-12" style="padding:20px 15px;margin:0px 2px;border-top:2px #19a9d5 solid;background-color:white;">
 	 <div class="panel panel-default">
       <div class="table-responsive">	
-     <table  class="table  b-t b-b">
+     <table ui-jq="dataTable" ui-options="{aoColumns: [
+											  { mData: 'browser' },
+											  { mData: 'action' }
+											]}" class="table  b-t b-b">
 		<thead>
 		 <tr> 
 		    
-		  <th  ><center>Nom</center></th>
-	   	  <th  ><center>Actions</center></th>
+		  <th style="width:50%" ><center><b>Nom</b></center></th>
+	   	  <th style="width:50%" ><center>Actions</center></th>
 		 </tr>
 		 
 		</thead>

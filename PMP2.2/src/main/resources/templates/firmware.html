@@ -317,6 +317,10 @@
 							<!-- / dropdown -->
 						</div>
 						<div class="line dk hidden-folded"></div>
+
+					</div>
+
+
 					</div>
 
 					<!-- / user -->
@@ -337,6 +341,7 @@
 					<!-- nav -->
 
 <nav ui-nav class="navi clearfix">
+
 
 
 
@@ -525,15 +530,19 @@
               <li>
                 <a th:href="@{/logout}">
                   <i class="icon-question icon"> </i>
-                   <span>Logout</span>
+
                 </a>
 
               </li>
 
 
+
+                </a>
+
               </li>
 
             </ul>
+
 
           </nav>
 
@@ -554,6 +563,10 @@
 
 
 
+
+          </nav>
+					<!-- nav -->
+
 					<!-- aside footer -->
 					<!-- / aside footer -->
 				</div>
@@ -565,15 +578,35 @@
 			<div class="app-content-body ">
 				<div class="bg-light lter b-b wrapper-md">
 					<h1 class="m-n font-bold h3">
-						Firmware <a style="margin-top: -5px;" data-toggle="modal"
+						Manage Firmware <a style="margin-top: -5px;" data-toggle="modal"
 							data-target="#AddClient"
 							class="btn btn-sm btn-primary pull-right" role="button"><b
 							class="glyphicon-plus pull"> </b>Add Firmware</a>
 					</h1>
 				</div>
 
-				<div class="row" style="margin: 5px; background-color: #f0f3f4;">
+				<div class="row" style="margin: 5px; background-color: #f0f3f4;"></div>
 
+<div class="col-sm-12">
+					<div class="row row-sm text-center">
+						<div class="col-sm-6">
+							<div class="panel padder-v item">
+								<div class="h1 count text-info font-thin h1 pull-center"
+									th:text="${totalFirmware}"></div>
+								<span class="text-muted text-xs"><b> Total Firmware </b></span>
+								<span class="bottom text-right w-full"><i
+									class="glyphicon glyphicon-list text-muted m-r-sm"></i></span>
+							</div>
+						</div>
+						<div class="col-sm-6">
+							<a href class="block panel padder-v bg-primary item"> <span
+								class="h1 count text-white font-thin h1 block" th:text="${totalFirmware}"></span> <span
+								class="text-muted text-xs"><b> Total Firmware
+								</b></span> <span class="bottom text-right w-full"><i
+									class="glyphicon glyphicon-list text-muted m-r-sm"></i></span>
+							</a>
+						</div>
+					</div>
 				</div>
 
 				<div class="table-responsive"
@@ -640,28 +673,6 @@
 					</table>
 				</div>
 
-
-				<div class="col-sm-12">
-					<div class="row row-sm text-center">
-						<div class="col-sm-6">
-							<div class="panel padder-v item">
-								<div class="h1 count text-info font-thin h1 pull-center"
-									th:text="${totalFirmware}"></div>
-								<span class="text-muted text-xs"><b> Total Firmware </b></span>
-								<span class="bottom text-right w-full"><i
-									class="glyphicon glyphicon-list text-muted m-r-sm"></i></span>
-							</div>
-						</div>
-						<div class="col-sm-6">
-							<a href class="block panel padder-v bg-primary item"> <span
-								class="h1 count text-white font-thin h1 block">0</span> <span
-								class="text-muted text-xs"><b> Firmware Actifs
-								</b></span> <span class="bottom text-right w-full"><i
-									class="glyphicon glyphicon-list text-muted m-r-sm"></i></span>
-							</a>
-						</div>
-					</div>
-				</div>
 				<div class="modal fade" role="dialog" id="AddClient">
 					<div class="modal-dialog modal-lg">
 						<div class="modal-content">

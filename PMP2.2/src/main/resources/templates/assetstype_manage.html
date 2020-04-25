@@ -242,11 +242,16 @@
               <!-- / dropdown -->
             </div>
             <div class="line dk hidden-folded"></div>
+
           </div>
 
 
+
+          </div>
+
           <!-- / user -->
 
+
           <!-- nav -->
 
 
@@ -257,12 +262,15 @@
 
 
 
+
           <!-- nav -->
-                 <nav ui-nav class="navi clearfix">
+<nav ui-nav class="navi clearfix">
+
 
 
 
 <nav ui-nav class="navi clearfix">
+
 
             <ul class="nav">
               <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
@@ -475,22 +483,22 @@
   <div class="row row-sm text-center">
    <div class="col-xs-4">
     <div class="panel padder-v item">
-     <div class="h1 text-info font-thin h1 count pull-center">0</div>
-      <span class="text-muted text-xs"><b>Client Reference</b></span>
+     <div class="h1 text-info font-thin h1 count pull-center" th:text="${totalAssetType}"></div>
+      <span class="text-muted text-xs"><b>Total Asset Type</b></span>
       <span class="bottom text-right w-full"><i class="glyphicon glyphicon-user text-muted m-r-sm"></i></span>
      </div>
     </div>
     <div class="col-xs-4">
      <a href class="block panel padder-v bg-primary item">
-     <span class="text-white font-thin h1 count block">0</span>
-     <span class="text-muted text-xs"><b>Total Revenue Reference <small>(current week)</small></b></span>
+     <span class="text-white font-thin h1 count block" th:text="${totalAssetType}"></span>
+     <span class="text-muted text-xs"><b>Total Asset Type</b></span>
      <span class="bottom text-right w-full"><i class="glyphicon glyphicon-usd text-muted m-r-sm"></i></span>
      </a>
     </div>
     <div class="col-xs-4">
      <a href class="block panel padder-v item">
-      <div class="h1 text-info font-thin h1 count pull-center">0</div>
-      <span class="text-muted text-xs"><b>Average Reference Revenue <small>(current week)</small></b></span>
+      <div class="h1 text-info font-thin h1 count pull-center" th:text="${totalAssetType}"></div>
+      <span class="text-muted text-xs"><b>Total Asset Type</b></span>
       <span class="bottom text-right w-full"><i class="glyphicon glyphicon-usd text-muted m-r-sm"></i></span>
      </a>
     </div>

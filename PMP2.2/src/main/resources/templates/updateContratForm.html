@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8" />
-  <title>Update Contrat</title>
+  <title>Update Contract</title>
   <meta name="description" content="app, web app, responsive, responsive layout, admin, admin panel, admin dashboard, flat, flat ui, ui kit, AngularJS, ui route, charts, widgets, components" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <link rel="stylesheet" href="../libs/assets/animate.css/animate.css" type="text/css" />
@@ -20,25 +20,15 @@
  	<div>
 	 <div class="modal-dialog modal-lg" >
 	 <div class="modal-content">
-      <h1 class="m-n font-bold h3"> Update Contart </h1>
+      <h1 class="m-n font-bold h3"> Update Contract </h1>
      </div>
-</div>
    <form th:action="@{editContrat}" method ="post" th:object="${contrat}">
    <div class="modal-body">
 	<div class="row">
     <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b></b></label>
      <div class="col-sm-8" style="margin: 5px 0px;" >
       <input type="hidden" class="form-control" placeholder="Entry Name of Contrat" id="input-id-1"  required th:field=*{Contrat_ID}/>
-    
-  <form th:action="@{editContrat}" method ="post" th:object="${contrat}">
-   <div class="modal-body">
-	<div class="row">
-    <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b></b></label>
-     <div class="col-sm-8" style="margin: 5px 0px;" >
-      <input type="hidden" class="form-control" placeholder="Entry Name of Contrat" id="input-id-1"  required th:field=*{Contrat_ID}/>
-
 	 </div>
-     </div>
 	 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Contract Title</b></label>
      <div class="col-sm-8" style="margin: 5px 0px;" >
       <input type="text" class="form-control" placeholder="Entry First Name of Purchasing" id="input-id-1"  required th:field=*{Title}>
@@ -71,14 +61,15 @@
      </div>
       <label class="col-sm-4 control-label" placeholder="Entry Configuration File" style="margin: 5px 0px;" for="input-id-1"><b>ContractFile</b></label>
        <div class="col-sm-8" style="margin: 5px 0px;">
-         <input type="file" placeholder="Entry Contract File"class="form-control" id="input-id-1" required th:field=*{ContractFille}/>
+         <input type="file" placeholder="Entry Contract File"class="form-control" id="input-id-1" th:field=*{ContractFille}/>
+         <span th:text ="${contrat.ContractFille}" class="m-n font-thin h4 text-secondary"></span>
        </div>
+        </div>
+		</div>
 		  <div class="modal-footer">
 		   <button style="margin:0px;" class="btn m-b-xs btn-sm btn-primary btn-addon"><i class="glyphicon glyphicon-ok"></i>Save</button>
 		   <button style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon"><a th:href="contract_manage"><i class="glyphicon glyphicon-remove"></i>Annuler</a></button>
 		  </div>
-		 </div>
-		</div>
 	    </form>
 		</div>
 	  </div>

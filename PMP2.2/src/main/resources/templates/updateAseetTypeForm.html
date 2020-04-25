@@ -55,7 +55,7 @@
           <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Vendor</b></label>
 	      <div class="col-sm-8" style="margin: 5px 0px;">
 	 <!-- ici on met une boucle sur le customer pour avoir récupérer la liste des vendor  -->
-	     <select name="Vendor_ID" class="form-control m-b" th:field=*{vendor}>
+	     <select name="Vendor_ID" multiple="multiple" class="form-control m-b" th:field=*{vendor}>
 	     <option th:each ="v:${vendor}" 
 	      th:text="${v.NameVendor}"
 	      th:value ="${v.Vendor_ID}"></option>

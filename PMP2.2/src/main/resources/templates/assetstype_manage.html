@@ -243,14 +243,13 @@
             </div>
             <div class="line dk hidden-folded"></div>
           </div>
-<<<<<<< HEAD
 
-=======
+
           <!-- / user -->
->>>>>>> branch 'master' of https://github.com/isaibou/TEST5
+
           <!-- nav -->
 
-<<<<<<< HEAD
+
 <nav ui-nav class="navi clearfix">
 
 
@@ -262,9 +261,9 @@
                  <nav ui-nav class="navi clearfix">
 
 
-=======
+
 <nav ui-nav class="navi clearfix">
->>>>>>> branch 'master' of https://github.com/isaibou/TEST5
+
             <ul class="nav">
               <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
                 <span>Main</span>
@@ -539,7 +538,7 @@
           <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Vendor</b></label>
 	      <div class="col-sm-8" style="margin: 5px 0px;">
 	 <!-- ici on met une boucle sur le customer pour avoir récupérer la liste des vendor  -->
-	     <select name="Vendor_ID"  class="form-control m-b" th:field=*{vendor}>
+	     <select name="Vendor_ID" multiple="multiple" class="form-control m-b" th:field=*{vendor}>
 	     <option th:each ="v:${vendor}" 
 	      th:text="${v.NameVendor}"
 	      th:value ="${v.Vendor_ID}"></option>

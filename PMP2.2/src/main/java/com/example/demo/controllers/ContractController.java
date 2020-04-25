@@ -59,7 +59,7 @@ public class ContractController {
 		List<Contrat> contra = contratrepository.findAll();
 		model.addAttribute("con", contra);
 		model.addAttribute("contrat", new Contrat());
-		
+		model.addAttribute("totalContract", contra.size());
 		//Afficher la liste déroulante pour récupérer la liste des customers
 		model.addAttribute("customer", customerRepository.findAll());
 		model.addAttribute("rfp", rfpRepository.findAll());

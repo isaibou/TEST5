@@ -81,11 +81,13 @@
 	 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Country</b></label>
 	 <div class="col-sm-8" style="margin: 5px 0px;">
 	  <select id="countryA" name ="Morocco" class="form-control" th:field=*{Country}></select>
+	   <span th:text ="${customer.Country}" class="m-n font-thin h4 text-secondary"></span>
 	  <span class="text-danger" th:errors=*{Country}></span>
 	 </div>
 	 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>City</b></label>
 	 <div class="col-sm-8" style="margin: 5px 0px;">
 	  <select name ="Rabat" id ="stateA" class="form-control" th:field=*{City}></select>
+	  <span th:text ="${customer.City}" class="m-n font-thin h4 text-secondary"></span>
 	  <span class="text-danger" th:errors=*{City}></span>
 	 </div>
 	 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Industry</b></label>

@@ -123,15 +123,8 @@
      </ul><!-- / dropdown -->
 	</div>
 	<div class="line dk hidden-folded"></div>
-<<<<<<< HEAD
-
    </div><!-- / user --><!-- nav -->
 <nav ui-nav class="navi clearfix">
-=======
-
-   </div><!-- / user --><!-- nav -->
-<nav ui-nav class="navi clearfix">
->>>>>>> branch 'master' of https://github.com/isaibou/TEST5
             <ul class="nav">
               <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
                 <span>Main</span>
@@ -254,13 +247,8 @@
                   <i class="glyphicon glyphicon-tag"></i>
                   <span>Tickets</span>
                 </a>
-<<<<<<< HEAD
               </li> -->
               <li>
-=======
-              </li> -->
-              <li>
->>>>>>> branch 'master' of https://github.com/isaibou/TEST5
                 <a th:href="RFP">
                   <i class="glyphicon glyphicon-tag"></i>
                   <span>RFP</span>
@@ -360,8 +348,8 @@
 
                               <div class="col-sm-6">
                                 <a href="" class="block panel padder-v bg-primary item">
-                                  <span class="text-white count font-thin h1 block" ></span>
-                                  <span class="text-muted text-xs"><b> Request Waiting</b></span>
+                                  <span class="text-white count font-thin h1 block" th:text="${intAll}" ></span>
+                                  <span class="text-muted text-xs"><b> Total Request </b></span>
                                   <span class="bottom text-right w-full">
                                     <i class="glyphicon glyphicon-briefcase text-muted m-r-sm"></i>
                                   </span>
@@ -457,8 +445,8 @@
 
                               <div class="col-sm-6">
                                 <a href="" class="block panel padder-v bg-primary item">
-                                  <span class="text-white count font-thin h1 block" >80</span>
-                                  <span class="text-muted text-xs"><b> Request Waiting</b></span>
+                                  <span class="text-white count font-thin h1 block" th:text="${extAll}" ></span>
+                                  <span class="text-muted text-xs"><b> Total Request </b></span>
                                   <span class="bottom text-right w-full">
                                     <i class="glyphicon glyphicon-briefcase text-muted m-r-sm"></i>
                                   </span>

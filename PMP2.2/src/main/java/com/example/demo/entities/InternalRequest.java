@@ -24,7 +24,7 @@ public class InternalRequest implements Serializable{
 	@Id
 	@GeneratedValue
 	private Integer InternalRequest_ID;
-	@Column(length=30)
+	@Column
 	private String Description;
 	private String Status; 
 	@DateTimeFormat()

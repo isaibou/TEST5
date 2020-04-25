@@ -23,13 +23,10 @@
     <h1 class="m-n font-bold h3"> Update Users </h1>
    </div>
     <form th:action="@{/editUsersC}"    method="post" th:object="${user}">
-    <input type="hidden" placeholder="Entry Login" class="form-control" id="input-id-1"    th:field=*{username}>
     
    <div class="modal-body">
 	<div class="row">
-	
-	
-	
+	<input type="hidden" placeholder="Entry Login" class="form-control" id="input-id-1"    th:field=*{username}>
 	 <label class="col-sm-4 control-label" for="input-id-1" style="margin:5px 0px;"><b>Nom :</b></label>
 	 <div class="col-sm-8" style="margin:5px 0px;" >
 	  <input type="text" placeholder="Entry Nom" class="form-control" id="input-id-1"   th:field=*{lastName}>
@@ -37,16 +34,11 @@
 	 <label class="col-sm-4 control-label" for="input-id-1" style="margin:5px 0px;"><b>Prenom :</b></label>
 	 <div class="col-sm-8" style="margin:5px 0px;" >
 	  <input type="text" placeholder="Entry Prenom" class="form-control" id="input-id-1"   th:field=*{firstName}>
-	 </div>
-	 
-	
-	 
+	 </div> 
 	  <label class="col-sm-4 control-label" for="input-id-1" style="margin:5px 0px;"><b>Phone :</b></label>
 	 <div class="col-sm-8" style="margin:5px 0px;" >
 	  <input type="text" placeholder="Entry Phone" class="form-control" id="input-id-1"   th:field=*{Phone}>
 	 </div>
-	 
-	
 	  <label class="col-sm-4 control-label" for="input-id-1" style="margin:5px 0px;"><b>Company :</b></label>
 	 <div class="col-sm-8" style="margin:5px 0px;" >
 	 <select name ="Customer_ID" class="form-control" th:field="*{customer}" >
@@ -60,19 +52,14 @@
 	 <option th:each="r:${allRoles}" th:text="${r.role}" th:value="${r.role}"></option>
 	 </select>
 	 </div>
-	 </div>
-	
-	
-	
+	  </div>
+ </div>
 	<div class="modal-footer">
     <button style="margin:0px;" class="btn m-b-xs btn-sm btn-primary btn-addon"><i class="glyphicon glyphicon-ok"></i>Save</button>
-	</form>
 	<button th:href="@{/users}" style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon" data-dismiss="modal"><i class="glyphicon glyphicon-remove"></i>Annuler</button>
 	
    </div>
-  </div>
- </div>
- 
+ </form>
  </div>
   </div>
 </div>

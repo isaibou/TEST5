@@ -62,6 +62,8 @@ public class FrimwareController {
 		
 		
 		addFrim.setStatus("Actif");
+		
+		//System.out.println("name ="+addFrim.getAssettype().get(0).getName());
 	
 		frimwareRepository.save(addFrim);
 		return "redirect:/firmware";

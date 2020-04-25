@@ -63,9 +63,9 @@ public class Project implements Serializable{
 	private Date FinalTemporaryDate;
 	
 	private String DeliveryCertificate;
-	private String Uri;
-    private String Type;
-    private long Size;
+	//private String Uri;
+    //private String Type;
+    //private long Size;
 	
 	@Column(name = "TechnologyPartners")
 	private String TechnologyPartners;
@@ -105,12 +105,12 @@ public class Project implements Serializable{
 
 		super();
 		DeliveryCertificate = deliveryCertificate;
-		Uri = uri;
-		Type =type;
-		Size = size;
+		//Uri = uri;
+		//Type =type;
+		//Size = size;
 	}
 	public Project(String name, String typeProject, Double amount, Date year, Date deliveryDate, Date temporayAcceptanceDate,
-			Date finalTemporaryDate, String deliveryCertificate, String uri, String type, long size, String technologyPartners, int warranty,
+			Date finalTemporaryDate, String deliveryCertificate, String technologyPartners, int warranty,
 			int executionTime, String notes, String status) {
 		super();
 		Name = name;
@@ -121,9 +121,9 @@ public class Project implements Serializable{
 		TemporayAcceptanceDate = temporayAcceptanceDate;
 		FinalTemporaryDate = finalTemporaryDate;
 		DeliveryCertificate = deliveryCertificate;
-		Uri = uri;
-		Type =type;
-		Size = size;
+		//Uri = uri;
+		//Type =type;
+		//Size = size;
 		TechnologyPartners = technologyPartners;
 		Warranty = warranty;
 		ExecutionTime = executionTime;
@@ -146,29 +146,29 @@ public class Project implements Serializable{
 		Name = name;
 	}
 
-	public String getUri() {
-		return Uri;
-	}
+	//public String getUri() {
+		//return Uri;
+	//}
 
-	public void setUri(String uri) {
-		this.Uri = uri;
-	}
+	//public void setUri(String uri) {
+		//this.Uri = uri;
+	//}
 
-	public String getType() {
-		return Type;
-	}
+	//public String getType() {
+		//return Type;
+	//}
 
-	public void setType(String type) {
-		this.Type = type;
-	}
+	//public void setType(String type) {
+		//this.Type = type;
+	//}
 
-	public long getSize() {
-		return Size;
-	}
+	//public long getSize() {
+		//return Size;
+	//}
 
-	public void setSize(long size) {
-		this.Size = size;
-	}
+	//public void setSize(long size) {
+		//this.Size = size;
+	//}
 	
 	public Double getAmount() {
 		return Amount;

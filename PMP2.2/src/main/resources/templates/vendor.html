@@ -271,7 +271,9 @@
                         <!-- / user -->
 
                         <!-- nav -->
+
 <nav ui-nav class="navi clearfix">
+
             <ul class="nav">
               <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
                 <span>Main</span>
@@ -507,7 +509,7 @@
                               <div class="col-sm-12" >
                                 <a href class="block panel padder-v bg-primary item">
 
-                                  <div class="h1 count text-white font-thin h1 pull-center">21</div>
+                                  <div class="h1 count text-white font-thin h1 pull-center">0</div>
                                   <span class="text-muted text-xs"><b>Dominant Vendors</b></span>
                                   <span class="bottom text-right w-full">
                                   <i class="glyphicon glyphicon-tag text-muted m-r-sm"></i>
@@ -676,112 +678,7 @@
   </div>
  </div>
 </div>
-
-<div class="modal fade" role="dialog" id="Update" >
- <div class="modal-dialog modal-lg" >
-  <div class="modal-content">
-   <div class="modal-header" style="background-image:url(img/grf-bg.jpg);color:white;">
-  <button type="button" class="close pull-right" data-dismiss="modal">&times;</button>
-    <h1 class="m-n font-bold h3"> Update Vendor</h1>
-   </div>
-   <div class="modal-body">
-  <div class="row">
-   <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Vendor Name</b></label>
-     <div class="col-sm-8" style="margin: 5px 0px;" >
-      <input type="text" class="form-control" placeholder="Entry Name of Vendor" id="input-id-1">
-   </div>
-   <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Address</b></label>
-   <div class="col-sm-8" style="margin: 5px 0px;">
-    <input type="text"  class="form-control" placeholder="Entry Address of Vendor"id="input-id-2">
-   </div>
-   <label class="col-sm-4 control-label" placeholder="Entry Phone of Company" style="margin: 5px 0px;" for="input-id-1"><b>Phone</b></label>
-   <div class="col-sm-8" style="margin: 5px 0px;">
-    <input type="tel" placeholder="Entry Phone of Vendor"class="form-control" id="input-id-1" required>
-   </div>
-   <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Industry</b></label>
-   <div class="col-sm-8" style="margin: 5px 0px;">
-    <select name="account" class="form-control m-b">
-     <option>Advertising</option>
-     <option>Manufacturing</option>
-     <option>Construction</option>
-     <option>Education</option>
-     <option>Entertainment</option>
-     <option>Healthcare</option>
-     <option>Government</option>
-     <option>Technology</option>
-     <option>Retail</option>
-     <option>Wholesale</option>
-     <option>Banking</option>
-     <option>Finance</option>
-     <option>Telecomunication</option>
-     <option>Transportation</option>
-    </select>
-   </div>
-   <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Partnership Certificate</b></label>
-  <div class="col-sm-4">
-    <input type="text" placeholder="Entry Partnership Certificate File"class="form-control" id="input-id-1">
-  </div>
-  <div class="btn-group">
-    <a class="btn btn-default" tooltip="Insert picture (or just drag &amp; drop)" id="pictureBtn"><i class="icon-paper-clip"></i></a>
-    <input type="file" data-edit="insertImage" style="position:absolute; opacity:0; width:41px; height:34px">
-  </div> 
-  </div>
-   </div>
-   <div class="modal-footer">
-  <button style="margin:0px;" class="btn m-b-xs btn-sm btn-primary btn-addon"><i class="glyphicon glyphicon-ok"></i>Save</button>
-  <button style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon" data-dismiss="modal"><i class="glyphicon glyphicon-remove"  ></i>Annuler</button>
-   </div>
-  </div>
- </div>
-</div>
-
-<div class="modal fade" role="dialog" id="Delete" >
- <div class="modal-dialog modal-lg" >
-  <div class="modal-content">
-   <div class="modal-header" style="background-image:url(img/grf-bg.jpg);color:white;">
-  <button type="button" class="close pull-right" data-dismiss="modal">&times;</button>
-  <h1 class="m-n font-bold h3">Delete Vendor</h1>
-   </div>
-   <div class="modal-body">
-    Do you want to delete this Vendor ? 
-   </div>
-   <div class="modal-footer">
-  <button class="btn m-b-xs btn-sm btn-primary btn-addon"><i class="glyphicon glyphicon-ok"></i>Yes</button>
-  <button class="btn m-b-xs btn-sm btn-default btn-addon" data-dismiss="modal"><i class="glyphicon glyphicon-remove"></i>No</button>
-   </div>
-  </div>  
- </div>
-</div>
-<div class="modal fade" role="dialog" id="Detail" >
- <div class="modal-dialog modal-lg" >
-  <div class="modal-content">
-   <div class="modal-header" style="background-image:url(img/grf-bg.jpg);color:white;">
-  <button type="button" class="close pull-right" data-dismiss="modal">&times;</button>
-     <h1 class="m-n font-bold h3">Information Vendor</h1>
-   </div>
-   <div class="modal-body">
-    <p>
-     <span class="m-n font-thin h3 text-black" >Nom :</span>
-   <span ng-repeat="nom in vendor"> {{ vendor.nomVendor }} </br></span>
-   <span class="m-n font-thin h3 text-black">Logo :</span>
-   <span ng-repeat="logo in vendor"> {{ vendor.logoVendor }}</span></br>
-   <span class="m-n font-thin h3 text-black" >Adresse :</span> 
-   <span ng-repeat="adresse in vendor"> {{ vendor.adresseVendor }} </br></span>
-   <span class="m-n font-thin h3 text-black">Industry :</span>
-   <span ng-repeat="industry in vendor"> {{ vendor.industryVendor }}</span></br>
-   <span class="m-n font-thin h3 text-black">Phone :</span>
-   <span ng-repeat="phone in vendor"> {{ vendor.phoneVendor }}</span></br>
-   <span class="m-n font-thin h3 text-black">Partnership Certificate :</span>
-   <a href="http://localhost:8082/download/{{ticket.logFileTicket}}" target="_blank"><span class="m-n font-thin h3 text-black"> file </span></a></br>
-  </p>
-  </div>
-   <div class="modal-footer">
-   <button class="btn m-b-xs btn-sm btn-primary btn-addon" data-dismiss="modal">Return</button>
-  </div>
-  </div>  
-</div>
-</div>
-                  <!-- /content -->
+    <!-- /content -->
 
                   <!-- footer -->
                   <footer id="footer" class="app-footer" role="footer">

@@ -42,7 +42,7 @@ public class ProjectController {
 	private String SaveProject(@Valid Project addProj, BindingResult bindingResult) {
 		addProj.setStatus("Actif");
 
-		if (addProj.getDeliveryDate().after(addProj.getTemporayAcceptanceDate()) && addProj.getTemporayAcceptanceDate().before(addProj.getFinalTemporaryDate())) {
+		/*if (addProj.getDeliveryDate().after(addProj.getTemporayAcceptanceDate()) && addProj.getTemporayAcceptanceDate().before(addProj.getFinalTemporaryDate())) {
 			ProjectRepository.save(addProj);
 		}
 	 else {
@@ -53,8 +53,12 @@ public class ProjectController {
 		 catch (Exception e) {
 				
 			throw new OrderDate("Vous devez saisir DeliveryDate sub a TemporayAcceptanceDate ou TemporayAcceptanceDate inf a FinalTemporaryDate", e);
-		}*/
-	 }	
+<<<<<<< HEAD
+		}
+	 }*/
+		ProjectRepository.save(addProj);
+
+
 		return "redirect:/projects_manage";	
 	}
 

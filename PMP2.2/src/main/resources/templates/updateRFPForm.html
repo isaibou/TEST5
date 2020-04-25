@@ -20,20 +20,16 @@
 	 <div class="modal-content">
       <h1 class="m-n font-bold h3"> Update RFP </h1>
      </div>
-</div>
    <form th:action="@{editRFP}"   enctype="multipart/form-data"  method ="post" th:object="${rfp}">
    <div class="modal-body">
 	<div class="row">
     <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b></b></label>
      <div class="col-sm-8" style="margin: 5px 0px;" >
-      <input type="hidden" class="form-control" placeholder="Entry Name of RFP" id="input-id-1"  required th:field=*{RFP_ID}/>
-     
+      <input type="hidden" class="form-control" placeholder="Entry Name of RFP" id="input-id-1"  required th:field=*{RFP_ID}/>   
 	 </div>
-     </div>
 	 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Title</b></label>
 	     <div class="col-sm-8" style="margin: 5px 0px;" >
 		  <input type="text" class="form-control" placeholder="Entry Name of RFP" id="input-id-1" required th:field=*{Title}/> 
-	
 		 </div>
 	     <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Customer</b></label>
 	     <div class="col-sm-8" style="margin: 5px 0px;">
@@ -46,7 +42,7 @@
 	     </div>
 		 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Description</b></label>
 		 <div class="col-sm-8" style="margin: 5px 0px;">
-	   <input type="text" class="form-control" placeholder="Entry Description " id="input-id-1" required th:field=*{Description}/>
+	      <input type="text" class="form-control" placeholder="Entry Description " id="input-id-1" required th:field=*{Description}/>
        </div>
 		 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Realase Date</b></label>
 	     <div class="col-sm-8" style="margin: 5px 0px;">
@@ -66,22 +62,32 @@
          </div>
 		 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Request File</b></label>
 		 <div class="col-sm-8">
-          <input type="file" placeholder="Upload Preview File" name="request" class="form-control" id="input-id-1" required />
+          <input type="file" placeholder="Upload Preview File" name="request" class="form-control" id="input-id-1"  />
          </div>
 		 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Response File</b></label>
 		 <div class="col-sm-8">
-          <input type="file" placeholder="Upload Preview File" class="form-control" name="response" id="input-id-1" required />
+          <input type="file" placeholder="Upload Preview File" class="form-control" name="response" id="input-id-1"  />
          </div>
+         <!--  <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Status</b></label>
+	     <div class="col-sm-8" style="margin: 5px 0px;">
+	      <select name="account" class="form-control m-b" required th:field=*{StatusRFP} >
+	       <option th:value ="New" th:text="New"></option>
+	       <option th:value ="Submited" th:text="Submited"></option>
+	       <option th:value ="Won" th:text="Won"></option>
+	       <option th:value ="Lost" th:text="Lost"></option>
+	      </select>
+	      <span class="text-danger" th:errors=*{StatusRFP}></span>
+	     </div> -->
+	     </div>
+		</div>
 		  <div class="modal-footer">
 		   <button style="margin:0px;" class="btn m-b-xs btn-sm btn-primary btn-addon"><i class="glyphicon glyphicon-ok"></i>Save</button>
-		   <button style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon"><a th:href="purchasing_customer_manage"><i class="glyphicon glyphicon-remove"></i>Annuler</a></button>
-		  </div>
-		 </div>
-		</div>
+		   <button style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon"><a th:href="RFP"><i class="glyphicon glyphicon-remove"></i>Annuler</a></button>
+		  </div>	 
 	    </form>
 		</div>
 	  </div>
-     </div>
+	  </div>
 <script src="../libs/jquery/jquery/dist/jquery.js"></script>
 <script src="../libs/jquery/bootstrap/dist/js/bootstrap.js"></script>
 <script src="js/ui-load.js"></script>

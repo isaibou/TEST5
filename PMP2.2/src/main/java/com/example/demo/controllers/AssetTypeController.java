@@ -43,6 +43,7 @@ public class AssetTypeController
 		model.addAttribute("user", u);
 		
 		List<AssetType> assettyp = assetTypeRepository.findAll();
+		 model.addAttribute("totalAssetType", assettyp.size());
 		model.addAttribute("asstyp", assettyp);
 		model.addAttribute("assetstype", new AssetType());
 		

@@ -318,32 +318,13 @@
 						</div>
 						<div class="line dk hidden-folded"></div>
 					</div>
-<<<<<<< HEAD
+
 					<!-- / user -->
 
 					<!-- nav -->
 
 <nav ui-nav class="navi clearfix">
 
-					<!-- nav -->
-
-
-				        <nav ui-nav class="navi clearfix">
-
-
-
-=======
-					<!-- / user -->
->>>>>>> branch 'master' of https://github.com/isaibou/TEST5
-					<!-- nav -->
-<<<<<<< HEAD
-<nav ui-nav class="navi clearfix">
-
-
-
-=======
-<nav ui-nav class="navi clearfix">
->>>>>>> branch 'master' of https://github.com/isaibou/TEST5
             <ul class="nav">
               <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
                 <span>Main</span>
@@ -438,11 +419,11 @@
                   <span>Assets</span>
                 </a>
                 <ul class="nav nav-sub dk">
-                  <li class="">
+                <!--   <li class="">
                     <a th:href="assets_manage">
                       <span>Manage Assets</span>
                     </a>
-                  </li>
+                  </li> -->
                   <li>
                     <a th:href="assetstype_manage">
                       <span>Manage Assets Type</span>
@@ -528,34 +509,6 @@
                   <i class="icon-question icon"> </i>
                    <span>Logout</span>
                 </a>
-<<<<<<< HEAD
-              </li>
-
-=======
-              </li>
->>>>>>> branch 'master' of https://github.com/isaibou/TEST5
-            </ul>
-
-          </nav>
-<<<<<<< HEAD
-					<!-- nav -->
-
-            </ul>
-
-
-          </nav>					<!-- nav -->
-
-
-
-            </ul>
-          </nav>
-=======
->>>>>>> branch 'master' of https://github.com/isaibou/TEST5
-					<!-- nav -->
-<<<<<<< HEAD
-
-=======
->>>>>>> branch 'master' of https://github.com/isaibou/TEST5
 					<!-- aside footer -->
 					<!-- / aside footer -->
 				</div>
@@ -656,8 +609,8 @@
 						</div>
 						<div class="col-sm-6">
 							<a href class="block panel padder-v bg-primary item"> <span
-								class="h1 count text-white font-thin h1 block">0</span> <span
-								class="text-muted text-xs"><b> Firmware Actifs
+								class="h1 count text-white font-thin h1 block" th:text="${totalFirmware}"></span> <span
+								class="text-muted text-xs"><b> Total Frimware
 								</b></span> <span class="bottom text-right w-full"><i
 									class="glyphicon glyphicon-list text-muted m-r-sm"></i></span>
 							</a>

@@ -242,8 +242,27 @@
               <!-- / dropdown -->
             </div>
             <div class="line dk hidden-folded"></div>
+
           </div>
+
+          </div>
+
+
+
+          </div>
+
+          <!-- / user -->
+
+
+          <!-- nav -->
+
+
+
+
 <nav ui-nav class="navi clearfix">
+
+
+
             <ul class="nav">
               <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
                 <span>Main</span>
@@ -339,6 +358,7 @@
                   <span>Assets</span>
                 </a>
                 <ul class="nav nav-sub dk">
+
                 <!--   <li class="">
                     <a th:href="assets_manage">
                       <span>Manage Assets</span>
@@ -433,9 +453,7 @@
             </ul>
           </nav>          <!-- nav -->
           <!-- aside footer -->
-          <!-- / aside footer -->
-        </div>
-      </div>
+      
   </aside>
   <!-- content -->
 <div id="content" class="app-content" role="main">
@@ -463,7 +481,8 @@
     <div class="col-xs-4">
      <a href class="block panel padder-v bg-primary item">
      <span class="text-white font-thin h1 count block" th:text="${totalAssetType}"></span>
-     <span class="text-muted text-xs"><b>Total Asset Type </b></span>
+
+     <span class="text-muted text-xs"><b>Total Asset Type</b></span>
      <span class="bottom text-right w-full"><i class="glyphicon glyphicon-usd text-muted m-r-sm"></i></span>
      </a>
     </div>
@@ -518,7 +537,7 @@
           <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Vendor</b></label>
 	      <div class="col-sm-8" style="margin: 5px 0px;">
 	 <!-- ici on met une boucle sur le customer pour avoir récupérer la liste des vendor  -->
-	     <select name="Vendor_ID"  class="form-control m-b" th:field=*{vendor}>
+	     <select name="Vendor_ID" multiple="multiple" class="form-control m-b" th:field=*{vendor}>
 	     <option th:each ="v:${vendor}" 
 	      th:text="${v.NameVendor}"
 	      th:value ="${v.Vendor_ID}"></option>

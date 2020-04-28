@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8" />
-  <title>Update Contrat</title>
+  <title>Update Contract</title>
   <meta name="description" content="app, web app, responsive, responsive layout, admin, admin panel, admin dashboard, flat, flat ui, ui kit, AngularJS, ui route, charts, widgets, components" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <link rel="stylesheet" href="../libs/assets/animate.css/animate.css" type="text/css" />
@@ -62,6 +62,7 @@
       <label class="col-sm-4 control-label" placeholder="Entry Configuration File" style="margin: 5px 0px;" for="input-id-1"><b>ContractFile</b></label>
        <div class="col-sm-8" style="margin: 5px 0px;">
          <input type="file" placeholder="Entry Contract File"class="form-control" id="input-id-1" th:field=*{ContractFille}/>
+         <span th:text ="${contrat.ContractFille}" class="m-n font-thin h4 text-secondary"></span>
        </div>
         </div>
 		</div>

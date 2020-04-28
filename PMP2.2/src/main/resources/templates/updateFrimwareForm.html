@@ -45,7 +45,7 @@
       <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Asset Type </b></label>
 	   <div class="col-sm-8" style="margin: 5px 0px;">
 	 <!-- ici on met une boucle sur le customer pour avoir récupérer la liste des vendor  -->
-	     <select name="AssetType_ID"  class="form-control m-b" th:field=*{assettype}>
+	     <select name="AssetType_ID" multiple="multiple" class="form-control m-b" th:field=*{assettype}>
 	     <option th:each ="a:${assettype}" 
 	      th:text="${a.name}"
 	      th:value ="${a.AssetType_ID}"></option>

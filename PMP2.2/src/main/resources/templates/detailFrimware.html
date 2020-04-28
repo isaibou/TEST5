@@ -52,8 +52,10 @@
 		   </tr> 
 		   <td style="color:#23b7e5;"><center>Aseet Type </center></th>
 		   <!-- Comment j ai appeler  le customer qui j ai choisi a partir du la liste déroulante des customers  -->
-		   <td th:each ="a:${frimware.assettype}"  
-		    th:text="${a.Name}"  class="m-n font-thin h4 text-secondary"><center></center></td>
+		   <td> <select name ="Aseet Type " class="m-n font-thin h4 text-secondary">
+		   <option th:each ="a:${frimware.assettype}"  th:text="${a.Name}"  class="m-n font-thin h4 text-secondary"></option>
+		   </select>
+			 </td>
 		   </tr> 
 	  </tbody>
      </table>

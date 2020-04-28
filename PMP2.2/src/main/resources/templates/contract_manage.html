@@ -383,10 +383,13 @@ document.addEventListener('DOMContentLoaded', function() {
                 </a>
                 <ul class="nav nav-sub dk">
                 <!--   <li class="">
+
+                 <!--   <li class="">
                     <a th:href="assets_manage">
                       <span>Manage Assets</span>
                     </a>
                   </li> -->
+
                   <li>
                     <a th:href="assetstype_manage">
                       <span>Manage Assets Type</span>
@@ -487,35 +490,38 @@ document.addEventListener('DOMContentLoaded', function() {
      </h1></div>
 	<div class="row" style="margin:5px;background-color:#f0f3f4;"> </div> 
 <div class="col-sm-12">  
-<div class="col-sm-6">              
+<div class="col-sm-12">              
     <div class="row row-sm text-center">
-     <div class="col-sm-12">
+     <div class="col-sm-4">
     <div class="panel padder-v item">
-     <div class="h1 text-info font-thin h1 pull-center" th:text="${totalContrat}"></div>
-      <span class="text-muted text-xs"><b> Contracts </b></span>
+
+     <div class="h1 text-info font-thin h1 pull-center" th:text="${totalContract}"></div>
+      <span class="text-muted text-xs"><b> Total Contracts </b></span>
       <span class="bottom text-right w-full"><i class="glyphicon glyphicon-list text-muted m-r-sm"></i></span>
      </div>
     </div>
-    <div class="col-sm-12">
+    <div class="col-sm-4">
      <a href class="block panel padder-v bg-primary item">
-      <span class="text-white font-thin h1 block" th:text="${totalContrat}"></span>
-      <span class="text-muted text-xs"><b> Active Contracts </b></span>
+
+      <span class="text-white font-thin h1 block" th:text="${totalContract}"></span>
+      <span class="text-muted text-xs"><b> Total Contracts </b></span>
       <span class="bottom text-right w-full"><i class="glyphicon glyphicon-list text-muted m-r-sm"></i></span>
      </a>
     </div>
-    <div class="col-sm-12">
+    <div class="col-sm-4">
      <div class="panel padder-v bg-info item">
-      <div class="h1 text-white font-thin h1 pull-center" th:text="${totalContrat}"></div>
-       <span class="text-muted text-xs"><b>Total Contracts </b></span>
+
+      <div class="h1 text-white font-thin h1 pull-center" th:text="${totalContract}"></div>
+       <span class="text-muted text-xs"><b> Total Contracts </b></span>
        <span class="bottom text-right w-full"><i class="glyphicon glyphicon-list text-muted m-r-sm"></i></span>
       </div>
      </div>
     </div>
      </div> 
-	<div class="col-sm-6">
+	<!--  <div class="col-sm-6">
 	    <center><h3 class="m-n font-bold h4">Delivery Date </h3></center>
 		<div id='calendar1'></div>
-	</div>
+	</div>  -->
 </div>
 <div class="row" style="margin:5px;background-color:#f0f3f4;"> </div>
  <div class="table-responsive" style="background-color:white;margin:10px; padding:10px;">

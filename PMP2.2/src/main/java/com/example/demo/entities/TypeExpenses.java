@@ -1,8 +1,13 @@
 package com.example.demo.entities;
 
+import java.util.Collection;
+import java.util.List;
+
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class TypeExpenses {
@@ -10,6 +15,9 @@ public class TypeExpenses {
 	@GeneratedValue
 	private Integer TypeExpenses_ID; 
 	private String NameTypeExpenses;
+	
+	@OneToMany(mappedBy = "typeExpenses", fetch = FetchType.LAZY)
+	private Collection<Expenses> expenses; 
 	
 	
 	public TypeExpenses() {

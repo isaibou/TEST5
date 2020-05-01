@@ -45,6 +45,9 @@ public class Users implements Serializable {
 	@OneToMany(mappedBy =   "userCustomer" , fetch = FetchType.LAZY)
 	private Collection<ExternalRequest> externalRequest;
 	
+	@OneToMany(mappedBy = "user" , fetch = FetchType.LAZY)
+	private Collection<Expenses> expenses;
+	
 	
 
 	public Users() {
@@ -290,6 +293,32 @@ public class Users implements Serializable {
 
 	public void setIsCustomer(Boolean isCustomer) {
 		this.isCustomer = isCustomer;
+	}
+
+
+
+
+
+
+
+
+
+
+	public Collection<Expenses> getExpenses() {
+		return expenses;
+	}
+
+
+
+
+
+
+
+
+
+
+	public void setExpenses(Collection<Expenses> expenses) {
+		this.expenses = expenses;
 	}
 
 	

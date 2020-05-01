@@ -4,6 +4,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.example.demo.entities.*;
 
-public interface TypeProjectRepository extends JpaRepository<Type_Project, Integer>{
+public interface TypeProjectRepository extends JpaRepository<TypeProject, Integer>{
 
 }

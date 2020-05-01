@@ -1,11 +1,14 @@
 package com.example.demo.entities;
 
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 
 @Entity
@@ -21,6 +24,10 @@ public class Reference implements Serializable{
 	private String KeywordsTags;
 	private String PreviewPicture;
 	private String ReferenceFile;
+	
+	@ManyToOne
+	@JoinColumn(name="PROJECT_ID")
+	private Project project;
 	
 	public Reference() {
 		super();
@@ -84,6 +91,14 @@ public class Reference implements Serializable{
 	}
 	public void setReferenceFile(String referenceFile) {
 		ReferenceFile = referenceFile;
+	}
+
+	public Project getProject() {
+		return project;
+	}
+
+	public void setProject(Project project) {
+		this.project = project;
 	}
 	
 	

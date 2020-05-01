@@ -5,6 +5,7 @@ import java.util.Collection;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -36,6 +37,9 @@ public class RFP implements Serializable{
 	private String RequestFile;
 	private String ResponseFile;
 	private String StatusRFP;
+	
+	@OneToMany(mappedBy = "rfp" , fetch = FetchType.LAZY)
+	private Collection<Project> project;
 	
 	@OneToMany
 	private Collection <Contrat> Contrat;

@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="utf-8" />
-<title> Expenses</title>
+<title>Type  Expenses</title>
 <meta name="description" content="app, web app, responsive, responsive layout, admin, admin panel, admin dashboard, flat, flat ui, ui kit, AngularJS, ui route, charts, widgets, components" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 <link rel="stylesheet" href="../libs/assets/animate.css/animate.css" type="text/css" />
@@ -29,8 +29,7 @@
   <i class="fa fa-power-off"></i>
   <span class="hidden-folded m-l-xs">PowerM</span>
  </a><!-- / brand -->
-</div>
-  <!-- / navbar header --><!-- navbar collapse -->
+</div><!-- / navbar header --><!-- navbar collapse -->
 <div class="collapse pos-rlt navbar-collapse box-shadow bg-white-only"><!-- buttons -->
  <div class="nav navbar-nav hidden-xs">
   <a href="#" class="btn no-shadow navbar-btn" ui-toggle-class="app-aside-folded" target=".app">
@@ -80,7 +79,8 @@
    </div><!-- / dropdown -->
   </li>
   <li class="dropdown">
-   	<span class="thumb-sm avatar pull-right m-t-n-sm m-b-n-sm m-l-sm">
+   
+   		<span class="thumb-sm avatar pull-right m-t-n-sm m-b-n-sm m-l-sm">
 													<img class="img-thumbnail" th:src="@{getPhoto(id=${user.username})}" width="60px" height="60px">
 														<i class="on md b-white bottom"></i>
 													</span>
@@ -123,8 +123,13 @@
      </ul><!-- / dropdown -->
 	</div>
 
+	<div class="line dk hidden-folded"></div>
+
+
+
 
 	<div class="line dk hidden-folded"></div>
+
    </div><!-- / user --><!-- nav -->
 <nav ui-nav class="navi clearfix">
             <ul class="nav">
@@ -222,7 +227,8 @@
                   <span>Assets</span>
                 </a>
                 <ul class="nav nav-sub dk">
-         <!--   <li class="">
+
+                 <!--   <li class="">
                     <a th:href="assets_manage">
                       <span>Manage Assets</span>
                     </a>
@@ -248,11 +254,14 @@
                 <a th:href="tickets_manage">
                   <i class="glyphicon glyphicon-tag"></i>
                   <span>Tickets</span>
+
                 </a>
 
               </li> -->
-             
-              <li>
+              
+
+              <li> 
+
                 <a th:href="RFP">
                   <i class="glyphicon glyphicon-tag"></i>
                   <span>RFP</span>
@@ -260,7 +269,7 @@
               </li>
 			  <li>
                 <a th:href="contract_manage">
-                  <i class="fa fa-legal"></i>
+                  <i class="fa fa-legal"></i></i>
                   <span>Contracts</span>
                 </a>
               </li>
@@ -317,272 +326,84 @@
               </li>
             </ul>
           </nav>
-          <!-- nav -->
-          <!-- aside footer -->
-          <!-- / aside footer -->
-  </div>
+          <!-- nav --><!-- aside footer --><!-- / aside footer -->
+  
 
-</aside> <!-- / aside --><!-- content -->
-
-
-
+</aside><!-- / aside --><!-- content -->
 <div id="content" class="app-content" role="main">
  <div class="app-content-body ">
   <div class="hbox hbox-auto-xs hbox-auto-sm">
    <div class="col">
   <div class="bg-light lter b-b wrapper-md">
-   <h1 class="m-n font-bold h3">Manage  Expenses   </h1>
+   <h1 class="m-n font-bold h3">Manage Expenses  </h1>
   </div>
   <!-- <div class="panel-heading"><small><a th:href="index">Home</a> </small>><small> Manage users</small> </div>-->
 	<!-- <div class="wrapper bg-white b-b">
 	 <ul class="nav nav-pills nav-sm">
-	  <li class="active"><a href="#tab_default_1" data-toggle="tab">Employee</a></li>
-	  <li><a href="#tab_default_2" data-toggle="tab">Customer</a></li>
+	  <li class="active"><a href="#tab_default_1" data-toggle="tab">Customer</a></li>
+	  <li><a href="#tab_default_2" data-toggle="tab">Employee</a></li>
      </ul>
 	</div> -->
   <div class="tab-content" >
    <div class="tab-pane active" id="tab_default_1" >
     <div>
-    <div class="col-sm-12">
-                            <div class="row text-center" style="margin: 10px 5px;">
-                              <div class="col-sm-6">
-                                <div class="panel padder-v item">
-                                  <div class="h1 count text-info font-thin h1 pull-center" th:text="${intex}"></div>
-                                  <span class="text-muted text-xs"><b> Total Expenses </b></span>
-                                  <span class="bottom text-right w-full">
-                                    <i class="glyphicon   glyphicon-tower text-muted m-r-sm"></i>
-                                  </span>
-                                </div>
-                              </div>
-
-                              <div class="col-sm-6">
-                                <a href="" class="block panel padder-v bg-primary item">
-                                  <span class="text-white count font-thin h1 block" th:text="${intex}" ></span>
-
-                                  <span class="text-muted text-xs"><b> Total Expenses </b></span>
-                                  <span class="bottom text-right w-full">
-                                    <i class="glyphicon glyphicon-briefcase text-muted m-r-sm"></i>
-                                  </span>
-                                </a>
-                              </div>
-                            </div>
-                          </div>
-    <a style="margin-top:5px;" data-toggle="modal"  data-target="#AddInternal" class="btn btn-sm btn-info pull-right"  role="button"><b class="glyphicon-plus pull"> </b> Add Expense</a>
+        <a style="margin-top:5px;" data-toggle="modal"  data-target="#AddExternal" class="btn btn-sm btn-info pull-right"  role="button"><b class="glyphicon-plus pull"> </b> Add Type Expenses</a>
     </div>
 	 <div class="col-sm-12" style="padding:20px 15px;margin:0px 2px;border-top:2px #19a9d5 solid;background-color:white;">
 	  <div class="panel panel-default">
-       <div div class="table-responsive" style="background-color:white;margin:10px; padding:10px;">
-	<table ui-jq="dataTable" ui-options="{ aoColumns: [
-											
-												{ mData: 'Type' },
-												{ mData: 'description' },
-												{ mData: 'Demandeur' },
-												{ mData: 'Status' },
-												{ mData: 'Date' },
-												{ mData: 'action' }]
-											}" class="table  b-t b-b">
+       <div class="table-responsive" style="background-color:white;margin:10px; padding:10px;">
+		<table ui-jq="dataTable" ui-options="{aoColumns: [
+											  { mData: 'browser' },
+											  { mData: 'action' }
+											]}" class="table  b-t b-b">
 		<thead>
-		 <tr>
-	    
-          <th  style="width:15%"><center>Description</center></th>
-		  <th  style="width:25%"><center>Amount</center></th>
-	      <th  style="width:15%"><center>LastName & FirstName</center></th>
-	      <th  style="width:15%"><center>Submited Date</center></th>
-	      <th  style="width:15%"><center>Status</center></th>
-		  <th  style="width:15%"><center>Actions</center></th>
-		 
+		 <tr> 
+		    
+		  <th  style="width:50%" ><center><b>Nom</b></center></th>
+	   	  <th  style="width:50%" ><center>Actions</center></th>
 		 </tr>
+		 
 		</thead>
-		<tbody>
-	 <tr  data-expanded="true" th:each="i:${listEx}">
-		  <td th:text="${i.Description}" ></td>
-          <td th:text ="${i.Amount}"><center></center></td>
-          <td th:text="${i.user.lastName} + . + ${i.user.firstName}" ><center><center></center></center></td>
-          <td th:text ="${i.SubmittedDate}"><center></center></td>
-		  
 		
+		<tbody>
+		
+		 <tr data-expanded="true" th:each="e:${tE}">		
 		 
-		 	<td th:switch="${i.StatutExpense}">
-    <span th:case="'Answered'" class="label bg-success pull-center m-t-md" >Answered</span>
-    <span th:case="'Waiting'" class="label bg-danger pull-center m-t-md" >Waiting </span>
-    <div th:case="'Confirmed'" class="label bg-danger pull-center m-t-md" >Confirmed</div>
-     
-</td>
+		  <td th:text = "${e.NameTypeExpenses}" ><center></center></td>
+        
 		 
-		  
-		  <td>
-		   <center>
-		   	<div class="btn-group dropdown">
-		     <button class="btn btn-default btn-xs" data-toggle="dropdown">
-		      <i class="glyphicon glyphicon-cog"></i> Action <span class="caret"></span>
-		     </button>
-		     <ul class="dropdown-menu">
-		     <li>
-		       
-				<a th:href="@{updateExpenses(id=${i.Expenses_ID})}"  style="margin-top:-5px;"   class="btn btn-sm btn-light" role="button">Update</a>						</li>
-																								<li>
-					
-		      <li><a th:href="@{confirmExpenses(id=${i.Expenses_ID})}" style="margin-top:-5px;"  class="btn btn-sm btn-light" role="button">Confirm</a></li>
-		           <li>
-		      <li><a th:href="@{answerExpenses(id=${i.Expenses_ID})}" style="margin-top:-5px;"  class="btn btn-sm btn-light" role="button">Answer</a></li>
-		           <li>
-			<a th:href="@{detailsExpenses(id=${i.Expenses_ID})}" style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Details</a>
-																								</li>
-		      
-		     </ul>
-		    </div>
-		   </center>
-		  </td>
+	   
+		  <td >
+		  <a th:href="@{deleteTypeExpenses(id=${e.TypeExpenses_ID})}"> <center>Delete</center></a> 
+          </td>
 		 </tr>
-	</tbody>
+		</tbody>
 	   </table>
       </div>
      </div>
 	</div>
 </div>
-<!-- <div class="tab-pane" id="tab_default_2">
-<div class="col-sm-12">
-                            <div class="row text-center" style="margin: 10px 5px;">
-                              <div class="col-sm-6">
-                                <div class="panel padder-v item">
-                                  <div class="h1 count text-info font-thin h1 pull-center" th:text="${extAll}"></div>
-                                  <span class="text-muted text-xs"><b> Total Request </b></span>
-                                  <span class="bottom text-right w-full">
-                                    <i class="glyphicon   glyphicon-tower text-muted m-r-sm"></i>
-                                  </span>
-                                </div>
-                              </div>
-
-                              <div class="col-sm-6">
-                                <a href="" class="block panel padder-v bg-primary item">
-                                  <span class="text-white count font-thin h1 block" th:text="${extAll}" ></span>
-                                  <span class="text-muted text-xs"><b> Total Request </b></span>
-                                  <span class="bottom text-right w-full">
-                                    <i class="glyphicon glyphicon-briefcase text-muted m-r-sm"></i>
-                                  </span>
-                                </a>
-                              </div>
-                            </div>
-                          </div>
- 
-  <div>
-   
-    <a style="margin-top:5px;" data-toggle="modal"  data-target="#AddExternal" class="btn btn-sm btn-info pull-right" role="button"><b class="glyphicon-plus pull"> </b> Add  Request</a>
-    </div>
-    <div class="col-sm-12" style="padding:20px 15px;margin:0px 2px;border-top:2px #19a9d5 solid;background-color:white;">
-	 <div class="panel panel-default">
-      <div class="table-responsive">	
-    <table ui-jq="dataTable" ui-options="{ aoColumns: [
-											
-												{ mData: 'Type' },
-												{ mData: 'description' },
-												{ mData: 'Demandeur' },
-												{ mData: 'Status' },
-												{ mData: 'date' },
-												{ mData: 'action' }]
-											}" class="table  b-t b-b">
-		<thead>
-		 <tr>
-	    
-          <th  style="width:8%"><center>Type</center></th>
-		  <th  style="width:12%"><center>Description</center></th>
-	      <th  style="width:12%"><center>Company</center></th>
-	      <th  style="width:12%"><center>Submited Date</center></th>
-	      <th  style="width:12%"><center>Status</center></th>
-	      
-		  <th  style="width:15%"><center>Actions</center></th>
-		 
-		 </tr>
-		</thead>
-		<tbody>
-	 <tr  data-expanded="true" th:each="e:${listExt}">
-		  <td th:text="${e.typeExternalRequest.NameTypeExternelRequest}"></td>
-          <td th:text ="${e.Description}"><center></center></td>
-          <td  th:text="${e.userCustomer.customer.Name}"><center><center><span class="label bg-danger pull-center m-t-md">Company</span></center></center></td>
-          <td th:text ="${e.SubmitedDate}"><center></center></td>
-		  		  <td>
-		  
-		   <span th:if="${e.Status == true}" class="label bg-success pull-center m-t-md">Answered</span>
-   		   <span th:unless="${e.Status == true}" class="label bg-danger pull-center m-t-md">Waiting</span> 
-   		   </td>
-		  
-		 
-		 
-		 
-		  
-		  <td>
-		   <center>
-		   	<div class="btn-group dropdown">
-		     <button class="btn btn-default btn-xs" data-toggle="dropdown">
-		      <i class="glyphicon glyphicon-cog"></i> Action <span class="caret"></span>
-		     </button>
-		     <ul class="dropdown-menu">
-		       <li>
-				<a th:href="@{updateRequestCustomer(id=${e.ExternalRequest_ID})}"  style="margin-top:-5px;"   class="btn btn-sm btn-light" role="button">Update</a>						</li>
-																								<li>
-		      <li><a th:href="@{answerC(id=${e.ExternalRequest_ID})}" style="margin-top:-5px;"  class="btn btn-sm btn-light" role="button">Answer</a></li>
-		      <li>
-			<a th:href="@{detailsRequestCustomer(id=${e.ExternalRequest_ID})}" style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Details</a>
-																								</li>
-		     </ul>
-		    </div>
-		   </center>
-		  </td>
-		 </tr>
-	</tbody>
-	   </table>
-    
-     </div>
-	 </div>
-	</div>
-  </div>
-   </div>
-  </div>
- </div>
-</div>
- --></div><!-- /content -->
-<div class="modal fade" role="dialog" id="AddInternal" >
+<div class="modal fade" role="dialog" id="AddExternal" >
  <div class="modal-dialog modal-lg" >
   <div class="modal-content">
    <div class="modal-header" style="background-image:url(img/grf-bg.jpg);color:white;">
 	<button type="button" class="close pull-right" data-dismiss="modal">&times;</button>
-	<h1 class="m-n font-bold h3"> <b class="glyphicon-plus pull"> </b> Add Expense</h1>
+	<h1 class="m-n font-bold h3"> <b class="glyphicon-plus pull"> </b> Add Type Expenses</h1>
    </div>
-   <form th:action="@{addExpenses}"  enctype="multipart/form-data" method="post" th:object=${expense}>
+   <form th:action="@{addTypeExpenses}" th:object=${type}>
    <div class="modal-body">
 	<div class="row">
-	  <label class="col-sm-4 control-label" for="input-id-1" style="margin:5px 0px;"><b>Type Expense :</b></label>
+	 <label class="col-sm-4 control-label" for="input-id-1" style="margin:5px 0px;"><b>Name:</b></label>
 	 <div class="col-sm-8" style="margin:5px 0px;" >
-	 <select name ="ypeExpenses_ID" class="form-control" th:field="*{typeExpenses}" >
-	 <option th:each="t:${typeEx}" th:text="${t.NameTypeExpenses}" th:value="${t.TypeExpenses_ID}" ></option>
-	 </select>
+	  <input type="text" placeholder="Entry Nom" class="form-control" id="input-id-1"  th:field="*{NameTypeExpenses}">
 	 </div>
 	</div>
-	
-	<div class="row">
-	 <label class="col-sm-4 control-label" for="input-id-1" style="margin:5px 0px;"><b>Description</b></label>
-	 <div class="col-sm-8" style="margin:5px 0px;" >
-	  <input type="text" placeholder="Entry Description" class="form-control" id="input-id-1" th:field=*{Description}  >
-	 </div>
-	</div>
-	
-	<div class="row">
-	 <label class="col-sm-4 control-label" for="input-id-1" style="margin:5px 0px;"><b>Amount</b></label>
-	 <div class="col-sm-8" style="margin:5px 0px;" >
-	  <input type="number" placeholder="Entry Amount" class="form-control" id="input-id-1" th:field=*{Amount}  >
-	 </div>
-	</div>
-	
-	<label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Receipt</b></label>
-     <div class="col-sm-8" style="margin: 5px 0px;">
-        <input type="file"  name="recu" class="form-control" id="input-id-1" >   </div>
+   </div>
   <div class="modal-footer">
   <button style="margin:0px;" class="btn m-b-xs btn-sm btn-primary btn-addon"><i class="glyphicon glyphicon-ok"></i>Save</button>
 	
 	<button style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon" data-dismiss="modal"><i class="glyphicon glyphicon-remove"></i>Annuler</button>
-   
-</div>
-</div>
+   </div>
    </form>
   </div>
  </div>
@@ -594,20 +415,12 @@
   <button type="button" class="close pull-right" data-dismiss="modal">&times;</button>
   <h1 class="m-n font-bold h3"> <b class="glyphicon-plus pull"> </b> Add Type External Request</h1>
    </div>
-   <form th:action="@{addExternalRequest}" th:object=${external}>
+   <form th:action="@{addTypeExternalRequest}" th:object=${external}>
    <div class="modal-body">
- <div class="row">
-	  <label class="col-sm-4 control-label" for="input-id-1" style="margin:5px 0px;"><b>Type request :</b></label>
-	 <div class="col-sm-8" style="margin:5px 0px;" >
-	 <select name ="TypeExternalRequest_ID" class="form-control" th:field="*{typeExternalRequest}" >
-	 <option th:each="t:${typeExternal}" th:text="${t.NameTypeExternelRequest}" th:value="${t.TypeExternelRequest_ID}" ></option>
-	 </select>
-	 </div>
-	</div>
-	  <div class="row">
-   <label class="col-sm-4 control-label" for="input-id-1" style="margin:5px 0px;"><b>Description:</b></label>
+  <div class="row">
+   <label class="col-sm-4 control-label" for="input-id-1" style="margin:5px 0px;"><b>Name:</b></label>
    <div class="col-sm-8" style="margin:5px 0px;" >
-    <input type="text" placeholder="Enter name" class="form-control" id="input-id-1" th:field="*{Description}" >
+    <input type="text" placeholder="Enter name" class="form-control" id="input-id-1" th:field="*{NameTypeExternelRequest}">
    </div>
   </div>
    </div>
@@ -619,8 +432,8 @@
     </form>
   </div>
  </div>
-</div>
- --><!-- footer -->
+</div> -->
+<!-- footer -->
 <footer id="footer" class="app-footer" role="footer">
  <div class="wrapper b-t bg-light">
   <span class="pull-right">2.2.0 <a href ui-scroll="app" class="m-l-sm text-muted"><i class="fa fa-long-arrow-up"></i></a></span>&copy; 2020 Copyright.

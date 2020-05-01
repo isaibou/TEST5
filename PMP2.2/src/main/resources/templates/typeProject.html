@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 	<head>
 		<meta charset="utf-8" />
-		<title>Manage Project</title>
+		<title>Type Project</title>
 		<meta name="description" content="app, web app, responsive, responsive layout, admin, admin panel, admin dashboard, flat, flat ui, ui kit, AngularJS, ui route, charts, widgets, components" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 		<link rel="stylesheet" href="../libs/assets/animate.css/animate.css" type="text/css" />
@@ -473,179 +473,91 @@ document.addEventListener('DOMContentLoaded', function() {
   </aside><!-- / aside --><!-- content -->
   <div id="content" class="app-content" role="main">
    <div class="app-content-body ">
-    <div class="bg-light lter b-b wrapper-md"><h1 class="m-n font-bold h3">Manage Projects
-    <a  style="margin-top:-5px;" data-toggle="modal"  data-target="#AddProject" class="btn btn-sm btn-primary pull-right"  role="button"><b class="glyphicon-plus pull"> </b>Add Project</a></h1></div>
+    <div class="bg-light lter b-b wrapper-md"><h1 class="m-n font-bold h3">Type Project
+    <a  style="margin-top:-5px;" data-toggle="modal"  data-target="#AddTechnologyPartner" class="btn btn-sm btn-primary pull-right"  role="button"><b class="glyphicon-plus pull"> </b>Add Type Project</a></h1></div>
 	
-	<div class="row" style="margin:5px;background-color:#f0f3f4;">
-     <div class="col-sm-12">              
-	  <div class="row row-sm text-center">
-	   <div class="col-sm-4">
-		<div class="panel padder-v item">
-		 <div class="h1 text-info font-thin h1 pull-center">521</div>
-		  <span class="text-muted text-xs"><b>Total Active Projects <small>(current week)</small></b></span>
-		  <span class="bottom text-right w-full"><i class="glyphicon glyphicon-list text-muted m-r-sm"></i></span>
-		 </div>
-		</div>
-		<div class="col-sm-4">
-		 <a href class="block panel padder-v bg-primary item">
-		  <span class="text-white font-thin h1 block">930</span>
-		  <span class="text-muted text-xs"><b>Projects Expected Temporaray Reception <small>(current week)</small></b></span>
-		  <span class="bottom text-right w-full"><i class="glyphicon glyphicon-list text-muted m-r-sm"></i></span>
-		 </a>
-		</div>
-		<div class="col-sm-4">
-		 <div class="panel padder-v bg-info item">
-		  <div class="h1 text-white font-thin h1 pull-center">521</div>
-		   <span class="text-muted text-xs"><b>Total Active Projects <small>(current week)</small></b></span>
-		   <span class="bottom text-right w-full"><i class="glyphicon glyphicon-list text-muted m-r-sm"></i></span>
-		  </div>
-		 </div>
-		</div>
-	   </div> 
-	</div>
+	                 <div class="row text-center" style="margin: 10px 5px;">
+                              <div class="col-sm-6">
+                                <div class="panel padder-v item">
+                                  <div class="h1 count text-info font-thin h1 pull-center">121</div>
+                                  <span class="text-muted text-xs"><b> Total Technology Partner </b></span>
+                                  <span class="bottom text-right w-full">
+                                    <i class="glyphicon   glyphicon-tower text-muted m-r-sm"></i>
+                                  </span>
+                                </div>
+                              </div>
+
+                              <div class="col-sm-6">
+                                <a href="" class="block panel padder-v bg-primary item">
+                                  <span class="text-white count font-thin h1 block">80</span>
+                                  <span class="text-muted text-xs"><b> Technology Partner Actifs </b></span>
+                                  <span class="bottom text-right w-full">
+                                    <i class="glyphicon glyphicon-briefcase text-muted m-r-sm"></i>
+                                  </span>
+                                </a>
+                              </div>
+                            </div>
 	 
 	   <div class="table-responsive" style="background-color:white;margin:10px; padding:10px;">
 		<table ui-jq="dataTable" ui-options="{
 															aoColumns: [
-															
-															{ mData: 'browser' },
-															{ mData: 'platform' },
-															{ mData: 'version' },
-															{ mData: 'grade' },
-															{ mData: 'grade2' },
-															{ mData: 'action' }
+															{ mData: 'engine' },
+															{ mData: 'actions' }
 															]
 															}" class="table  b-t b-b">
 	     <thead style="color:#23b7e5;">
 		  <tr>
-		   <th  style="width:20%"><center>Project Name </center></th>
-		   <th  style="width:20%"><center>Notes</center></th>
-		   <th  style="width:15%"><center>Delivery Date</center></th>
-		   <th  style="width:10%"><center>Amount</center></th>
-		   <th  style="width:10%"><center>Status</center></th>
-		   <th  style="width:10%"><center>Actions</center></th>
+		   <th  style="width:50%"><center> Name Type Project </center></th>
+		  <th  style="width:50%"><center> Actions </center></th>
 		  </tr>
 	     </thead>
 		 <tbody>
-		  <tr data-expanded="true" th:each="p:${proj}">
-		   <td th:text ="${p.Name}" class="m-n font-thin h4 text-secondary"><center><b></b></center></td>
-		   <td th:text ="${p.Notes}" class="m-n font-thin h4 text-secondary"><center><b></b></center></td>
-		   <td th:text ="${p.DeliveryDate}" class="m-n font-thin h4 text-secondary"><center></center></td>
-		   <td th:text ="${p.Amount}" class="m-n font-thin h4 text-secondary"><center></center></td>
-           <td th:text ="${p.Status}" class="m-n font-thin h4 text-secondary"><center><span></span></center></td>
-		   <td><center><div class="btn-group dropdown"><button class="btn btn-default btn-xs" data-toggle="dropdown">
-		     <i class="glyphicon glyphicon-cog"></i> Action <span class="caret"></span></button>
+		  <tr data-expanded="true" th:each="t:${listTp}">
+		   <td  th:text ="${t.NameType_Project}" class="m-n font-thin h4 text-secondary"><center><b></b></center></td> 
+<!-- 		    <td th:text ="${t.Status}" class="m-n font-thin h4 text-secondary"><center><span></span><center/></td>
+ -->		   <td><center><div class="btn-group dropdown"><button class="btn btn-default btn-xs" data-toggle="dropdown">
+		     <i class="glyphicon glyphicon-cog"></i> Actions <span class="caret"></span></button>
 		     <ul class="dropdown-menu">
-		     <li><a th:href="@{'/projectFile/'+${p.DeliveryCertificate}}"  style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Download delivery Certificate</a></li>
-		     <li><a th:href="@{updateProject(id=${p.Project_ID})}"  style="margin-top:-5px;"   class="btn btn-sm btn-light" role="button">Update</a></li>
-		     <li><a th:href="@{archiverProject(id=${p.Project_ID})}"  style="margin-top:-5px;"  class="btn btn-sm btn-light" role="button">Archive</a></li>
-		     <li><a th:href="@{detailProject(id=${p.Project_ID})}" style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Detail</a></li></ul></div></center></td>
+		     <li><a th:href="@{addProjectTask(id=${t.Type_Project_ID})}"  style="margin-top:-5px;"   class="btn btn-sm btn-light" role="button">Update</a></li>
+<!-- 		    <li><a th:href="@{archiverTechnologyPartner(id=${t.Type_Project_ID})}"  style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Archive</a></li>
+ -->		     <li><a th:href="@{detailsTypeProjectTask(id=${t.Type_Project_ID})}" style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Details</a></li></ul></div></center></td>
 		  </tr>
 		 </tbody>
 		</table>
 	   </div>
-	<div class="col-sm-6">
-	    <center><h3 class="m-n font-bold h4">Expected Temporaray Date </h3></center>
-		<div id='calendar'></div>
-	</div>
-	<div class="col-sm-6">
-	    <center><h3 class="m-n font-bold h4">RFP Reponse Date & Time </h3></center>
-		<div id='calendar1'></div>
-	</div>	
-	 <div th:if="${message}">
-		<h2 th:text="${message}"/>
-	</div>   
-	<div class="modal fade" role="dialog" id="AddProject" >
+  
+	<div class="modal fade" role="dialog" id="AddTechnologyPartner" >
 	 <div class="modal-dialog modal-lg" >
 	  <div class="modal-content">
 	   <div class="modal-header" style="background-image:url(img/grf-bg.jpg);color:white;">
 	    <button type="button" class="close pull-right" data-dismiss="modal">&times;</button>
-	    <h1 class="m-n font-bold h3"> <b class="glyphicon-plus pull"> </b> Add Project</h1>
+	    <h1 class="m-n font-bold h3"> <b class="glyphicon-plus pull"> </b> Add Type Project</h1>
 	   </div>	   
-	 <form th:action="@{SaveProject}"   enctype="multipart/form-data" method ="post" th:object="${project}">
+     <form th:action="@{SaveTypeProject}" method ="post" th:object="${tProject}">  
      <div class="modal-body">
 	    <div class="row">
-	     <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b></b></label>
+	    <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b></b></label>
      <div class="col-sm-8" style="margin: 5px 0px;">
-      <input type="hidden" class="form-control" placeholder="Entry Name of Project" id="input-id-1"  required th:field=*{Project_ID}/>
-      <span class="text-danger" th:errors=*{Name}></span>
-	 </div>
-	     <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Project Name</b></label>
+      <input type="hidden" class="form-control" placeholder="Entry Name of Technology Partner" id="input-id-1" required th:field=*{Type_Project_ID}/>
+    
+	 </div> 
+	     <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Name Type Project</b></label>
 	     <div class="col-sm-8" style="margin: 5px 0px;" >
-		  <input type="text" class="form-control" placeholder="Entry Name of Project" id="input-id-1" required th:field=*{Name}/>
-		  <span class="text-danger" th:errors=*{Name}></span>
-		 </div>
-			 
-		     <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Type Project</b></label>
-		 <div class="col-sm-8" style="margin:5px 0px;" >
-		 <select name ="role"  class="form-control m-b" th:field="*{TypeProject}">
-		 <option th:each="t:${TypeProject}"  th:text="${t.NameType_Project}" th:value="${t.Type_Project_ID}"></option>
-		 </select>
-		 </div>
+		  <input type="text" class="form-control" placeholder="Entry Name of Project Task" id="input-id-1" required th:field=*{NameType_Project}/> 
+	</div>
 		 
-		   <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>RFP</b></label>
-		 <div class="col-sm-8" style="margin:5px 0px;" >
-		 <select name ="role"  class="form-control m-b" th:field="*{rfp}">
-		 <option th:each="r:${rfp}"  th:text="${r.Title}" th:value="${r.RFP_ID}"></option>
-		 </select>
-		 </div>
+		    <label class="col-sm-4 control-label" for="input-id-1"  style="margin:5px 0px;"><b>Project Task</b></label>
+	 <div class="col-sm-8" style="margin:5px 0px;" >
+	 <select name ="role" multiple="multiple" class="form-control m-b" th:field="*{projectTask}">
+	 <option th:each="r:${listpt}"  th:text="${r.NameProjectTask}" th:value="${r.ProjectTask_ID}"></option>
+	 </select>
+	 </div>
 		 
-		   <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Technology Partner</b></label>
-		 <div class="col-sm-8" style="margin:5px 0px;" >
-		 <select name ="role"  class="form-control m-b" th:field="*{technologypartner}">
-		 <option th:each="e:${TechnoPart}"  th:text="${e.NameTechnologyPartner}" th:value="${e.TechnologyPartner_ID}"></option>
-		 </select>
-		 </div>
-		 
-		 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Amount</b></label>
-		 <div class="col-sm-8" style="margin: 5px 0px;">
-		  <input type="number" placeholder="Entry Amount of Project" class="form-control" id="input-id-1" required th:field=*{Amount}/>
-		  <span class="text-danger" th:errors=*{Amount}></span>
-		 </div>
-		 
-		 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Year</b></label>
-	     <div class="col-sm-8" style="margin: 5px 0px;">
-			  <input type="date" class="form-control" placeholder="YYYY"  required th:field=*{Year}/>
-	     </div>
-		 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Delivery Date</b></label>
-		 <div class="col-sm-8" style="margin: 5px 0px;">
-			  <input type="date" class="form-control" placeholder="MM/DD/YYYY"  required th:field=*{DeliveryDate}/>
-		 </div>
-	     <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Temporary Acceptance Date</b></label>
-		 <div class="col-sm-8" style="margin: 5px 0px;">
-		      <input type="date" class="form-control" placeholder="MM/DD/YYYY"  required th:field=*{TemporayAcceptanceDate}/>
-		      
-		 </div>
-		 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Final Temporary Date</b></label>
-		 <div class="col-sm-8" style="margin: 5px 0px;">
-		      <input type="date" class="form-control"  placeholder="MM/DD/YYYY"  required th:field=*{FinalTemporaryDate}/>
-		 </div>
-		 
-		 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Delivery Certificate</b></label>
-		 <div class="col-sm-8">
-          <input type="file" placeholder="Upload Preview File" name="file" class="form-control" id="input-id-1">
-         </div>
-       
-		 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Warranty</b></label>
-		 <div class="col-sm-8" style="margin: 5px 0px;">
-		  <input type="number" placeholder="Entry Warranty"class="form-control" id="input-id-1" required th:field=*{Warranty}/>
-		 </div>
-		 
-		 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Execution Time</b></label>
-	     <div class="col-sm-8" style="margin: 5px 0px;">
-		  <input type="number" placeholder="Entry Execution Time" class="form-control" id="input-id-1" required th:field=*{ExecutionTime}/>
-		 </div>
-		 
-	     <label class="col-sm-4 control-label" placeholder="Entry Notes" style="margin: 5px 0px;" for="input-id-1"><b>Notes</b></label>
-		  <div class="col-sm-8" style="margin: 5px 0px;">
-			<input type="text" class="form-control" placeholder="Entry ur notes " id="input-id-1" required th:field=*{Notes} />
-          </div>
-          
 		  <div class="modal-footer">
 		   <button style="margin:0px;" class="btn m-b-xs btn-sm btn-primary btn-addon"><i class="glyphicon glyphicon-ok"></i>Save</button>
 		   <button style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon" data-dismiss="modal"><i class="glyphicon glyphicon-remove"></i>Annuler</button>
 		  </div>
-		 </div>
+		 
 		</div>
 	    </form>
 	  </div>
@@ -731,4 +643,3 @@ document.addEventListener('DOMContentLoaded', function() {
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.min.js" integrity="sha256-tQ3x4V2JW+L0ew/P3v2xzL46XDjEWUExFkCDY0Rflqc=" crossorigin="anonymous"></script>
 </body>
 </html>
-													

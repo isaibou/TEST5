@@ -622,11 +622,11 @@ function drawChart() {
 																		</tr>
 																	</thead>
 																	<tbody>
-																		<tr data-expanded="true">
-																			<td><center>PMP</center></td>
-																			<td><center>2020</center></td>
-																			<td><center><span class="badge bg-primary">Walid</span></center></td>
-																			<td><center>03-02-2020</center></td>
+																		<tr data-expanded="true" th:each="r:${listRef}">
+																			<td th:text="${r.project.Name}"><center></center></td>
+																			<td th:text="${r.Year}"><center></center></td>
+																			<td th:text="${r.SignedBy}"><center><span class="badge bg-primary"></span></center></td>
+																			<td th:text="${r.SigningDate}"><center></center></td>
 																			<td> </td>		
 																				<td>
 																					<span class="badge bg-info">Dell servers</span>
@@ -679,82 +679,54 @@ function drawChart() {
 	<button type="button" class="close pull-right" data-dismiss="modal">&times;</button>
 	<h1 class="m-n font-bold h3"> <b class="glyphicon-plus pull"> </b> Add Reference Project</h1>
    </div>
+   <form th:action="@{SaveReference} " enctype="multipart/form-data"  th:object="${reference}" method="post">
    <div class="modal-body">
 	<div class="row">
-	 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Project</b></label>
-	 <div class="col-sm-8" style="margin: 5px 0px;" >
-	  <select name="account" class="form-control m-b">
-	   <option>Project1</option>
-	   <option>Project2</option>
-	  </select>
+	 
+	   <label class="col-sm-4 control-label" for="input-id-1"  style="margin:5px 0px;"><b>Project :</b></label>
+	 <div class="col-sm-8" style="margin:5px 0px;" >
+	 <select name ="role"  class="form-control m-b" th:field="*{project}">
+	 <option th:each="p:${project}"  th:text="${p.Name}" th:value="${p.Project_ID}"></option>
+	 </select>
 	 </div>
-	 <label class="col-sm-4 control-label" placeholder="Entry Year" style="margin: 5px 0px;" for="input-id-1"><b>Year</b></label>
-	 <div class="col-sm-8" style="margin: 5px 0px;">
-	  <form action="https://formden.com/post/MlKtmY4x/" class="form-horizontal" method="post">
-	   <div class="form-group ">
-		<div class="col-sm-12">
-		 <div class="input-group">
-		  <div class="input-group-addon">
-		   <i class="fa fa-calendar"></i>
-		  </div>
-		  <input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" type="text"/>
-		 </div>
-		</div>
-	   </div>
-	  </form>
-	 </div>
+	 
+	
+	  
 	 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Amount</b></label>
 	 <div class="col-sm-8" style="margin: 5px 0px;">
-	  <input type="text" placeholder="Entry Amount" class="form-control" id="input-id-1">
+	  <input type="text" placeholder="Entry Amount" class="form-control" id="input-id-1" th:field="*{Amount}" />
 	 </div>
 	 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>SignedBy</b></label>
 	 <div class="col-sm-8" style="margin: 5px 0px;">
-	  <input type="text" placeholder="SignedBy" class="form-control" id="input-id-1">
+	  <input type="text" placeholder="SignedBy" class="form-control" id="input-id-1" th:field="*{SignedBy}"/>
 	 </div>
-	 <label class="col-sm-4 control-label" placeholder="Entry Year" style="margin: 5px 0px;" for="input-id-1"><b>SigningDate</b></label>
-	 <div class="col-sm-8" style="margin: 5px 0px;">
-	  <form action="https://formden.com/post/MlKtmY4x/" class="form-horizontal" method="post">
-	   <div class="form-group ">
-		<div class="col-sm-12">
-		 <div class="input-group">
-		  <div class="input-group-addon">
-		   <i class="fa fa-calendar"></i>
-		  </div>
-		  <input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" type="text"/>
-		 </div>
-		</div>
-	   </div>
-	  </form>
-     </div>
+	
+     
 	 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Keywords Tags</b></label>
 	 <div class="col-sm-8" style="margin: 5px 0px;">
-	  <input type="text" data-role="tagsinput"  placeholder="Write Keywords Tags and click Entry" class="form-control" id="input-id-1">
+	  <input type="text"   placeholder="Write Keywords Tags and click Entry" class="form-control" id="input-id-1">
 	 </div>
-	 <label class="col-sm-4 control-label" placeholder="Upload Preview Picture" style="margin: 5px 0px;" for="input-id-1"><b>Preview Picture </b></label>
-	 <div class="col-sm-4" style="margin: 5px 0px;">
-	  <input type="text" placeholder="Upload Preview Picture"class="form-control" id="input-id-1">
-	 </div>
-	 <div class="col-sm-4" style="margin: 5px 0px;">
-	  <div class="btn-group">
-	   <a class="btn btn-default" tooltip="Insert picture (or just drag &amp; drop)" id="pictureBtn"><i class="icon-paper-clip"></i></a>
-	   <input type="file" data-edit="insertImage" style="position:absolute; opacity:0; width:41px; height:34px">
-	  </div>
-	 </div>           
-	 <label class="col-sm-4 control-label" placeholder="Upload Reference File" style="margin: 5px 0px;" for="input-id-1"><b>Reference File</b></label>
-	 <div class="col-sm-4" style="margin: 5px 0px;">
-	  <input type="text" placeholder="Upload Reference File"class="form-control" id="input-id-1">
-	 </div>
-	 <div class="col-sm-4" style="margin: 5px 0px;">
-	  <div class="btn-group">
-	   <a class="btn btn-default" tooltip="Insert picture (or just drag &amp; drop)" id="pictureBtn"><i class="icon-paper-clip"></i></a>
-	   <input type="file" data-edit="insertImage" style="position:absolute; opacity:0; width:41px; height:34px">
-	  </div> 
-	 </div>
+	     
+	    <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Reference File</b></label>
+		 <div class="col-sm-8">
+          <input type="file" placeholder="Upload Preview File" name="file" class="form-control" id="input-id-1" required />
+         </div>
+         
+		 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Picture </b></label>
+		 <div class="col-sm-8">
+          <input type="file" placeholder="Upload Preview File" name="picture" class="form-control" id="input-id-1" required/>
+         </div>
+        
+	
+	
+	
 	</div>
-   </div>
+   
    <div class="modal-footer">
 	<button style="margin:0px;" class="btn m-b-xs btn-sm btn-primary btn-addon"><i class="glyphicon glyphicon-ok"></i>Save</button>
 	<button style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon" data-dismiss="modal"><i class="glyphicon glyphicon-remove"></i>Annuler</button>
+   </div>
+   </form>
    </div>
   </div>
  </div>

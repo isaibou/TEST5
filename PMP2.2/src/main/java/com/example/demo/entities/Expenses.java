@@ -7,6 +7,8 @@ import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Expenses implements Serializable{
@@ -20,6 +22,16 @@ public class Expenses implements Serializable{
 	private Date SubmittedDate;
 	private String StatutExpense;
 	private String RejectReason;
+	
+	
+	
+	@ManyToOne
+	@JoinColumn(name="typeExpenses_ID")
+	private TypeExpenses typeExpenses;
+	
+	@ManyToOne
+	@JoinColumn(name = "USER_ID")
+	private Users user;
 	
 	
 	public Expenses() {
@@ -106,6 +118,26 @@ public class Expenses implements Serializable{
 
 	public void setRejectReason(String rejectReason) {
 		RejectReason = rejectReason;
+	}
+
+
+	public TypeExpenses getTypeExpenses() {
+		return typeExpenses;
+	}
+
+
+	public void setTypeExpenses(TypeExpenses typeExpenses) {
+		this.typeExpenses = typeExpenses;
+	}
+
+
+	public Users getUser() {
+		return user;
+	}
+
+
+	public void setUser(Users user) {
+		this.user = user;
 	}
 	
 	

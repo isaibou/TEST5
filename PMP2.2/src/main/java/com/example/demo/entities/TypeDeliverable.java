@@ -1,10 +1,13 @@
 package com.example.demo.entities;
 
 import java.io.Serializable;
+import java.util.Collection;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class TypeDeliverable implements Serializable{
@@ -13,6 +16,9 @@ public class TypeDeliverable implements Serializable{
 	@GeneratedValue
 	private Integer TypeDeliverable_ID;
 	private String NameTypeDeliverable;
+	
+	@OneToMany(mappedBy = "typeDeliverable", fetch = FetchType.LAZY)
+	private Collection<Deliverable> deliverable;
 	
 	public TypeDeliverable() {
 		super();
@@ -37,6 +43,14 @@ public class TypeDeliverable implements Serializable{
 
 	public void setNameTypeDeliverable(String nameTypeDeliverable) {
 		NameTypeDeliverable = nameTypeDeliverable;
+	}
+
+	public Collection<Deliverable> getDeliverable() {
+		return deliverable;
+	}
+
+	public void setDeliverable(Collection<Deliverable> deliverable) {
+		this.deliverable = deliverable;
 	}
 	
 	

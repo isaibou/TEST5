@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -20,6 +21,7 @@ import com.example.demo.repository.AssetTypeRepository;
 import com.example.demo.repository.FrimwareRepository;
 import com.example.demo.repository.UserRepository;
 import com.example.demo.repository.VendorRepository;
+
 
 @Controller
 
@@ -34,7 +36,8 @@ public class AssetTypeController
 	private AssetTypeRepository assetTypeRepository;
 	@Autowired
 	private UserRepository userRepository;
-     
+    
+	
 	
 	@RequestMapping(value="/assetstype_manage")
 	public String allAssetType(Model model, AssetType assettype, Authentication auth) {

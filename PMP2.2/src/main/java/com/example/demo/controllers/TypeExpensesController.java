@@ -28,6 +28,7 @@ public class TypeExpensesController {
 	private UserRepository userRepository;
 	
 
+	
 	@RequestMapping(value="/typeExpenses")
 	public String InternalRequestManage(Model model, Authentication auth) {
 		

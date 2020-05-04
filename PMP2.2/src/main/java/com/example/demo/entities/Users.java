@@ -20,6 +20,7 @@ import javax.validation.constraints.Size;
 public class Users implements Serializable {
 	@Id
 	
+	
 	private  String username;
 	private String password; 
 	private boolean actived;

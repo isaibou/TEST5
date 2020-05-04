@@ -18,6 +18,7 @@ import com.example.demo.repository.TechnologiePartnerRepository;
 @Controller
 public class TechnologyPartnerController {
 	
+	
 	@Autowired
 	private TechnologiePartnerRepository technologiepartnerRepository;
 	

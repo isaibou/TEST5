@@ -11,6 +11,7 @@ import javax.persistence.OneToMany;
 
 @Entity
 public class TypeExpenses {
+	
 	@Id
 	@GeneratedValue
 	private Integer TypeExpenses_ID; 

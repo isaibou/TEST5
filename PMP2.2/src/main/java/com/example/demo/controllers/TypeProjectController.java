@@ -33,7 +33,7 @@ public class TypeProjectController {
 	private ProjectTaskRepository projectTaskrepository;
 	
 	
-	
+
 	
 	
 	@RequestMapping(value="/typeProject")

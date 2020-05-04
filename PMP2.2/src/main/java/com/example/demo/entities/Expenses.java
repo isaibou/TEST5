@@ -13,6 +13,7 @@ import javax.persistence.ManyToOne;
 @Entity
 public class Expenses implements Serializable{
 	
+	
 	@Id
 	@GeneratedValue
 	private Integer Expenses_ID;

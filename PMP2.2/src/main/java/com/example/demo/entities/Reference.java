@@ -37,6 +37,7 @@ public class Reference implements Serializable{
 	
 	
 	
+	
 	public Reference(Date an, String amount, String signedBy, Date signing, String keywordsTags, String previewPicture,
 			String referenceFile) {
 		super();

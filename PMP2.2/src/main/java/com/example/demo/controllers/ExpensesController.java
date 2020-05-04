@@ -50,6 +50,7 @@ public class ExpensesController {
 	
 
 	
+	
 	@RequestMapping(value="/expenses")
 	public String AllCustomer(Model model, Customer customer, Authentication auth) {
 		Users u = userRepository.getOne(auth.getName());

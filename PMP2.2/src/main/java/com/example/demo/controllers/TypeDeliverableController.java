@@ -26,6 +26,7 @@ public class TypeDeliverableController {
 	@Autowired
 	TypeDeliverableRepository typeDeliverablerepository;
 	
+	
 	@Autowired
 	private UserRepository userRepository;
 	

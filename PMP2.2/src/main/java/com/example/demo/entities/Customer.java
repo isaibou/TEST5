@@ -28,6 +28,7 @@ import org.springframework.format.annotation.NumberFormat;
 @Entity
 public class Customer implements Serializable{
 	
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "my_seq_id")
 	@SequenceGenerator(name = "my_seq_id", sequenceName = "my_seq_id", allocationSize = 100)

@@ -14,6 +14,7 @@ import javax.persistence.ManyToMany;
 public class ProjectTask implements Serializable{
 	
 	@Id
+	
 	@GeneratedValue
 	private Integer ProjectTask_ID;
 	private String NameProjectTask;

@@ -15,6 +15,7 @@ import javax.persistence.OneToMany;
 public class TypeProject implements Serializable{
 	
 	@Id
+	
 	@GeneratedValue
 	private Integer Type_Project_ID;
 	private String NameType_Project;

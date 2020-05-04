@@ -44,6 +44,8 @@ public class DataCenterController {
 		
 		return "dataCenter";
 	
+		
+		
 	}
 	
 	@RequestMapping(value="/SaveDataCenter" , method= RequestMethod.POST)

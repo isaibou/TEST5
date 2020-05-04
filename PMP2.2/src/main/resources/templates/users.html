@@ -129,12 +129,7 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
    </div><!-- / user --><!-- nav -->
 
 
-<nav ui-nav class="navi clearfix">
 
-
-
-
-         <nav ui-nav class="navi clearfix">
 
 
 
@@ -143,8 +138,6 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 
    </div><!-- / user --><!-- nav -->
 <nav ui-nav class="navi clearfix">
-
-
 
             <ul class="nav">
               <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
@@ -241,11 +234,11 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
                   <span>Assets</span>
                 </a>
                 <ul class="nav nav-sub dk">
-                  <li class="">
+<li>
                     <a th:href="assets_manage">
                       <span>Manage Assets</span>
                     </a>
-                  </li>
+                  </li> 
                   <li>
                     <a th:href="assetstype_manage">
                       <span>Manage Assets Type</span>
@@ -533,7 +526,11 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 	   <label class="col-sm-4 control-label" for="input-id-1"  style="margin:5px 0px;"><b>Role :</b></label>
 	 <div class="col-sm-8" style="margin:5px 0px;" >
 	 <select name ="role" multiple="multiple" class="form-control m-b" th:field="*{roles}">
+<<<<<<< HEAD
 	 <option th:each="r:${allRoles}" th:text="${r.role}" th:value="${r.role}"></option>
+=======
+	 <option th:each="r:${allRoles}"  th:text="${r.role}" th:value="${r.role}"></option>
+>>>>>>> branch 'master' of https://github.com/isaibou/TEST5
 	 </select>
 	 </div>
 	 </div>

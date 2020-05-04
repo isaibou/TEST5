@@ -10,7 +10,7 @@ import org.springframework.data.repository.query.Param;
 
 import com.example.demo.entities.DataCenter;
 
-public interface DataCenterRepository  extends  JpaRepository<DataCenter, Long>{
+public interface DataCenterRepository  extends  JpaRepository<DataCenter, Integer>{
 	
 	public Page<DataCenter> findByAdress(String n, Pageable pageable); 
 

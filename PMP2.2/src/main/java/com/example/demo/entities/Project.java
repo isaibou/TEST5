@@ -33,6 +33,7 @@ import org.springframework.format.annotation.NumberFormat;
 public class Project implements Serializable{
 	
 	
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer Project_ID;
@@ -41,8 +42,7 @@ public class Project implements Serializable{
 	@Column(name="Name",length=30,unique=true)
 	private String Name;
 	
-	@Column(name = "TypeProject")
-	private String TypeProject;
+	
 	
 	@NumberFormat(pattern = "#,###,###,###.##")
 	private Double Amount;
@@ -87,7 +87,20 @@ public class Project implements Serializable{
 	
 	@ManyToMany(mappedBy = "Project")
 	private List<TechnologyPartner> technologypartner;  
+	
+	@ManyToOne
+	@JoinColumn(name="typeProject_ID")
+	private TypeProject typeProject;
+	
+	@ManyToOne
+	@JoinColumn(name="RFP_ID")
+	private RFP rfp;
 
+	@OneToMany(mappedBy = "project", fetch = FetchType.LAZY)
+	private Collection<Reference> reference;
+
+	@OneToMany(mappedBy = "project", fetch = FetchType.LAZY)
+	private Collection<Deliverable> deliverable;
 	
 	public List<TechnologyPartner> getTechnologypartner() {
 		return technologypartner;
@@ -114,7 +127,7 @@ public class Project implements Serializable{
 			int executionTime, String notes, String status) {
 		super();
 		Name = name;
-		TypeProject = typeProject;
+		
 		Amount = amount;
 		Year = year;
 		DeliveryDate = deliveryDate;
@@ -236,11 +249,33 @@ public class Project implements Serializable{
 	public void setStatus(String status) {
 		Status = status;
 	}
-	public String getTypeProject() {
-		return TypeProject;
+	
+	public RFP getRfp() {
+		return rfp;
 	}
-	public void setTypeProject(String typeProject) {
-		TypeProject = typeProject;
+	public void setRfp(RFP rfp) {
+		this.rfp = rfp;
 	}
+	public void setTypeProject(TypeProject typeProject) {
+		this.typeProject = typeProject;
+	}
+	public Collection<Reference> getReference() {
+		return reference;
+	}
+	public void setReference(Collection<Reference> reference) {
+		this.reference = reference;
+	}
+	public Collection<Deliverable> getDeliverable() {
+		return deliverable;
+	}
+	public void setDeliverable(Collection<Deliverable> deliverable) {
+		this.deliverable = deliverable;
+	}
+	public TypeProject getTypeProject() {
+		return typeProject;
+	}
+	
+	
+	
 
 }

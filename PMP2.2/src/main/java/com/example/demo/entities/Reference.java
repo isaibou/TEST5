@@ -1,11 +1,16 @@
 package com.example.demo.entities;
 
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 
 @Entity
@@ -14,41 +19,46 @@ public class Reference implements Serializable{
 	@Id
 	@GeneratedValue
 	private Integer Reference_ID;
-	private Date Year;
+	private Date an;
 	private String Amount;
 	private String SignedBy;
-	private Date SigningDate;
+	private Date Signing;
 	private String KeywordsTags;
 	private String PreviewPicture;
 	private String ReferenceFile;
+	
+	@ManyToOne
+	@JoinColumn(name="PROJECT_ID")
+	private Project project;
 	
 	public Reference() {
 		super();
 	}
 	
-	public Reference(Date year, String amount, String signedBy, Date signingDate, String keywordsTags,
-			String previewPicture, String referenceFile) {
+	
+	
+	
+	public Reference(Date an, String amount, String signedBy, Date signing, String keywordsTags, String previewPicture,
+			String referenceFile) {
 		super();
-		Year = year;
+		this.an = an;
 		Amount = amount;
 		SignedBy = signedBy;
-		SigningDate = signingDate;
+		Signing = signing;
 		KeywordsTags = keywordsTags;
 		PreviewPicture = previewPicture;
 		ReferenceFile = referenceFile;
 	}
+
+
+
 	public Integer getReference_ID() {
 		return Reference_ID;
 	}
 	public void setReference_ID(Integer reference_ID) {
 		Reference_ID = reference_ID;
 	}
-	public Date getYear() {
-		return Year;
-	}
-	public void setYear(Date year) {
-		Year = year;
-	}
+	
 	public String getAmount() {
 		return Amount;
 	}
@@ -61,12 +71,7 @@ public class Reference implements Serializable{
 	public void setSignedBy(String signedBy) {
 		SignedBy = signedBy;
 	}
-	public Date getSigningDate() {
-		return SigningDate;
-	}
-	public void setSigningDate(Date signingDate) {
-		SigningDate = signingDate;
-	}
+	
 	public String getKeywordsTags() {
 		return KeywordsTags;
 	}
@@ -84,6 +89,30 @@ public class Reference implements Serializable{
 	}
 	public void setReferenceFile(String referenceFile) {
 		ReferenceFile = referenceFile;
+	}
+
+	public Project getProject() {
+		return project;
+	}
+
+	public void setProject(Project project) {
+		this.project = project;
+	}
+
+	public Date getAn() {
+		return an;
+	}
+
+	public void setAn(Date an) {
+		this.an = an;
+	}
+
+	public Date getSigning() {
+		return Signing;
+	}
+
+	public void setSigning(Date signing) {
+		Signing = signing;
 	}
 	
 	

@@ -18,6 +18,7 @@ import javax.persistence.ManyToMany;
 public class TechnologyPartner implements Serializable{
 	
 	
+	
 	@Id
 	@GeneratedValue
 	private Integer TechnologyPartner_ID;

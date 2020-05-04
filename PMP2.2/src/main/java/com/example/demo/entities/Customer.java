@@ -28,6 +28,7 @@ import org.springframework.format.annotation.NumberFormat;
 @Entity
 public class Customer implements Serializable{
 	
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "my_seq_id")
 	@SequenceGenerator(name = "my_seq_id", sequenceName = "my_seq_id", allocationSize = 100)
@@ -96,6 +97,9 @@ public class Customer implements Serializable{
 	
 	@OneToMany(mappedBy = "customer", fetch = FetchType.LAZY)
 	private Collection<Users> users;
+	
+	@OneToMany(mappedBy = "customer" , fetch = FetchType.LAZY)
+	private Collection<DataCenter> dataCenter;
 	
 	public Customer() {
 		super();
@@ -278,4 +282,15 @@ public class Customer implements Serializable{
 	public void setPurchasing(Collection<Purchasing> purchasing) {
 		Purchasing = purchasing;
 	}
+
+	public Collection<DataCenter> getDataCenter() {
+		return dataCenter;
+	}
+
+	public void setDataCenter(Collection<DataCenter> dataCenter) {
+		this.dataCenter = dataCenter;
+	}
+	
+	
+	
 }

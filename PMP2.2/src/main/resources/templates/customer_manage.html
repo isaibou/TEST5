@@ -272,20 +272,6 @@
 
 												<!-- / user -->
 
-
-												<!-- / user -->												<!-- nav -->
-
-
-												<!-- nav -->
-
-
-<nav ui-nav class="navi clearfix">
-
-
-
-        <nav ui-nav class="navi clearfix">
-
-												<!-- nav -->
 <nav ui-nav class="navi clearfix">
 
 
@@ -384,11 +370,13 @@
                   <span>Assets</span>
                 </a>
                 <ul class="nav nav-sub dk">
-                  <li class="">
+               
+                 <!--  <li class="">
                     <a th:href="assets_manage">
                       <span>Manage Assets</span>
                     </a>
-                  </li>
+                  </li> -->
+ 
                   <li>
                     <a th:href="assetstype_manage">
                       <span>Manage Assets Type</span>
@@ -420,7 +408,7 @@
               </li>
 			  <li>
                 <a th:href="contract_manage">
-                  <i class="fa fa-legal"></i></i>
+                  <i class="fa fa-legal"></i>
                   <span>Contracts</span>
                 </a>
               </li>
@@ -519,7 +507,9 @@
 															<div class="col-sm-6">
 																<div class="panel padder-v item">
 																	<div class="h1 count text-info font-thin h1 pull-center" th:text="${totalCustomer}"></div>
-																	<span class="text-muted text-xs"><b>Total Clients</b></span>
+																	<span class="text-muted text-xs"><b>Total Customer</b></span>
+
+
 																	<span class="bottom text-right w-full">
 																		<i class="glyphicon   glyphicon-tower text-muted m-r-sm"></i>
 																	</span>
@@ -529,8 +519,8 @@
 																<a href class="block panel padder-v bg-primary item">
 
 																	<div class="h1 count text-white font-thin h1 pull-center" th:text="${totalCustomer}"></div>
-																	<span class="text-muted text-xs"><b>Total Clients</b></span>
-																	<span class="bottom text-right w-full">
+																	<span class="text-muted text-xs"><b>Total Customer</b></span>
+					<span class="bottom text-right w-full">
 																		<i class="glyphicon glyphicon-tag text-muted m-r-sm"></i>
 																	</span>
 																</a>
@@ -539,7 +529,8 @@
 															<div class="col-sm-6" >
 																<a href class="block panel padder-v bg-primary item">
 																	<span class="text-white count font-thin h1 block" th:text="${totalCustomer}"></span>
-																	<span class="text-muted text-xs"><b>Total Clients</b></span>
+																	<span class="text-muted text-xs"><b>Total Customer</b></span>
+
 																	<span class="bottom text-right w-full">
 																		<i class="glyphicon glyphicon-briefcase text-muted m-r-sm"></i>
 																	</span>
@@ -549,7 +540,8 @@
 															<div class="col-sm-6" >
 																<div class="panel padder-v item">
 																	<span class="text-info count font-thin h1 block" th:text="${totalCustomer}"></span>
-																	<span class="text-muted text-xs"><b>Total Clients</b></span>
+																	<span class="text-muted text-xs"><b>Total Customer</b></span>
+
 																	<span class="bottom text-right w-full">
 																		<i class="glyphicon  glyphicon-tag text-muted m-r-sm"></i>
 																	</span>

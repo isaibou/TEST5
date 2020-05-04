@@ -1,115 +1,49 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
+
 	<head>
-	
 		<meta charset="utf-8" />
-		<title>Technology Partner</title>
+		<title> Manage DataCenter </title>
 		<meta name="description" content="app, web app, responsive, responsive layout, admin, admin panel, admin dashboard, flat, flat ui, ui kit, AngularJS, ui route, charts, widgets, components" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 		<link rel="stylesheet" href="../libs/assets/animate.css/animate.css" type="text/css" />
 		<link rel="stylesheet" href="../libs/assets/font-awesome/css/font-awesome.min.css" type="text/css" />
 		<link rel="stylesheet" href="../libs/assets/simple-line-icons/css/simple-line-icons.css" type="text/css" />
 		<link rel="stylesheet" href="../libs/jquery/bootstrap/dist/css/bootstrap.css" type="text/css" />
-		<link href='../libs/packages/core/main.css' rel='stylesheet' />
-		<link href='../libs/packages/daygrid/main.css' rel='stylesheet' />
-		<link href='../libs/packages/timegrid/main.css' rel='stylesheet' />
-		<link href='../libs/packages/list/main.css' rel='stylesheet' />
-		<script src='../libs/packages/core/main.js'></script>
-		<script src='../libs/packages/interaction/main.js'></script>
-		<script src='../libs/packages/daygrid/main.js'></script>
-		<script src='../libs/packages/timegrid/main.js'></script>
-		<script src='../libs/packages/list/main.js'></script>
+		<script src="https://www.gstatic.com/charts/loader.js"></script>
+
 		<link rel="stylesheet" href="css/font.css" type="text/css" />
 		<link rel="stylesheet" href="css/app.css" type="text/css" />
 		<script>
+			google.charts.load('current', {packages: ['corechart']});
+			google.charts.setOnLoadCallback(drawChart);
 
-document.addEventListener('DOMContentLoaded', function() {
-    var calendarEl = document.getElementById('calendar1');
+			function drawChart() {
+			// Define the chart to be drawn.
+			var data = new google.visualization.DataTable();
+			data.addColumn('string', 'Element');
+			data.addColumn('number', 'Percentage');
+			data.addRows([
+			['Finance', 0.70],
+			['Banking', 0.21],
+			['Construction', 0.01],
+			['Technology', 0.02],
+			['Telecomunication', 0.02]
+			]);
 
-    var calendar1 = new FullCalendar.Calendar(calendarEl, {
-
-      plugins: [ 'interaction', 'dayGrid', 'list', 'googleCalendar' ],
-
-      header: {
-        left: 'prev,next today',
-        center: 'title',
-        right: 'dayGridMonth,listYear'
-      },
-
-      displayEventTime: false, // don't show the time column in list view
-
-      // THIS KEY WON'T WORK IN PRODUCTION!!!
-      // To make your own Google API key, follow the directions here:
-      // http://fullcalendar.io/docs/google_calendar/
-      googleCalendarApiKey: 'AIzaSyDcnW6WejpTOCffshGDDb4neIrXVUA1EAE',
-
-      // US Holidays
-      events: 'en.usa#holiday@group.v.calendar.google.com',
-
-      eventClick: function(arg) {
-        // opens events in a popup window
-        window.open(arg.event.url, 'google-calendar-event', 'width=700,height=600');
-
-        arg.jsEvent.preventDefault() // don't navigate in main tab
-      },
-
-      loading: function(bool) {
-        document.getElementById('loading').style.display =
-          bool ? 'block' : 'none';
-      }
-
-    });
-
-    calendar1.render();
-  });
+			var options = {backgroundColor: '#f0f3f4', colors: ['#6254b2', '#3289c8', '#27c24c', '#ff4040', '#ffbb3b'],
+  is3D: true};
 
 
+
+
+			// Instantiate and draw the chart.
+			var chart = new google.visualization.PieChart(document.getElementById('myPieChart'));
+			chart.draw(data, options);
+			}
 		</script>
-		<script>
-
-document.addEventListener('DOMContentLoaded', function() {
-    var calendarEl = document.getElementById('calendar');
-
-    var calendar = new FullCalendar.Calendar(calendarEl, {
-
-      plugins: [ 'interaction', 'dayGrid', 'list', 'googleCalendar' ],
-
-      header: {
-        left: 'prev,next today',
-        center: 'title',
-        right: 'dayGridMonth,listYear'
-      },
-
-      displayEventTime: false, // don't show the time column in list view
-
-      // THIS KEY WON'T WORK IN PRODUCTION!!!
-      // To make your own Google API key, follow the directions here:
-      // http://fullcalendar.io/docs/google_calendar/
-      googleCalendarApiKey: 'AIzaSyDcnW6WejpTOCffshGDDb4neIrXVUA1EAE',
-
-      // US Holidays
-      events: 'en.usa#holiday@group.v.calendar.google.com',
-
-      eventClick: function(arg) {
-        // opens events in a popup window
-        window.open(arg.event.url, 'google-calendar-event', 'width=700,height=600');
-
-        arg.jsEvent.preventDefault() // don't navigate in main tab
-      },
-
-      loading: function(bool) {
-        document.getElementById('loading').style.display =
-          bool ? 'block' : 'none';
-      }
-
-    });
-
-    calendar.render();
-  });
-
-
-		</script>
-			<style>
+		<style>
 @media (max-width: 767px) {
     .table-responsive .dropdown-menu {
         position: static !important;
@@ -120,11 +54,14 @@ document.addEventListener('DOMContentLoaded', function() {
         overflow: inherit;
     }
 }
-</style>
-</head>
-<body>
-<div class="app app-header-fixed ">
- <header id="header" class="app-header navbar" role="menu">
+		</style>
+	</head>
+	<body>
+		<div class="app app-header-fixed ">
+
+
+			<!-- header -->
+			<header id="header" class="app-header navbar" role="menu">
 				<!-- navbar header -->
 				<div class="navbar-header bg-dark">
 					<button class="pull-right visible-xs dk" ui-toggle-class="show" target=".navbar-collapse">
@@ -232,12 +169,13 @@ document.addEventListener('DOMContentLoaded', function() {
 											<!-- / dropdown -->
 										</li>
 										<li class="dropdown">
-											
+											<a href="#" data-toggle="dropdown" class="dropdown-toggle clear">										
+
 												<span class="thumb-sm avatar pull-right m-t-n-sm m-b-n-sm m-l-sm">
-													<img src="img/user.png" alt="...">
+													<img class="img-thumbnail" th:src="@{getPhoto(id=${user.username})}" width="60px" height="60px">
 														<i class="on md b-white bottom"></i>
 													</span>
-													<span class="hidden-sm hidden-md">Walid.largou</span> <b class="caret"></b>
+													<span th:text ="   ${user.firstName   } + . +  ${user.LastName   }   "></span> <b class="caret"></b>
 												</a>
 												<!-- dropdown -->
 												<ul class="dropdown-menu animated fadeInRight w">
@@ -256,9 +194,10 @@ document.addEventListener('DOMContentLoaded', function() {
 														</a>
 													</li>
 													<li>
-														<a ui-sref="app.page.profile">Profile</a>
+														<a th:href="@{/logout}">Profile</a>
 													</li>
 													<li>
+			
 														<a ui-sref="app.docs">
 															<span class="label bg-info pull-right">new</span>
                   Help
@@ -275,17 +214,68 @@ document.addEventListener('DOMContentLoaded', function() {
 										<!-- / navbar right -->
 									</div>
 									<!-- / navbar collapse -->
-								</header><!-- / header -->
-  <!-- aside -->
-  <aside id="aside" class="app-aside hidden-xs bg-dark">
-   <div class="aside-wrap">
-	<div class="navi-wrap"><!-- user -->
-	 <div class="clearfix hidden-xs text-center hide" id="aside-user">
-	  <div class="dropdown wrapper"><a href="app.page.profile"><span class="thumb-lg w-auto-folded avatar m-t-sm"><img src="img/a0.jpg" class="img-full" alt="..."></span></a><a href="#" data-toggle="dropdown" class="dropdown-toggle hidden-folded"><span class="clear"><span class="block m-t-sm"><strong class="font-bold text-lt">Walid.Largou</strong><b class="caret"></b></span><span class="text-muted text-xs block">Manager</span></span></a><!-- dropdown --><ul class="dropdown-menu animated fadeInRight w hidden-folded"><li class="wrapper b-b m-b-sm bg-info m-t-n-xs"><span class="arrow top hidden-folded arrow-info"></span><div><p>300mb of 500mb used</p></div><div class="progress progress-xs m-b-none dker"><div class="progress-bar bg-white" data-toggle="tooltip" data-original-title="50%" style="width: 50%"></div></div></li><li><a href>Settings</a></li>
-	  <li><a th:href="page_profile">Profile</a></li><li><a href><span class="badge bg-danger pull-right">3</span>Notifications</a></li><li class="divider"></li><li><a th:href="page_signin">Logout</a></li></ul><!-- / dropdown --></div>
-	  <div class="line dk hidden-folded"></div>
-	 </div><!-- / user --><!-- nav -->
-<nav ui-nav class="navi clearfix">
+								</header>
+
+								<!-- / header -->
+
+
+								<!-- aside -->
+								<aside id="aside" class="app-aside hidden-xs bg-dark">
+									<div class="aside-wrap">
+										<div class="navi-wrap">
+											<!-- user -->
+											<div class="clearfix hidden-xs text-center hide" id="aside-user">
+												<div class="dropdown wrapper">
+													<a href="app.page.profile">
+														<span class="thumb-lg w-auto-folded avatar m-t-sm">
+															<img src="img/a0.jpg" class="img-full" alt="...">
+															</span>
+														</a>
+														<a href="#" data-toggle="dropdown" class="dropdown-toggle hidden-folded">
+															<span class="clear">
+																<span class="block m-t-sm">
+																	<strong class="font-bold text-lt">Walid.Largou</strong> 
+																	<b class="caret"></b>
+																</span>
+																<span class="text-muted text-xs block">Manager</span>
+															</span>
+														</a>
+														<!-- dropdown -->
+														<ul class="dropdown-menu animated fadeInRight w hidden-folded">
+															<li class="wrapper b-b m-b-sm bg-info m-t-n-xs">
+																<span class="arrow top hidden-folded arrow-info"></span>
+																<div>
+																	<p>300mb of 500mb used</p>
+																</div>
+																<div class="progress progress-xs m-b-none dker">
+																	<div class="progress-bar bg-white" data-toggle="tooltip" data-original-title="50%" style="width: 50%"></div>
+																</div>
+															</li>
+															<li>
+																<a href>Settings</a>
+															</li>
+															<li>
+																<a th:href="page_profile">Profile</a>
+															</li>
+															<li>
+																<a href>
+																	<span class="badge bg-danger pull-right">3</span>
+                    Notifications
+																</a>
+															</li>
+															<li class="divider"></li>
+															<li>
+																<a th:href="@{/logout}">Logout</a>
+															</li>
+														</ul>
+														<!-- / dropdown -->
+													</div>
+													<div class="line dk hidden-folded"></div>
+												</div>
+												<!-- / user -->
+
+												<!-- nav -->
+         <nav ui-nav class="navi clearfix">
             <ul class="nav">
               <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
                 <span>Main</span>
@@ -381,11 +371,12 @@ document.addEventListener('DOMContentLoaded', function() {
                   <span>Assets</span>
                 </a>
                 <ul class="nav nav-sub dk">
-                  <li class="">
+
+                 <!--   <li class="">
                     <a th:href="assets_manage">
                       <span>Manage Assets</span>
                     </a>
-                  </li>
+                  </li> -->
                   <li>
                     <a th:href="assetstype_manage">
                       <span>Manage Assets Type</span>
@@ -409,6 +400,12 @@ document.addEventListener('DOMContentLoaded', function() {
                   <span>Tickets</span>
                 </a>
               </li> -->
+              <li>
+                <a th:href="RFP">
+                  <i class="glyphicon glyphicon-tag"></i>
+                  <span>RFP</span>
+                </a>
+              </li>
 			  <li>
                 <a th:href="contract_manage">
                   <i class="fa fa-legal"></i></i>
@@ -454,7 +451,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 <span>Your Stuff</span>
               </li>  
               <li>
-                 <a th:href="@{profile}">
+                <a th:href="@{profile}">
                   <i class="icon-user icon text-success-lter"></i>
                   <b class="badge bg-success pull-right"></b>
                   <span>Profile</span>
@@ -468,116 +465,163 @@ document.addEventListener('DOMContentLoaded', function() {
               </li>
             </ul>
           </nav>
-  <!-- nav --><!-- aside footer --><!-- / aside footer -->
-	</div>
-   </div>
-  </aside><!-- / aside --><!-- content -->
-  <div id="content" class="app-content" role="main">
-   <div class="app-content-body ">
-    <div class="bg-light lter b-b wrapper-md"><h1 class="m-n font-bold h3">Technology Partner
-    <a  style="margin-top:-5px;" data-toggle="modal"  data-target="#AddTechnologyPartner" class="btn btn-sm btn-primary pull-right"  role="button"><b class="glyphicon-plus pull"> </b>Add Technology Partner</a></h1></div>
-	
-	                 <div class="row text-center" style="margin: 10px 5px;">
-                              <div class="col-sm-6">
-                                <div class="panel padder-v item">
-                                  <div class="h1 count text-info font-thin h1 pull-center">121</div>
-                                  <span class="text-muted text-xs"><b> Total Technology Partner </b></span>
-                                  <span class="bottom text-right w-full">
-                                    <i class="glyphicon   glyphicon-tower text-muted m-r-sm"></i>
-                                  </span>
-                                </div>
-                              </div>
+												<!-- nav -->
 
-                              <div class="col-sm-6">
-                                <a href="" class="block panel padder-v bg-primary item">
-                                  <span class="text-white count font-thin h1 block">80</span>
-                                  <span class="text-muted text-xs"><b> Technology Partner Actifs </b></span>
-                                  <span class="bottom text-right w-full">
-                                    <i class="glyphicon glyphicon-briefcase text-muted m-r-sm"></i>
-                                  </span>
-                                </a>
-                              </div>
-                            </div>
-	 
-	   <div class="table-responsive" style="background-color:white;margin:10px; padding:10px;">
-		<table ui-jq="dataTable" ui-options="{
-															aoColumns: [
-															{ mData: 'engine' },
-															{ mData: 'browser' },
-															
-															{ mData: 'action' }
-															]
-															}" class="table  b-t b-b">
-	     <thead style="color:#23b7e5;">
-		  <tr>
-		   <th  style="width:20%"><center> Nmae Technology Partner </center></th>
-		   <th  style="width:5%"><center>Status</center></th>
-		   <th  style="width:10%"><center>Actions</center></th>
-		  </tr>
-	     </thead>
-		 <tbody>
-		  <tr data-expanded="true" th:each="t:${techpart}">
-		   <td  th:text ="${t.NameTechnologyPartner}" class="m-n font-thin h4 text-secondary"><center><b></b></center></td> 
-		    <td th:text ="${t.Status}" class="m-n font-thin h4 text-secondary"><center><span></span><center/></td>
-		   <td><center><div class="btn-group dropdown"><button class="btn btn-default btn-xs" data-toggle="dropdown">
-		     <i class="glyphicon glyphicon-cog"></i> Action <span class="caret"></span></button>
-		     <ul class="dropdown-menu">
-		     <li><a th:href="@{updateTechnologyPartner(id=${t.TechnologyPartner_ID})}"  style="margin-top:-5px;"   class="btn btn-sm btn-light" role="button">Update</a></li>
-		    <li><a th:href="@{archiverTechnologyPartner(id=${t.TechnologyPartner_ID})}"  style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Archive</a></li>
-<!-- 		     <li><a th:href="@{detailTechnologyPartner(id=${t.TechnologyPartner_ID})}" style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Detail</a></li></ul></div></center></td>
- -->		  </tr>
-		 </tbody>
-		</table>
-	   </div>
-  
-	<div class="modal fade" role="dialog" id="AddTechnologyPartner" >
-	 <div class="modal-dialog modal-lg" >
-	  <div class="modal-content">
-	   <div class="modal-header" style="background-image:url(img/grf-bg.jpg);color:white;">
-	    <button type="button" class="close pull-right" data-dismiss="modal">&times;</button>
-	    <h1 class="m-n font-bold h3"> <b class="glyphicon-plus pull"> </b> Add Technology Partner</h1>
-	   </div>	   
-     <form th:action="@{SaveTechnologyPartner}" method ="post" th:object="${technopart}">  
-     <div class="modal-body">
-	    <div class="row">
-	    <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b></b></label>
-     <div class="col-sm-8" style="margin: 5px 0px;">
-      <input type="hidden" class="form-control" placeholder="Entry Name of Technology Partner" id="input-id-1" required th:field=*{TechnologyPartner_ID}/>
-    
-	 </div> 
-	     <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Name Technology Partner</b></label>
-	     <div class="col-sm-8" style="margin: 5px 0px;" >
-		  <input type="text" class="form-control" placeholder="Entry Name of Technology Partner" id="input-id-1" required th:field=*{NameTechnologyPartner}/> 
-	
-		 
-		  <div class="modal-footer">
-		   <button style="margin:0px;" class="btn m-b-xs btn-sm btn-primary btn-addon"><i class="glyphicon glyphicon-ok"></i>Save</button>
-		   <button style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon" data-dismiss="modal"><i class="glyphicon glyphicon-remove"></i>Annuler</button>
-		  </div>
-		 </div>
-		</div>
-	    </form>
-	  </div>
+												<!-- aside footer -->
+
+												<!-- / aside footer -->
+											</div>
+										</div>
+									</aside>
+									<!-- / aside -->
+
+
+									<!-- content -->
+<div id="content" class="app-content" role="main">
+ <div class="app-content-body ">
+  <div class="hbox hbox-auto-xs hbox-auto-sm">
+   <div class="col">
+    <div class="bg-light lter b-b wrapper-md">
+	 <h1 class="m-n font-bold h3"> Manage DataCenter
+	  <a style="margin-top:-5px;" data-toggle="modal"  data-target="#AddClient" class="btn btn-sm btn-primary pull-right"  role="button"><b class="glyphicon-plus pull"> </b>Add  DataCenter</a> 
+	 </h1>
+	</div>	
+		<div class="row" style="margin:5px;background-color:#f0f3f4;"> </div>
+<div class="row" style="margin:5px;">
+	   <div class="col-sm-12">
+     <div class="row text-center" style="margin: 10px 5px;">
+      <div class="col-sm-6">
+       <div class="panel padder-v item">
+        <div class="h1 count text-info font-thin h1 pull-center" th:text="${totalCPurchasing}"></div>
+         <span class="text-muted text-xs"><b> Total Purchasing  </b></span>
+         <span class="bottom text-right w-full"><i class="glyphicon glyphicon-tower text-muted m-r-sm"></i></span>
+        </div>
+       </div>
+       <div class="col-sm-6">
+        <a href="" class="block panel padder-v bg-primary item">
+         <span class="text-white count font-thin h1 block" th:text="${totalCPurchasing}"></span>
+         <span class="text-muted text-xs"><b> Total Purchasing </b></span>
+
+         <span class="bottom text-right w-full"><i class="glyphicon glyphicon-briefcase text-muted m-r-sm"></i></span>
+        </a>
+       </div>
+      </div>
      </div>
+     </div>
+	<div class="panel panel-default" style="margin:30px 15px;">
+	 <div class="table-responsive" >
+	  <table ui-jq="dataTable" ui-options="{ aoColumns: [
+											 { mData: 'engine' },
+											 { mData: 'platform' },
+											 { mData: 'grade' },
+							                 { mData: 'action' }
+											]}" class="table b-t b-b text-center" >
+		<thead>
+		 <tr style="color:#23b7e5;">
+		  <th  style="width:25%;"><center> Company</center></th>
+		  <th  style="width:25%;"><center> Serving</center></th>
+		  <th  style="width:25%"><center>Adress</center></th>
+		  <th  style="width:25%;">Actions</th>
+		 </tr>
+		</thead>
+		<tbody>
+		 <tr data-expanded="true" th:each="d:${allData}">
+		  <td th:text ="${d.customer.Name}"> <b></b> </td>
+		  <td th:text ="${d.Serving}">	<b></b> </td>
+		  <td th:text ="${d.Adress}"> </td>
+		  <td><center><div class="btn-group dropdown"><button class="btn btn-default btn-xs" data-toggle="dropdown"><i class="glyphicon glyphicon-cog"></i> Action <span class="caret"></span></button>
+			<ul class="dropdown-menu">
+             <li><a th:href="@{updateDataCenter(id=${d.DataCenter_ID})}"  style="margin-top:-5px;"   class="btn btn-sm btn-light" role="button">Update</a></li>
+             <li><a th:href="@{deleteDataCenter(id=${d.DataCenter_ID})}"  style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Delete</a></li>
+<!-- 			 <li><a th:href="@{detailDatCenter(id=${d.DataCenter_ID})}" style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Detail</a></li>
+ -->			</ul>
+		  </div></center></td>
+		 </tr>
+		</tbody>
+	  </table>
+	 </div>															
     </div>
+ </div>
 </div>
 </div>
-  <!-- /content -->
- <!-- footer -->
- <footer id="footer" class="app-footer" role="footer">
-  <div class="wrapper b-t bg-light">
-   <span class="pull-right">2.2.0 <a href ui-scroll="app" class="m-l-sm text-muted"><i class="fa fa-long-arrow-up"></i></a></span>&copy; PowerM 2020 Copyright.
+</div>
+<div class="modal fade" role="dialog" id="AddClient" >
+ <div class="modal-dialog modal-lg" >
+  <div class="modal-content">
+   <div class="modal-header" style="background-image:url(img/grf-bg.jpg);color:white;">
+	<button type="button" class="close pull-right" data-dismiss="modal">&times;</button>
+    <h1 class="m-n font-bold h3"> <b class="glyphicon-plus pull"> </b> Add Purchasing Customer</h1>
+   </div>
+    <form th:action="@{SaveDataCenter}" method ="post" th:object="${data}">
+   <div class="modal-body">
+	<div class="row">
+	
+	 
+	 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Customer</b></label>
+	 <div class="col-sm-8" style="margin: 5px 0px;">
+	 <!-- ici on met une boucle sur le customer pour avoir récupérer la liste des customer  -->
+	  <select name="Customer_ID" class="form-control m-b" th:field=*{customer}>
+	   <option th:each ="c:${customer}" 
+	   th:text="${c.name}"
+	   th:value ="${c.Customer_ID}"></option>
+	  </select>
+	
+	 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Serving</b></label>
+     <div class="col-sm-8" style="margin: 5px 0px;" >
+      <input type="text" class="form-control" placeholder="Entry First Name of Purchasing" id="input-id-1" required th:field=*{Serving}>
+       <span class="text-danger" th:errors=*{Serving}></span>
+	 </div>
+	 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Adress</b></label>
+     <div class="col-sm-8" style="margin: 5px 0px;" >
+      <input type="text" class="form-control" placeholder="Entry Last Name of Purchasing" id="input-id-1" required th:field=*{Adress}>
+       <span class="text-danger" th:errors=*{Adress}></span>
+	 </div>
+	
+	 </div>
+	 </div>
+	</div>
+	 <div class="modal-footer">
+	<button style="margin:0px;" class="btn m-b-xs btn-sm btn-primary btn-addon"><i class="glyphicon glyphicon-ok"></i>Save</button>
+	<button style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon" data-dismiss="modal"><i class="glyphicon glyphicon-remove"  ></i>Annuler</button>
+   </div>
+   </div>
   </div>
- </footer><!-- / footer -->
+ </div>
 </div>
-<script src="../libs/jquery/jquery/dist/jquery.js"></script>
-<script src="../libs/jquery/bootstrap/dist/js/bootstrap.js"></script>
-<script src="js/ui-load.js"></script>
-<script src="js/ui-jp.config.js"></script>
-<script src="js/ui-jp.js"></script>
-<script src="js/ui-nav.js"></script>
-<script src="js/ui-toggle.js"></script>
-<script src="js/ui-client.js"></script>
+									<!-- /content -->
+
+									<!-- footer -->
+									<footer id="footer" class="app-footer" role="footer">
+										<div class="wrapper b-t bg-light">
+											<span class="pull-right">2.2.0 <a href ui-scroll="app" class="m-l-sm text-muted"><i class="fa fa-long-arrow-up"></i></a></span>
+																				&copy; PowerM 2020 Copyright.
+										</div>
+									</footer>
+									<!-- / footer -->
+
+								</div>
+
+								<script src="../libs/jquery/jquery/dist/jquery.js"></script>
+								<script src="../libs/jquery/bootstrap/dist/js/bootstrap.js"></script>
+								<script src="js/ui-load.js"></script>
+								<script src="js/ui-jp.config.js"></script>
+								<script src="js/ui-jp.js"></script>
+								<script src="js/ui-nav.js"></script>
+								<script src="js/ui-toggle.js"></script>
+								<script src="js/ui-client.js"></script>
+								<script>
+																					$('.count').each(function () {
+																						$(this).prop('Counter',0).animate({
+																							Counter: $(this).text()
+																						}, {
+																							duration: 1500,
+																							easing: 'linear',
+																							step: function (now) {
+																								$(this).text(Math.ceil(now));
+																							}
+																						});
+																					});
+								</script>
 <script type="text/javascript">
   function changecolor() {
        $('body,.wrapper,.content,.panel-default,.panel-heading,#content-h,#header,.modal-content').css("background-color", "#3a3f51");
@@ -636,7 +680,9 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
       };
+	  
+ 
 		</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.min.js" integrity="sha256-tQ3x4V2JW+L0ew/P3v2xzL46XDjEWUExFkCDY0Rflqc=" crossorigin="anonymous"></script>
-</body>
-</html>
+							</body>
+						</html>
+						

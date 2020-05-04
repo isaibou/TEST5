@@ -3,7 +3,7 @@
 	<head>
 	
 		<meta charset="utf-8" />
-		<title>Technology Partner</title>
+		<title>Type Project</title>
 		<meta name="description" content="app, web app, responsive, responsive layout, admin, admin panel, admin dashboard, flat, flat ui, ui kit, AngularJS, ui route, charts, widgets, components" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 		<link rel="stylesheet" href="../libs/assets/animate.css/animate.css" type="text/css" />
@@ -474,8 +474,8 @@ document.addEventListener('DOMContentLoaded', function() {
   </aside><!-- / aside --><!-- content -->
   <div id="content" class="app-content" role="main">
    <div class="app-content-body ">
-    <div class="bg-light lter b-b wrapper-md"><h1 class="m-n font-bold h3">Technology Partner
-    <a  style="margin-top:-5px;" data-toggle="modal"  data-target="#AddTechnologyPartner" class="btn btn-sm btn-primary pull-right"  role="button"><b class="glyphicon-plus pull"> </b>Add Technology Partner</a></h1></div>
+    <div class="bg-light lter b-b wrapper-md"><h1 class="m-n font-bold h3">Type Project
+    <a  style="margin-top:-5px;" data-toggle="modal"  data-target="#AddTechnologyPartner" class="btn btn-sm btn-primary pull-right"  role="button"><b class="glyphicon-plus pull"> </b>Add Type Project</a></h1></div>
 	
 	                 <div class="row text-center" style="margin: 10px 5px;">
                               <div class="col-sm-6">
@@ -503,29 +503,26 @@ document.addEventListener('DOMContentLoaded', function() {
 		<table ui-jq="dataTable" ui-options="{
 															aoColumns: [
 															{ mData: 'engine' },
-															{ mData: 'browser' },
-															
-															{ mData: 'action' }
+															{ mData: 'actions' }
 															]
 															}" class="table  b-t b-b">
 	     <thead style="color:#23b7e5;">
 		  <tr>
-		   <th  style="width:20%"><center> Nmae Technology Partner </center></th>
-		   <th  style="width:5%"><center>Status</center></th>
-		   <th  style="width:10%"><center>Actions</center></th>
+		   <th  style="width:50%"><center> Name Type Project </center></th>
+		  <th  style="width:50%"><center> Actions </center></th>
 		  </tr>
 	     </thead>
 		 <tbody>
-		  <tr data-expanded="true" th:each="t:${techpart}">
-		   <td  th:text ="${t.NameTechnologyPartner}" class="m-n font-thin h4 text-secondary"><center><b></b></center></td> 
-		    <td th:text ="${t.Status}" class="m-n font-thin h4 text-secondary"><center><span></span><center/></td>
-		   <td><center><div class="btn-group dropdown"><button class="btn btn-default btn-xs" data-toggle="dropdown">
-		     <i class="glyphicon glyphicon-cog"></i> Action <span class="caret"></span></button>
+		  <tr data-expanded="true" th:each="t:${listTp}">
+		   <td  th:text ="${t.NameType_Project}" class="m-n font-thin h4 text-secondary"><center><b></b></center></td> 
+<!-- 		    <td th:text ="${t.Status}" class="m-n font-thin h4 text-secondary"><center><span></span><center/></td>
+ -->		   <td><center><div class="btn-group dropdown"><button class="btn btn-default btn-xs" data-toggle="dropdown">
+		     <i class="glyphicon glyphicon-cog"></i> Actions <span class="caret"></span></button>
 		     <ul class="dropdown-menu">
-		     <li><a th:href="@{updateTechnologyPartner(id=${t.TechnologyPartner_ID})}"  style="margin-top:-5px;"   class="btn btn-sm btn-light" role="button">Update</a></li>
-		    <li><a th:href="@{archiverTechnologyPartner(id=${t.TechnologyPartner_ID})}"  style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Archive</a></li>
-<!-- 		     <li><a th:href="@{detailTechnologyPartner(id=${t.TechnologyPartner_ID})}" style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Detail</a></li></ul></div></center></td>
- -->		  </tr>
+		     <li><a th:href="@{addProjectTask(id=${t.Type_Project_ID})}"  style="margin-top:-5px;"   class="btn btn-sm btn-light" role="button">Update</a></li>
+<!-- 		    <li><a th:href="@{archiverTechnologyPartner(id=${t.Type_Project_ID})}"  style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Archive</a></li>
+ -->		     <li><a th:href="@{detailsTypeProjectTask(id=${t.Type_Project_ID})}" style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Details</a></li></ul></div></center></td>
+		  </tr>
 		 </tbody>
 		</table>
 	   </div>
@@ -535,26 +532,33 @@ document.addEventListener('DOMContentLoaded', function() {
 	  <div class="modal-content">
 	   <div class="modal-header" style="background-image:url(img/grf-bg.jpg);color:white;">
 	    <button type="button" class="close pull-right" data-dismiss="modal">&times;</button>
-	    <h1 class="m-n font-bold h3"> <b class="glyphicon-plus pull"> </b> Add Technology Partner</h1>
+	    <h1 class="m-n font-bold h3"> <b class="glyphicon-plus pull"> </b> Add Type Project</h1>
 	   </div>	   
-     <form th:action="@{SaveTechnologyPartner}" method ="post" th:object="${technopart}">  
+     <form th:action="@{SaveTypeProject}" method ="post" th:object="${tProject}">  
      <div class="modal-body">
 	    <div class="row">
 	    <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b></b></label>
      <div class="col-sm-8" style="margin: 5px 0px;">
-      <input type="hidden" class="form-control" placeholder="Entry Name of Technology Partner" id="input-id-1" required th:field=*{TechnologyPartner_ID}/>
+      <input type="hidden" class="form-control" placeholder="Entry Name of Technology Partner" id="input-id-1" required th:field=*{Type_Project_ID}/>
     
 	 </div> 
-	     <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Name Technology Partner</b></label>
+	     <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Name Type Project</b></label>
 	     <div class="col-sm-8" style="margin: 5px 0px;" >
-		  <input type="text" class="form-control" placeholder="Entry Name of Technology Partner" id="input-id-1" required th:field=*{NameTechnologyPartner}/> 
-	
+		  <input type="text" class="form-control" placeholder="Entry Name of Project Task" id="input-id-1" required th:field=*{NameType_Project}/> 
+	</div>
+		 
+		    <label class="col-sm-4 control-label" for="input-id-1"  style="margin:5px 0px;"><b>Project Task</b></label>
+	 <div class="col-sm-8" style="margin:5px 0px;" >
+	 <select name ="role" multiple="multiple" class="form-control m-b" th:field="*{projectTask}">
+	 <option th:each="r:${listpt}"  th:text="${r.NameProjectTask}" th:value="${r.ProjectTask_ID}"></option>
+	 </select>
+	 </div>
 		 
 		  <div class="modal-footer">
 		   <button style="margin:0px;" class="btn m-b-xs btn-sm btn-primary btn-addon"><i class="glyphicon glyphicon-ok"></i>Save</button>
 		   <button style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon" data-dismiss="modal"><i class="glyphicon glyphicon-remove"></i>Annuler</button>
 		  </div>
-		 </div>
+		 
 		</div>
 	    </form>
 	  </div>

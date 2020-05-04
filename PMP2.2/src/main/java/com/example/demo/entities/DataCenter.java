@@ -3,9 +3,13 @@ package com.example.demo.entities;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class DataCenter {
+	
 	
 	
 	@Id
@@ -13,6 +17,9 @@ public class DataCenter {
 	private Integer DataCenter_ID;
 	private String Serving ;
 	private String Adress;
+	@ManyToOne
+	@JoinColumn(name = "CUSTOMER_ID")
+	private Customer customer;
 	
 	public DataCenter() {
 		super();
@@ -46,6 +53,14 @@ public class DataCenter {
 
 	public void setAdress(String adress) {
 		Adress = adress;
+	}
+
+	public Customer getCustomer() {
+		return customer;
+	}
+
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
 	} 
 	
 	

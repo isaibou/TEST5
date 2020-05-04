@@ -27,6 +27,10 @@
      <div class="col-sm-8" style="margin: 5px 0px;" >
       <input type="hidden" class="form-control" placeholder="Entry Name of RFP" id="input-id-1"  required th:field=*{RFP_ID}/>   
 	 </div>
+	   <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b></b></label>
+     <div class="col-sm-8" style="margin: 5px 0px;" >
+      <input type="hidden" class="form-control" placeholder="Entry Name of RFP" id="input-id-1"  required th:field=*{StatusRFP}/>   
+	 </div>
 	 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Title</b></label>
 	     <div class="col-sm-8" style="margin: 5px 0px;" >
 		  <input type="text" class="form-control" placeholder="Entry Name of RFP" id="input-id-1" required th:field=*{Title}/> 
@@ -70,6 +74,8 @@
           <input type="file" placeholder="Upload Preview File" class="form-control" name="response" id="input-id-1"  />
           <span th:text ="${rfp.ResponseFile}" class="m-n font-thin h4 text-secondary"></span>
          </div>
+         
+         
          <!--  <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Status</b></label>
 	     <div class="col-sm-8" style="margin: 5px 0px;">
 	      <select name="account" class="form-control m-b" required th:field=*{StatusRFP} >

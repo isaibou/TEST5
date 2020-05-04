@@ -2,8 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="utf-8" />
-  
-  <title>Update Technology Partner</title>
+  <title>Update DateCenter</title>
   <meta name="description" content="app, web app, responsive, responsive layout, admin, admin panel, admin dashboard, flat, flat ui, ui kit, AngularJS, ui route, charts, widgets, components" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <link rel="stylesheet" href="../libs/assets/animate.css/animate.css" type="text/css" />
@@ -13,33 +12,50 @@
   <link rel="stylesheet" href="css/font.css" type="text/css" />
   <link rel="stylesheet" href="css/app.css" type="text/css" />
 </head>
+
 <body>
 <div class="app" >
  <a href="" class="navbar-brand block m-t"><i class="fa fa-power-off"></i> <b>PowerM</b> </a>
  	<div>
 	 <div class="modal-dialog modal-lg" >
 	 <div class="modal-content">
-      <h1 class="m-n font-bold h3"> Update Technology Partner </h1>
+      <h1 class="m-n font-bold h3"> Update DataCenter </h1>
      </div>
-   <form th:action="@{editTechnologyPartner}" method ="post" th:object="${techpar}">
-      <div class="modal-body">
-	    <div class="row">
-	     <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b></b></label>
-     <div class="col-sm-8" style="margin: 5px 0px;">
-      <input type="hidden" class="form-control" placeholder="Entry Name of Project" id="input-id-1"  required th:field=*{TechnologyPartner_ID}/>
+   <form th:action="@{editDataCenter}" method ="post" th:object="${data}">
+   <div class="modal-body">
+	<div class="row">
+	 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Customer</b></label>
+	 <div class="col-sm-8" style="margin: 5px 0px;">
+	 	 <!-- La meme chose pour update ici on met une boucle sur le customer pour avoir récupérer la liste des customer  -->
+	  <select name="Customer_ID" class="form-control m-b" th:field=*{customer}>
+	   <option th:each ="c:${customer}" 
+	   th:text="${c.name}"
+	   th:value ="${c.Customer_ID}"></option>
+	  </select>
+	 </div>
+	
+    <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b></b></label>
+     <div class="col-sm-8" style="margin: 5px 0px;" >
+      <input type="hidden" class="form-control" placeholder="Entry Name of purchasing" id="input-id-1"  required th:field=*{DataCenter_ID}/>
      
 	 </div>
-	     <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Name Technology Partner</b></label>
-	     <div class="col-sm-8" style="margin: 5px 0px;" >
-		  <input type="text" class="form-control" placeholder="Entry Name of Technology Partner" id="input-id-1" required th:field=*{NameTechnologyPartner}/>
-		 
-		 </div>
-         
-          		 </div>
+	 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Serving</b></label>
+     <div class="col-sm-8" style="margin: 5px 0px;" >
+      <input type="text" class="form-control" placeholder="Entry First Name of Purchasing" id="input-id-1"  required th:field=*{Serving}>
+      <span class="text-danger" th:errors=*{Serving}></span>
+	 </div>
+	 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Adress</b></label>
+	 <div class="col-sm-8" style="margin: 5px 0px;">
+	  <input type="text"  class="form-control" placeholder="Entry Last Name of Purchasing"id="input-id-2"  required th:field=*{Adress}>
+	  <span class="text-danger" th:errors=*{Adress}></span>
+	 </div>
+	
+	
+	 		 </div>
 		</div>
 		  <div class="modal-footer">
 		   <button style="margin:0px;" class="btn m-b-xs btn-sm btn-primary btn-addon"><i class="glyphicon glyphicon-ok"></i>Save</button>
-		   <button style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon"><a th:href="technology"><i class="glyphicon glyphicon-remove"></i>Annuler</a></button>
+		   <button style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon"><a th:href="purchasing_customer_manage"><i class="glyphicon glyphicon-remove"></i>Annuler</a></button>
 		  </div>
 
 	    </form>

@@ -1,19 +1,31 @@
 package com.example.demo.entities;
 
 import java.io.Serializable;
+import java.util.Collection;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 
 
 @Entity
 public class ProjectTask implements Serializable{
 	
 	@Id
+	
 	@GeneratedValue
 	private Integer ProjectTask_ID;
 	private String NameProjectTask;
+	@ManyToMany
+	@JoinTable(name="TypeProject_projectTask")
+	private Collection<TypeProject> typeProject;
+	
+	
+	
+	
+	
 	public ProjectTask() {
 		super();
 	}
@@ -33,6 +45,13 @@ public class ProjectTask implements Serializable{
 	public void setNameProjectTask(String nameProjectTask) {
 		NameProjectTask = nameProjectTask;
 	}
+	public Collection<TypeProject> getTypeProject() {
+		return typeProject;
+	}
+	public void setTypeProject(Collection<TypeProject> typeProject) {
+		this.typeProject = typeProject;
+	}
 	
 
+	
 }

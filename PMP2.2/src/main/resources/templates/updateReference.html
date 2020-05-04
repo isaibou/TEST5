@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8" />
+  <title>Update Reference</title>
+  <meta name="description" content="app, web app, responsive, responsive layout, admin, admin panel, admin dashboard, flat, flat ui, ui kit, AngularJS, ui route, charts, widgets, components" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <link rel="stylesheet" href="../libs/assets/animate.css/animate.css" type="text/css" />
+  <link rel="stylesheet" href="../libs/assets/font-awesome/css/font-awesome.min.css" type="text/css" />
+  <link rel="stylesheet" href="../libs/assets/simple-line-icons/css/simple-line-icons.css" type="text/css" />
+  <link rel="stylesheet" href="../libs/jquery/bootstrap/dist/css/bootstrap.css" type="text/css" />
+  <link rel="stylesheet" href="css/font.css" type="text/css" />
+  <link rel="stylesheet" href="css/app.css" type="text/css" />
+</head>
+<body>
+<div class="app" >
+ <a href="" class="navbar-brand block m-t"><i class="fa fa-power-off"></i> <b>PowerM</b> </a>
+ 	<div>
+	 <div class="modal-dialog modal-lg" >
+	 <div class="modal-content">
+      <h1 class="m-n font-bold h3"> Update Reference </h1>
+     </div>
+   <form th:action="@{editReference}"   enctype="multipart/form-data"  method ="post" th:object="${ref}">
+   <div class="modal-body">
+	<div class="row">
+	
+    <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b></b></label>
+     <div class="col-sm-8" style="margin: 5px 0px;" >
+      <input type="hidden" class="form-control" placeholder="Entry Name of RFP" id="input-id-1"  required th:field=*{Reference_ID}/>   
+	 </div>
+	<!--  <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Year</b></label>
+	     <div class="col-sm-8" style="margin: 5px 0px;" >
+		  <input type="date" class="form-control" placeholder="Entry Name of RFP" id='calendar1' required th:field=*{an}/> 
+		 </div> -->
+	     <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Project</b></label>
+	     <div class="col-sm-8" style="margin: 5px 0px;">
+	 <!-- ici on met une boucle sur le customer pour avoir récupérer la liste des customer  -->
+	      <select name="Customer_ID" class="form-control m-b" th:field=*{project}>
+	         <option th:each ="c:${project}" 
+	                 th:text="${c.name}"
+	                 th:value ="${c.Project_ID}"></option>
+	      </select>
+	     </div>
+		 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Amount</b></label>
+		 <div class="col-sm-8" style="margin: 5px 0px;">
+	      <input type="text" class="form-control" placeholder="Entry Description " id="input-id-1" required th:field=*{Amount}/>
+       </div>
+		 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Signed By</b></label>
+	     <div class="col-sm-8" style="margin: 5px 0px;">
+            <input type="text" class="form-control" id="input-id-1" required th:field=*{SignedBy}/> 
+         </div>
+		<!--  <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>SigningDate</b></label>
+		 <div class="col-sm-8" style="margin: 5px 0px;">
+            <input type="date" class="form-control" id='calendar1'required th:field=*{Signing}/>
+         </div> -->
+	     <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Key Words Tags</b></label>
+		 <div class="col-sm-8" style="margin: 5px 0px;">
+            <input type="text" class="form-control" id="input-id-1" required th:field=*{KeywordsTags}/>
+         </div>
+		
+		 <label class="col-sm-4 control-label" placeholder="Upload Preview File" for="input-id-1"  style="margin-bottom:5px;" ><b>Preview File</b></label>
+	    <div class="col-sm-7" style="margin-top:0px; margin-bottom:5px;">
+	     <input type="text" placeholder="Upload Preview File"class="form-control" id="input-id-1">
+	    </div>
+	    <div class="col-sm-1" style="margin-top:0px; margin-bottom:5px;" >
+	     <div class="btn-group">
+	      <a class="btn btn-default" tooltip="Insert picture (or just drag &amp; drop)" id="pictureBtn"><i class="icon-paper-clip"></i></a>
+	          <input type="file" data-edit="insertImage"  name ="picture" style="position:absolute; opacity:0; width:41px; height:34px">
+	     </div>
+	    </div>           
+	    <label class="col-sm-4 control-label" placeholder="Upload Preview File" for="input-id-1" ><b>File</b></label>
+	    <div class="col-sm-7">
+	     <input type="text" placeholder="Upload Preview File"class="form-control" id="input-id-1">
+	    </div>
+	    <div class="col-sm-1" >
+	     <div class="btn-group">
+	      <a class="btn btn-default" tooltip="Insert picture (or just drag &amp; drop)" id="pictureBtn"><i class="icon-paper-clip"></i></a>
+	          <input type="file" name="file" data-edit="insertImage" style="position:absolute; opacity:0; width:41px; height:34px">
+	     </div>
+	    </div> 
+	     </div>
+         <!--  <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Status</b></label>
+	     <div class="col-sm-8" style="margin: 5px 0px;">
+	      <select name="account" class="form-control m-b" required th:field=*{StatusRFP} >
+	       <option th:value ="New" th:text="New"></option>
+	       <option th:value ="Submited" th:text="Submited"></option>
+	       <option th:value ="Won" th:text="Won"></option>
+	       <option th:value ="Lost" th:text="Lost"></option>
+	      </select>
+	      <span class="text-danger" th:errors=*{StatusRFP}></span>
+	     </div> -->
+	     </div>
+		</div>
+		  <div class="modal-footer">
+		   <button style="margin:0px;" class="btn m-b-xs btn-sm btn-primary btn-addon"><i class="glyphicon glyphicon-ok"></i>Save</button>
+		   <button style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon"><a th:href="reference"><i class="glyphicon glyphicon-remove"></i>Annuler</a></button>
+		  </div>	 
+	    </form>
+		</div>
+	  </div>
+	  </div>
+<script src="../libs/jquery/jquery/dist/jquery.js"></script>
+<script src="../libs/jquery/bootstrap/dist/js/bootstrap.js"></script>
+<script src="js/ui-load.js"></script>
+<script src="js/ui-jp.config.js"></script>
+<script src="js/ui-jp.js"></script>
+<script src="js/ui-nav.js"></script>
+<script src="js/ui-toggle.js"></script>
+<script src="js/ui-client.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.min.js" integrity="sha256-tQ3x4V2JW+L0ew/P3v2xzL46XDjEWUExFkCDY0Rflqc=" crossorigin="anonymous"></script>
+</body>
+</html>

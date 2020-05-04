@@ -5,11 +5,16 @@ import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+import org.springframework.beans.factory.annotation.Autowired;
 
 
 
 @Entity
 public class Deliverable implements Serializable{
+	
 	
 	@Id
 	@GeneratedValue
@@ -20,6 +25,16 @@ public class Deliverable implements Serializable{
 	private String PreviewFile;
 	private String File;
 	private String DocumentLink;
+	
+	@ManyToOne
+	@JoinColumn(name="PROJECT_ID")
+	private Project project;
+	@ManyToOne
+	@JoinColumn(name="TypeDeliverable_ID")
+	private TypeDeliverable typeDeliverable;	
+	
+	
+	
 	public Deliverable() {
 		super();
 	}
@@ -74,6 +89,18 @@ public class Deliverable implements Serializable{
 	}
 	public void setDocumentLink(String documentLink) {
 		DocumentLink = documentLink;
+	}
+	public Project getProject() {
+		return project;
+	}
+	public void setProject(Project project) {
+		this.project = project;
+	}
+	public TypeDeliverable getTypeDeliverable() {
+		return typeDeliverable;
+	}
+	public void setTypeDeliverable(TypeDeliverable typeDeliverable) {
+		this.typeDeliverable = typeDeliverable;
 	}
 	
 	

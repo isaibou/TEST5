@@ -57,6 +57,7 @@ public class ContractController {
 		Users u =userRepository.getOne(auth.getName());
 		model.addAttribute("user", u);
 		List<Contrat> contra = contratrepository.findAll();
+		model.addAttribute("totalContrat", contra.size());
 		model.addAttribute("con", contra);
 		model.addAttribute("contrat", new Contrat());
 		model.addAttribute("totalContract", contra.size());

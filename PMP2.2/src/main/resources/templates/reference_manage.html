@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 	<head>
 		<meta charset="utf-8" />
-		<title>Reference Manage</title>
+		<title>Manage Refernces</title>
 		<meta name="description" content="app, web app, responsive, responsive layout, admin, admin panel, admin dashboard, flat, flat ui, ui kit, AngularJS, ui route, charts, widgets, components" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 		<link rel="stylesheet" href="../libs/assets/animate.css/animate.css" type="text/css" />
@@ -18,10 +18,98 @@
 		<script src='../libs/packages/daygrid/main.js'></script>
 		<script src='../libs/packages/timegrid/main.js'></script>
 		<script src='../libs/packages/list/main.js'></script>
-		<script src="https://www.gstatic.com/charts/loader.js"></script>
+
 		<link rel="stylesheet" href="css/font.css" type="text/css" />
 		<link rel="stylesheet" href="css/app.css" type="text/css" />
-		<style>
+		<script>
+
+document.addEventListener('DOMContentLoaded', function() {
+    var calendarEl = document.getElementById('calendar1');
+
+    var calendar1 = new FullCalendar.Calendar(calendarEl, {
+
+      plugins: [ 'interaction', 'dayGrid', 'list', 'googleCalendar' ],
+
+      header: {
+        left: 'prev,next today',
+        center: 'title',
+        right: 'dayGridMonth,listYear'
+      },
+
+      displayEventTime: false, // don't show the time column in list view
+
+      // THIS KEY WON'T WORK IN PRODUCTION!!!
+      // To make your own Google API key, follow the directions here:
+      // http://fullcalendar.io/docs/google_calendar/
+      googleCalendarApiKey: 'AIzaSyDcnW6WejpTOCffshGDDb4neIrXVUA1EAE',
+
+      // US Holidays
+      events: 'en.usa#holiday@group.v.calendar.google.com',
+
+      eventClick: function(arg) {
+        // opens events in a popup window
+        window.open(arg.event.url, 'google-calendar-event', 'width=700,height=600');
+
+        arg.jsEvent.preventDefault() // don't navigate in main tab
+      },
+
+      loading: function(bool) {
+        document.getElementById('loading').style.display =
+          bool ? 'block' : 'none';
+      }
+
+    });
+
+    calendar1.render();
+  });
+
+
+		</script>
+		<script>
+
+document.addEventListener('DOMContentLoaded', function() {
+    var calendarEl = document.getElementById('calendar');
+
+    var calendar = new FullCalendar.Calendar(calendarEl, {
+
+      plugins: [ 'interaction', 'dayGrid', 'list', 'googleCalendar' ],
+
+      header: {
+        left: 'prev,next today',
+        center: 'title',
+        right: 'dayGridMonth,listYear'
+      },
+
+      displayEventTime: false, // don't show the time column in list view
+
+      // THIS KEY WON'T WORK IN PRODUCTION!!!
+      // To make your own Google API key, follow the directions here:
+      // http://fullcalendar.io/docs/google_calendar/
+      googleCalendarApiKey: 'AIzaSyDcnW6WejpTOCffshGDDb4neIrXVUA1EAE',
+
+      // US Holidays
+      events: 'en.usa#holiday@group.v.calendar.google.com',
+
+      eventClick: function(arg) {
+        // opens events in a popup window
+        window.open(arg.event.url, 'google-calendar-event', 'width=700,height=600');
+
+        arg.jsEvent.preventDefault() // don't navigate in main tab
+      },
+
+      loading: function(bool) {
+        document.getElementById('loading').style.display =
+          bool ? 'block' : 'none';
+      }
+
+    });
+
+    calendar.render();
+  });
+
+
+		</script>
+			<style>
 @media (max-width: 767px) {
     .table-responsive .dropdown-menu {
         position: static !important;
@@ -32,42 +120,11 @@
         overflow: inherit;
     }
 }
-		</style>
-		<script>
-			google.charts.load('current', {packages: ['corechart']});
-			google.charts.setOnLoadCallback(drawChart);
-
-			function drawChart() {
-			// Define the chart to be drawn.
-			var data = new google.visualization.DataTable();
-			data.addColumn('string', 'Element');
-			data.addColumn('number', 'Percentage');
-			data.addRows([
-			['Finance', 0.70],
-			['Banking', 0.21],
-			['Construction', 0.01],
-			['Technology', 0.02],
-			['Telecomunication', 0.02]
-			]);
-
-			var options = {backgroundColor: '#f0f3f4', colors: ['#6254b2', '#3289c8', '#27c24c', '#ff4040', '#ffbb3b'],
-  is3D: true};
-
-
-
-
-			// Instantiate and draw the chart.
-			var chart = new google.visualization.PieChart(document.getElementById('myPieChart'));
-			chart.draw(data, options);
-			}
-		</script>
-	</head>
-	<body>
-		<div class="app app-header-fixed ">
-
-
-			<!-- header -->
-			<header id="header" class="app-header navbar" role="menu">
+</style>
+</head>
+<body>
+<div class="app app-header-fixed ">
+ <header id="header" class="app-header navbar" role="menu">
 				<!-- navbar header -->
 				<div class="navbar-header bg-dark">
 					<button class="pull-right visible-xs dk" ui-toggle-class="show" target=".navbar-collapse">
@@ -116,7 +173,7 @@
 										<span translate="header.navbar.new.TASK">OFF</span>
 									</button>
 								</li>
-
+								
 							</ul>
 						</li>
 					</ul>
@@ -218,67 +275,18 @@
 										<!-- / navbar right -->
 									</div>
 									<!-- / navbar collapse -->
-								</header>
-								<!-- / header -->
+								</header><!-- / header -->
+  <!-- aside -->
+  <aside id="aside" class="app-aside hidden-xs bg-dark">
+   <div class="aside-wrap">
+	<div class="navi-wrap"><!-- user -->
+	 <div class="clearfix hidden-xs text-center hide" id="aside-user">
+	  <div class="dropdown wrapper"><a href="app.page.profile"><span class="thumb-lg w-auto-folded avatar m-t-sm"><img src="img/a0.jpg" class="img-full" alt="..."></span></a><a href="#" data-toggle="dropdown" class="dropdown-toggle hidden-folded"><span class="clear"><span class="block m-t-sm"><strong class="font-bold text-lt">Walid.Largou</strong><b class="caret"></b></span><span class="text-muted text-xs block">Manager</span></span></a><!-- dropdown --><ul class="dropdown-menu animated fadeInRight w hidden-folded"><li class="wrapper b-b m-b-sm bg-info m-t-n-xs"><span class="arrow top hidden-folded arrow-info"></span><div><p>300mb of 500mb used</p></div><div class="progress progress-xs m-b-none dker"><div class="progress-bar bg-white" data-toggle="tooltip" data-original-title="50%" style="width: 50%"></div></div></li><li><a href>Settings</a></li>
+	  <li><a th:href="page_profile">Profile</a></li><li><a href><span class="badge bg-danger pull-right">3</span>Notifications</a></li><li class="divider"></li><li><a th:href="page_signin">Logout</a></li></ul><!-- / dropdown --></div>
+	  <div class="line dk hidden-folded"></div>
+	 </div><!-- / user --><!-- nav -->
 
-
-								<!-- aside -->
-								<aside id="aside" class="app-aside hidden-xs bg-dark">
-									<div class="aside-wrap">
-										<div class="navi-wrap">
-											<!-- user -->
-											<div class="clearfix hidden-xs text-center hide" id="aside-user">
-												<div class="dropdown wrapper">
-													<a href="app.page.profile">
-														<span class="thumb-lg w-auto-folded avatar m-t-sm">
-															<img src="img/a0.jpg" class="img-full" alt="...">
-															</span>
-														</a>
-														<a href="#" data-toggle="dropdown" class="dropdown-toggle hidden-folded">
-															<span class="clear">
-																<span class="block m-t-sm">
-																	<strong class="font-bold text-lt">Walid.Largou</strong> 
-																	<b class="caret"></b>
-																</span>
-																<span class="text-muted text-xs block">Manager</span>
-															</span>
-														</a>
-														<!-- dropdown -->
-														<ul class="dropdown-menu animated fadeInRight w hidden-folded">
-															<li class="wrapper b-b m-b-sm bg-info m-t-n-xs">
-																<span class="arrow top hidden-folded arrow-info"></span>
-																<div>
-																	<p>300mb of 500mb used</p>
-																</div>
-																<div class="progress progress-xs m-b-none dker">
-																	<div class="progress-bar bg-white" data-toggle="tooltip" data-original-title="50%" style="width: 50%"></div>
-																</div>
-															</li>
-															<li>
-																<a href>Settings</a>
-															</li>
-															<li>
-																<a th:href="page_profile">Profile</a>
-															</li>
-															<li>
-																<a href>
-																	<span class="badge bg-danger pull-right">3</span>
-                    Notifications
-																</a>
-															</li>
-															<li class="divider"></li>
-															<li>
-																<a th:href="page_signin">Logout</a>
-															</li>
-														</ul>
-														<!-- / dropdown -->
-													</div>
-													<div class="line dk hidden-folded"></div>
-												</div>
-												<!-- / user -->
-
-												<!-- nav -->
-           <nav ui-nav class="navi clearfix">
+          <nav ui-nav class="navi clearfix">
             <ul class="nav">
               <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
                 <span>Main</span>
@@ -319,8 +327,8 @@
                       <span>Manage customer</span>
                     </a>
                   </li>
-				  
-				  <li>
+          
+          <li>
                     <a th:href="purchasing_customer_manage">
                       <span>Puchasing contact</span>
                     </a>
@@ -328,7 +336,7 @@
                     
                 </ul>
               </li>
-			     <li>
+           <li>
                 <a href class="auto">      
                   <span class="pull-right text-muted">
                     <i class="fa fa-fw fa-angle-right text"></i>
@@ -345,11 +353,11 @@
                       <span>Manage users</span>
                     </a>
                   </li>
-                  <li>
+                                    <li>
                     <a th:href="TypeUsers">
                       <span>Manage Type users</span>
                     </a>
-                  </li>
+                  </li>  
                 </ul>
               </li>
               <li>
@@ -407,13 +415,13 @@
                       <span>Manage Assets Type</span>
                     </a>
                   </li>
-				  <li>
-                    <a th:href="firmware">
+          <li>
+                    <a th:href="assetstype_manage">
                       <span>Firmware</span>
                     </a>
                   </li>
-				  <li>
-                    <a th:href="vendor">
+          <li>
+                    <a th:href="assetstype_manage.">
                       <span>Vendor</span>
                     </a>
                   </li>
@@ -425,21 +433,21 @@
                   <span>Tickets</span>
                 </a>
               </li>
-			  <li>
+        <li>
                 <a th:href="contract_manage">
                   <i class="fa fa-legal"></i></i>
-                  <span>Contracts</span>
+                  <span>Contrats</span>
                 </a>
               </li>
-			  <li>
-                <a th:href="expense">
+        <li>
+                <a th:href="tickets_manage">
                   <i class="glyphicon  glyphicon-usd"></i></i>
                   <span>Expenses</span>
                 </a>
               </li>
               <li>
                 <a th:href="request_manage" class="auto">
-				<span class="pull-right text-muted">
+        <span class="pull-right text-muted">
                     <i class="fa fa-fw fa-angle-right text"></i>
                     <i class="fa fa-fw fa-angle-down text-active"></i>
                   </span>
@@ -481,451 +489,355 @@
               </li>
             </ul>
           </nav>
-										<!-- nav -->
 
-										<!-- aside footer -->
+<!-- nav --><!-- aside footer --><!-- / aside footer -->
+	</div>
+   </div>
+  </aside><!-- / aside --><!-- content -->
+  <div id="content" class="app-content" role="main">
+   <div class="app-content-body ">
+    <div class="bg-light lter b-b wrapper-md"><h1 class="m-n font-bold h3">Manage References
+    <a style="margin-top:-5px;" data-toggle="modal"  data-target="#AddClient" class="btn btn-sm btn-primary pull-right"  role="button"><b class="glyphicon-plus pull"> </b>Add references</a></h1></div>
+	
+<div class="row row-sm text-center" style="margin:5px; padding:0px;background-color:#f0f3f4;">
 
-										<!-- / aside footer -->
-									</div>
-								</div>
-							</aside>
-							<!-- / aside -->
-
-
-							<!-- content -->
-							<div id="content" class="app-content" role="main">
-								<div class="app-content-body ">
-									<div class="hbox hbox-auto-xs hbox-auto-sm">
-										<div class="col">
-
-											<div class="bg-light lter b-b wrapper-md">
-												<h1 class="m-n font-bold h3">Manage Reference
-													<a style="margin-top:-5px;" data-toggle="modal"  data-target="#AddClient" class="btn btn-sm btn-primary pull-right"  role="button"><b class="glyphicon-plus pull"> </b>Add Reference</a>
-												</h1>
-											</div>
-
-											<!--<div class="panel panel-default">
-													<div class="panel-heading">
-														<small><a th:href="index">Home</a> </small>><small> Manage Reference Projects</small>
-                                                    </div>
-												</div>-->
-											<div class="row" style="margin:5px;background-color:#f0f3f4;">
-
-												<div class="col-sm-4">              
-													<div class="row row-sm text-center">
-														<div class="col-xs-12">
-															<div class="panel padder-v item">
-																<div class="h1 text-info font-thin h1 count pull-center">521</div>
-																<span class="text-muted text-xs"><b>Customers References</b></span>
-																<span class="bottom text-right w-full">
-																	<i class="glyphicon glyphicon-user text-muted m-r-sm"></i>
-																</span>
+													             
+														
+															<div class="col-sm-4 col-xs-12">
+																<div class="panel padder-v item">
+																	<div class="h1 text-info font-thin h1 count pull-center">521</div>
+																	<span class="text-muted text-xs"><b> Projects Deliverable <small>(current week)</small></b></span>
+																	<span class="bottom text-right w-full">
+																		<i class="glyphicon glyphicon-list text-muted m-r-sm"></i>
+																	</span>
+																</div>
 															</div>
-														</div>
-														<div class="col-xs-12">
-															<a href class="block panel padder-v bg-primary item">
-																<span class="text-white font-thin h1 count block">930</span>
-																<span class="text-muted text-xs"><b>Total Revenue Reference <small>(current week)</small></b></span>
-																<span class="bottom text-right w-full">
-																	<i class="glyphicon glyphicon-usd text-muted m-r-sm"></i>
-																</span>
-															</a>
-														</div>
-														<div class="col-xs-12">
-															<a href class="block panel bg-info  padder-v  item">
-																<div class="h1 text-white font-thin h1 count pull-center">521</div>
-																<span class="text-muted text-xs"><b>Average Reference Revenue <small>(current week)</small></b></span>
-																<span class="bottom text-right w-full">
-																	<i class="glyphicon glyphicon-usd text-muted m-r-sm"></i>
-																</span>
-															</a>
-														</div>
+															<div class="col-sm-4 col-xs-12">
+																<a href class="block panel padder-v bg-primary item">
+																	<span class="text-white font-thin count h1 block">930</span>
+																	<span class="text-muted text-xs"><b>Projects Deliverable <small>(current month)</small></b></span>
+																	<span class="bottom text-right w-full">
+																		<i class="glyphicon glyphicon-list text-muted m-r-sm"></i>
+																	</span>
+																</a>
+															</div>
+															<div class="col-sm-4 col-xs-12">
+																<a href class="block panel padder-v bg-info item">
+																	<span class="text-white font-thin count h1 block">930</span>
+																	<span class="text-muted text-xs"><b>Projects Expected Temporaray Reception <small>(current week)</small></b></span>
+																	<span class="bottom text-right w-full">
+																		<i class="glyphicon glyphicon-list text-muted m-r-sm"></i>
+																	</span>
+																</a>
+															</div>
+														
+													
+											
 													</div>
-												</div> 
-												<div class="col-sm-4"> 
-													<center><h1 class="m-n font-bold h4">References by Industry</h1></center>
 
-													<div  id="myPieChart"></div>
+													
 
-												</div>									
-												<div class="col-sm-4"> 
-													<center><h1 class="m-n font-bold h4">References by Customers</h1></center>
-
-
-
-													<div id="chart-div"></div>
-
-													<script src="https://www.gstatic.com/charts/loader.js"></script>
-
-													<script>
-// Load the corechart package and set a callback
-google.charts.load('current', {'packages':['corechart']});
-google.charts.setOnLoadCallback(drawChart);
-
-// Callback that creates and populates a data table
-function drawChart() {
-  // Create the data table
-  var data = google.visualization.arrayToDataTable([
-      ['Attijariwafabank',     'total'],
-      ['Axa',   30],
-      ['Ecamapgni',     21],
-      ['Orange',   10],
-      ['CFG',    38],
-      ['Omnidata',    32],
-      ['IAM',    62],
-  ]);
-
-  // Set chart options
- var options = {'title':'',
-                   'width':400,
-                   'height':300,
-                   is3D:true,
-                   colors:[{color:'#23b7e5', darker:'#B15800'}, {color:'#165C04', darker:'#054B00'}],backgroundColor: '#f0f3f4'
-                  };
-
-  // Display the chart inside the <div> element with id="chart-div"
-  var chart = new google.visualization.BarChart(document.getElementById('chart-div'));
-  chart.draw(data, options);
-}
-														</script>
-
-													</div>
-													<div class="col-sm-12">
-
-
-
-
-														<div class="card card-body">
-															<div class="table-responsive" style="background-color:white; margin:10px; padding:10px;">
+															<div class="table-responsive" style="background-color:white;margin:10px; padding:10px;">
 																<table ui-jq="dataTable" ui-options="{
-																		  aoColumns: [
-																			{ mData: 'engine' },
-																			{ mData: 'engine1' },
-																			{ mData: 'browser' },
-																			{ mData: 'platform' },
-																			{ mData: 'version' },
-																			{ mData: 'grade' },
-																			{ mData: 'grade1' },
-																			{ mData: 'action' }
-																		  ]
-																		}" class="table table-striped b-t b-b">
-																	<thead>
+															aoColumns: [
+															{ mData: 'Customer' },
+															{ mData: 'Project' },
+															{ mData: 'Version' },
+															{ mData: 'Date' },
+															{ mData: 'AMoun' },
+															{ mData: 'File' },
+								
+															{ mData: 'action' }
+															]
+															}" class="table b-t b-b text-center" >
+																	<thead style="color:#23b7e5;">
 																		<tr>
-																			<th  style="width:10%"><center>Project</center></th>
-																			<th  style="width:5%"><center>year</center></th>
-																			<th  style="width:5%"><center>SignedBy</center></th>
-																			<th  style="width:25%"><center>Signing Date</center></th>
-																			<th  style="width:25%"><center>Picture File</center></th>
-																			<th  style="width:25%"><center>keywords tags</center></th>
-																			<th  style="width:10%"><center>Preview</center></th>
+																			<th  style="width:15%"><center>Project Type</center></th>
+																			<th  style="width:15%"><center>Project Name</center></th>
+																			<th  style="width:15%"><center>Signed By</center></th>
+																			<th  style="width:15%"><center>Amount</center></th>
+																			<th  style="width:15%"><center>Year</center></th>
+																			<th  style="width:15%"><center>Preview Picture</center></th>
 																			<th  style="width:15%"><center>Actions</center></th>
 																		</tr>
 																	</thead>
 																	<tbody>
-																		<tr data-expanded="true">
-																			<td><center>PMP</center></td>
-																			<td><center>2020</center></td>
-																			<td><center><span class="badge bg-primary">Walid</span></center></td>
-																			<td><center>03-02-2020</center></td>
-																			<td> </td>		
-																				<td>
-																					<span class="badge bg-info">Dell servers</span>
-																					<span class="badge bg-info">Futjisi servers</span>
-																					<span class="badge bg-info">Primary</span>
-																				</td>
-																				<td>
-																					<a  data-toggle="modal"  data-target="#imgpreview"><img width="250px" height="250px"src="https://www.prefamaroc.ma/img/attestations/mojazine.jpg" class="img-thumbnail"><a/>
-																						</td>
-																						<td>
-																							<center><div class="btn-group dropdown">
-																									<button class="btn btn-default btn-xs" data-toggle="dropdown"><i class="glyphicon glyphicon-cog"></i> Action <span class="caret"></span></button>
-																									<ul class="dropdown-menu"><li><a style="margin-top:-5px;" data-toggle="modal"  data-target="#Update" class="btn btn-sm btn-light" role="button">Update</a></li><li><a style="margin-top:-5px;" data-toggle="modal"  data-target="#Delete" class="btn btn-sm btn-light" role="button">Delete</a></li><li><a style="margin-top:-5px;" data-toggle="modal"  data-target="#Detail" class="btn btn-sm btn-light" role="button">Detail</a></li></ul>
-																								</div></center></td>
-
-																					</tr>
-																				</tbody>
-																			</table>
-
-
-
-																		</div>
-																	</div>
-
-																</div>
-															</div>
-
-														</div>
-														<div class="modal fade" role="dialog" id="imgpreview">
-															<div class="modal-dialog">
-																<div class="modal-content">
-
-																	<div class="modal-body">
-																		<div class="row">
-																			<img src="https://www.prefamaroc.ma/img/attestations/mojazine.jpg" width="100%" height="100%"/>
-																		</div>
-																	</div>
-																	<div class="modal-footer">
-																		<button style="margin:0px;" class="btn m-b-xs btn-sm btn-primary btn-addon"><i class="glyphicon glyphicon-print"></i>Print</button>
-																		<button style="margin:0px;" class="btn m-b-xs btn-sm btn-primary btn-addon"><i class="glyphicon glyphicon-download-alt"></i>Download</button>
-																		<button style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon"><i class="glyphicon glyphicon-remove"></i>Cancel</button>
-																	</div>
-																</div>
-															</div>
-														</div>
-<div class="modal fade" role="dialog" id="AddClient" >
- <div class="modal-dialog modal-lg" >
-  <div class="modal-content">
-   <div class="modal-header" style="background-image:url(img/grf-bg.jpg);color:white;">
-	<button type="button" class="close pull-right" data-dismiss="modal">&times;</button>
-	<h1 class="m-n font-bold h3"> <b class="glyphicon-plus pull"> </b> Add Reference Project</h1>
-   </div>
-   <div class="modal-body">
-	<div class="row">
-	 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Project</b></label>
-	 <div class="col-sm-8" style="margin: 5px 0px;" >
-	  <select name="account" class="form-control m-b">
-	   <option>Project1</option>
-	   <option>Project2</option>
-	  </select>
-	 </div>
-	 <label class="col-sm-4 control-label" placeholder="Entry Year" style="margin: 5px 0px;" for="input-id-1"><b>Year</b></label>
-	 <div class="col-sm-8" style="margin: 5px 0px;">
-	  <form action="https://formden.com/post/MlKtmY4x/" class="form-horizontal" method="post">
-	   <div class="form-group ">
-		<div class="col-sm-12">
-		 <div class="input-group">
-		  <div class="input-group-addon">
-		   <i class="fa fa-calendar"></i>
-		  </div>
-		  <input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" type="text"/>
-		 </div>
-		</div>
-	   </div>
-	  </form>
-	 </div>
-	 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Amount</b></label>
-	 <div class="col-sm-8" style="margin: 5px 0px;">
-	  <input type="text" placeholder="Entry Amount" class="form-control" id="input-id-1">
-	 </div>
-	 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>SignedBy</b></label>
-	 <div class="col-sm-8" style="margin: 5px 0px;">
-	  <input type="text" placeholder="SignedBy" class="form-control" id="input-id-1">
-	 </div>
-	 <label class="col-sm-4 control-label" placeholder="Entry Year" style="margin: 5px 0px;" for="input-id-1"><b>SigningDate</b></label>
-	 <div class="col-sm-8" style="margin: 5px 0px;">
-	  <form action="https://formden.com/post/MlKtmY4x/" class="form-horizontal" method="post">
-	   <div class="form-group ">
-		<div class="col-sm-12">
-		 <div class="input-group">
-		  <div class="input-group-addon">
-		   <i class="fa fa-calendar"></i>
-		  </div>
-		  <input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" type="text"/>
-		 </div>
-		</div>
-	   </div>
-	  </form>
-     </div>
-	 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Keywords Tags</b></label>
-	 <div class="col-sm-8" style="margin: 5px 0px;">
-	  <input type="text" data-role="tagsinput"  placeholder="Write Keywords Tags and click Entry" class="form-control" id="input-id-1">
-	 </div>
-	 <label class="col-sm-4 control-label" placeholder="Upload Preview Picture" style="margin: 5px 0px;" for="input-id-1"><b>Preview Picture </b></label>
-	 <div class="col-sm-4" style="margin: 5px 0px;">
-	  <input type="text" placeholder="Upload Preview Picture"class="form-control" id="input-id-1">
-	 </div>
-	 <div class="col-sm-4" style="margin: 5px 0px;">
-	  <div class="btn-group">
-	   <a class="btn btn-default" tooltip="Insert picture (or just drag &amp; drop)" id="pictureBtn"><i class="icon-paper-clip"></i></a>
-	   <input type="file" data-edit="insertImage" style="position:absolute; opacity:0; width:41px; height:34px">
+																		<tr data-expanded="true" th:each="d:${listRef}">
+																			<td th:text="${d.project.TypeProject.NameType_Project}"><center></center></td>
+																			<td th:text ="${d.project.Name}"> 	
+																				<center></center>
+																			</td>
+																			<td th:text="${d.SignedBy}"><center></center></td>	
+																			<td th:text="${d.Amount}"><center></center></td>
+																			<td th:text="${d.an}"><center><center/></td>
+																				<td><center>		<a  data-toggle="modal"  data-target="#imgpreview"><img class="img-thumbnail" width="80px" height="60px" th:src="@{getReferenceFile(id=${d.Reference_ID})}" ><a/><center/></td>
+																							<td>
+																								<center><div class="btn-group dropdown">
+																										<button class="btn btn-default btn-xs" data-toggle="dropdown"><i class="glyphicon glyphicon-cog"></i> Action <span class="caret"></span></button>
+																										<ul class="dropdown-menu">
+																										  <li><a th:href="@{updateReference(id=${d.Reference_ID})}"  style="margin-top:-5px;"   class="btn btn-sm btn-light" role="button">Update</a></li>
+																								             <li><a th:href="@{deleteReference(id=${d.Reference_ID})}"  style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Delete</a></li>
+																													</div></center>
+																							</td>
+																						</tr>
+																					</tbody>
+																				</table>
 	  </div>
-	 </div>           
-	 <label class="col-sm-4 control-label" placeholder="Upload Reference File" style="margin: 5px 0px;" for="input-id-1"><b>Reference File</b></label>
-	 <div class="col-sm-4" style="margin: 5px 0px;">
-	  <input type="text" placeholder="Upload Reference File"class="form-control" id="input-id-1">
-	 </div>
-	 <div class="col-sm-4" style="margin: 5px 0px;">
-	  <div class="btn-group">
-	   <a class="btn btn-default" tooltip="Insert picture (or just drag &amp; drop)" id="pictureBtn"><i class="icon-paper-clip"></i></a>
-	   <input type="file" data-edit="insertImage" style="position:absolute; opacity:0; width:41px; height:34px">
-	  </div> 
-	 </div>
+   
+
+	<div class="col-sm-6">
+	    <center><h3 class="m-n font-bold h4">Expected Temporaray Date </h3></center>
+		<div id='calendar'></div>
 	</div>
-   </div>
-   <div class="modal-footer">
-	<button style="margin:0px;" class="btn m-b-xs btn-sm btn-primary btn-addon"><i class="glyphicon glyphicon-ok"></i>Save</button>
-	<button style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon" data-dismiss="modal"><i class="glyphicon glyphicon-remove"></i>Annuler</button>
+	<div class="col-sm-6">
+	    <center><h3 class="m-n font-bold h4">RFP Reponse Date & Time </h3></center>
+		<div id='calendar1'></div>
+	</div>
+	
+  <div class="modal fade" role="dialog" id="AddClient" >
+  <div class="modal-dialog modal-lg" >
+   <div class="modal-content">
+    <div class="modal-header" style="background-image:url(img/grf-bg.jpg);color:white;">
+     <button type="button" class="close pull-right" data-dismiss="modal">&times;</button>
+    <h1 class="m-n font-bold h3"> <b class="glyphicon-plus pull"> </b> Add Deliverable Project</h1>
+    </div>
+      <div class="modal-body">
+     <form th:action="@{SaveReference}" method="post" enctype="multipart/form-data" th:object="${reference}" >
+     <div class="row">
+    <!-- 
+    <label class="col-sm-4 control-label" for="input-id-1" style="margin:5px 0px;"><b>Year</b></label>
+    <div class="col-sm-8" style="margin:5px 0px;" >
+     <input type="date" placeholder="Entry Name" class="form-control" id="input-id-1" th:field="*{an}">
+    </div> -->
+    <label class="col-sm-4 control-label" for="input-id-1" style="margin-bottom:5px;"><b>Amount</b></label>
+    <div class="col-sm-8" style="margin-bottom:5px;">
+     <input type="text" placeholder="Entry Version" class="form-control" id="input-id-1" th:field="*{Amount}" >
+    </div>
+  
+    <label class="col-sm-4 control-label"  for="input-id-1" style="margin-top:0px; margin-bottom:5px;"><b>Project</b></label>
+    <div class="col-sm-8" style="margin:0px; margin-bottom:5px;" >
+     <select name="account" class="form-control m-b"  style="margin-top:0px; margin-bottom:0px;"  th:field="*{project}">
+      <option th:each="p:${project}" th:text="${p.Name}" th:value="${p.Project_ID}"></option>
+     </select>
+    </div>
+   <!--  <label class="col-sm-4 control-label" placeholder="Entry Year" for="input-id-1" style="margin-top:0px; margin-bottom:5px;"><b>Date</b></label>
+        <div class="col-sm-8" style="margin-top:0px; margin-bottom:5px;">
+     <form action="https://formden.com/post/MlKtmY4x/" class="form-horizontal" method="post">
+     <div class="form-group " style="margin-top:0px;margin-bottom:0px ;">
+      <div class="col-sm-12">
+       <div class="input-group">
+        <div class="input-group-addon">
+       <i class="fa fa-calendar"></i>
+      </div>
+      <input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" type="text"/>
+       </div>
+      </div>
+     </div>
+     </form>
+    </div> -->
+    <label class="col-sm-4 control-label" for="input-id-1" style="margin-bottom:5px;"><b>Signed By</b></label>
+    <div class="col-sm-8" style="margin-top:0px; margin-bottom:5px;">
+     <input type="text" class="form-control" id="input-id-1" th:field="*{SignedBy}" >
+    </div>
+    <label class="col-sm-4 control-label" placeholder="Upload Preview File" for="input-id-1"  style="margin-bottom:5px;" ><b>Preview File</b></label>
+    <div class="col-sm-7" style="margin-top:0px; margin-bottom:5px;">
+     <input type="text" placeholder="Upload Preview File"class="form-control" id="input-id-1">
+    </div>
+    <div class="col-sm-1" style="margin-top:0px; margin-bottom:5px;" >
+     <div class="btn-group">
+      <a class="btn btn-default" tooltip="Insert picture (or just drag &amp; drop)" id="pictureBtn"><i class="icon-paper-clip"></i></a>
+          <input type="file" data-edit="insertImage"  name ="picture" style="position:absolute; opacity:0; width:41px; height:34px">
+     </div>
+    </div>           
+    <label class="col-sm-4 control-label" placeholder="Upload Preview File" for="input-id-1" ><b>File</b></label>
+    <div class="col-sm-7">
+     <input type="text" placeholder="Upload Preview File"class="form-control" id="input-id-1">
+    </div>
+    <div class="col-sm-1" >
+     <div class="btn-group">
+      <a class="btn btn-default" tooltip="Insert picture (or just drag &amp; drop)" id="pictureBtn"><i class="icon-paper-clip"></i></a>
+          <input type="file" name="file" data-edit="insertImage" style="position:absolute; opacity:0; width:41px; height:34px">
+     </div>
+    </div> 
+     </div>
+    
+    </div>
+    <div class="modal-footer">
+     <button style="margin:0px;" class="btn m-b-xs btn-sm btn-primary btn-addon"><i class="glyphicon glyphicon-ok"></i>Save</button>
+     <button style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon" data-dismiss="modal"><i class="glyphicon glyphicon-remove"></i>Annuler</button>
+    </div>
+     </form>
    </div>
   </div>
- </div>
-</div>
-</div>
-</div>
-</div><!-- /content -->
-<div class="modal fade" role="dialog" id="Update" >
- <div class="modal-dialog modal-lg" >
-  <div class="modal-content">
-   <div class="modal-header" style="background-image:url(img/grf-bg.jpg);color:white;">
-	<button type="button" class="close pull-right" data-dismiss="modal">&times;</button>
-	<h1 class="m-n font-bold h3"> Update Reference Project</h1>
    </div>
-   <div class="modal-body">
-	<div class="row">
-	 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Project</b></label>
-	 <div class="col-sm-8" style="margin: 5px 0px;" >
-	  <select name="account" class="form-control m-b">
-	   <option>Project1</option>
-	   <option>Project2</option>
-	  </select>
-	 </div>
-	 <label class="col-sm-4 control-label" placeholder="Entry Year" style="margin: 5px 0px;" for="input-id-1"><b>Year</b></label>
-	 <div class="col-sm-8" style="margin: 5px 0px;">
-	  <form action="https://formden.com/post/MlKtmY4x/" class="form-horizontal" method="post">
-	   <div class="form-group ">
-		<div class="col-sm-12">
-		 <div class="input-group">
-		  <div class="input-group-addon">
-		   <i class="fa fa-calendar"></i>
-		  </div>
-		  <input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" type="text"/>
-		 </div>
-		</div>
-	   </div>
-	  </form>
-	 </div>
-	 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Amount</b></label>
-	 <div class="col-sm-8" style="margin: 5px 0px;">
-	  <input type="text" placeholder="Entry Amount" class="form-control" id="input-id-1">
-	 </div>
-	 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>SignedBy</b></label>
-	 <div class="col-sm-8" style="margin: 5px 0px;">
-	  <input type="text" placeholder="SignedBy" class="form-control" id="input-id-1">
-	 </div>
-	 <label class="col-sm-4 control-label" placeholder="Entry Year" style="margin: 5px 0px;" for="input-id-1"><b>SigningDate</b></label>
-	 <div class="col-sm-8" style="margin: 5px 0px;">
-	  <form action="https://formden.com/post/MlKtmY4x/" class="form-horizontal" method="post">
-	   <div class="form-group ">
-		<div class="col-sm-12">
-		 <div class="input-group">
-		  <div class="input-group-addon">
-		   <i class="fa fa-calendar"></i>
-		  </div>
-		  <input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" type="text"/>
-		 </div>
-		</div>
-	   </div>
-	  </form>
+
+</div>
+  <!-- /content -->
+ <!-- footer -->
+ <footer id="footer" class="app-footer" role="footer">
+  <div class="wrapper b-t bg-light">
+   <span class="pull-right">2.2.0 <a href ui-scroll="app" class="m-l-sm text-muted"><i class="fa fa-long-arrow-up"></i></a></span>&copy; PowerM 2020 Copyright.
+  </div>
+ </footer><!-- / footer -->
+  <div class="modal fade" role="dialog" id="Update" >
+  <div class="modal-dialog modal-lg" >
+   <div class="modal-content">
+    <div class="modal-header" style="background-image:url(img/grf-bg.jpg);color:white;">
+     <button type="button" class="close pull-right" data-dismiss="modal">&times;</button>
+    <h1 class="m-n font-bold h3"> Update Deliverable Project</h1>
+    </div>
+      <div class="modal-body">
+     <div class="row">
+    <label class="col-sm-4 control-label" for="input-id-1" style="margin:5px 0px;"><b>Name</b></label>
+    <div class="col-sm-8" style="margin:5px 0px;" >
+     <input type="text" placeholder="Entry Name" class="form-control" id="input-id-1">
+    </div>
+    <label class="col-sm-4 control-label" for="input-id-1" style="margin-bottom:5px;"><b>Version</b></label>
+    <div class="col-sm-8" style="margin-bottom:5px;">
+     <input type="text" placeholder="Entry Version" class="form-control" id="input-id-1">
+    </div>
+    <label class="col-sm-4 control-label" for="input-id-1" style="margin-bottom:5px;"><b>Type Deliverable</b></label>
+    <div class="col-sm-8" style="margin-bottom:5px;" >
+     <select name="account" class="form-control m-b"  style="margin:0px;">
+      <option>Type1</option>
+      <option>Type2</option>
+     </select>
+    </div>
+    <label class="col-sm-4 control-label"  for="input-id-1" style="margin-top:0px; margin-bottom:5px;"><b>Project</b></label>
+    <div class="col-sm-8" style="margin:0px; margin-bottom:5px;" >
+     <select name="account" class="form-control m-b"  style="margin-top:0px; margin-bottom:0px;">
+      <option>Project1</option>
+      <option>Project2</option>
+     </select>
+    </div>
+    <label class="col-sm-4 control-label" placeholder="Entry Year" for="input-id-1" style="margin-top:0px; margin-bottom:5px;"><b>Date</b></label>
+        <div class="col-sm-8" style="margin-top:0px; margin-bottom:5px;">
+     <form action="https://formden.com/post/MlKtmY4x/" class="form-horizontal" method="post">
+     <div class="form-group " style="margin-top:0px;margin-bottom:0px ;">
+      <div class="col-sm-12">
+       <div class="input-group">
+        <div class="input-group-addon">
+       <i class="fa fa-calendar"></i>
+      </div>
+      <input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" type="text"/>
+       </div>
+      </div>
      </div>
-	 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Keywords Tags</b></label>
-	 <div class="col-sm-8" style="margin: 5px 0px;">
-	  <input type="text" data-role="tagsinput"  placeholder="Write Keywords Tags and click Entry" class="form-control" id="input-id-1">
-	 </div>
-	 <label class="col-sm-4 control-label" placeholder="Upload Preview Picture" style="margin: 5px 0px;" for="input-id-1"><b>Preview Picture </b></label>
-	 <div class="col-sm-4" style="margin: 5px 0px;">
-	  <input type="text" placeholder="Upload Preview Picture"class="form-control" id="input-id-1">
-	 </div>
-	 <div class="col-sm-4" style="margin: 5px 0px;">
-	  <div class="btn-group">
-	   <a class="btn btn-default" tooltip="Insert picture (or just drag &amp; drop)" id="pictureBtn"><i class="icon-paper-clip"></i></a>
-	   <input type="file" data-edit="insertImage" style="position:absolute; opacity:0; width:41px; height:34px">
-	  </div>
-	 </div>           
-	 <label class="col-sm-4 control-label" placeholder="Upload Reference File" style="margin: 5px 0px;" for="input-id-1"><b>Reference File</b></label>
-	 <div class="col-sm-4" style="margin: 5px 0px;">
-	  <input type="text" placeholder="Upload Reference File"class="form-control" id="input-id-1">
-	 </div>
-	 <div class="col-sm-4" style="margin: 5px 0px;">
-	  <div class="btn-group">
-	   <a class="btn btn-default" tooltip="Insert picture (or just drag &amp; drop)" id="pictureBtn"><i class="icon-paper-clip"></i></a>
-	   <input type="file" data-edit="insertImage" style="position:absolute; opacity:0; width:41px; height:34px">
-	  </div> 
-	 </div>
-	</div>
-   </div>
-   <div class="modal-footer">
-	<button style="margin:0px;" class="btn m-b-xs btn-sm btn-primary btn-addon"><i class="glyphicon glyphicon-ok"></i>Save</button>
-	<button style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon" data-dismiss="modal"><i class="glyphicon glyphicon-remove"></i>Annuler</button>
+     </form>
+    </div>
+    <label class="col-sm-4 control-label" for="input-id-1" style="margin-bottom:5px;"><b>Document Link</b></label>
+    <div class="col-sm-8" style="margin-top:0px; margin-bottom:5px;">
+     <input type="text" class="form-control" id="input-id-1" disabled value="drive.google.com/customerName" >
+    </div>
+    <label class="col-sm-4 control-label" placeholder="Upload Preview File" for="input-id-1"  style="margin-bottom:5px;" ><b>Preview File</b></label>
+    <div class="col-sm-7" style="margin-top:0px; margin-bottom:5px;">
+     <input type="text" placeholder="Upload Preview File"class="form-control" id="input-id-1">
+    </div>
+    <div class="col-sm-1" style="margin-top:0px; margin-bottom:5px;" >
+     <div class="btn-group">
+      <a class="btn btn-default" tooltip="Insert picture (or just drag &amp; drop)" id="pictureBtn"><i class="icon-paper-clip"></i></a>
+          <input type="file" data-edit="insertImage" style="position:absolute; opacity:0; width:41px; height:34px">
+     </div>
+    </div>           
+    <label class="col-sm-4 control-label" placeholder="Upload Preview File" for="input-id-1" ><b>File</b></label>
+    <div class="col-sm-7">
+     <input type="text" placeholder="Upload Preview File"class="form-control" id="input-id-1">
+    </div>
+    <div class="col-sm-1" >
+     <div class="btn-group">
+      <a class="btn btn-default" tooltip="Insert picture (or just drag &amp; drop)" id="pictureBtn"><i class="icon-paper-clip"></i></a>
+          <input type="file" data-edit="insertImage" style="position:absolute; opacity:0; width:41px; height:34px">
+     </div>
+    </div> 
+     </div>
+    </div>
+    <div class="modal-footer">
+     <button style="margin:0px;" class="btn m-b-xs btn-sm btn-primary btn-addon"><i class="glyphicon glyphicon-ok"></i>Save</button>
+     <button style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon" data-dismiss="modal"><i class="glyphicon glyphicon-remove"></i>Annuler</button>
+    </div>
+     </form>
    </div>
   </div>
- </div>
-</div>																			
+   </div>
+		<div class="modal fade" role="dialog" id="imgpreview">
+																					<div class="modal-dialog">
+																						<div class="modal-content">
+
+																							<div class="modal-body">
+																								<div class="row">
+																									<img th:src="@{getReferenceFile(id=100)}" width="100%" height="100%"/>
+																								</div>
+																							</div>
+																							<div class="modal-footer">
+																								<button style="margin:0px;" class="btn m-b-xs btn-sm btn-primary btn-addon"><i class="glyphicon glyphicon-print"></i>Print</button>
+																								<button style="margin:0px;" class="btn m-b-xs btn-sm btn-primary btn-addon"><i class="glyphicon glyphicon-download-alt"></i>Download</button>
+																								<button style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon" data-dismiss="modal"><i class="glyphicon glyphicon-remove"></i>Cancel</button>
+																							</div>
+																						</div>
+																					</div>
+																				</div>
 <div class="modal fade" role="dialog" id="Delete" >
  <div class="modal-dialog modal-lg" >
   <div class="modal-content">
    <div class="modal-header" style="background-image:url(img/grf-bg.jpg);color:white;">
-	<button type="button" class="close pull-right" data-dismiss="modal">&times;</button>
-	<h1 class="m-n font-bold h3">Delete Reference Project</h1>
+  <button type="button" class="close pull-right" data-dismiss="modal">&times;</button>
+     <h1 class="m-n font-bold h3">Delete Deliverable Project</h1>
    </div>
    <div class="modal-body">
-    Do you want to delete this Reference Project ? 
+    Do you want to delete this Deliverable Project ? 
    </div>
-   <div class="modal-footer">
-	<button class="btn m-b-xs btn-sm btn-primary btn-addon"><i class="glyphicon glyphicon-ok"></i>Yes</button>
-	<button class="btn m-b-xs btn-sm btn-default btn-addon" data-dismiss="modal"><i class="glyphicon glyphicon-remove"></i>No</button>
-   </div>
+    <div class="modal-footer">
+   <button class="btn m-b-xs btn-sm btn-primary btn-addon"><i class="glyphicon glyphicon-ok"></i>Yes</button>
+   <button class="btn m-b-xs btn-sm btn-default btn-addon" data-dismiss="modal"><i class="glyphicon glyphicon-remove"></i>No</button>
+  </div>
   </div>  
- </div>
 </div>
-<div class="modal fade" role="dialog" id="Detail" >
+</div>
+ <div class="modal fade" role="dialog" id="Detail" >
  <div class="modal-dialog modal-lg" >
   <div class="modal-content">
    <div class="modal-header" style="background-image:url(img/grf-bg.jpg);color:white;">
   <button type="button" class="close pull-right" data-dismiss="modal">&times;</button>
-     <h1 class="m-n font-bold h3">Information Reference Project</h1>
+     <h1 class="m-n font-bold h3">Information Deliverable Project</h1>
    </div>
    <div class="modal-body">
     <p>
+     <span class="m-n font-thin h3 text-black" >Deliverable Project Name:</span>
+     <span ng-repeat="nom in deliverableProject"> {{ deliverableProject.nomProject }} </br></span>
+     <span class="m-n font-thin h3 text-black" >Version :</span>
+     <span ng-repeat="version in deliverableProject"> {{ deliverableProject.version }} </br></span>
+     <span class="m-n font-thin h3 text-black">Type Project:</span>
+     <span ng-repeat="type in typeProject"> {{ typeProject.type }}</span></br>
      <span class="m-n font-thin h3 text-black">Project Name :</span>
-     <span ng-repeat="nom in project"> {{ project.nomProject }} </br></span>
-     <span class="m-n font-thin h3 text-black">Year :</span>
-	 <span ng-repeat="year in referenceProject"> {{ referenceProject.year }}</span></br>
-	 <span class="m-n font-thin h3 text-black">Amount :</span>
-	 <span ng-repeat="amount in referenceProject"> {{ referenceProject.amount }}</span></br>
-	 <span class="m-n font-thin h3 text-black">Signed By :</span>
-	 <span ng-repeat="signedBy in referenceProject"> {{ referenceProject.signedBy }} </span></br>
-	 <span class="m-n font-thin h3 text-black">Signing Date :</span>
-	 <span ng-repeat="signingDate in referenceProject"> {{ referenceProject.signingDate }} </span></br>
-     <span class="m-n font-thin h3 text-black" >Keywords Tags :</span>
-	 <span ng-repeat="keywordsTags in referenceProject"> {{ referenceProject.keywordsTags }} </br></span>
-	 <span class="m-n font-thin h3 text-black">Preview Picture :</span>
-	 <a href="http://localhost:8082/download/{{asset.SLAAsset}}" target="_blank"><span class="m-n font-thin h3 text-black"> picture </span></a></br>
-	 <span class="m-n font-thin h3 text-black">Reference File :</span>
-	 <a href="http://localhost:8082/download/{{asset.SLAAsset}}" target="_blank"><span class="m-n font-thin h3 text-black"> file </span></a></br>																						
-	</p>
+     <span ng-repeat="nom in project"> {{ project.nomProject }}</span></br>
+     <span class="m-n font-thin h3 text-black">Delivery Date :</span>
+     <span ng-repeat="deliveryDate in deliverableProject"> {{ deliverableProject.deliveryDate }} </span></br>
+     <span class="m-n font-thin h3 text-black">Document :</span>
+     <a href="http://localhost:8082/download/{{asset.SLAAsset}}" target="_blank"><span class="m-n font-thin h3 text-black"> link </span></a></br>
+     <span class="m-n font-thin h3 text-black">Preview File :</span>
+     <a href="http://localhost:8082/download/{{asset.SLAAsset}}" target="_blank"><span class="m-n font-thin h3 text-black"> file </span></a></br>
+     <span class="m-n font-thin h3 text-black">File :</span>
+     <a href="http://localhost:8082/download/{{asset.SLAAsset}}" target="_blank"><span class="m-n font-thin h3 text-black"> file </span></a></br>
+     </p>
    </div>
-   <div class="modal-footer">
+  <div class="modal-footer">
    <button class="btn m-b-xs btn-sm btn-primary btn-addon" data-dismiss="modal">Return</button>
   </div>
   </div>  
 </div>
 </div>
-																		<!-- footer -->
-																		<footer id="footer" class="app-footer" role="footer">
-																			<div class="wrapper b-t bg-light">
-																				<span class="pull-right">2.2.0 <a href ui-scroll="app" class="m-l-sm text-muted"><i class="fa fa-long-arrow-up"></i></a></span>
-      &copy; PowerM 2020 Copyright.
-																			</div>
-																		</footer>
-																		<!-- / footer -->
-
-
-
-																	</div>
-
-																	<script src="../libs/jquery/jquery/dist/jquery.js"></script>
-																	<script src="../libs/jquery/bootstrap/dist/js/bootstrap.js"></script>
-																	<script src="js/ui-load.js"></script>
-																	<script src="js/ui-jp.config.js"></script>
-																	<script src="js/ui-jp.js"></script>
-																	<script src="js/ui-nav.js"></script>
-																	<script src="js/ui-toggle.js"></script>
-																	<script src="js/ui-client.js"></script>
-
-																	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.min.js" integrity="sha256-tQ3x4V2JW+L0ew/P3v2xzL46XDjEWUExFkCDY0Rflqc=" crossorigin="anonymous"></script>
-																	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
-																	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
-																	<script src="js/myjavascript.js"></script>
-																	<script>
+</div>
+<script src="../libs/jquery/jquery/dist/jquery.js"></script>
+<script src="../libs/jquery/bootstrap/dist/js/bootstrap.js"></script>
+<script src="js/ui-load.js"></script>
+<script src="js/ui-jp.config.js"></script>
+<script src="js/ui-jp.js"></script>
+<script src="js/ui-nav.js"></script>
+<script src="js/ui-toggle.js"></script>
+<script src="js/ui-client.js"></script>
+<!-- <!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+ --><!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+ --><!-- <script>
   $(document).ready(function(){
     var date_input=$('input[name="date"]'); //our date input has the name "date"
     var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
@@ -934,10 +846,10 @@ function drawChart() {
       container: container,
       todayHighlight: true,
       autoclose: true,
-    })
-  })
-																	</script>
-																	<script type="text/javascript">
+    })<!-- 
+  }) -->
+</script> --> -->
+<script type="text/javascript">
   function changecolor() {
        $('body,.wrapper,.content,.panel-default,.panel-heading,#content-h,#header,.modal-content').css("background-color", "#3a3f51");
        $('.wrapper,.content,.panel-default,.panel-heading,#content-h').css("border-color", "#313639");
@@ -966,7 +878,7 @@ function drawChart() {
     }
 
       };
-
+	  
 	    function lightmode() {
        $('.wrapper,.content,.panel-heading,#content-h,#header,.modal-content').css("background-color", "#f0f3f4");
           $('.panel-default,#content-b').css("background-color", "#f0f3f4");
@@ -995,9 +907,7 @@ function drawChart() {
     }
 
       };
-
-
-																	</script>
-																</body>
-															</html>
-															
+		</script>
+</body>
+</html>
+													

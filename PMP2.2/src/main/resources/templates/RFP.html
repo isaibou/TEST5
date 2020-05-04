@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 	<head>
+	
 		<meta charset="utf-8" />
 		<title>RFP</title>
 		<meta name="description" content="app, web app, responsive, responsive layout, admin, admin panel, admin dashboard, flat, flat ui, ui kit, AngularJS, ui route, charts, widgets, components" />
@@ -342,11 +343,11 @@ document.addEventListener('DOMContentLoaded', function() {
                   <span>Assets</span>
                 </a>
                 <ul class="nav nav-sub dk">
-                  <li class="">
+
+                 <!--   <li class="">
                     <a th:href="assets_manage">
                       <span>Manage Assets</span>
                     </a>
-                  </li>
                   <li>
                     <a th:href="assetstype_manage">
                       <span>Manage Assets Type</span>
@@ -370,6 +371,8 @@ document.addEventListener('DOMContentLoaded', function() {
                   <span>Tickets</span>
                 </a>
               </li> -->
+              </ul>
+              
               <li>
                 <a th:href="RFP">
                   <i class="glyphicon glyphicon-tag"></i>
@@ -455,6 +458,7 @@ document.addEventListener('DOMContentLoaded', function() {
      <div class="col-sm-4">
       <div class="panel padder-v item">
        <div class="h1 count text-info font-thin h1 pull-center" th:text="${totalRFP}"></div>
+
         <span class="text-muted text-xs"><b> Total RFP </b></span>
         <span class="bottom text-right w-full"><i class="glyphicon glyphicon-tower text-muted m-r-sm"></i></span>
       </div>
@@ -462,6 +466,7 @@ document.addEventListener('DOMContentLoaded', function() {
      <div class="col-sm-4">
       <a href="" class="block panel padder-v bg-primary item">
        <span class="text-white count font-thin h1 block" th:text="${totalRFP}"></span>
+
        <span class="text-muted text-xs"><b> Total RFP </b></span>
        <span class="bottom text-right w-full"><i class="glyphicon glyphicon-briefcase text-muted m-r-sm"></i></span>
       </a>
@@ -476,6 +481,7 @@ document.addEventListener('DOMContentLoaded', function() {
     <div class="col-sm-4">
      <a href="" class="block panel padder-v bg-primary item">
       <span class="text-white count font-thin h1 block" th:text="${totalRFP}"></span>
+
       <span class="text-muted text-xs"><b> Total RFP </b></span>
       <span class="bottom text-right w-full"><i class="glyphicon glyphicon-briefcase text-muted m-r-sm"></i></span>
      </a>
@@ -523,7 +529,6 @@ document.addEventListener('DOMContentLoaded', function() {
 	 		  <li><a th:href="@{'/rfpfile/'+${r.ResponseFile}}"  style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Download ResponseFile</a></li>
 			  <li><a th:href="@{updateRFP(id=${r.RFP_ID})}"  style="margin-top:-5px;"   class="btn btn-sm btn-light" role="button">Update</a></li>
 		      <li><a th:href="@{archiverRFP(id=${r.RFP_ID})}"  style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Archived</a></li>
-		      <li><a th:href="@{newRFP(id=${r.RFP_ID})}"  style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">New</a></li>
 		      <li><a th:href="@{submitedRFP(id=${r.RFP_ID})}"  style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Submitted</a></li>
 		      <li><a th:href="@{wonRFP(id=${r.RFP_ID})}"  style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Won</a></li>
 		      <li><a th:href="@{lostRFP(id=${r.RFP_ID})}"  style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Lost</a></li>

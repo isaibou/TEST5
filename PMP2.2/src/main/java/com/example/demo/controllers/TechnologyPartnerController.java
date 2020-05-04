@@ -18,10 +18,11 @@ import com.example.demo.repository.TechnologiePartnerRepository;
 @Controller
 public class TechnologyPartnerController {
 	
+	
 	@Autowired
 	private TechnologiePartnerRepository technologiepartnerRepository;
 	
-	@RequestMapping(value="/Technology_Partner")
+	@RequestMapping(value="/technology")
 	public String TechnologyPartner(Model model, TechnologyPartner technologypartne) {
 		
 		List<TechnologyPartner> technologypartner = technologiepartnerRepository.findAll();
@@ -36,7 +37,7 @@ public class TechnologyPartnerController {
 		addTechnologyPart.setStatus("Actif");
 		
 		technologiepartnerRepository.save(addTechnologyPart);
-		return "redirect:/Technology_Partner";
+		return "redirect:/technology";
 		
 	}
 	
@@ -46,7 +47,7 @@ public class TechnologyPartnerController {
 		technologypart.setStatus("Actif");
 		technologiepartnerRepository.save(technologypart);
 		
-		return "redirect:/Technology_Partner";
+		return "redirect:/technology";
 	}
 	
 	@RequestMapping(value ="/updateTechnologyPartner")
@@ -68,7 +69,7 @@ public class TechnologyPartnerController {
 		technologiepartnerRepository.save(technologypartner);
 	    System.out.println(technologypartner.getStatus());
 		
-			return "redirect:/Technology_Partner";	
+			return "redirect:/technology";	
 			
 	}
 	

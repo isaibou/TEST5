@@ -1,13 +1,16 @@
 package com.example.demo.controllers;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.List;
 
 import javax.validation.Valid;
 
+import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.MediaType;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,9 +18,12 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.example.demo.entities.Deliverable;
 import com.example.demo.entities.Project;
+import com.example.demo.entities.Purchasing;
 import com.example.demo.entities.Reference;
 import com.example.demo.entities.Users;
 import com.example.demo.repository.ProjetRepository;
@@ -57,69 +63,80 @@ public class ReferenceController {
 	}
 
 	
-
-	@RequestMapping(value="/SaveReference" , method= RequestMethod.POST)
-	private String SaveReference(@Valid Reference ref, @RequestParam(name ="file")  MultipartFile file , @RequestParam(name ="picture")  MultipartFile picture,BindingResult bindingResult) throws IllegalStateException, IOException {
+	@RequestMapping(value="/SaveReference")
+	public String SaveReference(Model model, Reference ref, @RequestParam(name="file") MultipartFile file , @RequestParam(name="picture") MultipartFile picture) throws IllegalStateException, IOException {
 		
-		
-
-			if (!(file.isEmpty())) {
+if (!(file.isEmpty())) {
 			
 			ref.setReferenceFile((file.getOriginalFilename()));
 
 			file.transferTo(new File(refFile+file.getOriginalFilename()));
 		}
-			referencerepository.save(ref);
+referencerepository.save(ref);
+if (!(picture.isEmpty())) {
+	
+	ref.setPreviewPicture((picture.getOriginalFilename()));
 
+	picture.transferTo(new File(refPicture+ref.getReference_ID()));
+}
 
+referencerepository.save(ref);
 		
+		return "redirect:/reference";
+	}	
 
-		if (!(picture.isEmpty())) {
+	
+	@RequestMapping(value ="/updateReference")
+	public String updateReference( Model model, Integer id ) {
 		
-		ref.setPreviewPicture((file.getOriginalFilename()));
-
-		file.transferTo(new File(refPicture+ref.getReference_ID()));
+		Reference	ref = referencerepository.getOne(id);
+		 model.addAttribute("ref",ref);
+		 
+		 model.addAttribute("project", projectRepository.findAll());	
+		
+			return "updateReference";
+			
 	}
+	
+	
+	@RequestMapping(value="/editReference")
+	public String editReference(Model model, Reference ref, @RequestParam(name="file") MultipartFile file , @RequestParam(name="picture") MultipartFile picture) throws IllegalStateException, IOException {
+		
+if (!(file.isEmpty())) {
+			
+			ref.setReferenceFile((file.getOriginalFilename()));
 
+			file.transferTo(new File(refFile+file.getOriginalFilename()));
+		}
+referencerepository.save(ref);
+if (!(picture.isEmpty())) {
+	
+	ref.setPreviewPicture((picture.getOriginalFilename()));
+
+	picture.transferTo(new File(refPicture+ref.getReference_ID()));
+}
+
+referencerepository.save(ref);
 		
-		
-		return "redirect:/projects";	
+		return "redirect:/reference";
+	}	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	@RequestMapping(value="/getReferenceFile" , produces= MediaType.IMAGE_JPEG_VALUE)
+	@ResponseBody
+	private byte[] getDeliverable(String id) throws  IOException {
+		File f = new File(refPicture+id);
+		return  IOUtils.toByteArray(new FileInputStream(f));
 	}
 
 	    
-	/*
-	 * @RequestMapping(value = "/editProject",method = { RequestMethod.GET,
-	 * RequestMethod.POST }) public String updateProject(Model model, @Valid Project
-	 * proj, BindingResult bindingResult){
-	 * 
-	 * ProjectRepository.save(proj);
-	 * 
-	 * return "redirect:/projects"; }
-	 * 
-	 * @RequestMapping(value ="/updateProject") public String updateProjectForm(
-	 * Model model, Integer id ) {
-	 * 
-	 * Project project = ProjectRepository.getOne(id);
-	 * model.addAttribute("project",project);
-	 * 
-	 * model.addAttribute("TechnologiePartnerRepository",
-	 * technologiepartnerRepository.findAll());
-	 * 
-	 * System.out.println(project.getName());
-	 * 
-	 * return "updateProj";
-	 * 
-	 * }
-	 * 
-	 * @RequestMapping(value ="/detailProject") public String detailProject( Model
-	 * model, Integer id ) {
-	 * 
-	 * Project project = ProjectRepository.getOne(id);
-	 * model.addAttribute("project",project); System.out.println(project.getName());
-	 * 
-	 * return "detailProj";
-	 * 
-	 * }
-	 */
+	
 
 }

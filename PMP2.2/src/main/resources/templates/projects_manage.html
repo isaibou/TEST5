@@ -528,7 +528,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	     </thead>
 		 <tbody>
 		  <tr data-expanded="true" th:each="p:${proj}">
-		   <td th:text ="${p.Name}" class="m-n font-thin h4 text-secondary"><center><b></b></center></td>
+		   <td th:text ="${p.typeProject.NameType_Project}" class="m-n font-thin h4 text-secondary"><center><b></b></center></td>
 		   <td th:text ="${p.Notes}" class="m-n font-thin h4 text-secondary"><center><b></b></center></td>
 		   <td th:text ="${p.DeliveryDate}" class="m-n font-thin h4 text-secondary"><center></center></td>
 		   <td th:text ="${p.Amount}" class="m-n font-thin h4 text-secondary"><center></center></td>
@@ -578,7 +578,7 @@ document.addEventListener('DOMContentLoaded', function() {
 			 
 		     <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Type Project</b></label>
 		 <div class="col-sm-8" style="margin:5px 0px;" >
-		 <select name ="role"  class="form-control m-b" th:field="*{TypeProject}">
+		 <select name ="role"  class="form-control m-b" th:field="*{typeProject}">
 		 <option th:each="t:${TypeProject}"  th:text="${t.NameType_Project}" th:value="${t.Type_Project_ID}"></option>
 		 </select>
 		 </div>

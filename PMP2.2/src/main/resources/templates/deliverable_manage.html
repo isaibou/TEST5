@@ -541,7 +541,7 @@ document.addEventListener('DOMContentLoaded', function() {
 																<table ui-jq="dataTable" ui-options="{
 															aoColumns: [
 															{ mData: 'Customer' },
-															{ mData: 'Project Name' },
+															{ mData: 'Project' },
 															{ mData: 'Version' },
 															{ mData: 'Date' },
 															{ mData: 'File' },
@@ -561,18 +561,18 @@ document.addEventListener('DOMContentLoaded', function() {
 																	</thead>
 																	<tbody>
 																		<tr data-expanded="true" th:each="d:${listD}">
-																			<td th:text="${d.project.typeProject.NameType_Project}"><center></center></td>
+																			<td th:text="${d.project.TypeProject.NameType_Project}"><center></center></td>
 																			<td th:text ="${d.project.Name}"> 	
 																				<center></center>
 																			</td>
-																			<td th:text:="${d.Version}"><center></center></td>
-																			<td><center>22-02-2019<center/></td>
+																			<td th:text="${d.Version}"><center></center></td>
+																			<td th:text="${d.Date}" ><center><center/></td>
 																				<td><center>		<a  data-toggle="modal"  data-target="#imgpreview"><img class="img-thumbnail" width="80px" height="60px" th:src="@{getDeliverableFile(id=${d.Deliverable_ID})}" ><a/><center/></td>
 																							<td>
 																								<center><div class="btn-group dropdown">
-																										<button class="btn btn-default btn-xs" data-toggle="dropdown"><i class="glyphicon glyphicon-cog"></i> Action <span class="caret"></span></button>
-																										<ul class="dropdown-menu"><li><a style="margin-top:-5px;" data-toggle="modal"  data-target="#Update" class="btn btn-sm btn-light" role="button">Update</a></li><li><a style="margin-top:-5px;" data-toggle="modal"  data-target="#Delete" class="btn btn-sm btn-light" role="button">Delete</a></li><li><a style="margin-top:-5px;" data-toggle="modal"  data-target="#Detail" class="btn btn-sm btn-light" role="button">Detail</a></li></ul>
-																									</div></center>
+																										 <li><a th:href="@{updateDeliverable(id=${d.Deliverable_ID})}"  style="margin-top:-5px;"   class="btn btn-sm btn-light" role="button">Update</a></li>
+																								             <li><a th:href="@{deleteReference(id=${d.Deliverable_ID})}"  style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Delete</a></li>
+																													</div></center>
 																							</td>
 																						</tr>
 																					</tbody>
@@ -621,21 +621,21 @@ document.addEventListener('DOMContentLoaded', function() {
       <option th:each="p:${project}" th:text="${p.Name}" th:value="${p.Project_ID}"></option>
      </select>
     </div>
-   <!--  <label class="col-sm-4 control-label" placeholder="Entry Year" for="input-id-1" style="margin-top:0px; margin-bottom:5px;"><b>Date</b></label>
+    <label class="col-sm-4 control-label" placeholder="Entry Year" for="input-id-1" style="margin-top:0px; margin-bottom:5px;"><b>Date</b></label>
         <div class="col-sm-8" style="margin-top:0px; margin-bottom:5px;">
-     <form action="https://formden.com/post/MlKtmY4x/" class="form-horizontal" method="post">
+     <div class="form-horizontal">
      <div class="form-group " style="margin-top:0px;margin-bottom:0px ;">
       <div class="col-sm-12">
        <div class="input-group">
         <div class="input-group-addon">
        <i class="fa fa-calendar"></i>
       </div>
-      <input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" type="text"/>
+      <input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" type="text" th:field="*{Date}" />
        </div>
       </div>
      </div>
-     </form>
-    </div> -->
+     </div>
+    </div>
     <label class="col-sm-4 control-label" for="input-id-1" style="margin-bottom:5px;"><b>Document Link</b></label>
     <div class="col-sm-8" style="margin-top:0px; margin-bottom:5px;">
      <input type="text" class="form-control" id="input-id-1" disabled value="drive.google.com/customerName" >
@@ -766,7 +766,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 																							<div class="modal-body">
 																								<div class="row">
-																									<img src="https://www.prefamaroc.ma/img/attestations/mojazine.jpg" width="100%" height="100%"/>
+																									<img th:src="@{getDeliverableFile(id=100)}" width="100%" height="100%"/>
 																								</div>
 																							</div>
 																							<div class="modal-footer">
@@ -836,20 +836,6 @@ document.addEventListener('DOMContentLoaded', function() {
 <script src="js/ui-nav.js"></script>
 <script src="js/ui-toggle.js"></script>
 <script src="js/ui-client.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
-<script>
-  $(document).ready(function(){
-    var date_input=$('input[name="date"]'); //our date input has the name "date"
-    var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
-    date_input.datepicker({
-      format: 'mm/dd/yyyy',
-      container: container,
-      todayHighlight: true,
-      autoclose: true,
-    })
-  })
-</script>
 <script type="text/javascript">
   function changecolor() {
        $('body,.wrapper,.content,.panel-default,.panel-heading,#content-h,#header,.modal-content').css("background-color", "#3a3f51");

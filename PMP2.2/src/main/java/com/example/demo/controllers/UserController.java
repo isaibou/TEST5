@@ -264,10 +264,26 @@ if (!(file.isEmpty())) {
 	}
 	
 	@RequestMapping(value ="/changePassword" )
-	public String changePassword(String password ,@RequestParam(name="Phone") String phone, Authentication auth) {
+	public String changePassword(String password ,@RequestParam(name="Phone") String phone, @RequestParam(name="confirm") String confirm,@RequestParam(name="pass") String pass, Authentication auth) {
 	 String  login = 	auth.getName(); 
 		Users u = userRepository.getOne(login);
-		u.setPassword(encoder.encode(password));
+		if(confirm.isEmpty()) {
+
+			u.setPassword(encoder.encode(password));
+		}
+		
+		if(!confirm.isEmpty()& !pass.isEmpty()) {
+			
+			if (confirm == pass) {
+				u.setPassword(encoder.encode(password));
+
+			}
+			else  { 
+				return "redirect:/profile";
+				
+			}
+		}
+		
 		u.setPhone(phone);
 	
 		userRepository.save(u);

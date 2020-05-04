@@ -41,8 +41,7 @@ public class Project implements Serializable{
 	@Column(name="Name",length=30,unique=true)
 	private String Name;
 	
-	@Column(name = "TypeProject")
-	private String TypeProject;
+	
 	
 	@NumberFormat(pattern = "#,###,###,###.##")
 	private Double Amount;
@@ -127,7 +126,7 @@ public class Project implements Serializable{
 			int executionTime, String notes, String status) {
 		super();
 		Name = name;
-		TypeProject = typeProject;
+		
 		Amount = amount;
 		Year = year;
 		DeliveryDate = deliveryDate;
@@ -249,12 +248,7 @@ public class Project implements Serializable{
 	public void setStatus(String status) {
 		Status = status;
 	}
-	public String getTypeProject() {
-		return TypeProject;
-	}
-	public void setTypeProject(String typeProject) {
-		TypeProject = typeProject;
-	}
+	
 	public RFP getRfp() {
 		return rfp;
 	}
@@ -275,6 +269,9 @@ public class Project implements Serializable{
 	}
 	public void setDeliverable(Collection<Deliverable> deliverable) {
 		this.deliverable = deliverable;
+	}
+	public TypeProject getTypeProject() {
+		return typeProject;
 	}
 	
 	

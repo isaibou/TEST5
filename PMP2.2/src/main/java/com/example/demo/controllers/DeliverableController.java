@@ -92,15 +92,43 @@ deliverablerepository.save(deli);
 
 	
 	
-	
-	@RequestMapping(value="/deliverable_manage")
-	public String DelivrableManage(Model model) {
+	@RequestMapping(value ="/updateDeliverable")
+	public String updateReference( Model model, Integer id ) {
 		
-		List<Deliverable> delive = deliverablerepository.findAll();
+		Deliverable	del = deliverablerepository.getOne(id);
+		 model.addAttribute("del",del);
+		 
+		 model.addAttribute("project", projectrepository.findAll());	
 		
-		model.addAttribute("deliverable", delive);
-		return "deliverable_manage";
+			return "updateDeliverable";
+			
 	}
+	
+	
+	@RequestMapping(value="/editDeliverable")
+	public String editDeliverable(Model model, Deliverable deli, @RequestParam(name="fileD") MultipartFile fileD , @RequestParam(name="picture") MultipartFile picture) throws IllegalStateException, IOException {
+		
+if (!(fileD.isEmpty())) {
+			
+			deli.setFile((fileD.getOriginalFilename()));
+
+			fileD.transferTo(new File(refFile+fileD.getOriginalFilename()));
+		}
+deliverablerepository.save(deli);
+
+if (!(picture.isEmpty())) {
+	
+	deli.setPreviewFile((picture.getOriginalFilename()));
+
+	picture.transferTo(new File(refPicture+deli.getDeliverable_ID()));
+}
+
+deliverablerepository.save(deli);
+		
+		return "redirect:/deliverable";
+
+	}	
+
 	
 
 }

@@ -65,7 +65,7 @@ public class RFPController {
 	@RequestMapping(value="/SaveRFP" , method= RequestMethod.POST)
 	private String SaveRFP(@Valid RFP addRfp, BindingResult bindingResult, @RequestParam(name="request")MultipartFile requestFile,@RequestParam(name="response") MultipartFile responseFile  ) throws IllegalStateException, IOException {
 		
-		addRfp.setStatusRFP("Actif");
+		addRfp.setStatusRFP("New");
 		
 if (!(requestFile.isEmpty())) {
 			
@@ -91,7 +91,7 @@ if (!(responseFile.isEmpty())) {
 	@RequestMapping(value = "/editRFP",method = { RequestMethod.GET, RequestMethod.POST })
 	public String updateRFP(Model model, @Valid RFP RFP, BindingResult bindingResult,@RequestParam(name="response") MultipartFile responseFile, @RequestParam(name="request")MultipartFile requestFile) throws IllegalStateException, IOException{
 		
-		RFP.setStatusRFP("Actif");
+		
 		
 		
 if (!(requestFile.isEmpty())) {

@@ -275,7 +275,7 @@
 												<!-- / user -->
 
 												<!-- nav -->
-         <nav ui-nav class="navi clearfix">
+<nav ui-nav class="navi clearfix">
             <ul class="nav">
               <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
                 <span>Main</span>
@@ -316,6 +316,12 @@
                       <span>Purchasing contact</span>
                     </a>
                   </li>
+                  
+                   <li>
+                    <a th:href="dataCenter">
+                      <span>DataCenter</span>
+                    </a>
+                  </li>
                     
                 </ul>
               </li>
@@ -326,14 +332,14 @@
                 </a>
 
               </li>
-            <!--    <li>
+               <li>
 				 <a th:href="timesheets" class="auto">
                   <i class="glyphicon glyphicon-calendar icon"></i>
                   <span>TimeSheet</span>
                 </a>
 
-              </li> -->
-           <!--    <li>
+              </li>
+              <li>
                 <a href class="auto">
                   <span class="pull-right text-muted">
                     <i class="fa fa-fw fa-angle-right text"></i>
@@ -345,22 +351,47 @@
                 </a>
                 <ul class="nav nav-sub dk">
                   <li class="s">
-                    <a th:href="projects_manage">
+                    <a th:href="projects">
                       <span>Manage Project</span>
                     </a>
                   </li>
+                  
+                    <li class="s">
+                    <a th:href="technology">
+                      <span>Technology Partner</span>
+                    </a>
+                  </li>
+                  
+                    <li class="s">
+                    <a th:href="typeProject">
+                      <span>Type Project</span>
+                    </a>
+                  </li>
+                  
+                    <li class="s">
+                    <a th:href="projectTask">
+                      <span> Project Task</span>
+                    </a>
+                  </li>
+                  
                   <li>
-                    <a th:href="deliverable_manage">
+                    <a th:href="deliverable">
                       <span>Manage Deliverable</span>
                     </a>
                   </li>
+                  
+                    <li>
+                    <a th:href="typeDeliverable">
+                      <span>Manage Type Deliverable</span>
+                    </a>
+                  </li>
                   <li>
-                    <a th:href="reference_manage">
+                    <a th:href="reference">
                       <span>Manage Reference</span>
                     </a>
                   </li>
                 </ul>
-              </li> -->
+              </li>
               <li>
                 <a href class="auto">
                   <span class="pull-right text-muted">
@@ -371,12 +402,11 @@
                   <span>Assets</span>
                 </a>
                 <ul class="nav nav-sub dk">
-
-                 <!--   <li class="">
+                 <li class="">
                     <a th:href="assets_manage">
                       <span>Manage Assets</span>
                     </a>
-                  </li> -->
+                  </li>
                   <li>
                     <a th:href="assetstype_manage">
                       <span>Manage Assets Type</span>
@@ -400,24 +430,47 @@
                   <span>Tickets</span>
                 </a>
               </li> -->
-              <li>
+			   <li>
                 <a th:href="RFP">
                   <i class="glyphicon glyphicon-tag"></i>
                   <span>RFP</span>
                 </a>
               </li>
+
 			  <li>
                 <a th:href="contract_manage">
                   <i class="fa fa-legal"></i></i>
                   <span>Contracts</span>
                 </a>
               </li>
-			<!--   <li>
-                <a th:href="expense">
-                  <i class="glyphicon  glyphicon-usd"></i></i>
+			<li>
+                <a th:href="request_manage" class="auto">
+				<span class="pull-right text-muted">
+                    <i class="fa fa-fw fa-angle-right text"></i>
+                    <i class="fa fa-fw fa-angle-down text-active"></i>
+                  </span>
+                  <i class="glyphicon  glyphicon-save icon"></i>
                   <span>Expenses</span>
                 </a>
-              </li> -->
+                 <ul class="nav nav-sub dk">
+                 
+                   <li class="s">
+                    <a th:href="typeExpenses">
+                      <span> Type  Expenses</span>
+                    </a>
+                  </li>
+                  
+                  <li>
+                    <a th:href="expenses">
+                      <span> Expenses</span>
+                    </a>
+                  </li>
+                 
+                </ul>
+
+               
+              </li>
+
               <li>
                 <a th:href="request_manage" class="auto">
 				<span class="pull-right text-muted">
@@ -451,7 +504,7 @@
                 <span>Your Stuff</span>
               </li>  
               <li>
-                <a th:href="@{profile}">
+                 <a th:href="@{profile}">
                   <i class="icon-user icon text-success-lter"></i>
                   <b class="badge bg-success pull-right"></b>
                   <span>Profile</span>
@@ -465,8 +518,6 @@
               </li>
             </ul>
           </nav>
-												<!-- nav -->
-
 												<!-- aside footer -->
 
 												<!-- / aside footer -->
@@ -493,14 +544,14 @@
       <div class="col-sm-6">
        <div class="panel padder-v item">
         <div class="h1 count text-info font-thin h1 pull-center" th:text="${totalCPurchasing}"></div>
-         <span class="text-muted text-xs"><b> Total Purchasing  </b></span>
+         <span class="text-muted text-xs"><b> Total DataCenter  </b></span>
          <span class="bottom text-right w-full"><i class="glyphicon glyphicon-tower text-muted m-r-sm"></i></span>
         </div>
        </div>
        <div class="col-sm-6">
         <a href="" class="block panel padder-v bg-primary item">
          <span class="text-white count font-thin h1 block" th:text="${totalCPurchasing}"></span>
-         <span class="text-muted text-xs"><b> Total Purchasing </b></span>
+         <span class="text-muted text-xs"><b> Total DataCenter </b></span>
 
          <span class="bottom text-right w-full"><i class="glyphicon glyphicon-briefcase text-muted m-r-sm"></i></span>
         </a>
@@ -550,13 +601,11 @@
   <div class="modal-content">
    <div class="modal-header" style="background-image:url(img/grf-bg.jpg);color:white;">
 	<button type="button" class="close pull-right" data-dismiss="modal">&times;</button>
-    <h1 class="m-n font-bold h3"> <b class="glyphicon-plus pull"> </b> Add Purchasing Customer</h1>
+    <h1 class="m-n font-bold h3"> <b class="glyphicon-plus pull"> </b> Add Data Center</h1>
    </div>
     <form th:action="@{SaveDataCenter}" method ="post" th:object="${data}">
    <div class="modal-body">
-	<div class="row">
-	
-	 
+	<div class="row"> 
 	 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Customer</b></label>
 	 <div class="col-sm-8" style="margin: 5px 0px;">
 	 <!-- ici on met une boucle sur le customer pour avoir récupérer la liste des customer  -->
@@ -565,7 +614,7 @@
 	   th:text="${c.name}"
 	   th:value ="${c.Customer_ID}"></option>
 	  </select>
-	
+	</div>
 	 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Serving</b></label>
      <div class="col-sm-8" style="margin: 5px 0px;" >
       <input type="text" class="form-control" placeholder="Entry First Name of Purchasing" id="input-id-1" required th:field=*{Serving}>
@@ -576,15 +625,13 @@
       <input type="text" class="form-control" placeholder="Entry Last Name of Purchasing" id="input-id-1" required th:field=*{Adress}>
        <span class="text-danger" th:errors=*{Adress}></span>
 	 </div>
-	
 	 </div>
 	 </div>
-	</div>
 	 <div class="modal-footer">
 	<button style="margin:0px;" class="btn m-b-xs btn-sm btn-primary btn-addon"><i class="glyphicon glyphicon-ok"></i>Save</button>
 	<button style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon" data-dismiss="modal"><i class="glyphicon glyphicon-remove"  ></i>Annuler</button>
    </div>
-   </div>
+   </form>
   </div>
  </div>
 </div>

@@ -229,7 +229,7 @@
 												<!-- / user -->
 
 												<!-- nav -->
-        <nav ui-nav class="navi clearfix">
+<nav ui-nav class="navi clearfix">
             <ul class="nav">
               <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
                 <span>Main</span>
@@ -270,6 +270,12 @@
                       <span>Purchasing contact</span>
                     </a>
                   </li>
+                  
+                   <li>
+                    <a th:href="dataCenter">
+                      <span>DataCenter</span>
+                    </a>
+                  </li>
                     
                 </ul>
               </li>
@@ -280,14 +286,14 @@
                 </a>
 
               </li>
-            <!--    <li>
+               <li>
 				 <a th:href="timesheets" class="auto">
                   <i class="glyphicon glyphicon-calendar icon"></i>
                   <span>TimeSheet</span>
                 </a>
 
-              </li> -->
-           <!--    <li>
+              </li>
+              <li>
                 <a href class="auto">
                   <span class="pull-right text-muted">
                     <i class="fa fa-fw fa-angle-right text"></i>
@@ -299,22 +305,47 @@
                 </a>
                 <ul class="nav nav-sub dk">
                   <li class="s">
-                    <a th:href="projects_manage">
+                    <a th:href="projects">
                       <span>Manage Project</span>
                     </a>
                   </li>
+                  
+                    <li class="s">
+                    <a th:href="technology">
+                      <span>Technology Partner</span>
+                    </a>
+                  </li>
+                  
+                    <li class="s">
+                    <a th:href="typeProject">
+                      <span>Type Project</span>
+                    </a>
+                  </li>
+                  
+                    <li class="s">
+                    <a th:href="projectTask">
+                      <span> Project Task</span>
+                    </a>
+                  </li>
+                  
                   <li>
-                    <a th:href="deliverable_manage">
+                    <a th:href="deliverable">
                       <span>Manage Deliverable</span>
                     </a>
                   </li>
+                  
+                    <li>
+                    <a th:href="typeDeliverable">
+                      <span>Manage Type Deliverable</span>
+                    </a>
+                  </li>
                   <li>
-                    <a th:href="reference_manage">
+                    <a th:href="reference">
                       <span>Manage Reference</span>
                     </a>
                   </li>
                 </ul>
-              </li> -->
+              </li>
               <li>
                 <a href class="auto">
                   <span class="pull-right text-muted">
@@ -325,11 +356,11 @@
                   <span>Assets</span>
                 </a>
                 <ul class="nav nav-sub dk">
-                 <!--   <li class="">
+                 <li class="">
                     <a th:href="assets_manage">
                       <span>Manage Assets</span>
                     </a>
-                  </li>  -->
+                  </li>
                   <li>
                     <a th:href="assetstype_manage">
                       <span>Manage Assets Type</span>
@@ -353,24 +384,47 @@
                   <span>Tickets</span>
                 </a>
               </li> -->
-              <li>
+			   <li>
                 <a th:href="RFP">
                   <i class="glyphicon glyphicon-tag"></i>
                   <span>RFP</span>
                 </a>
               </li>
+
 			  <li>
                 <a th:href="contract_manage">
                   <i class="fa fa-legal"></i></i>
                   <span>Contracts</span>
                 </a>
               </li>
-			<!--   <li>
-                <a th:href="expense">
-                  <i class="glyphicon  glyphicon-usd"></i></i>
+			<li>
+                <a th:href="request_manage" class="auto">
+				<span class="pull-right text-muted">
+                    <i class="fa fa-fw fa-angle-right text"></i>
+                    <i class="fa fa-fw fa-angle-down text-active"></i>
+                  </span>
+                  <i class="glyphicon  glyphicon-save icon"></i>
                   <span>Expenses</span>
                 </a>
-              </li> -->
+                 <ul class="nav nav-sub dk">
+                 
+                   <li class="s">
+                    <a th:href="typeExpenses">
+                      <span> Type  Expenses</span>
+                    </a>
+                  </li>
+                  
+                  <li>
+                    <a th:href="expenses">
+                      <span> Expenses</span>
+                    </a>
+                  </li>
+                 
+                </ul>
+
+               
+              </li>
+
               <li>
                 <a th:href="request_manage" class="auto">
 				<span class="pull-right text-muted">

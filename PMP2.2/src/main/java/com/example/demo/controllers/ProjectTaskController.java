@@ -20,7 +20,6 @@ import com.example.demo.repository.ProjectTaskRepository;
 import com.example.demo.repository.TechnologiePartnerRepository;
 import com.example.demo.repository.UserRepository;
 
-
 @Controller
 public class ProjectTaskController {
 	

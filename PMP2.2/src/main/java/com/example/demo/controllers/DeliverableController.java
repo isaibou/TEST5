@@ -24,7 +24,6 @@ import com.example.demo.repository.ProjetRepository;
 import com.example.demo.repository.TypeDeliverableRepository;
 import com.example.demo.repository.UserRepository;
 
-
 @Controller
 public class DeliverableController {
 	

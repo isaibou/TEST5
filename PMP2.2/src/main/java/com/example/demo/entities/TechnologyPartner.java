@@ -23,6 +23,7 @@ public class TechnologyPartner implements Serializable{
 	@GeneratedValue
 	private Integer TechnologyPartner_ID;
 	private String NameTechnologyPartner;
+	private String TechnologyPartnerFile;
 	private String Status;
 	
 	
@@ -40,9 +41,9 @@ public class TechnologyPartner implements Serializable{
 	}
 	
 	
-	public List<Project> getProject() {
+	/*public List<Project> getProject() {
 		return project;
-	}
+	}*/
 
 
 	public void setProject(List<Project> project) {
@@ -53,10 +54,11 @@ public class TechnologyPartner implements Serializable{
 	public TechnologyPartner() {
 		super();
 	}
-	public TechnologyPartner(String nameTechnologyPartner, String status) {
+	public TechnologyPartner(String nameTechnologyPartner, String status, String technologyPartnerFile) {
 		super();
 		NameTechnologyPartner = nameTechnologyPartner;
 		Status = status;
+		TechnologyPartnerFile = technologyPartnerFile;
 	}
 	public String getStatus() {
 		return Status;
@@ -79,6 +81,16 @@ public class TechnologyPartner implements Serializable{
 	}
 	public void setNameTechnologyPartner(String nameTechnologyPartner) {
 		NameTechnologyPartner = nameTechnologyPartner;
+	}
+
+
+	public String getTechnologyPartnerFile() {
+		return TechnologyPartnerFile;
+	}
+
+
+	public void setTechnologyPartnerFile(String technologyPartnerFile) {
+		TechnologyPartnerFile = technologyPartnerFile;
 	}
 	
 

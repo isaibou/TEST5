@@ -109,11 +109,7 @@ if (!(file.isEmpty())) {
 		 model.addAttribute("project",project);
 		 model.addAttribute("rfp", project.getRfp());
 		 model.addAttribute("TechnPart", project.getTechnologypartner());
-		 //System.out.println(project.getName());
-		// List<TechnologyPartner> listtp = technologiepartnerRepository.findAll();
-		 //model.addAttribute("listtp", listtp);
-		 //List<TechnologyPartner> TechPar = (List<TechnologyPartner>) project.getTechnologypartner();
-		 //model.addAttribute("listTP",TechPar );
+		 
 		
 			return "detailProj";
 			

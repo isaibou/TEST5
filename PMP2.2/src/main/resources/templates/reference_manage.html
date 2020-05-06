@@ -577,6 +577,7 @@ document.addEventListener('DOMContentLoaded', function() {
 																										<ul class="dropdown-menu">
 																										  <li><a th:href="@{updateReference(id=${d.Reference_ID})}"  style="margin-top:-5px;"   class="btn btn-sm btn-light" role="button">Update</a></li>
 																								             <li><a th:href="@{deleteReference(id=${d.Reference_ID})}"  style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Delete</a></li>
+																								             <li><a th:href="@{detailReference(id=${d.Reference_ID})}"  style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Details</a></li>
 																													</div></center>
 																							</td>
 																						</tr>
@@ -619,7 +620,7 @@ document.addEventListener('DOMContentLoaded', function() {
      <select name="account" class="form-control m-b"  style="margin-top:0px; margin-bottom:0px;"  th:field="*{project}">
       <option th:each="p:${project}" th:text="${p.Name}" th:value="${p.Project_ID}"></option>
      </select>
-    </div>
+    </div>	
    <!--  <label class="col-sm-4 control-label" placeholder="Entry Year" for="input-id-1" style="margin-top:0px; margin-bottom:5px;"><b>Date</b></label>
         <div class="col-sm-8" style="margin-top:0px; margin-bottom:5px;">
      <form action="https://formden.com/post/MlKtmY4x/" class="form-horizontal" method="post">
@@ -639,7 +640,7 @@ document.addEventListener('DOMContentLoaded', function() {
     <div class="col-sm-8" style="margin-top:0px; margin-bottom:5px;">
      <input type="text" class="form-control" id="input-id-1" th:field="*{SignedBy}" >
     </div>
-    <label class="col-sm-4 control-label" placeholder="Upload Preview File" for="input-id-1"  style="margin-bottom:5px;" ><b>Preview File</b></label>
+     <label class="col-sm-4 control-label" placeholder="Upload Preview File" for="input-id-1"  style="margin-bottom:5px;" ><b>Preview File</b></label>
     <div class="col-sm-7" style="margin-top:0px; margin-bottom:5px;">
      <input type="text" placeholder="Upload Preview File"class="form-control" id="input-id-1">
     </div>
@@ -659,7 +660,7 @@ document.addEventListener('DOMContentLoaded', function() {
           <input type="file" name="file" data-edit="insertImage" style="position:absolute; opacity:0; width:41px; height:34px">
      </div>
     </div> 
-     </div>
+     </div> 
     
     </div>
     <div class="modal-footer">

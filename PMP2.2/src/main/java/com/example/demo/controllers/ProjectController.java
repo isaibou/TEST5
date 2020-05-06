@@ -90,6 +90,9 @@ if (!(file.isEmpty())) {
 		
 	Project	project = ProjectRepository.getOne(id);
 		 model.addAttribute("project",project);
+		 model.addAttribute("TechnoPart", technologiepartnerRepository.findAll());
+		 model.addAttribute("rfp",rfprepository.findAll());
+		 model.addAttribute("TypeProject", typeProjectRepository.findAll());
 		 
 		 model.addAttribute("TechnologiePartnerRepository", technologiepartnerRepository.findAll());
 		 
@@ -104,7 +107,13 @@ if (!(file.isEmpty())) {
 		
 	Project	project = ProjectRepository.getOne(id);
 		 model.addAttribute("project",project);
-		 System.out.println(project.getName());
+		 model.addAttribute("rfp", project.getRfp());
+		 model.addAttribute("TechnPart", project.getTechnologypartner());
+		 //System.out.println(project.getName());
+		// List<TechnologyPartner> listtp = technologiepartnerRepository.findAll();
+		 //model.addAttribute("listtp", listtp);
+		 //List<TechnologyPartner> TechPar = (List<TechnologyPartner>) project.getTechnologypartner();
+		 //model.addAttribute("listTP",TechPar );
 		
 			return "detailProj";
 			

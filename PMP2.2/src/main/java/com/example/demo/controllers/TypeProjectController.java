@@ -75,7 +75,9 @@ public class TypeProjectController {
 		TypeProject	tP = typeProjectRepository.getOne(id);
 		 model.addAttribute("pTask",tP);
 		 
-		
+		 List<ProjectTask> listpt = projectTaskrepository.findAll();
+		 model.addAttribute("listpt", listpt); 
+		 
 			return "updateTypeProject";
 			
 	}
@@ -83,13 +85,15 @@ public class TypeProjectController {
 	@RequestMapping(value ="/detailsTypeProject")
 	public String detailsTypeProject( Model model, Integer id ) {
 		
-		TypeProject	tP = typeProjectRepository.getOne(id);
+		 TypeProject	tP = typeProjectRepository.getOne(id);
 		 model.addAttribute("pTask",tP);
+		 List<ProjectTask> listpt = projectTaskrepository.findAll();
+		 model.addAttribute("listpt", listpt);
 		 List<ProjectTask> Pt = (List<ProjectTask>) tP.getProjectTask();
 		 model.addAttribute("listPt",Pt );
 		 
 		
-			return "updateTypeProject";
+			return "detailsTypeProject";
 			
 	}
 	

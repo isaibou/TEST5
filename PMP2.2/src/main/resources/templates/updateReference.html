@@ -21,76 +21,39 @@
       <h1 class="m-n font-bold h3"> Update Reference </h1>
      </div>
    <form th:action="@{editReference}"   enctype="multipart/form-data"  method ="post" th:object="${ref}">
-   <div class="modal-body">
-	<div class="row">
-	
-    <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b></b></label>
-     <div class="col-sm-8" style="margin: 5px 0px;" >
-      <input type="hidden" class="form-control" placeholder="Entry Name of RFP" id="input-id-1"  required th:field=*{Reference_ID}/>   
-	 </div>
-	<!--  <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Year</b></label>
-	     <div class="col-sm-8" style="margin: 5px 0px;" >
-		  <input type="date" class="form-control" placeholder="Entry Name of RFP" id='calendar1' required th:field=*{an}/> 
-		 </div> -->
-	     <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Project</b></label>
-	     <div class="col-sm-8" style="margin: 5px 0px;">
-	 <!-- ici on met une boucle sur le customer pour avoir récupérer la liste des customer  -->
-	      <select name="Customer_ID" class="form-control m-b" th:field=*{project}>
-	         <option th:each ="c:${project}" 
-	                 th:text="${c.name}"
-	                 th:value ="${c.Project_ID}"></option>
-	      </select>
-	     </div>
-		 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Amount</b></label>
-		 <div class="col-sm-8" style="margin: 5px 0px;">
-	      <input type="text" class="form-control" placeholder="Entry Description " id="input-id-1" required th:field=*{Amount}/>
-       </div>
-		 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Signed By</b></label>
-	     <div class="col-sm-8" style="margin: 5px 0px;">
-            <input type="text" class="form-control" id="input-id-1" required th:field=*{SignedBy}/> 
-         </div>
-		<!--  <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>SigningDate</b></label>
-		 <div class="col-sm-8" style="margin: 5px 0px;">
-            <input type="date" class="form-control" id='calendar1'required th:field=*{Signing}/>
-         </div> -->
-	     <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Key Words Tags</b></label>
-		 <div class="col-sm-8" style="margin: 5px 0px;">
-            <input type="text" class="form-control" id="input-id-1" required th:field=*{KeywordsTags}/>
-         </div>
-		
-		 <label class="col-sm-4 control-label" placeholder="Upload Preview File" for="input-id-1"  style="margin-bottom:5px;" ><b>Preview File</b></label>
-	    <div class="col-sm-7" style="margin-top:0px; margin-bottom:5px;">
-	     <input type="text" placeholder="Upload Preview File"class="form-control" id="input-id-1">
-	    </div>
-	    <div class="col-sm-1" style="margin-top:0px; margin-bottom:5px;" >
-	     <div class="btn-group">
-	      <a class="btn btn-default" tooltip="Insert picture (or just drag &amp; drop)" id="pictureBtn"><i class="icon-paper-clip"></i></a>
-	          <input type="file" data-edit="insertImage"  name ="picture" style="position:absolute; opacity:0; width:41px; height:34px">
-	     </div>
-	    </div>           
-	    <label class="col-sm-4 control-label" placeholder="Upload Preview File" for="input-id-1" ><b>File</b></label>
-	    <div class="col-sm-7">
-	     <input type="text" placeholder="Upload Preview File"class="form-control" id="input-id-1">
-	    </div>
-	    <div class="col-sm-1" >
-	     <div class="btn-group">
-	      <a class="btn btn-default" tooltip="Insert picture (or just drag &amp; drop)" id="pictureBtn"><i class="icon-paper-clip"></i></a>
-	          <input type="file" name="file" data-edit="insertImage" style="position:absolute; opacity:0; width:41px; height:34px">
-	     </div>
-	    </div> 
-	     </div>
-         <!--  <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Status</b></label>
-	     <div class="col-sm-8" style="margin: 5px 0px;">
-	      <select name="account" class="form-control m-b" required th:field=*{StatusRFP} >
-	       <option th:value ="New" th:text="New"></option>
-	       <option th:value ="Submited" th:text="Submited"></option>
-	       <option th:value ="Won" th:text="Won"></option>
-	       <option th:value ="Lost" th:text="Lost"></option>
-	      </select>
-	      <span class="text-danger" th:errors=*{StatusRFP}></span>
-	     </div> -->
-	     </div>
-		</div>
+   <div class="row">
+     <label class="col-sm-4 control-label"  for="input-id-1" style="margin-top:0px; margin-bottom:5px;"><b>Project</b></label>
+    <div class="col-sm-8" style="margin:0px; margin-bottom:5px;" >
+     <select name="account" class="form-control m-b"  style="margin-top:0px; margin-bottom:0px;"  th:field="*{project}">
+      <option th:each="p:${project}" th:text="${p.Name}" th:value="${p.Project_ID}"></option>
+     </select>
+    </div>
+    <label class="col-sm-4 control-label" for="input-id-1" style="margin:5px 0px;"><b>Year</b></label>
+    <div class="col-sm-8" style="margin: 5px 0px;">
+	  <input type="date" class="form-control" placeholder="MM/DD/YYYY" id="input-id-1" required th:field=*{an}/>
+    </div>
+    <label class="col-sm-4 control-label" for="input-id-1" style="margin-bottom:5px;"><b>Amount</b></label>
+    <div class="col-sm-8" style="margin-bottom:5px;">
+     <input type="text" placeholder="Entry Version" class="form-control" id="input-id-1" th:field="*{Amount}" >
+    </div>
+    <label class="col-sm-4 control-label" placeholder="Entry Year" for="input-id-1" style="margin-top:0px; margin-bottom:5px;"><b>Date Signature</b></label>
+    <div class="col-sm-8" style="margin: 5px 0px;">
+	  <input type="date" class="form-control" placeholder="MM/DD/YYYY" id="input-id-1" required th:field=*{signing}/>
+    </div>
+    <label class="col-sm-4 control-label" for="input-id-1" style="margin-bottom:5px;"><b>Signed By</b></label>
+    <div class="col-sm-8" style="margin-top:0px; margin-bottom:5px;">
+     <input type="text" class="form-control" id="input-id-1" th:field="*{SignedBy}" >
+    </div>
+    <label class="col-sm-4 control-label" placeholder="Upload Preview File" for="input-id-1"  style="margin-bottom:5px;" ><b>Preview File</b></label>
+    <div class="col-sm-8" style="margin: 5px 0px;">
+         <input type="file" placeholder="Entry Contract File" class="form-control" name="file" id="input-id-1" required />
+       </div>           
+    <label class="col-sm-4 control-label" placeholder="Upload Preview File" for="input-id-1" ><b>Picture File </b></label>
+    <div class="col-sm-8" style="margin: 5px 0px;">
+         <input type="file" placeholder="Entry Contract File" class="form-control" name="picture" id="input-id-1" required />
+       </div> 
+     </div>
+    </div>
 		  <div class="modal-footer">
 		   <button style="margin:0px;" class="btn m-b-xs btn-sm btn-primary btn-addon"><i class="glyphicon glyphicon-ok"></i>Save</button>
 		   <button style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon"><a th:href="reference"><i class="glyphicon glyphicon-remove"></i>Annuler</a></button>

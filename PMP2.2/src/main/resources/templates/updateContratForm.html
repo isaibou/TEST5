@@ -22,12 +22,16 @@
 	 <div class="modal-content">
       <h1 class="m-n font-bold h3"> Update Contract </h1>
      </div>
-   <form th:action="@{editContrat}" method ="post" th:object="${contrat}">
+   <form th:action="@{editContrat}" method ="post" enctype="multipart/form-data" th:object="${contrat}">
    <div class="modal-body">
 	<div class="row">
     <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b></b></label>
      <div class="col-sm-8" style="margin: 5px 0px;" >
       <input type="hidden" class="form-control" placeholder="Entry Name of Contrat" id="input-id-1"  required th:field=*{Contrat_ID}/>
+	 </div>
+	 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b></b></label>
+	 <div class="col-sm-8" style="margin: 5px 0px;" >
+      <input type="hidden" class="form-control" placeholder="Entry Name of Contrat" id="input-id-1"  required th:field=*{ContractFille}/>
 	 </div>
 	 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Contract Title</b></label>
      <div class="col-sm-8" style="margin: 5px 0px;" >
@@ -61,7 +65,7 @@
      </div>
       <label class="col-sm-4 control-label" placeholder="Entry Configuration File" style="margin: 5px 0px;" for="input-id-1"><b>ContractFile</b></label>
        <div class="col-sm-8" style="margin: 5px 0px;">
-         <input type="file" placeholder="Entry Contract File"class="form-control" id="input-id-1" th:field=*{ContractFille}/>
+         <input type="file" placeholder="Entry Contract File"class="form-control" id="input-id-1" name="contractFile"/>
          <span th:text ="${contrat.ContractFille}" class="m-n font-thin h4 text-secondary"></span>
        </div>
         </div>

@@ -52,7 +52,7 @@ public class ProjectController {
 			List<Project> projs = ProjectRepository.findAll();
 			model.addAttribute("proj",projs);
 			model.addAttribute("project", new Project());
-			
+			model.addAttribute("totalProject", projs.size());
 			model.addAttribute("TechnoPart", technologiepartnerRepository.findAll());
 			model.addAttribute("rfp",rfprepository.findAll() );
 			model.addAttribute("TypeProject", typeProjectRepository.findAll());
@@ -90,6 +90,9 @@ if (!(file.isEmpty())) {
 		
 	Project	project = ProjectRepository.getOne(id);
 		 model.addAttribute("project",project);
+		 model.addAttribute("TechnoPart", technologiepartnerRepository.findAll());
+		 model.addAttribute("rfp",rfprepository.findAll());
+		 model.addAttribute("TypeProject", typeProjectRepository.findAll());
 		 
 		 model.addAttribute("TechnologiePartnerRepository", technologiepartnerRepository.findAll());
 		 
@@ -104,7 +107,10 @@ if (!(file.isEmpty())) {
 		
 	Project	project = ProjectRepository.getOne(id);
 		 model.addAttribute("project",project);
-		 System.out.println(project.getName());
+		 model.addAttribute("rfp", project.getRfp());
+		 model.addAttribute("TechnPart", project.getTechnologypartner());
+		 //System.out.println(project.getName());
+	
 		
 			return "detailProj";
 			

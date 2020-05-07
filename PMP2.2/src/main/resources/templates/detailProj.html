@@ -40,8 +40,15 @@
 		  </tr>
 		  <tr >
 		   <td style="color:#23b7e5;"><center>Type Project </center></th>
-		   <td th:text ="${p.TypeProject}" class="m-n font-thin h4 text-secondary"></td>
+		   <td th:text ="${p.typeProject.NameType_Project}" class="m-n font-thin h4 text-secondary"></td>
 		  </tr>
+		  <td style="color:#23b7e5;"><center>RFP </center></th>
+		   <td   th:text="${p.rfp.Title}"  class="m-n font-thin h4 text-secondary"><center></center></td>
+		  </tr>
+		  <td style="color:#23b7e5;"><center>Technology Partner </center></th>
+		   <td> <select name ="TechnologyPartner" class="m-n font-thin h4 text-secondary">
+		   <option th:each ="t:${TechnPart}"  th:text="${t.NameTechnologyPartner}"  class="m-n font-thin h4 text-secondary"></option>
+		   </select>
 		   <tr >
 		   <td style="color:#23b7e5;"><center>Amount </center></th>
 		   <td th:text ="${p.Amount}" class="m-n font-thin h4 text-secondary"></td>
@@ -66,10 +73,7 @@
 		   <td style="color:#23b7e5;"><center>Delivery Certificate </center></th>
            <td class="m-n font-thin h4 text-secondary"><a th:href="${p.DeliveryCertificate}" target="_blank" th:text="${p.DeliveryCertificate}"></a></td>
            </tr>
-           <tr >
-		   <td style="color:#23b7e5;"><center>Technology Partners </center></th>
-           <td th:text ="${p.TechnologyPartners}" class="m-n font-thin h4 text-secondary"></td>
-           </tr>
+          
            <tr>
 		   <td style="color:#23b7e5;"><center>Warranty </center></th>
            <td th:text ="${p.Warranty}" class="m-n font-thin h4 text-secondary"></td>
@@ -91,7 +95,7 @@
 	</div>
    </div>
    <div class="modal-footer">
-     <button class="btn m-b-xs btn-sm btn-primary btn-addon"><a th:href="projects_manage">Return</a></button>
+     <button class="btn m-b-xs btn-sm btn-primary btn-addon"><a th:href="projects">Return</a></button>
    </div>
   </div>  
  </div>

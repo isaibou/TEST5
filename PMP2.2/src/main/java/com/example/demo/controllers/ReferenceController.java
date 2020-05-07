@@ -56,6 +56,7 @@ public class ReferenceController {
 		List<Reference> reference = referencerepository.findAll();
 		List<Project> project =  projectRepository.findAll();
 		model.addAttribute("reference", new Reference());
+		model.addAttribute("totalReference", reference.size());
 		model.addAttribute("user", u);
 		model.addAttribute("listRef", reference);
 		model.addAttribute("project", project);
@@ -122,22 +123,11 @@ referencerepository.save(ref);
 		return "redirect:/reference";
 	}	
 	
-	
-	
-	
-	
-	
-	
-	
-	
 	@RequestMapping(value="/getReferenceFile" , produces= MediaType.IMAGE_JPEG_VALUE)
 	@ResponseBody
 	private byte[] getDeliverable(String id) throws  IOException {
 		File f = new File(refPicture+id);
 		return  IOUtils.toByteArray(new FileInputStream(f));
 	}
-
-	    
-	
 
 }

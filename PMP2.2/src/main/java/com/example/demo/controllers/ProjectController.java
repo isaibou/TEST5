@@ -109,8 +109,6 @@ if (!(file.isEmpty())) {
 		 model.addAttribute("project",project);
 		 model.addAttribute("rfp", project.getRfp());
 		 model.addAttribute("TechnPart", project.getTechnologypartner());
-		 //System.out.println(project.getName());
-	
 		
 			return "detailProj";
 			

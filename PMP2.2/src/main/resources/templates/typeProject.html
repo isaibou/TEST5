@@ -2,6 +2,8 @@
 <html xmlns:th="http://www.thymeleaf.org">
 	<head>
 	
+	
+	
 		<meta charset="utf-8" />
 		<title>Type Project</title>
 		<meta name="description" content="app, web app, responsive, responsive layout, admin, admin panel, admin dashboard, flat, flat ui, ui kit, AngularJS, ui route, charts, widgets, components" />
@@ -579,9 +581,9 @@ document.addEventListener('DOMContentLoaded', function() {
  -->		   <td><center><div class="btn-group dropdown"><button class="btn btn-default btn-xs" data-toggle="dropdown">
 		     <i class="glyphicon glyphicon-cog"></i> Actions <span class="caret"></span></button>
 		     <ul class="dropdown-menu">
-		     <li><a th:href="@{addProjectTask(id=${t.Type_Project_ID})}"  style="margin-top:-5px;"   class="btn btn-sm btn-light" role="button">Update</a></li>
+		    <li><a th:href="@{updatTypeProject(id=${t.Type_Project_ID})}"  style="margin-top:-5px;"   class="btn btn-sm btn-light" role="button">Update</a></li>
 <!-- 		    <li><a th:href="@{archiverTechnologyPartner(id=${t.Type_Project_ID})}"  style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Archive</a></li>
- -->		     <li><a th:href="@{detailsTypeProjectTask(id=${t.Type_Project_ID})}" style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Details</a></li></ul></div></center></td>
+ -->		      <li><a th:href="@{detailsTypeProject(id=${t.Type_Project_ID})}" style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Details</a></li></ul></div></center></td>
 		  </tr>
 		 </tbody>
 		</table>
@@ -607,7 +609,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		  <input type="text" class="form-control" placeholder="Entry Name of Project Task" id="input-id-1" required th:field=*{NameType_Project}/> 
 	</div>
 		 
-		    <label class="col-sm-4 control-label" for="input-id-1"  style="margin:5px 0px;"><b>Project Task</b></label>
+    <label class="col-sm-4 control-label" for="input-id-1"  style="margin:5px 0px;"><b>Project Task</b></label>
 	 <div class="col-sm-8" style="margin:5px 0px;" >
 	 <select name ="role" multiple="multiple" class="form-control m-b" th:field="*{projectTask}">
 	 <option th:each="r:${listpt}"  th:text="${r.NameProjectTask}" th:value="${r.ProjectTask_ID}"></option>

@@ -652,7 +652,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		 
 		   <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Technology Partner</b></label>
 		 <div class="col-sm-8" style="margin:5px 0px;" >
-		 <select name ="role"  class="form-control m-b" th:field="*{technologypartner}">
+		 <select name ="role" multiple="multiple" class="form-control m-b" th:field="*{technologypartner}">
 		 <option th:each="e:${TechnoPart}"  th:text="${e.NameTechnologyPartner}" th:value="${e.TechnologyPartner_ID}"></option>
 		 </select>
 		 </div>
@@ -790,4 +790,3 @@ document.addEventListener('DOMContentLoaded', function() {
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.min.js" integrity="sha256-tQ3x4V2JW+L0ew/P3v2xzL46XDjEWUExFkCDY0Rflqc=" crossorigin="anonymous"></script>
 </body>
 </html>
-													

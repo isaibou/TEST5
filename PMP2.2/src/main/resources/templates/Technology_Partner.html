@@ -2,6 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 	<head>
 	
+	
 		<meta charset="utf-8" />
 		<title>Technology Partner</title>
 		<meta name="description" content="app, web app, responsive, responsive layout, admin, admin panel, admin dashboard, flat, flat ui, ui kit, AngularJS, ui route, charts, widgets, components" />
@@ -571,6 +572,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	     <thead style="color:#23b7e5;">
 		  <tr>
 		   <th  style="width:20%"><center> Nmae Technology Partner </center></th>
+		   <th  style="width:20%"><center> TechnologyPartner File </center></th>
 		   <th  style="width:5%"><center>Status</center></th>
 		   <th  style="width:10%"><center>Actions</center></th>
 		  </tr>
@@ -578,6 +580,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		 <tbody>
 		  <tr data-expanded="true" th:each="t:${techpart}">
 		   <td  th:text ="${t.NameTechnologyPartner}" class="m-n font-thin h4 text-secondary"><center><b></b></center></td> 
+		   <td  th:text ="${t.TechnologyPartnerFile}" class="m-n font-thin h4 text-secondary"><center><b></b></center></td>
 		    <td th:text ="${t.Status}" class="m-n font-thin h4 text-secondary"><center><span></span><center/></td>
 		   <td><center><div class="btn-group dropdown"><button class="btn btn-default btn-xs" data-toggle="dropdown">
 		     <i class="glyphicon glyphicon-cog"></i> Action <span class="caret"></span></button>
@@ -608,7 +611,11 @@ document.addEventListener('DOMContentLoaded', function() {
 	     <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Name Technology Partner</b></label>
 	     <div class="col-sm-8" style="margin: 5px 0px;" >
 		  <input type="text" class="form-control" placeholder="Entry Name of Technology Partner" id="input-id-1" required th:field=*{NameTechnologyPartner}/> 
-	
+		  </div>
+	 <label class="col-sm-4 control-label"  style="margin: 5px 0px;" for="input-id-1"><b>TechnologyPartner File</b></label>
+       <div class="col-sm-8" style="margin: 5px 0px;">
+         <input type="file" placeholder="Entry TechnologyPartner File" class="form-control" name="TechnologyPartnerFile" id="input-id-1" required />
+       </div>
 		 
 		  <div class="modal-footer">
 		   <button style="margin:0px;" class="btn m-b-xs btn-sm btn-primary btn-addon"><i class="glyphicon glyphicon-ok"></i>Save</button>

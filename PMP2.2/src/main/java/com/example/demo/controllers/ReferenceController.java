@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.example.demo.entities.AssetType;
 import com.example.demo.entities.Deliverable;
 import com.example.demo.entities.Project;
 import com.example.demo.entities.Purchasing;
@@ -29,8 +30,6 @@ import com.example.demo.entities.Users;
 import com.example.demo.repository.ProjetRepository;
 import com.example.demo.repository.ReferenceRepository;
 import com.example.demo.repository.UserRepository;
-
-
 
 @Controller
 public class ReferenceController {
@@ -122,6 +121,30 @@ referencerepository.save(ref);
 		
 		return "redirect:/reference";
 	}	
+	
+	@RequestMapping(value ="/detailReference")
+	public String detailReference( Model model, Integer id ) {
+		
+		 Reference	reference = referencerepository.getOne(id);
+		 model.addAttribute("refere",reference);
+
+		 model.addAttribute("project", projectRepository.findAll());
+		
+		
+		 System.out.println(reference.getSignedBy());
+
+		
+			return "detailReference";
+		
+	}	
+	
+	@RequestMapping(value ="/deleteReference" )
+	private String deleteReference( Model model, Integer id ) {
+	
+		referencerepository.deleteById(id);
+		
+		 return "redirect:/reference";	
+	}
 	
 	@RequestMapping(value="/getReferenceFile" , produces= MediaType.IMAGE_JPEG_VALUE)
 	@ResponseBody

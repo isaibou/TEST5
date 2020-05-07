@@ -2,9 +2,10 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 
+
   <meta charset="utf-8" />
   
-  <title>Update Technology Partner</title>
+  <title>Update Type Project</title>
   <meta name="description" content="app, web app, responsive, responsive layout, admin, admin panel, admin dashboard, flat, flat ui, ui kit, AngularJS, ui route, charts, widgets, components" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <link rel="stylesheet" href="../libs/assets/animate.css/animate.css" type="text/css" />
@@ -20,31 +21,34 @@
  	<div>
 	 <div class="modal-dialog modal-lg" >
 	 <div class="modal-content">
-      <h1 class="m-n font-bold h3"> Update Technology Partner </h1>
+      <h1 class="m-n font-bold h3"> Update Type Project </h1>
      </div>
-   <form th:action="@{editTechnologyPartner}" method ="post" th:object="${techpar}">
+   <form th:action="@{editTypeProject}" method ="post" th:object="${pTask}">
       <div class="modal-body">
 	    <div class="row">
 	     <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b></b></label>
      <div class="col-sm-8" style="margin: 5px 0px;">
-      <input type="hidden" class="form-control" placeholder="Entry Name of Project" id="input-id-1"  required th:field=*{TechnologyPartner_ID}/>
+      <input type="hidden" class="form-control" placeholder="Entry Name of Type Project" id="input-id-1"  required th:field=*{Type_Project_ID}/>
      
 	 </div>
-	     <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Name Technology Partner</b></label>
+	    <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Name Type Project</b></label>
 	     <div class="col-sm-8" style="margin: 5px 0px;" >
-		  <input type="text" class="form-control" placeholder="Entry Name of Technology Partner" id="input-id-1" required th:field=*{NameTechnologyPartner}/>
+		  <input type="text" class="form-control" placeholder="Entry Name of Project Task" id="input-id-1" required th:field=*{NameType_Project}/> 
+	</div>
 		 
-		 </div>
-		  <label class="col-sm-4 control-label"  style="margin: 5px 0px;" for="input-id-1"><b>TechnologyPartner File</b></label>
-       <div class="col-sm-8" style="margin: 5px 0px;">
-         <input type="file" placeholder="Entry TechnologyPartner File" class="form-control" name="TechnologyPartnerFile" id="input-id-1" required />
-       </div>
+	  <label class="col-sm-4 control-label" for="input-id-1"  style="margin:5px 0px;"><b>Project Task</b></label>
+	 <div class="col-sm-8" style="margin:5px 0px;" >
+	 <select name ="role" multiple="multiple" class="form-control m-b" th:field="*{projectTask}">
+	 <option th:each="r:${listpt}"  th:text="${r.NameProjectTask}" th:value="${r.ProjectTask_ID}"></option>
+	 </select>
+	 </div>
+		 
          
           		 </div>
 		</div>
 		  <div class="modal-footer">
 		   <button style="margin:0px;" class="btn m-b-xs btn-sm btn-primary btn-addon"><i class="glyphicon glyphicon-ok"></i>Save</button>
-		   <button style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon"><a th:href="technology"><i class="glyphicon glyphicon-remove"></i>Annuler</a></button>
+		   <button style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon"><a th:href="typeProject"><i class="glyphicon glyphicon-remove"></i>Annuler</a></button>
 		  </div>
 
 	    </form>

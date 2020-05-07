@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 	<head>
+
 		<meta charset="utf-8" />
 		<title>Manage References</title>
 		<meta name="description" content="app, web app, responsive, responsive layout, admin, admin panel, admin dashboard, flat, flat ui, ui kit, AngularJS, ui route, charts, widgets, components" />
@@ -611,6 +612,7 @@ document.addEventListener('DOMContentLoaded', function() {
 																										<ul class="dropdown-menu">
 																										  <li><a th:href="@{updateReference(id=${d.Reference_ID})}"  style="margin-top:-5px;"   class="btn btn-sm btn-light" role="button">Update</a></li>
 																								             <li><a th:href="@{deleteReference(id=${d.Reference_ID})}"  style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Delete</a></li>
+																								             <li><a th:href="@{detailReference(id=${d.Reference_ID})}"  style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Details</a></li>
 																													</div></center>
 																							</td>
 																						</tr>
@@ -643,6 +645,7 @@ document.addEventListener('DOMContentLoaded', function() {
      <select name="account" class="form-control m-b"  style="margin-top:0px; margin-bottom:0px;"  th:field="*{project}">
       <option th:each="p:${project}" th:text="${p.Name}" th:value="${p.Project_ID}"></option>
      </select>
+<<<<<<< HEAD
     </div>
     <label class="col-sm-4 control-label" for="input-id-1" style="margin:5px 0px;"><b>Year</b></label>
     <div class="col-sm-8" style="margin: 5px 0px;">
@@ -656,10 +659,29 @@ document.addEventListener('DOMContentLoaded', function() {
     <div class="col-sm-8" style="margin: 5px 0px;">
 	  <input type="date" class="form-control" placeholder="MM/DD/YYYY" id="input-id-1" required th:field=*{signing}/>
     </div>
+=======
+    </div>	
+   <!--  <label class="col-sm-4 control-label" placeholder="Entry Year" for="input-id-1" style="margin-top:0px; margin-bottom:5px;"><b>Date</b></label>
+        <div class="col-sm-8" style="margin-top:0px; margin-bottom:5px;">
+     <form action="https://formden.com/post/MlKtmY4x/" class="form-horizontal" method="post">
+     <div class="form-group " style="margin-top:0px;margin-bottom:0px ;">
+      <div class="col-sm-12">
+       <div class="input-group">
+        <div class="input-group-addon">
+       <i class="fa fa-calendar"></i>
+      </div>
+      <input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" type="text"/>
+       </div>
+      </div>
+     </div>
+     </form>
+    </div> -->
+>>>>>>> branch 'master' of https://github.com/isaibou/TEST5
     <label class="col-sm-4 control-label" for="input-id-1" style="margin-bottom:5px;"><b>Signed By</b></label>
     <div class="col-sm-8" style="margin-top:0px; margin-bottom:5px;">
      <input type="text" class="form-control" id="input-id-1" th:field="*{SignedBy}" >
     </div>
+<<<<<<< HEAD
     <label class="col-sm-4 control-label" placeholder="Upload Preview File" for="input-id-1"  style="margin-bottom:5px;" ><b>Preview File</b></label>
     <div class="col-sm-8" style="margin: 5px 0px;">
          <input type="file"  class="form-control" name="picture" id="input-id-1" required />
@@ -668,7 +690,33 @@ document.addEventListener('DOMContentLoaded', function() {
     <div class="col-sm-8" style="margin: 5px 0px;">
          <input type="file" placeholder="Entry Contract File" class="form-control" name="file" id="input-id-1" required />
        </div> 
+=======
+     <label class="col-sm-4 control-label" placeholder="Upload Preview File" for="input-id-1"  style="margin-bottom:5px;" ><b>Preview File</b></label>
+    <div class="col-sm-7" style="margin-top:0px; margin-bottom:5px;">
+     <input type="text" placeholder="Upload Preview File"class="form-control" id="input-id-1">
+    </div>
+    <div class="col-sm-1" style="margin-top:0px; margin-bottom:5px;" >
+     <div class="btn-group">
+      <a class="btn btn-default" tooltip="Insert picture (or just drag &amp; drop)" id="pictureBtn"><i class="icon-paper-clip"></i></a>
+          <input type="file" data-edit="insertImage"  name ="picture" style="position:absolute; opacity:0; width:41px; height:34px">
+>>>>>>> branch 'master' of https://github.com/isaibou/TEST5
      </div>
+<<<<<<< HEAD
+=======
+    </div>           
+    <label class="col-sm-4 control-label" placeholder="Upload Preview File" for="input-id-1" ><b>File</b></label>
+    <div class="col-sm-7">
+     <input type="text" placeholder="Upload Preview File"class="form-control" id="input-id-1">
+    </div>
+    <div class="col-sm-1" >
+     <div class="btn-group">
+      <a class="btn btn-default" tooltip="Insert picture (or just drag &amp; drop)" id="pictureBtn"><i class="icon-paper-clip"></i></a>
+          <input type="file" name="file" data-edit="insertImage" style="position:absolute; opacity:0; width:41px; height:34px">
+     </div>
+    </div> 
+     </div> 
+    
+>>>>>>> branch 'master' of https://github.com/isaibou/TEST5
     </div>
     <div class="modal-footer">
      <button style="margin:0px;" class="btn m-b-xs btn-sm btn-primary btn-addon"><i class="glyphicon glyphicon-ok"></i>Save</button>

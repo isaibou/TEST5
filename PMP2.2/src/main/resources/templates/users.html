@@ -575,11 +575,11 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 	   <label class="col-sm-4 control-label" for="input-id-1"  style="margin:5px 0px;"><b>Role :</b></label>
 	 <div class="col-sm-8" style="margin:5px 0px;" >
 	 <select name ="role" multiple="multiple" class="form-control m-b" th:field="*{roles}">
-<<<<<<< HEAD
+
 	 <option th:each="r:${allRoles}" th:text="${r.role}" th:value="${r.role}"></option>
-=======
+
 	 <option th:each="r:${allRoles}"  th:text="${r.role}" th:value="${r.role}"></option>
->>>>>>> branch 'master' of https://github.com/isaibou/TEST5
+
 	 </select>
 	 </div>
 	 </div>

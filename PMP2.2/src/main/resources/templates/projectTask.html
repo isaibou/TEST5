@@ -2,6 +2,8 @@
 <html xmlns:th="http://www.thymeleaf.org">
 	<head>
 	
+	
+	
 		<meta charset="utf-8" />
 		<title>Project Task</title>
 		<meta name="description" content="app, web app, responsive, responsive layout, admin, admin panel, admin dashboard, flat, flat ui, ui kit, AngularJS, ui route, charts, widgets, components" />
@@ -562,27 +564,30 @@ document.addEventListener('DOMContentLoaded', function() {
 	   <div class="table-responsive" style="background-color:white;margin:10px; padding:10px;">
 		<table ui-jq="dataTable" ui-options="{
 															aoColumns: [
-															{ mData: 'engine' }
+															{ mData: 'engine' },
+															{ mData: 'actions' }
 															
 															]
 															}" class="table  b-t b-b">
 	     <thead style="color:#23b7e5;">
 		  <tr>
 		   <th  style="width:20%"><center> Name Project Task </center></th>
+		   <th  style="width:50%"><center> Actions </center></th>
 		  
 		  </tr>
 	     </thead>
 		 <tbody>
 		  <tr data-expanded="true" th:each="t:${listP}">
 		   <td  th:text ="${t.NameProjectTask}" class="m-n font-thin h4 text-secondary"><center><b></b></center></td> 
-		  <!--   <td th:text ="${t.Status}" class="m-n font-thin h4 text-secondary"><center><span></span><center/></td>
+		  <!--   <td th:text ="${t.Status}" class="m-n font-thin h4 text-secondary"><center><span></span><center/></td>-->
 		   <td><center><div class="btn-group dropdown"><button class="btn btn-default btn-xs" data-toggle="dropdown">
 		     <i class="glyphicon glyphicon-cog"></i> Action <span class="caret"></span></button>
 		     <ul class="dropdown-menu">
-		     <li><a th:href="@{updateTechnologyPartner(id=${t.TechnologyPartner_ID})}"  style="margin-top:-5px;"   class="btn btn-sm btn-light" role="button">Update</a></li>
-		    <li><a th:href="@{archiverTechnologyPartner(id=${t.TechnologyPartner_ID})}"  style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Archive</a></li>
+		     <li><a th:href="@{updateProjecttask(id=${t.ProjectTask_ID})}"  style="margin-top:-5px;"   class="btn btn-sm btn-light" role="button">Update</a></li>
+		<!--   <li><a th:href="@{archiverTechnologyPartner(id=${t.TechnologyPartner_ID})}"  style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Archive</a></li>
 		     <li><a th:href="@{detailTechnologyPartner(id=${t.TechnologyPartner_ID})}" style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Detail</a></li></ul></div></center></td>
- -->		  </tr>
+		     -->
+ 		  </tr>
 		 </tbody>
 		</table>
 	   </div>
@@ -605,7 +610,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	     <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Name Project Task</b></label>
 	     <div class="col-sm-8" style="margin: 5px 0px;" >
 		  <input type="text" class="form-control" placeholder="Entry Name of Project Task" id="input-id-1" required th:field=*{NameProjectTask}/> 
-	
+	</div>
 		 
 		  <div class="modal-footer">
 		   <button style="margin:0px;" class="btn m-b-xs btn-sm btn-primary btn-addon"><i class="glyphicon glyphicon-ok"></i>Save</button>

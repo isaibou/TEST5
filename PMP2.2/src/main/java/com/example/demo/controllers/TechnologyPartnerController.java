@@ -53,7 +53,7 @@ public class TechnologyPartnerController {
 	@RequestMapping(value ="/updateTechnologyPartner")
 	public String updateTechnologyPartnerForm( Model model, Integer id ) {
 		
-		TechnologyPartner	technologypartner = technologiepartnerRepository.getOne(id);
+		 TechnologyPartner	technologypartner = technologiepartnerRepository.getOne(id);
 		 model.addAttribute("techpar",technologypartner);
 		 
 		

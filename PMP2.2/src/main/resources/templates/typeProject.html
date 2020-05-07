@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 	<head>
-	
-	
+
 	
 		<meta charset="utf-8" />
 		<title>Type Project</title>
@@ -536,14 +535,15 @@ document.addEventListener('DOMContentLoaded', function() {
   </aside><!-- / aside --><!-- content -->
   <div id="content" class="app-content" role="main">
    <div class="app-content-body ">
-    <div class="bg-light lter b-b wrapper-md"><h1 class="m-n font-bold h3">Type Project
-    <a  style="margin-top:-5px;" data-toggle="modal"  data-target="#AddTechnologyPartner" class="btn btn-sm btn-primary pull-right"  role="button"><b class="glyphicon-plus pull"> </b>Add Type Project</a></h1></div>
+    <div class="bg-light lter b-b wrapper-md"><h1 class="m-n font-bold h3"> Manage Type Project
+    <a  style="margin-top:-5px;" data-toggle="modal"  data-target="#AddTechnologyPartner" class="btn btn-sm btn-primary pull-right"  role="button">
+    <b class="glyphicon-plus pull"> </b>Add Type Project</a></h1></div>
 	
 	                 <div class="row text-center" style="margin: 10px 5px;">
                               <div class="col-sm-6">
                                 <div class="panel padder-v item">
-                                  <div class="h1 count text-info font-thin h1 pull-center">121</div>
-                                  <span class="text-muted text-xs"><b> Total Technology Partner </b></span>
+                                  <div class="h1 count text-info font-thin h1 pull-center" th:text="${totalTypeProject}"></div>
+                                  <span class="text-muted text-xs"><b> Total Type Project </b></span>
                                   <span class="bottom text-right w-full">
                                     <i class="glyphicon   glyphicon-tower text-muted m-r-sm"></i>
                                   </span>
@@ -552,8 +552,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
                               <div class="col-sm-6">
                                 <a href="" class="block panel padder-v bg-primary item">
-                                  <span class="text-white count font-thin h1 block">80</span>
-                                  <span class="text-muted text-xs"><b> Technology Partner Actifs </b></span>
+                                  <span class="text-white count font-thin h1 block" th:text="${totalTypeProject}"></span>
+                                  <span class="text-muted text-xs"><b> Total Type Project </b></span>
                                   <span class="bottom text-right w-full">
                                     <i class="glyphicon glyphicon-briefcase text-muted m-r-sm"></i>
                                   </span>
@@ -577,13 +577,12 @@ document.addEventListener('DOMContentLoaded', function() {
 		 <tbody>
 		  <tr data-expanded="true" th:each="t:${listTp}">
 		   <td  th:text ="${t.NameType_Project}" class="m-n font-thin h4 text-secondary"><center><b></b></center></td> 
-<!-- 		    <td th:text ="${t.Status}" class="m-n font-thin h4 text-secondary"><center><span></span><center/></td>
- -->		   <td><center><div class="btn-group dropdown"><button class="btn btn-default btn-xs" data-toggle="dropdown">
+     	   <td><center><div class="btn-group dropdown"><button class="btn btn-default btn-xs" data-toggle="dropdown">
 		     <i class="glyphicon glyphicon-cog"></i> Actions <span class="caret"></span></button>
 		     <ul class="dropdown-menu">
 		    <li><a th:href="@{updatTypeProject(id=${t.Type_Project_ID})}"  style="margin-top:-5px;"   class="btn btn-sm btn-light" role="button">Update</a></li>
-<!-- 		    <li><a th:href="@{archiverTechnologyPartner(id=${t.Type_Project_ID})}"  style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Archive</a></li>
- -->		      <li><a th:href="@{detailsTypeProject(id=${t.Type_Project_ID})}" style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Details</a></li></ul></div></center></td>
+		   <!-- <li><a th:href="@{deleteTypeProject(id=${t.Type_Project_ID})}"  style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Delete</a></li> -->
+		      <li><a th:href="@{detailsTypeProject(id=${t.Type_Project_ID})}" style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Details</a></li></ul></div></center></td>
 		  </tr>
 		 </tbody>
 		</table>

@@ -78,8 +78,14 @@ if (!(file.isEmpty())) {
 
 	    
 	@RequestMapping(value = "/editProject",method = { RequestMethod.GET, RequestMethod.POST })
-	public String updateProject(Model model, @Valid Project proj, BindingResult bindingResult){
+	public String updateProject(Model model, @Valid Project proj, @RequestParam(name ="file")  MultipartFile file ,BindingResult bindingResult) throws IllegalStateException, IOException{
 
+if (!(file.isEmpty())) {
+			
+			proj.setDeliveryCertificate((file.getOriginalFilename()));
+
+			file.transferTo(new File(projectFile+file.getOriginalFilename()));
+		}
 		ProjectRepository.save(proj);
 		
 		return "redirect:/projects";

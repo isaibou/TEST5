@@ -457,7 +457,7 @@
 		 	<td th:switch="${i.Status}">
     <span th:case="'Answered'" class="label bg-success pull-center m-t-md" >Answered</span>
     <span th:case="'Waiting'" class="label bg-danger pull-center m-t-md" >Waiting </span>
-    <div th:case="'Confirmed'" class="label bg-danger pull-center m-t-md" >Confirmed</div>
+    <div th:case="'Confirmed'" class="label bg-info pull-center m-t-md" >Confirmed</div>
      
 </td>
 		 
@@ -557,11 +557,7 @@
 		   <span th:if="${e.Status == true}" class="label bg-success pull-center m-t-md">Answered</span>
    		   <span th:unless="${e.Status == true}" class="label bg-danger pull-center m-t-md">Waiting</span> 
    		   </td>
-		  
-		 
-		 
-		 
-		  
+
 		  <td>
 		   <center>
 		   	<div class="btn-group dropdown">

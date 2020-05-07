@@ -22,12 +22,16 @@
 	 <div class="modal-content">
       <h1 class="m-n font-bold h3"> Update Technology Partner </h1>
      </div>
-   <form th:action="@{editTechnologyPartner}" method ="post" th:object="${techpar}">
+   <form th:action="@{editTechnologyPartner}" method ="post" enctype="multipart/form-data" th:object="${techpar}">
       <div class="modal-body">
 	    <div class="row">
 	     <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b></b></label>
      <div class="col-sm-8" style="margin: 5px 0px;">
       <input type="hidden" class="form-control" placeholder="Entry Name of Project" id="input-id-1"  required th:field=*{TechnologyPartner_ID}/>
+	 </div>
+	 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b></b></label>
+     <div class="col-sm-8" style="margin: 5px 0px;">
+      <input type="hidden" class="form-control" placeholder="Entry Name of Project" id="input-id-1"  required th:field=*{TechnologyPartnerFile}/>
      
 	 </div>
 	     <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Name Technology Partner</b></label>
@@ -36,11 +40,11 @@
 		 
 		 </div>
 		  <label class="col-sm-4 control-label"  style="margin: 5px 0px;" for="input-id-1"><b>TechnologyPartner File</b></label>
-       <div class="col-sm-8" style="margin: 5px 0px;">
-         <input type="file" placeholder="Entry TechnologyPartner File" class="form-control" name="TechnologyPartnerFile" id="input-id-1" required />
-       </div>
-         
-          		 </div>
+		  <div class="col-sm-8" style="margin: 5px 0px;">
+           <input type="file" placeholder="Entry TechnologyPartner File" class="form-control" name="file"/>
+           <span th:text ="${techpar.TechnologyPartnerFile}" class="m-n font-thin h4 text-secondary"></span>
+         </div> 
+         </div>
 		</div>
 		  <div class="modal-footer">
 		   <button style="margin:0px;" class="btn m-b-xs btn-sm btn-primary btn-addon"><i class="glyphicon glyphicon-ok"></i>Save</button>

@@ -40,12 +40,12 @@
 		  </tr>
 		  <tr> 
 		   <td style="color:#23b7e5;"><center> Project Task </center></th>
-		   <td> <select name ="ProjectTask" class="m-n font-thin h4 text-secondary">
-		   <option th:each ="t:${listPt}"  th:text="${t.NameProjectTask}"  class="m-n font-thin h4 text-secondary"></option>
-		   </select>
+		   <td> 
+		    <select name ="ProjectTask" class="m-n font-thin h4 text-secondary">
+		     <option th:each ="t:${listPt}"  th:text="${t.NameProjectTask}"  class="m-n font-thin h4 text-secondary"></option>
+		    </select>
 			 </td>
 		   </tr>
-	
 	  </tbody>
      </table>
 	</div>

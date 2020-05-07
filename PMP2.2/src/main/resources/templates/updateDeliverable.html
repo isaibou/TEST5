@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-
-
   <meta charset="utf-8" />
   <title>Update Deliverable</title>
   <meta name="description" content="app, web app, responsive, responsive layout, admin, admin panel, admin dashboard, flat, flat ui, ui kit, AngularJS, ui route, charts, widgets, components" />
@@ -22,71 +20,60 @@
 	 <div class="modal-content">
       <h1 class="m-n font-bold h3"> Update Deliverable </h1>
      </div>
-     
    <form th:action="@{editDeliverable}"   enctype="multipart/form-data"  method ="post" th:object="${del}">
    <div class="modal-body">
 	<div class="row">
     <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b></b></label>
      <div class="col-sm-8" style="margin: 5px 0px;" >
-      <input type="hidden" class="form-control" placeholder="Entry Name of RFP" id="input-id-1"  required th:field=*{Deliverable_ID}/>   
+      <input type="hidden" class="form-control" id="input-id-1"  required th:field=*{Deliverable_ID}/>   
 	 </div>
-	 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Name</b></label>
-	     <div class="col-sm-8" style="margin: 5px 0px;" >
-		  <input type="text" class="form-control" placeholder="Entry Name of RFP" id='calendar1' required th:field=*{Name}/> 
-		 </div>
-	     <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Project</b></label>
-	     <div class="col-sm-8" style="margin: 5px 0px;">
-	 <!-- ici on met une boucle sur le customer pour avoir récupérer la liste des customer  -->
-	      <select name="Customer_ID" class="form-control m-b" th:field=*{project}>
-	         <option th:each ="c:${project}" 
-	                 th:text="${c.name}"
-	                 th:value ="${c.Project_ID}"></option>
-	      </select>
-	     </div>
-		 
-		 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Version</b></label>
-	     <div class="col-sm-8" style="margin: 5px 0px;">
-            <input type="text" class="form-control" id="input-id-1" required th:field=*{Version}/> 
-         </div>
-		
-	    
-		
-		 <label class="col-sm-4 control-label" placeholder="Upload Preview File" for="input-id-1"  style="margin-bottom:5px;" ><b>Preview File</b></label>
-	    <div class="col-sm-7" style="margin-top:0px; margin-bottom:5px;">
-	     <input type="text" placeholder="Upload Preview File"class="form-control" id="input-id-1">
-	    </div>
-	    <div class="col-sm-1" style="margin-top:0px; margin-bottom:5px;" >
-	     <div class="btn-group">
-	      <a class="btn btn-default" tooltip="Insert picture (or just drag &amp; drop)" id="pictureBtn"><i class="icon-paper-clip"></i></a>
-	          <input type="file" data-edit="insertImage"  name ="picture" style="position:absolute; opacity:0; width:41px; height:34px" />
-	     </div>
-	    </div>           
-	    <label class="col-sm-4 control-label" placeholder="Upload Preview File" for="input-id-1" ><b>File</b></label>
-	    <div class="col-sm-7">
-	     <input type="text" placeholder="Upload Preview File"class="form-control" id="input-id-1" >
-	    </div>
-	    <div class="col-sm-1" >
-	     <div class="btn-group">
-	      <a class="btn btn-default" tooltip="Insert picture (or just drag &amp; drop)" id="pictureBtn"><i class="icon-paper-clip"></i></a>
-	          <input type="file" name="fileD" data-edit="insertImage" style="position:absolute; opacity:0; width:41px; height:34px" } >
-	     </div>
-	    </div> 
-	     </div>
-         <!--  <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Status</b></label>
-	     <div class="col-sm-8" style="margin: 5px 0px;">
-	      <select name="account" class="form-control m-b" required th:field=*{StatusRFP} >
-	       <option th:value ="New" th:text="New"></option>
-	       <option th:value ="Submited" th:text="Submited"></option>
-	       <option th:value ="Won" th:text="Won"></option>
-	       <option th:value ="Lost" th:text="Lost"></option>
-	      </select>
-	      <span class="text-danger" th:errors=*{StatusRFP}></span>
-	     </div> -->
-	     </div>
+	 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b></b></label>
+     <div class="col-sm-8" style="margin: 5px 0px;" >
+      <input type="hidden" class="form-control" id="input-id-1"  required th:field=*{PreviewFile}/>   
+	 </div>
+	 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b></b></label>
+     <div class="col-sm-8" style="margin: 5px 0px;" >
+      <input type="hidden" class="form-control" id="input-id-1"  required th:field=*{File}/>   
+	 </div>
+	 <label class="col-sm-4 control-label" for="input-id-1" style="margin:5px 0px;"><b>Name</b></label>
+    <div class="col-sm-8" style="margin:5px 0px;" >
+     <input type="text" placeholder="Entry Name" class="form-control" id="input-id-1" th:field="*{Name}">
+    </div>
+    <label class="col-sm-4 control-label" for="input-id-1" style="margin-bottom:5px;"><b>Version</b></label>
+    <div class="col-sm-8" style="margin-bottom:5px;">
+     <input type="text" placeholder="Entry Version" class="form-control" id="input-id-1" th:field="*{Version}" >
+    </div>
+    <label class="col-sm-4 control-label" for="input-id-1" style="margin-bottom:5px;"><b>Type Deliverable</b></label>
+    <div class="col-sm-8" style="margin-bottom:5px;" >
+     <select name="account" class="form-control m-b"  style="margin:0px;" th:field="*{typeDeliverable}">
+      <option th:each="r:${type}" th:text="${r.NameTypeDeliverable}" th:value="${r.TypeDeliverable_ID}" ></option>  
+     </select>
+    </div>
+    <label class="col-sm-4 control-label"  for="input-id-1" style="margin-top:0px; margin-bottom:5px;"><b>Project</b></label>
+    <div class="col-sm-8" style="margin:0px; margin-bottom:5px;" >
+     <select name="account" class="form-control m-b"  style="margin-top:0px; margin-bottom:0px;"  th:field="*{project}">
+      <option th:each="p:${project}" th:text="${p.Name}" th:value="${p.Project_ID}"></option>
+     </select>
+    </div>
+        <label class="col-sm-4 control-label" for="input-id-1" style="margin-top:0px; margin-bottom:5px;"><b>Date Delivery</b></label>
+        <div class="col-sm-8" style="margin: 5px 0px;">
+	     <input type="date" class="form-control" placeholder="MM/DD/YYYY"  required th:field=*{Date}/>
+		</div>
+         <label class="col-sm-4 control-label" for="input-id-1"  style="margin-bottom:5px;" ><b>Preview File</b></label>
+    <div class="col-sm-8" style="margin: 5px 0px;">
+     <input type="file"  class="form-control" name="picture" id="input-id-1" />
+     <span th:text ="${del.PreviewFile}" class="m-n font-thin h4 text-secondary"></span>
+    </div>          
+    <label class="col-sm-4 control-label"  for="input-id-1" ><b>File</b></label>
+    <div class="col-sm-8" style="margin: 5px 0px;">
+      <input type="file"  class="form-control" name="fileD" id="input-id-1" />
+      <span th:text ="${del.File}" class="m-n font-thin h4 text-secondary"></span>
+    </div>
+	   </div>
 		</div>
 		  <div class="modal-footer">
 		   <button style="margin:0px;" class="btn m-b-xs btn-sm btn-primary btn-addon"><i class="glyphicon glyphicon-ok"></i>Save</button>
-		   <button style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon"><a th:href="reference"><i class="glyphicon glyphicon-remove"></i>Annuler</a></button>
+		   <button style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon"><a th:href="deliverable"><i class="glyphicon glyphicon-remove"></i>Annuler</a></button>
 		  </div>	 
 	    </form>
 		</div>

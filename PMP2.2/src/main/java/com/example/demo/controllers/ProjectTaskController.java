@@ -28,10 +28,6 @@ public class ProjectTaskController {
 	@Autowired
 	private ProjectTaskRepository projecTaskrepository;
 	
-
-	
-	
-	
 	@RequestMapping(value="/projectTask")
 	public String TechnologyPartner(Model model, Authentication auth) {
 		
@@ -40,6 +36,7 @@ public class ProjectTaskController {
 		
 		List<ProjectTask> listp = projecTaskrepository.findAll();
 		model.addAttribute("pTask",new ProjectTask() );
+		model.addAttribute("totalProjectTask", listp.size());
 		model.addAttribute("listP", listp);
 	
 		return "projectTask";

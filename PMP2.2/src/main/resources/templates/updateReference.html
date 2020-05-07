@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-
-
   <meta charset="utf-8" />
   <title>Update Reference</title>
   <meta name="description" content="app, web app, responsive, responsive layout, admin, admin panel, admin dashboard, flat, flat ui, ui kit, AngularJS, ui route, charts, widgets, components" />
@@ -22,8 +20,21 @@
 	 <div class="modal-content">
       <h1 class="m-n font-bold h3"> Update Reference </h1>
      </div>
-   <form th:action="@{editReference}"   enctype="multipart/form-data"  method ="post" th:object="${ref}">
+   <form th:action="@{editReference}" enctype="multipart/form-data"  method ="post" th:object="${ref}">
+   <div class="modal-body">
    <div class="row">
+   <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b></b></label>
+     <div class="col-sm-8" style="margin: 5px 0px;" >
+      <input type="hidden" class="form-control" id="input-id-1"  required th:field=*{Reference_ID}/>
+	 </div>
+   <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b></b></label>
+	 <div class="col-sm-8" style="margin: 5px 0px;" >
+      <input type="hidden" class="form-control"  id="input-id-1"  required th:field=*{ReferenceFile}/>
+	 </div>
+	 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b></b></label>
+	 <div class="col-sm-8" style="margin: 5px 0px;" >
+      <input type="hidden" class="form-control" id="input-id-1"  required th:field=*{PreviewPicture}/>
+	 </div>
      <label class="col-sm-4 control-label"  for="input-id-1" style="margin-top:0px; margin-bottom:5px;"><b>Project</b></label>
     <div class="col-sm-8" style="margin:0px; margin-bottom:5px;" >
      <select name="account" class="form-control m-b"  style="margin-top:0px; margin-bottom:0px;"  th:field="*{project}">
@@ -46,13 +57,15 @@
     <div class="col-sm-8" style="margin-top:0px; margin-bottom:5px;">
      <input type="text" class="form-control" id="input-id-1" th:field="*{SignedBy}" >
     </div>
-    <label class="col-sm-4 control-label" placeholder="Upload Preview File" for="input-id-1"  style="margin-bottom:5px;" ><b>Preview File</b></label>
+    <label class="col-sm-4 control-label" for="input-id-1"  style="margin-bottom:5px;" ><b>Preview File</b></label>
     <div class="col-sm-8" style="margin: 5px 0px;">
-         <input type="file" placeholder="Entry Contract File" class="form-control" name="file" id="input-id-1" required />
+         <input type="file" placeholder="Entry  File" class="form-control" name="picture" id="input-id-1" />
+         <span th:text ="${ref.PreviewPicture}" class="m-n font-thin h4 text-secondary"></span>
        </div>           
-    <label class="col-sm-4 control-label" placeholder="Upload Preview File" for="input-id-1" ><b>Picture File </b></label>
+    <label class="col-sm-4 control-label" for="input-id-1" ><b> File </b></label>
     <div class="col-sm-8" style="margin: 5px 0px;">
-         <input type="file" placeholder="Entry Contract File" class="form-control" name="picture" id="input-id-1" required />
+         <input type="file" placeholder="Entry  File" class="form-control" name="file" id="input-id-1" />
+         <span th:text ="${ref.ReferenceFile}" class="m-n font-thin h4 text-secondary"></span>
        </div> 
      </div>
     </div>

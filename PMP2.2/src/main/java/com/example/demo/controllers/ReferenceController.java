@@ -62,7 +62,6 @@ public class ReferenceController {
 		return "reference_manage";
 	}
 
-	
 	@RequestMapping(value="/SaveReference")
 	public String SaveReference(Model model, Reference ref, @RequestParam(name="file") MultipartFile file , @RequestParam(name="picture") MultipartFile picture) throws IllegalStateException, IOException {
 		
@@ -72,7 +71,7 @@ if (!(file.isEmpty())) {
 
 			file.transferTo(new File(refFile+file.getOriginalFilename()));
 		}
-referencerepository.save(ref);
+
 if (!(picture.isEmpty())) {
 	
 	ref.setPreviewPicture((picture.getOriginalFilename()));
@@ -85,8 +84,6 @@ referencerepository.save(ref);
 		return "redirect:/reference";
 	}	
 
-	
-	
 	@RequestMapping(value ="/updateReference")
 	public String updateReference( Model model, Integer id ) {
 		
@@ -109,7 +106,7 @@ if (!(file.isEmpty())) {
 
 			file.transferTo(new File(refFile+file.getOriginalFilename()));
 		}
-referencerepository.save(ref);
+
 if (!(picture.isEmpty())) {
 	
 	ref.setPreviewPicture((picture.getOriginalFilename()));

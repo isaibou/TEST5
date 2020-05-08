@@ -67,8 +67,8 @@ public class Project implements Serializable{
     //private String Type;
     //private long Size;
 	
-	@Column(name = "TechnologyPartners")
-	private String TechnologyPartners;
+	//@Column(name = "TechnologyPartners")
+	//private String TechnologyPartners;
 
 	@NumberFormat(pattern = "#,###")
 	private int Warranty;
@@ -123,7 +123,7 @@ public class Project implements Serializable{
 		//Size = size;
 	}
 	public Project(String name, String typeProject, Double amount, Date year, Date deliveryDate, Date temporayAcceptanceDate,
-			Date finalTemporaryDate, String deliveryCertificate, String technologyPartners, int warranty,
+			Date finalTemporaryDate, String deliveryCertificate, int warranty,
 			int executionTime, String notes, String status) {
 		super();
 		Name = name;
@@ -137,7 +137,7 @@ public class Project implements Serializable{
 		//Uri = uri;
 		//Type =type;
 		//Size = size;
-		TechnologyPartners = technologyPartners;
+		//TechnologyPartners = technologyPartners;
 		Warranty = warranty;
 		ExecutionTime = executionTime;
 		Notes = notes;
@@ -219,12 +219,12 @@ public class Project implements Serializable{
 	public void setDeliveryCertificate(String deliveryCertificate) {
 		DeliveryCertificate = deliveryCertificate;
 	}
-	public String getTechnologyPartners() {
-		return TechnologyPartners;
-	}
-	public void setTechnologyPartners(String technologyPartners) {
-		TechnologyPartners = technologyPartners;
-	}
+	//public String getTechnologyPartners() {
+		//return TechnologyPartners;
+	//}
+	//public void setTechnologyPartners(String technologyPartners) {
+		//TechnologyPartners = technologyPartners;
+	//}
 	public int getWarranty() {
 		return Warranty;
 	}

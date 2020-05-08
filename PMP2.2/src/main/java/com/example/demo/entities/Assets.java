@@ -1,13 +1,17 @@
 package com.example.demo.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -41,20 +45,20 @@ public class Assets implements Serializable{
 	@ManyToOne
 	@JoinColumn
 	private Project project;
-	// a supprimer 
-	//@ManyToOne
-	//@JoinColumn
-	//private Frimware frimware;
-	
-	
-	//public Frimware getFrimware() {
-		//return frimware;
-	//}
 
-	//public void setFrimware(Frimware frimware) {
-		//this.frimware = frimware;
-//	}
+	/*@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<Frimware> frimwares = new ArrayList<>();
+	
 
+	
+	public List<Frimware> getFrimwares() {
+		return frimwares;
+	}
+
+	public void setFrimwares(List<Frimware> frimwares) {
+		this.frimwares = frimwares;
+	}*/
+	
 	public Project getProject() {
 		return project;
 	}

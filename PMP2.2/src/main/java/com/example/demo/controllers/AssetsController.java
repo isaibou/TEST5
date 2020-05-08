@@ -1,5 +1,6 @@
 package com.example.demo.controllers;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -10,8 +11,10 @@ import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.entities.*;
 import com.example.demo.repository.AssetRepository;
@@ -64,6 +67,18 @@ public class AssetsController {
 		return "redirect:/assets_manage"; //$NON-NLS-1$
 		
 	}
+	
+	/*@GetMapping("/getfrimwares")
+	public List<Frimware> messageCenterHome(@RequestParam Integer Assetid) {
+		System.out.println("--------------- Assetid" + Assetid);
+		
+		List<Frimware> frimwares = new ArrayList<Frimware>();
+		frimwares = assetRepository.findById(Assetid).get().getFrimwares();
+			
+
+		return frimwares;
+	}*/
+	
 	@RequestMapping(value = "/editAssets",method = { RequestMethod.GET, RequestMethod.POST })
 	public String updateAssets(Model model, @Valid Assets asset, BindingResult bindingResult){
        

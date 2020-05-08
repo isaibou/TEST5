@@ -618,6 +618,15 @@ function drawChart() {
           <div class="col-sm-8" style="margin: 5px 0px;">
              <input type="password" class="form-control" placeholder="Password" id="input-id-2" required th:field=*{PasswordAsset}>
           </div>
+          <!--  
+          <form role="form" id="sendfrimwares" th:action=@{/getfrimwares}
+		method="post">
+		<select class="form-control" id="target" name="nameOfAssetType">
+			<option value="">Select Frimware</option>
+			<div th:switch="${assettype}">
+				<h2 th:case="null">No assettype yet!</h2>
+				<div th:case="*">
+				-->
           <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Asset Type</b></label>
           <div class="col-sm-8" style="margin: 5px 0px;">
           <select name="AssetType_ID" class="form-control m-b" th:field=*{assettype}>
@@ -626,6 +635,13 @@ function drawChart() {
 	        th:value ="${a.AssetType_ID}"></option>
 	      </select>
 	       </div>
+	       <!--  
+	       <div class="col-sm-8" style="margin: 5px 0px;">
+	       <select id="select" name="nameOfFrimware">
+
+		   </select>
+		   </div>
+	       -->
 	       
           <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Project</b></label>
           <div class="col-sm-8" style="margin: 5px 0px;">
@@ -777,5 +793,33 @@ function drawChart() {
     
  
     </script>
+   <!--   <script type="application/javascript" th:src="@{js/jquery.js}"></script>
+
+	<script type="application/javascript">
+		
+	
+	$().ready(function(){
+		function CheckAjaxCall(){
+			var idCountry =  $( "#target" ).val();
+			$.get("getCities?idCountry=" + idCountry,
+				  function(data) {
+				    var sel = $("#select");
+				    sel.empty();
+				    for (var i=0; i<data.length; i++) {
+				      sel.append('<option value="' + data[i].id + '">' + data[i].nameCity + '</option>');
+				    }
+				  }, "json");
+		}
+	
+		$( "#target" ).change(function() {
+			alert( "Handler for .change() called." +  $( "#target" ).val()  );
+			CheckAjaxCall();
+		});
+	});
+
+	
+	
+	</script>
+	-->
 </body>
 </html>

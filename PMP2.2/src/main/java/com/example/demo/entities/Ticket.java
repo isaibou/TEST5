@@ -7,6 +7,8 @@ import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Ticket implements Serializable{
@@ -22,13 +24,19 @@ public class Ticket implements Serializable{
 	private Date LastUpdatedate;
 	private String StatusTicket;
 	private String PriorityTicket;
+	private String TypeTicket;
+	@OneToOne
+	@JoinColumn
+	private Ticket ticket;
 	
 	public Ticket() {
 		super();
 	}
 
+	
+
 	public Ticket(String description, String logFiles, String solutionDescription, Date openedDate, Date closedDate,
-			Date lastUpdatedate, String statusTicket, String priorityTicket) {
+			Date lastUpdatedate, String statusTicket, String priorityTicket, String typeTicket) {
 		super();
 		Description = description;
 		LogFiles = logFiles;
@@ -38,7 +46,10 @@ public class Ticket implements Serializable{
 		LastUpdatedate = lastUpdatedate;
 		StatusTicket = statusTicket;
 		PriorityTicket = priorityTicket;
+		TypeTicket = typeTicket;
 	}
+
+
 
 	public Integer getTicket_ID() {
 		return Ticket_ID;
@@ -111,6 +122,31 @@ public class Ticket implements Serializable{
 	public void setPriorityTicket(String priorityTicket) {
 		PriorityTicket = priorityTicket;
 	}
+
+
+
+	public String getTypeTicket() {
+		return TypeTicket;
+	}
+
+
+
+	public void setTypeTicket(String typeTicket) {
+		TypeTicket = typeTicket;
+	}
+
+
+
+	public Ticket getTicket() {
+		return ticket;
+	}
+
+
+
+	public void setTicket(Ticket ticket) {
+		this.ticket = ticket;
+	}
+	
 	
 
 }

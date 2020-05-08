@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.example.demo.entities.*;
+import com.example.demo.repository.AssetRepository;
 import com.example.demo.repository.ProjetRepository;
 import com.example.demo.repository.RFPRepository;
 import com.example.demo.repository.TechnologiePartnerRepository;
@@ -40,6 +41,8 @@ public class ProjectController {
 	private TypeProjectRepository typeProjectRepository;
 	@Autowired
 	private RFPRepository rfprepository;
+	@Autowired
+	private AssetRepository assetRepository;
 	
 	@Value("${dir.project}")
 	String projectFile;
@@ -56,6 +59,8 @@ public class ProjectController {
 			model.addAttribute("TechnoPart", technologiepartnerRepository.findAll());
 			model.addAttribute("rfp",rfprepository.findAll() );
 			model.addAttribute("TypeProject", typeProjectRepository.findAll());
+			model.addAttribute("listAsset",assetRepository.findAll() );
+			
 			
 		return "projects_manage";
 	}

@@ -82,7 +82,7 @@ public class Project implements Serializable{
 	@Column(name = "Status")
 	private String Status;
 	
-	@OneToMany
+	@OneToMany(mappedBy = "project")
 	private Collection <Assets> assets;
 	
 	@ManyToMany(mappedBy = "Project")

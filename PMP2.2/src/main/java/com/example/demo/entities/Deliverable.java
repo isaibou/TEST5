@@ -9,6 +9,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 
 
 
@@ -21,6 +22,7 @@ public class Deliverable implements Serializable{
 	private Integer Deliverable_ID;
 	private String Name;
 	private String Version;
+	@DateTimeFormat(pattern= "yyyy-mm-dd")
 	private Date Date;
 	private String PreviewFile;
 	private String File;

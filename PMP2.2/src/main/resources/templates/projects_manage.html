@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 	<head>
-	
-	
 		<meta charset="utf-8" />
 		<title>Manage Project</title>
 		<meta name="description" content="app, web app, responsive, responsive layout, admin, admin panel, admin dashboard, flat, flat ui, ui kit, AngularJS, ui route, charts, widgets, components" />
@@ -543,22 +541,22 @@ document.addEventListener('DOMContentLoaded', function() {
 	  <div class="row row-sm text-center">
 	   <div class="col-sm-4">
 		<div class="panel padder-v item">
-		 <div class="h1 text-info font-thin h1 pull-center">521</div>
-		  <span class="text-muted text-xs"><b>Total Active Projects <small>(current week)</small></b></span>
+		 <div class="h1 text-info font-thin h1 pull-center" th:text="${totalProject}"></div>
+		  <span class="text-muted text-xs"><b>Total Projects </b></span>
 		  <span class="bottom text-right w-full"><i class="glyphicon glyphicon-list text-muted m-r-sm"></i></span>
 		 </div>
 		</div>
 		<div class="col-sm-4">
 		 <a href class="block panel padder-v bg-primary item">
-		  <span class="text-white font-thin h1 block">930</span>
-		  <span class="text-muted text-xs"><b>Projects Expected Temporaray Reception <small>(current week)</small></b></span>
+		  <span class="text-white font-thin h1 block" th:text="${totalProject}"></span>
+		  <span class="text-muted text-xs"><b>Total Projects</b></span>
 		  <span class="bottom text-right w-full"><i class="glyphicon glyphicon-list text-muted m-r-sm"></i></span>
 		 </a>
 		</div>
 		<div class="col-sm-4">
 		 <div class="panel padder-v bg-info item">
-		  <div class="h1 text-white font-thin h1 pull-center">521</div>
-		   <span class="text-muted text-xs"><b>Total Active Projects <small>(current week)</small></b></span>
+		  <div class="h1 text-white font-thin h1 pull-center" th:text="${totalProject}"></div>
+		   <span class="text-muted text-xs"><b>Total Projects</b></span>
 		   <span class="bottom text-right w-full"><i class="glyphicon glyphicon-list text-muted m-r-sm"></i></span>
 		  </div>
 		 </div>
@@ -621,8 +619,8 @@ document.addEventListener('DOMContentLoaded', function() {
 	 <div class="modal-dialog modal-lg" >
 	  <div class="modal-content">
 	   <div class="modal-header" style="background-image:url(img/grf-bg.jpg);color:white;">
-	    <button type="button" class="close pull-right" data-dismiss="modal">&times;</button>
-	    <h1 class="m-n font-bold h3"> <b class="glyphicon-plus pull"> </b> Add Project</h1>
+	    <button type="button" class="close pull-right" data-dismiss="modal"> &times;</button>
+	    <h1 class="m-n font-bold h3"> <b class="glyphicon-plus pull"> </b> Add Project </h1>
 	   </div>	   
 	 <form th:action="@{SaveProject}"   enctype="multipart/form-data" method ="post" th:object="${project}">
      <div class="modal-body">
@@ -640,7 +638,7 @@ document.addEventListener('DOMContentLoaded', function() {
 			 
 		     <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Type Project</b></label>
 		 <div class="col-sm-8" style="margin:5px 0px;" >
-		 <select name ="role"  class="form-control m-b" th:field="*{typeProject}">
+		 <select name ="role" multiple="multiple" class="form-control m-b" th:field="*{typeProject}">
 		 <option th:each="t:${TypeProject}"  th:text="${t.NameType_Project}" th:value="${t.Type_Project_ID}"></option>
 		 </select>
 		 </div>
@@ -702,13 +700,12 @@ document.addEventListener('DOMContentLoaded', function() {
 		  <div class="col-sm-8" style="margin: 5px 0px;">
 			<input type="text" class="form-control" placeholder="Entry ur notes " id="input-id-1" required th:field=*{Notes} />
           </div>
-          
+         </div>
+		</div> 
 		  <div class="modal-footer">
 		   <button style="margin:0px;" class="btn m-b-xs btn-sm btn-primary btn-addon"><i class="glyphicon glyphicon-ok"></i>Save</button>
 		   <button style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon" data-dismiss="modal"><i class="glyphicon glyphicon-remove"></i>Annuler</button>
 		  </div>
-		 </div>
-		</div>
 	    </form>
 	  </div>
      </div>

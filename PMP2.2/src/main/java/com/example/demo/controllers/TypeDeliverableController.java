@@ -38,11 +38,9 @@ public class TypeDeliverableController {
 		model.addAttribute("user", u);
 		
 	List<TypeDeliverable> allType = typeDeliverablerepository.findAll();
-	
+	model.addAttribute("totalTypeDelivProject", allType.size());
 	model.addAttribute("alltype", allType);
 	model.addAttribute("type", new TypeDeliverable());
-
-
 	
 		return"typeDeliverable";
 	}

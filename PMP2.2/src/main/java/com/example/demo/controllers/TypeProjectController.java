@@ -31,11 +31,7 @@ public class TypeProjectController {
 	private TypeProjectRepository typeProjectRepository;
 	@Autowired
 	private ProjectTaskRepository projectTaskrepository;
-	
-	
 
-	
-	
 	@RequestMapping(value="/typeProject")
 	public String TechnologyPartner(Model model, Authentication auth) {
 		
@@ -45,6 +41,7 @@ public class TypeProjectController {
 		List<TypeProject> listTp = typeProjectRepository.findAll();
 		List<ProjectTask> listpt = projectTaskrepository.findAll();
 		model.addAttribute("tProject",new TypeProject() );
+		model.addAttribute("totalTypeProject", listTp.size());
 		model.addAttribute("listTp", listTp);
 		model.addAttribute("listpt", listpt);
 
@@ -95,6 +92,14 @@ public class TypeProjectController {
 		
 			return "detailsTypeProject";
 			
+	}
+	
+	@RequestMapping(value ="/deleteTypeProject" )
+	private String deleteTypeProject( Model model, Integer id ) {
+	
+		typeProjectRepository.deleteById(id);
+		
+		 return "redirect:/typeProject";	
 	}
 	
 	

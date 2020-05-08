@@ -50,13 +50,12 @@ public class DeliverableController {
 		model.addAttribute("user", u);
 		model.addAttribute("listD", delive);
 		model.addAttribute("deliverable", new  Deliverable());
+		model.addAttribute("totalDeliverable", delive.size());
 		model.addAttribute("project", listP);
 		model.addAttribute("type", listTp);
 		return "deliverable_manage";
 	}
-	
-	
-	
+
 	@RequestMapping(value="/addDeliverable")
 	public String addDelivrable(Model model, Deliverable deli, @RequestParam(name="fileD") MultipartFile fileD , @RequestParam(name="picture") MultipartFile picture) throws IllegalStateException, IOException {
 		
@@ -66,7 +65,6 @@ if (!(fileD.isEmpty())) {
 
 			fileD.transferTo(new File(refFile+fileD.getOriginalFilename()));
 		}
-deliverablerepository.save(deli);
 
 if (!(picture.isEmpty())) {
 	
@@ -79,10 +77,7 @@ deliverablerepository.save(deli);
 		
 		return "redirect:/deliverable";
 	}
-	
-	
 
-	
 	@RequestMapping(value="/getDeliverableFile" , produces= MediaType.IMAGE_JPEG_VALUE)
 	@ResponseBody
 	private byte[] getDeliverable(String id) throws  IOException {
@@ -90,22 +85,18 @@ deliverablerepository.save(deli);
 		return  IOUtils.toByteArray(new FileInputStream(f));
 	}
 
-	
-	
 	@RequestMapping(value ="/updateDeliverable")
 	public String updateReference( Model model, Integer id ) {
 		
 		Deliverable	del = deliverablerepository.getOne(id);
 		 model.addAttribute("del",del);
-		 
+		 model.addAttribute("type", typeDeliverableRepository.findAll());
 		 model.addAttribute("project", projectrepository.findAll());	
 		
 			return "updateDeliverable";
 			
 	}
-	
-	
-	
+
 	@RequestMapping(value="/editDeliverable")
 	public String editDeliverable(Model model, Deliverable deli, @RequestParam(name="fileD") MultipartFile fileD , @RequestParam(name="picture") MultipartFile picture) throws IllegalStateException, IOException {
 		
@@ -115,7 +106,6 @@ if (!(fileD.isEmpty())) {
 
 			fileD.transferTo(new File(refFile+fileD.getOriginalFilename()));
 		}
-deliverablerepository.save(deli);
 
 if (!(picture.isEmpty())) {
 	
@@ -129,7 +119,15 @@ deliverablerepository.save(deli);
 		return "redirect:/deliverable";
 
 	}	
-
 	
+	@RequestMapping(value ="/detailDeliverable")
+	public String detailDeliverable( Model model, Integer id ) {
+		
+		 Deliverable	deliv = deliverablerepository.getOne(id);
+		 model.addAttribute("deliverable",deliv);
+		 System.out.println(deliv.getName());
+			return "detaildeliv";
+			
+	}
 
 }

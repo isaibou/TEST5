@@ -33,9 +33,7 @@ import com.example.demo.repository.UserRepository;
 
 @Controller
 public class ContractController {
-	
-	 
-	
+
 	@Autowired
 	private RFPRepository rfpRepository;
 	
@@ -60,7 +58,6 @@ public class ContractController {
 		model.addAttribute("totalContrat", contra.size());
 		model.addAttribute("con", contra);
 		model.addAttribute("contrat", new Contrat());
-		model.addAttribute("totalContract", contra.size());
 		//Afficher la liste déroulante pour récupérer la liste des customers
 		model.addAttribute("customer", customerRepository.findAll());
 		model.addAttribute("rfp", rfpRepository.findAll());
@@ -70,10 +67,7 @@ public class ContractController {
 	
 	@RequestMapping(value="/SaveContrat" , method= RequestMethod.POST)
 	private String SaveContrat(@Valid Contrat addCont, BindingResult bindingResult , @RequestParam(name="contractFile")MultipartFile file) throws IllegalStateException, IOException
-	{
-		
-		
-		
+	{	
 		
 if (!(file.isEmpty())) {
 			
@@ -82,16 +76,20 @@ if (!(file.isEmpty())) {
 			file.transferTo(new File(contratfile+file.getOriginalFilename()));
 		}
 
-		
-	
 		contratrepository.save(addCont);
 		return "redirect:/contract_manage";
 		
 	}
 	
 	@RequestMapping(value = "/editContrat",method = { RequestMethod.GET, RequestMethod.POST })
-	public String updateContrat(Model model, @Valid Contrat con, BindingResult bindingResult){
+	public String updateContrat(Model model, @Valid Contrat con, BindingResult bindingResult, @RequestParam(name="contractFile")MultipartFile file) throws IllegalStateException, IOException{
 
+if (!(file.isEmpty())) {
+			
+			con.setContractFille((file.getOriginalFilename()));
+
+			file.transferTo(new File(contratfile+file.getOriginalFilename()));
+		}
 		contratrepository.save(con);
 		
 		return "redirect:/contract_manage";

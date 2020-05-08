@@ -48,7 +48,7 @@ public class Project implements Serializable{
 	private Double Amount;
 	
 	//@Temporal(TemporalType.DATE)
-	@DateTimeFormat(pattern= "yyyy")
+	@DateTimeFormat(pattern= "yyyy-mm-dd")
 	private Date  Year;
 	
 	@DateTimeFormat(pattern= "yyyy-mm-dd")

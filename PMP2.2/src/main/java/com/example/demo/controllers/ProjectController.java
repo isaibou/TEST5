@@ -52,7 +52,7 @@ public class ProjectController {
 			List<Project> projs = ProjectRepository.findAll();
 			model.addAttribute("proj",projs);
 			model.addAttribute("project", new Project());
-			
+			model.addAttribute("totalProject", projs.size());
 			model.addAttribute("TechnoPart", technologiepartnerRepository.findAll());
 			model.addAttribute("rfp",rfprepository.findAll() );
 			model.addAttribute("TypeProject", typeProjectRepository.findAll());
@@ -70,19 +70,31 @@ if (!(file.isEmpty())) {
 
 			file.transferTo(new File(projectFile+file.getOriginalFilename()));
 		}
+<<<<<<< HEAD
 //System.out.println(addProj.getTechnologypartner().listIterator());
 //System.out.println(addProj.getTechnologyPartners().length());
 
 ProjectRepository.save(addProj);
 
 
+=======
+		ProjectRepository.save(addProj);
+
+
+>>>>>>> branch 'master' of https://github.com/isaibou/TEST5
 		return "redirect:/projects";	
 	}
 
 	    
 	@RequestMapping(value = "/editProject",method = { RequestMethod.GET, RequestMethod.POST })
-	public String updateProject(Model model, @Valid Project proj, BindingResult bindingResult){
+	public String updateProject(Model model, @Valid Project proj, @RequestParam(name ="file")  MultipartFile file ,BindingResult bindingResult) throws IllegalStateException, IOException{
 
+if (!(file.isEmpty())) {
+			
+			proj.setDeliveryCertificate((file.getOriginalFilename()));
+
+			file.transferTo(new File(projectFile+file.getOriginalFilename()));
+		}
 		ProjectRepository.save(proj);
 		
 		return "redirect:/projects";
@@ -112,12 +124,16 @@ ProjectRepository.save(addProj);
 	     
 		 model.addAttribute("project",project);
 		 model.addAttribute("rfp", project.getRfp());
+<<<<<<< HEAD
 		// model.addAttribute("TechnPart", project.getTechnologypartner());
 		 
 		 List<TechnologyPartner> listtp = technologiepartnerRepository.findAll();
 		 model.addAttribute("listtp", listtp);
 		 List<TechnologyPartner> Tp = (List<TechnologyPartner>) project.getTechnologypartner();
 		 model.addAttribute("listTp",Tp );
+=======
+		 model.addAttribute("TechnPart", project.getTechnologypartner());
+>>>>>>> branch 'master' of https://github.com/isaibou/TEST5
 		
 			return "detailProj";
 			

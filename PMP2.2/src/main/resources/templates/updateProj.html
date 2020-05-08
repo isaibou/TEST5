@@ -21,13 +21,17 @@
 	 <div class="modal-content">
       <h1 class="m-n font-bold h3"> Update Project </h1>
      </div>
-   <form th:action="@{editProject}" method ="post" th:object="${project}">
+   <form th:action="@{editProject}" method ="post" enctype="multipart/form-data" th:object="${project}">
       <div class="modal-body">
 	    <div class="row">
 	     <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b></b></label>
      <div class="col-sm-8" style="margin: 5px 0px;">
       <input type="hidden" class="form-control" placeholder="Entry Name of Project" id="input-id-1"  required th:field=*{Project_ID}/>
       <span class="text-danger" th:errors=*{Name}></span>
+	 </div>
+	 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b></b></label>
+	 <div class="col-sm-8" style="margin: 5px 0px;" >
+      <input type="hidden" class="form-control" placeholder="Entry Name of Contrat" id="input-id-1"  required th:field=*{DeliveryCertificate}/>
 	 </div>
 	     <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Project Name</b></label>
 	     <div class="col-sm-8" style="margin: 5px 0px;" >
@@ -68,15 +72,10 @@
 		      <input type="date" class="form-control" required th:field=*{FinalTemporaryDate}/>
 		 </div>
 		 <label class="col-sm-4 control-label" placeholder="Entry Delivery Certificate" style="margin: 5px 0px;" for="input-id-1"><b>Delivery Certificate</b></label>
-		 <div class="col-sm-7">
-          <input type="text" placeholder="Upload Preview File"class="form-control" id="input-id-1">
-         </div>
-         <div class="col-sm-1" >
-          <div class="btn-group">
-           <a class="btn btn-default" tooltip="Insert picture (or just drag &amp; drop)" id="pictureBtn"><i class="icon-paper-clip"></i></a>
-           <input type="file" style="position:absolute; opacity:0; width:41px; height:34px" required th:field=*{DeliveryCertificate}/>
-          </div>
-          </div>
+		 <div class="col-sm-8" style="margin: 5px 0px;">
+         <input type="file" placeholder="Entry Contract File"class="form-control" id="input-id-1" name="file"/>
+         <span th:text ="${project.DeliveryCertificate}" class="m-n font-thin h4 text-secondary"></span>
+       </div>
 		<label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Technology Partner</b></label>
 		 <div class="col-sm-8" style="margin:5px 0px;" >
 		 <select name ="role" multiple="multiple" class="form-control m-b" th:field="*{technologypartner}">
@@ -101,7 +100,7 @@
           </div>
 		  <div class="modal-footer">
 		   <button style="margin:0px;" class="btn m-b-xs btn-sm btn-primary btn-addon"><i class="glyphicon glyphicon-ok"></i>Save</button>
-		   <button style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon"><a th:href="projects_manage"><i class="glyphicon glyphicon-remove"></i>Annuler</a></button>
+		   <button style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon"><a th:href="projects"><i class="glyphicon glyphicon-remove"></i>Annuler</a></button>
 		  </div>
 		 </div>
 		</div>

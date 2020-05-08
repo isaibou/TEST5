@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-
   <meta charset="utf-8" />
-  <title>Detail Technology Partner</title>
+  <title>Detail Deliverable Project</title>
   <meta name="description" content="app, web app, responsive, responsive layout, admin, admin panel, admin dashboard, flat, flat ui, ui kit, AngularJS, ui route, charts, widgets, components" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <link rel="stylesheet" href="../libs/assets/animate.css/animate.css" type="text/css" />
@@ -16,10 +15,10 @@
 <body>
 <div class="app" >
  <a href="" class="navbar-brand block m-t"><i class="fa fa-power-off"></i> <b>PowerM</b> </a>
- <div th:action="@{detailProject}" method ="post" th:object="${technolgpartn}">
+ <div th:action="@{detailDeliverable}" method ="post" th:object="${deliv}">
   <div class="modal-dialog modal-lg" >
    <div class="modal-content">
-    <h1 class="m-n font-bold h3"> Informations Technology Partner </h1>
+    <h1 class="m-n font-bold h3"> Informations Deliverable Project </h1>
    </div>
    <div  class="modal-body">
     <div style="background-color:white;margin:10px; padding:10px;">
@@ -33,25 +32,38 @@
 		   <th  style="width:80%"><center>Content </center></th>
 		  </tr>
 	  </thead>
-	  <tbody th:each="t:${technolgpartn}">
+	  <tbody th:each="d:${deliv}">
 		  <tr data-expanded="true">
-		   <td style="color:#23b7e5;"><center>Name Technology Partner </center></th>
-		   <td th:text ="${t.NameTechnologyPartner}" class="m-n font-thin h4 text-secondary"></td>
+		   <td style="color:#23b7e5;"><center>Project Name </center></td>
+		   <td th:text ="${d.project.Name}" class="m-n font-thin h4 text-secondary"><center><b></b></center></td>
 		  </tr>
-		  <tr>
-		   <td style="color:#23b7e5;"><center>Technology Partner File </center></td>
-           <td th:text ="${t.TechnologyPartnerFile}" class="m-n font-thin h4 text-secondary"></td>
+		 <tr> 
+		   <td style="color:#23b7e5;"><center>Project Type </center></td>
+		   <td   th:text="${d.project.TypeProject.NameType_Project}"  class="m-n font-thin h4 text-secondary"><center></center></td>
+		   </tr>
+		   <tr>
+		   <td style="color:#23b7e5;"><center>Version </center></td>
+		   <td   th:text="${d.Version}"  class="m-n font-thin h4 text-secondary"><center></center></td>
+		   </tr>
+		   <tr >
+		   <td style="color:#23b7e5;"><center>Date </center></td>
+		   <td th:text ="${d.Date}" class="m-n font-thin h4 text-secondary"><center></center></td>
+		   </tr>
+		   <tr >
+		   <td style="color:#23b7e5;"><center>Preview File </center></td>
+		   <td ><img class="img-thumbnail" width="100px" height="100px" th:src="@{getDeliverableFile(id=${d.Deliverable_ID})}" /></td>
+		   </tr>
+		   <tr>
+		   <td style="color:#23b7e5;"><center>File </center></td>
+           <td th:text ="${d.File}" class="m-n font-thin h4 text-secondary"></td>
            </tr> 
-           <tr>
-		   <td style="color:#23b7e5;"><center>Status </center></th>
-           <td th:text ="${t.Status}" class="m-n font-thin h4 text-secondary"></td>
-           </tr>        
+		     
 	  </tbody>
      </table>
 	</div>
    </div>
    <div class="modal-footer">
-     <button class="btn m-b-xs btn-sm btn-primary btn-addon"><a th:href="technology">Return</a></button>
+     <button class="btn m-b-xs btn-sm btn-primary btn-addon"><a th:href="deliverable">Return</a></button>
    </div>
   </div>  
  </div>

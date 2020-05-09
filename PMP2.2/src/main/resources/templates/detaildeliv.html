@@ -15,7 +15,7 @@
 <body>
 <div class="app" >
  <a href="" class="navbar-brand block m-t"><i class="fa fa-power-off"></i> <b>PowerM</b> </a>
- <div th:action="@{detailDeliverable}" method ="post" th:object="${deliv}">
+ <div th:action="@{detailDeliverable}" method ="post" th:object="${deliverable}">
   <div class="modal-dialog modal-lg" >
    <div class="modal-content">
     <h1 class="m-n font-bold h3"> Informations Deliverable Project </h1>
@@ -32,7 +32,7 @@
 		   <th  style="width:80%"><center>Content </center></th>
 		  </tr>
 	  </thead>
-	  <tbody th:each="d:${deliv}">
+	  <tbody th:each="d:${deliverable}">
 		  <tr data-expanded="true">
 		   <td style="color:#23b7e5;"><center>Project Name </center></td>
 		   <td th:text ="${d.project.Name}" class="m-n font-thin h4 text-secondary"><center><b></b></center></td>
@@ -41,6 +41,10 @@
 		   <td style="color:#23b7e5;"><center>Project Type </center></td>
 		   <td   th:text="${d.project.TypeProject.NameType_Project}"  class="m-n font-thin h4 text-secondary"><center></center></td>
 		   </tr>
+		   <tr> 
+		   <td style="color:#23b7e5;"><center>Type Deliverable </center></th>
+	         <td th:each ="e:${typeD}"   th:text="${e.NameTypeDeliverable}"  class="m-n font-thin h4 text-secondary"></td>
+		     </tr>
 		   <tr>
 		   <td style="color:#23b7e5;"><center>Version </center></td>
 		   <td   th:text="${d.Version}"  class="m-n font-thin h4 text-secondary"><center></center></td>
@@ -50,14 +54,13 @@
 		   <td th:text ="${d.Date}" class="m-n font-thin h4 text-secondary"><center></center></td>
 		   </tr>
 		   <tr >
-		   <td style="color:#23b7e5;"><center>Preview File </center></td>
-		   <td ><img class="img-thumbnail" width="100px" height="100px" th:src="@{getDeliverableFile(id=${d.Deliverable_ID})}" /></td>
-		   </tr>
+		    <td style="color:#23b7e5;"><center>Preview File </center></td>
+		   <td><img class="img-circle" th:src="@{getDeliverableFile(id=${d.Deliverable_ID})}" width="100" height="100"/></td>
+		   </tr> 
 		   <tr>
 		   <td style="color:#23b7e5;"><center>File </center></td>
            <td th:text ="${d.File}" class="m-n font-thin h4 text-secondary"></td>
            </tr> 
-		     
 	  </tbody>
      </table>
 	</div>

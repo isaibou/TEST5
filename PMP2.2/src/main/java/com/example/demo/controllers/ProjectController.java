@@ -70,18 +70,17 @@ if (!(file.isEmpty())) {
 
 			file.transferTo(new File(projectFile+file.getOriginalFilename()));
 		}
-<<<<<<< HEAD
+
 //System.out.println(addProj.getTechnologypartner().listIterator());
 //System.out.println(addProj.getTechnologyPartners().length());
 
 ProjectRepository.save(addProj);
 
 
-=======
 		ProjectRepository.save(addProj);
 
 
->>>>>>> branch 'master' of https://github.com/isaibou/TEST5
+
 		return "redirect:/projects";	
 	}
 
@@ -124,17 +123,17 @@ if (!(file.isEmpty())) {
 	     
 		 model.addAttribute("project",project);
 		 model.addAttribute("rfp", project.getRfp());
-<<<<<<< HEAD
+
 		// model.addAttribute("TechnPart", project.getTechnologypartner());
 		 
-		 List<TechnologyPartner> listtp = technologiepartnerRepository.findAll();
-		 model.addAttribute("listtp", listtp);
-		 List<TechnologyPartner> Tp = (List<TechnologyPartner>) project.getTechnologypartner();
-		 model.addAttribute("listTp",Tp );
-=======
-		 model.addAttribute("TechnPart", project.getTechnologypartner());
->>>>>>> branch 'master' of https://github.com/isaibou/TEST5
 		
+		 
+		// List<TechnologyPartner> Tp = (List<TechnologyPartner>) project.getTechnologypartner();
+		 //model.addAttribute("listTp",Tp );
+  
+		 model.addAttribute("TechnPart", project.getTechnologypartner());
+
+		 System.out.println(project.getTechnologypartner());
 			return "detailProj";
 			
 	}

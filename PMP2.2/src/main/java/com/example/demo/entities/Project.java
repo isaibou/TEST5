@@ -85,7 +85,7 @@ public class Project implements Serializable{
 	@OneToMany
 	private Collection <Assets> assets;
 	
-	@ManyToMany(mappedBy = "Project")
+	@ManyToMany
 	private List<TechnologyPartner> technologypartner;  
 	
 	@ManyToOne

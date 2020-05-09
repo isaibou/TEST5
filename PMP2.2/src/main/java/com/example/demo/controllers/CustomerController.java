@@ -58,7 +58,7 @@ public class CustomerController {
 		model.addAttribute("cust", custs);
 		model.addAttribute("customer", new Customer());
 
-		model.addAttribute("custs", customerrepository.findAll()); 
+		model.addAttribute("custs", customerrepository.findAll());  
 
 		model.addAttribute("totalCustomer", custs.size());
 
@@ -95,7 +95,7 @@ public class CustomerController {
 		return  IOUtils.toByteArray(new FileInputStream(f));
 	}
 
-	  @RequestMapping(value ="updateCustomerform" )
+	  @RequestMapping(value ="updateCustomerform" ) 
 		private String updateCustomerform( Model model, Integer id ) {
 			Customer customer = customerrepository.getOne(id);
 			model.addAttribute("customer",customer);

@@ -2,13 +2,18 @@ package com.example.demo.controllers;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.example.demo.entities.Customer;
+import com.example.demo.entities.TypeDeliverable;
 import com.example.demo.entities.TypeExternalRequest;
 import com.example.demo.entities.TypeInternalRequest;
 import com.example.demo.entities.Users;
@@ -58,12 +63,21 @@ public class TypeRequestController {
 	
 	
 	
-	@RequestMapping(value="/deleteTypeInternalRequest")
-	public String deleteTypeInternalRequest(Model model, Integer id) {
-	TypeInternalRequest tir = typeInternalRequestRepository.getOne(id);	 
-		typeInternalRequestRepository.delete(tir);
+	@RequestMapping(value = "/editTypeInternalRequest",method = { RequestMethod.GET, RequestMethod.POST })
+	public String updateTypeInternalRequest(Model model, @Valid TypeInternalRequest typInReq, BindingResult bindingResult){
+
+		typeInternalRequestRepository.save(typInReq);
 		
-	return"redirect:/typeRequest";
+		return "redirect:/typeRequest";
+	}
+	
+	@RequestMapping(value ="/updateTypeInternalRequest")
+	public String updateTypeIntReqForm( Model model, Integer id ) {
+		
+		 TypeInternalRequest	typeInternalRequest = typeInternalRequestRepository.getOne(id);
+		 model.addAttribute("typInReq",typeInternalRequest);
+		 
+			return "updateTypeIntReqForm";
 	}
 
 	
@@ -77,13 +91,21 @@ public class TypeRequestController {
 	
 	
 	
-	@RequestMapping(value="/deleteTypeExternalRequest")
-	public String deleteTypeExternalRequest(Model model, Integer id) {
-		TypeExternalRequest tir = typeExternalRequestRepository.getOne(id);	 
-		typeExternalRequestRepository.delete(tir);
-		
+	@RequestMapping(value = "/editTypeExternalRequest",method = { RequestMethod.GET, RequestMethod.POST })
+	public String updateTypeExternalRequest(Model model, @Valid TypeExternalRequest typExReq, BindingResult bindingResult){
 
+		typeExternalRequestRepository.save(typExReq);
 		
-	return"redirect:/typeRequest";
+		return "redirect:/typeRequest";
 	}
+	
+	@RequestMapping(value ="/updateTypeExternalRequest")
+	public String updateTypeExtReqForm( Model model, Integer id ) {
+		
+		 TypeExternalRequest	TypeExternalRequest = typeExternalRequestRepository.getOne(id);
+		 model.addAttribute("typExReq",TypeExternalRequest);
+		 
+			return "updateTypeExtReqForm";
+	}
+	
 }

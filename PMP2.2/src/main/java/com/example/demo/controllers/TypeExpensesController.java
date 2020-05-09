@@ -2,13 +2,18 @@ package com.example.demo.controllers;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.example.demo.entities.Customer;
+import com.example.demo.entities.TypeDeliverable;
 import com.example.demo.entities.TypeExpenses;
 import com.example.demo.entities.TypeExternalRequest;
 import com.example.demo.entities.TypeInternalRequest;
@@ -53,16 +58,21 @@ public class TypeExpensesController {
 		return"redirect:/typeExpenses";
 	}
 	
-	
-	
-	@RequestMapping(value="/deleteTypeExpenses")
-	public String deleteTypeExpenses(Model model, Integer id) {
-			TypeExpenses type = typeExpensesRepository.getOne(id);
-			typeExpensesRepository.delete(type);
-		
-			return"redirect:/typeExpenses";
-	}
+	@RequestMapping(value = "/editTypeExpenses",method = { RequestMethod.GET, RequestMethod.POST })
+	public String updateTypeExpenses(Model model, @Valid TypeExpenses typeEx, BindingResult bindingResult){
 
+		typeExpensesRepository.save(typeEx);
+		
+		return "redirect:/typeExpenses";
+	}
 	
+	@RequestMapping(value ="/updateTypeExpenses")
+	public String updateTypeExpForm( Model model, Integer id ) {
+		
+		 TypeExpenses	typeExpenses = typeExpensesRepository.getOne(id);
+		 model.addAttribute("typeEx",typeExpenses);
+		 
+			return "updateTypeExpForm";
+	}
 
 }

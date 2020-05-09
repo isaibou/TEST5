@@ -585,6 +585,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		   <td><center><div class="btn-group dropdown"><button class="btn btn-default btn-xs" data-toggle="dropdown">
 		     <i class="glyphicon glyphicon-cog"></i> Action <span class="caret"></span></button>
 		     <ul class="dropdown-menu">
+		     <li><a th:href="@{'/techPartnerFile/'+${t.TechnologyPartnerFile}}"  style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Download TechnologyPartner File</a></li>
 		     <li><a th:href="@{updateTechnologyPartner(id=${t.TechnologyPartner_ID})}"  style="margin-top:-5px;"   class="btn btn-sm btn-light" role="button">Update</a></li>
 		    <li><a th:href="@{archiverTechnologyPartner(id=${t.TechnologyPartner_ID})}"  style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Archive</a></li>
      		<li><a th:href="@{detailTechnologyPartner(id=${t.TechnologyPartner_ID})}" style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Detail</a></li></ul></div></center></td>
@@ -600,7 +601,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	    <button type="button" class="close pull-right" data-dismiss="modal">&times;</button>
 	    <h1 class="m-n font-bold h3"> <b class="glyphicon-plus pull"> </b> Add Technology Partner</h1>
 	   </div>	   
-     <form th:action="@{SaveTechnologyPartner}" method ="post" th:object="${technopart}">  
+     <form th:action="@{SaveTechnologyPartner}" enctype="multipart/form-data" method ="post"  th:object="${technopart}">  
      <div class="modal-body">
 	    <div class="row">
 	    <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b></b></label>

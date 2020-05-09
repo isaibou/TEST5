@@ -70,7 +70,15 @@ if (!(file.isEmpty())) {
 
 			file.transferTo(new File(projectFile+file.getOriginalFilename()));
 		}
+
+//System.out.println(addProj.getTechnologypartner().listIterator());
+//System.out.println(addProj.getTechnologyPartners().length());
+
+ProjectRepository.save(addProj);
+
+
 		ProjectRepository.save(addProj);
+
 
 
 		return "redirect:/projects";	
@@ -111,11 +119,21 @@ if (!(file.isEmpty())) {
 	@RequestMapping(value ="/detailProject")
 	public String detailProject( Model model, Integer id ) {
 		
-	Project	project = ProjectRepository.getOne(id);
+	     Project	project = ProjectRepository.getOne(id);
+	     
 		 model.addAttribute("project",project);
 		 model.addAttribute("rfp", project.getRfp());
-		 model.addAttribute("TechnPart", project.getTechnologypartner());
+
+		// model.addAttribute("TechnPart", project.getTechnologypartner());
+		 
 		
+		 
+		// List<TechnologyPartner> Tp = (List<TechnologyPartner>) project.getTechnologypartner();
+		 //model.addAttribute("listTp",Tp );
+  
+		 model.addAttribute("TechnPart", project.getTechnologypartner());
+
+		 System.out.println(project.getTechnologypartner());
 			return "detailProj";
 			
 	}

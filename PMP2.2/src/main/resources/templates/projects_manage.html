@@ -652,7 +652,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		 
 		   <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Technology Partner</b></label>
 		 <div class="col-sm-8" style="margin:5px 0px;" >
-		 <select name ="role" multiple="multiple" class="form-control m-b" th:field="*{technologypartner}">
+		 <select name ="TechnologyPartner_ID" multiple="multiple" class="form-control m-b" th:field="*{technologypartner}">
 		 <option th:each="e:${TechnoPart}"  th:text="${e.NameTechnologyPartner}" th:value="${e.TechnologyPartner_ID}"></option>
 		 </select>
 		 </div>

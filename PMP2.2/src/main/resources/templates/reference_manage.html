@@ -598,6 +598,7 @@ document.addEventListener('DOMContentLoaded', function() {
 																	</thead>
 																	<tbody>
 																		<tr data-expanded="true" th:each="d:${listRef}">
+																		
 																			<td th:text="${d.project.TypeProject.NameType_Project}"><center></center></td>
 																			<td th:text ="${d.project.Name}"> 	
 																				<center></center>
@@ -605,12 +606,14 @@ document.addEventListener('DOMContentLoaded', function() {
 																			<td th:text="${d.SignedBy}"><center></center></td>	
 																			<td th:text="${d.Amount}"><center></center></td>
 																			<td th:text="${d.an}"><center><center/></td>
+																			
 																				<td><center>		<a  data-toggle="modal"  data-target="#imgpreview"><img class="img-thumbnail" width="80px" height="60px" th:src="@{getReferenceFile(id=${d.Reference_ID})}" ><a/><center/></td>
 																							<td>
 																								<center><div class="btn-group dropdown">
 																										<button class="btn btn-default btn-xs" data-toggle="dropdown"><i class="glyphicon glyphicon-cog"></i> Action <span class="caret"></span></button>
 																										<ul class="dropdown-menu">
-																										  <li><a th:href="@{updateReference(id=${d.Reference_ID})}"  style="margin-top:-5px;"   class="btn btn-sm btn-light" role="button">Update</a></li>
+																										<li><a th:href="@{'/ReferenceFile/'+${d.ReferenceFile}}"  style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Download Reference File</a></li>
+																										     <li><a th:href="@{updateReference(id=${d.Reference_ID})}"  style="margin-top:-5px;"   class="btn btn-sm btn-light" role="button">Update</a></li>
 																								             <li><a th:href="@{deleteReference(id=${d.Reference_ID})}"  style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Delete</a></li>
 																								             <li><a th:href="@{detailReference(id=${d.Reference_ID})}"  style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Details</a></li>
 																													</div></center>

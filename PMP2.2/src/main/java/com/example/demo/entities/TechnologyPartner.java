@@ -29,11 +29,7 @@ public class TechnologyPartner implements Serializable{
 	@ManyToMany
 	private List<Project> project = new ArrayList<Project>(); 
 
-	@ManyToMany
-	@JoinTable(name = "project_technologypartner",
-			joinColumns = @JoinColumn(name = "TechnologyPartner_ID"),
-			inverseJoinColumns = @JoinColumn(name = "Project_ID"))
-	private Set<Project> Project;
+	
 	
 	public List<Project> getproject() {
 		return project;

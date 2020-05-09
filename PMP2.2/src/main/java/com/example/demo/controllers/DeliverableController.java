@@ -65,7 +65,7 @@ if (!(fileD.isEmpty())) {
 
 			fileD.transferTo(new File(refFile+fileD.getOriginalFilename()));
 		}
-
+deliverablerepository.save(deli);
 if (!(picture.isEmpty())) {
 	
 	deli.setPreviewFile((picture.getOriginalFilename()));

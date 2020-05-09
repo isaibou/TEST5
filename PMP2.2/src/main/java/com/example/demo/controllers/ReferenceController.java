@@ -71,7 +71,7 @@ if (!(file.isEmpty())) {
 
 			file.transferTo(new File(refFile+file.getOriginalFilename()));
 		}
-
+referencerepository.save(ref);
 if (!(picture.isEmpty())) {
 	
 	ref.setPreviewPicture((picture.getOriginalFilename()));

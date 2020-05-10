@@ -45,9 +45,6 @@ public class InternalRequestController {
 
 	DateFormat df = new SimpleDateFormat("yyyy-	MM-dd");
 	
-	
-
-	
 	@RequestMapping(value="/request")
 	public String AllCustomer(Model model, Customer customer, Authentication auth) {
 		Users u = userRepository.getOne(auth.getName());
@@ -56,9 +53,6 @@ public class InternalRequestController {
 		List<InternalRequest> intAll = internalRequestrepository.findAll();
 		List<ExternalRequest> extAll = externalRequestrepository.findAll();
 		
-	
-		
-
 		model.addAttribute("listInt", intAll);
 		model.addAttribute("listExt", extAll);
 		model.addAttribute("internal", new InternalRequest());
@@ -68,7 +62,6 @@ public class InternalRequestController {
 		model.addAttribute("typeInternal", typeInternalRequestrepository.findAll());
 		model.addAttribute("typeExternal", typeExternalRequestrepository.findAll());
 		
-	
 		return "request";
 	}
 
@@ -81,25 +74,26 @@ public class InternalRequestController {
 		internal.setSubmitedDate(new Date());
 		internal.setStatus("Waiting");
 		
-	
 		internalRequestrepository.save(internal);
 		return"redirect:/request";
 	}
 	
+	@RequestMapping(value ="/addReqEmp" )
+	public String addReqEmp(Model model) {
+		model.addAttribute("int", new InternalRequest());
+		return "addReqEmp";
+	}
 	
 	@RequestMapping(value="/answer")
 	public String answer( Integer  id ) {
 		
 		InternalRequest  iR = internalRequestrepository.getOne(id);
 		iR.setStatus("Answered");
-		
-		
+			
 		internalRequestrepository.save(iR);
 		return"redirect:/request";
 	}
 	
-	
-
 	@RequestMapping(value="/confirm")
 	public String confirm( Integer  id ) {
 		
@@ -117,10 +111,7 @@ public class InternalRequestController {
 		
 		InternalRequest  iR = internalRequestrepository.getOne(id);
 		model.addAttribute("employeeR", iR);
-		//model.addAttribute("customer", u.getCustomer());
-		//model.addAttribute("allRoles", u.getRoles());	
-		
-	
+
 		return "updateRequestEmployee";
 	}
 	

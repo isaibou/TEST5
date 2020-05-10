@@ -3,7 +3,7 @@
 xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
 <meta charset="utf-8" />
-<title>Users</title>
+<title> Users</title>
 <meta name="description" content="app, web app, responsive, responsive layout, admin, admin panel, admin dashboard, flat, flat ui, ui kit, AngularJS, ui route, charts, widgets, components" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 <link rel="stylesheet" href="../libs/assets/animate.css/animate.css" type="text/css" />
@@ -390,9 +390,9 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
    <div class="col">
 	<div class="bg-light lter b-b wrapper-md">
 	 <h1 class="m-n font-bold h3">Manage Users
-	 	 <a style="margin-top:-5px;" data-toggle="modal"  data-target="#AddC" class="btn btn-sm btn-primary pull-right"  role="button"><b class="glyphicon-plus pull"> </b> Add User Customer </a>
+	 	 <a style="margin-top:-5px;" th:href="@{addUserC}" class="btn btn-sm btn-primary pull-right"  role="button"><b class="glyphicon-plus pull"> </b> Add Customer </a>
 	 
-	 <a style="margin-top:-5px;" data-toggle="modal"  data-target="#AddUser" class="btn btn-sm btn-primary pull-right"  role="button"><b class="glyphicon-plus pull"> </b> Add Employee </a></h1>
+	 <a style="margin-top:-5px;" th:href="@{addUserE}" class="btn btn-sm btn-primary pull-right"  role="button"><b class="glyphicon-plus pull"> </b> Add Employee </a></h1>
 	</div><!-- <div class="panel-heading"><small><a th:href="index">Home</a> </small>><small> Manage users</small> </div>-->
 	<div class="wrapper bg-white b-b">
 	 <ul class="nav nav-pills nav-sm">
@@ -523,146 +523,6 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 </div>
 
 </div><!-- /content -->
-<div class="modal fade" role="dialog" id="AddUser" >
- <div class="modal-dialog modal-lg" >
-  <div class="modal-content">
-   <div class="modal-header" style="background-image:url(img/grf-bg.jpg);color:white;">
-	<button type="button" class="close pull-right" data-dismiss="modal">&times;</button>
-	<h1 class="m-n font-bold h3"> <b class="glyphicon-plus pull"> </b> Add Employee</h1>
-   </div>
-   <form th:action="@{/saveUsers}"  enctype="multipart/form-data"  method="post" th:object="${addUser}">
-   <div class="modal-body">
-	<div class="row">
-	
-	
-	<label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Picture</b></label>
-     <div class="col-sm-8" style="margin: 5px 0px;">
-        <input type="file"  name="photo" class="form-control" id="input-id-1" >
-     </div>
-	
-	 <label class="col-sm-4 control-label" for="input-id-1" style="margin:5px 0px;"><b>Nom :</b></label>
-	 <div class="col-sm-8" style="margin:5px 0px;" >
-	  <input type="text" placeholder="Entry Nom" class="form-control" id="input-id-1"  required th:field=*{lastName}>
-	 </div>
-	 <label class="col-sm-4 control-label" for="input-id-1" style="margin:5px 0px;"><b>Prenom :</b></label>
-	 <div class="col-sm-8" style="margin:5px 0px;" >
-	  <input type="text" placeholder="Entry Prenom" class="form-control" id="input-id-1"  required th:field=*{firstName}>
-	 </div>
-	 
-	 	 <label class="col-sm-4 control-label" for="input-id-1" style="margin:5px 0px;"><b>CIN :</b></label>
-	 <div class="col-sm-8" style="margin:5px 0px;" >
-	  <input type="text" placeholder="Entry CIN" class="form-control" id="input-id-1"  required th:field=*{CIN}>
-	 </div>
-	 
-	  <label class="col-sm-4 control-label" for="input-id-1" style="margin:5px 0px;"><b>Phone :</b></label>
-	 <div class="col-sm-8" style="margin:5px 0px;" >
-	  <input type="text" placeholder="Entry Phone" class="form-control" id="input-id-1"  required th:field=*{Phone}>
-	 </div>
-	 
-	
-	 <label class="col-sm-4 control-label" for="input-id-1" style="margin:5px 0px;"><b>Login :</b></label>
-	 <div class="col-sm-8" style="margin:5px 0px;" >
-	  <input type="email" placeholder="Entry Login" class="form-control" id="input-id-1"  required th:field=*{username}>
-	 </div>
-	 
-	  <label class="col-sm-4 control-label" for="input-id-1" style="margin:5px 0px;"><b>Company :</b></label>
-	 <div class="col-sm-8" style="margin:5px 0px;" >
-	 <select name ="Customer_ID" class="form-control"  th:field="*{customer}" >
-	 <option th:each="c:${customer}" th:text="${c.Name}" th:value="${c.Customer_ID}" ></option>
-	 </select>
-	 </div>
-	 
-	   <label class="col-sm-4 control-label" for="input-id-1"  style="margin:5px 0px;"><b>Role :</b></label>
-	 <div class="col-sm-8" style="margin:5px 0px;" >
-	 <select name ="role" multiple="multiple" class="form-control m-b" th:field="*{roles}">
-
-	 <option th:each="r:${allRoles}" th:text="${r.role}" th:value="${r.role}"></option>
-
-	 <option th:each="r:${allRoles}"  th:text="${r.role}" th:value="${r.role}"></option>
-
-	 </select>
-	 </div>
-	 </div>
-	
-	
-	
-	<div class="modal-footer">
-    <button style="margin:0px;" class="btn m-b-xs btn-sm btn-primary btn-addon"><i class="glyphicon glyphicon-ok"></i>Save</button>
-	<button style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon" data-dismiss="modal"><i class="glyphicon glyphicon-remove"></i>Annuler</button>
-	
-   </div>
-  </div>
- </div>
- </form>
-</div>
-
-</div>
-
-
-
-<div class="modal fade" role="dialog" id="AddC" >
- <div class="modal-dialog modal-lg" >
-  <div class="modal-content">
-   <div class="modal-header" style="background-image:url(img/grf-bg.jpg);color:white;">
-	<button type="button" class="close pull-right" data-dismiss="modal">&times;</button>
-	<h1 class="m-n font-bold h3"> <b class="glyphicon-plus pull"> </b> Add User Customer</h1>
-   </div>
-   <form th:action="@{/saveUsersC}" method="post" th:object="${addUserC}">
-   <div class="modal-body">
-	<div class="row">
-	
-	
-	
-	 <label class="col-sm-4 control-label" for="input-id-1" style="margin:5px 0px;"><b>Nom :</b></label>
-	 <div class="col-sm-8" style="margin:5px 0px;" >
-	  <input type="text" placeholder="Entry Nom" class="form-control" id="input-id-1"  required th:field=*{lastName}>
-	 </div>
-	 <label class="col-sm-4 control-label" for="input-id-1" style="margin:5px 0px;"><b>Prenom :</b></label>
-	 <div class="col-sm-8" style="margin:5px 0px;" >
-	  <input type="text" placeholder="Entry Prenom" class="form-control" id="input-id-1"  required th:field=*{firstName}>
-	 </div>
-	 
-	 
-	  <label class="col-sm-4 control-label" for="input-id-1" style="margin:5px 0px;"><b>Phone :</b></label>
-	 <div class="col-sm-8" style="margin:5px 0px;" >
-	  <input type="text" placeholder="Entry Phone" class="form-control" id="input-id-1"  required th:field=*{Phone}>
-	 </div>
-	 
-	
-	 <label class="col-sm-4 control-label" for="input-id-1" style="margin:5px 0px;"><b>Login :</b></label>
-	 <div class="col-sm-8" style="margin:5px 0px;" >
-	  <input type="email" placeholder="Entry Login" class="form-control" id="input-id-1"  required th:field=*{username}>
-	 </div>
-	 
-	  <label class="col-sm-4 control-label" for="input-id-1" style="margin:5px 0px;"><b>Company :</b></label>
-	 <div class="col-sm-8" style="margin:5px 0px;" >
-	 <select name ="Customer_ID" class="form-control" th:field="*{customer}" >
-	 <option th:each="c:${customer}" th:text="${c.Name}" th:value="${c.Customer_ID}" ></option>
-	 </select>
-	 </div>
-	 
-	   <label class="col-sm-4 control-label" for="input-id-1"  style="margin:5px 0px;"><b>Role :</b></label>
-	 <div class="col-sm-8" style="margin:5px 0px;" >
-	 <select name ="role" multiple="multiple" class="form-control" th:field="*{roles}">
-	 <option th:each="r:${allRoles}" th:text="${r.role}" th:value="${r.role}"></option>
-	 </select>
-	 </div>
-	 </div>
-	
-	
-	
-	<div class="modal-footer">
-    <button style="margin:0px;" class="btn m-b-xs btn-sm btn-primary btn-addon"><i class="glyphicon glyphicon-ok"></i>Save</button>
-	<button style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon" data-dismiss="modal"><i class="glyphicon glyphicon-remove"></i>Annuler</button>
-	
-   </div>
-  </div>
- </div>
- </form>
-</div>
-
-</div>
-
 
 <!-- footer -->
 <footer id="footer" class="app-footer" role="footer">

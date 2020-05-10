@@ -19,8 +19,6 @@ import javax.validation.constraints.Size;
 @Table(name="users")
 public class Users implements Serializable {
 	@Id
-	
-	
 	private  String username;
 	private String password; 
 	private boolean actived;
@@ -48,22 +46,11 @@ public class Users implements Serializable {
 	
 	@OneToMany(mappedBy = "user" , fetch = FetchType.LAZY)
 	private Collection<Expenses> expenses;
-	
-	
 
 	public Users() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	
-	
-
-	
-	
-
-
-
-
 
 	public Users(String username, String password, boolean actived, String lastName, Boolean isCustomer, String picture,
 			String firstName, String cIN, String phone, Customer customer, Collection<Roles> roles) {

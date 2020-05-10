@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="utf-8" />
-  <title>Add Data Center</title>
+  <title> Add Type External Request</title>
   <meta name="description" content="app, web app, responsive, responsive layout, admin, admin panel, admin dashboard, flat, flat ui, ui kit, AngularJS, ui route, charts, widgets, components" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <link rel="stylesheet" href="../libs/assets/animate.css/animate.css" type="text/css" />
@@ -12,44 +12,27 @@
   <link rel="stylesheet" href="css/font.css" type="text/css" />
   <link rel="stylesheet" href="css/app.css" type="text/css" />
 </head>
-
 <body>
 <div class="app" >
  <a href="" class="navbar-brand block m-t"><i class="fa fa-power-off"></i> <b>PowerM</b> </a>
  	<div>
 	 <div class="modal-dialog modal-lg" >
 	 <div class="modal-content">
-      <h1 class="m-n font-bold h3"> Add Data Center </h1>
+      <h1 class="m-n font-bold h3"> Add Type External Request</h1>
      </div>
-   <form th:action="@{SaveDataCenter}" method ="post" th:object="${data}">
+   <form th:action="@{addTypeExternalRequest}" th:object=${typext}>
    <div class="modal-body">
-	<div class="row"> 
-	 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Customer</b></label>
-	 <div class="col-sm-8" style="margin: 5px 0px;">
-	  <select name="Customer_ID" class="form-control m-b" th:field=*{customer}>
-	   <option th:each ="c:${customer}" 
-	   th:text="${c.name}"
-	   th:value ="${c.Customer_ID}"></option>
-	  </select>
-	</div>
-	 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Serving</b></label>
-     <div class="col-sm-8" style="margin: 5px 0px;" >
-      <input type="text" class="form-control" placeholder="Entry Serving" id="input-id-1" required th:field=*{Serving}/>
-       <span class="text-danger" th:errors=*{Serving}></span>
-	 </div>
-	 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-2"><b>Adress</b></label>
-     <div class="col-sm-8" style="margin: 5px 0px;" >
-      <input type="text" class="form-control" placeholder="Entry Adress" id="input-id-2" required th:field=*{Adress}/>
-       <span class="text-danger" th:errors=*{Adress}></span>
-	 </div>
-	 </div>
-	 </div>
-		</div>
+  <div class="row">
+   <label class="col-sm-4 control-label" for="input-id-1" style="margin:5px 0px;"><b>Name:</b></label>
+   <div class="col-sm-8" style="margin:5px 0px;" >
+    <input type="text" placeholder="Enter name" class="form-control" id="input-id-1" th:field="*{NameTypeExternelRequest}">
+   </div>
+  </div>
+   </div>
 		  <div class="modal-footer">
 		   <button style="margin:0px;" class="btn m-b-xs btn-sm btn-primary btn-addon"><i class="glyphicon glyphicon-ok"></i>Save</button>
-		   <button style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon"><a th:href="dataCenter"><i class="glyphicon glyphicon-remove"></i>Annuler</a></button>
+		   <button style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon"><a th:href="typeRequest"><i class="glyphicon glyphicon-remove"></i>Annuler</a></button>
 		  </div>
-
 	    </form>
 		</div>
 	  </div>

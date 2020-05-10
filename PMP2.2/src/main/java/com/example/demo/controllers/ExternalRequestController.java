@@ -32,13 +32,16 @@ public class ExternalRequestController {
 		external.setUserCustomer(u);
 		external.setSubmitedDate(new Date());
 		external.setCommentaire("");
-		
-	
+
 		externalRequestRepository.save(external);
 		return"redirect:/request";
 	}
-
 	
+	@RequestMapping(value ="/addReqCust" )
+	public String addReqCust(Model model) {
+		model.addAttribute("ext", new ExternalRequest());
+		return "addReqCust";
+	}
 	
 	@RequestMapping(value="/answerC")
 	public String answserC( Integer  id ) {
@@ -48,8 +51,6 @@ public class ExternalRequestController {
 		
 		externalRequestRepository.delete(eR);
 		
-	
-		//externalRequestRepository.save(eR);
 		return"redirect:/request";
 	}
 	
@@ -58,10 +59,7 @@ public class ExternalRequestController {
 		
 		ExternalRequest  eR = externalRequestRepository.getOne(id);
 		model.addAttribute("customerR", eR);
-		//model.addAttribute("customer", u.getCustomer());
-		//model.addAttribute("allRoles", u.getRoles());	
-		
-	
+
 		return "updateRequestCustomer";
 	}
 	

@@ -58,6 +58,13 @@ public class TypeExpensesController {
 		return"redirect:/typeExpenses";
 	}
 	
+	@RequestMapping(value ="/addTypExp")
+	public String addTypExp( Model model) {
+		 model.addAttribute("typExp",new TypeExpenses());
+		 
+			return "addTypExp";
+	}
+	
 	@RequestMapping(value = "/editTypeExpenses",method = { RequestMethod.GET, RequestMethod.POST })
 	public String updateTypeExpenses(Model model, @Valid TypeExpenses typeEx, BindingResult bindingResult){
 

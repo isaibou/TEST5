@@ -87,17 +87,21 @@ referencerepository.save(ref);
 		
 		return "redirect:/reference";
 	}	
+	
+	@RequestMapping(value ="/addRef")
+	public String addRef( Model model) {
+		 model.addAttribute("ref",new Reference());
+		 model.addAttribute("project", projectRepository.findAll());	
+			return "addRefP";	
+	}
 
 	@RequestMapping(value ="/updateReference")
 	public String updateReference( Model model, Integer id ) {
 		
 		Reference	ref = referencerepository.getOne(id);
 		 model.addAttribute("ref",ref);
-		 
 		 model.addAttribute("project", projectRepository.findAll());	
-		
-			return "updateReference";
-			
+			return "updateReference";	
 	}
 	
 	

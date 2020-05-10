@@ -33,7 +33,6 @@ import com.example.demo.repository.UserRepository;
 @Controller
 public class ExpensesController {
 	
-	
 	@Autowired
 	UserRepository userRepository;
 	
@@ -46,10 +45,6 @@ public class ExpensesController {
 	
 	@Value("${dir.receipt}")
 		private String receipt;
-	
-	
-
-	
 	
 	@RequestMapping(value="/expenses")
 	public String AllCustomer(Model model, Customer customer, Authentication auth) {
@@ -110,15 +105,9 @@ public class ExpensesController {
 		
 		Expenses  ex = expensesRepository.getOne(id);
 		ex.setStatutExpense("Confirmed");
-		
-		
 		expensesRepository.save(ex);
 		return"redirect:/expenses";
 	}
-	
-	
-	
-	
 	
 	@RequestMapping(value="/getExpenses" , produces= MediaType.IMAGE_JPEG_VALUE)
 	@ResponseBody
@@ -127,6 +116,13 @@ public class ExpensesController {
 		return  IOUtils.toByteArray(new FileInputStream(f));
 	}
 	
+	@RequestMapping(value ="/addExp" )
+	public String addExp(Model model) {
+
+		model.addAttribute("exp", new Expenses());
+		model.addAttribute("type", typeExpensesRepository.findAll());
+		return "addExp";
+	}
 	
 	@RequestMapping(value ="/updateExpenses" )
 	public String updateExpenses(Integer id , Model model) {

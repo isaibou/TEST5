@@ -32,7 +32,6 @@ public class TypeRequestController {
 	@Autowired
 	private UserRepository userRepository;
 	
-
 	@RequestMapping(value="/typeRequest")
 	public String InternalRequestManage(Model model, Authentication auth) {
 		
@@ -53,7 +52,6 @@ public class TypeRequestController {
 		return"typeRequest";
 	}
 	
-
 	@RequestMapping(value="/addTypeInternalRequest")
 	public String addTypeInternalRequest( TypeInternalRequest internal) {
 		
@@ -61,7 +59,11 @@ public class TypeRequestController {
 		return"redirect:/typeRequest";
 	}
 	
-	
+	@RequestMapping(value ="/addTypIntReq")
+	public String addTypIntReq( Model model) {
+		 model.addAttribute("typint",new TypeInternalRequest());	 
+			return "addTypIntReq";
+	}
 	
 	@RequestMapping(value = "/editTypeInternalRequest",method = { RequestMethod.GET, RequestMethod.POST })
 	public String updateTypeInternalRequest(Model model, @Valid TypeInternalRequest typInReq, BindingResult bindingResult){
@@ -80,16 +82,18 @@ public class TypeRequestController {
 			return "updateTypeIntReqForm";
 	}
 
-	
-
 	@RequestMapping(value="/addTypeExternalRequest")
 	public String addTypeExternalRequest( TypeExternalRequest external) {
 		
 		typeExternalRequestRepository.save(external);
 		return"redirect:/typeRequest";
 	}
-	
-	
+
+	@RequestMapping(value ="/addTypExtReq")
+	public String addTypExtReq( Model model) {
+		 model.addAttribute("typext",new TypeExternalRequest());	 
+			return "addTypExtReq";
+	}
 	
 	@RequestMapping(value = "/editTypeExternalRequest",method = { RequestMethod.GET, RequestMethod.POST })
 	public String updateTypeExternalRequest(Model model, @Valid TypeExternalRequest typExReq, BindingResult bindingResult){

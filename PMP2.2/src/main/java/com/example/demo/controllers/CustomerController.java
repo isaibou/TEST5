@@ -94,6 +94,12 @@ public class CustomerController {
 		File f = new File(images+id);
 		return  IOUtils.toByteArray(new FileInputStream(f));
 	}
+	
+	@RequestMapping(value ="addCust" ) 
+	private String addCust( Model model) {
+		model.addAttribute("customer",new Customer());
+		return "addCust";			
+	}
 
 	  @RequestMapping(value ="updateCustomerform" ) 
 		private String updateCustomerform( Model model, Integer id ) {

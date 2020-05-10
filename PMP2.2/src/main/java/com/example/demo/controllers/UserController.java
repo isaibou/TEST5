@@ -73,9 +73,6 @@ public class UserController {
 	model.addAttribute("customer", customerRepository.findAll());
 	model.addAttribute("allRoles", roleRepository.findAll());	
 	
-	
-		
-		
 		return "users";
 	}
 	
@@ -107,8 +104,14 @@ if (!(file.isEmpty())) {
 		return "redirect:/users";
 	}
 	
-	
-	
+	@RequestMapping(value ="/addUserE", method = RequestMethod.GET )
+	public String addUserE(Model model) {	
+		Users u = new Users();
+		model.addAttribute("userE", u);
+		model.addAttribute("customer", u.getCustomer());
+		model.addAttribute("allRoles", u.getRoles());
+		return "addUserEmp";
+	}
 	
 	@RequestMapping(value ="/saveUsersC" )
 	public String addUsersC(Users u, Model model  ) throws Exception, IOException {
@@ -128,10 +131,11 @@ if (!(file.isEmpty())) {
 		return "redirect:/users";
 	}
 	
-	
-	
-	
-	
+	@RequestMapping(value ="/addUserC", method = RequestMethod.GET )
+	public String addUserC(Model model) {
+		model.addAttribute("userC", new Users());
+		return "addUserCust";
+	}
 	
 	@RequestMapping(value="/getPhoto" , produces= MediaType.IMAGE_JPEG_VALUE)
 	@ResponseBody

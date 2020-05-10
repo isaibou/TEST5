@@ -44,8 +44,6 @@ public class ProjectController {
 	@Value("${dir.project}")
 	String projectFile;
 	
-	
-	
 	@RequestMapping(value="/projects")
 	public String AllProject(Model model, Project project) {
 		
@@ -70,20 +68,26 @@ if (!(file.isEmpty())) {
 
 			file.transferTo(new File(projectFile+file.getOriginalFilename()));
 		}
-
-//System.out.println(addProj.getTechnologypartner().listIterator());
-//System.out.println(addProj.getTechnologyPartners().length());
-
 ProjectRepository.save(addProj);
 
 
 		ProjectRepository.save(addProj);
 
-
-
 		return "redirect:/projects";	
 	}
 
+	@RequestMapping(value ="/addProject")
+	public String addProject( Model model ) {
+		 model.addAttribute("project",new Project());
+		 model.addAttribute("TechnoPart", technologiepartnerRepository.findAll());
+		 model.addAttribute("rfp",rfprepository.findAll());
+		 model.addAttribute("TypeProject", typeProjectRepository.findAll());
+		 
+		 model.addAttribute("TechnologiePartnerRepository", technologiepartnerRepository.findAll());
+
+			return "addProj";
+			
+	}
 	    
 	@RequestMapping(value = "/editProject",method = { RequestMethod.GET, RequestMethod.POST })
 	public String updateProject(Model model, @Valid Project proj, @RequestParam(name ="file")  MultipartFile file ,BindingResult bindingResult) throws IllegalStateException, IOException{

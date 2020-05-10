@@ -58,6 +58,13 @@ public class TypeDeliverableController {
 		return"redirect:/typeDeliverable";
 	}
 	
+	@RequestMapping(value ="/addTypDeliv")
+	public String addTypDeliv( Model model) {
+		 model.addAttribute("typDeliv",new TypeDeliverable());
+		 
+			return "addTypDeliv";
+	}
+	
 	@RequestMapping(value = "/editTypeDeliverable",method = { RequestMethod.GET, RequestMethod.POST })
 	public String updateTypeDeliverable(Model model, @Valid TypeDeliverable typDeli, BindingResult bindingResult){
 

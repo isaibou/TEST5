@@ -88,17 +88,22 @@ deliverablerepository.save(deli);
 		File f = new File(refPicture+id);
 		return  IOUtils.toByteArray(new FileInputStream(f));
 	}
+	
+	@RequestMapping(value ="/addDeliv")
+	public String addDeliv( Model model) {
+		 model.addAttribute("deliv",new Deliverable());
+		 model.addAttribute("type", typeDeliverableRepository.findAll());
+		 model.addAttribute("project", projectrepository.findAll());	
+			return "addDelivP";	
+	}
 
 	@RequestMapping(value ="/updateDeliverable")
 	public String updateReference( Model model, Integer id ) {
-		
 		Deliverable	del = deliverablerepository.getOne(id);
 		 model.addAttribute("del",del);
 		 model.addAttribute("type", typeDeliverableRepository.findAll());
 		 model.addAttribute("project", projectrepository.findAll());	
-		
-			return "updateDeliverable";
-			
+			return "updateDeliverable";	
 	}
 
 	@RequestMapping(value="/editDeliverable")

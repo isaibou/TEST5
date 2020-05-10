@@ -10,12 +10,12 @@ import javax.persistence.OneToMany;
 @Entity
 public class DataCenter {
 	
-	
-	
 	@Id
 	@GeneratedValue
 	private Integer DataCenter_ID;
+	
 	private String Serving ;
+	
 	private String Adress;
 	@ManyToOne
 	@JoinColumn(name = "CUSTOMER_ID")

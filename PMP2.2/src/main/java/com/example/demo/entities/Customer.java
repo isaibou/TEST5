@@ -31,8 +31,8 @@ public class Customer implements Serializable{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "my_seq_id")
-	@SequenceGenerator(name = "my_seq_id", sequenceName = "my_seq_id", allocationSize = 100)
 	
+	@SequenceGenerator(name = "my_seq_id", sequenceName = "my_seq_id", allocationSize = 100)
 	private Integer Customer_ID;
 	
 	@NotNull(message="this name is exist")
@@ -42,7 +42,6 @@ public class Customer implements Serializable{
 	@NotNull
 	private String Industry;
 	
-
 	private String Logo;
 
 	@NotNull(message="u shoud entry the phone number")
@@ -83,7 +82,6 @@ public class Customer implements Serializable{
 
 	private String Country;
 	
-
 	@NotNull
 	private String Status;
 	

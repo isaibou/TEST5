@@ -3,11 +3,13 @@ package com.example.demo.controllers;
 import java.util.Date;
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -25,7 +27,11 @@ public class ExternalRequestController {
 	private UserRepository userRepository;
 	
 	@RequestMapping(value="/addExternalRequest")
-	public String addInternalRequest( ExternalRequest external, Authentication  auth ) {
+	public String addInternalRequest(@Valid ExternalRequest external,BindingResult bindingResult, Authentication  auth ) {
+		
+		if(bindingResult.hasErrors()) {
+			return "addReqCust";
+		}
 		
 		String login = auth.getName();
 		Users u =  userRepository.getOne(login);

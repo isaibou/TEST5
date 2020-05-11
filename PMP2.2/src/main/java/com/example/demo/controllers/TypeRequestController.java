@@ -53,7 +53,11 @@ public class TypeRequestController {
 	}
 	
 	@RequestMapping(value="/addTypeInternalRequest")
-	public String addTypeInternalRequest( TypeInternalRequest internal) {
+	public String addTypeInternalRequest(@Valid TypeInternalRequest internal, BindingResult bindingResult) {
+		
+		if(bindingResult.hasErrors()) {
+			return "addTypIntReq";
+		}
 		
 		typeInternalRequestRepository.save(internal);
 		return"redirect:/typeRequest";

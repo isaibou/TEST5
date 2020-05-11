@@ -47,9 +47,7 @@ public class ReferenceController {
 	private String refFile;
 	@Value("${dir.referencePicture}")
 	private String refPicture;
-	
 
-	
 	@RequestMapping(value="/reference")
 	public String ReferenceManage(Model model, Authentication auth) {
 		 
@@ -66,7 +64,11 @@ public class ReferenceController {
 	}
 
 	@RequestMapping(value="/SaveReference")
-	public String SaveReference(Model model, Reference ref, @RequestParam(name="file") MultipartFile file , @RequestParam(name="picture") MultipartFile picture) throws IllegalStateException, IOException {
+	public String SaveReference(Model model,@Valid Reference ref,BindingResult bindingResult, @RequestParam(name="file") MultipartFile file , @RequestParam(name="picture") MultipartFile picture) throws IllegalStateException, IOException {
+		
+		if(bindingResult.hasErrors()) {
+			return "addRefP";
+		}
 		
 if (!(file.isEmpty())) {
 			

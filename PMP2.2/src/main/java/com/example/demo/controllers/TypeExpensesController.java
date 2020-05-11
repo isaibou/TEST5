@@ -31,9 +31,7 @@ public class TypeExpensesController {
 	
 	@Autowired
 	private UserRepository userRepository;
-	
-
-	
+		
 	@RequestMapping(value="/typeExpenses")
 	public String InternalRequestManage(Model model, Authentication auth) {
 		
@@ -44,16 +42,18 @@ public class TypeExpensesController {
 	
 	model.addAttribute("tE", allTypeExpenses);
 	model.addAttribute("type", new TypeExpenses());
-
-
 	
 		return"typeExpenses";
 	}
 	
 
 	@RequestMapping(value="/addTypeExpenses")
-	public String addTypeExpenses(TypeExpenses type) {
+	public String addTypeExpenses(@Valid TypeExpenses type, BindingResult bindingResult) {
 
+		if(bindingResult.hasErrors()) {
+			return "addTypExp";
+		}
+		
 		typeExpensesRepository.save(type);
 		return"redirect:/typeExpenses";
 	}

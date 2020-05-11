@@ -5,10 +5,13 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -66,7 +69,11 @@ public class InternalRequestController {
 	}
 
 	@RequestMapping(value="/addInternalRequest")
-	public String addInternalRequest( InternalRequest internal, Authentication  auth ) {
+	public String addInternalRequest(@Valid InternalRequest internal,BindingResult bindingResult, Authentication  auth ) {
+		
+		if(bindingResult.hasErrors()) {
+			return "addReqEmp";
+		}
 		
 		String login = auth.getName();
 		Users u =  userRepository.getOne(login);

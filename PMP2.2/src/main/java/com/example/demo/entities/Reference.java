@@ -10,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotNull;
 
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.NumberFormat;
@@ -25,15 +26,15 @@ public class Reference implements Serializable{
 	private Date an;
 	@NumberFormat(pattern = "#,###,###,###.##")
 	private String Amount;
-	
+	@NotNull(message="entre SignedBy")
 	private String SignedBy;
 	@DateTimeFormat(pattern= "yyyy-mm-dd")
 	private Date Signing;
 	
 	private String KeywordsTags;
-	
+	@NotNull(message="entre PreviewPicture")
 	private String PreviewPicture;
-	
+	@NotNull(message="entre ReferenceFile")
 	private String ReferenceFile;
 	
 	@ManyToOne

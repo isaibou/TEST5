@@ -46,7 +46,10 @@ public class DataCenterController {
 	}
 	
 	@RequestMapping(value="/SaveDataCenter" , method= RequestMethod.POST)
-	private String SaveDataCenter( DataCenter dataCenter) {
+	private String SaveDataCenter(@Valid DataCenter dataCenter,BindingResult bindingResult) {
+		if(bindingResult.hasErrors()) {
+			return "addDataCenter";
+		}
 		dataCenterRepository.save(dataCenter);
 		return "redirect:/dataCenter";
 		

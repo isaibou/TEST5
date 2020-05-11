@@ -30,7 +30,7 @@
 	 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Company Name</b></label>
      <div class="col-sm-8" style="margin: 5px 0px;" >
       <input type="text" class="form-control" placeholder="Entry Name of Company" id="input-id-1"  required th:field=*{Name}/>
-      <span class="text-danger" th:errors=*{Name}></span>
+      <span class="text-danger" th:errors="${customer.Name}"></span>
 	 </div>
 	 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Company Address</b></label>
 	 <div class="col-sm-8" style="margin: 5px 0px;">

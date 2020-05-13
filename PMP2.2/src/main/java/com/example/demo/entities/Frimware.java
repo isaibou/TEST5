@@ -15,6 +15,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
@@ -37,24 +39,11 @@ public class Frimware implements Serializable{
 	
 	
 	@ManyToMany
-	private List<AssetType> assettype = new ArrayList<AssetType>(); 
-
-	@ManyToMany
-	@JoinTable(name = "assetType_frimware",
-			joinColumns = @JoinColumn(name = "AssetType_ID"),
-			inverseJoinColumns = @JoinColumn(name = "frimware_ID"))
-	private Set<AssetType> assetType;
+	@JoinTable(name="ASSETTYPE_FIRMWARE")
+	private Collection<AssetType> assetType;
 	
-	
-	public List<AssetType> getAssettype() {
-		return assettype;
-	}
-
-	public void setAssettype(List<AssetType> assettype) {
-		this.assettype = assettype;
-	}
-
-
+	@OneToMany(mappedBy = "frimware")
+	private Collection<Assets> assets;
 
 	public Frimware() {
 		super();
@@ -114,6 +103,35 @@ public class Frimware implements Serializable{
 	public void setStatus(String status) {
 		Status = status;
 	}
+
+
+
+
+	public Collection<AssetType> getAssetType() {
+		return assetType;
+	}
+
+
+
+
+	public void setAssetType(Collection<AssetType> assetType) {
+		this.assetType = assetType;
+	}
+
+
+
+
+	public Collection<Assets> getAssets() {
+		return assets;
+	}
+
+
+
+
+	public void setAssets(Collection<Assets> assets) {
+		this.assets = assets;
+	}
+
 
 
 }

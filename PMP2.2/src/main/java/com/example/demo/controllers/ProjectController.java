@@ -4,6 +4,8 @@ import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.mail.Multipart;
@@ -75,9 +77,34 @@ if (!(file.isEmpty())) {
 
 			file.transferTo(new File(projectFile+file.getOriginalFilename()));
 		}
-		ProjectRepository.save(addProj);
-
-
+		
+		/*
+		 * Customer custo= addProj.getRfp().getCustomer(); List<Assets> as =
+		 * (List<Assets>) addProj.getAssets();
+		 * 
+		 * 
+		 * for (Assets s : as) s.setCustomer(custo);;
+		 */
+	 
+		
+	      ProjectRepository.save(addProj);
+		/*
+		 * Collection<Assets> a = addProj.getAssets();
+		 * 
+		 * System.out.println("ici nous avons la liste des assets " + a); for(Assets s :
+		 * a) { //System.out.println(s.getProject().getProject_ID());
+		 * 
+		 * s.setProject(project); System.out.println( s.getProject().getProject_ID());
+		 * 
+		 * 
+		 * }
+		 */
+	      Collection<Assets> ass=  addProj.getAssets();
+	      Customer c =  addProj.getRfp().getCustomer();
+	      
+	      for (Assets a : ass) {
+	    	  a.setCustomer(c);
+	      }
 		return "redirect:/projects";	
 	}
 
@@ -97,6 +124,7 @@ if (!(file.isEmpty())) {
 		 model.addAttribute("project",project);
 		 
 		 model.addAttribute("TechnologiePartnerRepository", technologiepartnerRepository.findAll());
+		 model.addAttribute("type",typeProjectRepository.findAll());
 		 
 		 System.out.println(project.getName());
 		

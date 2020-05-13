@@ -2,12 +2,14 @@ package com.example.demo.entities;
 
 
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -22,13 +24,19 @@ public class Ticket implements Serializable{
 	private Date OpenedDate;
 	private Date ClosedDate;
 	private Date LastUpdatedate;
-	private String StatusTicket;
+	private String statusTicket;
 	private String PriorityTicket;
 	private String TypeTicket;
-	@OneToOne
-	@JoinColumn
-	private Ticket ticket;
 	
+	@ManyToOne
+	@JoinColumn(name="ASSET_ID")
+	private Assets asset;
+	@ManyToOne
+	@JoinColumn(name="CUSTOMER_ID")
+	private Customer customer;
+	@ManyToOne
+	@JoinColumn(name="USER_ID")
+	private Users user;
 	public Ticket() {
 		super();
 	}
@@ -36,7 +44,7 @@ public class Ticket implements Serializable{
 	
 
 	public Ticket(String description, String logFiles, String solutionDescription, Date openedDate, Date closedDate,
-			Date lastUpdatedate, String statusTicket, String priorityTicket, String typeTicket) {
+			Date lastUpdatedate, String StatusTicket, String priorityTicket, String typeTicket) {
 		super();
 		Description = description;
 		LogFiles = logFiles;
@@ -44,7 +52,7 @@ public class Ticket implements Serializable{
 		OpenedDate = openedDate;
 		ClosedDate = closedDate;
 		LastUpdatedate = lastUpdatedate;
-		StatusTicket = statusTicket;
+		statusTicket = StatusTicket;
 		PriorityTicket = priorityTicket;
 		TypeTicket = typeTicket;
 	}
@@ -107,13 +115,7 @@ public class Ticket implements Serializable{
 		LastUpdatedate = lastUpdatedate;
 	}
 
-	public String getStatusTicket() {
-		return StatusTicket;
-	}
-
-	public void setStatusTicket(String statusTicket) {
-		StatusTicket = statusTicket;
-	}
+	
 
 	public String getPriorityTicket() {
 		return PriorityTicket;
@@ -137,16 +139,60 @@ public class Ticket implements Serializable{
 
 
 
-	public Ticket getTicket() {
-		return ticket;
+	public Assets getAsset() {
+		return asset;
 	}
 
 
 
-	public void setTicket(Ticket ticket) {
-		this.ticket = ticket;
+	public void setAsset(Assets asset) {
+		this.asset = asset;
 	}
+
+
+
+	public String getStatusTicket() {
+		return statusTicket;
+	}
+
+
+
+	public void setStatusTicket(String statusTicket) {
+		this.statusTicket = statusTicket;
+	}
+
+
+
+	public Customer getCustomer() {
+		return customer;
+	}
+
+
+
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
+	}
+
+
+
+	public Users getUser() {
+		return user;
+	}
+
+
+
+	public void setUser(Users user) {
+		this.user = user;
+	}
+
+
+
 	
+
+
+	
+
+
 	
 
 }

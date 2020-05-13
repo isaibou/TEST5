@@ -41,6 +41,11 @@ public class RFP implements Serializable{
 	@OneToMany(mappedBy = "rfp" , fetch = FetchType.LAZY)
 	private Collection<Project> project;
 	
+	@ManyToOne
+	@JoinColumn
+	private Customer customer;
+	
+	
 	@OneToMany
 	private Collection <Contrat> Contrat;
 	
@@ -52,9 +57,6 @@ public class RFP implements Serializable{
 	public void setContrat(Collection<Contrat> contrat) {
 		Contrat = contrat;
 	}
-	@ManyToOne
-	@JoinColumn
-	private Customer customer;
 	
 	public RFP(Customer customer) {
 		super();
@@ -144,6 +146,14 @@ public class RFP implements Serializable{
 	}
 	public void setStatusRFP(String statusRFP) {
 		StatusRFP = statusRFP;
+	}
+
+	public Collection<Project> getProject() {
+		return project;
+	}
+
+	public void setProject(Collection<Project> project) {
+		this.project = project;
 	}
 	
 

@@ -100,6 +100,14 @@ public class Customer implements Serializable{
 	
 	@OneToMany(mappedBy = "customer" , fetch = FetchType.LAZY)
 	private Collection<DataCenter> dataCenter;
+	@OneToMany(mappedBy = "customer", fetch = FetchType.LAZY)
+	private Collection<Assets> assets;
+	
+	@OneToMany(mappedBy = "customer", fetch = FetchType.LAZY)
+	private Collection<RFP> rfp;
+	
+	@OneToMany(mappedBy = "customer", fetch = FetchType.LAZY)
+	private Collection<Ticket> tickets;
 	
 	public Customer() {
 		super();
@@ -289,6 +297,30 @@ public class Customer implements Serializable{
 
 	public void setDataCenter(Collection<DataCenter> dataCenter) {
 		this.dataCenter = dataCenter;
+	}
+
+	public Collection<Assets> getAssets() {
+		return assets;
+	}
+
+	public void setAssets(Collection<Assets> assets) {
+		this.assets = assets;
+	}
+
+	public Collection<RFP> getRfp() {
+		return rfp;
+	}
+
+	public void setRfp(Collection<RFP> rfp) {
+		this.rfp = rfp;
+	}
+
+	public Collection<Ticket> getTickets() {
+		return tickets;
+	}
+
+	public void setTickets(Collection<Ticket> tickets) {
+		this.tickets = tickets;
 	}
 	
 	

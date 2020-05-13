@@ -82,7 +82,8 @@ public class Project implements Serializable{
 	@Column(name = "Status")
 	private String Status;
 	
-	@OneToMany(mappedBy = "project")
+	@ManyToMany
+	@JoinTable(name="ASSET_PROJECT")
 	private Collection <Assets> assets;
 	
 	@ManyToMany(mappedBy = "Project")

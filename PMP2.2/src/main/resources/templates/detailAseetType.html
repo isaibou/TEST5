@@ -55,11 +55,21 @@
 		   <tr >
 		   <td style="color:#23b7e5;"><center>FRU </center></th>
 		   <td th:text ="${a.FRU}" class="m-n font-thin h4 text-secondary"><center><span></span></center></td>
-		   </tr>  
-		   <td style="color:#23b7e5;"><center>Vendor </center></th>
+		   </tr> 
+		   <tr> 
+		   <td style="color:#23b7e5;"><center>Vendor </center></td>
 		   <!-- Comment j ai appeler  le customer qui j ai choisi a partir du la liste déroulante des customers  -->
 		    <td> <select name ="vendor" class="m-n font-thin h4 text-secondary">
 		   <option th:each ="v:${assettype.Vendor}"   th:text="${v.NameVendor}"  class="m-n font-thin h4 text-secondary"></option>
+		   </select>
+			 </td>
+		   </tr>
+		   
+		    <tr> 
+		   <td style="color:#23b7e5;"><center>Frimware </center></td>
+		   <!-- Comment j ai appeler  le customer qui j ai choisi a partir du la liste déroulante des customers  -->
+		    <td> <select name ="vendor" class="m-n font-thin h4 text-secondary">
+		   <option th:each ="d:${assettype.frimware}"   th:text="${d.name}"  class="m-n font-thin h4 text-secondary"></option>
 		   </select>
 			 </td>
 		   </tr>

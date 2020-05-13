@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" class="">
+<head>
+  <meta charset="utf-8" />
+  <title>Update User</title>
+  <meta name="description" content="app, web app, responsive, responsive layout, admin, admin panel, admin dashboard, flat, flat ui, ui kit, AngularJS, ui route, charts, widgets, components" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <link rel="stylesheet" href="../libs/assets/animate.css/animate.css" type="text/css" />
+  <link rel="stylesheet" href="../libs/assets/font-awesome/css/font-awesome.min.css" type="text/css" />
+  <link rel="stylesheet" href="../libs/assets/simple-line-icons/css/simple-line-icons.css" type="text/css" />
+  <link rel="stylesheet" href="../libs/jquery/bootstrap/dist/css/bootstrap.css" type="text/css" />
+
+  <link rel="stylesheet" href="css/font.css" type="text/css" />
+  <link rel="stylesheet" href="css/app.css" type="text/css" />
+
+</head>
+<body>
+<div class="app" >
+ <a href="" class="navbar-brand block m-t"><i class="fa fa-power-off"></i> <b>PowerM</b> </a>
+ <div>
+ <div class="modal-dialog modal-lg" >
+  <div class="modal-content">
+    <h1 class="m-n font-bold h3"> Affectation </h1>
+   </div>
+    <form th:action="@{affected(id=${ticket.Ticket_ID})}"  enctype="multipart/form-data"  method="post" th:object="${ticket}">
+   <div class="modal-body">
+	<div class="row">
+	
+	     <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b></b></label>
+     <div class="col-sm-8" style="margin: 5px 0px;">
+      <input type="hidden" class="form-control" placeholder="Entry Name of Project" id="input-id-1"  required th:field=*{Ticket_ID}/>
+	 </div>
+	
+	
+	 <label class="col-sm-4 control-label" for="input-id-1" style="margin:5px 0px;"><b>Customer :</b></label>
+	 <div class="col-sm-8" style="margin:5px 0px;" >
+	  <input type="text"  class="form-control" id="input-id-1" disabled   th:field=*{customer.Name}>
+	 </div>
+	 <label class="col-sm-4 control-label" for="input-id-1" style="margin:5px 0px;"><b>Priority :</b></label>
+	 <div class="col-sm-8" style="margin:5px 0px;" >
+	  <input type="text"  class="form-control" id="input-id-1" disabled  th:field=*{PriorityTicket}>
+	 </div>
+	 
+	 	 <label class="col-sm-4 control-label" for="input-id-1" style="margin:5px 0px;"><b>Type Ticket :</b></label>
+	 <div class="col-sm-8" style="margin:5px 0px;" >
+	  <input type="text" placeholder="Entry CIN" class="form-control" disabled id="input-id-1"   th:field=*{TypeTicket}>
+	 </div>
+	 
+	  <label class="col-sm-4 control-label" for="input-id-1" style="margin:5px 0px;"><b>Description :</b></label>
+	 <div class="col-sm-8" style="margin:5px 0px;" >
+	  <input type="text" placeholder="Entry Phone" class="form-control" disabled id="input-id-1"   th:field=*{Description}>
+	 </div>
+	 
+	
+	 <label class="col-sm-4 control-label" for="input-id-1" style="margin:5px 0px;"><b>Opened Date:</b></label>
+	 <div class="col-sm-8" style="margin:5px 0px;" >
+	  <input type="email" placeholder="Entry Login" class="form-control" disabled id="input-id-1"   th:field=*{OpenedDate}>
+	 </div>
+	 
+	  <label class="col-sm-4 control-label" for="input-id-1" style="margin:5px 0px;"><b>Employee :</b></label>
+	 <div class="col-sm-8" style="margin:5px 0px;" >
+	 <select name ="employee" class="form-control"  >
+	 <option  th:each ="a:${employee}"  th:text="${a.lastName} + .+ ${a.firstName}" th:value="${a.username}" ></option>
+	 </select>
+	 </div>
+	
+	 </div>
+	 </div>
+	<div class="modal-footer">
+    <button style="margin:0px;" class="btn m-b-xs btn-sm btn-primary btn-addon"><i class="glyphicon glyphicon-ok"></i>Save</button>
+	<button th:href="@{/tickets_manage}" style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon" data-dismiss="modal"><i class="glyphicon glyphicon-remove"></i>Annuler</button>
+	 </div>
+	 </form>
+ </div>
+ 
+ </div>
+  </div>
+<script src="../libs/jquery/jquery/dist/jquery.js"></script>
+<script src="../libs/jquery/bootstrap/dist/js/bootstrap.js"></script>
+<script src="js/ui-load.js"></script>
+<script src="js/ui-jp.config.js"></script>
+<script src="js/ui-jp.js"></script>
+<script src="js/ui-nav.js"></script>
+<script src="js/ui-toggle.js"></script>
+<script src="js/ui-client.js"></script>
+<script src = "js/countries.js"></script>
+<script language="javascript">
+	populateCountries("countryA", "stateA"); // first parameter is id of country drop-down and second parameter is id of state drop-down
+    populateCountries("countryU", "stateU");
+</script>
+</body>
+</html>

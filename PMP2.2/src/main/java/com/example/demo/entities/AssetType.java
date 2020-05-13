@@ -41,7 +41,7 @@ public class AssetType implements Serializable{
 	@Column(name = "Status")
 	private String Status;
 	
-	@OneToMany
+	@OneToMany(mappedBy = "assettype")
 	private Collection <Assets> assets;
 	
 	
@@ -54,7 +54,8 @@ public class AssetType implements Serializable{
 	}
 
 	
-	@ManyToMany(mappedBy = "assetType")
+	@ManyToMany
+	@JoinTable(name="ASSETTYPE_FIRMWARE")
 	private List<Frimware> frimware;
 
 	@ManyToMany

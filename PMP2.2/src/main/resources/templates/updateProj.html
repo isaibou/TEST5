@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-
   <meta charset="utf-8" />
   <title>Update Project</title>
   <meta name="description" content="app, web app, responsive, responsive layout, admin, admin panel, admin dashboard, flat, flat ui, ui kit, AngularJS, ui route, charts, widgets, components" />
@@ -21,7 +20,7 @@
 	 <div class="modal-content">
       <h1 class="m-n font-bold h3"> Update Project </h1>
      </div>
-   <form th:action="@{editProject}" method ="post" th:object="${project}">
+   <form th:action="@{editProject}" method ="post" enctype="multipart/form-data" th:object="${project}">
       <div class="modal-body">
 	    <div class="row">
 	     <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b></b></label>
@@ -29,16 +28,32 @@
       <input type="hidden" class="form-control" placeholder="Entry Name of Project" id="input-id-1"  required th:field=*{Project_ID}/>
       <span class="text-danger" th:errors=*{Name}></span>
 	 </div>
+	 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b></b></label>
+	 <div class="col-sm-8" style="margin: 5px 0px;" >
+      <input type="hidden" class="form-control" placeholder="Entry Name of Contrat" id="input-id-1"  required th:field=*{DeliveryCertificate}/>
+	 </div>
 	     <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Project Name</b></label>
 	     <div class="col-sm-8" style="margin: 5px 0px;" >
 		  <input type="text" class="form-control" placeholder="Entry Name of Project" id="input-id-1" required th:field=*{Name}/>
 		  <span class="text-danger" th:errors=*{Name}></span>
 		 </div>
 	     <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Type Project</b></label>
+
 		 <div class="col-sm-8" style="margin: 5px 0px;" >
 		  <select name="account" class="form-control m-b" required th:field=*{TypeProject}>
 	       <option th:each="t:${type}" th:value ="${t.Type_Project_ID}" th:text="${t.NameType_Project}"></option>
 		  </select>
+
+		 <div class="col-sm-8" style="margin:5px 0px;" >
+		 <select name ="role"  class="form-control m-b" th:field="*{typeProject}">
+		 <option th:each="t:${TypeProject}"  th:text="${t.NameType_Project}" th:value="${t.Type_Project_ID}"></option>
+		 </select>
+		 </div>
+		 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>RFP</b></label>
+		 <div class="col-sm-8" style="margin:5px 0px;" >
+		 <select name ="role"  class="form-control m-b" th:field="*{rfp}">
+		 <option th:each="r:${rfp}"  th:text="${r.Title}" th:value="${r.RFP_ID}"></option>
+		 </select>
 		 </div>
 		 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Amount</b></label>
 		 <div class="col-sm-8" style="margin: 5px 0px;">
@@ -62,6 +77,7 @@
 		      <input type="date" class="form-control" required th:field=*{FinalTemporaryDate}/>
 		 </div>
 		 <label class="col-sm-4 control-label" placeholder="Entry Delivery Certificate" style="margin: 5px 0px;" for="input-id-1"><b>Delivery Certificate</b></label>
+<<<<<<< HEAD
 		 <div class="col-sm-7">
           <input type="text" placeholder="Upload Preview File"class="form-control" id="input-id-1">
          </div>
@@ -72,8 +88,17 @@
           </div>
           </div>
 		 <label class="col-sm-4 control-label" placeholder="Entry Technology Partners" style="margin: 5px 0px;" for="input-id-1"><b>Technology Partners</b></label>
+=======
+>>>>>>> branch 'master' of https://github.com/isaibou/TEST5
 		 <div class="col-sm-8" style="margin: 5px 0px;">
-		 <input type="text" data-role="tagsinput"  placeholder="Entry Technology Partners" class="form-control" id="input-id-1"  required th:field=*{TechnologyPartners}/>
+         <input type="file" placeholder="Entry Contract File"class="form-control" id="input-id-1" name="file"/>
+         <span th:text ="${project.DeliveryCertificate}" class="m-n font-thin h4 text-secondary"></span>
+       </div>
+		<label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Technology Partner</b></label>
+		 <div class="col-sm-8" style="margin:5px 0px;" >
+		 <select name ="role" multiple="multiple" class="form-control m-b" th:field="*{technologypartner}">
+		 <option th:each="e:${TechnoPart}"  th:text="${e.NameTechnologyPartner}" th:value="${e.TechnologyPartner_ID}"></option>
+		 </select>
 		 </div>
 		 <label class="col-sm-4 control-label" placeholder="Entry Warranty" style="margin: 5px 0px;" for="input-id-1"><b>Warranty</b></label>
 		 <div class="col-sm-8" style="margin: 5px 0px;">

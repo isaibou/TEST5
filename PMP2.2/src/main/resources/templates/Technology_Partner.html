@@ -2,6 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 	<head>
 	
+	
 		<meta charset="utf-8" />
 		<title>Technology Partner</title>
 		<meta name="description" content="app, web app, responsive, responsive layout, admin, admin panel, admin dashboard, flat, flat ui, ui kit, AngularJS, ui route, charts, widgets, components" />
@@ -540,7 +541,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	                 <div class="row text-center" style="margin: 10px 5px;">
                               <div class="col-sm-6">
                                 <div class="panel padder-v item">
-                                  <div class="h1 count text-info font-thin h1 pull-center">121</div>
+                                  <div class="h1 count text-info font-thin h1 pull-center" th:text="${totalTechnologyPartner}"></div>
                                   <span class="text-muted text-xs"><b> Total Technology Partner </b></span>
                                   <span class="bottom text-right w-full">
                                     <i class="glyphicon   glyphicon-tower text-muted m-r-sm"></i>
@@ -550,8 +551,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
                               <div class="col-sm-6">
                                 <a href="" class="block panel padder-v bg-primary item">
-                                  <span class="text-white count font-thin h1 block">80</span>
-                                  <span class="text-muted text-xs"><b> Technology Partner Actifs </b></span>
+                                  <span class="text-white count font-thin h1 block" th:text="${totalTechnologyPartner}"></span>
+                                  <span class="text-muted text-xs"><b> Total Technology Partner </b></span>
                                   <span class="bottom text-right w-full">
                                     <i class="glyphicon glyphicon-briefcase text-muted m-r-sm"></i>
                                   </span>
@@ -571,6 +572,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	     <thead style="color:#23b7e5;">
 		  <tr>
 		   <th  style="width:20%"><center> Nmae Technology Partner </center></th>
+		   <th  style="width:20%"><center> TechnologyPartner File </center></th>
 		   <th  style="width:5%"><center>Status</center></th>
 		   <th  style="width:10%"><center>Actions</center></th>
 		  </tr>
@@ -578,14 +580,16 @@ document.addEventListener('DOMContentLoaded', function() {
 		 <tbody>
 		  <tr data-expanded="true" th:each="t:${techpart}">
 		   <td  th:text ="${t.NameTechnologyPartner}" class="m-n font-thin h4 text-secondary"><center><b></b></center></td> 
+		   <td  th:text ="${t.TechnologyPartnerFile}" class="m-n font-thin h4 text-secondary"><center><b></b></center></td>
 		    <td th:text ="${t.Status}" class="m-n font-thin h4 text-secondary"><center><span></span><center/></td>
 		   <td><center><div class="btn-group dropdown"><button class="btn btn-default btn-xs" data-toggle="dropdown">
 		     <i class="glyphicon glyphicon-cog"></i> Action <span class="caret"></span></button>
 		     <ul class="dropdown-menu">
+		     <li><a th:href="@{'/techPartnerFile/'+${t.TechnologyPartnerFile}}"  style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Download TechnologyPartner File</a></li>
 		     <li><a th:href="@{updateTechnologyPartner(id=${t.TechnologyPartner_ID})}"  style="margin-top:-5px;"   class="btn btn-sm btn-light" role="button">Update</a></li>
 		    <li><a th:href="@{archiverTechnologyPartner(id=${t.TechnologyPartner_ID})}"  style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Archive</a></li>
-<!-- 		     <li><a th:href="@{detailTechnologyPartner(id=${t.TechnologyPartner_ID})}" style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Detail</a></li></ul></div></center></td>
- -->		  </tr>
+     		<li><a th:href="@{detailTechnologyPartner(id=${t.TechnologyPartner_ID})}" style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Detail</a></li></ul></div></center></td>
+ 		  </tr>
 		 </tbody>
 		</table>
 	   </div>
@@ -597,7 +601,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	    <button type="button" class="close pull-right" data-dismiss="modal">&times;</button>
 	    <h1 class="m-n font-bold h3"> <b class="glyphicon-plus pull"> </b> Add Technology Partner</h1>
 	   </div>	   
-     <form th:action="@{SaveTechnologyPartner}" method ="post" th:object="${technopart}">  
+     <form th:action="@{SaveTechnologyPartner}" enctype="multipart/form-data" method ="post"  th:object="${technopart}">  
      <div class="modal-body">
 	    <div class="row">
 	    <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b></b></label>
@@ -608,14 +612,17 @@ document.addEventListener('DOMContentLoaded', function() {
 	     <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Name Technology Partner</b></label>
 	     <div class="col-sm-8" style="margin: 5px 0px;" >
 		  <input type="text" class="form-control" placeholder="Entry Name of Technology Partner" id="input-id-1" required th:field=*{NameTechnologyPartner}/> 
-	
-		 
+		  </div>
+	 <label class="col-sm-4 control-label"  style="margin: 5px 0px;" for="input-id-1"><b>TechnologyPartner File</b></label>
+       <div class="col-sm-8" style="margin: 5px 0px;">
+         <input type="file" placeholder="Entry Contract File" class="form-control" name="file" id="input-id-1" required />
+       </div>
+				 </div>
+		</div> 
 		  <div class="modal-footer">
 		   <button style="margin:0px;" class="btn m-b-xs btn-sm btn-primary btn-addon"><i class="glyphicon glyphicon-ok"></i>Save</button>
 		   <button style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon" data-dismiss="modal"><i class="glyphicon glyphicon-remove"></i>Annuler</button>
 		  </div>
-		 </div>
-		</div>
 	    </form>
 	  </div>
      </div>

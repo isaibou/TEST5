@@ -31,11 +31,7 @@ public class TypeProjectController {
 	private TypeProjectRepository typeProjectRepository;
 	@Autowired
 	private ProjectTaskRepository projectTaskrepository;
-	
-	
 
-	
-	
 	@RequestMapping(value="/typeProject")
 	public String TechnologyPartner(Model model, Authentication auth) {
 		
@@ -45,6 +41,7 @@ public class TypeProjectController {
 		List<TypeProject> listTp = typeProjectRepository.findAll();
 		List<ProjectTask> listpt = projectTaskrepository.findAll();
 		model.addAttribute("tProject",new TypeProject() );
+		model.addAttribute("totalTypeProject", listTp.size());
 		model.addAttribute("listTp", listTp);
 		model.addAttribute("listpt", listpt);
 
@@ -75,7 +72,9 @@ public class TypeProjectController {
 		TypeProject	tP = typeProjectRepository.getOne(id);
 		 model.addAttribute("pTask",tP);
 		 
-		
+		 List<ProjectTask> listpt = projectTaskrepository.findAll();
+		 model.addAttribute("listpt", listpt); 
+		 
 			return "updateTypeProject";
 			
 	}
@@ -83,14 +82,24 @@ public class TypeProjectController {
 	@RequestMapping(value ="/detailsTypeProject")
 	public String detailsTypeProject( Model model, Integer id ) {
 		
-		TypeProject	tP = typeProjectRepository.getOne(id);
+		 TypeProject	tP = typeProjectRepository.getOne(id);
 		 model.addAttribute("pTask",tP);
+		 List<ProjectTask> listpt = projectTaskrepository.findAll();
+		 model.addAttribute("listpt", listpt);
 		 List<ProjectTask> Pt = (List<ProjectTask>) tP.getProjectTask();
 		 model.addAttribute("listPt",Pt );
 		 
 		
-			return "updateTypeProject";
+			return "detailsTypeProject";
 			
+	}
+	
+	@RequestMapping(value ="/deleteTypeProject" )
+	private String deleteTypeProject( Model model, Integer id ) {
+	
+		typeProjectRepository.deleteById(id);
+		
+		 return "redirect:/typeProject";	
 	}
 	
 	

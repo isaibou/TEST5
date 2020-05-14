@@ -531,7 +531,7 @@
 												<div class="col">
 											<div class="bg-light lter b-b wrapper-md">
 												<h1 class="m-n font-bold h3"> Manage Customers 
-												<a sec:authorize="hasRole('ROLE_ADMIN')" style="margin-top:-5px;" data-toggle="modal"  data-target="#AddClient" class="btn btn-sm btn-primary pull-right"  role="button"><b class="glyphicon-plus pull"> </b>Add Customer</a> 
+												<a sec:authorize="hasRole('ROLE_ADMIN')" style="margin-top:-5px;" th:href="@{addCust}" class="btn btn-sm btn-primary pull-right"  role="button"><b class="glyphicon-plus pull"> </b>Add Customer</a> 
 											</h1>
 											</div>
 											
@@ -667,120 +667,6 @@
 																	
 </div>
 </div>
-</div>
-<div class="modal fade" role="dialog" id="AddClient" >
- <div class="modal-dialog modal-lg" >
-  <div class="modal-content">
-   <div class="modal-header" style="background-image:url(img/grf-bg.jpg);color:white;">
-	<button type="button" class="close pull-right" data-dismiss="modal"> &times;</button>
-    <h1 class="m-n font-bold h3"> <b class="glyphicon-plus pull"> </b> Add Company </h1>
-   </div>
-   <form th:action="@{SaveCustomer}" enctype="multipart/form-data" method ="post" th:object="${customer}">
-   <div class="modal-body">
-	<div class="row">
-	<label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Company Logo</b></label>
-     <div class="col-sm-8" style="margin: 5px 0px;">
-        <input type="file"  name="picture" class="form-control" id="input-id-1" >
-     </div>
-	 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Company Name</b></label>
-     <div class="col-sm-8" style="margin: 5px 0px;" >
-      <input type="text" class="form-control" placeholder="Entry Name of Company" id="input-id-1"  required th:field=*{Name}/>
-      <span class="text-danger" th:errors=*{Name}></span>
-	 </div>
-	 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Company Address</b></label>
-	 <div class="col-sm-8" style="margin: 5px 0px;">
-	  <input type="text"  class="form-control" placeholder="Entry Address of Company"id="input-id-2"  required th:field=*{AdressCompany}/>
-	  <span class="text-danger" th:errors=*{AdressCompany}></span>
-	 </div>
-	 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Company Phone</b></label>
-	 <div class="col-sm-8" style="margin: 5px 0px;">
-	  <input type="tel" placeholder="Entry Phone of Company"class="form-control" id="input-id-1" required th:field=*{PhoneCompany}/>
-	  <span class="text-danger" th:errors=*{PhoneCompany}></span>
-	 </div>
-	 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>CIO Name</b></label>
-	 <div class="col-sm-8" style="margin: 5px 0px;">
-	  <input type="text" placeholder="Entry Nom CIO"class="form-control" id="input-id-1" required th:field=*{NomCIO}/> 
-	  <span class="text-danger" th:errors=*{NomCIO}></span>
-	 </div>
-	  <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>CIO Email </b></label>
-	 <div class="col-sm-8" style="margin: 5px 0px;">
-	  <input type="email" placeholder="Entry Email CIO" class="form-control" id="input-id-1" required th:field=*{EmailCIO}/> 
-	  <span class="text-danger" th:errors=*{EmailCIO}></span>
-	 </div>
-	  <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>CIO Phone </b></label>
-	 <div class="col-sm-8" style="margin: 5px 0px;">
-	  <input type="tel" placeholder="Entry Phone CIO"class="form-control" id="input-id-1" required  th:field=*{PhoneCIO}/>
-	  <span class="text-danger" th:errors=*{PhoneCIO}></span>
-	 </div>
-	 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Technical Name</b></label>
-	 <div class="col-sm-8" style="margin: 5px 0px;">
-	  <input type="text" placeholder="Entry Nom Technical"class="form-control" id="input-id-1" required th:field=*{NomTechnical}> 
-	  <span class="text-danger" th:errors=*{NomTechnical}></span>
-	 </div>
-	 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Technical Email </b></label>
-	 <div class="col-sm-8" style="margin: 5px 0px;">
-	  <input type="email" placeholder="Entry Email Technical"class="form-control" id="input-id-1" required th:field=*{EmailTechnical}/> 
-	  <span class="text-danger" th:errors=*{EmailTechnical}></span>
-	 </div>
-	 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Technical Phone </b></label>
-	 <div class="col-sm-8" style="margin: 5px 0px;">
-	  <input type="tel" placeholder="Entry Phone Technical"class="form-control" id="input-id-1" required th:field=*{PhoneTechnical}/> 
-	  <span class="text-danger" th:errors=*{PhoneTechnical}></span>
-	 </div>
-	 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Country Company</b></label>
-	 <div class="col-sm-8" style="margin: 5px 0px;">
-	  <select id="countryA" name ="Morocco" class="form-control" required th:field=*{Country}></select>
-	  <span class="text-danger" th:errors=*{Country}></span>
-	 </div>
-	 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>City Company</b></label>
-	 <div class="col-sm-8" style="margin: 5px 0px;">
-	  <select name ="Rabat" id ="stateA" class="form-control" required th:field=*{City}></select>
-	  <span class="text-danger" th:errors=*{City}></span>
-	 </div>
-	 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Industry</b></label>
-	 <div class="col-sm-8" style="margin: 5px 0px;">
-	  <select name="account" class="form-control m-b"  th:field=*{Industry} >
-	   <option th:value ="Advertising" th:text="Advertising"></option>
-	   <option th:value ="Manufacturing" th:text="Manufacturing"></option>
-	   <option th:value ="Construction" th:text="Construction"></option>
-	   <option th:value ="Education" th:text="Education"></option>
-	   <option th:value ="Entertainment" th:text="Entertainment"></option>
-	   <option th:value ="Healthcare" th:text="Healthcare"></option>
-	   <option th:value ="Government" th:text="Government"></option>
-	   <option th:value ="Technology" th:text="Technology"></option>
-	   <option th:value ="Retail" th:text="Retail"></option>
-	   <option th:value ="Wholesale" th:text="Wholesale"></option>
-	   <option th:value ="Banking" th:text="Banking"></option>
-	   <option th:value ="Finance" th:text="Finance"></option>
-	   <option th:value ="Telecomunication" th:text="Telecomunication"></option>
-	   <option th:value ="Transportation" th:text="Transportation"></option>
-	  </select>
-	  <span class="text-danger" th:errors=*{Industry}></span>
-	 </div>
-	  <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>VIP</b></label>
-	 <div class="col-sm-8" style="margin: 5px 0px;">
-	  <select name="VIP" class="form-control m-b" required th:field=*{Vip}>
-	  	 <option th:value="YES" th:text="YES"  ></option>
-   		 <option th:value="NO" th:text="NO" ></option>
-	  </select>
-	  <span class="text-danger" th:errors=*{Vip}></span>
-	 </div>   
-	 </div>
-	</div>
-	<span th:utext="${successMessage}" ></span>
-	<div class="alert alert-danger alert-dismissible col-sm-12" th:if="${(bindingResult != null && bindingResult.getAllErrors() != null)}">
-       <button type="button" class="close" data-dismiss="alert" aria-hidden="true"></button>
-       <ul th:each="data : ${bindingResult.getAllErrors()}">
-        <li th:text="${data.getObjectName() + ' :: ' + data.getDefaultMessage()}"></li>
-       </ul>
-    </div> 
-   <div class="modal-footer">
-	<button style="margin:0px;" class="btn m-b-xs btn-sm btn-primary btn-addon"><i class="glyphicon glyphicon-ok"></i>Save</button>
-	<button style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon" data-dismiss="modal"><i class="glyphicon glyphicon-remove"></i>Annuler</button>		
-   </div>
-   </form>
-  </div>
- </div>
 </div>
 									<!-- /content -->
 

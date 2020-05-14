@@ -376,8 +376,6 @@
 
 </aside> <!-- / aside --><!-- content -->
 
-
-
 <div id="content" class="app-content" role="main">
  <div class="app-content-body ">
   <div class="hbox hbox-auto-xs hbox-auto-sm">
@@ -419,7 +417,7 @@
                               </div>
                             </div>
                           </div>
-    <a style="margin-top:5px;" data-toggle="modal"  data-target="#AddInternal" class="btn btn-sm btn-info pull-right"  role="button"><b class="glyphicon-plus pull"> </b> Add Request</a>
+    <a style="margin-top:5px;" th:href="@{addReqEmp}" class="btn btn-sm btn-info pull-right"  role="button"><b class="glyphicon-plus pull"> </b> Add Request</a>
     </div>
 	 <div class="col-sm-12" style="padding:20px 15px;margin:0px 2px;border-top:2px #19a9d5 solid;background-color:white;">
 	  <div class="panel panel-default">
@@ -457,7 +455,7 @@
 		 	<td th:switch="${i.Status}">
     <span th:case="'Answered'" class="label bg-success pull-center m-t-md" >Answered</span>
     <span th:case="'Waiting'" class="label bg-danger pull-center m-t-md" >Waiting </span>
-    <div th:case="'Confirmed'" class="label bg-danger pull-center m-t-md" >Confirmed</div>
+    <div th:case="'Confirmed'" class="label bg-info pull-center m-t-md" >Confirmed</div>
      
 </td>
 		 
@@ -519,7 +517,7 @@
  
   <div>
    
-    <a style="margin-top:5px;" data-toggle="modal"  data-target="#AddExternal" class="btn btn-sm btn-info pull-right" role="button"><b class="glyphicon-plus pull"> </b> Add  Request</a>
+    <a style="margin-top:5px;" th:href="@{addReqCust}" class="btn btn-sm btn-info pull-right" role="button"><b class="glyphicon-plus pull"> </b> Add  Request</a>
     </div>
     <div class="col-sm-12" style="padding:20px 15px;margin:0px 2px;border-top:2px #19a9d5 solid;background-color:white;">
 	 <div class="panel panel-default">
@@ -557,11 +555,7 @@
 		   <span th:if="${e.Status == true}" class="label bg-success pull-center m-t-md">Answered</span>
    		   <span th:unless="${e.Status == true}" class="label bg-danger pull-center m-t-md">Waiting</span> 
    		   </td>
-		  
-		 
-		 
-		 
-		  
+
 		  <td>
 		   <center>
 		   	<div class="btn-group dropdown">
@@ -593,73 +587,6 @@
  </div>
 </div>
 </div><!-- /content -->
-<div class="modal fade" role="dialog" id="AddInternal" >
- <div class="modal-dialog modal-lg" >
-  <div class="modal-content">
-   <div class="modal-header" style="background-image:url(img/grf-bg.jpg);color:white;">
-	<button type="button" class="close pull-right" data-dismiss="modal">&times;</button>
-	<h1 class="m-n font-bold h3"> <b class="glyphicon-plus pull"> </b> Add Employee Request</h1>
-   </div>
-   <form th:action="@{addInternalRequest}" th:object=${internal}>
-   <div class="modal-body">
-	<div class="row">
-	  <label class="col-sm-4 control-label" for="input-id-1" style="margin:5px 0px;"><b>Type request :</b></label>
-	 <div class="col-sm-8" style="margin:5px 0px;" >
-	 <select name ="TypeInternalRequest_ID" class="form-control" th:field="*{typeInternalRequest}" >
-	 <option th:each="t:${typeInternal}" th:text="${t.NameTypeInternalRequest}" th:value="${t.TypeInternalRequest_ID}" ></option>
-	 </select>
-	 </div>
-	</div>
-	
-	<div class="row">
-	 <label class="col-sm-4 control-label" for="input-id-1" style="margin:5px 0px;"><b>Description</b></label>
-	 <div class="col-sm-8" style="margin:5px 0px;" >
-	  <input type="text" placeholder="Entry Description" class="form-control" id="input-id-1" th:field=*{Description}  >
-	 </div>
-	</div>
-   </div>
-  <div class="modal-footer">
-  <button style="margin:0px;" class="btn m-b-xs btn-sm btn-primary btn-addon"><i class="glyphicon glyphicon-ok"></i>Save</button>
-	
-	<button style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon" data-dismiss="modal"><i class="glyphicon glyphicon-remove"></i>Annuler</button>
-   </div>
-   </form>
-  </div>
- </div>
-</div>
-<div class="modal fade" role="dialog" id="AddExternal" >
- <div class="modal-dialog modal-lg" >
-  <div class="modal-content">
-   <div class="modal-header" style="background-image:url(img/grf-bg.jpg);color:white;">
-  <button type="button" class="close pull-right" data-dismiss="modal">&times;</button>
-  <h1 class="m-n font-bold h3"> <b class="glyphicon-plus pull"> </b> Add Type External Request</h1>
-   </div>
-   <form th:action="@{addExternalRequest}" th:object=${external}>
-   <div class="modal-body">
- <div class="row">
-	  <label class="col-sm-4 control-label" for="input-id-1" style="margin:5px 0px;"><b>Type request :</b></label>
-	 <div class="col-sm-8" style="margin:5px 0px;" >
-	 <select name ="TypeExternalRequest_ID" class="form-control" th:field="*{typeExternalRequest}" >
-	 <option th:each="t:${typeExternal}" th:text="${t.NameTypeExternelRequest}" th:value="${t.TypeExternelRequest_ID}" ></option>
-	 </select>
-	 </div>
-	</div>
-	  <div class="row">
-   <label class="col-sm-4 control-label" for="input-id-1" style="margin:5px 0px;"><b>Description:</b></label>
-   <div class="col-sm-8" style="margin:5px 0px;" >
-    <input type="text" placeholder="Enter name" class="form-control" id="input-id-1" th:field="*{Description}" >
-   </div>
-  </div>
-   </div>
-  <div class="modal-footer">
-  <button style="margin:0px;" class="btn m-b-xs btn-sm btn-primary btn-addon"><i class="glyphicon glyphicon-ok"></i>Save</button>
- 
-  <button style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon" data-dismiss="modal"><i class="glyphicon glyphicon-remove"></i>Annuler</button>
-   </div>
-    </form>
-  </div>
- </div>
-</div>
 <!-- footer -->
 <footer id="footer" class="app-footer" role="footer">
  <div class="wrapper b-t bg-light">

@@ -7,23 +7,30 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotNull;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 
 
 
 @Entity
 public class Deliverable implements Serializable{
-	
-	
+		
 	@Id
 	@GeneratedValue
 	private Integer Deliverable_ID;
+	@NotNull(message="entre Name")
 	private String Name;
+	@NotNull(message="entre Version")
 	private String Version;
+	@DateTimeFormat(pattern= "yyyy-mm-dd")
 	private Date Date;
+	@NotNull(message="entre PreviewFile")
 	private String PreviewFile;
+	@NotNull(message="entre File")
 	private String File;
+	@NotNull(message="entre DocumentLink")
 	private String DocumentLink;
 	
 	@ManyToOne

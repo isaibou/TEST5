@@ -1,9 +1,15 @@
 package com.example.demo.entities;
 
 import java.io.Serializable;
-import java.util.Collection;
-import java.util.Date;
 
+
+import java.util.Collection;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -48,6 +54,7 @@ public class Assets implements Serializable{
 	private Collection<Project> project;
 	
 	@ManyToOne
+
 	@JoinColumn(name = "CUSTOMER_ID")
 	private Customer customer;
 	
@@ -68,10 +75,23 @@ public class Assets implements Serializable{
 		//return frimware;
 	//}
 
-	//public void setFrimware(Frimware frimware) {
-		//this.frimware = frimware;
-//	}
 
+
+	/*@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<Frimware> frimwares = new ArrayList<>();
+	
+
+	
+<<<<<<< HEAD
+=======
+	public List<Frimware> getFrimwares() {
+		return frimwares;
+	}
+
+	public void setFrimwares(List<Frimware> frimwares) {
+		this.frimwares = frimwares;
+	}*/
+	
 	
 	
 	public Assets(AssetType assettype) {

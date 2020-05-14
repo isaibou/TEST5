@@ -34,7 +34,6 @@ import com.example.demo.service.customerService;
 
 @Controller
 public class CustomerController {
-
 	
 	@Autowired
 	private CustomerRepository customerrepository;
@@ -51,40 +50,25 @@ public class CustomerController {
 		Users u = userRepository.getOne(auth.getName());
 		model.addAttribute("user", u);
 		
-
-
-	
 		List<Customer> custs = customerrepository.findAll();
 		model.addAttribute("cust", custs);
 		model.addAttribute("customer", new Customer());
 
-		model.addAttribute("custs", customerrepository.findAll()); 
+		model.addAttribute("custs", customerrepository.findAll());  
 
 		model.addAttribute("totalCustomer", custs.size());
 
 		return "customer_manage";
 	}
-	
-	/*@RequestMapping(value="/SaveCustomer" , method= RequestMethod.POST)
-	private String SaveCustomer(@Valid Customer addCust, BindingResult bindingResult, ModelMap modelMap) {
-		ModelAndView MV = new ModelAndView();
-		if (bindingResult.hasErrors()) {
-		    MV.addObject("successMessage", "plz correct the errors in form !");
-			modelMap.addAttribute("bindingResult", bindingResult);
-        }
-		else if (customerService.isCustomerNameAlreadyPresent(addCust)) {
-			MV.addObject("successMessage", "customer already exists !");
-		}
-		addCust.setStatus("Actif");
-		customerrepository.save(addCust);
-		
-		return "redirect:/customer_manage";	
-	}*/
 
 	@RequestMapping(value = "/SaveCustomer", method = RequestMethod.POST)
 	private String SaveCustomer(@Valid Customer addCust, BindingResult bindingResult,
 			@RequestParam(name = "picture") MultipartFile file) throws Exception, IOException {
 	
+		if(bindingResult.hasErrors()) {
+			return "addCust";
+		}
+		
 		if (!(file.isEmpty())) {
 			addCust.setLogo(file.getOriginalFilename());
 			System.out.println(addCust.getLogo());
@@ -110,8 +94,14 @@ public class CustomerController {
 		File f = new File(images+id);
 		return  IOUtils.toByteArray(new FileInputStream(f));
 	}
+	
+	@RequestMapping(value ="addCust" ) 
+	private String addCust( Model model) {
+		model.addAttribute("customer",new Customer());
+		return "addCust";			
+	}
 
-	  @RequestMapping(value ="updateCustomerform" )
+	  @RequestMapping(value ="updateCustomerform" ) 
 		private String updateCustomerform( Model model, Integer id ) {
 			Customer customer = customerrepository.getOne(id);
 			model.addAttribute("customer",customer);
@@ -119,9 +109,8 @@ public class CustomerController {
 			return "updateCustomerForm";			
 		}
 	  
-	  @RequestMapping(value = "/editCustomer",method= RequestMethod.POST) private
-	  String updateCustomer(@Valid Customer addCust, BindingResult
-	  bindingResult, @RequestParam(name="photo")MultipartFile file) throws Exception, IOException {
+	  @RequestMapping(value = "/editCustomer",method= RequestMethod.POST) 
+	  private String updateCustomer(@Valid Customer addCust, BindingResult bindingResult, @RequestParam(name="photo")MultipartFile file) throws Exception, IOException {
 	  
 
 			if (!(file.isEmpty())) {
@@ -142,12 +131,6 @@ public class CustomerController {
 
 			return "redirect:/customer_manage";  
 	  }
-	  /*@RequestMapping(value = "/editCustomer",method= RequestMethod.POST)
-	private String updateCustomer(@Valid Customer addCust, BindingResult bindingResult) {
-			addCust.setStatus("Actif");
-			customerrepository.save(addCust);
-		return "redirect:/customer_manage";
-	}*/
 	 	  
 		@RequestMapping(value ="/detailCustomer")
 		public String detailCustomer( Model model, Integer id ) {

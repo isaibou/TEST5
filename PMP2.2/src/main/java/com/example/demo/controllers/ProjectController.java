@@ -49,15 +49,13 @@ public class ProjectController {
 	@Value("${dir.project}")
 	String projectFile;
 	
-	
-	
 	@RequestMapping(value="/projects")
 	public String AllProject(Model model, Project project) {
 		
 			List<Project> projs = ProjectRepository.findAll();
 			model.addAttribute("proj",projs);
 			model.addAttribute("project", new Project());
-			
+			model.addAttribute("totalProject", projs.size());
 			model.addAttribute("TechnoPart", technologiepartnerRepository.findAll());
 			model.addAttribute("rfp",rfprepository.findAll() );
 			model.addAttribute("TypeProject", typeProjectRepository.findAll());
@@ -76,42 +74,35 @@ if (!(file.isEmpty())) {
 			addProj.setDeliveryCertificate((file.getOriginalFilename()));
 
 			file.transferTo(new File(projectFile+file.getOriginalFilename()));
-		}
-		
-		/*
-		 * Customer custo= addProj.getRfp().getCustomer(); List<Assets> as =
-		 * (List<Assets>) addProj.getAssets();
-		 * 
-		 * 
-		 * for (Assets s : as) s.setCustomer(custo);;
-		 */
-	 
-		
-	      ProjectRepository.save(addProj);
-		/*
-		 * Collection<Assets> a = addProj.getAssets();
-		 * 
-		 * System.out.println("ici nous avons la liste des assets " + a); for(Assets s :
-		 * a) { //System.out.println(s.getProject().getProject_ID());
-		 * 
-		 * s.setProject(project); System.out.println( s.getProject().getProject_ID());
-		 * 
-		 * 
-		 * }
-		 */
-	      Collection<Assets> ass=  addProj.getAssets();
-	      Customer c =  addProj.getRfp().getCustomer();
-	      
-	      for (Assets a : ass) {
-	    	  a.setCustomer(c);
-	      }
+
+}
+		ProjectRepository.save(addProj);
+
 		return "redirect:/projects";	
 	}
 
+	@RequestMapping(value ="/addProject")
+	public String addProject( Model model ) {
+		 model.addAttribute("project",new Project());
+		 model.addAttribute("TechnoPart", technologiepartnerRepository.findAll());
+		 model.addAttribute("rfp",rfprepository.findAll());
+		 model.addAttribute("TypeProject", typeProjectRepository.findAll());
+		 
+		 model.addAttribute("TechnologiePartnerRepository", technologiepartnerRepository.findAll());
+
+			return "addProj";
+			
+	}
 	    
 	@RequestMapping(value = "/editProject",method = { RequestMethod.GET, RequestMethod.POST })
-	public String updateProject(Model model, @Valid Project proj, BindingResult bindingResult){
+	public String updateProject(Model model, @Valid Project proj, @RequestParam(name ="file")  MultipartFile file ,BindingResult bindingResult) throws IllegalStateException, IOException{
 
+if (!(file.isEmpty())) {
+			
+			proj.setDeliveryCertificate((file.getOriginalFilename()));
+
+			file.transferTo(new File(projectFile+file.getOriginalFilename()));
+		}
 		ProjectRepository.save(proj);
 		
 		return "redirect:/projects";
@@ -122,6 +113,9 @@ if (!(file.isEmpty())) {
 		
 	Project	project = ProjectRepository.getOne(id);
 		 model.addAttribute("project",project);
+		 model.addAttribute("TechnoPart", technologiepartnerRepository.findAll());
+		 model.addAttribute("rfp",rfprepository.findAll());
+		 model.addAttribute("TypeProject", typeProjectRepository.findAll());
 		 
 		 model.addAttribute("TechnologiePartnerRepository", technologiepartnerRepository.findAll());
 		 model.addAttribute("type",typeProjectRepository.findAll());
@@ -135,10 +129,21 @@ if (!(file.isEmpty())) {
 	@RequestMapping(value ="/detailProject")
 	public String detailProject( Model model, Integer id ) {
 		
-	Project	project = ProjectRepository.getOne(id);
+	     Project	project = ProjectRepository.getOne(id);
+	     
 		 model.addAttribute("project",project);
-		 System.out.println(project.getName());
+		 model.addAttribute("rfp", project.getRfp());
+
+		// model.addAttribute("TechnPart", project.getTechnologypartner());
+		 
 		
+		 
+		// List<TechnologyPartner> Tp = (List<TechnologyPartner>) project.getTechnologypartner();
+		 //model.addAttribute("listTp",Tp );
+  
+		 model.addAttribute("TechnPart", project.getTechnologypartner());
+
+		 System.out.println(project.getTechnologypartner());
 			return "detailProj";
 			
 	}

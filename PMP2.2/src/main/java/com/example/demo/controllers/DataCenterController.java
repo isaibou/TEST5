@@ -43,25 +43,29 @@ public class DataCenterController {
 		model.addAttribute("totalData", alldata.size());
 		
 		return "dataCenter";
-	
-		
-		
 	}
 	
 	@RequestMapping(value="/SaveDataCenter" , method= RequestMethod.POST)
-	private String SaveDataCenter( DataCenter dataCenter) {
-		//addProj.setStatus("Actif");
-		
+	private String SaveDataCenter(@Valid DataCenter dataCenter,BindingResult bindingResult) {
+		if(bindingResult.hasErrors()) {
+			return "addDataCenter";
+		}
 		dataCenterRepository.save(dataCenter);
 		return "redirect:/dataCenter";
 		
 	}
 	
+	@RequestMapping(value ="/addDataCenter")
+	public String addDataCenterForm( Model model) {
+		model.addAttribute("customer", customerRepository.findAll());	
+		model.addAttribute("data", new DataCenter());
+			return "addDataCenter";
+			
+	}
+	
 	@RequestMapping(value = "/editDataCenter",method = RequestMethod.POST )
 	public String updatePurchasing(DataCenter data){
-
-		dataCenterRepository.save(data);
-		
+		dataCenterRepository.save(data);	
 		return "redirect:/dataCenter";
 	}
 	

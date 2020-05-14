@@ -35,27 +35,28 @@
 	  </thead>
 	  <tbody th:each="c:${contrat}">
 		  <tr data-expanded="true">
-		   <td style="color:#23b7e5;"><center>Contract Title </center></th>
+		   <td style="color:#23b7e5;"><center>Contract Title </center></td>
 		   <td th:text ="${c.Title}" class="m-n font-thin h4 text-secondary"><center><b></b></center></td>
 		  </tr>
 		 <tr> 
-		   <td style="color:#23b7e5;"><center>Customer </center></th>
+		   <td style="color:#23b7e5;"><center>Customer </center></td>
 		   <!-- Comment appeler a le customer qui j ai choisi a partir du la liste déroulante des customer  -->
 		   <td   th:text="${c.Customer.Name}"  class="m-n font-thin h4 text-secondary"><center></center></td>
 		   </tr>
-		   <td style="color:#23b7e5;"><center>RFP </center></th>
+		   <td style="color:#23b7e5;"><center>RFP </center></td>
 		   <!-- Comment appeler a le customer qui j ai choisi a partir du la liste déroulante des customer  -->
 		   <td   th:text="${c.rfp.Title}"  class="m-n font-thin h4 text-secondary"><center></center></td>
 		   </tr>
 		   <tr >
-		   <td style="color:#23b7e5;"><center>Description </center></th>
+		   <td style="color:#23b7e5;"><center>Description </center></td>
 		   <td th:text ="${c.Description}" class="m-n font-thin h4 text-secondary"><center></center></td>
 		   </tr>
 		   <tr >
-		   <td style="color:#23b7e5;"><center>Signed Date </center></th>
+		   <td style="color:#23b7e5;"><center>Signed Date </center></td>
 		   <td th:text ="${c.SignedDate}" class="m-n font-thin h4 text-secondary"><center><span></span></center></td>
 		   </tr>
-		   <td style="color:#23b7e5;"><center>ContractFile </center></th>
+		   <tr>
+		   <td style="color:#23b7e5;"><center>ContractFile </center></td>
            <td th:text ="${c.ContractFille}" class="m-n font-thin h4 text-secondary"></td>
            </tr> 
 		     

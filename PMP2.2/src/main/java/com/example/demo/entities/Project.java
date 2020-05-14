@@ -42,18 +42,15 @@ public class Project implements Serializable{
 	@Column(name="Name",length=30,unique=true)
 	private String Name;
 	
-	
-	
 	@NumberFormat(pattern = "#,###,###,###.##")
 	private Double Amount;
 	
 	//@Temporal(TemporalType.DATE)
-	@DateTimeFormat(pattern= "yyyy")
+	@DateTimeFormat(pattern= "yyyy-mm-dd")
 	private Date  Year;
 	
 	@DateTimeFormat(pattern= "yyyy-mm-dd")
 	private Date DeliveryDate;
-	
 	
 	@DateTimeFormat(pattern= "yyyy-mm-dd")
 	private Date TemporayAcceptanceDate;
@@ -67,8 +64,8 @@ public class Project implements Serializable{
     //private String Type;
     //private long Size;
 	
-	@Column(name = "TechnologyPartners")
-	private String TechnologyPartners;
+	//@Column(name = "TechnologyPartners")
+	//private String TechnologyPartners;
 
 	@NumberFormat(pattern = "#,###")
 	private int Warranty;
@@ -86,7 +83,7 @@ public class Project implements Serializable{
 	@JoinTable(name="ASSET_PROJECT")
 	private Collection <Assets> assets;
 	
-	@ManyToMany(mappedBy = "Project")
+	@ManyToMany
 	private List<TechnologyPartner> technologypartner;  
 	
 	@ManyToOne
@@ -124,7 +121,7 @@ public class Project implements Serializable{
 		//Size = size;
 	}
 	public Project(String name, String typeProject, Double amount, Date year, Date deliveryDate, Date temporayAcceptanceDate,
-			Date finalTemporaryDate, String deliveryCertificate, String technologyPartners, int warranty,
+			Date finalTemporaryDate, String deliveryCertificate, int warranty,
 			int executionTime, String notes, String status) {
 		super();
 		Name = name;
@@ -138,7 +135,7 @@ public class Project implements Serializable{
 		//Uri = uri;
 		//Type =type;
 		//Size = size;
-		TechnologyPartners = technologyPartners;
+		//TechnologyPartners = technologyPartners;
 		Warranty = warranty;
 		ExecutionTime = executionTime;
 		Notes = notes;
@@ -220,12 +217,12 @@ public class Project implements Serializable{
 	public void setDeliveryCertificate(String deliveryCertificate) {
 		DeliveryCertificate = deliveryCertificate;
 	}
-	public String getTechnologyPartners() {
-		return TechnologyPartners;
-	}
-	public void setTechnologyPartners(String technologyPartners) {
-		TechnologyPartners = technologyPartners;
-	}
+	//public String getTechnologyPartners() {
+		//return TechnologyPartners;
+	//}
+	//public void setTechnologyPartners(String technologyPartners) {
+		//TechnologyPartners = technologyPartners;
+	//}
 	public int getWarranty() {
 		return Warranty;
 	}

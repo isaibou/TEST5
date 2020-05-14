@@ -13,7 +13,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
-
 @Entity
 public class TechnologyPartner implements Serializable{
 	
@@ -23,26 +22,23 @@ public class TechnologyPartner implements Serializable{
 	@GeneratedValue
 	private Integer TechnologyPartner_ID;
 	private String NameTechnologyPartner;
+	private String TechnologyPartnerFile;
 	private String Status;
 	
 	
 	@ManyToMany
 	private List<Project> project = new ArrayList<Project>(); 
 
-	@ManyToMany
-	@JoinTable(name = "project_technologypartner",
-			joinColumns = @JoinColumn(name = "TechnologyPartner_ID"),
-			inverseJoinColumns = @JoinColumn(name = "Project_ID"))
-	private Set<Project> Project;
+	
 	
 	public List<Project> getproject() {
 		return project;
 	}
 	
 	
-	public List<Project> getProject() {
+	/*public List<Project> getProject() {
 		return project;
-	}
+	}*/
 
 
 	public void setProject(List<Project> project) {
@@ -53,10 +49,11 @@ public class TechnologyPartner implements Serializable{
 	public TechnologyPartner() {
 		super();
 	}
-	public TechnologyPartner(String nameTechnologyPartner, String status) {
+	public TechnologyPartner(String nameTechnologyPartner, String status, String technologyPartnerFile) {
 		super();
 		NameTechnologyPartner = nameTechnologyPartner;
 		Status = status;
+		TechnologyPartnerFile = technologyPartnerFile;
 	}
 	public String getStatus() {
 		return Status;
@@ -79,6 +76,16 @@ public class TechnologyPartner implements Serializable{
 	}
 	public void setNameTechnologyPartner(String nameTechnologyPartner) {
 		NameTechnologyPartner = nameTechnologyPartner;
+	}
+
+
+	public String getTechnologyPartnerFile() {
+		return TechnologyPartnerFile;
+	}
+
+
+	public void setTechnologyPartnerFile(String technologyPartnerFile) {
+		TechnologyPartnerFile = technologyPartnerFile;
 	}
 	
 

@@ -8,6 +8,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -15,6 +17,7 @@ import org.springframework.http.MediaType;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -33,7 +36,6 @@ import com.example.demo.repository.UserRepository;
 @Controller
 public class ExpensesController {
 	
-	
 	@Autowired
 	UserRepository userRepository;
 	
@@ -47,33 +49,27 @@ public class ExpensesController {
 	@Value("${dir.receipt}")
 		private String receipt;
 	
-	
-
-	
-	
 	@RequestMapping(value="/expenses")
 	public String AllCustomer(Model model, Customer customer, Authentication auth) {
 		Users u = userRepository.getOne(auth.getName());
 		model.addAttribute("user", u);
 		
-		
-	List<Expenses> listExpenses = expensesRepository.findAll();
+	    List<Expenses> listExpenses = expensesRepository.findAll();
 	
-	model.addAttribute("listEx", listExpenses);
-		
-
-	//	model.addAttribute("waiting", expensesRepository.findByStatutExpense("Waiting"));
-		//model.addAttribute("confirmed", expensesRepository.findByStatutExpense("Confirmed"));
+	    model.addAttribute("listEx", listExpenses);
 		model.addAttribute("expense", new Expenses());
 		model.addAttribute("intEx", listExpenses.size());
 		model.addAttribute("typeEx", typeExpensesRepository.findAll());
-		
-	
+
 		return "expense";
 	}
 
 	@RequestMapping(value="/addExpenses")
-	public String addInternalRequest( Expenses expense, Authentication  auth, @RequestParam(name="recu")MultipartFile file ) throws IllegalStateException, IOException {
+	public String addInternalRequest(@Valid Expenses expense,BindingResult bindingResult, Authentication  auth, @RequestParam(name="recu")MultipartFile file ) throws IllegalStateException, IOException {
+		
+		if(bindingResult.hasErrors()) {
+			return "addExp";
+		}
 		
 		String login = auth.getName();
 		Users u =  userRepository.getOne(login);
@@ -110,15 +106,9 @@ public class ExpensesController {
 		
 		Expenses  ex = expensesRepository.getOne(id);
 		ex.setStatutExpense("Confirmed");
-		
-		
 		expensesRepository.save(ex);
 		return"redirect:/expenses";
 	}
-	
-	
-	
-	
 	
 	@RequestMapping(value="/getExpenses" , produces= MediaType.IMAGE_JPEG_VALUE)
 	@ResponseBody
@@ -127,6 +117,13 @@ public class ExpensesController {
 		return  IOUtils.toByteArray(new FileInputStream(f));
 	}
 	
+	@RequestMapping(value ="/addExp" )
+	public String addExp(Model model) {
+
+		model.addAttribute("exp", new Expenses());
+		model.addAttribute("type", typeExpensesRepository.findAll());
+		return "addExp";
+	}
 	
 	@RequestMapping(value ="/updateExpenses" )
 	public String updateExpenses(Integer id , Model model) {

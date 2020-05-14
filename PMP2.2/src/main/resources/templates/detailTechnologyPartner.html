@@ -16,7 +16,7 @@
 <body>
 <div class="app" >
  <a href="" class="navbar-brand block m-t"><i class="fa fa-power-off"></i> <b>PowerM</b> </a>
- <div th:action="@{detailProject}" method ="post" th:object="${project}">
+ <div th:action="@{detailProject}" method ="post" th:object="${technolgpartn}">
   <div class="modal-dialog modal-lg" >
    <div class="modal-content">
     <h1 class="m-n font-bold h3"> Informations Technology Partner </h1>
@@ -38,7 +38,10 @@
 		   <td style="color:#23b7e5;"><center>Name Technology Partner </center></th>
 		   <td th:text ="${t.NameTechnologyPartner}" class="m-n font-thin h4 text-secondary"></td>
 		  </tr>
-		  
+		  <tr>
+		   <td style="color:#23b7e5;"><center>Technology Partner File </center></td>
+           <td th:text ="${t.TechnologyPartnerFile}" class="m-n font-thin h4 text-secondary"></td>
+           </tr> 
            <tr>
 		   <td style="color:#23b7e5;"><center>Status </center></th>
            <td th:text ="${t.Status}" class="m-n font-thin h4 text-secondary"></td>
@@ -48,7 +51,7 @@
 	</div>
    </div>
    <div class="modal-footer">
-     <button class="btn m-b-xs btn-sm btn-primary btn-addon"><a th:href="Technology_Partner">Return</a></button>
+     <button class="btn m-b-xs btn-sm btn-primary btn-addon"><a th:href="technology">Return</a></button>
    </div>
   </div>  
  </div>

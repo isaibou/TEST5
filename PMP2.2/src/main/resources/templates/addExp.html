@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
+
   <meta charset="utf-8" />
   <!-- update -->
-  <title>Update Request Customer</title>
+  <title>Add Expense</title>
   <meta name="description" content="app, web app, responsive, responsive layout, admin, admin panel, admin dashboard, flat, flat ui, ui kit, AngularJS, ui route, charts, widgets, components" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <link rel="stylesheet" href="../libs/assets/animate.css/animate.css" type="text/css" />
@@ -20,38 +21,35 @@
  <a href="" class="navbar-brand block m-t"><i class="fa fa-power-off"></i> <b>PowerM</b> </a>
  <div class="modal-dialog modal-lg" >
   <div class="modal-content">
-    <h1 class="m-n font-bold h3"> Update Request Customer </h1>
+    <h1 class="m-n font-bold h3"> Add Expense </h1>
    </div>
-  <form th:action="@{editCustomerRequest(id=${customerR.ExternalRequest_ID})}" method ="post" >
-     <div class="modal-body">
-       <div class="row">        
-        <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b></b></label>
+   <form th:action="@{addExpenses}"  enctype="multipart/form-data" method="post" th:object=${exp}>
+   <div class="modal-body">
+  <div class="row">
+    <label class="col-sm-4 control-label" for="input-id-1" style="margin:5px 0px;"><b>Type Expense :</b></label>
+   <div class="col-sm-8" style="margin:5px 0px;" >
+   <select name ="ypeExpenses_ID" class="form-control" th:field="*{typeExpenses}" >
+   <option th:each="t:${type}" th:text="${t.NameTypeExpenses}" th:value="${t.TypeExpenses_ID}" ></option>
+   </select>
+   </div>
+   <label class="col-sm-4 control-label" for="input-id-1" style="margin:5px 0px;"><b>Description</b></label>
+   <div class="col-sm-8" style="margin:5px 0px;" >
+    <input type="text" placeholder="Entry Description" class="form-control" id="input-id-1" th:field=*{Description}  >
+   </div>
+   <label class="col-sm-4 control-label" for="input-id-1" style="margin:5px 0px;"><b>Amount</b></label>
+   <div class="col-sm-8" style="margin:5px 0px;" >
+    <input type="number" placeholder="Entry Amount" class="form-control" id="input-id-1" th:field=*{Amount}  >
+   </div>
+  
+  <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Receipt</b></label>
      <div class="col-sm-8" style="margin: 5px 0px;">
-      <input type="hidden" class="form-control"  id="input-id-1"  required th:field="${customerR.ExternalRequest_ID}"/>
-	 </div> 
-
-	     <label class="col-sm-4 control-label" placeholder="Entry EndSaleDate" for="input-id-1" style="margin-bottom:5px;"><b>Type request</b></label>
-          <div class="col-sm-8" style="margin-bottom:5px;">         
-             <input type="text"   class="form-control" placeholder="Entry Type Request"  th:field="${customerR.typeExternalRequest.NameTypeExternelRequest}"/>
-            </div>   
-
-         <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b> Description</b></label>
-         <div class="col-sm-8" style="margin: 5px 0px;">
-          <input type="text" class="form-control" id="input-id-1"   th:field="${customerR.Description}"/>
-         
-	     </div>
-          
-          <label class="col-sm-4 control-label"  for="input-id-1" style="margin-bottom:5px;"><b>Commentaire</b></label>
-          <div class="col-sm-8" style="margin-bottom:5px;">
-            <input class="form-control" placeholder="Commentaire" type="text" name="commentaire" />
-          </div>
-      
-    </div>
-    </div>
-          
+        <input type="file"  name="recu" class="form-control" id="input-id-1" > 
+     </div>
+     </div>
+</div>
            <div class="modal-footer">
         <button style="margin:0px;" class="btn m-b-xs btn-sm btn-primary btn-addon"><i class="glyphicon glyphicon-ok"></i>Save</button>
-	    <button style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon"><a th:href="request"><i class="glyphicon glyphicon-remove"></i>Annuler</a></button>
+	    <button style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon"><a th:href="expenses"><i class="glyphicon glyphicon-remove"></i>Annuler</a></button>
       </div>
     
    </form >

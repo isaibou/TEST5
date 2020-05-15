@@ -42,7 +42,7 @@ public class PurchasingController {
 		
 		List<Purchasing> purcha = purchisingRepository.findAll();
 		model.addAttribute("purch",purcha);
-		model.addAttribute("purchasing", new Purchasing());
+	//	model.addAttribute("purchasing", new Purchasing());
 		
 		//Afficher la liste déroulante pour récupérer la liste des customers
 		model.addAttribute("customer", customerRepository.findAll());	
@@ -53,11 +53,28 @@ public class PurchasingController {
 	
 	@RequestMapping(value="/SavePurchasing" , method= RequestMethod.POST)
 	private String SavePurchasing(@Valid Purchasing addPur, BindingResult bindingResult) {
+		
+		if(bindingResult.hasErrors()) {
+			return "addpurchasing";
+			
+		}
 		//addProj.setStatus("Actif");
 		
 		purchisingRepository.save(addPur);
 		return "redirect:/purchasing_customer_manage";
 		
+	}
+	@RequestMapping(value ="/addPurchasing")
+	public String addpurchasing( Model model, Integer id ) {
+		
+		 
+		 model.addAttribute("purchasing",purchisingRepository.findAll());
+		 model.addAttribute("purchasing", new Purchasing());
+		 model.addAttribute("customer", customerRepository.findAll());	
+		
+		
+			return "addpurchasing";
+			
 	}
 	
 	@RequestMapping(value = "/editPurchasing",method = { RequestMethod.GET, RequestMethod.POST })

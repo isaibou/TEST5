@@ -10,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 import org.springframework.format.annotation.DateTimeFormat;
@@ -18,15 +19,20 @@ import org.springframework.format.annotation.DateTimeFormat;
 public class Contrat implements Serializable{
 	
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer Contrat_ID;
-	@NotNull 
-	@Column(unique=true)
+	 
+	@NotEmpty
+	@Column (name="Title",unique=true)
 	private String Title;
+	@NotEmpty
 	private String Description;
+	
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date SignedDate;
+	
 	private String ContractFille;
+	
 	@ManyToOne
 	@JoinColumn
 	private RFP rfp;

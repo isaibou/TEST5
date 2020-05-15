@@ -56,7 +56,7 @@ public class VendorController {
 	}
 	
 	@RequestMapping(value="/SaveVendor" , method= RequestMethod.POST)
-	private String SaveVendor(@Valid Vendor addVen, @RequestParam(name="certificate")MultipartFile file) throws IllegalStateException, IOException {
+	private String SaveVendor(@Valid Vendor addVen, BindingResult bindingResult, @RequestParam(name="certificate")MultipartFile file) throws IllegalStateException, IOException {
 		addVen.setStatus("Actif");
 		
 		
@@ -66,13 +66,25 @@ if (!(file.isEmpty())) {
 
 			file.transferTo(new File(certificate+file.getOriginalFilename()));
 		}
+if(bindingResult.hasErrors()) {
+	return "addVendors";
+	
+}
 
 		vendorRepository.save(addVen);
-		
-		
-
 		return "redirect:/vendor";
 		
+	}
+	
+	@RequestMapping(value ="/addVendors")
+	public String addVendors( Model model, Integer id ) {
+		
+		
+		 model.addAttribute("vendor",vendorRepository.findAll());
+		 
+		 model.addAttribute("vendor", new Vendor());
+			return "addVendors";
+			
 	}
 	
 	@RequestMapping(value = "/editVendor",method = { RequestMethod.GET, RequestMethod.POST })

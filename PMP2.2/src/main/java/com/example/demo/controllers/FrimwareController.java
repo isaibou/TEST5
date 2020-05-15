@@ -60,6 +60,10 @@ public class FrimwareController {
 	@RequestMapping(value="/SaveFrimware" , method= RequestMethod.POST)
 	private String SaveFrimware(@Valid Frimware addFrim, BindingResult bindingResult) {
 		
+		if(bindingResult.hasErrors()) {
+			return "addFirmware";
+			
+		}
 		
 		addFrim.setStatus("Actif");
 		
@@ -68,6 +72,21 @@ public class FrimwareController {
 		frimwareRepository.save(addFrim);
 		return "redirect:/firmware";
 	}
+	
+	@RequestMapping(value ="/addFirmware" )
+	private String addFirmware( Model model, Integer id ) {
+		
+	     
+		 model.addAttribute("frimware",frimwareRepository.findAll());
+		
+		 model.addAttribute("frimware", new Frimware());
+		 
+		 model.addAttribute("assettype", assetTypeRepository.findAll());
+		 
+		 return "addFirmware";
+			
+	}
+	
 	
 	@RequestMapping(value ="/updateFrimwareform" )
 	private String updateFrimwareform( Model model, Integer id ) {

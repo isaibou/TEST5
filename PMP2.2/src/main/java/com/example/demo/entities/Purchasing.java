@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Email;
 
 @Entity
 public class Purchasing implements Serializable{
@@ -17,9 +19,14 @@ public class Purchasing implements Serializable{
 	@Id
 	@GeneratedValue
 	private Integer Purchasing_ID;
+	@NotEmpty
 	private String FirstName;
+	@NotEmpty
 	private String LastName;
+	@NotEmpty
 	private String Contact;
+	@NotEmpty
+	@Email
 	private String Email;
 	//les relation avec customer
 	@ManyToOne

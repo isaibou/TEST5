@@ -6,12 +6,15 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.NotEmpty;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -20,17 +23,28 @@ import org.springframework.format.annotation.DateTimeFormat;
 public class Assets implements Serializable{
 	
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer Assets_ID;
-	//private String AssetsName;
+	
+	@NotEmpty
+	@Column (name="SerielNumber",unique=true)
 	private String SerielNumber;
+	
+	@NotEmpty
 	private String Description;
 	private String ConfigurationFille;
+	
+	@NotEmpty
 	private String MustGather;
+	
+	@DateTimeFormat(pattern =  "yyyy-MM-dd")
 	private String EndOfVendorWarranty;
+	
 	@DateTimeFormat(pattern =  "yyyy-MM-dd")
 	private Date EndPowermWarranty;
+	
 	private String SLA;
+	@NotEmpty
 	private String InterfaceAasset;
 	private String LoginAsset;
 	private int PasswordAsset;

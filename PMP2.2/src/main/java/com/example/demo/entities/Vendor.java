@@ -3,22 +3,31 @@ package com.example.demo.entities;
 import java.io.Serializable;
 import java.util.Collection;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.validation.constraints.NotEmpty;
 
 @Entity
 public class Vendor implements Serializable{
 	
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer Vendor_ID;
+	
 	private String PartnershipCertificate;
+	
+	@NotEmpty
+	@Column(name = "NameVendor",unique=true)
 	private String NameVendor;
 	private String Industry;
 	private String LogoCompony;
+	@NotEmpty
 	private String Phone;
+	@NotEmpty
 	private String Adress;
 	private String Status;
 	

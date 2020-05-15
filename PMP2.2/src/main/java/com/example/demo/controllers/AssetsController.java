@@ -50,7 +50,7 @@ public class AssetsController {
 		
 		List<Assets> assets = assetRepository.findAll();
 		model.addAttribute("asset", assets);
-		model.addAttribute("assets", new Assets());
+		//model.addAttribute("assets", new Assets());
 		
 		model.addAttribute("assettype", assetTypeRepository.findAll());
 		model.addAttribute("project", projetRepository.findAll());
@@ -61,11 +61,29 @@ public class AssetsController {
 	
 	@RequestMapping(value="/SaveAssets" , method= RequestMethod.POST)
 	private String SaveAssets(@Valid Assets addAss, BindingResult bindingResult) {
+		
+		if(bindingResult.hasErrors()) {
+			return "addAssets";
+			
+		}
+		
 		addAss.setStatus("Actif");
 		
 		assetRepository.save(addAss);
 		return "redirect:/assets_manage"; //$NON-NLS-1$
 		
+	}
+	
+	@RequestMapping(value ="/addAssets")
+	public String addAssets( Model model, Integer id ) {
+		
+		 model.addAttribute("assets",  assetRepository.findAll());
+		 model.addAttribute("assets", new Assets());
+		 model.addAttribute("assettype", assetTypeRepository.findAll());
+		 model.addAttribute("project", projetRepository.findAll());	
+		
+			return "addAssets";
+			
 	}
 	
 	/*@GetMapping("/getfrimwares")

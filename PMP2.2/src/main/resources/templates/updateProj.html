@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-
   <meta charset="utf-8" />
   <title>Update Project</title>
   <meta name="description" content="app, web app, responsive, responsive layout, admin, admin panel, admin dashboard, flat, flat ui, ui kit, AngularJS, ui route, charts, widgets, components" />
@@ -39,6 +38,12 @@
 		  <span class="text-danger" th:errors=*{Name}></span>
 		 </div>
 	     <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Type Project</b></label>
+
+		 <div class="col-sm-8" style="margin: 5px 0px;" >
+		  <select name="account" class="form-control m-b" required th:field=*{TypeProject}>
+	       <option th:each="t:${type}" th:value ="${t.Type_Project_ID}" th:text="${t.NameType_Project}"></option>
+		  </select>
+
 		 <div class="col-sm-8" style="margin:5px 0px;" >
 		 <select name ="role"  class="form-control m-b" th:field="*{typeProject}">
 		 <option th:each="t:${TypeProject}"  th:text="${t.NameType_Project}" th:value="${t.Type_Project_ID}"></option>
@@ -57,21 +62,34 @@
 		 </div>
 		 <label class="col-sm-4 control-label" placeholder="Entry Year" style="margin: 5px 0px;" for="input-id-1"><b>Year</b></label>
 	     <div class="col-sm-8" style="margin: 5px 0px;">
-			  <input type="date" class="form-control" required th:field=*{Year}/>
+			  <input type="date" class="form-control" th:field=*{Year}/>
 	     </div>
 		 <label class="col-sm-4 control-label" placeholder="Entry Delivery Date" style="margin: 5px 0px;" for="input-id-1"><b>Delivery Date</b></label>
 		 <div class="col-sm-8" style="margin: 5px 0px;">
-			  <input type="date" class="form-control" required th:field=*{DeliveryDate}/>
+			  <input type="date" class="form-control"  th:field=*{DeliveryDate}/>
 		 </div>
 	     <label class="col-sm-4 control-label" placeholder="Entry Temporay Acceptance Date" style="margin: 5px 0px;" for="input-id-1"><b>Temporay Acceptance Date</b></label>
 		 <div class="col-sm-8" style="margin: 5px 0px;">
-		      <input type="date" class="form-control" required th:field=*{TemporayAcceptanceDate}/>
+		      <input type="date" class="form-control"  th:field=*{TemporayAcceptanceDate}/>
 		 </div>
 		 <label class="col-sm-4 control-label" placeholder="Entry Final Temporary Date" style="margin: 5px 0px;" for="input-id-1"><b>Final Temporary Date</b></label>
 		 <div class="col-sm-8" style="margin: 5px 0px;">
 		      <input type="date" class="form-control" required th:field=*{FinalTemporaryDate}/>
 		 </div>
 		 <label class="col-sm-4 control-label" placeholder="Entry Delivery Certificate" style="margin: 5px 0px;" for="input-id-1"><b>Delivery Certificate</b></label>
+<<<<<<< HEAD
+		 <div class="col-sm-7">
+          <input type="text" placeholder="Upload Preview File"class="form-control" id="input-id-1">
+         </div>
+         <div class="col-sm-1" >
+          <div class="btn-group">
+           <a class="btn btn-default" tooltip="Insert picture (or just drag &amp; drop)" id="pictureBtn"><i class="icon-paper-clip"></i></a>
+           <input type="file" style="position:absolute; opacity:0; width:41px; height:34px"  th:field=*{DeliveryCertificate}/>
+          </div>
+          </div>
+		 <label class="col-sm-4 control-label" placeholder="Entry Technology Partners" style="margin: 5px 0px;" for="input-id-1"><b>Technology Partners</b></label>
+=======
+>>>>>>> branch 'master' of https://github.com/isaibou/TEST5
 		 <div class="col-sm-8" style="margin: 5px 0px;">
          <input type="file" placeholder="Entry Contract File"class="form-control" id="input-id-1" name="file"/>
          <span th:text ="${project.DeliveryCertificate}" class="m-n font-thin h4 text-secondary"></span>

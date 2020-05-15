@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 	<head>
 		<meta charset="utf-8" />
@@ -534,7 +534,7 @@ document.addEventListener('DOMContentLoaded', function() {
   <div id="content" class="app-content" role="main">
    <div class="app-content-body ">
     <div class="bg-light lter b-b wrapper-md"><h1 class="m-n font-bold h3">Manage Projects
-    <a  style="margin-top:-5px;" data-toggle="modal"  data-target="#AddProject" class="btn btn-sm btn-primary pull-right"  role="button"><b class="glyphicon-plus pull"> </b>Add Project</a></h1></div>
+    <a  style="margin-top:-5px;" th:href="@{addProject}" class="btn btn-sm btn-primary pull-right"  role="button"><b class="glyphicon-plus pull"> </b>Add Project</a></h1></div>
 	
 	<div class="row" style="margin:5px;background-color:#f0f3f4;">
      <div class="col-sm-12">              
@@ -588,7 +588,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	     </thead>
 		 <tbody>
 		  <tr data-expanded="true" th:each="p:${proj}">
-		   <td th:text ="${p.typeProject.NameType_Project}" class="m-n font-thin h4 text-secondary"><center><b></b></center></td>
+		   <td th:text ="${p.Name}" class="m-n font-thin h4 text-secondary"><center><b></b></center></td>
 		   <td th:text ="${p.Notes}" class="m-n font-thin h4 text-secondary"><center><b></b></center></td>
 		   <td th:text ="${p.DeliveryDate}" class="m-n font-thin h4 text-secondary"><center></center></td>
 		   <td th:text ="${p.Amount}" class="m-n font-thin h4 text-secondary"><center></center></td>
@@ -612,6 +612,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	    <center><h3 class="m-n font-bold h4">RFP Reponse Date & Time </h3></center>
 		<div id='calendar1'></div>
 	</div>	
+<<<<<<< HEAD
 	 <div th:if="${message}">
 		<h2 th:text="${message}"/>
 	</div>   
@@ -619,8 +620,8 @@ document.addEventListener('DOMContentLoaded', function() {
 	 <div class="modal-dialog modal-lg" >
 	  <div class="modal-content">
 	   <div class="modal-header" style="background-image:url(img/grf-bg.jpg);color:white;">
-	    <button type="button" class="close pull-right" data-dismiss="modal"> &times;</button>
-	    <h1 class="m-n font-bold h3"> <b class="glyphicon-plus pull"> </b> Add Project </h1>
+	    <button type="button" class="close pull-right" data-dismiss="modal">&times;</button>
+	    <h1 class="m-n font-bold h3"> <b class="glyphicon-plus pull"> </b> Add Project</h1>
 	   </div>	   
 	 <form th:action="@{SaveProject}"   enctype="multipart/form-data" method ="post" th:object="${project}">
      <div class="modal-body">
@@ -638,7 +639,7 @@ document.addEventListener('DOMContentLoaded', function() {
 			 
 		     <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Type Project</b></label>
 		 <div class="col-sm-8" style="margin:5px 0px;" >
-		 <select name ="role" multiple="multiple" class="form-control m-b" th:field="*{typeProject}">
+		 <select name ="role"  class="form-control m-b" th:field="*{typeProject}">
 		 <option th:each="t:${TypeProject}"  th:text="${t.NameType_Project}" th:value="${t.Type_Project_ID}"></option>
 		 </select>
 		 </div>
@@ -652,8 +653,15 @@ document.addEventListener('DOMContentLoaded', function() {
 		 
 		   <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Technology Partner</b></label>
 		 <div class="col-sm-8" style="margin:5px 0px;" >
-		 <select name ="TechnologyPartner_ID" multiple="multiple" class="form-control m-b" th:field="*{technologypartner}">
+		 <select name ="role"  class="form-control m-b" th:field="*{technologypartner}">
 		 <option th:each="e:${TechnoPart}"  th:text="${e.NameTechnologyPartner}" th:value="${e.TechnologyPartner_ID}"></option>
+		 </select>
+		 </div>
+		 
+		  <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Asset</b></label>
+		 <div class="col-sm-8" style="margin:5px 0px;" >
+		 <select name ="role"  multiple="multiple" class="form-control m-b" th:field="*{assets}">
+		 <option th:each="e:${listAsset}"  th:text="${e.SerielNumber}" th:value="${e.Assets_ID}"></option>
 		 </select>
 		 </div>
 		 
@@ -700,16 +708,20 @@ document.addEventListener('DOMContentLoaded', function() {
 		  <div class="col-sm-8" style="margin: 5px 0px;">
 			<input type="text" class="form-control" placeholder="Entry ur notes " id="input-id-1" required th:field=*{Notes} />
           </div>
-         </div>
-		</div> 
+          
 		  <div class="modal-footer">
 		   <button style="margin:0px;" class="btn m-b-xs btn-sm btn-primary btn-addon"><i class="glyphicon glyphicon-ok"></i>Save</button>
 		   <button style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon" data-dismiss="modal"><i class="glyphicon glyphicon-remove"></i>Annuler</button>
 		  </div>
+		 </div>
+		</div>
 	    </form>
 	  </div>
      </div>
     </div>
+=======
+  
+>>>>>>> branch 'master' of https://github.com/isaibou/TEST5
 </div>
 </div>
   <!-- /content -->

@@ -42,8 +42,6 @@ public class Project implements Serializable{
 	@Column(name="Name",length=30,unique=true)
 	private String Name;
 	
-	
-	
 	@NumberFormat(pattern = "#,###,###,###.##")
 	private Double Amount;
 	
@@ -53,7 +51,6 @@ public class Project implements Serializable{
 	
 	@DateTimeFormat(pattern= "yyyy-mm-dd")
 	private Date DeliveryDate;
-	
 	
 	@DateTimeFormat(pattern= "yyyy-mm-dd")
 	private Date TemporayAcceptanceDate;
@@ -82,7 +79,8 @@ public class Project implements Serializable{
 	@Column(name = "Status")
 	private String Status;
 	
-	@OneToMany
+	@ManyToMany
+	@JoinTable(name="ASSET_PROJECT")
 	private Collection <Assets> assets;
 	
 	@ManyToMany

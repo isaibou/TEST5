@@ -27,12 +27,11 @@ import org.springframework.format.annotation.NumberFormat;
 
 @Entity
 public class Customer implements Serializable{
-	
-	
+		
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "my_seq_id")
-	@SequenceGenerator(name = "my_seq_id", sequenceName = "my_seq_id", allocationSize = 100)
 	
+	@SequenceGenerator(name = "my_seq_id", sequenceName = "my_seq_id", allocationSize = 100)
 	private Integer Customer_ID;
 	
 	@NotNull(message="this name is exist")
@@ -42,7 +41,6 @@ public class Customer implements Serializable{
 	@NotNull
 	private String Industry;
 	
-
 	private String Logo;
 
 	@NotNull(message="u shoud entry the phone number")
@@ -83,7 +81,6 @@ public class Customer implements Serializable{
 
 	private String Country;
 	
-
 	@NotNull
 	private String Status;
 	
@@ -100,6 +97,14 @@ public class Customer implements Serializable{
 	
 	@OneToMany(mappedBy = "customer" , fetch = FetchType.LAZY)
 	private Collection<DataCenter> dataCenter;
+	@OneToMany(mappedBy = "customer", fetch = FetchType.LAZY)
+	private Collection<Assets> assets;
+	
+	@OneToMany(mappedBy = "customer", fetch = FetchType.LAZY)
+	private Collection<RFP> rfp;
+	
+	@OneToMany(mappedBy = "customer", fetch = FetchType.LAZY)
+	private Collection<Ticket> tickets;
 	
 	public Customer() {
 		super();
@@ -289,6 +294,30 @@ public class Customer implements Serializable{
 
 	public void setDataCenter(Collection<DataCenter> dataCenter) {
 		this.dataCenter = dataCenter;
+	}
+
+	public Collection<Assets> getAssets() {
+		return assets;
+	}
+
+	public void setAssets(Collection<Assets> assets) {
+		this.assets = assets;
+	}
+
+	public Collection<RFP> getRfp() {
+		return rfp;
+	}
+
+	public void setRfp(Collection<RFP> rfp) {
+		this.rfp = rfp;
+	}
+
+	public Collection<Ticket> getTickets() {
+		return tickets;
+	}
+
+	public void setTickets(Collection<Ticket> tickets) {
+		this.tickets = tickets;
 	}
 	
 	

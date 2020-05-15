@@ -129,7 +129,7 @@ public class AssetTypeController
 		 AssetType	assettype = assetTypeRepository.getOne(id);
 		 model.addAttribute("assettype",assettype);
 
-		 model.addAttribute("vendor", vendorRepository.findAll());
+	//	 model.addAttribute("vendor", vendorRepository.findAll());
 		
 		
 		 System.out.println(assettype.getName());

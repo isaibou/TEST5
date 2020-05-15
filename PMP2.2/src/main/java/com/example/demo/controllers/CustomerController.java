@@ -34,7 +34,6 @@ import com.example.demo.service.customerService;
 
 @Controller
 public class CustomerController {
-
 	
 	@Autowired
 	private CustomerRepository customerrepository;
@@ -51,9 +50,6 @@ public class CustomerController {
 		Users u = userRepository.getOne(auth.getName());
 		model.addAttribute("user", u);
 		
-
-
-	
 		List<Customer> custs = customerrepository.findAll();
 		model.addAttribute("cust", custs);
 		model.addAttribute("customer", new Customer());
@@ -69,6 +65,10 @@ public class CustomerController {
 	private String SaveCustomer(@Valid Customer addCust, BindingResult bindingResult,
 			@RequestParam(name = "picture") MultipartFile file) throws Exception, IOException {
 	
+		if(bindingResult.hasErrors()) {
+			return "addCust";
+		}
+		
 		if (!(file.isEmpty())) {
 			addCust.setLogo(file.getOriginalFilename());
 			System.out.println(addCust.getLogo());
@@ -93,6 +93,12 @@ public class CustomerController {
 	private byte[] getLogo(Integer id) throws  IOException {
 		File f = new File(images+id);
 		return  IOUtils.toByteArray(new FileInputStream(f));
+	}
+	
+	@RequestMapping(value ="addCust" ) 
+	private String addCust( Model model) {
+		model.addAttribute("customer",new Customer());
+		return "addCust";			
 	}
 
 	  @RequestMapping(value ="updateCustomerform" ) 

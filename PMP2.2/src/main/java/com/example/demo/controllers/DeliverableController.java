@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
 
 import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,7 @@ import org.springframework.http.MediaType;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -61,7 +63,11 @@ public class DeliverableController {
 	}
 
 	@RequestMapping(value="/addDeliverable")
-	public String addDelivrable(Model model, Deliverable deli, @RequestParam(name="fileD") MultipartFile fileD , @RequestParam(name="picture") MultipartFile picture) throws IllegalStateException, IOException {
+	public String addDelivrable(Model model,@Valid BindingResult bindingResult, Deliverable deli, @RequestParam(name="fileD") MultipartFile fileD , @RequestParam(name="picture") MultipartFile picture) throws IllegalStateException, IOException {
+		
+		if(bindingResult.hasErrors()) {
+			return "addDelivP";
+		}
 		
 if (!(fileD.isEmpty())) {
 			
@@ -70,8 +76,6 @@ if (!(fileD.isEmpty())) {
 			fileD.transferTo(new File(refFile+fileD.getOriginalFilename()));
 		}
 deliverablerepository.save(deli);
-
-
 if (!(picture.isEmpty())) {
 	
 	deli.setPreviewFile((picture.getOriginalFilename()));
@@ -90,17 +94,22 @@ deliverablerepository.save(deli);
 		File f = new File(refPicture+id);
 		return  IOUtils.toByteArray(new FileInputStream(f));
 	}
+	
+	@RequestMapping(value ="/addDeliv")
+	public String addDeliv( Model model) {
+		 model.addAttribute("deliv",new Deliverable());
+		 model.addAttribute("type", typeDeliverableRepository.findAll());
+		 model.addAttribute("project", projectrepository.findAll());	
+			return "addDelivP";	
+	}
 
 	@RequestMapping(value ="/updateDeliverable")
 	public String updateReference( Model model, Integer id ) {
-		
 		Deliverable	del = deliverablerepository.getOne(id);
 		 model.addAttribute("del",del);
 		 model.addAttribute("type", typeDeliverableRepository.findAll());
 		 model.addAttribute("project", projectrepository.findAll());	
-		
-			return "updateDeliverable";
-			
+			return "updateDeliverable";	
 	}
 
 	@RequestMapping(value="/editDeliverable")

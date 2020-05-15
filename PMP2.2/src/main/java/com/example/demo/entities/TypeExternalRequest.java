@@ -8,12 +8,14 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class TypeExternalRequest implements Serializable{
 	@Id
 	@GeneratedValue
 	private Integer TypeExternelRequest_ID;
+	@NotNull(message="entre Name Type Externel Request")
 	private String NameTypeExternelRequest;
 	
 	@OneToMany(mappedBy = "typeExternalRequest", fetch = FetchType.LAZY)

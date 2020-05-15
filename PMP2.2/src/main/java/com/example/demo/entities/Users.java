@@ -19,16 +19,22 @@ import javax.validation.constraints.Size;
 @Table(name="users")
 public class Users implements Serializable {
 	@Id
-	
-	
 	private  String username;
+	
 	private String password; 
+	
 	private boolean actived;
+	
 	private String lastName;
+	
 	private Boolean isCustomer;
+	
 	private String Picture;
+	
 	private String firstName;
+	
 	private String CIN; 
+	
 	private String Phone;
 	@ManyToOne
 	@JoinColumn(name = "customer_ID")
@@ -48,22 +54,13 @@ public class Users implements Serializable {
 	
 	@OneToMany(mappedBy = "user" , fetch = FetchType.LAZY)
 	private Collection<Expenses> expenses;
-	
-	
+	@OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+	private Collection<Ticket> ticket;
 
 	public Users() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	
-	
-
-	
-	
-
-
-
-
 
 	public Users(String username, String password, boolean actived, String lastName, Boolean isCustomer, String picture,
 			String firstName, String cIN, String phone, Customer customer, Collection<Roles> roles) {

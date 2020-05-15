@@ -30,12 +30,10 @@ public class TypeDeliverableController {
 	
 	@Autowired
 	TypeDeliverableRepository typeDeliverablerepository;
-	
-	
+		
 	@Autowired
 	private UserRepository userRepository;
 	
-
 	@RequestMapping(value="/typeDeliverable")
 	public String typeDeliverable(Model model, Authentication auth) {
 		
@@ -50,12 +48,22 @@ public class TypeDeliverableController {
 		return"typeDeliverable";
 	}
 	
-
 	@RequestMapping(value="/addTypeDeliverable")
-	public String addTypeDeliverable(TypeDeliverable type) {
+	public String addTypeDeliverable(@Valid TypeDeliverable type,BindingResult bindingResult) {
 
+		if(bindingResult.hasErrors()) {
+			return "addTypDeliv";
+		}
+		
 		typeDeliverablerepository.save(type);
 		return"redirect:/typeDeliverable";
+	}
+	
+	@RequestMapping(value ="/addTypDeliv")
+	public String addTypDeliv( Model model) {
+		 model.addAttribute("typDeliv",new TypeDeliverable());
+		 
+			return "addTypDeliv";
 	}
 	
 	@RequestMapping(value = "/editTypeDeliverable",method = { RequestMethod.GET, RequestMethod.POST })

@@ -14,6 +14,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.NotNull;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -24,7 +25,7 @@ public class InternalRequest implements Serializable{
 	@Id
 	@GeneratedValue
 	private Integer InternalRequest_ID;
-	@Column
+	@NotNull(message="entre Description")
 	private String Description;
 	private String Status; 
 	@DateTimeFormat()

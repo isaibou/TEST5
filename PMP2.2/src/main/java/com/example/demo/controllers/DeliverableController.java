@@ -17,6 +17,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -63,7 +64,7 @@ public class DeliverableController {
 	}
 
 	@RequestMapping(value="/addDeliverable")
-	public String addDelivrable(Model model,@Valid BindingResult bindingResult, Deliverable deli, @RequestParam(name="fileD") MultipartFile fileD , @RequestParam(name="picture") MultipartFile picture) throws IllegalStateException, IOException {
+	public String addDelivrable(@Valid @ModelAttribute("deliv") Deliverable deli, BindingResult bindingResult, @RequestParam(name="fileD") MultipartFile fileD , @RequestParam(name="picture") MultipartFile picture) throws IllegalStateException, IOException {
 		
 		if(bindingResult.hasErrors()) {
 			return "addDelivP";
@@ -148,8 +149,6 @@ deliverablerepository.save(deli);
 			
 	}
 
-
-
 @RequestMapping(value="/DeliverableFile/{fileName}")
 @ResponseBody
 public void getdeliveryCertificate(@PathVariable("fileName")String fileName, HttpServletResponse response) {
@@ -180,8 +179,7 @@ public void getdeliveryCertificate(@PathVariable("fileName")String fileName, Htt
 	} catch (IOException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
-	}
-	
-}
+	}	
+ }
 }
 

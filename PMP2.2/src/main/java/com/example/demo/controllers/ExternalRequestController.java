@@ -10,11 +10,13 @@ import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.entities.*;
 import com.example.demo.repository.ExternalRequestRepository;
+import com.example.demo.repository.TypeExternalRequestRepository;
 import com.example.demo.repository.UserRepository;
 
 @Controller
@@ -26,8 +28,11 @@ public class ExternalRequestController {
 	@Autowired
 	private UserRepository userRepository;
 	
+	@Autowired
+	private TypeExternalRequestRepository typeExternalRequestRepository;
+	
 	@RequestMapping(value="/addExternalRequest")
-	public String addInternalRequest(@Valid ExternalRequest external,BindingResult bindingResult, Authentication  auth ) {
+	public String addInternalRequest(@Valid @ModelAttribute("ext") ExternalRequest external,BindingResult bindingResult, Authentication  auth ) {
 		
 		if(bindingResult.hasErrors()) {
 			return "addReqCust";
@@ -46,6 +51,7 @@ public class ExternalRequestController {
 	@RequestMapping(value ="/addReqCust" )
 	public String addReqCust(Model model) {
 		model.addAttribute("ext", new ExternalRequest());
+		model.addAttribute("type", typeExternalRequestRepository.findAll());
 		return "addReqCust";
 	}
 	
@@ -80,7 +86,6 @@ public class ExternalRequestController {
 	eR.setCommentaire(newCom);
 	externalRequestRepository.save(eR);
 		
-	
 		return "redirect:/request";
 	}
 	
@@ -90,15 +95,6 @@ public class ExternalRequestController {
 		ExternalRequest eR = externalRequestRepository.getOne(id);
 		model.addAttribute("eR", eR);
 		
-		
-	
 		return "detailsRequestCustomer";
-	}
-	
-	
-	
-	
-	
-	}
-
-
+	}	
+}

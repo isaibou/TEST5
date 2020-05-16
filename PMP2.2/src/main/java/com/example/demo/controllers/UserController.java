@@ -23,6 +23,7 @@ import org.springframework.security.web.authentication.logout.SecurityContextLog
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -79,7 +80,7 @@ public class UserController {
 	}
 	
 	@RequestMapping(value ="/saveUsers" )
-	public String addUsers(@Valid Users u, Model model ,BindingResult bindingResult,@RequestParam(name = "photo") MultipartFile file ) throws Exception, IOException {
+	public String addUsers(@Valid @ModelAttribute("userE") Users u ,BindingResult bindingResult,@RequestParam(name = "photo") MultipartFile file ) throws Exception, IOException {
 		
 		if(bindingResult.hasErrors()) {
 			return "addUserEmp";
@@ -95,10 +96,8 @@ public class UserController {
 		u.setPassword(encoder.encode(pass));
 		u.setActived(true);
 		u.setIsCustomer(false);
-		
-		
-		userRepository.save(u);
-		
+			
+		userRepository.save(u);	
 		
 if (!(file.isEmpty())) {
 			
@@ -106,7 +105,6 @@ if (!(file.isEmpty())) {
 
 			file.transferTo(new File(images+u.getUsername()));
 		}
-
 
 		return "redirect:/users";
 	}
@@ -121,7 +119,7 @@ if (!(file.isEmpty())) {
 	}
 	
 	@RequestMapping(value ="/saveUsersC" )
-	public String addUsersC(@Valid Users u, Model model,BindingResult bindingResult ) throws Exception, IOException {
+	public String addUsersC(@Valid @ModelAttribute("userC") Users u,BindingResult bindingResult ) throws Exception, IOException {
 		
 		if(bindingResult.hasErrors()) {
 			return "addUserCust";
@@ -137,8 +135,7 @@ if (!(file.isEmpty())) {
 		u.setPassword(encoder.encode(pass));
 		u.setActived(true);
 		u.setIsCustomer(true);
-		
-		
+			
 		userRepository.save(u);
 		return "redirect:/users";
 	}
@@ -170,14 +167,12 @@ if (!(file.isEmpty())) {
 	
 	@RequestMapping(value ="desactiverUser" )
 	private String desactiverUser( Model model, String id ) {
-	
 		
 		 Users user = userRepository.getOne(id);
 		user.setActived(false);
 		 
 		 userRepository.save(user);
-				
-		
+					
 		return "redirect:/users";	
 			
 	}
@@ -190,7 +185,6 @@ if (!(file.isEmpty())) {
 		model.addAttribute("customer", u.getCustomer());
 		model.addAttribute("allRoles", u.getRoles());	
 		
-	
 		return "updateUsers";
 	}
 	
@@ -202,7 +196,6 @@ if (!(file.isEmpty())) {
 		model.addAttribute("customer", u.getCustomer());
 		model.addAttribute("allRoles", u.getRoles());	
 		
-	
 		return "updateUsersCustomer";
 	}
 	
@@ -233,7 +226,6 @@ if (!(file.isEmpty())) {
 
 	@RequestMapping(value ="/editUsers" )
 	public String editUsers(Users u, Model model,@RequestParam(name = "photo") MultipartFile file) throws IllegalStateException, IOException {
-	
 		
 		u.setActived(true);
 		u.setIsCustomer(false);
@@ -248,13 +240,11 @@ if (!(file.isEmpty())) {
 		return "redirect:/users";
 	}
 	
-
 	@RequestMapping(value ="/editUsersC" )
 	public String editUsersC(Users u, Model model) {
 	
 		u.setIsCustomer(true);
-		
-		
+			
 		userRepository.save(u);
 		return "redirect:/users";
 	}
@@ -348,8 +338,3 @@ if (!(file.isEmpty())) {
 	     return "redirect:/LoginVrai?logout";
 	 }
 }
-
-
-
-
-

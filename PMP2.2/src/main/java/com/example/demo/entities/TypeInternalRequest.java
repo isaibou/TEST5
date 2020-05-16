@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 @Entity
@@ -18,11 +19,11 @@ public class TypeInternalRequest implements Serializable{
 	@Id
 	@GeneratedValue
 	private Integer TypeInternalRequest_ID;
-	@NotNull(message="entre  Name Type Internal Request")
+	
+	@NotEmpty
 	private String NameTypeInternalRequest;
 	
 	@OneToMany(mappedBy = "typeInternalRequest" , fetch = FetchType.LAZY)
-
 	private Collection<InternalRequest> internal;
 	
 	public TypeInternalRequest() {

@@ -31,20 +31,24 @@
     </div>
     <label class="col-sm-4 control-label" for="input-id-1" style="margin:5px 0px;"><b>Year</b></label>
     <div class="col-sm-8" style="margin: 5px 0px;">
-    <input type="date" class="form-control" placeholder="MM/DD/YYYY" id="input-id-1" required th:field=*{an}/>
+    <input type="date" class="form-control" placeholder="MM/DD/YYYY" id="input-id-1" th:field=*{an}/>
+    <span class="text-danger" th:errors=*{an}></span>
     </div>
     <label class="col-sm-4 control-label" for="input-id-1" style="margin-bottom:5px;"><b>Amount</b></label>
     <div class="col-sm-8" style="margin-bottom:5px;">
-     <input type="text" placeholder="Entry Amount" class="form-control" id="input-id-1" required th:field="*{Amount}" >
+     <input type="text" placeholder="Entry Amount" class="form-control" id="input-id-1" th:field="*{Amount}"/>
+      <span class="text-danger" th:errors=*{Amount}></span>
     </div>
     <label class="col-sm-4 control-label"  for="input-id-1" style="margin-top:0px; margin-bottom:5px;"><b>Date Signature</b></label>
     <div class="col-sm-8" style="margin: 5px 0px;">
-    <input type="date" class="form-control" placeholder="MM/DD/YYYY" id="input-id-1" required th:field=*{signing}/>
+    <input type="date" class="form-control" placeholder="MM/DD/YYYY" id="input-id-1" th:field=*{signing}/>
+     <span class="text-danger" th:errors=*{signing}></span>
     </div>
 
     <label class="col-sm-4 control-label" for="input-id-1" style="margin-bottom:5px;"><b>Signed By</b></label>
     <div class="col-sm-8" style="margin-top:0px; margin-bottom:5px;">
-     <input type="text" class="form-control" id="input-id-1" placeholder="Entry Signed By" required th:field="*{SignedBy}" >
+     <input type="text" class="form-control" id="input-id-1" placeholder="Entry Signed By" th:field="*{SignedBy}"/>
+      <span class="text-danger" th:errors=*{SignedBy}></span>
     </div>
     <label class="col-sm-4 control-label" for="input-id-1"  style="margin-bottom:5px;" ><b>Preview File</b></label>
     <div class="col-sm-8" style="margin: 5px 0px;">

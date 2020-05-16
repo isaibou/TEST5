@@ -20,6 +20,7 @@ import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.Errors;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -62,7 +63,7 @@ public class CustomerController {
 	}
 
 	@RequestMapping(value = "/SaveCustomer", method = RequestMethod.POST)
-	private String SaveCustomer(@Valid Customer addCust, BindingResult bindingResult,
+	private String SaveCustomer(@Valid @ModelAttribute("customer") Customer addCust, BindingResult bindingResult,
 			@RequestParam(name = "picture") MultipartFile file) throws Exception, IOException {
 	
 		if(bindingResult.hasErrors()) {

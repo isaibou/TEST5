@@ -9,7 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotEmpty;
 
 import org.springframework.format.annotation.NumberFormat;
 
@@ -19,17 +19,21 @@ public class Expenses implements Serializable{
 	@Id
 	@GeneratedValue
 	private Integer Expenses_ID;
+	
 	@NumberFormat(pattern = "#,###,###,###.##")
 	private Double Amount;
-	@NotNull(message="entre Description")
+	
+	@NotEmpty
 	private String Description;
-	@NotNull(message="entre Receipt")
+	
+	@NotEmpty
 	private String Receipt;
 	
 	private Date SubmittedDate;
 	
 	private String StatutExpense;
-	@NotNull(message="entre RejectReason")
+	
+	@NotEmpty
 	private String RejectReason;
 		
 	@ManyToOne

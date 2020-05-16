@@ -26,15 +26,14 @@
    <label class="col-sm-4 control-label" for="input-id-1" style="margin:5px 0px;"><b>Name:</b></label>
    <div class="col-sm-8" style="margin:5px 0px;" >
     <input type="text" placeholder="Entry Nom" class="form-control" id="input-id-1"  th:field="*{NameTypeExpenses}">
+    <span class="text-danger" th:errors=*{NameTypeExpenses}></span>
    </div>
   </div>
    </div>
-		</div>
 		  <div class="modal-footer">
 		   <button style="margin:0px;" class="btn m-b-xs btn-sm btn-primary btn-addon"><i class="glyphicon glyphicon-ok"></i>Save</button>
-		   <button style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon"><a th:href="typeDeliverable"><i class="glyphicon glyphicon-remove"></i>Annuler</a></button>
+		   <button style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon"><a th:href="typeExpenses"><i class="glyphicon glyphicon-remove"></i>Annuler</a></button>
 		  </div>
-
 	    </form>
 		</div>
 	  </div>

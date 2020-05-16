@@ -18,6 +18,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -58,14 +59,14 @@ public class ExpensesController {
 	
 	    model.addAttribute("listEx", listExpenses);
 		model.addAttribute("expense", new Expenses());
-		model.addAttribute("intEx", listExpenses.size());
+		model.addAttribute("totalExp", listExpenses.size());
 		model.addAttribute("typeEx", typeExpensesRepository.findAll());
 
 		return "expense";
 	}
 
 	@RequestMapping(value="/addExpenses")
-	public String addInternalRequest(@Valid Expenses expense,BindingResult bindingResult, Authentication  auth, @RequestParam(name="recu")MultipartFile file ) throws IllegalStateException, IOException {
+	public String addInternalRequest(@Valid @ModelAttribute("exp") Expenses expense,BindingResult bindingResult, Authentication  auth, @RequestParam(name="recu")MultipartFile file ) throws IllegalStateException, IOException {
 		
 		if(bindingResult.hasErrors()) {
 			return "addExp";
@@ -83,12 +84,10 @@ public class ExpensesController {
 			expense.setReceipt((file.getOriginalFilename()));
 			file.transferTo(new File(receipt+expense.getExpenses_ID()));
 		}
-		
-		
+			
 		return"redirect:/expenses";
 	}
-	
-	
+		
 	@RequestMapping(value="/answerExpenses")
 	public String answer( Integer  id ) {
 		
@@ -99,8 +98,6 @@ public class ExpensesController {
 		return"redirect:/expenses";
 	}
 	
-	
-
 	@RequestMapping(value="/confirmExpenses")
 	public String confirm( Integer  id ) {
 		

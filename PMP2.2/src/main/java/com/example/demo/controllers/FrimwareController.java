@@ -26,6 +26,7 @@ import com.example.demo.repository.AssetTypeRepository;
 import com.example.demo.repository.FrimwareRepository;
 import com.example.demo.repository.UserRepository;
 
+
 @Controller
 public class FrimwareController {
 	

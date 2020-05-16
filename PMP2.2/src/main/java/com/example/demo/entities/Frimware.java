@@ -28,6 +28,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 @Entity
 public class Frimware implements Serializable{
 	
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer frimware_ID;

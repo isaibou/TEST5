@@ -64,17 +64,13 @@ public class AssetsController {
 	}
 	
 	@RequestMapping(value="/SaveAssets" , method= RequestMethod.POST)
-
-	private String SaveAssets(@Valid Assets addAss, BindingResult bindingResult) {
+	private String SaveAssets(@Valid Assets addAss, BindingResult bindingResult, Model model) {
 		
 		if(bindingResult.hasErrors()) {
-			return "addAssets";}
+			return "addAssets";
 			
 		}
 		
-
-	private String SaveAssets(@Valid Assets addAss, BindingResult bindingResult, Model model) {
-
 		addAss.setStatus("Actif");
 		
 		assetRepository.save(addAss);

@@ -22,7 +22,6 @@ import javax.validation.constraints.NotNull;
 public class TechnologyPartner implements Serializable{
 	
 	
-	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer TechnologyPartner_ID;

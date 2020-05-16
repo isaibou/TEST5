@@ -14,6 +14,7 @@ import javax.validation.constraints.NotEmpty;
 @Entity
 public class Vendor implements Serializable{
 	
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer Vendor_ID;

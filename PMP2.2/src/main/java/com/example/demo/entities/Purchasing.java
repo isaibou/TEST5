@@ -16,6 +16,7 @@ import javax.validation.constraints.Email;
 @Entity
 public class Purchasing implements Serializable{
 	
+	
 	@Id
 	@GeneratedValue
 	private Integer Purchasing_ID;

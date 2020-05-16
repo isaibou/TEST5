@@ -26,6 +26,7 @@ import javax.validation.constraints.NotEmpty;
 import org.springframework.format.annotation.DateTimeFormat;
 
 
+
 @Entity
 public class Assets implements Serializable{
 	

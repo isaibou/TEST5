@@ -27,7 +27,7 @@ import com.example.demo.repository.VendorRepository;
 
 public class AssetTypeController
 {
-	
+
 	
 	@Autowired
 	private VendorRepository vendorRepository;

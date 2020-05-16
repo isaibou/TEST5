@@ -19,7 +19,6 @@ import javax.validation.constraints.NotNull;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-
 @Entity
 public class RFP implements Serializable{
 	
@@ -29,7 +28,7 @@ public class RFP implements Serializable{
 	
 	@NotEmpty
 	@Column (name="Title",length=30,unique=true)
-	private String Title;
+	private String Title; 
 	@NotEmpty
 	private String Description;
 	

@@ -1,11 +1,14 @@
 package com.example.demo.controllers;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
@@ -15,6 +18,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.example.demo.entities.*;
 import com.example.demo.repository.AssetRepository;
@@ -41,6 +45,9 @@ public class AssetsController {
 	@Autowired
 	private UserRepository userRepository;
 	
+	@Value("${dir.assets}")
+	private String Configurationfille;
+	
 	//@Secured(value = "ROLE_MANAGER")
 	@RequestMapping(value="/assets_manage")
 	public String allAsset(Model model, Assets asset, Authentication auth) {
@@ -64,15 +71,34 @@ public class AssetsController {
 	}
 	
 	@RequestMapping(value="/SaveAssets" , method= RequestMethod.POST)
-	private String SaveAssets(@Valid Assets addAss, BindingResult bindingResult, Model model) {
+	private String SaveAssets(@Valid Assets addAss, BindingResult bindingResult, Model model,
+			@RequestParam(name="ConfigurationFille")MultipartFile file) 
+					throws IllegalStateException, IOException
+	{	 
 		
-		if(bindingResult.hasErrors()) {
-			return "addAssets";
+		
+		if(assetRepository.checkTitleExist(addAss.getSerielNumber())) {
 			
+			model.addAttribute("unique", "must be unique");
+			return "addAssets";
 		}
+		
+		
+		
+if (!(file.isEmpty())) {
+			
+	         addAss.setConfigurationFille((file.getOriginalFilename()));
+
+			 file.transferTo(new File(Configurationfille+file.getOriginalFilename()));
+		}
+
 		
 		addAss.setStatus("Actif");
 		
+		if(bindingResult.hasErrors()) {
+		return "addAssets";
+		
+	}
 		assetRepository.save(addAss);
 		AssetType asstype=  addAss.getAssettype();
 		System.out.println(asstype);
@@ -89,7 +115,7 @@ public class AssetsController {
 		
 	}
 	
-	@RequestMapping(value="/addAssets" , method= RequestMethod.POST)
+	@RequestMapping(value="/addAssetsFrim" , method= RequestMethod.POST)
 	private String addAssets(Integer id, @RequestParam(name="frim") Frimware frim  ) {
 		
 		Assets asset = assetRepository.getOne(id);
@@ -99,16 +125,18 @@ public class AssetsController {
 		
 		return "redirect:/assets_manage"; //$NON-NLS-1$
 		
+		
 	}
 	
 
 	@RequestMapping(value ="/addAssets")
-	public String addAssets( Model model, Integer id ) {
+	public String addAssets( Model model ) {
 		
 		 model.addAttribute("assets",  assetRepository.findAll());
 		 model.addAttribute("assets", new Assets());
 		 model.addAttribute("assettype", assetTypeRepository.findAll());
 		 model.addAttribute("project", projetRepository.findAll());	
+		 
 		
 			return "addAssets";
 			

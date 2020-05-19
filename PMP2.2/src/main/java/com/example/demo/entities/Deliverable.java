@@ -4,9 +4,11 @@ import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,19 +20,25 @@ import org.springframework.format.annotation.DateTimeFormat;
 public class Deliverable implements Serializable{
 		
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@NotNull
 	private Integer Deliverable_ID;
-	@NotNull(message="entre Name")
+	
+	@NotEmpty
 	private String Name;
-	@NotNull(message="entre Version")
+	
+	@NotEmpty
 	private String Version;
+	
 	@DateTimeFormat(pattern= "yyyy-mm-dd")
 	private Date Date;
-	@NotNull(message="entre PreviewFile")
+	
+	
 	private String PreviewFile;
-	@NotNull(message="entre File")
+	
+	
 	private String File;
-	@NotNull(message="entre DocumentLink")
+	
 	private String DocumentLink;
 	
 	@ManyToOne

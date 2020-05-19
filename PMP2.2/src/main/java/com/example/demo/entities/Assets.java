@@ -36,12 +36,13 @@ public class Assets implements Serializable{
 
 	
 	@NotEmpty
-	@Column (name="SerielNumber",unique=true)
+	@Column (name="SerielNumber")
 
 	private String SerielNumber;
 	
 	@NotEmpty
 	private String Description;
+	
 	private String ConfigurationFille;
 	
 	@NotEmpty
@@ -54,8 +55,10 @@ public class Assets implements Serializable{
 	private Date EndPowermWarranty;
 	
 	private String SLA;
+	
 	@NotEmpty
 	private String InterfaceAasset;
+	
 	private String LoginAsset;
 	private int PasswordAsset;
 	private Date LastUpdate;

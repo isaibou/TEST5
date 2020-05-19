@@ -23,12 +23,12 @@
   <div class="modal-content">
     <h1 class="m-n font-bold h3"> Add Expense </h1>
    </div>
-   <form th:action="@{addExpenses}"  enctype="multipart/form-data" method="post" th:object=${exp}>
+   <form th:action="@{SaveExpenses}"  enctype="multipart/form-data" method="post" th:object=${expenses}>
    <div class="modal-body">
   <div class="row">
     <label class="col-sm-4 control-label" for="input-id-1" style="margin:5px 0px;"><b>Type Expense :</b></label>
    <div class="col-sm-8" style="margin:5px 0px;" >
-   <select name ="ypeExpenses_ID" class="form-control" th:field="*{typeExpenses}" >
+   <select name ="TypeExpenses_ID" class="form-control" th:field="*{typeExpenses}" >
    <option th:each="t:${type}" th:text="${t.NameTypeExpenses}" th:value="${t.TypeExpenses_ID}" ></option>
    </select>
    </div>

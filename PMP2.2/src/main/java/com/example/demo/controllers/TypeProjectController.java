@@ -51,9 +51,19 @@ public class TypeProjectController {
 	}
 	
 	@RequestMapping(value="/SaveTypeProject" , method= RequestMethod.POST)
-	private String SaveTypeProject( TypeProject tP) {
+	private String SaveTypeProject(@Valid TypeProject addtypeP, BindingResult bindingResult, Model model) {
 		
-		typeProjectRepository.save(tP);
+		if(typeProjectRepository.checkTitleExist(addtypeP.getNameType_Project())) {
+			
+			model.addAttribute("unique", "must be unique");
+			return "addTypeProj";
+		}
+		
+		if(bindingResult.hasErrors()) {
+			return "addTypeProj";
+		}
+		
+		typeProjectRepository.save(addtypeP);
 		
 		return "redirect:/typeProject";
 		
@@ -61,7 +71,7 @@ public class TypeProjectController {
 	@RequestMapping(value ="/addTypeProj")
 	public String addTypeProj( Model model ) {
 		 
-		model.addAttribute("tProject",new TypeProject() );
+		model.addAttribute("typeProject",new TypeProject() );
 		List<TypeProject> listTp = typeProjectRepository.findAll();
 		List<ProjectTask> listpt = projectTaskrepository.findAll();
 		model.addAttribute("listTp", listTp);
@@ -72,10 +82,10 @@ public class TypeProjectController {
 			
 	}
 	
-	@RequestMapping(value = "/editTypeProject",method = {  RequestMethod.POST })
-	public String updateTypeProject(Model model, TypeProject tP ){
+	@RequestMapping(value = "/editTypeProject",method = { RequestMethod.GET, RequestMethod.POST })
+	public String updateTypeProject(@Valid  TypeProject addtypeP, BindingResult bindingResult, Model model ){
         
-		typeProjectRepository.save(tP);
+		typeProjectRepository.save(addtypeP);
 				
 		return "redirect:/typeProject";
 	}

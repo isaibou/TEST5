@@ -102,7 +102,7 @@ public class FrimwareController {
 		 model.addAttribute("frimware",frimware);
 		 System.out.println(frimware.getName());
 		 
-		 model.addAttribute("assettype", assetTypeRepository.findAll());
+		 model.addAttribute("assetType", assetTypeRepository.findAll());
 		 
 		 return "updateFrimwareForm";
 			

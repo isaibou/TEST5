@@ -48,8 +48,10 @@ public class TypeDeliverableController {
 		return"typeDeliverable";
 	}
 	
-	@RequestMapping(value="/addTypeDeliverable")
+	@RequestMapping(value="/SaveTypDeliv")
 	public String addTypeDeliverable(@Valid TypeDeliverable type,BindingResult bindingResult) {
+		
+		
 
 		if(bindingResult.hasErrors()) {
 			return "addTypDeliv";
@@ -61,7 +63,7 @@ public class TypeDeliverableController {
 	
 	@RequestMapping(value ="/addTypDeliv")
 	public String addTypDeliv( Model model) {
-		 model.addAttribute("typDeliv",new TypeDeliverable());
+		 model.addAttribute("typeDeliverable",new TypeDeliverable());
 		 
 			return "addTypDeliv";
 	}

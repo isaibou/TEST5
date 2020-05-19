@@ -64,12 +64,11 @@ public class ExpensesController {
 		return "expense";
 	}
 
-	@RequestMapping(value="/addExpenses")
-	public String addInternalRequest(@Valid Expenses expense,BindingResult bindingResult, Authentication  auth, @RequestParam(name="recu")MultipartFile file ) throws IllegalStateException, IOException {
+	@RequestMapping(value="/SaveExpenses")
+	public String addInternalRequest(@Valid Expenses expense,BindingResult bindingResult, Authentication  auth, 
+			@RequestParam(name="recu")MultipartFile file ) 
+					throws IllegalStateException, IOException {
 		
-		if(bindingResult.hasErrors()) {
-			return "addExp";
-		}
 		
 		String login = auth.getName();
 		Users u =  userRepository.getOne(login);
@@ -118,9 +117,9 @@ public class ExpensesController {
 	}
 	
 	@RequestMapping(value ="/addExp" )
-	public String addExp(Model model) {
+	public String addExp(Model model, Authentication  auth) {
 
-		model.addAttribute("exp", new Expenses());
+		model.addAttribute("expenses", new Expenses());
 		model.addAttribute("type", typeExpensesRepository.findAll());
 		return "addExp";
 	}

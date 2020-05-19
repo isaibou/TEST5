@@ -47,7 +47,7 @@ public class TypeExpensesController {
 	}
 	
 
-	@RequestMapping(value="/addTypeExpenses")
+	@RequestMapping(value="/SaveypeExpenses")
 	public String addTypeExpenses(@Valid TypeExpenses type, BindingResult bindingResult) {
 
 		if(bindingResult.hasErrors()) {
@@ -60,7 +60,8 @@ public class TypeExpensesController {
 	
 	@RequestMapping(value ="/addTypExp")
 	public String addTypExp( Model model) {
-		 model.addAttribute("typExp",new TypeExpenses());
+		
+		 model.addAttribute("typeExpenses",new TypeExpenses());
 		 
 			return "addTypExp";
 	}

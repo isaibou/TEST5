@@ -20,12 +20,16 @@
 	 <div class="modal-content">
       <h1 class="m-n font-bold h3"> Add Type Deliverable</h1>
      </div>
-   <form th:action="@{addTypeDeliverable}" th:object=${typDeliv}>
+   <form th:action="@{SaveTypDeliv}" th:object=${typeDeliverable}>
    <div class="modal-body">
   <div class="row">
    <label class="col-sm-4 control-label" for="input-id-1" style="margin:5px 0px;"><b>Name:</b></label>
    <div class="col-sm-8" style="margin:5px 0px;" >
     <input type="text" placeholder="Entry Nom" class="form-control" id="input-id-1"  th:field="*{NameTypeDeliverable}">
+    <span class="text-danger" th:errors=*{NameTypeDeliverable}></span>
+     <div class="text-danger" th:if="${unique}">
+		   <div th:text="${unique}"></div>
+		</div>
    </div>
   </div>
    </div>

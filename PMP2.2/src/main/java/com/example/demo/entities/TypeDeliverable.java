@@ -8,6 +8,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 @Entity
@@ -17,7 +18,8 @@ public class TypeDeliverable implements Serializable{
 	@Id
 	@GeneratedValue
 	private Integer TypeDeliverable_ID;
-	@NotNull(message="entre Name Type Deliverable")
+	
+	@NotEmpty
 	private String NameTypeDeliverable;
 	
 	@OneToMany(mappedBy = "typeDeliverable", fetch = FetchType.LAZY)

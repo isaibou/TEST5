@@ -9,67 +9,62 @@
   <link rel="stylesheet" href="../libs/assets/font-awesome/css/font-awesome.min.css" type="text/css" />
   <link rel="stylesheet" href="../libs/assets/simple-line-icons/css/simple-line-icons.css" type="text/css" />
   <link rel="stylesheet" href="../libs/jquery/bootstrap/dist/css/bootstrap.css" type="text/css" />
-
   <link rel="stylesheet" href="css/font.css" type="text/css" />
   <link rel="stylesheet" href="css/app.css" type="text/css" />
-
 </head>
 <body>
-<div class="app" >
+<div style="margin:50px;"></div>
+<div class="col-md-6 col-sm-6 col-xs-12 spacer col-md-offset-3">
  <a href="" class="navbar-brand block m-t"><i class="fa fa-power-off"></i> <b>PowerM</b> </a>
- <div>
- <div class="modal-dialog modal-lg" >
-  <div class="modal-content">
-    <h1 class="m-n font-bold h3"> Add User </h1>
-   </div>
-  <form th:action="@{/saveUsersC}" method="post" th:object="${userC}">
-   <div class="modal-body">
-	<div class="row">
+ <div class="panel panel-default">
+  <div class="panel-heading"> Add User Customer </div>
+    <form th:action="@{/saveUsersC}" method="post" th:object="${userC}">
+   <div class="panel-body">
 	 <label class="col-sm-4 control-label" for="input-id-1" style="margin:5px 0px;"><b>Nom :</b></label>
 	 <div class="col-sm-8" style="margin:5px 0px;" >
-	  <input type="text" placeholder="Entry Nom" class="form-control" id="input-id-1"  required th:field=*{lastName}>
+	  <input type="text" placeholder="Entry Nom" class="form-control" id="input-id-1" th:field=*{lastName}>
+	   <span class="text-danger" th:errors=*{lastName}></span>
 	 </div>
 	 <label class="col-sm-4 control-label" for="input-id-1" style="margin:5px 0px;"><b>Prenom :</b></label>
 	 <div class="col-sm-8" style="margin:5px 0px;" >
-	  <input type="text" placeholder="Entry Prenom" class="form-control" id="input-id-1"  required th:field=*{firstName}>
-	 </div>
-	 
-	 
+	  <input type="text" placeholder="Entry Prenom" class="form-control" id="input-id-1" th:field=*{firstName}>
+	   <span class="text-danger" th:errors=*{firstName}></span>
+	 </div>	 
 	  <label class="col-sm-4 control-label" for="input-id-1" style="margin:5px 0px;"><b>Phone :</b></label>
 	 <div class="col-sm-8" style="margin:5px 0px;" >
-	  <input type="text" placeholder="Entry Phone" class="form-control" id="input-id-1"  required th:field=*{Phone}>
-	 </div>
-	 
-	
+	  <input type="text" placeholder="Entry Phone" class="form-control" id="input-id-1" th:field=*{Phone}>
+	   <span class="text-danger" th:errors=*{Phone}></span>
+	 </div>	
 	 <label class="col-sm-4 control-label" for="input-id-1" style="margin:5px 0px;"><b>Login :</b></label>
 	 <div class="col-sm-8" style="margin:5px 0px;" >
-	  <input type="email" placeholder="Entry Login" class="form-control" id="input-id-1"  required th:field=*{username}>
-	 </div>
-	 
+	  <input type="email" placeholder="Entry Login" class="form-control" id="input-id-1" th:field=*{username}>
+	   <span class="text-danger" th:errors=*{username}></span>
+	 </div>	 
 	  <label class="col-sm-4 control-label" for="input-id-1" style="margin:5px 0px;"><b>Company :</b></label>
 	 <div class="col-sm-8" style="margin:5px 0px;" >
 	 <select name ="Customer_ID" class="form-control" th:field="*{customer}" >
 	 <option th:each="c:${customer}" th:text="${c.Name}" th:value="${c.Customer_ID}" ></option>
 	 </select>
-	 </div>
-	 
+	 </div>	 
 	   <label class="col-sm-4 control-label" for="input-id-1"  style="margin:5px 0px;"><b>Role :</b></label>
 	 <div class="col-sm-8" style="margin:5px 0px;" >
-	 <select name ="role" multiple="multiple" class="form-control" th:field="*{roles}">
+	 <select name ="role"  class="form-control" th:field="*{roles}">
 	 <option th:each="r:${allRoles}" th:text="${r.role}" th:value="${r.role}"></option>
 	 </select>
 	 </div>
-	 </div>
-	<div class="modal-footer">
-    <button style="margin:0px;" class="btn m-b-xs btn-sm btn-primary btn-addon"><i class="glyphicon glyphicon-ok"></i>Save</button>
-	<button th:href="@{/users}" style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon" data-dismiss="modal"><i class="glyphicon glyphicon-remove"></i>Annuler</button>
-	
+	 <div>
+	 <button th:href="@{/users}" style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon pull-right"><i class="glyphicon glyphicon-remove"></i>Annuler</button>
    </div>
+    <button style="margin:0px;" class="btn m-b-xs btn-sm btn-primary btn-addon pull-right"><i class="glyphicon glyphicon-ok"></i>Save</button>
+	 </div>
  </form>
- </div>
+  <div class="text-center">
+   <p><small class="text-muted">
+    <span class="pull-right">2.2.0 <a href ui-scroll="app" class="m-l-sm text-muted"><i class="fa fa-long-arrow-up"></i></a></span><span class="pull-left"> &copy; PowerM 2020 Copyright. </span> 
+   </small></p>
   </div>
+ </div>
 </div>
-
 <script src="../libs/jquery/jquery/dist/jquery.js"></script>
 <script src="../libs/jquery/bootstrap/dist/js/bootstrap.js"></script>
 <script src="js/ui-load.js"></script>

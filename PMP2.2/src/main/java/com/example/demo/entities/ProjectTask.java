@@ -4,11 +4,16 @@ import java.io.Serializable;
 import java.util.Collection;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+
 import javax.validation.constraints.NotEmpty;
+
+import javax.persistence.OneToMany;
+
 
 
 @Entity
@@ -25,7 +30,8 @@ public class ProjectTask implements Serializable{
 	@JoinTable(name="TypeProject_projectTask")
 	private Collection<TypeProject> typeProject;
 	
-	
+	@OneToMany(mappedBy = "projATsk", fetch = FetchType.LAZY)
+	private Collection<AffectationProject> affectProj;
 	
 	
 	
@@ -53,6 +59,12 @@ public class ProjectTask implements Serializable{
 	}
 	public void setTypeProject(Collection<TypeProject> typeProject) {
 		this.typeProject = typeProject;
+	}
+	public Collection<AffectationProject> getAffectProj() {
+		return affectProj;
+	}
+	public void setAffectProj(Collection<AffectationProject> affectProj) {
+		this.affectProj = affectProj;
 	}
 	
 

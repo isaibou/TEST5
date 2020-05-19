@@ -13,16 +13,14 @@
   <link rel="stylesheet" href="css/app.css" type="text/css" />
 </head>
 <body>
-<div class="app" >
+<div style="margin:50px;"></div>
+<div class="col-md-6 col-sm-6 col-xs-12 spacer col-md-offset-3">
  <a href="" class="navbar-brand block m-t"><i class="fa fa-power-off"></i> <b>PowerM</b> </a>
  <div th:action="@{detailPurchasing}" method ="post" th:object="${user}">
-  <div class="modal-dialog modal-lg" >
-   <div class="modal-content">
-    <h1 class="m-n font-bold h3"> Informations Users </h1>
-   </div>
-   
-   <div  class="modal-body">
-    <div style="background-color:white;margin:10px; padding:10px;">
+  <div class="panel panel-default">
+   <div class="panel-heading"> Informations User Customer </div>
+   <div class="panel-body">
+   	<div style="background-color:white;margin:10px; padding:10px;">
 	 <table  ui-options="{aoColumns: [
 						    { mData: 'browser' },
 					        { mData: 'action' }
@@ -33,7 +31,7 @@
 		   <th  style="width:80%"><center>Content </center></th>
 		  </tr>
 	  </thead>
-	  <tbody th:each="u:${user}">
+	   <tbody th:each="u:${user}">
 		  <tr data-expanded="true">
 		   <td style="color:#23b7e5;"><center>First Name </center></td>
 		   <td th:text ="${u.firstName}" class="m-n font-thin h4 text-secondary"><center><b></b></center></td>
@@ -73,11 +71,14 @@
 	  </tbody>
      </table>
 	</div>
-   </div>
-   <div class="modal-footer">
-     <button class="btn m-b-xs btn-sm btn-primary btn-addon"><a th:href="users">Return</a></button>
-   </div>
-  </div>  
+    <div><button class="btn m-b-xs btn-sm btn-primary btn-addon pull-right"><a th:href="users">Return</a></button></div>  
+ </div>
+ </div>
+</div>
+ <div class="text-center">
+  <p><small class="text-muted">
+   <span class="pull-right">2.2.0 <a href ui-scroll="app" class="m-l-sm text-muted"><i class="fa fa-long-arrow-up"></i></a></span><span class="pull-left"> &copy; PowerM 2020 Copyright. </span> 
+  </small></p>
  </div>
 </div>
 <script src="../libs/jquery/jquery/dist/jquery.js"></script>

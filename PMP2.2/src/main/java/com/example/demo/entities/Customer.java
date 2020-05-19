@@ -13,24 +13,15 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 
-
-import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
-import javax.validation.constraints.NotNull;
-
-//import org.hibernate.validator.constraints.Email;
 import org.springframework.format.annotation.NumberFormat;
 
 @Entity
 public class Customer implements Serializable{
 		
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "my_seq_id")
-	
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "my_seq_id")	
 	@SequenceGenerator(name = "my_seq_id", sequenceName = "my_seq_id", allocationSize = 100)
 	private Integer Customer_ID;
 	
@@ -50,7 +41,7 @@ public class Customer implements Serializable{
 	@NotEmpty
 	private String AdressCompany;
 	
-	@NotNull
+	@NotEmpty
 	private String Vip;
 	
 	@NotEmpty
@@ -81,17 +72,14 @@ public class Customer implements Serializable{
 
 	private String Country;
 	
-	
 	private String Status;
 	
-
 	@OneToMany
 	private Collection <Purchasing> Purchasing;
 	
 	@OneToMany
 	private Collection <Contrat> contrat;
 
-	
 	@OneToMany(mappedBy = "customer", fetch = FetchType.LAZY)
 	private Collection<Users> users;
 	
@@ -259,10 +247,6 @@ public class Customer implements Serializable{
 	public void setEmailTechnical(String emailTechnical) {
 		EmailTechnical = emailTechnical;
 	}
-	
-	
-
-
 
 	public Collection<Users> getUsers() {
 		return users;
@@ -319,7 +303,5 @@ public class Customer implements Serializable{
 	public void setTickets(Collection<Ticket> tickets) {
 		this.tickets = tickets;
 	}
-	
-	
-	
+		
 }

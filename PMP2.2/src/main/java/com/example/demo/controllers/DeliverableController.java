@@ -64,6 +64,7 @@ public class DeliverableController {
 		return "deliverable_manage";
 	}
 
+
 	@RequestMapping(value="/SaveDeliverable",  method= RequestMethod.POST)
 	public String addDelivrable(@Valid @ModelAttribute("Deliverable") Deliverable deli, BindingResult bindingResult, 
 			@RequestParam(name="fileD") MultipartFile fileD , Model model, @RequestParam(name="picture") MultipartFile picture)
@@ -75,6 +76,10 @@ public class DeliverableController {
 			model.addAttribute("unique", "must be unique");
 			return "addDelivP";
 		}
+=======
+	@RequestMapping(value="/addDeliverable")
+	public String addDelivrable(@Valid @ModelAttribute("deliv") Deliverable deli, BindingResult bindingResult, @RequestParam(name="fileD") MultipartFile fileD , @RequestParam(name="picture") MultipartFile picture) throws IllegalStateException, IOException {
+>>>>>>> branch 'master' of https://github.com/isaibou/TEST5
 		
 		if(bindingResult.hasErrors()) {
 			return "addDelivP";
@@ -161,8 +166,6 @@ deliverablerepository.save(deli);
 			
 	}
 
-
-
 @RequestMapping(value="/DeliverableFile/{fileName}")
 @ResponseBody
 public void getdeliveryCertificate(@PathVariable("fileName")String fileName, HttpServletResponse response) {
@@ -193,8 +196,7 @@ public void getdeliveryCertificate(@PathVariable("fileName")String fileName, Htt
 	} catch (IOException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
-	}
-	
-}
+	}	
+ }
 }
 

@@ -6,6 +6,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 @Entity
@@ -14,9 +15,9 @@ public class DataCenter {
 	@Id
 	@GeneratedValue
 	private Integer DataCenter_ID;
-	@NotNull(message="entre Serving")
+	@NotEmpty
 	private String Serving ;
-	@NotNull(message="entre Address")
+	@NotEmpty
 	private String Adress;
 	@ManyToOne
 	@JoinColumn(name = "CUSTOMER_ID")

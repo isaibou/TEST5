@@ -13,12 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.example.demo.entities.ProjectTask;
-import com.example.demo.entities.RFP;
-import com.example.demo.entities.TechnologyPartner;
 import com.example.demo.entities.Users;
-import com.example.demo.entities.Vendor;
 import com.example.demo.repository.ProjectTaskRepository;
-import com.example.demo.repository.TechnologiePartnerRepository;
 import com.example.demo.repository.UserRepository;
 
 @Controller

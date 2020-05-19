@@ -14,8 +14,6 @@ import javax.validation.constraints.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 
-
-
 @Entity
 public class Deliverable implements Serializable{
 		
@@ -33,10 +31,11 @@ public class Deliverable implements Serializable{
 	@DateTimeFormat(pattern= "yyyy-mm-dd")
 	private Date Date;
 	
-	
+
 	private String PreviewFile;
 	
-	
+
+
 	private String File;
 	
 	private String DocumentLink;

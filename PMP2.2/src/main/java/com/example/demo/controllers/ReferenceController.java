@@ -17,6 +17,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -64,7 +65,7 @@ public class ReferenceController {
 	}
 
 	@RequestMapping(value="/SaveReference")
-	public String SaveReference(Model model,@Valid Reference ref,BindingResult bindingResult, @RequestParam(name="file") MultipartFile file , @RequestParam(name="picture") MultipartFile picture) throws IllegalStateException, IOException {
+	public String SaveReference(@Valid @ModelAttribute("ref") Reference ref,BindingResult bindingResult, @RequestParam(name="file") MultipartFile file , @RequestParam(name="picture") MultipartFile picture) throws IllegalStateException, IOException {
 		
 		if(bindingResult.hasErrors()) {
 			return "addRefP";
@@ -192,7 +193,6 @@ public void getdeliveryCertificate(@PathVariable("fileName")String fileName, Htt
 	} catch (IOException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
-	}
-	
-}
+	}	
+ }
 }

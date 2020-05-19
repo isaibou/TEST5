@@ -1,9 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-
   <meta charset="utf-8" />
-  <!-- update -->
   <title>Add Expense</title>
   <meta name="description" content="app, web app, responsive, responsive layout, admin, admin panel, admin dashboard, flat, flat ui, ui kit, AngularJS, ui route, charts, widgets, components" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
@@ -11,11 +9,10 @@
   <link rel="stylesheet" href="../libs/assets/font-awesome/css/font-awesome.min.css" type="text/css" />
   <link rel="stylesheet" href="../libs/assets/simple-line-icons/css/simple-line-icons.css" type="text/css" />
   <link rel="stylesheet" href="../libs/jquery/bootstrap/dist/css/bootstrap.css" type="text/css" />
-
   <link rel="stylesheet" href="css/font.css" type="text/css" />
   <link rel="stylesheet" href="css/app.css" type="text/css" />
-
 </head>
+<<<<<<< HEAD
 <body>
 <div class="app" >
  <a href="" class="navbar-brand block m-t"><i class="fa fa-power-off"></i> <b>PowerM</b> </a>
@@ -26,6 +23,16 @@
    <form th:action="@{SaveExpenses}"  enctype="multipart/form-data" method="post" th:object=${expenses}>
    <div class="modal-body">
   <div class="row">
+=======
+<body>
+<div style="margin:50px;"></div>
+<div class="col-md-6 col-sm-6 col-xs-12 spacer col-md-offset-3">
+  <a href="" class="navbar-brand block m-t"><i class="fa fa-power-off"></i> <b>PowerM</b> </a>
+  <div class="panel panel-default">
+   <div class="panel-heading"> Add Expenses </div>
+    <form th:action="@{addExpenses}"  enctype="multipart/form-data" method="post" th:object=${exp}>
+   <div class="panel-body">
+>>>>>>> branch 'master' of https://github.com/isaibou/TEST5
     <label class="col-sm-4 control-label" for="input-id-1" style="margin:5px 0px;"><b>Type Expense :</b></label>
    <div class="col-sm-8" style="margin:5px 0px;" >
    <select name ="TypeExpenses_ID" class="form-control" th:field="*{typeExpenses}" >
@@ -34,26 +41,32 @@
    </div>
    <label class="col-sm-4 control-label" for="input-id-1" style="margin:5px 0px;"><b>Description</b></label>
    <div class="col-sm-8" style="margin:5px 0px;" >
-    <input type="text" placeholder="Entry Description" class="form-control" id="input-id-1" th:field=*{Description}  >
+
+    <input type="text" placeholder="Entry Description" class="form-control" id="input-id-1" th:field="*{Description}"/>
+    <span class="text-danger" th:errors=*{Description}></span>
    </div>
    <label class="col-sm-4 control-label" for="input-id-1" style="margin:5px 0px;"><b>Amount</b></label>
    <div class="col-sm-8" style="margin:5px 0px;" >
-    <input type="number" placeholder="Entry Amount" class="form-control" id="input-id-1" th:field=*{Amount}  >
-   </div>
-  
+
+    <input type="number" placeholder="Entry Amount" class="form-control" id="input-id-1" th:field="*{Amount}"/>
+    <span class="text-danger" th:errors=*{Amount}></span>
+   </div>  
   <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Receipt</b></label>
      <div class="col-sm-8" style="margin: 5px 0px;">
         <input type="file"  name="recu" class="form-control" id="input-id-1" > 
      </div>
-     </div>
-</div>
-           <div class="modal-footer">
-        <button style="margin:0px;" class="btn m-b-xs btn-sm btn-primary btn-addon"><i class="glyphicon glyphicon-ok"></i>Save</button>
-	    <button style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon"><a th:href="expenses"><i class="glyphicon glyphicon-remove"></i>Annuler</a></button>
+     <div>
+      <button style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon pull-right"><a th:href="expenses"><i class="glyphicon glyphicon-remove"></i>Annuler</a></button>
+      <button style="margin:0px;" class="btn m-b-xs btn-sm btn-primary btn-addon pull-right"><i class="glyphicon glyphicon-ok"></i>Save</button>     
       </div>
-    
+     </div>
    </form >
-  </div>
+   </div>
+<div class="text-center">
+ <p><small class="text-muted">
+  <span class="pull-right">2.2.0 <a href ui-scroll="app" class="m-l-sm text-muted"><i class="fa fa-long-arrow-up"></i></a></span>
+  <span class="pull-left"> &copy; PowerM 2020 Copyright. </span> 
+ </small></p>
 </div>
 </div>
 <script src="../libs/jquery/jquery/dist/jquery.js"></script>
@@ -64,66 +77,5 @@
 <script src="js/ui-nav.js"></script>
 <script src="js/ui-toggle.js"></script>
 <script src="js/ui-client.js"></script>
-<script type="text/javascript">
-  function changecolor() {
-       $('body,.wrapper,.content,.panel-default,.panel-heading,#content-h,#header,.modal-content').css("background-color", "#3a3f51");
-       $('.wrapper,.content,.panel-default,.panel-heading,#content-h').css("border-color", "#313639");
-    $('.h3,.h5,.wrapper,panel-default,#content-b,.panel-heading').css("color", "white");
-              $('.panel-default,#content-b').css("background-color", "#3a3f51");
-
-  google.charts.load('current', {packages: ['corechart']});
-    google.charts.setOnLoadCallback(drawChart);
-
-    function drawChart() {
-      // Define the chart to be drawn.
-      var data = new google.visualization.DataTable();
-      data.addColumn('string', 'Element');
-      data.addColumn('number', 'Percentage');
-      data.addRows([
-        ['Configuration', 0.68],
-        ['Documentation', 0.11],
-        ['Maintenance', 0.11],
-        ['Installation', 0.10]
-      ]);
-
-      // Instantiate and draw the chart.
-      var chart = new google.visualization.PieChart(document.getElementById('myPieChart'));
-    var options = {backgroundColor: '#3a3f51', colors: ['#6254b2', '#3289c8', '#27c24c','#ffbb3b'],legendTextStyle: { color: '#FFF' },is3D: true};
-      chart.draw(data, options);
-    }
-
-      };
-    
-      function lightmode() {
-       $('.wrapper,.content,.panel-heading,#content-h,#header,.modal-content').css("background-color", "#f0f3f4");
-          $('.panel-default,#content-b').css("background-color", "#f0f3f4");
-       $('.wrapper,.content,.panel-default,.panel-heading,#content-h').css("border-color", "#dee5e7");
-    $('.h3,.h5,.wrapper,panel-default,#content-b,.panel-heading').css("color", "#58666e");
-
-  google.charts.load('current', {packages: ['corechart']});
-    google.charts.setOnLoadCallback(drawChart);
-
-    function drawChart() {
-      // Define the chart to be drawn.
-      var data = new google.visualization.DataTable();
-      data.addColumn('string', 'Element');
-      data.addColumn('number', 'Percentage');
-      data.addRows([
-        ['Configuration', 0.68],
-        ['Documentation', 0.11],
-        ['Maintenance', 0.11],
-        ['Installation', 0.10]
-      ]);
-
-      // Instantiate and draw the chart.
-      var chart = new google.visualization.PieChart(document.getElementById('myPieChart'));
-    var options = {backgroundColor: '#f0f3f4', colors: ['#6254b2', '#3289c8', '#27c24c','#ffbb3b'],legendTextStyle: { color: 'black' },is3D: true};
-      chart.draw(data, options);
-    }
-
-      };
-    
- 
-    </script>
 </body>
 </html>

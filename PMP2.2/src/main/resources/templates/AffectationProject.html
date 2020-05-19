@@ -1,8 +1,9 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
+
   <meta charset="utf-8" />
-  <title> Add Type Internal Request</title>
+  <title>Choose Frimware</title>
   <meta name="description" content="app, web app, responsive, responsive layout, admin, admin panel, admin dashboard, flat, flat ui, ui kit, AngularJS, ui route, charts, widgets, components" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <link rel="stylesheet" href="../libs/assets/animate.css/animate.css" type="text/css" />
@@ -18,22 +19,38 @@
  	<div>
 	 <div class="modal-dialog modal-lg" >
 	 <div class="modal-content">
-      <h1 class="m-n font-bold h3"> Add Type Internal Request</h1>
+      <h1 class="m-n font-bold h3"> Affectation Project task To Employee </h1>
      </div>
-   <form th:action="@{addTypeInternalRequest}" th:object=${typint}>
-   <div class="modal-body">
-  <div class="row">
-   <label class="col-sm-4 control-label" for="input-id-1" style="margin:5px 0px;"><b>Name:</b></label>
-   <div class="col-sm-8" style="margin:5px 0px;" >
-    <input type="text" placeholder="Entry Nom" class="form-control" id="input-id-1"  th:field="*{NameTypeInternalRequest}">
-    <span class="text-danger" th:errors=*{NameTypeInternalRequest}></span>
-   </div>
-  </div>
-   </div>
+   <form th:action="@{affectedProj}" method ="post" th:object="${affectationProj}" >
+      <div class="modal-body">
+	    <div class="row">
+	     <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b> Project</b></label>
+     <div class="col-sm-8" style="margin: 5px 0px;">
+      <input type="text" class="form-control" placeholder="Entry Name of Project" id="input-id-1"  th:text="${proj.Name}" th:value="${proj.Project_ID}" name="project"  />
+	 </div>
+	    <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Project Task</b></label>
+	 <div class="col-sm-8" style="margin: 5px 0px;">
+	 <!-- ici on met une boucle sur le customer pour avoir récupérer la liste des customer  -->
+	  <select name="projTAsk" class="form-control m-b"  th:field="*{projATsk}">
+	   <option th:each ="c:${proj.typeProject.projectTask}" 
+	   th:text="${c.NameProjectTask}"
+	   th:value ="${c.ProjectTask_ID}"></option>
+	  </select>
+	  
+	 <label class="col-sm-4 control-label" for="input-id-1" style="margin:5px 0px;"><b>Employee :</b></label>
+	 <div class="col-sm-8" style="margin:5px 0px;" >
+	 <select name ="employee" class="form-control" multiple="multiple" th:field="*{user}" >
+	 <option  th:each ="a:${employee}"  th:text="${a.lastName} + .+ ${a.firstName}" th:value="${a.username}" ></option>
+	 </select>
+	 </div>
+	   
+          </div>
 		  <div class="modal-footer">
 		   <button style="margin:0px;" class="btn m-b-xs btn-sm btn-primary btn-addon"><i class="glyphicon glyphicon-ok"></i>Save</button>
-		   <button style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon"><a th:href="typeRequest"><i class="glyphicon glyphicon-remove"></i>Annuler</a></button>
+		   <button style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon"><a th:href="projects"><i class="glyphicon glyphicon-remove"></i>Annuler</a></button>
 		  </div>
+		 </div>
+		</div>
 	    </form>
 		</div>
 	  </div>

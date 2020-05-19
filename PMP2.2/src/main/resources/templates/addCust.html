@@ -13,23 +13,20 @@
   <link rel="stylesheet" href="css/app.css" type="text/css" />
 </head>
 <body>
-<div class="app" >
- <a href="" class="navbar-brand block m-t"><i class="fa fa-power-off"></i> <b>PowerM</b> </a>
-<div>
-<div class="modal-dialog modal-lg" >
- <div class="modal-content">
-  <h1 class="m-n font-bold h3"> Add Customer </h1>
- </div>
-   <form th:action="@{SaveCustomer}" enctype="multipart/form-data" method ="post" th:object="${customer}">
-   <div class="modal-body">
-	<div class="row">
+<div style="margin:50px;"></div>
+<div class="col-md-6 col-sm-6 col-xs-12 spacer col-md-offset-3">
+	 <a href="" class="navbar-brand block m-t"><i class="fa fa-power-off"></i> <b>PowerM</b> </a>
+	<div class="panel panel-default">
+	 <div class="panel-heading"> Add Customer </div>
+     <form th:action="@{SaveCustomer}" enctype="multipart/form-data" method ="post" th:object="${customer}">
+     <div class="panel-body">
 	<label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Company Logo</b></label>
      <div class="col-sm-8" style="margin: 5px 0px;">
         <input type="file"  name="picture" class="form-control" id="input-id-1" >
      </div>
 	 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Company Name</b></label>
      <div class="col-sm-8" style="margin: 5px 0px;" >
-      <input type="text" class="form-control" placeholder="Entry Name of Company" id="input-id-1"  th:field=*{Name}/>
+      <input type="text" class="form-control" placeholder="Entry Name of Company" id="input-id-1" th:field=*{Name}/>
       <span class="text-danger" th:errors="${customer.Name}"></span>
       <div class="text-danger" th:if="${unique}">
 		   <div th:text="${unique}"></div>
@@ -42,7 +39,7 @@
 	 </div>
 	 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Company Phone</b></label>
 	 <div class="col-sm-8" style="margin: 5px 0px;">
-	  <input type="tel" placeholder="Entry Phone of Company"class="form-control" id="input-id-1" th:field=*{PhoneCompany}/>
+	  <input type="tel" placeholder="Entry Phone of Company"class="form-control" id="input-id-1"  th:field=*{PhoneCompany}/>
 	  <span class="text-danger" th:errors=*{PhoneCompany}></span>
 	 </div>
 	 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>CIO Name</b></label>
@@ -52,12 +49,12 @@
 	 </div>
 	  <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>CIO Email </b></label>
 	 <div class="col-sm-8" style="margin: 5px 0px;">
-	  <input type="email" placeholder="Entry Email CIO" class="form-control" id="input-id-1" th:field=*{EmailCIO}/> 
+	  <input type="email" placeholder="Entry Email CIO" class="form-control" id="input-id-1"  th:field=*{EmailCIO}/> 
 	  <span class="text-danger" th:errors=*{EmailCIO}></span>
 	 </div>
 	  <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>CIO Phone </b></label>
 	 <div class="col-sm-8" style="margin: 5px 0px;">
-	  <input type="tel" placeholder="Entry Phone CIO"class="form-control" id="input-id-1"   th:field=*{PhoneCIO}/>
+	  <input type="tel" placeholder="Entry Phone CIO"class="form-control" id="input-id-1"  th:field=*{PhoneCIO}/>
 	  <span class="text-danger" th:errors=*{PhoneCIO}></span>
 	 </div>
 	 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Technical Name</b></label>
@@ -67,12 +64,12 @@
 	 </div>
 	 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Technical Email </b></label>
 	 <div class="col-sm-8" style="margin: 5px 0px;">
-	  <input type="email" placeholder="Entry Email Technical"class="form-control" id="input-id-1"  th:field=*{EmailTechnical}/> 
+	  <input type="email" placeholder="Entry Email Technical"class="form-control" id="input-id-1" th:field=*{EmailTechnical}/> 
 	  <span class="text-danger" th:errors=*{EmailTechnical}></span>
 	 </div>
 	 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Technical Phone </b></label>
 	 <div class="col-sm-8" style="margin: 5px 0px;">
-	  <input type="tel" placeholder="Entry Phone Technical"class="form-control" id="input-id-1"  th:field=*{PhoneTechnical}/> 
+	  <input type="tel" placeholder="Entry Phone Technical"class="form-control" id="input-id-1" th:field=*{PhoneTechnical}/> 
 	  <span class="text-danger" th:errors=*{PhoneTechnical}></span>
 	 </div>
 	 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Country Company</b></label>
@@ -82,7 +79,7 @@
 	 </div>
 	 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>City Company</b></label>
 	 <div class="col-sm-8" style="margin: 5px 0px;">
-	  <select name ="Rabat" id ="stateA" class="form-control"  th:field=*{City}></select>
+	  <select name ="Rabat" id ="stateA" class="form-control" th:field=*{City}></select>
 	  <span class="text-danger" th:errors=*{City}></span>
 	 </div>
 	 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Industry</b></label>
@@ -112,18 +109,20 @@
    		 <option th:value="NO" th:text="NO" ></option>
 	  </select>
 	  <span class="text-danger" th:errors=*{Vip}></span>
-	 </div>   
-	 </div>
-	</div>
-   <div class="modal-footer">
-	<button style="margin:0px;" class="btn m-b-xs btn-sm btn-primary btn-addon"><i class="glyphicon glyphicon-ok"></i>Save</button>
-	<button style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon"><a th:href="customer_manage"><i class="glyphicon glyphicon-remove"></i>Annuler</a></button>		
+	 </div>  
+   <div>
+   	<button style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon pull-right"><a th:href="customer_manage"><i class="glyphicon glyphicon-remove"></i>Annuler</a></button>
+	<button style="margin:0px;" class="btn m-b-xs btn-sm btn-primary btn-addon pull-right"><i class="glyphicon glyphicon-ok"></i>Save</button>		
    </div>
+   	 </div> 
    </form>
- </div>
-  </div>
 </div>
-
+     <div class="text-center">
+      <p><small class="text-muted">
+       <span class="pull-right">2.2.0 <a href ui-scroll="app" class="m-l-sm text-muted"><i class="fa fa-long-arrow-up"></i></a></span><span class="pull-left"> &copy; PowerM 2020 Copyright. </span> 
+      </small></p>
+     </div>
+</div>
 <script src="../libs/jquery/jquery/dist/jquery.js"></script>
 <script src="../libs/jquery/bootstrap/dist/js/bootstrap.js"></script>
 <script src="js/ui-load.js"></script>

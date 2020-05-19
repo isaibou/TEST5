@@ -14,6 +14,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.mail.MailException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -26,11 +27,14 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.example.demo.entities.*;
+import com.example.demo.repository.AffectationProjectRepository;
 import com.example.demo.repository.AssetRepository;
 import com.example.demo.repository.ProjetRepository;
 import com.example.demo.repository.RFPRepository;
 import com.example.demo.repository.TechnologiePartnerRepository;
 import com.example.demo.repository.TypeProjectRepository;
+import com.example.demo.repository.UserRepository;
+import com.example.demo.service.NotificationMail;
 
 @Controller
 public class ProjectController {
@@ -46,6 +50,12 @@ public class ProjectController {
 	private RFPRepository rfprepository;
 	@Autowired
 	private AssetRepository assetRepository;
+	@Autowired
+	private AffectationProjectRepository affectProjRepository;
+	@Autowired
+	private UserRepository userRepository;
+	@Autowired
+	NotificationMail notif;
 	
 	@Value("${dir.project}")
 	String projectFile;
@@ -211,4 +221,68 @@ if (!(file.isEmpty())) {
 		}
 		
 	}
+	
+	@RequestMapping(value ="/affectation" )
+	private String affect( Model model, Integer id ) {
+	
+	Project proj = ProjectRepository.getOne(id);
+	Collection<ProjectTask> projTask = proj.getTypeProject().getProjectTask();
+	List<Users> employee = userRepository.findByIsCustomer(false);
+	
+	model.addAttribute("proj", proj);
+	model.addAttribute("projTask", projTask);
+	model.addAttribute("employee", employee);
+	model.addAttribute("affectationProj",new AffectationProject());
+		
+			return "AffectationProject";	
+	}
+	
+	
+
+	@RequestMapping(value ="/affectedProj" )
+	private String affectProj( Model model, AffectationProject afProj, @RequestParam(name="project")Integer projID ) {
+	  Project proj = ProjectRepository.getOne(projID);
+		afProj.setProject(proj);
+		 Users u = afProj.getUser();
+		 try {
+			 notif.notifTaskProject(u, afProj);
+		} catch (MailException e) {
+e.printStackTrace();		}
+		
+	affectProjRepository.save(afProj);
+		
+			return "redirect:/projects";	
+	}
+	
+	
+
+	@RequestMapping(value ="/listAffectedProj" )
+	private String listAffectationProj( Model model, Integer id ) {
+	
+		Project proj = ProjectRepository.getOne(id);
+	List<AffectationProject> afp = affectProjRepository.findByProject(proj);
+	model.addAttribute("affectation", afp);
+		
+			return "listAffectationProj";	
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

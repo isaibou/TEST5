@@ -13,16 +13,13 @@
   <link rel="stylesheet" href="css/app.css" type="text/css" />
 </head>
 <body>
-<div class="app" >
- <a href="" class="navbar-brand block m-t"><i class="fa fa-power-off"></i> <b>PowerM</b> </a>
- 	<div>
-	 <div class="modal-dialog modal-lg" >
-	 <div class="modal-content">
-      <h1 class="m-n font-bold h3"> Add Reference </h1>
-     </div>
-     <form th:action="@{SaveReference}" method="post" enctype="multipart/form-data" th:object="${ref}" >
-     <div class="modal-body">
-     <div class="row">
+<div style="margin:50px;"></div>
+<div class="col-md-6 col-sm-6 col-xs-12 spacer col-md-offset-3">
+  <a href="" class="navbar-brand block m-t"><i class="fa fa-power-off"></i> <b>PowerM</b> </a>
+  <div class="panel panel-default">
+   <div class="panel-heading"> Add Type Reference Project </div>
+      <form th:action="@{SaveReference}" method="post" enctype="multipart/form-data" th:object="${ref}" >
+     <div class="panel-body">
      <label class="col-sm-4 control-label"  for="input-id-1" style="margin-top:0px; margin-bottom:5px;"><b>Project</b></label>
     <div class="col-sm-8" style="margin:0px; margin-bottom:5px;" >
      <select name="account" class="form-control m-b"  style="margin-top:0px; margin-bottom:0px;" required th:field="*{project}">
@@ -31,39 +28,47 @@
     </div>
     <label class="col-sm-4 control-label" for="input-id-1" style="margin:5px 0px;"><b>Year</b></label>
     <div class="col-sm-8" style="margin: 5px 0px;">
-    <input type="date" class="form-control" placeholder="MM/DD/YYYY" id="input-id-1" required th:field=*{an}/>
+    <input type="date" class="form-control" placeholder="MM/DD/YYYY" id="input-id-1" th:field=*{an}/>
+    <span class="text-danger" th:errors=*{an}></span>
     </div>
     <label class="col-sm-4 control-label" for="input-id-1" style="margin-bottom:5px;"><b>Amount</b></label>
     <div class="col-sm-8" style="margin-bottom:5px;">
-     <input type="text" placeholder="Entry Amount" class="form-control" id="input-id-1" required th:field="*{Amount}" >
+     <input type="text" placeholder="Entry Amount" class="form-control" id="input-id-1" th:field="*{Amount}"/>
+      <span class="text-danger" th:errors=*{Amount}></span>
     </div>
     <label class="col-sm-4 control-label"  for="input-id-1" style="margin-top:0px; margin-bottom:5px;"><b>Date Signature</b></label>
     <div class="col-sm-8" style="margin: 5px 0px;">
-    <input type="date" class="form-control" placeholder="MM/DD/YYYY" id="input-id-1" required th:field=*{signing}/>
+    <input type="date" class="form-control" placeholder="MM/DD/YYYY" id="input-id-1" th:field=*{signing}/>
+     <span class="text-danger" th:errors=*{signing}></span>
     </div>
 
     <label class="col-sm-4 control-label" for="input-id-1" style="margin-bottom:5px;"><b>Signed By</b></label>
     <div class="col-sm-8" style="margin-top:0px; margin-bottom:5px;">
-     <input type="text" class="form-control" id="input-id-1" placeholder="Entry Signed By" required th:field="*{SignedBy}" >
+     <input type="text" class="form-control" id="input-id-1" placeholder="Entry Signed By" th:field="*{SignedBy}"/>
+      <span class="text-danger" th:errors=*{SignedBy}></span>
     </div>
     <label class="col-sm-4 control-label" for="input-id-1"  style="margin-bottom:5px;" ><b>Preview File</b></label>
     <div class="col-sm-8" style="margin: 5px 0px;">
-         <input type="file"  class="form-control" placeholder="Entry picture File" name="picture" id="input-id-1" required />
+         <input type="file"  class="form-control" placeholder="Entry picture File" name="picture" id="input-id-1"/>
        </div>           
     <label class="col-sm-4 control-label" for="input-id-1" ><b> File </b></label>
     <div class="col-sm-8" style="margin: 5px 0px;">
-         <input type="file" placeholder="Entry File" class="form-control" name="file" id="input-id-1" required />
-     </div>           
-    </div>
-    </div>
-		  <div class="modal-footer">
-		   <button style="margin:0px;" class="btn m-b-xs btn-sm btn-primary btn-addon"><i class="glyphicon glyphicon-ok"></i>Save</button>
-		   <button style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon"><a th:href="reference"><i class="glyphicon glyphicon-remove"></i>Annuler</a></button>
-		  </div>	 
-	    </form>
-		</div>
-	  </div>
-	  </div>
+         <input type="file" placeholder="Entry File" class="form-control" name="file" id="input-id-1"/>
+     </div> 
+     <div>
+       <button style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon pull-right"><a th:href="reference"><i class="glyphicon glyphicon-remove"></i>Annuler</a></button>
+       <button style="margin:0px;" class="btn m-b-xs btn-sm btn-primary btn-addon pull-right"><i class="glyphicon glyphicon-ok"></i>Save</button>
+      </div>          
+    </div>  
+      </form>
+  </div>
+<div class="text-center">
+ <p><small class="text-muted">
+  <span class="pull-right">2.2.0 <a href ui-scroll="app" class="m-l-sm text-muted"><i class="fa fa-long-arrow-up"></i></a></span>
+  <span class="pull-left"> &copy; PowerM 2020 Copyright. </span> 
+ </small></p>
+</div>
+</div>
 <script src="../libs/jquery/jquery/dist/jquery.js"></script>
 <script src="../libs/jquery/bootstrap/dist/js/bootstrap.js"></script>
 <script src="js/ui-load.js"></script>

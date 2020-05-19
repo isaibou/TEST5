@@ -12,6 +12,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -32,24 +33,24 @@ import com.example.demo.repository.UserRepository;
 public class InternalRequestController {
 	
 	@Autowired
-	 InternalRequestRepository internalRequestrepository;
+	private InternalRequestRepository internalRequestrepository;
 
 	@Autowired
-	 ExternalRequestRepository externalRequestrepository;
+	private ExternalRequestRepository externalRequestrepository;
 	
 	@Autowired
-	TypeInternalRequestRepository typeInternalRequestrepository;
+	private TypeInternalRequestRepository typeInternalRequestrepository;
 	
 	@Autowired
-	TypeExternalRequestRepository typeExternalRequestrepository;
+	private TypeExternalRequestRepository typeExternalRequestrepository;
 	
 	@Autowired
-	UserRepository userRepository;
+	private UserRepository userRepository;
 
 	DateFormat df = new SimpleDateFormat("yyyy-	MM-dd");
 	
 	@RequestMapping(value="/request")
-	public String AllCustomer(Model model, Customer customer, Authentication auth) {
+	public String AllCustomer(Model model, Authentication auth) {
 		Users u = userRepository.getOne(auth.getName());
 		model.addAttribute("user", u);
 		
@@ -70,9 +71,10 @@ public class InternalRequestController {
 	
 
 	@RequestMapping(value="/addInternalRequest")
-	public String addInternalRequest(@Valid InternalRequest internal,BindingResult bindingResult, Authentication  auth ) {
+	public String addInternalRequest(@Valid @ModelAttribute("int") InternalRequest internal,BindingResult bindingResult, Authentication  auth ) {
 		
-		if(bindingResult.hasErrors()) {
+		 if(bindingResult.hasErrors()) {
+		 
 			return "addReqEmp";
 		}
 		
@@ -89,8 +91,12 @@ public class InternalRequestController {
 	@RequestMapping(value ="/addReqEmp" )
 	public String addReqEmp(Model model) {
 		model.addAttribute("int", new InternalRequest());
+
 		model.addAttribute("typeInternal", typeInternalRequestrepository.findAll());
 		model.addAttribute("typeExternal", typeExternalRequestrepository.findAll());
+
+		model.addAttribute("type", typeInternalRequestrepository.findAll());
+
 		return "addReqEmp";
 	}
 	
@@ -132,12 +138,9 @@ public class InternalRequestController {
 	String previousCom= iR.getCommentaire();
 	String NomCompany =  iR.getUserEmployee().getCustomer().getName();
 	String com = NomCompany + " :  " + commentaire;
-	String newCom = previousCom + "  -----------------------------------------------        " + com; 
+	String newCom = previousCom + "  ------ " + com; 
 	iR.setCommentaire(newCom);
-	iR.setStatus("Confirmed");
 	internalRequestrepository.save(iR);
-	
-		
 	
 		return "redirect:/request";
 	}
@@ -148,28 +151,6 @@ public class InternalRequestController {
 		InternalRequest iR = internalRequestrepository.getOne(id);
 		model.addAttribute("iR", iR);
 		
-		
-	
 		return "detailsRequestEmployee";
-	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	}	
 }

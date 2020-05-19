@@ -9,6 +9,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -48,6 +49,7 @@ public class TypeDeliverableController {
 		return"typeDeliverable";
 	}
 	
+
 	@RequestMapping(value="/SaveTypDeliv")
 	public String addTypeDeliverable(@Valid TypeDeliverable type,BindingResult bindingResult) {
 		
@@ -71,6 +73,10 @@ public class TypeDeliverableController {
 	@RequestMapping(value = "/editTypeDeliverable",method = { RequestMethod.GET, RequestMethod.POST })
 	public String updateTypeDeliverable(Model model, @Valid TypeDeliverable typDeli, BindingResult bindingResult){
 
+		if(bindingResult.hasErrors()) {
+			return "updateTypeDelivForm";
+		}
+		
 		typeDeliverablerepository.save(typDeli);
 		
 		return "redirect:/typeDeliverable";

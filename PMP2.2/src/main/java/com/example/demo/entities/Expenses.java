@@ -10,7 +10,10 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotEmpty;
+
 import javax.validation.constraints.NotNull;
+
+
 
 import org.springframework.format.annotation.NumberFormat;
 
@@ -29,13 +32,13 @@ public class Expenses implements Serializable{
 	@NotEmpty
 	private String Description;
 	
-	
+
 	private String Receipt;
 	
 	private Date SubmittedDate;
 	
 	private String StatutExpense;
-	@NotNull(message="entre RejectReason")
+	
 	private String RejectReason;
 		
 	@ManyToOne
@@ -45,7 +48,9 @@ public class Expenses implements Serializable{
 	@ManyToOne
 	@JoinColumn(name = "USER_ID")
 	private Users user;
-	
+	@ManyToOne
+	@JoinColumn(name = "TASK_ID")
+	private Task task;
 	
 	public Expenses() {
 		super();

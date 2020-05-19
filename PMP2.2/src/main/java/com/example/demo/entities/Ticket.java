@@ -37,6 +37,9 @@ public class Ticket implements Serializable{
 	@ManyToOne
 	@JoinColumn(name="USER_ID")
 	private Users user;
+	@OneToOne(mappedBy = "ticket")
+	private Task task;
+	
 	public Ticket() {
 		super();
 	}
@@ -183,6 +186,18 @@ public class Ticket implements Serializable{
 
 	public void setUser(Users user) {
 		this.user = user;
+	}
+
+
+
+	public Task getTask() {
+		return task;
+	}
+
+
+
+	public void setTask(Task task) {
+		this.task = task;
 	}
 
 

@@ -9,6 +9,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -47,13 +48,11 @@ public class TypeRequestController {
 	model.addAttribute("tir", tir);
 	model.addAttribute("ter", ter);
 
-
-	
 		return"typeRequest";
 	}
 	
 	@RequestMapping(value="/addTypeInternalRequest")
-	public String addTypeInternalRequest(@Valid TypeInternalRequest internal, BindingResult bindingResult) {
+	public String addTypeInternalRequest(@Valid @ModelAttribute("typint") TypeInternalRequest internal, BindingResult bindingResult) {
 		
 		if(bindingResult.hasErrors()) {
 			return "addTypIntReq";
@@ -87,7 +86,11 @@ public class TypeRequestController {
 	}
 
 	@RequestMapping(value="/addTypeExternalRequest")
-	public String addTypeExternalRequest( TypeExternalRequest external) {
+	public String addTypeExternalRequest(@Valid @ModelAttribute("typext") TypeExternalRequest external, BindingResult bindingResult) {
+		
+		if(bindingResult.hasErrors()) {
+			return "addTypExtReq";
+		}
 		
 		typeExternalRequestRepository.save(external);
 		return"redirect:/typeRequest";

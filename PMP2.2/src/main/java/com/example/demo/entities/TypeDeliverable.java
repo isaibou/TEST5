@@ -14,11 +14,12 @@ import javax.validation.constraints.NotNull;
 @Entity
 public class TypeDeliverable implements Serializable{
 	
-	
 	@Id
 	@GeneratedValue
 	private Integer TypeDeliverable_ID;
+
 	
+
 	@NotEmpty
 	private String NameTypeDeliverable;
 	

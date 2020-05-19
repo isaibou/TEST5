@@ -14,6 +14,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 import org.springframework.format.annotation.DateTimeFormat;
@@ -25,16 +26,17 @@ public class InternalRequest implements Serializable{
 	@Id
 	@GeneratedValue
 	private Integer InternalRequest_ID;
-	@NotNull(message="entre Description")
+	
+	@NotEmpty
 	private String Description;
+	
 	private String Status; 
+
 	@DateTimeFormat()
 	private Date SubmitedDate;
 	
 	private String Commentaire;
-	
-
-	
+		
 	@ManyToOne
 	@JoinColumn( name="typeInternal_ID")
 	private TypeInternalRequest typeInternalRequest;
@@ -47,11 +49,6 @@ public class InternalRequest implements Serializable{
 		super();
 	}
 	
-	
-
-
-
-
 	public InternalRequest(String description, String status, Date submitedDate, String commentaire,
 			TypeInternalRequest typeInternalRequest) {
 		super();

@@ -10,7 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotEmpty;
 
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.NumberFormat;
@@ -22,19 +22,23 @@ public class Reference implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer Reference_ID;
+	
 	@DateTimeFormat(pattern= "yyyy-mm-dd")
 	private Date an;
+	
 	@NumberFormat(pattern = "#,###,###,###.##")
-	private String Amount;
-	@NotNull(message="entre SignedBy")
+	private Double Amount;
+	
+	@NotEmpty
 	private String SignedBy;
+	
 	@DateTimeFormat(pattern= "yyyy-mm-dd")
 	private Date Signing;
 	
 	private String KeywordsTags;
-	@NotNull(message="entre PreviewPicture")
+
 	private String PreviewPicture;
-	@NotNull(message="entre ReferenceFile")
+
 	private String ReferenceFile;
 	
 	@ManyToOne
@@ -45,7 +49,7 @@ public class Reference implements Serializable{
 		super();
 	}
 
-	public Reference(Date an, String amount, String signedBy, Date signing, String keywordsTags, String previewPicture,
+	public Reference(Date an, Double amount, String signedBy, Date signing, String keywordsTags, String previewPicture,
 			String referenceFile) {
 		super();
 		this.an = an;
@@ -57,8 +61,6 @@ public class Reference implements Serializable{
 		ReferenceFile = referenceFile;
 	}
 
-
-
 	public Integer getReference_ID() {
 		return Reference_ID;
 	}
@@ -66,10 +68,10 @@ public class Reference implements Serializable{
 		Reference_ID = reference_ID;
 	}
 	
-	public String getAmount() {
+	public Double getAmount() {
 		return Amount;
 	}
-	public void setAmount(String amount) {
+	public void setAmount(Double amount) {
 		Amount = amount;
 	}
 	public String getSignedBy() {

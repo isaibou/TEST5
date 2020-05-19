@@ -27,7 +27,7 @@ import com.example.demo.repository.VendorRepository;
 
 public class AssetTypeController
 {
-	
+
 	
 	@Autowired
 	private VendorRepository vendorRepository;
@@ -48,7 +48,7 @@ public class AssetTypeController
 		List<AssetType> assettyp = assetTypeRepository.findAll();
 		 model.addAttribute("totalAssetType", assettyp.size());
 		model.addAttribute("asstyp", assettyp);
-		model.addAttribute("assetstype", new AssetType());
+	//	model.addAttribute("AssetType", new AssetType());
 		
 		model.addAttribute("totalAssetType", assettyp.size());
 		
@@ -61,12 +61,37 @@ public class AssetTypeController
 	
 	
 	@RequestMapping(value="/SaveAssetType" , method= RequestMethod.POST)
-	private String saveAssetType(@Valid AssetType addAssttyp, BindingResult bindingResult) {
+	private String saveAssetType(@Valid AssetType addAssttyp, BindingResult bindingResult, Model model) {
+		
+		if(assetTypeRepository.checkTitleExist(addAssttyp.getName())) {
+			//System.err.println("checkTitleExist-------------------");
+			model.addAttribute("unique", "must be unique");
+			return "addAssetsType";
+		}
+		
+		if(bindingResult.hasErrors()) {
+			return "addAssetsType";
+			
+		}
 		
 		addAssttyp.setStatus("Actif");
 	
 		assetTypeRepository.save(addAssttyp);
 		return "redirect:/assetstype_manage";
+			
+	}
+	
+	@RequestMapping(value ="/addAssetsType" )
+	private String addAssetsType( Model model ) {
+		
+	   
+		 model.addAttribute("assetstype",assetTypeRepository.findAll());
+		 
+		 model.addAttribute("assetType", new AssetType());
+		
+		 model.addAttribute("vendor", vendorRepository.findAll());
+		
+			return "addAssetsType";
 			
 	}
 		

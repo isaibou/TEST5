@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 @Entity
@@ -16,7 +17,8 @@ public class ExternalRequest implements Serializable{
 	@Id
 	@GeneratedValue
 	private Integer ExternalRequest_ID;
-	@NotNull(message="entre Description")
+	
+	@NotEmpty
 	private String Description;
 	
 	private Boolean Status; 
@@ -24,20 +26,14 @@ public class ExternalRequest implements Serializable{
 	private Date SubmitedDate;
 	
 	private String Commentaire;
-
 	
 	@ManyToOne
 	@JoinColumn(name ="typeExternal_ID")
 	private TypeExternalRequest typeExternalRequest;
 	
-	
-	
 	@ManyToOne
 	@JoinColumn(name ="User_ID")
 	private Users userCustomer;
-	
-	
-
 	
 	public ExternalRequest() {
 		super();

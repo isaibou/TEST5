@@ -15,6 +15,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -53,7 +54,6 @@ public class RFPController {
 		model.addAttribute("user", u);
 		
 		List<RFP> rf = rfpRepository.findAll();
-		RFP rfp ;
 		model.addAttribute("rfp", rf);
 		model.addAttribute("rf", new RFP());
 		
@@ -63,11 +63,22 @@ public class RFPController {
 		return "RFP";
 	}
 	
+	
 	@RequestMapping(value="/SaveRFP" , method= RequestMethod.POST)
-	private String SaveRFP(@Valid RFP addRfp, BindingResult bindingResult, @RequestParam(name="request")MultipartFile requestFile,@RequestParam(name="response") MultipartFile responseFile  ) throws IllegalStateException, IOException {
-		
+	private String SaveRFP(@Valid @ModelAttribute("RFP") RFP addRfp, BindingResult bindingResult, 
+			@RequestParam(name="request")MultipartFile requestFile, Model model,
+			@RequestParam(name="response") MultipartFile responseFile  ) throws IllegalStateException, IOException {
+	
+		if(rfpRepository.checkTitleExist(addRfp.getTitle())) {
+			//System.err.println("checkTitleExist-------------------");
+			model.addAttribute("unique", "must be unique");
+			return "addRfp";
+		}
+		if(bindingResult.hasErrors()) {
+			return "addRfp";
+		}
 		addRfp.setStatusRFP("New");
-		
+	
 if (!(requestFile.isEmpty())) {
 			
 			addRfp.setRequestFile((requestFile.getOriginalFilename()));
@@ -81,13 +92,21 @@ if (!(responseFile.isEmpty())) {
 
 	responseFile.transferTo(new File(rfpFile+responseFile.getOriginalFilename()));
 }
-
-
-		
-		rfpRepository.save(addRfp);
+	rfpRepository.save(addRfp);
 		return "redirect:/RFP";
-		
+		}
+	
+	
+	@RequestMapping(value ="/addRFP")
+	public String addRFP( Model model ) {
+		 
+		 model.addAttribute("customer", customerRepository.findAll());	
+		 model.addAttribute("RFP", new RFP());
+		 
+			return "addRfp";
+			
 	}
+	
 	
 	@RequestMapping(value = "/editRFP",method = { RequestMethod.GET, RequestMethod.POST })
 	public String updateRFP(Model model, @Valid RFP RFP, BindingResult bindingResult,@RequestParam(name="response") MultipartFile responseFile, @RequestParam(name="request")MultipartFile requestFile) throws IllegalStateException, IOException{

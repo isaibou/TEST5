@@ -1,9 +1,9 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-
   <meta charset="utf-8" />
-  <title>Choose Frimware</title>
+  
+  <title>Add Technology Partner</title>
   <meta name="description" content="app, web app, responsive, responsive layout, admin, admin panel, admin dashboard, flat, flat ui, ui kit, AngularJS, ui route, charts, widgets, components" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <link rel="stylesheet" href="../libs/assets/animate.css/animate.css" type="text/css" />
@@ -19,31 +19,28 @@
  	<div>
 	 <div class="modal-dialog modal-lg" >
 	 <div class="modal-content">
-      <h1 class="m-n font-bold h3"> Choose Frimware </h1>
+      <h1 class="m-n font-bold h3"> Add Technology Partner </h1>
      </div>
-   <form th:action="@{addAssetsFrim(id=${id})}" method ="post" >
-      <div class="modal-body">
+   <form th:action="@{SaveTechnologyPartner}" enctype="multipart/form-data" method ="post"  th:object="${technologyPartner}">  
+     <div class="modal-body">
 	    <div class="row">
-	     <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b></b></label>
-     <div class="col-sm-8" style="margin: 5px 0px;">
-      <input type="hidden" class="form-control" placeholder="Entry Name of Project" id="input-id-1"  required th:text="${id}"/>
-	 </div>
-	    <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Frimware</b></label>
-	 <div class="col-sm-8" style="margin: 5px 0px;">
-	 <!-- ici on met une boucle sur le customer pour avoir récupérer la liste des customer  -->
-	  <select name="frim" class="form-control m-b" >
-	   <option th:each ="c:${frimware}" 
-	   th:text="${c.name}"
-	   th:value ="${c.frimware_ID}"></option>
-	  </select>
 	   
-          </div>
+	     <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Name Technology Partner</b></label>
+	     <div class="col-sm-8" style="margin: 5px 0px;" >
+		  <input type="text" class="form-control" placeholder="Entry Name of Technology Partner" id="input-id-1"  th:field=*{NameTechnologyPartner}> 
+		  <span class="text-danger" th:errors=*{NameTechnologyPartner}></span>
+		  </div>
+	 <label class="col-sm-4 control-label"  style="margin: 5px 0px;" for="input-id-1"><b>TechnologyPartner File</b></label>
+       <div class="col-sm-8" style="margin: 5px 0px;">
+         <input type="file" placeholder="Entry Contract File" class="form-control" name="file" id="input-id-1" >
+       </div>
+				 </div>
+		</div> 
 		  <div class="modal-footer">
 		   <button style="margin:0px;" class="btn m-b-xs btn-sm btn-primary btn-addon"><i class="glyphicon glyphicon-ok"></i>Save</button>
-		   <button style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon"><a th:href="projects_manage"><i class="glyphicon glyphicon-remove"></i>Annuler</a></button>
+		   <button style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon"><a th:href="technology"><i class="glyphicon glyphicon-remove"></i>Annuler</a></button>
 		  </div>
-		 </div>
-		</div>
+
 	    </form>
 		</div>
 	  </div>

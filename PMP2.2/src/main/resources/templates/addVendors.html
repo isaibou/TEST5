@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" class="">
+<head>
+
+  <meta charset="utf-8" />
+  <title>Add Vendors</title>
+  <meta name="description" content="app, web app, responsive, responsive layout, admin, admin panel, admin dashboard, flat, flat ui, ui kit, AngularJS, ui route, charts, widgets, components" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <link rel="stylesheet" href="../libs/assets/animate.css/animate.css" type="text/css" />
+  <link rel="stylesheet" href="../libs/assets/font-awesome/css/font-awesome.min.css" type="text/css" />
+  <link rel="stylesheet" href="../libs/assets/simple-line-icons/css/simple-line-icons.css" type="text/css" />
+  <link rel="stylesheet" href="../libs/jquery/bootstrap/dist/css/bootstrap.css" type="text/css" />
+
+  <link rel="stylesheet" href="css/font.css" type="text/css" />
+  <link rel="stylesheet" href="css/app.css" type="text/css" />
+
+</head>
+<body>
+<div class="app" >
+ <a href="" class="navbar-brand block m-t"><i class="fa fa-power-off"></i> <b>PowerM</b> </a>
+ <div>
+ <div class="modal-dialog modal-lg" >
+  <div class="modal-content">
+    <h1 class="m-n font-bold h3"> Add Vendors</h1>
+   </div>
+   <form th:action="@{SaveVendor}" enctype="multipart/form-data"  method ="post" th:object="${vendor}">
+   <div class="modal-body" >
+  <div class="row">
+ 
+   <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Vendor Name</b></label>
+     <div class="col-sm-8" style="margin: 5px 0px;" >
+      <input type="text" class="form-control" placeholder="Entry Name of Vendor" id="input-id-1"  th:field=*{NameVendor}>
+      <span class="text-danger" th:errors=*{NameVendor}></span>
+      <div class="text-danger" th:if="${unique}">
+		   <div th:text="${unique}"></div>
+		</div>
+   </div>
+   <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Address</b></label>
+   <div class="col-sm-8" style="margin: 5px 0px;">
+    <input type="text"  class="form-control" placeholder="Entry Address of Vendor"id="input-id-2"  th:field=*{Adress}>
+    <span class="text-danger" th:errors=*{Adress}></span>
+   </div>
+   <label class="col-sm-4 control-label" placeholder="Entry Phone of Vendor" style="margin: 5px 0px;" for="input-id-1"><b>Phone</b></label>
+   <div class="col-sm-8" style="margin: 5px 0px;">
+    <input type="tel" placeholder="Entry Phone of Vendor"class="form-control" id="input-id-1"  th:field=*{Phone}>
+     <span class="text-danger" th:errors=*{Phone}></span>
+   </div>
+    <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Industry</b></label>
+	 <div class="col-sm-8" style="margin: 5px 0px;">
+	  <select name="account" class="form-control m-b"  th:field=*{Industry} >
+	   <option th:value ="Advertising" th:text="Advertising"></option>
+	   <option th:value ="Manufacturing" th:text="Manufacturing"></option>
+	   <option th:value ="Construction" th:text="Construction"></option>
+	   <option th:value ="Education" th:text="Education"></option>
+	   <option th:value ="Entertainment" th:text="Entertainment"></option>
+	   <option th:value ="Healthcare" th:text="Healthcare"></option>
+	   <option th:value ="Government" th:text="Government"></option>
+	   <option th:value ="Technology" th:text="Technology"></option>
+	   <option th:value ="Retail" th:text="Retail"></option>
+	   <option th:value ="Wholesale" th:text="Wholesale"></option>
+	   <option th:value ="Banking" th:text="Banking"></option>
+	   <option th:value ="Finance" th:text="Finance"></option>
+	   <option th:value ="Telecomunication" th:text="Telecomunication"></option>
+	   <option th:value ="Transportation" th:text="Transportation"></option>
+	  </select>
+	  <span class="text-danger" th:errors=*{Industry}></span>
+	 </div>
+   <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Partnership Certificate</b></label>
+  <div class="col-sm-4">
+    <input type="file" placeholder="Entry Partnership  Certificate File"class="form-control"  name ="certificate"id="input-id-1"  >
+  </div>
+   
+  </div>
+   </div>
+   <div class="modal-footer">
+  <button style="margin:0px;" class="btn m-b-xs btn-sm btn-primary btn-addon"><i class="glyphicon glyphicon-ok"></i>Save</button>
+  <button style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon"><a th:href="vendor"><i class="glyphicon glyphicon-remove"></i>Annuler</a></button>
+   </div>
+   </form>
+ </div>
+  </div>
+</div>
+
+<script src="../libs/jquery/jquery/dist/jquery.js"></script>
+<script src="../libs/jquery/bootstrap/dist/js/bootstrap.js"></script>
+<script src="js/ui-load.js"></script>
+<script src="js/ui-jp.config.js"></script>
+<script src="js/ui-jp.js"></script>
+<script src="js/ui-nav.js"></script>
+<script src="js/ui-toggle.js"></script>
+<script src="js/ui-client.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.min.js" integrity="sha256-tQ3x4V2JW+L0ew/P3v2xzL46XDjEWUExFkCDY0Rflqc=" crossorigin="anonymous"></script>
+</body>
+</html>

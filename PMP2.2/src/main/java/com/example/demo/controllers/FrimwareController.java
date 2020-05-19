@@ -26,6 +26,7 @@ import com.example.demo.repository.AssetTypeRepository;
 import com.example.demo.repository.FrimwareRepository;
 import com.example.demo.repository.UserRepository;
 
+
 @Controller
 public class FrimwareController {
 	
@@ -58,8 +59,18 @@ public class FrimwareController {
 	}
 	
 	@RequestMapping(value="/SaveFrimware" , method= RequestMethod.POST)
-	private String SaveFrimware(@Valid Frimware addFrim, BindingResult bindingResult) {
+	private String SaveFrimware(@Valid Frimware addFrim, BindingResult bindingResult, Model model) {
 		
+		if(frimwareRepository.checkTitleExist(addFrim.getName())) {
+			//System.err.println("checkTitleExist-------------------");
+			model.addAttribute("unique", "must be unique");
+			return "addFirmware";
+		}
+		
+		if(bindingResult.hasErrors()) {
+			return "addFirmware";
+			
+		}
 		
 		addFrim.setStatus("Actif");
 		
@@ -68,6 +79,21 @@ public class FrimwareController {
 		frimwareRepository.save(addFrim);
 		return "redirect:/firmware";
 	}
+	
+	@RequestMapping(value ="/addFirmware" )
+	private String addFirmware( Model model ) {
+		
+	     
+		 model.addAttribute("frimware",frimwareRepository.findAll());
+		
+		 model.addAttribute("frimware", new Frimware());
+		 
+		 model.addAttribute("assetType", assetTypeRepository.findAll());
+		 
+		 return "addFirmware";
+			
+	}
+	
 	
 	@RequestMapping(value ="/updateFrimwareform" )
 	private String updateFrimwareform( Model model, Integer id ) {

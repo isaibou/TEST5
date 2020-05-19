@@ -13,29 +13,26 @@
   <link rel="stylesheet" href="css/app.css" type="text/css" />
 </head>
 <body>
-<div class="app" >
- <a href="" class="navbar-brand block m-t"><i class="fa fa-power-off"></i> <b>PowerM</b> </a>
- 	<div>
-	 <div class="modal-dialog modal-lg" >
-	 <div class="modal-content">
-      <h1 class="m-n font-bold h3"> Update Deliverable </h1>
-     </div>
-   <form th:action="@{editDeliverable}"   enctype="multipart/form-data"  method ="post" th:object="${del}">
-   <div class="modal-body">
-	<div class="row">
+<div style="margin:50px;"></div>
+<div class="col-md-6 col-sm-6 col-xs-12 spacer col-md-offset-3">
+  <a href="" class="navbar-brand block m-t"><i class="fa fa-power-off"></i> <b>PowerM</b> </a>
+  <div class="panel panel-default">
+   <div class="panel-heading"> Update Deliverable Project </div>
+     <form th:action="@{editDeliverable}"   enctype="multipart/form-data"  method ="post" th:object="${del}">
+   <div class="panel-body">
     <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b></b></label>
      <div class="col-sm-8" style="margin: 5px 0px;" >
       <input type="hidden" class="form-control" id="input-id-1"  required th:field=*{Deliverable_ID}/>   
-	 </div>
-	 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b></b></label>
+   </div>
+   <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b></b></label>
      <div class="col-sm-8" style="margin: 5px 0px;" >
       <input type="hidden" class="form-control" id="input-id-1"  required th:field=*{PreviewFile}/>   
-	 </div>
-	 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b></b></label>
+   </div>
+   <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b></b></label>
      <div class="col-sm-8" style="margin: 5px 0px;" >
       <input type="hidden" class="form-control" id="input-id-1"  required th:field=*{File}/>   
-	 </div>
-	 <label class="col-sm-4 control-label" for="input-id-1" style="margin:5px 0px;"><b>Name</b></label>
+   </div>
+   <label class="col-sm-4 control-label" for="input-id-1" style="margin:5px 0px;"><b>Name</b></label>
     <div class="col-sm-8" style="margin:5px 0px;" >
      <input type="text" placeholder="Entry Name" class="form-control" id="input-id-1" th:field="*{Name}">
     </div>
@@ -57,8 +54,8 @@
     </div>
         <label class="col-sm-4 control-label" for="input-id-1" style="margin-top:0px; margin-bottom:5px;"><b>Date Delivery</b></label>
         <div class="col-sm-8" style="margin: 5px 0px;">
-	     <input type="date" class="form-control" placeholder="MM/DD/YYYY"  required th:field=*{Date}/>
-		</div>
+       <input type="date" class="form-control" placeholder="MM/DD/YYYY"  required th:field=*{Date}/>
+    </div>
          <label class="col-sm-4 control-label" for="input-id-1"  style="margin-bottom:5px;" ><b>Preview File</b></label>
     <div class="col-sm-8" style="margin: 5px 0px;">
      <input type="file"  class="form-control" name="picture" id="input-id-1" />
@@ -69,16 +66,19 @@
       <input type="file"  class="form-control" name="fileD" id="input-id-1" />
       <span th:text ="${del.File}" class="m-n font-thin h4 text-secondary"></span>
     </div>
-	   </div>
-		</div>
-		  <div class="modal-footer">
-		   <button style="margin:0px;" class="btn m-b-xs btn-sm btn-primary btn-addon"><i class="glyphicon glyphicon-ok"></i>Save</button>
-		   <button style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon"><a th:href="deliverable"><i class="glyphicon glyphicon-remove"></i>Annuler</a></button>
-		  </div>	 
-	    </form>
-		</div>
-	  </div>
-	  </div>
+    <div >
+       <button style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon pull-right"><a th:href="deliverable"><i class="glyphicon glyphicon-remove"></i>Annuler</a></button>
+       <button style="margin:0px;" class="btn m-b-xs btn-sm btn-primary btn-addon pull-right"><i class="glyphicon glyphicon-ok"></i>Save</button>
+      </div>
+     </div>   
+      </form>
+  <div>
+   <p><small class="text-muted">
+    <span class="pull-right">2.2.0 <a href ui-scroll="app" class="m-l-sm text-muted"><i class="fa fa-long-arrow-up"></i></a></span>
+    <span class="pull-left"> &copy; PowerM 2020 Copyright. </span> 
+   </small></p>
+  </div>
+</div>
 <script src="../libs/jquery/jquery/dist/jquery.js"></script>
 <script src="../libs/jquery/bootstrap/dist/js/bootstrap.js"></script>
 <script src="js/ui-load.js"></script>

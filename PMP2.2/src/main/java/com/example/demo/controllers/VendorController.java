@@ -30,6 +30,7 @@ import com.example.demo.repository.AssetRepository;
 import com.example.demo.repository.UserRepository;
 import com.example.demo.repository.VendorRepository;
 
+
 @Controller
 public class VendorController {
 	
@@ -56,7 +57,20 @@ public class VendorController {
 	}
 	
 	@RequestMapping(value="/SaveVendor" , method= RequestMethod.POST)
-	private String SaveVendor(@Valid Vendor addVen, @RequestParam(name="certificate")MultipartFile file) throws IllegalStateException, IOException {
+	private String SaveVendor(@Valid Vendor addVen, BindingResult bindingResult, Model model,
+			@RequestParam(name="certificate")MultipartFile file) throws IllegalStateException, IOException {
+		
+		if(vendorRepository.checkTitleExist(addVen.getNameVendor())) {
+			
+			model.addAttribute("unique", "must be unique");
+			return "addVendors";
+		}
+		
+		if(bindingResult.hasErrors()) {
+			return "addVendors";
+			
+		}
+
 		addVen.setStatus("Actif");
 		
 		
@@ -68,11 +82,19 @@ if (!(file.isEmpty())) {
 		}
 
 		vendorRepository.save(addVen);
-		
-		
-
 		return "redirect:/vendor";
 		
+	}
+	
+	@RequestMapping(value ="/addVendors")
+	public String addVendors( Model model) {
+		
+		
+		 model.addAttribute("vendor",vendorRepository.findAll());
+		 
+		 model.addAttribute("vendor", new Vendor());
+			return "addVendors";
+			
 	}
 	
 	@RequestMapping(value = "/editVendor",method = { RequestMethod.GET, RequestMethod.POST })

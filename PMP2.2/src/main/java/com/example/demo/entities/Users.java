@@ -13,6 +13,8 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Entity
@@ -25,16 +27,18 @@ public class Users implements Serializable {
 	
 	private boolean actived;
 	
+	@NotEmpty
 	private String lastName;
 	
 	private Boolean isCustomer;
 	
 	private String Picture;
 	
+	@NotEmpty
 	private String firstName;
 	
-	private String CIN; 
-	
+	private String CIN;
+
 	private String Phone;
 	@ManyToOne
 	@JoinColumn(name = "customer_ID")
@@ -83,15 +87,6 @@ public class Users implements Serializable {
 		this.roles = roles;
 	}
 
-
-
-
-
-
-
-
-
-
 	public Users(String username, String password, boolean actived, String lastName, String firstName, String cIN,
 			String phone, Customer customer, Collection<Roles> roles) {
 		super();
@@ -106,15 +101,6 @@ public class Users implements Serializable {
 		this.roles = roles;
 	}
 
-
-
-
-
-
-
-
-
-
 	public Users(String username, String password, boolean actived, String lastName, String firstName, String cIN,
 			Customer customer) {
 		super();
@@ -126,8 +112,6 @@ public class Users implements Serializable {
 		CIN = cIN;
 		this.customer = customer;
 	}
-
-
 
 	public String getUsername() {
 		return username;
@@ -152,8 +136,6 @@ public class Users implements Serializable {
 	public void setRoles(Collection<Roles> roles) {
 		this.roles = roles;
 	}
-
-	
 
 	public String getLastName() {
 		return lastName;
@@ -196,133 +178,54 @@ public class Users implements Serializable {
 	}
 
 
-
 	public String getPhone() {
 		return Phone;
 	}
-
-
-
-
 
 	public void setPhone(String phone) {
 		Phone = phone;
 	}
 
-
-
 	public String getPicture() {
 		return Picture;
 	}
-
 
 	public void setPicture(String picture) {
 		Picture = picture;
 	}
 
-
-
-
-
-
-
-
-
-
 	public Collection<InternalRequest> getInternalRequest() {
 		return internalRequest;
 	}
-
-
-
-
-
-
-
-
-
 
 	public void setInternalRequest(Collection<InternalRequest> internalRequest) {
 		this.internalRequest = internalRequest;
 	}
 
-
-
-
-
-
-
-
-
-
 	public Collection<ExternalRequest> getExternalRequest() {
 		return externalRequest;
 	}
-
-
-
-
-
-
-
-
-
 
 	public void setExternalRequest(Collection<ExternalRequest> externalRequest) {
 		this.externalRequest = externalRequest;
 	}
 
-
-
-
-
-
-
-
-
-
 	public Boolean getIsCustomer() {
 		return isCustomer;
 	}
-
-
-
-
-
-
-
-
-
 
 	public void setIsCustomer(Boolean isCustomer) {
 		this.isCustomer = isCustomer;
 	}
 
-
-
-
-
-
-
-
-
-
 	public Collection<Expenses> getExpenses() {
 		return expenses;
 	}
 
-
-
-
-
-
-
-
-
-
 	public void setExpenses(Collection<Expenses> expenses) {
 		this.expenses = expenses;
 	}
+
 
 	public Collection<Ticket> getTicket() {
 		return ticket;
@@ -353,5 +256,6 @@ public class Users implements Serializable {
 	
 	
 	
+
 
 }

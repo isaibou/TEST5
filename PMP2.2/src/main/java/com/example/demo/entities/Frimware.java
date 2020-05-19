@@ -11,6 +11,7 @@ import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
@@ -27,13 +28,18 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 @Entity
 public class Frimware implements Serializable{
 	
+	
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer frimware_ID;
+	
 	@NotEmpty
+	@Column(name = "name")
 	private String name;
+	
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date releaseDate;
+	@NotEmpty
 	private String description;
 	private String Status;
 	

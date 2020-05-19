@@ -18,6 +18,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -25,7 +26,11 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.example.demo.entities.Customer;
 import com.example.demo.entities.Expenses;
+
 import com.example.demo.entities.Task;
+
+import com.example.demo.entities.TypeExpenses;
+
 import com.example.demo.entities.Users;
 import com.example.demo.repository.ExpensesRepository;
 import com.example.demo.repository.TaskRepository;
@@ -52,22 +57,24 @@ public class ExpensesController {
 		private String receipt;
 	
 	@RequestMapping(value="/expenses")
-	public String AllCustomer(Model model, Customer customer, Authentication auth) {
+	public String AllCustomer(Model model, Authentication auth) {
 		Users u = userRepository.getOne(auth.getName());
 		model.addAttribute("user", u);
 		
 	    List<Expenses> listExpenses = expensesRepository.findAll();
-	
+	    List<TypeExpenses> listExp = typeExpensesRepository.findAll();
+	    
 	    model.addAttribute("listEx", listExpenses);
+	    model.addAttribute("typeEx", listExp);
 		model.addAttribute("expense", new Expenses());
-		model.addAttribute("intEx", listExpenses.size());
-		model.addAttribute("typeEx", typeExpensesRepository.findAll());
+		model.addAttribute("totalExp", listExpenses.size());
+		
 
 		return "expense";
 	}
 
 	@RequestMapping(value="/addExpenses")
-	public String addInternalRequest(@Valid Expenses expense,BindingResult bindingResult, Authentication  auth, @RequestParam(name="recu")MultipartFile file ) throws IllegalStateException, IOException {
+	public String addInternalRequest(@Valid @ModelAttribute("exp") Expenses expense,BindingResult bindingResult, Authentication  auth, @RequestParam(name="recu")MultipartFile file ) throws IllegalStateException, IOException {
 		
 		if(bindingResult.hasErrors()) {
 			return "addExp";
@@ -78,7 +85,6 @@ public class ExpensesController {
 		expense.setUser(u);
 		expense.setSubmittedDate(new Date());
 		expense.setStatutExpense("Waiting");
-		
 		expensesRepository.save(expense);
 		if (!(file.isEmpty())) 
 		{
@@ -88,10 +94,12 @@ public class ExpensesController {
 		expensesRepository.save(expense);
 
 		
+
+			
+
 		return"redirect:/expenses";
 	}
-	
-	
+		
 	@RequestMapping(value="/answerExpenses")
 	public String answer( Integer  id ) {
 		
@@ -102,8 +110,6 @@ public class ExpensesController {
 		return"redirect:/expenses";
 	}
 	
-	
-
 	@RequestMapping(value="/confirmExpenses")
 	public String confirm( Integer  id ) {
 		
@@ -124,8 +130,8 @@ public class ExpensesController {
 	public String addExp(Model model, Authentication auth) {
 		
 		  Users u = userRepository.getOne(auth.getName());
-		 // model.addAttribute("exp",  new Expenses());
-		  //model.addAttribute("type",  typeExpensesRepository.findAll());
+		  model.addAttribute("exp",  new Expenses());
+		 model.addAttribute("type",  typeExpensesRepository.findAll());
 		  
 		  
 		  List<Task> tasks = taskRepository.findAll();
@@ -133,6 +139,7 @@ public class ExpensesController {
 	     model.addAttribute("task",tasks);
 	     
 		 
+
 		return "addExp";
 	}
 	
@@ -141,10 +148,6 @@ public class ExpensesController {
 		
 		Expenses  ex = expensesRepository.getOne(id);
 		model.addAttribute("expense", ex);
-		//model.addAttribute("customer", u.getCustomer());
-		//model.addAttribute("allRoles", u.getRoles());	
-		
-	
 		return "updateExpenses";
 	}
 	
@@ -163,9 +166,6 @@ public class ExpensesController {
 		
 		Expenses ex = expensesRepository.getOne(id);
 		model.addAttribute("ex", ex);
-		
-		
-	
 		return "detailsExpenses";
 	}
 	

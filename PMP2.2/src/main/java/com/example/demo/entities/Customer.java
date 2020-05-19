@@ -12,68 +12,59 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.Email;
-
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotEmpty;
 import javax.persistence.SequenceGenerator;
 
-
-import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
-import javax.validation.constraints.NotNull;
-
-//import org.hibernate.validator.constraints.Email;
 import org.springframework.format.annotation.NumberFormat;
 
 @Entity
 public class Customer implements Serializable{
 		
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "my_seq_id")
-	
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "my_seq_id")	
 	@SequenceGenerator(name = "my_seq_id", sequenceName = "my_seq_id", allocationSize = 100)
 	private Integer Customer_ID;
 	
-	@NotNull(message="this name is exist")
-	@Column(name="Name",length=30,unique=true)
+	@NotEmpty
+	@Column(name="Name",length=30)
 	private String Name;
 	
-	@NotNull
+	@NotEmpty
 	private String Industry;
 	
 	private String Logo;
 
-	@NotNull(message="u shoud entry the phone number")
+	@NotEmpty
 	@NumberFormat(pattern = "##########")
 	private String PhoneCompany;
 	
-	@NotNull(message="u shoud entry the Adress Company")
+	@NotEmpty
 	private String AdressCompany;
 	
-	@NotNull
+	@NotEmpty
 	private String Vip;
 	
-	@NotNull(message="u shoud entry the technical name")
+	@NotEmpty
 	@Column(name="NomTechnical",length=30)
 	private String NomTechnical;
 	
-	@NotNull(message="u shoud entry the Phone Technical")
+	@NotEmpty
 	@NumberFormat(pattern = "##########")
 	private String PhoneTechnical;
 	
-	@NotNull(message="u shoud entry the Email")
+	@NotEmpty
 	@Email(message="Email invalid")
 	private String EmailTechnical;
 	
-	@NotNull(message="u shoud entry the CIO Name")
+	@NotEmpty
 	@Column(name="NomCIO",length=30)
 	private String NomCIO;
 	
-	@NotNull(message="u shoud entry the Phone CIO")
+	@NotEmpty
 	@NumberFormat(pattern = "##########")
 	private String PhoneCIO;
 	
-	@NotNull(message="u shoud entry the Email")
+	@NotEmpty
 	@Email(message="Email invalid")
 	private String EmailCIO;
 
@@ -81,17 +72,14 @@ public class Customer implements Serializable{
 
 	private String Country;
 	
-	@NotNull
 	private String Status;
 	
-
 	@OneToMany
 	private Collection <Purchasing> Purchasing;
 	
 	@OneToMany
 	private Collection <Contrat> contrat;
 
-	
 	@OneToMany(mappedBy = "customer", fetch = FetchType.LAZY)
 	private Collection<Users> users;
 	
@@ -259,10 +247,6 @@ public class Customer implements Serializable{
 	public void setEmailTechnical(String emailTechnical) {
 		EmailTechnical = emailTechnical;
 	}
-	
-	
-
-
 
 	public Collection<Users> getUsers() {
 		return users;
@@ -319,7 +303,5 @@ public class Customer implements Serializable{
 	public void setTickets(Collection<Ticket> tickets) {
 		this.tickets = tickets;
 	}
-	
-	
-	
+		
 }

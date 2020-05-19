@@ -70,6 +70,10 @@ public class TypeDeliverableController {
 	@RequestMapping(value = "/editTypeDeliverable",method = { RequestMethod.GET, RequestMethod.POST })
 	public String updateTypeDeliverable(Model model, @Valid TypeDeliverable typDeli, BindingResult bindingResult){
 
+		if(bindingResult.hasErrors()) {
+			return "updateTypeDelivForm";
+		}
+		
 		typeDeliverablerepository.save(typDeli);
 		
 		return "redirect:/typeDeliverable";

@@ -29,13 +29,10 @@ public class Deliverable implements Serializable{
 	@DateTimeFormat(pattern= "yyyy-mm-dd")
 	private Date Date;
 	
-	@NotEmpty
 	private String PreviewFile;
 	
-	@NotEmpty
 	private String File;
 	
-	@NotEmpty
 	private String DocumentLink;
 	
 	@ManyToOne

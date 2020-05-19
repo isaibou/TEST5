@@ -388,11 +388,11 @@
 	  <li><a href="#tab_default_2" data-toggle="tab">Customer</a></li>
      </ul>
 	</div>
-    <div class="tab-content" >
-     <div class="tab-pane active" id="tab_default_1" >
+    <div class="tab-content"  style="margin: 10px 5px;">
+     <div class="tab-pane active" id="tab_default_1">
       <div>
        <div class="col-sm-12">
-        <div class="row text-center" style="margin: 10px 5px;">
+        <div class="row text-center">
          <div class="col-sm-6">
           <div class="panel padder-v item">
            <div class="h1 count text-info font-thin h1 pull-center" th:text="${intAll}"></div>
@@ -411,11 +411,10 @@
         </div>
         <a style="margin-top:5px;" th:href="@{addReqEmp}" class="btn btn-sm btn-info pull-right"  role="button"><b class="glyphicon-plus pull"> </b> Add Request</a>
        </div>
-	   <div class="col-sm-12" style="padding:20px 15px;margin:0px 2px;border-top:2px #19a9d5 solid;background-color:white;">
+	   <div class="col-sm-12">
 	    <div class="panel panel-default">
-         <div class="table-responsive" style="background-color:white;margin:10px; padding:10px;">
+         <div class="table-responsive" style="margin:10px; padding:10px;">
 	      <table ui-jq="dataTable" ui-options="{ aoColumns: [										
-												{ mData: 'Type' },
 												{ mData: 'description' },
 												{ mData: 'Demandeur' },
 												{ mData: 'Status' },
@@ -424,19 +423,17 @@
 											  }" class="table  b-t b-b">
 		  <thead>
 		   <tr> 
-            <th  style="width:15%"><center>Type</center></th>
+            <th  style="width:25%"><center>LastName & FirstName</center></th>
 		    <th  style="width:25%"><center>Description</center></th>
-	        <th  style="width:15%"><center>LastName & FirstName</center></th>
-	        <th  style="width:15%"><center>Submited Date</center></th>
+	        <th  style="width:20%"><center>Submited Date</center></th>
 	        <th  style="width:15%"><center>Status</center></th>
 		    <th  style="width:15%"><center>Actions</center></th>	 
 		   </tr>
 		  </thead>
 		  <tbody>
-	       <tr  data-expanded="true" th:each="i:${listInt}">
-		    <td th:text="${i.typeInternalRequest.NameTypeInternalRequest}" ></td>
+	       <tr  data-expanded="true" th:each="i:${listInt}"><!-- <td th:text="${i.typeInternalRequest.NameTypeInternalRequest}" ></td> -->
+	       <td th:text="${i.userEmployee.lastName} + . + ${i.userEmployee.firstName}" ><center><center></center></center></td>
             <td th:text ="${i.Description}"><center></center></td>
-            <td th:text="${i.userEmployee.lastName} + . + ${i.userEmployee.firstName}" ><center><center></center></center></td>
             <td th:text ="${i.SubmitedDate}"><center></center></td>
             <td th:switch="${i.Status}">
              <span th:case="'Answered'" class="label bg-success pull-center m-t-md" >Answered</span>
@@ -483,11 +480,10 @@
        </div>
         <a style="margin-top:5px;" th:href="@{addReqCust}" class="btn btn-sm btn-info pull-right" role="button"><b class="glyphicon-plus pull"> </b> Add  Request</a>
        </div>
-       <div class="col-sm-12" style="padding:20px 15px;margin:0px 2px;border-top:2px #19a9d5 solid;background-color:white;">
+       <div class="col-sm-12">
 	    <div class="panel panel-default">
          <div class="table-responsive">	
           <table ui-jq="dataTable" ui-options="{ aoColumns: [										
-												{ mData: 'Type' },
 												{ mData: 'description' },
 												{ mData: 'Demandeur' },
 												{ mData: 'Status' },
@@ -495,20 +491,18 @@
 												{ mData: 'action' }]
 											 }" class="table  b-t b-b">
 		  <thead>
-		   <tr>	    
-            <th  style="width:8%"><center>Type</center></th>
-		    <th  style="width:12%"><center>Description</center></th>
-	        <th  style="width:12%"><center>Company</center></th>
-	        <th  style="width:12%"><center>Submited Date</center></th>
-	        <th  style="width:12%"><center>Status</center></th>	      
+		   <tr>	
+		    <th  style="width:25%"><center>Company</center></th>    
+		    <th  style="width:30%"><center>Description</center></th>
+	        <th  style="width:15%"><center>Submited Date</center></th>
+	        <th  style="width:15%"><center>Status</center></th>	      
 		    <th  style="width:15%"><center>Actions</center></th>	 
 		   </tr>
 		  </thead>
 		  <tbody>
-	       <tr  data-expanded="true" th:each="e:${listExt}">
-		    <td th:text="${e.typeExternalRequest.NameTypeExternelRequest}"></td>
+	       <tr  data-expanded="true" th:each="e:${listExt}"><!-- <td th:text="${e.typeExternalRequest.NameTypeExternelRequest}"></td> -->
+	       <td  th:text="${e.userCustomer.customer.Name}"><center><center><span class="label bg-danger pull-center m-t-md"></span></center></center></td>		    
             <td th:text ="${e.Description}"><center></center></td>
-            <td  th:text="${e.userCustomer.customer.Name}"><center><center><span class="label bg-danger pull-center m-t-md">Company</span></center></center></td>
             <td th:text ="${e.SubmitedDate}"><center></center></td>
 		    <td>		  
 		     <span th:if="${e.Status == true}" class="label bg-success pull-center m-t-md">Answered</span>

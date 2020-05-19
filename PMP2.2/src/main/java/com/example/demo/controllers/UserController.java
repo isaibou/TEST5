@@ -113,8 +113,8 @@ if (!(file.isEmpty())) {
 	public String addUserE(Model model) {	
 		Users u = new Users();
 		model.addAttribute("userE", u);
-		model.addAttribute("customer", u.getCustomer());
-		model.addAttribute("allRoles", u.getRoles());
+		model.addAttribute("customer", customerRepository.findAll() );
+		model.addAttribute("allRoles", roleRepository.findAll());
 		return "addUserEmp";
 	}
 	

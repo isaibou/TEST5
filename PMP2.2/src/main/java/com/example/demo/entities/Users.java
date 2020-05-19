@@ -22,21 +22,23 @@ import javax.validation.constraints.Size;
 public class Users implements Serializable {
 	@Id
 	private  String username;
-	@NotEmpty
+	
 	private String password; 
 	
 	private boolean actived;
+	
 	@NotEmpty
 	private String lastName;
 	
 	private Boolean isCustomer;
 	
 	private String Picture;
+	
 	@NotEmpty
 	private String firstName;
-	@NotEmpty
-	private String CIN; 
-	@NotEmpty
+	
+	private String CIN;
+
 	private String Phone;
 	@ManyToOne
 	@JoinColumn(name = "customer_ID")

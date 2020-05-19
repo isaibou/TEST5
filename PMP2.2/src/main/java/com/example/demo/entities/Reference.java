@@ -35,7 +35,6 @@ public class Reference implements Serializable{
 	@DateTimeFormat(pattern= "yyyy-mm-dd")
 	private Date Signing;
 	
-	@NotEmpty
 	private String KeywordsTags;
 	
 	@NotEmpty

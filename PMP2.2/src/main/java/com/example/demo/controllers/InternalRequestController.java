@@ -50,7 +50,7 @@ public class InternalRequestController {
 	DateFormat df = new SimpleDateFormat("yyyy-	MM-dd");
 	
 	@RequestMapping(value="/request")
-	public String AllCustomer(Model model, Customer customer, Authentication auth) {
+	public String AllCustomer(Model model, Authentication auth) {
 		Users u = userRepository.getOne(auth.getName());
 		model.addAttribute("user", u);
 		
@@ -72,7 +72,8 @@ public class InternalRequestController {
 	@RequestMapping(value="/addInternalRequest")
 	public String addInternalRequest(@Valid @ModelAttribute("int") InternalRequest internal,BindingResult bindingResult, Authentication  auth ) {
 		
-		if(bindingResult.hasErrors()) {
+		 if(bindingResult.hasErrors()) {
+		 
 			return "addReqEmp";
 		}
 		
@@ -131,9 +132,8 @@ public class InternalRequestController {
 	String previousCom= iR.getCommentaire();
 	String NomCompany =  iR.getUserEmployee().getCustomer().getName();
 	String com = NomCompany + " :  " + commentaire;
-	String newCom = previousCom + "  -----------------------------------------------        " + com; 
+	String newCom = previousCom + "  ------ " + com; 
 	iR.setCommentaire(newCom);
-	iR.setStatus("Confirmed");
 	internalRequestrepository.save(iR);
 	
 		return "redirect:/request";

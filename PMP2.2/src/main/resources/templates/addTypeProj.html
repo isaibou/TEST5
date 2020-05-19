@@ -1,9 +1,11 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 
+
   <meta charset="utf-8" />
-  <title>Choose Frimware</title>
+  
+  <title>Add Type Project</title>
   <meta name="description" content="app, web app, responsive, responsive layout, admin, admin panel, admin dashboard, flat, flat ui, ui kit, AngularJS, ui route, charts, widgets, components" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <link rel="stylesheet" href="../libs/assets/animate.css/animate.css" type="text/css" />
@@ -19,31 +21,34 @@
  	<div>
 	 <div class="modal-dialog modal-lg" >
 	 <div class="modal-content">
-      <h1 class="m-n font-bold h3"> Choose Frimware </h1>
+      <h1 class="m-n font-bold h3"> Add Type Project </h1>
      </div>
-   <form th:action="@{addAssetsFrim(id=${id})}" method ="post" >
+   <form th:action="@{editTypeProject}" method ="post" th:object="${tProject}">
       <div class="modal-body">
 	    <div class="row">
-	     <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b></b></label>
-     <div class="col-sm-8" style="margin: 5px 0px;">
-      <input type="hidden" class="form-control" placeholder="Entry Name of Project" id="input-id-1"  required th:text="${id}"/>
+	    
+     
+	
+	    <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Name Type Project</b></label>
+	     <div class="col-sm-8" style="margin: 5px 0px;" >
+		  <input type="text" class="form-control" placeholder="Entry Name of Project Task" id="input-id-1" required th:field=*{NameType_Project}/> 
+	</div>
+		 
+	  <label class="col-sm-4 control-label" for="input-id-1"  style="margin:5px 0px;"><b>Project Task</b></label>
+	 <div class="col-sm-8" style="margin:5px 0px;" >
+	 <select name ="role" multiple="multiple" class="form-control m-b" th:field="*{projectTask}">
+	 <option th:each="r:${listpt}"  th:text="${r.NameProjectTask}" th:value="${r.ProjectTask_ID}"></option>
+	 </select>
 	 </div>
-	    <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Frimware</b></label>
-	 <div class="col-sm-8" style="margin: 5px 0px;">
-	 <!-- ici on met une boucle sur le customer pour avoir récupérer la liste des customer  -->
-	  <select name="frim" class="form-control m-b" >
-	   <option th:each ="c:${frimware}" 
-	   th:text="${c.name}"
-	   th:value ="${c.frimware_ID}"></option>
-	  </select>
-	   
-          </div>
+		 
+         
+          		 </div>
+		</div>
 		  <div class="modal-footer">
 		   <button style="margin:0px;" class="btn m-b-xs btn-sm btn-primary btn-addon"><i class="glyphicon glyphicon-ok"></i>Save</button>
-		   <button style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon"><a th:href="projects_manage"><i class="glyphicon glyphicon-remove"></i>Annuler</a></button>
+		   <button style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon"><a th:href="typeProject"><i class="glyphicon glyphicon-remove"></i>Annuler</a></button>
 		  </div>
-		 </div>
-		</div>
+
 	    </form>
 		</div>
 	  </div>

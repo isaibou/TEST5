@@ -31,7 +31,7 @@ public class AssetType implements Serializable{
 	private Integer AssetType_ID;
 	
 	@NotEmpty
-	@Column(name = "Name",unique=true)
+	@Column(name = "Name")
 	private String Name;
 	@Column(name = "Brand")
 	private String Brand;

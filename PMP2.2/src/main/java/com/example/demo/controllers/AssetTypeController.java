@@ -61,7 +61,14 @@ public class AssetTypeController
 	
 	
 	@RequestMapping(value="/SaveAssetType" , method= RequestMethod.POST)
-	private String saveAssetType(@Valid AssetType addAssttyp, BindingResult bindingResult) {
+	private String saveAssetType(@Valid AssetType addAssttyp, BindingResult bindingResult, Model model) {
+		
+		if(assetTypeRepository.checkTitleExist(addAssttyp.getName())) {
+			//System.err.println("checkTitleExist-------------------");
+			model.addAttribute("unique", "must be unique");
+			return "addAssetsType";
+		}
+		
 		if(bindingResult.hasErrors()) {
 			return "addAssetsType";
 			
@@ -75,7 +82,7 @@ public class AssetTypeController
 	}
 	
 	@RequestMapping(value ="/addAssetsType" )
-	private String addAssetsType( Model model, Integer id ) {
+	private String addAssetsType( Model model ) {
 		
 	   
 		 model.addAttribute("assetstype",assetTypeRepository.findAll());

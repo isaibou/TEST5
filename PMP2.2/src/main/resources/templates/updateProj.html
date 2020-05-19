@@ -34,83 +34,73 @@
 	 </div>
 	     <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Project Name</b></label>
 	     <div class="col-sm-8" style="margin: 5px 0px;" >
-		  <input type="text" class="form-control" placeholder="Entry Name of Project" id="input-id-1" required th:field=*{Name}/>
-		  <span class="text-danger" th:errors=*{Name}></span>
+		  <input type="text" class="form-control" placeholder="Entry Name of Project" id="input-id-1"  th:field=*{Name}>
+		  
 		 </div>
-	     <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Type Project</b></label>
-
-		 <div class="col-sm-8" style="margin: 5px 0px;" >
-		  <select name="account" class="form-control m-b" required th:field=*{TypeProject}>
-	       <option th:each="t:${type}" th:value ="${t.Type_Project_ID}" th:text="${t.NameType_Project}"></option>
-		  </select>
-
+			 
+		     <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Type Project</b></label>
 		 <div class="col-sm-8" style="margin:5px 0px;" >
 		 <select name ="role"  class="form-control m-b" th:field="*{typeProject}">
 		 <option th:each="t:${TypeProject}"  th:text="${t.NameType_Project}" th:value="${t.Type_Project_ID}"></option>
 		 </select>
 		 </div>
-		 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>RFP</b></label>
+		 
+		   <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>RFP</b></label>
 		 <div class="col-sm-8" style="margin:5px 0px;" >
 		 <select name ="role"  class="form-control m-b" th:field="*{rfp}">
 		 <option th:each="r:${rfp}"  th:text="${r.Title}" th:value="${r.RFP_ID}"></option>
 		 </select>
 		 </div>
-		 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Amount</b></label>
-		 <div class="col-sm-8" style="margin: 5px 0px;">
-		  <input type="number" placeholder="Entry Amount of Project" class="form-control" id="input-id-1" required th:field=*{Amount}/>
-		  <span class="text-danger" th:errors=*{Amount}></span>
-		 </div>
-		 <label class="col-sm-4 control-label" placeholder="Entry Year" style="margin: 5px 0px;" for="input-id-1"><b>Year</b></label>
-	     <div class="col-sm-8" style="margin: 5px 0px;">
-			  <input type="date" class="form-control" th:field=*{Year}/>
-	     </div>
-		 <label class="col-sm-4 control-label" placeholder="Entry Delivery Date" style="margin: 5px 0px;" for="input-id-1"><b>Delivery Date</b></label>
-		 <div class="col-sm-8" style="margin: 5px 0px;">
-			  <input type="date" class="form-control"  th:field=*{DeliveryDate}/>
-		 </div>
-	     <label class="col-sm-4 control-label" placeholder="Entry Temporay Acceptance Date" style="margin: 5px 0px;" for="input-id-1"><b>Temporay Acceptance Date</b></label>
-		 <div class="col-sm-8" style="margin: 5px 0px;">
-		      <input type="date" class="form-control"  th:field=*{TemporayAcceptanceDate}/>
-		 </div>
-		 <label class="col-sm-4 control-label" placeholder="Entry Final Temporary Date" style="margin: 5px 0px;" for="input-id-1"><b>Final Temporary Date</b></label>
-		 <div class="col-sm-8" style="margin: 5px 0px;">
-		      <input type="date" class="form-control" required th:field=*{FinalTemporaryDate}/>
-		 </div>
-		 <label class="col-sm-4 control-label" placeholder="Entry Delivery Certificate" style="margin: 5px 0px;" for="input-id-1"><b>Delivery Certificate</b></label>
-<<<<<<< HEAD
-		 <div class="col-sm-7">
-          <input type="text" placeholder="Upload Preview File"class="form-control" id="input-id-1">
-         </div>
-         <div class="col-sm-1" >
-          <div class="btn-group">
-           <a class="btn btn-default" tooltip="Insert picture (or just drag &amp; drop)" id="pictureBtn"><i class="icon-paper-clip"></i></a>
-           <input type="file" style="position:absolute; opacity:0; width:41px; height:34px"  th:field=*{DeliveryCertificate}/>
-          </div>
-          </div>
-		 <label class="col-sm-4 control-label" placeholder="Entry Technology Partners" style="margin: 5px 0px;" for="input-id-1"><b>Technology Partners</b></label>
-=======
->>>>>>> branch 'master' of https://github.com/isaibou/TEST5
-		 <div class="col-sm-8" style="margin: 5px 0px;">
-         <input type="file" placeholder="Entry Contract File"class="form-control" id="input-id-1" name="file"/>
-         <span th:text ="${project.DeliveryCertificate}" class="m-n font-thin h4 text-secondary"></span>
-       </div>
-		<label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Technology Partner</b></label>
+		 
+		   <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Technology Partner</b></label>
 		 <div class="col-sm-8" style="margin:5px 0px;" >
-		 <select name ="role" multiple="multiple" class="form-control m-b" th:field="*{technologypartner}">
+		 <select name ="TechnologyPartner_ID" multiple="multiple" class="form-control m-b" th:field="*{technologypartner}">
 		 <option th:each="e:${TechnoPart}"  th:text="${e.NameTechnologyPartner}" th:value="${e.TechnologyPartner_ID}"></option>
 		 </select>
 		 </div>
-		 <label class="col-sm-4 control-label" placeholder="Entry Warranty" style="margin: 5px 0px;" for="input-id-1"><b>Warranty</b></label>
+		 
+		 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Amount</b></label>
 		 <div class="col-sm-8" style="margin: 5px 0px;">
-		  <input type="number" placeholder="Entry Warranty"class="form-control" id="input-id-1" required th:field=*{Warranty}/>
+		  <input type="number" placeholder="Entry Amount of Project" class="form-control" id="input-id-1"  th:field=*{Amount}/>
+		  <span class="text-danger" th:errors=*{Amount}></span>
 		 </div>
-		 <label class="col-sm-4 control-label" placeholder="Entry Execution Time" style="margin: 5px 0px;" for="input-id-1"><b>Execution Time</b></label>
+		 
+		 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Year</b></label>
 	     <div class="col-sm-8" style="margin: 5px 0px;">
-		  <input type="number" placeholder="Entry Execution Time" class="form-control" id="input-id-1" required th:field=*{ExecutionTime}/>
+			  <input type="date" class="form-control" placeholder="YYYY"  th:field=*{Year}/>
+	     </div>
+		 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Delivery Date</b></label>
+		 <div class="col-sm-8" style="margin: 5px 0px;">
+			  <input type="date" class="form-control" placeholder="MM/DD/YYYY"  th:field=*{DeliveryDate}/>
 		 </div>
-	     <label class="col-sm-4 control-label" placeholder="Entry Notes" style="margin: 5px 0px;" for="input-id-1"><b>Notes</b></label>
+	     <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Temporary Acceptance Date</b></label>
+		 <div class="col-sm-8" style="margin: 5px 0px;">
+		      <input type="date" class="form-control" placeholder="MM/DD/YYYY"  th:field=*{TemporayAcceptanceDate}/>
+		      
+		 </div>
+		 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Final Temporary Date</b></label>
+		 <div class="col-sm-8" style="margin: 5px 0px;">
+		      <input type="date" class="form-control"  placeholder="MM/DD/YYYY"  th:field=*{FinalTemporaryDate}/>
+		 </div>
+		 
+		 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Delivery Certificate</b></label>
+		 <div class="col-sm-8">
+          <input type="file" placeholder="Upload Preview File" name="file" class="form-control" id="input-id-1">
+         </div>
+       
+		 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Warranty</b></label>
+		 <div class="col-sm-8" style="margin: 5px 0px;">
+		  <input type="number" placeholder="Entry Warranty"class="form-control" id="input-id-1" th:field=*{Warranty}/>
+		 </div>
+		 
+		 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Execution Time</b></label>
+	     <div class="col-sm-8" style="margin: 5px 0px;">
+		  <input type="number" placeholder="Entry Execution Time" class="form-control" id="input-id-1" th:field=*{ExecutionTime}/>
+		 </div>
+		  <label class="col-sm-4 control-label" placeholder="Entry Notes" style="margin: 5px 0px;" for="input-id-1"><b>Notes</b></label>
 		  <div class="col-sm-8" style="margin: 5px 0px;">
-			<input type="text" class="form-control" placeholder="Entry ur notes " id="input-id-1" required th:field=*{Notes} />
+			<input type="text" class="form-control" placeholder="Entry ur notes " id="input-id-1"  th:field=*{Notes} >
+			
           </div>
           <label class="col-sm-4 control-label" placeholder="status" style="margin: 5px 0px;" for="input-id-1"><b>Status</b></label>
 		  <div class="col-sm-8" style="margin: 5px 0px;">

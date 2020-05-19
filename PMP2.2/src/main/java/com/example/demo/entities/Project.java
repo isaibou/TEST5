@@ -38,9 +38,10 @@ public class Project implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer Project_ID;
  
-	@NotNull 
-	@Column(name="Name",length=30,unique=true)
+	@NotEmpty
+	@Column(name="Name",length=30)
 	private String Name;
+	
 	
 	@NumberFormat(pattern = "#,###,###,###.##")
 	private Double Amount;
@@ -73,7 +74,8 @@ public class Project implements Serializable{
 	@NumberFormat(pattern = "#,###")
 	private int ExecutionTime;
 	
-	@Column(name = "Notes")
+	
+	@NotEmpty
 	private String Notes;
 	
 	@Column(name = "Status")

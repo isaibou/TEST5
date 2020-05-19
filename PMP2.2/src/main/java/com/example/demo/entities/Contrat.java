@@ -24,7 +24,7 @@ public class Contrat implements Serializable{
 	private Integer Contrat_ID;
 	 
 	@NotEmpty
-	@Column (name="Title",unique=true)
+	@Column (name="Title",length=30)
 	private String Title;
 	@NotEmpty
 	private String Description;

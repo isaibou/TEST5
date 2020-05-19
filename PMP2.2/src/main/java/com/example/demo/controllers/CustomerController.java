@@ -62,8 +62,14 @@ public class CustomerController {
 	}
 
 	@RequestMapping(value = "/SaveCustomer", method = RequestMethod.POST)
-	private String SaveCustomer(@Valid Customer addCust, BindingResult bindingResult,
+	private String SaveCustomer(@Valid Customer addCust, BindingResult bindingResult,Model model,
 			@RequestParam(name = "picture") MultipartFile file) throws Exception, IOException {
+		
+		if(customerrepository.checkTitleExist(addCust.getName())) {
+			//System.err.println("checkTitleExist-------------------");
+			model.addAttribute("unique", "must be unique");
+			return "addCust";
+		}
 	
 		if(bindingResult.hasErrors()) {
 			return "addCust";

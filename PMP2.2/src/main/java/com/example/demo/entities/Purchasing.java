@@ -11,6 +11,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotEmpty;
+
+import org.springframework.format.annotation.NumberFormat;
+
 import javax.validation.constraints.Email;
 
 @Entity
@@ -20,14 +23,18 @@ public class Purchasing implements Serializable{
 	@Id
 	@GeneratedValue
 	private Integer Purchasing_ID;
-	@NotEmpty
+	@NotEmpty(message = "*Please provide your First Name")
 	private String FirstName;
-	@NotEmpty
+	
+	@NotEmpty(message = "*Please provide your Last Name")
 	private String LastName;
-	@NotEmpty
+	
+	@NotEmpty(message = "*Please provide your Number Phone")
+	@NumberFormat(pattern = "##########")
 	private String Contact;
-	@NotEmpty
-	@Email
+	
+	@Email(message = "*Please provide a valid Email")
+	@NotEmpty(message = "*Please provide an email")
 	private String Email;
 	//les relation avec customer
 	@ManyToOne

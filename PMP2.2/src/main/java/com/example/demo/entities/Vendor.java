@@ -22,7 +22,7 @@ public class Vendor implements Serializable{
 	private String PartnershipCertificate;
 	
 	@NotEmpty
-	@Column(name = "NameVendor",unique=true)
+	@Column(name = "NameVendor")
 	private String NameVendor;
 	private String Industry;
 	private String LogoCompony;

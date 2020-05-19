@@ -114,9 +114,11 @@ if (!(file.isEmpty())) {
 	@RequestMapping(value ="/addUserE", method = RequestMethod.GET )
 	public String addUserE(Model model) {	
 		Users u = new Users();
+		model.addAttribute("customer", customerRepository.findAll());
+		model.addAttribute("allRoles", roleRepository.findAll());
 		model.addAttribute("userE", u);
-		model.addAttribute("customer", u.getCustomer());
-		model.addAttribute("allRoles", u.getRoles());
+	//	model.addAttribute("customer", u.getCustomer());
+		//model.addAttribute("allRoles", u.getRoles());
 		return "addUserEmp";
 	}
 	
@@ -145,6 +147,8 @@ if (!(file.isEmpty())) {
 	
 	@RequestMapping(value ="/addUserC", method = RequestMethod.GET )
 	public String addUserC(Model model) {
+		model.addAttribute("customer", customerRepository.findAll());
+		model.addAttribute("allRoles", roleRepository.findAll());
 		model.addAttribute("userC", new Users());
 		return "addUserCust";
 	}

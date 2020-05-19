@@ -17,6 +17,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -66,7 +67,20 @@ public class ProjectController {
 	}
 
 	@RequestMapping(value="/SaveProject" , method= RequestMethod.POST)
-	private String SaveProject(@Valid Project addProj, @RequestParam(name ="file")  MultipartFile file ,BindingResult bindingResult) throws IllegalStateException, IOException {
+	private String SaveProject(@Valid  Project addProj, BindingResult bindingResult,  Model model,
+			@RequestParam(name ="file")MultipartFile file )
+			throws IllegalStateException, IOException {
+		
+		if(ProjectRepository.checkTitleExist(addProj.getName())) {
+			
+			model.addAttribute("unique", "must be unique");
+			return "addProj";
+		}
+		
+		if(bindingResult.hasErrors()) {
+			return "addProj";
+		}
+		
 		addProj.setStatus("Actif");
 
 if (!(file.isEmpty())) {
@@ -76,6 +90,8 @@ if (!(file.isEmpty())) {
 			file.transferTo(new File(projectFile+file.getOriginalFilename()));
 
 }
+
+
 		ProjectRepository.save(addProj);
 
 		return "redirect:/projects";	
@@ -95,7 +111,9 @@ if (!(file.isEmpty())) {
 	}
 	    
 	@RequestMapping(value = "/editProject",method = { RequestMethod.GET, RequestMethod.POST })
-	public String updateProject(Model model, @Valid Project proj, @RequestParam(name ="file")  MultipartFile file ,BindingResult bindingResult) throws IllegalStateException, IOException{
+	public String updateProject(Model model, @Valid Project proj, BindingResult bindingResult,
+			@RequestParam(name ="file")MultipartFile file)  
+					throws IllegalStateException, IOException{
 
 if (!(file.isEmpty())) {
 			

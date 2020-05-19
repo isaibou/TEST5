@@ -31,6 +31,9 @@
      <div class="col-sm-8" style="margin: 5px 0px;">
       <input type="text" class="form-control" placeholder="Entry Name of frimware" id="input-id-1"   th:field=*{name}>
       <span class="text-danger" th:errors=*{name}></span>
+      <div class="text-danger" th:if="${unique}">
+		   <div th:text="${unique}"></div>
+		</div>
 	 </div>  
      <label class="col-sm-4 control-label" style="margin: 5px 0px;" placeholder="Entry Description" for="input-id-1"><b>Description</b></label>
      <div class="col-sm-8" style="margin: 5px 0px;">
@@ -45,8 +48,8 @@
      <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Asset Type </b></label>
 	      <div class="col-sm-8" style="margin: 5px 0px;">
 	 
-	     <select name="AssetType_ID" multiple="multiple" class="form-control m-b" th:field=*{assettype}>
-	     <option th:each ="a:${assettype}" 
+	     <select name="AssetType_ID" multiple="multiple" class="form-control m-b" th:field=*{assetType}>
+	     <option th:each ="a:${assetType}" 
 	      th:text="${a.name}"
 	      th:value ="${a.AssetType_ID}"></option>
 	     </select>

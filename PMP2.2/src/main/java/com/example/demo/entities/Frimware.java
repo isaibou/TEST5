@@ -34,7 +34,7 @@ public class Frimware implements Serializable{
 	private Integer frimware_ID;
 	
 	@NotEmpty
-	@Column(name = "name",unique=true)
+	@Column(name = "name")
 	private String name;
 	
 	@DateTimeFormat(pattern = "yyyy-MM-dd")

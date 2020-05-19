@@ -12,7 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.Email;
-
+import javax.validation.constraints.NotEmpty;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
@@ -34,46 +34,46 @@ public class Customer implements Serializable{
 	@SequenceGenerator(name = "my_seq_id", sequenceName = "my_seq_id", allocationSize = 100)
 	private Integer Customer_ID;
 	
-	@NotNull(message="this name is exist")
-	@Column(name="Name",length=30,unique=true)
+	@NotEmpty
+	@Column(name="Name",length=30)
 	private String Name;
 	
-	@NotNull
+	@NotEmpty
 	private String Industry;
 	
 	private String Logo;
 
-	@NotNull(message="u shoud entry the phone number")
+	@NotEmpty
 	@NumberFormat(pattern = "##########")
 	private String PhoneCompany;
 	
-	@NotNull(message="u shoud entry the Adress Company")
+	@NotEmpty
 	private String AdressCompany;
 	
 	@NotNull
 	private String Vip;
 	
-	@NotNull(message="u shoud entry the technical name")
+	@NotEmpty
 	@Column(name="NomTechnical",length=30)
 	private String NomTechnical;
 	
-	@NotNull(message="u shoud entry the Phone Technical")
+	@NotEmpty
 	@NumberFormat(pattern = "##########")
 	private String PhoneTechnical;
 	
-	@NotNull(message="u shoud entry the Email")
+	@NotEmpty
 	@Email(message="Email invalid")
 	private String EmailTechnical;
 	
-	@NotNull(message="u shoud entry the CIO Name")
+	@NotEmpty
 	@Column(name="NomCIO",length=30)
 	private String NomCIO;
 	
-	@NotNull(message="u shoud entry the Phone CIO")
+	@NotEmpty
 	@NumberFormat(pattern = "##########")
 	private String PhoneCIO;
 	
-	@NotNull(message="u shoud entry the Email")
+	@NotEmpty
 	@Email(message="Email invalid")
 	private String EmailCIO;
 
@@ -81,7 +81,7 @@ public class Customer implements Serializable{
 
 	private String Country;
 	
-	@NotNull
+	
 	private String Status;
 	
 

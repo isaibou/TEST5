@@ -65,8 +65,19 @@ public class ContractController {
 	}
 	
 	@RequestMapping(value="/SaveContrat" , method= RequestMethod.POST)
-	private String SaveContrat(@Valid Contrat addCont, BindingResult bindingResult , @RequestParam(name="contractFile")MultipartFile file) throws IllegalStateException, IOException
+	private String SaveContrat(@Valid Contrat addCont, BindingResult bindingResult ,  Model model,
+			@RequestParam(name="contractFile")MultipartFile file) throws IllegalStateException, IOException
 	{	
+		if(contratrepository.checkTitleExist(addCont.getTitle())) {
+			//System.err.println("checkTitleExist-------------------");
+			model.addAttribute("unique", "must be unique");
+			return "addContracts";
+		}
+		if(bindingResult.hasErrors()) {
+			return "addContracts";
+			
+		}
+
 		
 if (!(file.isEmpty())) {
 			
@@ -74,10 +85,6 @@ if (!(file.isEmpty())) {
 
 			file.transferTo(new File(contratfile+file.getOriginalFilename()));
 		}
-if(bindingResult.hasErrors()) {
-	return "addContracts";
-	
-}
 
 		contratrepository.save(addCont);
 		return "redirect:/contract_manage";

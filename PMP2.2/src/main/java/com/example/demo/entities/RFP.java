@@ -13,9 +13,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.validation.constraints.NotBlank;
+
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
+
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -27,8 +27,9 @@ public class RFP implements Serializable{
 	private Integer RFP_ID;
 	
 	@NotEmpty
-	@Column (name="Title",length=30,unique=true)
+	@Column (name="Title",length=30)
 	private String Title; 
+	
 	@NotEmpty
 	private String Description;
 	

@@ -55,7 +55,7 @@ public class RFPController {
 		
 		List<RFP> rf = rfpRepository.findAll();
 		model.addAttribute("rfp", rf);
-		//model.addAttribute("rf", new RFP());
+		model.addAttribute("rf", new RFP());
 		
 		//Afficher la liste déroulante pour récupérer la liste des customers
 		model.addAttribute("customer", customerRepository.findAll());
@@ -65,17 +65,20 @@ public class RFPController {
 	
 	
 	@RequestMapping(value="/SaveRFP" , method= RequestMethod.POST)
-	private String SaveRFP(@Valid @ModelAttribute("RFP") RFP addRfp, BindingResult bindingResult, @RequestParam(name="request")MultipartFile requestFile,@RequestParam(name="response") MultipartFile responseFile  ) throws IllegalStateException, IOException {
+	private String SaveRFP(@Valid @ModelAttribute("RFP") RFP addRfp, BindingResult bindingResult, 
+			@RequestParam(name="request")MultipartFile requestFile, Model model,
+			@RequestParam(name="response") MultipartFile responseFile  ) throws IllegalStateException, IOException {
 	
-		addRfp.setStatusRFP("New");
-		
-		if(bindingResult.hasErrors()) {
-			//System.out.println("deje existe");
-			return "addRFP";
+		if(rfpRepository.checkTitleExist(addRfp.getTitle())) {
+			//System.err.println("checkTitleExist-------------------");
+			model.addAttribute("unique", "must be unique");
+			return "addRfp";
 		}
-		
-			
-		
+		if(bindingResult.hasErrors()) {
+			return "addRfp";
+		}
+		addRfp.setStatusRFP("New");
+	
 if (!(requestFile.isEmpty())) {
 			
 			addRfp.setRequestFile((requestFile.getOriginalFilename()));
@@ -95,12 +98,10 @@ if (!(responseFile.isEmpty())) {
 	
 	
 	@RequestMapping(value ="/addRFP")
-	public String addRFP( Model model, Integer id ) {
-		
-		
-		 model.addAttribute("rfp",rfpRepository.findAll());
-		 model.addAttribute("RFP", new RFP());
+	public String addRFP( Model model ) {
+		 
 		 model.addAttribute("customer", customerRepository.findAll());	
+		 model.addAttribute("RFP", new RFP());
 		 
 			return "addRfp";
 			

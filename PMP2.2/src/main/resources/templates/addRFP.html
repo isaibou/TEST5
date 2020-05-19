@@ -30,6 +30,9 @@
 	     <div class="col-sm-8" style="margin: 5px 0px;" >
 		  <input type="text" class="form-control" placeholder="Entry Name of RFP" id="input-id-1"  th:field=*{Title}> 
 	    <span class="text-danger" th:errors=*{Title}></span>
+	    <div class="text-danger" th:if="${unique}">
+		   <div th:text="${unique}"></div>
+		</div>
 		 </div>
 	     <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Customer</b></label>
 	     <div class="col-sm-8" style="margin: 5px 0px;">
@@ -39,7 +42,7 @@
 	                 th:text="${c.name}"
 	                 th:value ="${c.Customer_ID}"></option>
 	      </select>
-	      <span class="text-danger" th:errors=*{customer}></span>
+	      
 	     </div>
 		 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Description</b></label>
 		 <div class="col-sm-8" style="margin: 5px 0px;">

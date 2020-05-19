@@ -1,11 +1,16 @@
 package com.example.demo.service;
 
+import java.util.Collection;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.MailException;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
+import com.example.demo.entities.AffectationProject;
+import com.example.demo.entities.Ticket;
 import com.example.demo.entities.Users;
 
 @Service
@@ -36,6 +41,9 @@ public void sendMail(Users user) throws MailException {
 
 
 
+
+
+
 public void resetPassword(Users user) throws MailException {
 	SimpleMailMessage mail = new SimpleMailMessage();
 	mail.setText(user.getUsername());
@@ -47,6 +55,31 @@ public void resetPassword(Users user) throws MailException {
 	javaMailSender.send(mail);
 }
 
+public void notifTicket(Ticket ticket) throws MailException {
+	SimpleMailMessage mail = new SimpleMailMessage();
+	mail.setTo(ticket.getUser().getUsername());
+	mail.setFrom("suptechmiage2018@gmail.com");
+	mail.setSubject("New Ticket");
+	mail.setText("Bonjour  Mr/Mme "  + ticket.getUser().getLastName()+ " " + ticket.getUser().getFirstName() +
+			" Vous avez affecté à un nouveau Ticket de priorité" + ticket.getPriorityTicket() + ", concernant le client "+ 
+			ticket.getCustomer().getName()+".");
+	
+	javaMailSender.send(mail);
+}
 
+public void notifTaskProject(Users u , AffectationProject afp) throws MailException {
+	//for (Users u : users) {
+		SimpleMailMessage mail = new SimpleMailMessage();
+		mail.setTo(u.getUsername());
+		mail.setFrom("suptechmiage2018@gmail.com");
+		mail.setSubject("New Ticket");
+		mail.setText("Bonjour  Mr/Mme "  + u.getLastName()+ " " + u.getFirstName() +
+				" Vous avez affecté à une nouvelle tache de : " + afp.getProjATsk().getNameProjectTask() + ", concernant le projet  "+ 
+				afp.getProject().getName()+".");
+		
+		javaMailSender.send(mail);
+	//}
+	
+}
 
 }

@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.mail.MailException;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -29,6 +30,7 @@ import com.example.demo.entities.Users;
 import com.example.demo.repository.AssetRepository;
 import com.example.demo.repository.TicketRepository;
 import com.example.demo.repository.UserRepository;
+import com.example.demo.service.NotificationMail;
 
 import javassist.expr.NewArray;
 
@@ -47,6 +49,8 @@ public class TicketsController {
 	@Value("${dir.logfiles}")
 	String refLog;
 	
+	@Autowired
+	NotificationMail notif;
 	
 	@RequestMapping(value="/tickets_manage")
 	public String TicketsManage(Authentication auth, Model model ) {
@@ -199,6 +203,13 @@ Tic.setLastUpdatedate(new Date());
 	System.out.println(Tic.getTicket_ID());
 	System.out.println(Tic.getStatusTicket());
 	ticketRepository.save(Tic);
+	try {
+		notif.notifTicket(Tic);
+	} catch (MailException e) {
+		e.printStackTrace();
+	}
+
+	
 		return "redirect:/tickets_manage";	
 			
 	}

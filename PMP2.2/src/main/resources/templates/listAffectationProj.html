@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+  <meta charset="utf-8" />
+  <title>Detail Project</title>
+  <meta name="description" content="app, web app, responsive, responsive layout, admin, admin panel, admin dashboard, flat, flat ui, ui kit, AngularJS, ui route, charts, widgets, components" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <link rel="stylesheet" href="../libs/assets/animate.css/animate.css" type="text/css" />
+  <link rel="stylesheet" href="../libs/assets/font-awesome/css/font-awesome.min.css" type="text/css" />
+  <link rel="stylesheet" href="../libs/assets/simple-line-icons/css/simple-line-icons.css" type="text/css" />
+  <link rel="stylesheet" href="../libs/jquery/bootstrap/dist/css/bootstrap.css" type="text/css" />
+  <link rel="stylesheet" href="css/font.css" type="text/css" />
+  <link rel="stylesheet" href="css/app.css" type="text/css" />
+</head>
+<body>
+<div class="app" >
+ <a href="" class="navbar-brand block m-t"><i class="fa fa-power-off"></i> <b>PowerM</b> </a>
+ <div th:action="@{detailProject}" method ="post" th:object="${project}">
+  <div class="modal-dialog modal-lg" >
+   <div class="modal-content">
+    <h1 class="m-n font-bold h3"> Informations Project </h1>
+   </div>
+   <div  class="modal-body">
+    <div style="background-color:white;margin:10px; padding:10px;">
+	 <table  ui-options="{aoColumns: [
+						    { mData: 'browser' },
+					        { mData: 'action' }
+						   ]}" class="table  b-t b-b">
+	  <thead style="color:#23b7e5;">
+	     <tr>
+		   <th  style="width:20%"><center>Element </center></th>
+		   <th  style="width:80%"><center>Content </center></th>
+		  </tr>
+	  </thead>
+	  <tbody th:each="p:${affectation}">
+		  <tr data-expanded="true">
+		   <td style="color:#23b7e5;"><center>Project Name </center></th>
+		   <td th:text ="${p.project.Name}" class="m-n font-thin h4 text-secondary"></td>
+		  </tr>
+		  
+		    <td style="color:#23b7e5;"><center>Project Name </center></th>
+		   <td th:text ="${p.projATsk.NameProjectTask}" class="m-n font-thin h4 text-secondary"></td>
+		  </tr>
+		  <tr >
+		  		  
+		    <tr> 
+		   <td style="color:#23b7e5;"><center>Employee </center></th>
+	      <td> <select name ="TechnPart" class="m-n font-thin h4 text-secondary">
+			 <option   th:each="t:${p.user}"   th:text="${t.firstName}" class="m-n font-thin h4 text-secondary"></option>
+			 </select>
+			 </td>
+			  </tr>
+		  <!--  <tr >
+		   <td style="color:#23b7e5;"><center>Amount </center></th>
+		   <td th:text ="${p.Amount}" class="m-n font-thin h4 text-secondary"></td>
+		   </tr>
+		   <tr >
+		   <td style="color:#23b7e5;"><center>Year </center></th>
+		   <td th:text ="${p.Year}" class="m-n font-thin h4 text-secondary"></td>
+		   </tr>
+		    <tr >
+		   <td style="color:#23b7e5;"><center>RFP </center></th>
+		   <td th:text ="${p.rfp.Title}" class="m-n font-thin h4 text-secondary"></td>
+		   </tr>
+		   <tr> 
+		   <td style="color:#23b7e5;"><center>Delivery Date </center></th>
+		   <td th:text ="${p.DeliveryDate}" class="m-n font-thin h4 text-secondary"></td>
+		   </tr>
+		   <tr >
+		   <td style="color:#23b7e5;"><center>Temporary Acceptance Date </center></th>
+           <td th:text ="${p.TemporayAcceptanceDate}" class="m-n font-thin h4 text-secondary"></td>
+           </tr>
+           <tr>
+		   <td style="color:#23b7e5;"><center>Final Temporary Date </center></th>
+           <td th:text ="${p.FinalTemporaryDate}" class="m-n font-thin h4 text-secondary"></td>
+           </tr>
+           <tr >
+		   <td style="color:#23b7e5;"><center>Delivery Certificate </center></th>
+           <td class="m-n font-thin h4 text-secondary"><a th:href="${p.DeliveryCertificate}" target="_blank" th:text="${p.DeliveryCertificate}"></a></td>
+           </tr>
+          
+           <tr>
+		   <td style="color:#23b7e5;"><center>Warranty </center></th>
+           <td th:text ="${p.Warranty}" class="m-n font-thin h4 text-secondary"></td>
+           </tr>
+           <tr >
+		   <td style="color:#23b7e5;"><center>Execution Time </center></th>
+           <td th:text ="${p.ExecutionTime}" class="m-n font-thin h4 text-secondary"></td>
+           </tr>
+           <tr >
+		   <td style="color:#23b7e5;"><center>Notes </center></th>
+           <td th:text ="${p.Notes}" class="m-n font-thin h4 text-secondary"></td>
+           </tr>
+           <tr>
+		   <td style="color:#23b7e5;"><center>Status </center></th>
+           <td th:text ="${p.Status}" class="m-n font-thin h4 text-secondary"></td>
+           </tr> -->        
+	  </tbody>
+     </table>
+	</div>
+   </div>
+   <div class="modal-footer">
+     <button class="btn m-b-xs btn-sm btn-primary btn-addon"><a th:href="projects">Return</a></button>
+   </div>
+  </div>  
+ </div>
+</div>
+<script src="../libs/jquery/jquery/dist/jquery.js"></script>
+<script src="../libs/jquery/bootstrap/dist/js/bootstrap.js"></script>
+<script src="js/ui-load.js"></script>
+<script src="js/ui-jp.config.js"></script>
+<script src="js/ui-jp.js"></script>
+<script src="js/ui-nav.js"></script>
+<script src="js/ui-toggle.js"></script>
+<script src="js/ui-client.js"></script>
+</body>
+</html>

@@ -60,7 +60,12 @@ public class Users implements Serializable {
 	private Collection<Expenses> expenses;
 	@OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
 	private Collection<Ticket> ticket;
-
+	@OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+	private Collection<AffectationProject> affectProj ;
+	
+	@OneToMany(mappedBy = "users", fetch = FetchType.LAZY)
+	private Collection<Task> tasks;
+	
 	public Users() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -220,4 +225,37 @@ public class Users implements Serializable {
 	public void setExpenses(Collection<Expenses> expenses) {
 		this.expenses = expenses;
 	}
+
+
+	public Collection<Ticket> getTicket() {
+		return ticket;
+	}
+
+	public void setTicket(Collection<Ticket> ticket) {
+		this.ticket = ticket;
+	}
+
+	public Collection<AffectationProject> getAffectProj() {
+		return affectProj;
+	}
+
+	public void setAffectProj(Collection<AffectationProject> affectProj) {
+		this.affectProj = affectProj;
+	}
+
+	public Collection<Task> getTasks() {
+		return tasks;
+	}
+
+	public void setTasks(Collection<Task> tasks) {
+		this.tasks = tasks;
+	}
+
+	
+
+	
+	
+	
+
+
 }

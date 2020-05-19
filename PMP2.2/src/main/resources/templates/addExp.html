@@ -23,9 +23,15 @@
   <div class="modal-content">
     <h1 class="m-n font-bold h3"> Add Expense </h1>
    </div>
-   <form th:action="@{addExpenses}"  enctype="multipart/form-data" method="post" th:object=${exp}>
+   <form th:action="@{addExpenses}"  enctype="multipart/form-data" method="post" th:object="${exp}">
    <div class="modal-body">
   <div class="row">
+  <label class="col-sm-4 control-label" for="input-id-1" style="margin:5px 0px;"><b>Task :</b></label>
+   <div class="col-sm-8" style="margin:5px 0px;" >
+   <select name ="ypeExpenses_ID" class="form-control"  >
+   <option th:each="r:${task}" th:text="${r.taskDescription}" th:value="${r.task_ID}" ></option>
+   </select>
+  
     <label class="col-sm-4 control-label" for="input-id-1" style="margin:5px 0px;"><b>Type Expense :</b></label>
    <div class="col-sm-8" style="margin:5px 0px;" >
    <select name ="ypeExpenses_ID" class="form-control" th:field="*{typeExpenses}" >
@@ -34,11 +40,11 @@
    </div>
    <label class="col-sm-4 control-label" for="input-id-1" style="margin:5px 0px;"><b>Description</b></label>
    <div class="col-sm-8" style="margin:5px 0px;" >
-    <input type="text" placeholder="Entry Description" class="form-control" id="input-id-1" th:field=*{Description}  >
+    <input type="text" placeholder="Entry Description" class="form-control" id="input-id-1" th:field="*{Description}" />
    </div>
    <label class="col-sm-4 control-label" for="input-id-1" style="margin:5px 0px;"><b>Amount</b></label>
    <div class="col-sm-8" style="margin:5px 0px;" >
-    <input type="number" placeholder="Entry Amount" class="form-control" id="input-id-1" th:field=*{Amount}  >
+    <input type="number" placeholder="Entry Amount" class="form-control" id="input-id-1" th:field="*{Amount}"  />
    </div>
   
   <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Receipt</b></label>

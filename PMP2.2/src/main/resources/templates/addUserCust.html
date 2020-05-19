@@ -55,7 +55,7 @@
 	 
 	   <label class="col-sm-4 control-label" for="input-id-1"  style="margin:5px 0px;"><b>Role :</b></label>
 	 <div class="col-sm-8" style="margin:5px 0px;" >
-	 <select name ="role" multiple="multiple" class="form-control" th:field="*{roles}">
+	 <select name ="role"  class="form-control" th:field="*{roles}">
 	 <option th:each="r:${allRoles}" th:text="${r.role}" th:value="${r.role}"></option>
 	 </select>
 	 </div>

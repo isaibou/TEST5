@@ -1,11 +1,22 @@
 package com.example.demo.entities;
 
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+
+import com.example.demo.controllers.TicketsController;
 
 
 @Entity
@@ -13,52 +24,86 @@ public class Task implements Serializable{
 	
 	@Id
 	@GeneratedValue
-	private Integer Task_ID;
-	private String TaskDescription;
-	private Date DateTime;
-	private int RoadTime;
-	private int PercentComple;
+	private Integer task_ID;
+	private String taskDescription;
+	private Date dateTime;
+	private int roadTime;
+	private int percentComplete;
+	
+	@OneToMany(mappedBy = "task" , fetch = FetchType.LAZY)
+	private Collection<Expenses> expenses;
+	
+	@ManyToOne
+	@JoinColumn(name = "USERS_ID")
+	private Users users;
+	
+	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinColumn(name="TICKET_ID")
+	private Ticket ticket;
+	
+	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinColumn(name="AFFETATIONPROJECT_ID")
+	private AffectationProject affectationProject;
+	
+	
 	public Task() {
 		super();
 	}
-	public Task(String taskDescription, Date dateTime, int roadTime, int percentComple) {
-		super();
-		TaskDescription = taskDescription;
-		DateTime = dateTime;
-		RoadTime = roadTime;
-		PercentComple = percentComple;
-	}
 	public Integer getTask_ID() {
-		return Task_ID;
+		return task_ID;
 	}
 	public void setTask_ID(Integer task_ID) {
-		Task_ID = task_ID;
+		this.task_ID = task_ID;
 	}
 	public String getTaskDescription() {
-		return TaskDescription;
+		return taskDescription;
 	}
 	public void setTaskDescription(String taskDescription) {
-		TaskDescription = taskDescription;
+		this.taskDescription = taskDescription;
 	}
 	public Date getDateTime() {
-		return DateTime;
+		return dateTime;
 	}
 	public void setDateTime(Date dateTime) {
-		DateTime = dateTime;
+		this.dateTime = dateTime;
 	}
 	public int getRoadTime() {
-		return RoadTime;
+		return roadTime;
 	}
 	public void setRoadTime(int roadTime) {
-		RoadTime = roadTime;
+		this.roadTime = roadTime;
 	}
-	public int getPercentComple() {
-		return PercentComple;
+	public int getPercentComplete() {
+		return percentComplete;
 	}
-	public void setPercentComple(int percentComple) {
-		PercentComple = percentComple;
+	public void setPercentComplete(int percentComplete) {
+		this.percentComplete = percentComplete;
 	}
-	
-	
+	public Collection<Expenses> getExpenses() {
+		return expenses;
+	}
+	public void setExpenses(Collection<Expenses> expenses) {
+		this.expenses = expenses;
+	}
+	public Users getUsers() {
+		return users;
+	}
+	public void setUsers(Users users) {
+		this.users = users;
+	}
+	public Ticket getTicket() {
+		return ticket;
+	}
+	public void setTicket(Ticket ticket) {
+		this.ticket = ticket;
+	}
+	public AffectationProject getAffectationProject() {
+		return affectationProject;
+	}
+	public void setAffectationProject(AffectationProject affectationProject) {
+		this.affectationProject = affectationProject;
+	}
 
+	
+	
 }

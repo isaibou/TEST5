@@ -25,10 +25,10 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.example.demo.entities.Customer;
 import com.example.demo.entities.Expenses;
-
+import com.example.demo.entities.Task;
 import com.example.demo.entities.Users;
 import com.example.demo.repository.ExpensesRepository;
-
+import com.example.demo.repository.TaskRepository;
 import com.example.demo.repository.TypeExpensesRepository;
 
 import com.example.demo.repository.UserRepository;
@@ -43,6 +43,8 @@ public class ExpensesController {
 	ExpensesRepository expensesRepository;
 	@Autowired
 	TypeExpensesRepository typeExpensesRepository;
+	
+	TaskRepository taskRepository;
 
 	DateFormat df = new SimpleDateFormat("yyyy-	MM-dd");
 	
@@ -83,7 +85,8 @@ public class ExpensesController {
 			expense.setReceipt((file.getOriginalFilename()));
 			file.transferTo(new File(receipt+expense.getExpenses_ID()));
 		}
-		
+		expensesRepository.save(expense);
+
 		
 		return"redirect:/expenses";
 	}
@@ -118,10 +121,18 @@ public class ExpensesController {
 	}
 	
 	@RequestMapping(value ="/addExp" )
-	public String addExp(Model model) {
-
-		model.addAttribute("exp", new Expenses());
-		model.addAttribute("type", typeExpensesRepository.findAll());
+	public String addExp(Model model, Authentication auth) {
+		
+		  Users u = userRepository.getOne(auth.getName());
+		 // model.addAttribute("exp",  new Expenses());
+		  //model.addAttribute("type",  typeExpensesRepository.findAll());
+		  
+		  
+		  List<Task> tasks = taskRepository.findAll();
+		  System.out.println(tasks);
+	     model.addAttribute("task",tasks);
+	     
+		 
 		return "addExp";
 	}
 	

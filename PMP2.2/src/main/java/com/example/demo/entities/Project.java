@@ -100,6 +100,12 @@ public class Project implements Serializable{
 	@OneToMany(mappedBy = "project", fetch = FetchType.LAZY)
 	private Collection<Deliverable> deliverable;
 	
+	@OneToMany(mappedBy = "project", fetch = FetchType.LAZY)
+	private Collection<AffectationProject> affectProj;
+	
+	
+	
+	
 	public List<TechnologyPartner> getTechnologypartner() {
 		return technologypartner;
 	}
@@ -112,6 +118,7 @@ public class Project implements Serializable{
 	public void setAssets(Collection<Assets> assets) {
 		this.assets = assets;
 	}
+	
 	public Project(String deliveryCertificate, String uri, String type, long size) {
 
 		super();
@@ -271,6 +278,12 @@ public class Project implements Serializable{
 	}
 	public TypeProject getTypeProject() {
 		return typeProject;
+	}
+	public Collection<AffectationProject> getAffectProj() {
+		return affectProj;
+	}
+	public void setAffectProj(Collection<AffectationProject> affectProj) {
+		this.affectProj = affectProj;
 	}
 	
 	

@@ -39,7 +39,9 @@ public class Expenses implements Serializable{
 	@ManyToOne
 	@JoinColumn(name = "USER_ID")
 	private Users user;
-	
+	@ManyToOne
+	@JoinColumn(name = "TASK_ID")
+	private Task task;
 	
 	public Expenses() {
 		super();

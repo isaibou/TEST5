@@ -20,54 +20,40 @@
  <div>
  <div class="modal-dialog modal-lg" >
   <div class="modal-content">
-    <h1 class="m-n font-bold h3"> Add User </h1>
+    <h1 class="m-n font-bold h3"> Add Task </h1>
    </div>
-   <form th:action="@{/saveUsers}"  enctype="multipart/form-data"  method="post" th:object="${userE}">
+   <form th:action="@{/saveTaskTicket}"  method="post" th:object="${task}">
    <div class="modal-body">
   <div class="row">
   
   
-  <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Picture</b></label>
-     <div class="col-sm-8" style="margin: 5px 0px;">
-        <input type="file"  name="photo" class="form-control" id="input-id-1" >
-     </div>
+ 
+   <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Customer</b></label>
+	 <div class="col-sm-8" style="margin: 5px 0px;">
+	  <select name="C" class="form-control m-b" th:field=*{ticket}>
+	   <option th:each ="t:${tickets}" 
+	   th:text="${t.Description}"
+	   th:value ="${t.Ticket_ID}"></option>
+	  </select>
+	</div>
+   <label class="col-sm-4 control-label" for="input-id-1" style="margin:5px 0px;"><b>Task Description</b></label>
+   <div class="col-sm-8" style="margin:5px 0px;" >
+    <input type="text" placeholder="Entry Dsecription" class="form-control" id="input-id-1"  required th:field=*{taskDescription}>
+   </div>
+   <label class="col-sm-4 control-label" for="input-id-1" style="margin:5px 0px;"><b>roadTime:</b></label>
+   <div class="col-sm-8" style="margin:5px 0px;" >
+    <input type="number"  class="form-control" id="input-id-1"  required th:field=*{roadTime}>
+   </div>
+   
+     <label class="col-sm-4 control-label" for="input-id-1" style="margin:5px 0px;"><b>percentComplete:</b></label>
+   <div class="col-sm-8" style="margin:5px 0px;" >
+    <input type="number"laceholder="Entry CIN" class="form-control" id="input-id-1"  required th:field=*{percentComplete}>
+   </div>
+   
   
-   <label class="col-sm-4 control-label" for="input-id-1" style="margin:5px 0px;"><b>Nom :</b></label>
-   <div class="col-sm-8" style="margin:5px 0px;" >
-    <input type="text" placeholder="Entry Nom" class="form-control" id="input-id-1"  required th:field=*{lastName}>
-   </div>
-   <label class="col-sm-4 control-label" for="input-id-1" style="margin:5px 0px;"><b>Prenom :</b></label>
-   <div class="col-sm-8" style="margin:5px 0px;" >
-    <input type="text" placeholder="Entry Prenom" class="form-control" id="input-id-1"  required th:field=*{firstName}>
-   </div>
-   
-     <label class="col-sm-4 control-label" for="input-id-1" style="margin:5px 0px;"><b>CIN :</b></label>
-   <div class="col-sm-8" style="margin:5px 0px;" >
-    <input type="text" placeholder="Entry CIN" class="form-control" id="input-id-1"  required th:field=*{CIN}>
-   </div>
-   
-    <label class="col-sm-4 control-label" for="input-id-1" style="margin:5px 0px;"><b>Phone :</b></label>
-   <div class="col-sm-8" style="margin:5px 0px;" >
-    <input type="text" placeholder="Entry Phone" class="form-control" id="input-id-1"  required th:field=*{Phone}>
-   </div>
    
   
-   <label class="col-sm-4 control-label" for="input-id-1" style="margin:5px 0px;"><b>Login :</b></label>
-   <div class="col-sm-8" style="margin:5px 0px;" >
-    <input type="email" placeholder="Entry Login" class="form-control" id="input-id-1"  required th:field=*{username}>
-   </div>
    
-    <label class="col-sm-4 control-label" for="input-id-1" style="margin:5px 0px;"><b>Company :</b></label>
-   <div class="col-sm-8" style="margin:5px 0px;" >
-   <select name ="Customer_ID" class="form-control"  th:field="*{customer}" >
-   <option th:each="c:${customer}" th:text="${c.Name}" th:value="${c.Customer_ID}" ></option>
-   </select>
-   </div>
-   
-     <label class="col-sm-4 control-label" for="input-id-1"  style="margin:5px 0px;"><b>Role :</b></label>
-   <div class="col-sm-8" style="margin:5px 0px;" >
-   <select name ="role" multiple="multiple" class="form-control m-b" th:field="*{roles}">
-
 
    <option th:each="r:${allRoles}"  th:text="${r.role}" th:value="${r.role}"></option>
 

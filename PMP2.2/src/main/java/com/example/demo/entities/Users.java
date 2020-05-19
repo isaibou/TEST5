@@ -58,6 +58,8 @@ public class Users implements Serializable {
 	
 	@OneToMany(mappedBy = "user" , fetch = FetchType.LAZY)
 	private Collection<Expenses> expenses;
+	@OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+	private Collection<Ticket> ticket;
 
 	public Users() {
 		super();

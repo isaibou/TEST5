@@ -577,8 +577,7 @@
 			<div class="app-content-body ">
 				<div class="bg-light lter b-b wrapper-md">
 					<h1 class="m-n font-bold h3">
-						Manage Firmware <a style="margin-top: -5px;" data-toggle="modal"
-							data-target="#AddClient"
+						Manage Firmware <a style="margin-top: -5px;" th:href="@{addFirmware}"
 							class="btn btn-sm btn-primary pull-right" role="button"><b
 							class="glyphicon-plus pull"> </b>Add Firmware</a>
 					</h1>
@@ -672,6 +671,9 @@
 					</table>
 				</div>
 
+<<<<<<< HEAD
+				
+=======
 				<div class="modal fade" role="dialog" id="AddClient">
 					<div class="modal-dialog modal-lg">
 						<div class="modal-content">
@@ -707,8 +709,10 @@
      </div>
      <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Asset Type </b></label>
 	      <div class="col-sm-8" style="margin: 5px 0px;">
-	 
-	     <select name="AssetType_ID" multiple="multiple" class="form-control m-b" th:field=*{assettype}>
+
+	 <!-- ici on met une boucle sur le customer pour avoir récupérer la liste des vendor  -->
+	     <select name="AssetType_ID" multiple="multiple" class="form-control m-b" th:field=*{assetType}>
+
 	     <option th:each ="a:${assettype}" 
 	      th:text="${a.name}"
 	      th:value ="${a.AssetType_ID}"></option>
@@ -726,6 +730,7 @@
 						</div>
 					</div>
 				</div>
+>>>>>>> branch 'master' of https://github.com/isaibou/TEST5
 			</div>
 		</div>
 		<!-- /content -->

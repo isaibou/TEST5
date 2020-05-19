@@ -6,23 +6,32 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.SequenceGenerator;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class TechnologyPartner implements Serializable{
 	
 	
-	
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer TechnologyPartner_ID;
+	
+	@NotEmpty
+	@Column (name="NameTechnologyPartner",unique=true)
 	private String NameTechnologyPartner;
+	
 	private String TechnologyPartnerFile;
+	
 	private String Status;
 	
 	

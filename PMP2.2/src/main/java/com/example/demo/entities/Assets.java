@@ -1,36 +1,60 @@
 package com.example.demo.entities;
 
 import java.io.Serializable;
+
+
+import java.util.Collection;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.NotEmpty;
 
 import org.springframework.format.annotation.DateTimeFormat;
+
 
 
 @Entity
 public class Assets implements Serializable{
 	
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer Assets_ID;
-	//private String AssetsName;
+
+	
+	@NotEmpty
+	@Column (name="SerielNumber",unique=true)
+
 	private String SerielNumber;
+	
+	@NotEmpty
 	private String Description;
 	private String ConfigurationFille;
+	
+	@NotEmpty
 	private String MustGather;
+	
+	@DateTimeFormat(pattern =  "yyyy-MM-dd")
 	private String EndOfVendorWarranty;
+	
 	@DateTimeFormat(pattern =  "yyyy-MM-dd")
 	private Date EndPowermWarranty;
+	
 	private String SLA;
+	@NotEmpty
 	private String InterfaceAasset;
 	private String LoginAsset;
 	private int PasswordAsset;
@@ -42,15 +66,42 @@ public class Assets implements Serializable{
 	@JoinColumn
 	private AssetType assettype;
 	
+
+	@ManyToMany
+	@JoinTable(name="ASSET_PROJECT")
+	private Collection<Project> project;
+	
 	@ManyToOne
-	@JoinColumn
-	private Project project;
+
+	@JoinColumn(name = "CUSTOMER_ID")
+	private Customer customer;
+	
+	@ManyToOne
+	@JoinColumn(name="FRIMWARE_ID")
+	private Frimware frimware ;
+	
+	@OneToMany(mappedBy = "asset" , fetch = FetchType.LAZY)
+	private Collection<Ticket> ticket;
+	
+	// a supprimer 
+	//@ManyToOne
+	//@JoinColumn
+	//private Frimware frimware;
+	
+	
+	//public Frimware getFrimware() {
+		//return frimware;
+	//}
+
+
 
 	/*@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Frimware> frimwares = new ArrayList<>();
 	
 
 	
+<<<<<<< HEAD
+=======
 	public List<Frimware> getFrimwares() {
 		return frimwares;
 	}
@@ -59,18 +110,7 @@ public class Assets implements Serializable{
 		this.frimwares = frimwares;
 	}*/
 	
-	public Project getProject() {
-		return project;
-	}
-
-	public void setProject(Project project) {
-		this.project = project;
-	}
-
-	public Assets(Project project) {
-		super();
-		this.project = project;
-	}
+	
 	
 	public Assets(AssetType assettype) {
 		super();
@@ -90,6 +130,8 @@ public class Assets implements Serializable{
 		this.assettype = assettype;
 	}
 
+	
+	
 	public Assets() {
 		super();
 	}
@@ -212,7 +254,41 @@ public class Assets implements Serializable{
 	public void setLastUpdate(Date lastUpdate) {
 		LastUpdate = lastUpdate;
 	}
+
+	public Customer getCustomer() {
+		return customer;
+	}
+
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
+	}
+
+	public Frimware getFrimware() {
+		return frimware;
+	}
+
+	public void setFrimware(Frimware frimware) {
+		this.frimware = frimware;
+	}
+
+	public Collection<Project> getProject() {
+		return project;
+	}
+
+	public void setProject(Collection<Project> project) {
+		this.project = project;
+	}
+
+	public Collection<Ticket> getTicket() {
+		return ticket;
+	}
+
+	public void setTicket(Collection<Ticket> ticket) {
+		this.ticket = ticket;
+	}
+
 	
+
 	
 
 }

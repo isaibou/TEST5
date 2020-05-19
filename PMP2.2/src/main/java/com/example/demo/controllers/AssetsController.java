@@ -50,35 +50,74 @@ public class AssetsController {
 		
 		List<Assets> assets = assetRepository.findAll();
 		model.addAttribute("asset", assets);
-		model.addAttribute("assets", new Assets());
+		//model.addAttribute("assets", new Assets());
 		
 		model.addAttribute("assettype", assetTypeRepository.findAll());
 		model.addAttribute("project", projetRepository.findAll());
 		model.addAttribute("frimware", frimwareRepository.findAll());
-		
+		/*
+		 * List<RFP> rfpee = (List<RFP>) u.getCustomer().getRfp(); List<Project> proj =
+		 * (List<Project>) ((RFP) rfpee).getProject(); ((Project) proj).getAssets();
+		 * 
+		 */
 		return "assets_manage";
 	}
 	
 	@RequestMapping(value="/SaveAssets" , method= RequestMethod.POST)
-	private String SaveAssets(@Valid Assets addAss, BindingResult bindingResult) {
+	private String SaveAssets(@Valid Assets addAss, BindingResult bindingResult, Model model) {
+		
+		if(bindingResult.hasErrors()) {
+			return "addAssets";
+			
+		}
+		
 		addAss.setStatus("Actif");
 		
 		assetRepository.save(addAss);
+		AssetType asstype=  addAss.getAssettype();
+		System.out.println(asstype);
+		//List<Frimware> frim = asstype.getFrimware();
+		model.addAttribute("frimware", asstype.getFrimware());
+		System.out.println(asstype.getFrimware());
+		//System.out.println(frim);
+		Integer i =  addAss.getAssets_ID();
+		System.out.println(i);
+		model.addAttribute("id", i);
+		
+		return "nextAsset"; //$NON-NLS-1$
+		
+		
+	}
+	
+	@RequestMapping(value="/addAssets" , method= RequestMethod.POST)
+	private String addAssets(Integer id, @RequestParam(name="frim") Frimware frim  ) {
+		
+		Assets asset = assetRepository.getOne(id);
+		asset.setFrimware(frim);
+		assetRepository.save(asset);
+		
+		
 		return "redirect:/assets_manage"; //$NON-NLS-1$
 		
 	}
 	
-	/*@GetMapping("/getfrimwares")
-	public List<Frimware> messageCenterHome(@RequestParam Integer Assetid) {
-		System.out.println("--------------- Assetid" + Assetid);
-		
-		List<Frimware> frimwares = new ArrayList<Frimware>();
-		frimwares = assetRepository.findById(Assetid).get().getFrimwares();
-			
 
-		return frimwares;
-	}*/
+	@RequestMapping(value ="/addAssets")
+	public String addAssets( Model model, Integer id ) {
+		
+		 model.addAttribute("assets",  assetRepository.findAll());
+		 model.addAttribute("assets", new Assets());
+		 model.addAttribute("assettype", assetTypeRepository.findAll());
+		 model.addAttribute("project", projetRepository.findAll());	
+		
+			return "addAssets";
+			
+	}
 	
+	
+	
+
+
 	@RequestMapping(value = "/editAssets",method = { RequestMethod.GET, RequestMethod.POST })
 	public String updateAssets(Model model, @Valid Assets asset, BindingResult bindingResult){
        
@@ -121,11 +160,11 @@ public class AssetsController {
 		 Assets	assets = assetRepository.getOne(id);
 		 model.addAttribute("Assets",assets);
 		 assets.getAssettype().getName();
-		 assets.getProject().getName();
+		
 		 
 		//Affichage du asse type et project qui j ai choisir a partir de la liste dérulante dans détail
-		 model.addAttribute("assettype", assets.getAssettype());
-		 model.addAttribute("project", assets.getProject());
+		// model.addAttribute("assettype", assets.getAssettype());
+		 //model.addAttribute("project", assets.getProject());
 	
 	
 			return "detailAssets";

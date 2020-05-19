@@ -531,7 +531,7 @@
    <div class="col">
     <div class="bg-light lter b-b wrapper-md">
 	 <h1 class="m-n font-bold h3"> Manage Purchasing Customers 
-	  <a style="margin-top:-5px;" data-toggle="modal"  data-target="#AddClient" class="btn btn-sm btn-primary pull-right"  role="button"><b class="glyphicon-plus pull"> </b>Add Purchasing Customer</a> 
+	  <a style="margin-top:-5px;" th:href="@{addPurchasing}" class="btn btn-sm btn-primary pull-right"  role="button"><b class="glyphicon-plus pull"> </b>Add Purchasing Customer</a> 
 	 </h1>
 	</div>	
 		<div class="row" style="margin:5px;background-color:#f0f3f4;"> </div>
@@ -596,6 +596,7 @@
 </div>
 </div>
 </div>
+<!--  
 <div class="modal fade" role="dialog" id="AddClient" >
  <div class="modal-dialog modal-lg" >
   <div class="modal-content">
@@ -632,7 +633,7 @@
 	 </div>
 	 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Customer</b></label>
 	 <div class="col-sm-8" style="margin: 5px 0px;">
-	 <!-- ici on met une boucle sur le customer pour avoir récupérer la liste des customer  -->
+	
 	  <select name="Customer_ID" class="form-control m-b" th:field=*{customer}>
 	   <option th:each ="c:${customer}" 
 	   th:text="${c.name}"
@@ -641,6 +642,7 @@
 	 </div>
 	 </div>
 	</div>
+	
 	 <div class="modal-footer">
 	<button style="margin:0px;" class="btn m-b-xs btn-sm btn-primary btn-addon"><i class="glyphicon glyphicon-ok"></i>Save</button>
 	<button style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon" data-dismiss="modal"><i class="glyphicon glyphicon-remove"  ></i>Annuler</button>
@@ -649,6 +651,7 @@
   </div>
  </div>
 </div>
+-->
 									<!-- /content -->
 
 									<!-- footer -->

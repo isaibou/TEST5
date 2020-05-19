@@ -30,7 +30,6 @@ import com.example.demo.repository.RFPRepository;
 import com.example.demo.repository.UserRepository;
 
 
-
 @Controller
 public class ContractController {
 
@@ -57,7 +56,7 @@ public class ContractController {
 		List<Contrat> contra = contratrepository.findAll();
 		model.addAttribute("totalContrat", contra.size());
 		model.addAttribute("con", contra);
-		model.addAttribute("contrat", new Contrat());
+		//model.addAttribute("contrat", new Contrat());
 		//Afficher la liste déroulante pour récupérer la liste des customers
 		model.addAttribute("customer", customerRepository.findAll());
 		model.addAttribute("rfp", rfpRepository.findAll());
@@ -66,8 +65,19 @@ public class ContractController {
 	}
 	
 	@RequestMapping(value="/SaveContrat" , method= RequestMethod.POST)
-	private String SaveContrat(@Valid Contrat addCont, BindingResult bindingResult , @RequestParam(name="contractFile")MultipartFile file) throws IllegalStateException, IOException
+	private String SaveContrat(@Valid Contrat addCont, BindingResult bindingResult ,  Model model,
+			@RequestParam(name="contractFile")MultipartFile file) throws IllegalStateException, IOException
 	{	
+		if(contratrepository.checkTitleExist(addCont.getTitle())) {
+			//System.err.println("checkTitleExist-------------------");
+			model.addAttribute("unique", "must be unique");
+			return "addContracts";
+		}
+		if(bindingResult.hasErrors()) {
+			return "addContracts";
+			
+		}
+
 		
 if (!(file.isEmpty())) {
 			
@@ -79,6 +89,18 @@ if (!(file.isEmpty())) {
 		contratrepository.save(addCont);
 		return "redirect:/contract_manage";
 		
+	}
+	@RequestMapping(value ="/addContracts")
+	public String addContracts( Model model, Integer id ) {
+		
+		
+		 model.addAttribute("contrat",contratrepository.findAll());
+		 model.addAttribute("contrat", new Contrat());
+		 model.addAttribute("customer", customerRepository.findAll());	
+		 model.addAttribute("rfp", rfpRepository.findAll());
+		
+			return "addContracts";
+			
 	}
 	
 	@RequestMapping(value = "/editContrat",method = { RequestMethod.GET, RequestMethod.POST })

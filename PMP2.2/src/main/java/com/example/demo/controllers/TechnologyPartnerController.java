@@ -28,7 +28,7 @@ import com.example.demo.repository.TechnologiePartnerRepository;
 @Controller
 public class TechnologyPartnerController {
 	
-	
+
 	@Autowired
 	private TechnologiePartnerRepository technologiepartnerRepository;
 	
@@ -40,7 +40,7 @@ public class TechnologyPartnerController {
 		
 		List<TechnologyPartner> technologypartner = technologiepartnerRepository.findAll();
 		model.addAttribute("techpart",technologypartner );
-		model.addAttribute("technopart", new TechnologyPartner());
+		//model.addAttribute("technopart", new TechnologyPartner());
 		model.addAttribute("totalTechnologyPartner", technologypartner.size());
 	
 		return "Technology_Partner";
@@ -48,6 +48,10 @@ public class TechnologyPartnerController {
 	
 	@RequestMapping(value="/SaveTechnologyPartner" , method= RequestMethod.POST)
 	private String SaveTechnologyPartner(@Valid TechnologyPartner addTechnologyPart, BindingResult bindingResult, @RequestParam(name="file")MultipartFile file) throws IllegalStateException, IOException {
+		if(bindingResult.hasErrors()) {
+			return "addTechnologyPartner";
+			
+		}
 		addTechnologyPart.setStatus("Actif");
 		if (!(file.isEmpty())) {
 			
@@ -55,9 +59,19 @@ public class TechnologyPartnerController {
 
 					file.transferTo(new File(techPartnerFile+file.getOriginalFilename()));
 				}
+		
 		technologiepartnerRepository.save(addTechnologyPart);
 		return "redirect:/technology";
 		
+	}
+	@RequestMapping(value ="/addTechnologyPartner")
+	public String addTechnologyPartne( Model model, Integer id ) {
+		
+		 model.addAttribute("technologyPartner",technologiepartnerRepository.findAll());
+		 model.addAttribute("technologyPartner", new TechnologyPartner());
+		
+			return "addTechnologyPartner";
+			
 	}
 	
 	@RequestMapping(value = "/editTechnologyPartner",method = { RequestMethod.GET, RequestMethod.POST })

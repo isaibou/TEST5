@@ -8,7 +8,7 @@ public class TimesheetControler {
 	
 	
 
-	@RequestMapping(value="/manager/timesheets")
+	@RequestMapping(value="/timesheets")
 	public String Timesheet() {
 		return "timesheets";
 	}

@@ -1,5 +1,6 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+  <!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 	<head>
 		<meta charset="utf-8" />
 		<title>Tickets </title>
@@ -785,13 +786,12 @@ document.addEventListener('DOMContentLoaded', function() {
      </tr>
     </thead>
     <tbody>
-     <tr data-expanded="true">
+     <tr data-expanded="true" th:each="t:${submitted}">
   
-    <td><center>Attijariwafabank</center></td>
-    <td>
+    <td th:text = "${t.customer.Name}"><center></center></td>
+    <td th:text = "${t.Description}">
 	<center>
-	<span>There are a few easy ways to quickly get started with Bootstrap, each one ...</span>
-    <span class="text-muted hide" id="moreless1"> appealing to a different skill level and use case. Read through to see what suits your particular needs.</span></center>
+	</center>
 	 <p>
         <button class="btn btn-sm pull-right" ui-toggle-class="show" target="#moreless1">
           <i class="fa fa-plus text"></i>
@@ -803,7 +803,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	
 	</td>
 	 <td><center><span class="label bg-success pull-center m-t-md">Medium</span></center></td>
-    <td><center>02-03-2020</center></td>
+    <td th:text = "${t. OpenedDate}"><center></center></td>
    
     <td><center>
     <div class="btn-group dropdown">
@@ -815,8 +815,11 @@ document.addEventListener('DOMContentLoaded', function() {
 																												</li>
 																												  <li class="divider"></li>
 																												  <li>
-																												<a style="margin-top:-5px;" data-toggle="modal"  data-target="#Affected" class="btn btn-sm btn-light" role="button">Affecte to</a>
-																												<a style="margin-top:-5px;" data-toggle="modal"  data-target="#Close" class="btn btn-sm btn-light" role="button">Close</a>
+																												<a th:href="@{affectTo(id=${t.Ticket_ID})}"  style="margin-top:-5px;"  class="btn btn-sm btn-light" role="button">Affecte to</a>
+																												<a th:href="@{closed(id=${t.Ticket_ID})}" style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Close</a>
+																												<a th:href="@{resolved(id=${t.Ticket_ID})}"style="margin-top:-5px;"  class="btn btn-sm btn-light" role="button">Resolved</a>
+																												<a th:href="@{archived(id=${t.Ticket_ID})}"style="margin-top:-5px;"  class="btn btn-sm btn-light" role="button">Archived</a>
+																												<a th:href="@{waiting(id=${t.Ticket_ID})}"style="margin-top:-5px;"  class="btn btn-sm btn-light" role="button">Waiting</a>
 																											</li>
 																										</ul>
 </div>
@@ -849,11 +852,11 @@ document.addEventListener('DOMContentLoaded', function() {
      </tr>
     </thead>
     <tbody>
-     <tr data-expanded="true">
+     <tr data-expanded="true" th:each="a:${affected}">
   
-    <td><center>Attijariwafabank</center></td>
-    <td>
-  <center>
+    <td th:text="${a.customer.Name}"><center></center></td>
+    <td th:text="${a.Description}">
+  <!-- <center>
   <span>There are a few easy ways to quickly get started with Bootstrap, each one ...</span>
     <span class="text-muted hide" id="moreless2"> appealing to a different skill level and use case. Read through to see what suits your particular needs.</span></center>
    <p>
@@ -864,21 +867,28 @@ document.addEventListener('DOMContentLoaded', function() {
           <span class="text-active">Less</span>
         </button>
       </p>
-  
+   -->
   </td>
-   <td><center><span class="label bg-info pull-center m-t-md">@zaki</span> <span class="label bg-info pull-center m-t-md">@Anass.limouni</span></center></td>
-    <td><center>02-03-2020</center></td>
+   <td th:text="${a.user.lastName} +.+  ${a.user.firstName}"><center><span class="label bg-info pull-center m-t-md"></span> </center></td>
+    <td th:text="${a.OpenedDate}"><center></center></td>
    
     <td><center>
     <div class="btn-group dropdown">
                                                     <button class="btn btn-default btn-xs" data-toggle="dropdown"><i class="glyphicon glyphicon-cog"></i> Action <span class="caret"></span></button>
-                                                    <ul class="dropdown-menu">
-                                                      
-                                                      <li>
-                                                        <a style="margin-top:-5px;" data-toggle="modal"  data-target="#DetailA" class="btn btn-sm btn-light" role="button">Detail</a>
-                                                        </li>
-                                                        
-                                                    </ul>
+                                                   <ul class="dropdown-menu">
+																											
+																											<li>
+																												<a style="margin-top:-5px;" data-toggle="modal"  data-target="#DetailS" class="btn btn-sm btn-light" role="button">Detail</a>
+																												</li>
+																												  <li class="divider"></li>
+																												  <li>
+																												<a th:href="@{processing(id=${a.Ticket_ID})}"  style="margin-top:-5px;"  class="btn btn-sm btn-light" role="button">Processing</a>
+																												<a th:href="@{closed(id=${a.Ticket_ID})}" style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Close</a>
+																												<a th:href="@{resolved(id=${a.Ticket_ID})}"style="margin-top:-5px;"  class="btn btn-sm btn-light" role="button">Resolved</a>
+																												<a th:href="@{archived(id=${a.Ticket_ID})}"style="margin-top:-5px;"  class="btn btn-sm btn-light" role="button">Archived</a>
+																												<a th:href="@{waiting(id=${a.Ticket_ID})}"style="margin-top:-5px;"  class="btn btn-sm btn-light" role="button">Waiting</a>
+																											</li>
+																										</ul>
 </div>
      </center></td>
      </tr>
@@ -908,36 +918,33 @@ document.addEventListener('DOMContentLoaded', function() {
      </tr>
     </thead>
     <tbody>
-     <tr data-expanded="true">
+     <tr data-expanded="true" th:each="p:${processing}"  >
   
-    <td><center>Attijariwafabank</center></td>
-    <td>
-  <center>
-  <span>There are a few easy ways to quickly get started with Bootstrap, each one ...</span>
-    <span class="text-muted hide" id="moreless3"> appealing to a different skill level and use case. Read through to see what suits your particular needs.</span></center>
-   <p>
-        <button class="btn btn-sm pull-right" ui-toggle-class="show" target="#moreless3">
-          <i class="fa fa-plus text"></i>
-          <span class="text">More</span>
-          <i class="fa fa-minus text-active"></i>
-          <span class="text-active">Less</span>
-        </button>
-      </p>
+    <td  th:text="${p.customer.Name}"><center></center></td>
+    <td th:text="${p.Description}">
+ 
   
   </td>
-   <td><center><span class="label bg-info pull-center m-t-md">@zaki</span> <span class="label bg-info pull-center m-t-md">@Anass.limouni</span></center></td>
-    <td><center>02-03-2020</center></td>
+   <td th:text="${p.user.lastName} +.+ ${p.user.firstName} ">  <center></center></td>
+    <td th:text="${p.OpenedDate}"><center></center></td>
    
     <td><center>
     <div class="btn-group dropdown">
                                                     <button class="btn btn-default btn-xs" data-toggle="dropdown"><i class="glyphicon glyphicon-cog"></i> Action <span class="caret"></span></button>
-                                                    <ul class="dropdown-menu">
-                                                      
-                                                      <li>
-                                                        <a style="margin-top:-5px;" data-toggle="modal"  data-target="#DetailP" class="btn btn-sm btn-light" role="button">Detail</a>
-                                                        </li>
-                                                        
-                                                    </ul>
+                                                   <ul class="dropdown-menu">
+																											
+																											<li>
+																												<a style="margin-top:-5px;" data-toggle="modal"  data-target="#DetailS" class="btn btn-sm btn-light" role="button">Detail</a>
+																												</li>
+																												  <li class="divider"></li>
+																												  <li>
+																												<a th:href="@{processing(id=${p.Ticket_ID})}"  style="margin-top:-5px;"  class="btn btn-sm btn-light" role="button">Affecte to</a>
+																												<a th:href="@{closed(id=${p.Ticket_ID})}" style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Close</a>
+																												<a th:href="@{resolved(id=${p.Ticket_ID})}"style="margin-top:-5px;"  class="btn btn-sm btn-light" role="button">Resolved</a>
+																												<a th:href="@{archived(id=${p.Ticket_ID})}"style="margin-top:-5px;"  class="btn btn-sm btn-light" role="button">Archived</a>
+																												<a th:href="@{waiting(id=${p.Ticket_ID})}"style="margin-top:-5px;"  class="btn btn-sm btn-light" role="button">Waiting</a>
+																											</li>
+																										</ul>
 </div>
      </center></td>
      </tr>
@@ -952,8 +959,9 @@ document.addEventListener('DOMContentLoaded', function() {
                               { mData: 'engine' },
                               { mData: 'browser' },
                               { mData: 'platform' },
-                              { mData: 'version' },
-                              { mData: 'action' }
+                              { mData: 'version' },   
+                              { mData: 'date' },
+                             { mData: 'action' }
                               ]
                               }" class="table table-striped b-t b-b">
     <thead>
@@ -962,41 +970,39 @@ document.addEventListener('DOMContentLoaded', function() {
    <th  style="width:25%"><center>Description</center></th>
    <th  style="width:15%"><center>priority</center></th>
     <th  style="width:15%"><center>Opened Date</center></th>
+    <th  style="width:15%"><center>Last Update Date</center></th>
 
     <th  style="width:15%"><center>Actions</center></th>
      </tr>
     </thead>
     <tbody>
-     <tr data-expanded="true">
+     <tr data-expanded="true" th:each="w:${waiting}">
   
-    <td><center>Attijariwafabank</center></td>
-    <td>
-  <center>
-  <span>There are a few easy ways to quickly get started with Bootstrap, each one ...</span>
-    <span class="text-muted hide" id="moreless4"> appealing to a different skill level and use case. Read through to see what suits your particular needs.</span></center>
-   <p>
-        <button class="btn btn-sm pull-right" ui-toggle-class="show" target="#moreless4">
-          <i class="fa fa-plus text"></i>
-          <span class="text">More</span>
-          <i class="fa fa-minus text-active"></i>
-          <span class="text-active">Less</span>
-        </button>
-      </p>
+    <td th:text="${w.customer.Name}"><center></center></td>
+    <td th:text="${w.Description}" >
   
   </td>
-  <td><center><span class="label bg-success pull-center m-t-md">Medium</span></center></td>
-    <td><center>02-03-2020</center></td>
+  <td th:text="${w.PriorityTicket}"><center><span class="label bg-success pull-center m-t-md">Medium</span></center></td>
+    <td th:text="${w.OpenedDate}"  ><center></center></td>
+       <td th:text="${w.LastUpdatedate}"  ><center></center></td>
    
     <td><center>
     <div class="btn-group dropdown">
                                                     <button class="btn btn-default btn-xs" data-toggle="dropdown"><i class="glyphicon glyphicon-cog"></i> Action <span class="caret"></span></button>
-                                                    <ul class="dropdown-menu">
-                                                      
-                                                      <li>
-                                                        <a style="margin-top:-5px;" data-toggle="modal"  data-target="#DetailW" class="btn btn-sm btn-light" role="button">Detail</a>
-                                                        </li>
-                                                        
-                                                    </ul>
+                                                   <ul class="dropdown-menu">
+																											
+																											<li>
+																												<a style="margin-top:-5px;" data-toggle="modal"  data-target="#DetailS" class="btn btn-sm btn-light" role="button">Detail</a>
+																												</li>
+																												  <li class="divider"></li>
+																												  <li>
+																												<a th:href="@{affectTo(id=${w.Ticket_ID})}"  style="margin-top:-5px;"  class="btn btn-sm btn-light" role="button">Affecte to</a>
+																												<a th:href="@{closed(id=${w.Ticket_ID})}" style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Close</a>
+																												<a th:href="@{resolved(id=${w.Ticket_ID})}"style="margin-top:-5px;"  class="btn btn-sm btn-light" role="button">Resolved</a>
+																												<a th:href="@{archived(id=${w.Ticket_ID})}"style="margin-top:-5px;"  class="btn btn-sm btn-light" role="button">Archived</a>
+																												<a th:href="@{waiting(id=${w.Ticket_ID})}"style="margin-top:-5px;"  class="btn btn-sm btn-light" role="button">Waiting</a>
+																											</li>
+																										</ul>
 </div>
      </center></td>
      </tr>
@@ -1012,6 +1018,7 @@ document.addEventListener('DOMContentLoaded', function() {
                               { mData: 'browser' },
                               { mData: 'platform' },
                               { mData: 'version' },
+                              
                               { mData: 'action' }
                               ]
                               }" class="table table-striped b-t b-b">
@@ -1019,42 +1026,42 @@ document.addEventListener('DOMContentLoaded', function() {
      <tr>
     <th  style="width:20%"><center>Customer</center></th>
    <th  style="width:25%"><center>Description</center></th>
-    <th  style="width:25%"><center>Log File</center></th>
-    <th  style="width:15%"><center>Solution Description</center></th>
+    <th  style="width:25%"><center>Opened Date</center></th>
+    <th  style="width:15%"><center>Last Update</center></th>
 
     <th  style="width:15%"><center>Actions</center></th>
      </tr>
     </thead>
     <tbody>
-     <tr data-expanded="true">
+     <tr data-expanded="true" th:each="r:${resolved}">
   
-    <td><center>Attijariwafabank</center></td>
-    <td>
-  <center>
-  <span>There are a few easy ways to quickly get started with Bootstrap, each one ...</span>
-    <span class="text-muted hide" id="moreless5"> appealing to a different skill level and use case. Read through to see what suits your particular needs.</span></center>
-   <p>
-        <button class="btn btn-sm pull-right" ui-toggle-class="show" target="#moreless5">
-          <i class="fa fa-plus text"></i>
-          <span class="text">More</span>
-          <i class="fa fa-minus text-active"></i>
-          <span class="text-active">Less</span>
-        </button>
-      </p>
+    <td th:text="${r.customer.Name}"><center></center></td>
+    <td th:text="${r.Description}">
+ 
   
   </td>
-   <td><center><a  data-toggle="modal"  data-target="#imgpreview"><img class="img-thumbnail" width="80px" height="60px"src="https://www.prefamaroc.ma/img/attestations/mojazine.jpg" ><a/><center/></td>
-   <td><center><a  data-toggle="modal"  data-target="#imgpreview"><img class="img-thumbnail" width="80px" height="60px"src="https://www.prefamaroc.ma/img/attestations/mojazine.jpg" ><a/><center/></td>
+   <td th:text="$ {r.OpenedDate}"><center><center/></td>
+   <td th:text="$ {r.LastUpdatedate}"> <center><center/></td>
    
     <td><center>
     <div class="btn-group dropdown">
                                                     <button class="btn btn-default btn-xs" data-toggle="dropdown"><i class="glyphicon glyphicon-cog"></i> Action <span class="caret"></span></button>
-                                                    <ul class="dropdown-menu">
-                                                      
-                                                      <li>
-                                                        <a style="margin-top:-5px;" data-toggle="modal"  data-target="#DetailR" class="btn btn-sm btn-light" role="button">Detail</a>
-                                                        </li>
-                                                    </ul>
+                                                   <ul class="dropdown-menu">
+																											
+																											<li>
+																												<a style="margin-top:-5px;" data-toggle="modal"  data-target="#DetailS" class="btn btn-sm btn-light" role="button">Detail</a>
+																												</li>
+																												  <li class="divider"></li>
+																												  <li>
+																												  <a th:href="@{'/getSolution/'+${r.SolutionDescription}}"  style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Download Solution Description</a>
+																												  <a th:href="@{'/getLogFile/'+${r.LogFiles}}"  style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Download LogFile</a>
+																							     				<a th:href="@{affectTo(id=${r.Ticket_ID})}"  style="margin-top:-5px;"  class="btn btn-sm btn-light" role="button">Affecte to</a>
+																												<a th:href="@{closed(id=${r.Ticket_ID})}" style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Close</a>
+																												<a th:href="@{resolved(id=${r.Ticket_ID})}"style="margin-top:-5px;"  class="btn btn-sm btn-light" role="button">Resolved</a>
+																												<a th:href="@{archived(id=${r.Ticket_ID})}"style="margin-top:-5px;"  class="btn btn-sm btn-light" role="button">Archived</a>
+																												<a th:href="@{waiting(id=${r.Ticket_ID})}"style="margin-top:-5px;"  class="btn btn-sm btn-light" role="button">Waiting</a>
+																											</li>
+																										</ul>
 </div>
      </center></td>
      </tr>
@@ -1084,38 +1091,33 @@ document.addEventListener('DOMContentLoaded', function() {
      </tr>
     </thead>
     <tbody>
-     <tr data-expanded="true">
+     <tr data-expanded="true"  th:each="c:${closed}">
   
-    <td><center>Attijariwafabank</center></td>
-    <td>
-	<center>
-	<span>There are a few easy ways to quickly get started with Bootstrap, each one ...</span>
-    <span class="text-muted hide" id="moreless6"> appealing to a different skill level and use case. Read through to see what suits your particular needs.</span></center>
-	 <p>
-        <button class="btn btn-sm pull-right" ui-toggle-class="show" target="#moreless6">
-          <i class="fa fa-plus text"></i>
-          <span class="text">More</span>
-          <i class="fa fa-minus text-active"></i>
-          <span class="text-active">Less</span>
-        </button>
-      </p>
+    <td th:text ="${c.customer.Name}"><center></center></td>
+    <td th:text ="${c.Description}">
 	
 	</td>
-	 <td><center><span class="label bg-info pull-center m-t-md">@zaki</span> <span class="label bg-info pull-center m-t-md">@Anass.limouni</span></center></td>
-    <td><center>02-03-2020</center></td>
+	 <td th:text ="${c.user.lastName} +.+ ${c.user.firstName} "><center><span class="label bg-info pull-center m-t-md"></span> <span class="label bg-info pull-center m-t-md">@Anass.limouni</span></center></td>
+    <td th:text="${c.ClosedDate}"><center></center></td>
    
     <td><center>
     <div class="btn-group dropdown">
 																										<button class="btn btn-default btn-xs" data-toggle="dropdown"><i class="glyphicon glyphicon-cog"></i> Action <span class="caret"></span></button>
-																										<ul class="dropdown-menu">
+																									<ul class="dropdown-menu">
 																											
 																											<li>
-																												<a style="margin-top:-5px;" data-toggle="modal"  data-target="#DetailC" class="btn btn-sm btn-light" role="button">Detail</a>
+																												<a style="margin-top:-5px;" data-toggle="modal"  data-target="#DetailS" class="btn btn-sm btn-light" role="button">Detail</a>
 																												</li>
 																												  <li class="divider"></li>
 																												  <li>
-																												<a style="margin-top:-5px;" data-toggle="modal"  data-target="#Archived" class="btn btn-sm btn-light" role="button">Archived</a>
-																												
+																												   <a th:href="@{'/getSolution/'+${c.SolutionDescription}}"  style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Download Solution Description</a>
+																												  <a th:href="@{'/getLogFile/'+${c.LogFiles}}"  style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Download LogFile</a>
+													
+																												<a th:href="@{affectTo(id=${c.Ticket_ID})}"  style="margin-top:-5px;"  class="btn btn-sm btn-light" role="button">Affecte to</a>
+																												<a th:href="@{closed(id=${c.Ticket_ID})}" style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Close</a>
+																												<a th:href="@{resolved(id=${c.Ticket_ID})}"style="margin-top:-5px;"  class="btn btn-sm btn-light" role="button">Resolved</a>
+																												<a th:href="@{archived(id=${c.Ticket_ID})}"style="margin-top:-5px;"  class="btn btn-sm btn-light" role="button">Archived</a>
+																												<a th:href="@{waiting(id=${c.Ticket_ID})}"style="margin-top:-5px;"  class="btn btn-sm btn-light" role="button">Waiting</a>
 																											</li>
 																										</ul>
 </div>
@@ -1147,25 +1149,13 @@ document.addEventListener('DOMContentLoaded', function() {
      </tr>
     </thead>
     <tbody>
-     <tr data-expanded="true">
+     <tr data-expanded="true" th:each="a:${archived}">
   
-    <td><center>Attijariwafabank</center></td>
-    <td>
-	<center>
-	<span>There are a few easy ways to quickly get started with Bootstrap, each one ...</span>
-    <span class="text-muted hide" id="moreless7"> appealing to a different skill level and use case. Read through to see what suits your particular needs.</span></center>
-	 <p>
-        <button class="btn btn-sm pull-right" ui-toggle-class="show" target="#moreless7">
-          <i class="fa fa-plus text"></i>
-          <span class="text">More</span>
-          <i class="fa fa-minus text-active"></i>
-          <span class="text-active">Less</span>
-        </button>
-      </p>
-	
+    <td th:text="${a.customer.Name}"><center></center></td>
+   <td th:text="${a.Description}"><center></center>
 	</td>
-	 <td><center><span class="label bg-info pull-center m-t-md">@zaki</span> <span class="label bg-info pull-center m-t-md">@Anass.limouni</span></center></td>
-    <td><center>02-03-2020</center></td>
+	 <td th:text="${a.user.firstName}+.+${a.user.lastName}"  ><center><span class="label bg-info pull-center m-t-md">@zaki</span> <span class="label bg-info pull-center m-t-md">@Anass.limouni</span></center></td>
+    <td th:text ="${a.closedDate}"><center>02-03-2020</center></td>
    
     <td><center>
     <div class="btn-group dropdown">
@@ -1173,9 +1163,19 @@ document.addEventListener('DOMContentLoaded', function() {
 																										<ul class="dropdown-menu">
 																											
 																											<li>
-																												<a style="margin-top:-5px;" data-toggle="modal"  data-target="#DetailAT" class="btn btn-sm btn-light" role="button">Detail</a>
+																												<a style="margin-top:-5px;" data-toggle="modal"  data-target="#DetailS" class="btn btn-sm btn-light" role="button">Detail</a>
 																												</li>
-																												
+																												  <li class="divider"></li>
+																												  <li>
+																												   <a th:href="@{'/getSolution/'+${a.SolutionDescription}}"  style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Download Solution Description</a>
+																												  <a th:href="@{'/getLogFile/'+${a.LogFiles}}"  style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Download LogFile</a>
+													
+																												<a th:href="@{affectTo(id=${a.Ticket_ID})}"  style="margin-top:-5px;"  class="btn btn-sm btn-light" role="button">Affecte to</a>
+																												<a th:href="@{closed(id=${a.Ticket_ID})}" style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Close</a>
+																												<a th:href="@{resolved(id=${a.Ticket_ID})}"style="margin-top:-5px;"  class="btn btn-sm btn-light" role="button">Resolved</a>
+																												<a th:href="@{archived(id=${a.Ticket_ID})}"style="margin-top:-5px;"  class="btn btn-sm btn-light" role="button">Archived</a>
+																												<a th:href="@{waiting(id=${a.Ticket_ID})}"style="margin-top:-5px;"  class="btn btn-sm btn-light" role="button">Waiting</a>
+																											</li>
 																										</ul>
 </div>
      </center></td>
@@ -1212,45 +1212,52 @@ document.addEventListener('DOMContentLoaded', function() {
         <button type="button" class="close pull-right" data-dismiss="modal">&times;</button>
           <h1 class="m-n font-bold h3"> <b class="glyphicon-plus pull"> </b> Add Ticket</h1>
       </div>
+      <form th:action="@{addTicket}"   enctype="multipart/form-data" method ="post" th:object="${ticket}">
       <div class="modal-body">
         <div class="row">
           <label class="col-sm-4 control-label"  for="input-id-1"><b>Type Ticket</b></label>
           <div class="col-sm-8"  >
-            <select name="account" class="form-control m-b">
-              <option>Ticket1</option>
-              <option>Ticket2</option>
+            <select name="account" class="form-control m-b" th:field=*{TypeTicket}>
+              <option th:value="Type1" th:text="Type1"></option>
+              <option th:value="Type2" th:text="Type2"></option>
             </select>
           </div>
-          <label class="col-sm-4 control-label"  for="input-id-1"><b>Employee</b></label>
+       <!--    <label class="col-sm-4 control-label"  for="input-id-1"><b>Employee</b></label>
           <div class="col-sm-8"  >
             <select name="account" class="form-control m-b">
               <option>NomEmployee</option>
               <option>NomEmployee</option>
             </select>
-          </div>
+          </div> -->
           <label class="col-sm-4 control-label"  for="input-id-1"><b>Asset</b></label>
           <div class="col-sm-8"  >
-            <select name="account" class="form-control m-b">
-              <option>NomAsset</option>
-              <option>NomAsset</option>
-            </select>
+             <select name="AssetType_ID" class="form-control m-b" th:field=*{asset}>
+	      <option th:each ="a:${listAsset}" 
+	        th:text="${a.SerielNumber}"
+	        th:value ="${a.Assets_ID}"></option>
+	      </select>
           </div>
-          <label class="col-sm-4 control-label"  for="input-id-1"><b>Customer</b></label>
+           <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Description</b></label>
+     <div class="col-sm-8" style="margin: 5px 0px;" >
+      <input type="text" class="form-control" placeholder="Entry Name of Company" id="input-id-1"  required th:field=*{Description}/>
+      <span class="text-danger" th:errors=*{Description}></span>
+	 </div>
+       <!--    <label class="col-sm-4 control-label"  for="input-id-1"><b>Customer</b></label>
           <div class="col-sm-8"  >
             <select name="account" class="form-control m-b">
               <option>NomCustomer</option>
               <option>NomCustomer</option>
             </select>
-          </div>
-          <label class="col-sm-4 control-label"  for="input-id-1"><b>Priority Ticket</b></label>
+          </div> -->
+         <!--  <label class="col-sm-4 control-label"  for="input-id-1"><b>Priority Ticket</b></label>
           <div class="col-sm-8"  >
             <select name="account" class="form-control m-b">
               <option>Low</option>
               <option>Medium</option>
               <option>High</option>
             </select>
-          </div>
-          <label class="col-sm-4 control-label" placeholder="Entry Description" for="input-id-1"><b>Description</b></label>
+          </div> -->
+        <!--   <label class="col-sm-4 control-label" placeholder="Entry Description" for="input-id-1"><b>Description</b></label>
           <div class="col-sm-8">
             <div class="form-group">
             <div class="btn-toolbar m-b-sm btn-editor" data-role="editor-toolbar" data-target="#editor">
@@ -1346,7 +1353,7 @@ document.addEventListener('DOMContentLoaded', function() {
             </div>
             </form>
           </div>
-          <label class="col-sm-4 control-label" placeholder="Entry Log File" for="input-id-1"><b>Log File</b></label>
+         -->  <label class="col-sm-4 control-label" placeholder="Entry Log File" for="input-id-1"><b>Log File</b></label>
           <div class="col-sm-4">
             <input type="text" placeholder="Entry Log File"class="form-control" id="input-id-1">
           </div>
@@ -1354,8 +1361,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 <a class="btn btn-default" tooltip="Insert picture (or just drag &amp; drop)" id="pictureBtn"><i class="icon-paper-clip"></i></a>
                 <input type="file" data-edit="insertImage" style="position:absolute; opacity:0; width:41px; height:34px">
               </div> 
-          <label class="col-sm-4 control-label" placeholder="Entry Description" for="input-id-1"><b>Solution Description</b></label>
-          <div class="col-sm-8">
+<!--           <label class="col-sm-4 control-label" placeholder="Entry Description" for="input-id-1"><b>Solution Description</b></label>
+ -->        <!--   <div class="col-sm-8">
             <div class="form-group">
             <div class="btn-toolbar m-b-sm btn-editor" data-role="editor-toolbar" data-target="#editor">
               <div class="btn-group dropdown" dropdown="">
@@ -1392,8 +1399,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 <a class="btn btn-default" data-edit="justifycenter" tooltip="Center (Ctrl/Cmd+E)"><i class="fa fa-align-center"></i></a>
                 <a class="btn btn-default" data-edit="justifyright" tooltip="Align Right (Ctrl/Cmd+R)"><i class="fa fa-align-right"></i></a>
                 <a class="btn btn-default" data-edit="justifyfull" tooltip="Justify (Ctrl/Cmd+J)"><i class="fa fa-align-justify"></i></a>
-              </div>
-              <div class="btn-group dropdown" dropdown="">
+             <!--  </div> -->
+  <!--             <div class="btn-group dropdown" dropdown="">
                 <a class="btn btn-default" dropdown-toggle="" tooltip="Hyperlink"><i class="fa fa-link"></i></a>
                 <div class="dropdown-menu">
                   <div class="input-group m-l-xs m-r-xs">
@@ -1421,8 +1428,9 @@ document.addEventListener('DOMContentLoaded', function() {
           </div>
         </div>
         </div>
+       -->
       </div>
-      <div class="modal-footer">
+     <div class="modal-footer">
         <button style="margin:0px;" class="btn m-b-xs btn-sm btn-primary btn-addon"><i class="glyphicon glyphicon-ok"></i>Save</button>
        <button style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon" data-dismiss="modal"><i class="glyphicon glyphicon-remove"></i>Annuler</button>
       </div>

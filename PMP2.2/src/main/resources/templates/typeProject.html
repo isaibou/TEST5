@@ -536,7 +536,7 @@ document.addEventListener('DOMContentLoaded', function() {
   <div id="content" class="app-content" role="main">
    <div class="app-content-body ">
     <div class="bg-light lter b-b wrapper-md"><h1 class="m-n font-bold h3"> Manage Type Project
-    <a  style="margin-top:-5px;" data-toggle="modal"  data-target="#AddTechnologyPartner" class="btn btn-sm btn-primary pull-right"  role="button">
+    <a  style="margin-top:-5px;" th:href="@{addTypeProj}" class="btn btn-sm btn-primary pull-right"  role="button">
     <b class="glyphicon-plus pull"> </b>Add Type Project</a></h1></div>
 	
 	                 <div class="row text-center" style="margin: 10px 5px;">
@@ -588,43 +588,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		</table>
 	   </div>
   
-	<div class="modal fade" role="dialog" id="AddTechnologyPartner" >
-	 <div class="modal-dialog modal-lg" >
-	  <div class="modal-content">
-	   <div class="modal-header" style="background-image:url(img/grf-bg.jpg);color:white;">
-	    <button type="button" class="close pull-right" data-dismiss="modal">&times;</button>
-	    <h1 class="m-n font-bold h3"> <b class="glyphicon-plus pull"> </b> Add Type Project</h1>
-	   </div>	   
-     <form th:action="@{SaveTypeProject}" method ="post" th:object="${tProject}">  
-     <div class="modal-body">
-	    <div class="row">
-	    <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b></b></label>
-     <div class="col-sm-8" style="margin: 5px 0px;">
-      <input type="hidden" class="form-control" placeholder="Entry Name of Technology Partner" id="input-id-1" required th:field=*{Type_Project_ID}/>
-    
-	 </div> 
-	     <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Name Type Project</b></label>
-	     <div class="col-sm-8" style="margin: 5px 0px;" >
-		  <input type="text" class="form-control" placeholder="Entry Name of Project Task" id="input-id-1" required th:field=*{NameType_Project}/> 
-	</div>
-		 
-    <label class="col-sm-4 control-label" for="input-id-1"  style="margin:5px 0px;"><b>Project Task</b></label>
-	 <div class="col-sm-8" style="margin:5px 0px;" >
-	 <select name ="role" multiple="multiple" class="form-control m-b" th:field="*{projectTask}">
-	 <option th:each="r:${listpt}"  th:text="${r.NameProjectTask}" th:value="${r.ProjectTask_ID}"></option>
-	 </select>
-	 </div>
-		 
-		  <div class="modal-footer">
-		   <button style="margin:0px;" class="btn m-b-xs btn-sm btn-primary btn-addon"><i class="glyphicon glyphicon-ok"></i>Save</button>
-		   <button style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon" data-dismiss="modal"><i class="glyphicon glyphicon-remove"></i>Annuler</button>
-		  </div>
-		 
-		</div>
-	    </form>
-	  </div>
-     </div>
-    </div>
+	
 </div>
 </div>
   <!-- /content -->

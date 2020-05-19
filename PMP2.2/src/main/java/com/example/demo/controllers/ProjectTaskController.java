@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.example.demo.entities.ProjectTask;
+import com.example.demo.entities.RFP;
 import com.example.demo.entities.TechnologyPartner;
 import com.example.demo.entities.Users;
 import com.example.demo.entities.Vendor;
@@ -49,6 +50,15 @@ public class ProjectTaskController {
 		
 		return "redirect:/projectTask";
 		
+	}
+	
+	@RequestMapping(value ="/addProjectTask")
+	public String addRFP( Model model ) {
+		 
+		model.addAttribute("pTask",new ProjectTask() );
+		
+			return "addProjectTask";
+			
 	}
 	
 	@RequestMapping(value = "/editProjectTask",method = {  RequestMethod.POST })

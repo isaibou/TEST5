@@ -1,10 +1,9 @@
 package com.example.demo.controllers;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Collection;
-
-
 import java.util.List;
 import java.util.Optional;
 
@@ -112,9 +111,10 @@ if (!(file.isEmpty())) {
 	@RequestMapping(value ="/addUserE", method = RequestMethod.GET )
 	public String addUserE(Model model) {	
 		Users u = new Users();
-		model.addAttribute("userE", u);
-		model.addAttribute("customer", customerRepository.findAll() );
+		model.addAttribute("customer", customerRepository.findAll());
 		model.addAttribute("allRoles", roleRepository.findAll());
+		model.addAttribute("userE", u);
+
 		return "addUserEmp";
 	}
 	
@@ -142,6 +142,8 @@ if (!(file.isEmpty())) {
 	
 	@RequestMapping(value ="/addUserC", method = RequestMethod.GET )
 	public String addUserC(Model model) {
+		model.addAttribute("customer", customerRepository.findAll());
+		model.addAttribute("allRoles", roleRepository.findAll());
 		model.addAttribute("userC", new Users());
 		return "addUserCust";
 	}

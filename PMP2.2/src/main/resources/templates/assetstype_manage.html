@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="utf-8" />
@@ -505,7 +505,7 @@
 												<div class="col">
  <div class="bg-light lter b-b wrapper-md">
   <h1 class="m-n font-bold h3">Manage Assets Type
-  <a style="margin-top:-5px;" data-toggle="modal"  data-target="#AddClient" class="btn btn-sm btn-primary pull-right"  role="button">
+  <a style="margin-top:-5px;" th:href="@{addAssetsType}" class="btn btn-sm btn-primary pull-right"  role="button">
   <b class="glyphicon-plus pull"> </b>Add Assets Type</a> 
   </h1>
  </div>
@@ -540,63 +540,7 @@
 </div> 
 </div>
 
-<div class="modal fade" role="dialog" id="AddClient" >
-  <div class="modal-dialog modal-lg" >
-    <div class="modal-content">
-      <div class="modal-header" style="background-image:url(img/grf-bg.jpg);color:white;">
-        <button type="button" class="close pull-right" data-dismiss="modal">&times;</button>
-        <h1 class="m-n font-bold h3"> <b class="glyphicon-plus pull"> </b> Add Type Asset</h1>
-      </div>
-      <!-- la forme -->
-      <form th:action="@{SaveAssetType}" method ="post" th:object="${assetstype}">
-      <div class="modal-body">
-       <div class="row">        
-        <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b></b></label>
-     <div class="col-sm-8" style="margin: 5px 0px;">
-      <input type="hidden" class="form-control" placeholder="Entry Name of Project" id="input-id-1"  required th:field=*{AssetType_ID}/>
-      <span class="text-danger" th:errors=*{Name}></span>
-	 </div>  
-         <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b> Name</b></label>
-         <div class="col-sm-8" style="margin: 5px 0px;">
-          <input type="text" class="form-control" placeholder="Entry Name of Asset" id="input-id-1"  required th:field=*{name}>
-          <span  th:errors=*{name}></span>
-	     </div>
 
-          <label class="col-sm-4 control-label" placeholder="Entry EndOfSupportDate" for="input-id-1" style="margin-bottom:5px;"><b>End Of Support Date</b></label>
-          <div class="col-sm-8" style="margin-bottom:5px;">
-            <input class="form-control" placeholder="yyyy-MM-dd" type="date" required th:field=*{EndOfSuportDate}/>
-            <span class="text-danger" th:errors=*{EndOfSuportDate}></span>
-          </div>
-          <label class="col-sm-4 control-label" for="input-id-1" style="margin-bottom:5px;"><b>End Sale Date</b></label>
-          <div class="col-sm-8" style="margin-bottom:5px;">         
-             <input type="date" placeholder="yyyy-MM-dd" class="form-control" required th:field=*{EndSaleDate}/>
-		     <span th:errors=*{EndSaleDate}></span>
-            </div>   
-            <label class="col-sm-4 control-label"  for="input-id-1" style="margin-bottom:5px;"><b>FRU</b></label>
-          <div class="col-sm-8" style="margin-bottom:5px;">
-            <input type="text"  class="form-control" placeholder="Entry FRU" id="input-id-2" required th:field=*{FRU}/>
-            <span th:errors=*{FRU}></span>
-          </div>
-          <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Vendor</b></label>
-	      <div class="col-sm-8" style="margin: 5px 0px;">
-	 <!-- ici on met une boucle sur le customer pour avoir récupérer la liste des vendor  -->
-	     <select name="Vendor_ID" multiple="multiple" class="form-control m-b" th:field=*{vendor}>
-	     <option th:each ="v:${vendor}" 
-	      th:text="${v.NameVendor}"
-	      th:value ="${v.Vendor_ID}"></option>
-	     </select>
-	     </div>
-         
-           <div class="modal-footer">
-        <button style="margin:0px;" class="btn m-b-xs btn-sm btn-primary btn-addon"><i class="glyphicon glyphicon-ok"></i>Save</button>
-	    <button style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon" data-dismiss="modal"><i class="glyphicon glyphicon-remove"></i>Annuler</button>
-      </div>
-    </div>
-    </div>
-     </form>  
-  </div>
-</div>
-</div>
 
 <div class="table-responsive" style="background-color:white;margin:10px; padding:10px;">
     <table ui-jq="dataTable" ui-options="{

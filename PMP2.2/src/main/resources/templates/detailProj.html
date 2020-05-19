@@ -40,8 +40,18 @@
 		  </tr>
 		  <tr >
 		   <td style="color:#23b7e5;"><center>Type Project </center></th>
+
 		   <td th:text ="${p.typeProject.NameType_Project}" class="m-n font-thin h4 text-secondary"></td>
 		  </tr>
+
+		   <td style="color:#23b7e5;"><center>Asset  </center></th>
+		   <!-- Comment j ai appeler  le customer qui j ai choisi a partir du la liste déroulante des customers  -->
+		   <td> <select name ="Aseet Type " class="m-n font-thin h4 text-secondary">
+		   <option th:each ="a:${project.assets}"  th:text="${a.SerielNumber}"  class="m-n font-thin h4 text-secondary"></option>
+		   </select>
+			 </td>
+		   </tr> 
+
 		  <td style="color:#23b7e5;"><center>RFP </center></th>
 		   <td   th:text="${p.rfp.Title}"  class="m-n font-thin h4 text-secondary"><center></center></td>
 		  </tr>
@@ -60,6 +70,10 @@
 		   <tr >
 		   <td style="color:#23b7e5;"><center>Year </center></th>
 		   <td th:text ="${p.Year}" class="m-n font-thin h4 text-secondary"></td>
+		   </tr>
+		    <tr >
+		   <td style="color:#23b7e5;"><center>RFP </center></th>
+		   <td th:text ="${p.rfp.Title}" class="m-n font-thin h4 text-secondary"></td>
 		   </tr>
 		   <tr> 
 		   <td style="color:#23b7e5;"><center>Delivery Date </center></th>

@@ -4,6 +4,8 @@ import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.mail.Multipart;
@@ -15,6 +17,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -23,6 +26,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.example.demo.entities.*;
+import com.example.demo.repository.AssetRepository;
 import com.example.demo.repository.ProjetRepository;
 import com.example.demo.repository.RFPRepository;
 import com.example.demo.repository.TechnologiePartnerRepository;
@@ -40,6 +44,8 @@ public class ProjectController {
 	private TypeProjectRepository typeProjectRepository;
 	@Autowired
 	private RFPRepository rfprepository;
+	@Autowired
+	private AssetRepository assetRepository;
 	
 	@Value("${dir.project}")
 	String projectFile;
@@ -54,12 +60,27 @@ public class ProjectController {
 			model.addAttribute("TechnoPart", technologiepartnerRepository.findAll());
 			model.addAttribute("rfp",rfprepository.findAll() );
 			model.addAttribute("TypeProject", typeProjectRepository.findAll());
+			model.addAttribute("listAsset",assetRepository.findAll() );
+			
 			
 		return "projects_manage";
 	}
 
 	@RequestMapping(value="/SaveProject" , method= RequestMethod.POST)
-	private String SaveProject(@Valid Project addProj, @RequestParam(name ="file")  MultipartFile file ,BindingResult bindingResult) throws IllegalStateException, IOException {
+	private String SaveProject(@Valid  Project addProj, BindingResult bindingResult,  Model model,
+			@RequestParam(name ="file")MultipartFile file )
+			throws IllegalStateException, IOException {
+		
+		if(ProjectRepository.checkTitleExist(addProj.getName())) {
+			
+			model.addAttribute("unique", "must be unique");
+			return "addProj";
+		}
+		
+		if(bindingResult.hasErrors()) {
+			return "addProj";
+		}
+		
 		addProj.setStatus("Actif");
 
 if (!(file.isEmpty())) {
@@ -67,8 +88,8 @@ if (!(file.isEmpty())) {
 			addProj.setDeliveryCertificate((file.getOriginalFilename()));
 
 			file.transferTo(new File(projectFile+file.getOriginalFilename()));
-		}
-ProjectRepository.save(addProj);
+
+}
 
 
 		ProjectRepository.save(addProj);
@@ -90,7 +111,9 @@ ProjectRepository.save(addProj);
 	}
 	    
 	@RequestMapping(value = "/editProject",method = { RequestMethod.GET, RequestMethod.POST })
-	public String updateProject(Model model, @Valid Project proj, @RequestParam(name ="file")  MultipartFile file ,BindingResult bindingResult) throws IllegalStateException, IOException{
+	public String updateProject(Model model, @Valid Project proj, BindingResult bindingResult,
+			@RequestParam(name ="file")MultipartFile file)  
+					throws IllegalStateException, IOException{
 
 if (!(file.isEmpty())) {
 			
@@ -113,6 +136,7 @@ if (!(file.isEmpty())) {
 		 model.addAttribute("TypeProject", typeProjectRepository.findAll());
 		 
 		 model.addAttribute("TechnologiePartnerRepository", technologiepartnerRepository.findAll());
+		 model.addAttribute("type",typeProjectRepository.findAll());
 		 
 		 System.out.println(project.getName());
 		

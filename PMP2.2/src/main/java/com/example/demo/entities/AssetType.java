@@ -16,9 +16,11 @@ import javax.persistence.Id;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 import org.springframework.format.annotation.DateTimeFormat;
+
 
 
 @Entity
@@ -27,7 +29,8 @@ public class AssetType implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer AssetType_ID;
-	@NotNull 
+	
+	@NotEmpty
 	@Column(name = "Name")
 	private String Name;
 	@Column(name = "Brand")
@@ -36,12 +39,13 @@ public class AssetType implements Serializable{
 	private Date EndOfSuportDate;
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date EndSaleDate;
+	@NotEmpty
 	@Column(name = "FRU")
 	private String FRU;
 	@Column(name = "Status")
 	private String Status;
 	
-	@OneToMany
+	@OneToMany(mappedBy = "assettype")
 	private Collection <Assets> assets;
 	
 	
@@ -54,7 +58,8 @@ public class AssetType implements Serializable{
 	}
 
 	
-	@ManyToMany(mappedBy = "assetType")
+	@ManyToMany
+	@JoinTable(name="ASSETTYPE_FIRMWARE")
 	private List<Frimware> frimware;
 
 	@ManyToMany

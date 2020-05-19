@@ -9,78 +9,76 @@
   <link rel="stylesheet" href="../libs/assets/font-awesome/css/font-awesome.min.css" type="text/css" />
   <link rel="stylesheet" href="../libs/assets/simple-line-icons/css/simple-line-icons.css" type="text/css" />
   <link rel="stylesheet" href="../libs/jquery/bootstrap/dist/css/bootstrap.css" type="text/css" />
-
   <link rel="stylesheet" href="css/font.css" type="text/css" />
   <link rel="stylesheet" href="css/app.css" type="text/css" />
-
 </head>
 <body>
-<div class="app" >
- <a href="" class="navbar-brand block m-t"><i class="fa fa-power-off"></i> <b>PowerM</b> </a>
- <div>
- <div class="modal-dialog modal-lg" >
-  <div class="modal-content">
-    <h1 class="m-n font-bold h3"> Update Vendor </h1>
+<div style="margin:50px;"></div>
+<div class="col-md-6 col-sm-6 col-xs-12 spacer col-md-offset-3">
+   <a href="" class="navbar-brand block m-t"><i class="fa fa-power-off"></i> <b>PowerM</b> </a>
+  <div class="panel panel-default">
+   <div class="panel-heading"> Update Vendor </div>
+     <form th:action="@{editVendor}" enctype="multipart/form-data"  method ="post" th:object="${vendor}">
+   <div class="panel-body">
+  <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b></b></label>
+     <div class="col-sm-8" style="margin: 5px 0px;" >
+      <input type="hidden" class="form-control" placeholder="Entry Name of Vendor" id="input-id-1" th:field=*{Vendor_ID}/>
    </div>
-   <form th:action="@{editVendor}" enctype="multipart/form-data"  method ="post" th:object="${vendor}">
-   <div class="modal-body">
-	<div class="row">
-	<label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b></b></label>
+   <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b></b></label>
      <div class="col-sm-8" style="margin: 5px 0px;" >
-      <input type="hidden" class="form-control" placeholder="Entry Name of Vendor" id="input-id-1"  required th:field=*{Vendor_ID}/>
-	 </div>
-	 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b></b></label>
+      <input type="hidden" class="form-control" placeholder="Entry Name of Vendor" id="input-id-1" th:field=*{PartnershipCertificate}/>
+   </div>
+  <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Vendor Name</b></label>
      <div class="col-sm-8" style="margin: 5px 0px;" >
-      <input type="hidden" class="form-control" placeholder="Entry Name of Vendor" id="input-id-1"  required th:field=*{PartnershipCertificate}/>
-	 </div>
-	<label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Vendor Name</b></label>
-     <div class="col-sm-8" style="margin: 5px 0px;" >
-      <input type="text" class="form-control" placeholder="Entry Name of Vendor" id="input-id-1" required th:field=*{NameVendor}>
+      <input type="text" class="form-control" placeholder="Entry Name of Vendor" id="input-id-1" th:field=*{NameVendor}/>
    </div>
    <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Address</b></label>
    <div class="col-sm-8" style="margin: 5px 0px;">
-    <input type="text"  class="form-control" placeholder="Entry Address of Vendor"id="input-id-2" required th:field=*{Adress}>
+    <input type="text"  class="form-control" placeholder="Entry Address of Vendor"id="input-id-2" th:field=*{Adress}/>
    </div>
    <label class="col-sm-4 control-label" placeholder="Entry Phone of Vendor" style="margin: 5px 0px;" for="input-id-1"><b>Phone</b></label>
    <div class="col-sm-8" style="margin: 5px 0px;">
-    <input type="tel" placeholder="Entry Phone of Vendor"class="form-control" id="input-id-1" required th:field=*{Phone}>
+    <input type="tel" placeholder="Entry Phone of Vendor"class="form-control" id="input-id-1" th:field=*{Phone}/>
    </div>
     <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Industry</b></label>
-	 <div class="col-sm-8" style="margin: 5px 0px;">
-	  <select name="account" class="form-control m-b"  th:field=*{Industry} >
-	   <option th:value ="Advertising" th:text="Advertising"></option>
-	   <option th:value ="Manufacturing" th:text="Manufacturing"></option>
-	   <option th:value ="Construction" th:text="Construction"></option>
-	   <option th:value ="Education" th:text="Education"></option>
-	   <option th:value ="Entertainment" th:text="Entertainment"></option>
-	   <option th:value ="Healthcare" th:text="Healthcare"></option>
-	   <option th:value ="Government" th:text="Government"></option>
-	   <option th:value ="Technology" th:text="Technology"></option>
-	   <option th:value ="Retail" th:text="Retail"></option>
-	   <option th:value ="Wholesale" th:text="Wholesale"></option>
-	   <option th:value ="Banking" th:text="Banking"></option>
-	   <option th:value ="Finance" th:text="Finance"></option>
-	   <option th:value ="Telecomunication" th:text="Telecomunication"></option>
-	   <option th:value ="Transportation" th:text="Transportation"></option>
-	  </select>
-	  <span class="text-danger" th:errors=*{Industry}></span>
-	 </div>
+   <div class="col-sm-8" style="margin: 5px 0px;">
+    <select name="account" class="form-control m-b"  th:field=*{Industry} >
+     <option th:value ="Advertising" th:text="Advertising"></option>
+     <option th:value ="Manufacturing" th:text="Manufacturing"></option>
+     <option th:value ="Construction" th:text="Construction"></option>
+     <option th:value ="Education" th:text="Education"></option>
+     <option th:value ="Entertainment" th:text="Entertainment"></option>
+     <option th:value ="Healthcare" th:text="Healthcare"></option>
+     <option th:value ="Government" th:text="Government"></option>
+     <option th:value ="Technology" th:text="Technology"></option>
+     <option th:value ="Retail" th:text="Retail"></option>
+     <option th:value ="Wholesale" th:text="Wholesale"></option>
+     <option th:value ="Banking" th:text="Banking"></option>
+     <option th:value ="Finance" th:text="Finance"></option>
+     <option th:value ="Telecomunication" th:text="Telecomunication"></option>
+     <option th:value ="Transportation" th:text="Transportation"></option>
+    </select>
+    <span class="text-danger" th:errors=*{Industry}></span>
+   </div>
    <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Partnership Certificate</b></label>
   <div class="col-sm-8" style="margin: 5px 0px;">
     <input type="file" name="certificate" class="form-control" id="input-id-1" />
     <span th:text ="${vendor.PartnershipCertificate}" class="m-n font-thin h4 text-secondary"></span>
   </div>
+  <div >
+  <button style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon pull-right"><a th:href="vendor"><i class="glyphicon glyphicon-remove"></i>Annuler</a></button>
+  <button style="margin:0px;" class="btn m-b-xs btn-sm btn-primary btn-addon pull-right"><i class="glyphicon glyphicon-ok"></i>Save</button>
+   </div>
   </div>
-   </div>
-   <div class="modal-footer">
-  <button style="margin:0px;" class="btn m-b-xs btn-sm btn-primary btn-addon"><i class="glyphicon glyphicon-ok"></i>Save</button>
-  <button style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon"><a th:href="vendor"><i class="glyphicon glyphicon-remove"></i>Annuler</a></button>
-   </div>
    </form>
- </div>
-  </div>
+    </div>
+<div class="text-center">
+ <p><small class="text-muted">
+  <span class="pull-right">2.2.0 <a href ui-scroll="app" class="m-l-sm text-muted"><i class="fa fa-long-arrow-up"></i></a></span>
+  <span class="pull-left"> &copy; PowerM 2020 Copyright. </span> 
+ </small></p>
 </div>
-
+</div>
 <script src="../libs/jquery/jquery/dist/jquery.js"></script>
 <script src="../libs/jquery/bootstrap/dist/js/bootstrap.js"></script>
 <script src="js/ui-load.js"></script>

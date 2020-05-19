@@ -13,61 +13,61 @@
   <link rel="stylesheet" href="css/app.css" type="text/css" />
 </head>
 <body>
-<div class="app" >
- <a href="" class="navbar-brand block m-t"><i class="fa fa-power-off"></i> <b>PowerM</b> </a>
- 	<div>
-	 <div class="modal-dialog modal-lg" >
-	 <div class="modal-content">
-      <h1 class="m-n font-bold h3"> Update purchasing </h1>
-     </div>
-   <form th:action="@{editPurchasing}" method ="post" th:object="${purchasing}">
-   <div class="modal-body">
-	<div class="row">
+<div style="margin:50px;"></div>
+<div class="col-md-6 col-sm-6 col-xs-12 spacer col-md-offset-3">
+   <a href="" class="navbar-brand block m-t"><i class="fa fa-power-off"></i> <b>PowerM</b> </a>
+  <div class="panel panel-default">
+   <div class="panel-heading"> Add Purchasing </div>
+    <form th:action="@{editPurchasing}" method ="post" th:object="${purchasing}">
+   <div class="panel-body">
     <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b></b></label>
      <div class="col-sm-8" style="margin: 5px 0px;" >
       <input type="hidden" class="form-control" placeholder="Entry Name of purchasing" id="input-id-1"  required th:field=*{Purchasing_ID}/>
      
-	 </div>
-	 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Purchasing First Name</b></label>
+   </div>
+   <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Purchasing First Name</b></label>
      <div class="col-sm-8" style="margin: 5px 0px;" >
       <input type="text" class="form-control" placeholder="Entry First Name of Purchasing" id="input-id-1"  required th:field=*{FirstName}>
       <span class="text-danger" th:errors=*{FirstName}></span>
-	 </div>
-	 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Purchasing Last Name</b></label>
-	 <div class="col-sm-8" style="margin: 5px 0px;">
-	  <input type="text"  class="form-control" placeholder="Entry Last Name of Purchasing"id="input-id-2"  required th:field=*{LastName}>
-	  <span class="text-danger" th:errors=*{LastName}></span>
-	 </div>
-	 <label class="col-sm-4 control-label" placeholder="Entry Phone of Company" style="margin: 5px 0px;" for="input-id-1"><b>Purchasing Telephone</b></label>
-	 <div class="col-sm-8" style="margin: 5px 0px;">
-	  <input type="tel" placeholder="Entry Phone of Purchasing"class="form-control" id="input-id-1"  required th:field=*{Contact}>
-	  <span class="text-danger" th:errors=*{Contact}></span>
-	 </div>
-	  <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Purchasing Email</b></label>
-	 <div class="col-sm-8" style="margin: 5px 0px;">
-	  <input type="email" placeholder="Entry Email Purchasing"class="form-control" id="input-id-1" required th:field=*{Email}> 
-	  <span class="text-danger" th:errors=*{Email}></span>
-	 </div>
-	 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Customer</b></label>
-	 <div class="col-sm-8" style="margin: 5px 0px;">
-	 	 <!-- La meme chose pour update ici on met une boucle sur le customer pour avoir récupérer la liste des customer  -->
-	  <select name="Customer_ID" class="form-control m-b" th:field=*{customer}>
-	   <option th:each ="c:${customer}" 
-	   th:text="${c.name}"
-	   th:value ="${c.Customer_ID}"></option>
-	  </select>
-	 </div>
-	 		 </div>
-		</div>
-		  <div class="modal-footer">
-		   <button style="margin:0px;" class="btn m-b-xs btn-sm btn-primary btn-addon"><i class="glyphicon glyphicon-ok"></i>Save</button>
-		   <button style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon"><a th:href="purchasing_customer_manage"><i class="glyphicon glyphicon-remove"></i>Annuler</a></button>
-		  </div>
-
-	    </form>
-		</div>
-	  </div>
-     </div>
+   </div>
+   <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Purchasing Last Name</b></label>
+   <div class="col-sm-8" style="margin: 5px 0px;">
+    <input type="text"  class="form-control" placeholder="Entry Last Name of Purchasing"id="input-id-2"  required th:field=*{LastName}>
+    <span class="text-danger" th:errors=*{LastName}></span>
+   </div>
+   <label class="col-sm-4 control-label" placeholder="Entry Phone of Company" style="margin: 5px 0px;" for="input-id-1"><b>Purchasing Telephone</b></label>
+   <div class="col-sm-8" style="margin: 5px 0px;">
+    <input type="tel" placeholder="Entry Phone of Purchasing"class="form-control" id="input-id-1"  required th:field=*{Contact}>
+    <span class="text-danger" th:errors=*{Contact}></span>
+   </div>
+    <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Purchasing Email</b></label>
+   <div class="col-sm-8" style="margin: 5px 0px;">
+    <input type="email" placeholder="Entry Email Purchasing"class="form-control" id="input-id-1" required th:field=*{Email}> 
+    <span class="text-danger" th:errors=*{Email}></span>
+   </div>
+   <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Customer</b></label>
+   <div class="col-sm-8" style="margin: 5px 0px;">
+     <!-- La meme chose pour update ici on met une boucle sur le customer pour avoir récupérer la liste des customer  -->
+    <select name="Customer_ID" class="form-control m-b" th:field=*{customer}>
+     <option th:each ="c:${customer}" 
+     th:text="${c.name}"
+     th:value ="${c.Customer_ID}"></option>
+    </select>
+   </div>
+   <div>
+    <button style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon pull-right"><a th:href="purchasing_customer_manage"><i class="glyphicon glyphicon-remove"></i>Annuler</a></button>
+    <button style="margin:0px;" class="btn m-b-xs btn-sm btn-primary btn-addon pull-right"><i class="glyphicon glyphicon-ok"></i>Save</button>
+      </div>
+       </div>
+      </form>
+    </div>
+<div class="text-center">
+ <p><small class="text-muted">
+  <span class="pull-right">2.2.0 <a href ui-scroll="app" class="m-l-sm text-muted"><i class="fa fa-long-arrow-up"></i></a></span>
+  <span class="pull-left"> &copy; PowerM 2020 Copyright. </span> 
+ </small></p>
+</div>
+</div>
 <script src="../libs/jquery/jquery/dist/jquery.js"></script>
 <script src="../libs/jquery/bootstrap/dist/js/bootstrap.js"></script>
 <script src="js/ui-load.js"></script>

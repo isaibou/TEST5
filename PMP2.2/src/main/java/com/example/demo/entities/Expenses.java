@@ -26,14 +26,12 @@ public class Expenses implements Serializable{
 	@NotEmpty
 	private String Description;
 	
-	@NotEmpty
 	private String Receipt;
 	
 	private Date SubmittedDate;
 	
 	private String StatutExpense;
 	
-	@NotEmpty
 	private String RejectReason;
 		
 	@ManyToOne

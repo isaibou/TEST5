@@ -36,11 +36,9 @@ public class Reference implements Serializable{
 	private Date Signing;
 	
 	private String KeywordsTags;
-	
-	@NotEmpty
+
 	private String PreviewPicture;
-	
-	@NotEmpty
+
 	private String ReferenceFile;
 	
 	@ManyToOne

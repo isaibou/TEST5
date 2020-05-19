@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-
 <head>
-
   <meta charset="utf-8" />
   <title>Add Contract</title>
   <meta name="description" content="app, web app, responsive, responsive layout, admin, admin panel, admin dashboard, flat, flat ui, ui kit, AngularJS, ui route, charts, widgets, components" />
@@ -15,69 +13,65 @@
   <link rel="stylesheet" href="css/app.css" type="text/css" />
 </head>
 <body>
-<div class="app" >
- <a href="" class="navbar-brand block m-t"><i class="fa fa-power-off"></i> <b>PowerM</b> </a>
-
- 	<div>
-	 <div class="modal-dialog modal-lg" >
-	 <div class="modal-content">
-      <h1 class="m-n font-bold h3"> Add Contract </h1>
-     </div>
-  <form th:action="@{SaveContrat}" enctype="multipart/form-data"   method ="post" th:object="${contrat}">
-     <div class="modal-body">
-      <div class="row">
-      
+<div style="margin:50px;"></div>
+<div class="col-md-6 col-sm-6 col-xs-12 spacer col-md-offset-3">
+   <a href="" class="navbar-brand block m-t"><i class="fa fa-power-off"></i> <b>PowerM</b> </a>
+  <div class="panel panel-default">
+   <div class="panel-heading"> Add Contract </div>
+     <form th:action="@{SaveContrat}" enctype="multipart/form-data" method ="post" th:object="${contrat}">
+     <div class="panel-body">
        <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Contract Title</b></label>
        <div class="col-sm-8" style="margin: 5px 0px;">
-      <input type="text" class="form-control" placeholder="Entry Name of Contract" id="input-id-1"  th:field=*{Title}>
+      <input type="text" class="form-control" placeholder="Entry Name of Contract" id="input-id-1"  th:field=*{Title}/>
        <span class="text-danger" th:errors=*{Title}></span>
         <div class="text-danger" th:if="${unique}">
-		   <div th:text="${unique}"></div>
-		   </div>
+       <div th:text="${unique}"></div>
+       </div>
      </div>
        <label class="col-sm-4 control-label"  for="input-id-1"><b>Customer Name</b></label>
      <div class="col-sm-8"  >
       <select name="Customer_ID" class="form-control m-b" th:field=*{customer}>
        <option th:each ="c:${customer}" 
-	   th:text="${c.name}"
-	   th:value ="${c.Customer_ID}"></option>
-      </select>
-      
+     th:text="${c.name}"
+     th:value ="${c.Customer_ID}"></option>
+      </select>    
      </div>
       <label class="col-sm-4 control-label"  for="input-id-1"><b>Title RFP</b></label>
      <div class="col-sm-8"  >
       <select name="RFP_ID" class="form-control m-b" th:field=*{rfp}>
        <option th:each ="r:${rfp}" 
-	   th:text="${r.Title}"
-	   th:value ="${r.RFP_ID}"></option>
-      </select>
-      
+     th:text="${r.Title}"
+     th:value ="${r.RFP_ID}"></option>
+      </select>     
      </div>
      <label class="col-sm-4 control-label" style="margin: 5px 0px;"  for="input-id-1"><b>Description</b></label>
      <div class="col-sm-8" style="margin: 5px 0px;">
-	   <input type="text" class="form-control" placeholder="Entry Description " id="input-id-1"  th:field=*{Description}>
-	   <span class="text-danger" th:errors=*{Description}></span>
+     <input type="text" class="form-control" placeholder="Entry Description " id="input-id-1"  th:field=*{Description}/>
+     <span class="text-danger" th:errors=*{Description}></span>
      </div>
      <label class="col-sm-4 control-label"  style="margin: 5px 0px;" for="input-id-1"><b>Signed Date</b></label>
      <div class="col-sm-8" style="margin: 5px 0px;">
-      <input type="date" class="form-control" id="input-id-1"  th:field=*{SignedDate}>
+      <input type="date" class="form-control" id="input-id-1"  th:field=*{SignedDate}/>
       <span class="text-danger" th:errors=*{SignedDate}></span>
      </div>
      <label class="col-sm-4 control-label"  style="margin: 5px 0px;" for="input-id-1"><b>ContractFile</b></label>
        <div class="col-sm-8" style="margin: 5px 0px;">
-         <input type="file" placeholder="Entry Contract File" class="form-control" name="contractFile" id="input-id-1"  />
+         <input type="file" placeholder="Entry Contract File" class="form-control" name="contractFile" id="input-id-1" />
        </div>
+    <div>
+     <button style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon pull-right"><a th:href="contract_manage"><i class="glyphicon glyphicon-remove"></i>Annuler</a></button>
+     <button style="margin:0px;" class="btn m-b-xs btn-sm btn-primary btn-addon pull-right"><i class="glyphicon glyphicon-ok"></i>Save</button>
+      </div>
      </div>
-     </div>
-		  <div class="modal-footer">
-		   <button style="margin:0px;" class="btn m-b-xs btn-sm btn-primary btn-addon"><i class="glyphicon glyphicon-ok"></i>Save</button>
-		   <button style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon"><a th:href="contract_manage"><i class="glyphicon glyphicon-remove"></i>Annuler</a></button>
-		  </div>
-	    </form>
-		</div>
-	  </div>
-     </div>
-     
+      </form>
+    </div>
+<div class="text-center">
+ <p><small class="text-muted">
+  <span class="pull-right">2.2.0 <a href ui-scroll="app" class="m-l-sm text-muted"><i class="fa fa-long-arrow-up"></i></a></span>
+  <span class="pull-left"> &copy; PowerM 2020 Copyright. </span> 
+ </small></p>
+</div>
+</div>    
 <script src="../libs/jquery/jquery/dist/jquery.js"></script>
 <script src="../libs/jquery/bootstrap/dist/js/bootstrap.js"></script>
 <script src="js/ui-load.js"></script>

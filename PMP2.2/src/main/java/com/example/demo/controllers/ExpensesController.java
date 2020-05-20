@@ -73,12 +73,15 @@ public class ExpensesController {
 		return "expense";
 	}
 
-	@RequestMapping(value="/addExpenses")
-	public String addInternalRequest(@Valid @ModelAttribute("exp") Expenses expense,BindingResult bindingResult, Authentication  auth, @RequestParam(name="recu")MultipartFile file ) throws IllegalStateException, IOException {
+
+	@RequestMapping(value="/SaveExpenses")
+	public String addInternalRequest(@Valid Expenses expense,BindingResult bindingResult, Authentication  auth, 
+			@RequestParam(name="recu")MultipartFile file ) 
+					throws IllegalStateException, IOException {
+
+	
+
 		
-		if(bindingResult.hasErrors()) {
-			return "addExp";
-		}
 		
 		String login = auth.getName();
 		Users u =  userRepository.getOne(login);
@@ -125,10 +128,14 @@ public class ExpensesController {
 		File f = new File(receipt+id);
 		return  IOUtils.toByteArray(new FileInputStream(f));
 	}
-	
+
 	@RequestMapping(value ="/addExp" )
-	public String addExp(Model model, Authentication auth) {
-		
+	public String addExp(Model model, Authentication  auth) {
+
+		model.addAttribute("expenses", new Expenses());
+		model.addAttribute("type", typeExpensesRepository.findAll());
+
+	
 		  Users u = userRepository.getOne(auth.getName());
 		  model.addAttribute("exp",  new Expenses());
 		 model.addAttribute("type",  typeExpensesRepository.findAll());
@@ -137,8 +144,6 @@ public class ExpensesController {
 		  List<Task> tasks = taskRepository.findAll();
 		  System.out.println(tasks);
 	     model.addAttribute("task",tasks);
-	     
-		 
 
 		return "addExp";
 	}

@@ -47,7 +47,17 @@ public class TechnologyPartnerController {
 	}
 	
 	@RequestMapping(value="/SaveTechnologyPartner" , method= RequestMethod.POST)
-	private String SaveTechnologyPartner(@Valid TechnologyPartner addTechnologyPart, BindingResult bindingResult, @RequestParam(name="file")MultipartFile file) throws IllegalStateException, IOException {
+	private String SaveTechnologyPartner(@Valid TechnologyPartner addTechnologyPart, BindingResult bindingResult, Model model,
+			@RequestParam(name="file")MultipartFile file)
+					throws IllegalStateException, IOException {
+		
+		if(technologiepartnerRepository.checkTitleExist(addTechnologyPart.getNameTechnologyPartner())) {
+			
+			model.addAttribute("unique", "must be unique");
+			return "addTechnologyPartner";
+		}
+		
+		
 		if(bindingResult.hasErrors()) {
 			return "addTechnologyPartner";
 			

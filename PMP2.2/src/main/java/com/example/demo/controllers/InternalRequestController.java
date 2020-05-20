@@ -68,6 +68,7 @@ public class InternalRequestController {
 		
 		return "request";
 	}
+	
 
 	@RequestMapping(value="/addInternalRequest")
 	public String addInternalRequest(@Valid @ModelAttribute("int") InternalRequest internal,BindingResult bindingResult, Authentication  auth ) {
@@ -90,7 +91,12 @@ public class InternalRequestController {
 	@RequestMapping(value ="/addReqEmp" )
 	public String addReqEmp(Model model) {
 		model.addAttribute("int", new InternalRequest());
+
+		model.addAttribute("typeInternal", typeInternalRequestrepository.findAll());
+		model.addAttribute("typeExternal", typeExternalRequestrepository.findAll());
+
 		model.addAttribute("type", typeInternalRequestrepository.findAll());
+
 		return "addReqEmp";
 	}
 	

@@ -10,14 +10,16 @@ import javax.persistence.Id;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.NotEmpty;
 
 @Entity
 public class TypeProject implements Serializable{
 	
 	@Id
-	
 	@GeneratedValue
 	private Integer Type_Project_ID;
+	
+	@NotEmpty
 	private String NameType_Project;
 	
 	@ManyToMany

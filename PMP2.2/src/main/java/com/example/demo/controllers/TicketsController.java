@@ -23,12 +23,16 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.example.demo.entities.Assets;
 import com.example.demo.entities.Customer;
+import com.example.demo.entities.DataCenter;
+import com.example.demo.entities.Expenses;
 import com.example.demo.entities.Project;
 import com.example.demo.entities.RFP;
+import com.example.demo.entities.Task;
 import com.example.demo.entities.Ticket;
 import com.example.demo.entities.Users;
 import com.example.demo.repository.AssetRepository;
 import com.example.demo.repository.TicketRepository;
+import com.example.demo.repository.TypeProjectRepository;
 import com.example.demo.repository.UserRepository;
 import com.example.demo.service.NotificationMail;
 
@@ -78,10 +82,6 @@ public class TicketsController {
 		model.addAttribute("affected",affected );
 		model.addAttribute("processing",processing );
 
-
-		
-		
-		
 		return "tickets_manage";
 	}
 
@@ -97,6 +97,14 @@ public class TicketsController {
 		return "redirect:/tickets_manage";
 	}
 	
+	@RequestMapping(value ="/addTic" )
+	public String addTic(Model model, Authentication auth) {
+		model.addAttribute("user", userRepository.findAll());
+		model.addAttribute("asset", assetRepository.findAll());
+		model.addAttribute("typ", ticketRepository.findAll());
+		model.addAttribute("tic", new Ticket());
+		return "addTicket";
+	}
 	
 	@RequestMapping(value ="waiting" )
 	private String waiting( Model model, Integer id ) {

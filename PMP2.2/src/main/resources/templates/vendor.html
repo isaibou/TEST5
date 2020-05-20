@@ -397,11 +397,13 @@
                   <i class="glyphicon  glyphicon-th"></i>
                   <span>Assets</span>
                 </a>
+
                 <ul class="nav nav-sub dk">
                  <li class="">
                     <a th:href="assets_manage">
                       <span>Manage Assets</span>
                     </a>
+
                   </li>
                   <li>
                     <a th:href="assetstype_manage">
@@ -420,12 +422,12 @@
                   </li>
                 </ul>
               </li>
-            <!--   <li>
+              <li>
                 <a th:href="tickets_manage">
                   <i class="glyphicon glyphicon-tag"></i>
                   <span>Tickets</span>
                 </a>
-              </li> -->
+              </li>
 			   <li>
                 <a th:href="RFP">
                   <i class="glyphicon glyphicon-tag"></i>
@@ -611,7 +613,10 @@
                                     <td th:text ="${v.Phone}"><center></center></td>
                                     <td th:text ="${v.Industry}" class="m-n font-thin h4 text-secondary"><center><center/></td>
                                     <td th:text ="${v.PartnershipCertificate}"><center><a  ></a> <img class="img-thumbnail" width="80px" height="60px"src="https://www.prefamaroc.ma/img/attestations/mojazine.jpg" ><a/><center/></td>
-                                    <td th:text ="${v.Status}" class="m-n font-thin h4 text-secondary"><center><span></span><center/></td>
+                                    <td th:switch="${v.Status}">
+		     <span th:case="'Actif'" class="label bg-info pull-center m-t-md" >Actived</span>
+             <span th:case="'Archived'" class="label bg-dark pull-center m-t-md" >Archived</span>
+           </td>
                                         <td>
                                           <center>
                                             <div class="btn-group dropdown">

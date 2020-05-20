@@ -126,7 +126,7 @@ public class InternalRequestController {
 	}
 	
 	@RequestMapping(value ="/editEmployeeRequest" )
-	public String editEmployeeRequest(Integer id , Model model, @RequestParam(name="commentaire")String commentaire) {
+	public String editEmployeeRequest(Integer id , Model model, @RequestParam(name="desc")String description, @RequestParam(name="commentaire")String commentaire) {
 		
 	InternalRequest iR = internalRequestrepository.getOne(id);
 	String previousCom= iR.getCommentaire();
@@ -134,6 +134,7 @@ public class InternalRequestController {
 	String com = NomCompany + " :  " + commentaire;
 	String newCom = previousCom + "  ------ " + com; 
 	iR.setCommentaire(newCom);
+	iR.setDescription(description);
 	internalRequestrepository.save(iR);
 	
 		return "redirect:/request";

@@ -246,11 +246,7 @@
           </div>
 
           </div>
-
-
-
-
-          <!-- / user -->        <!-- nav -->
+       <!-- / user -->        <!-- nav -->
 <nav ui-nav class="navi clearfix">
             <ul class="nav">
               <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
@@ -377,11 +373,13 @@
                   <i class="glyphicon  glyphicon-th"></i>
                   <span>Assets</span>
                 </a>
+
                 <ul class="nav nav-sub dk">
                  <li class="">
                     <a th:href="assets_manage">
                       <span>Manage Assets</span>
                     </a>
+
                   </li>
                   <li>
                     <a th:href="assetstype_manage">
@@ -400,12 +398,12 @@
                   </li>
                 </ul>
               </li>
-            <!--   <li>
+              <li>
                 <a th:href="tickets_manage">
                   <i class="glyphicon glyphicon-tag"></i>
                   <span>Tickets</span>
                 </a>
-              </li> -->
+              </li>
 			   <li>
                 <a th:href="RFP">
                   <i class="glyphicon glyphicon-tag"></i>
@@ -571,8 +569,10 @@
       
       <td th:text="${a.EndOfSuportDate}" class="m-n font-thin h4 text-secondary"><center></center></td>
       <td th:text="${a.EndSaleDate}" class="m-n font-thin h4 text-secondary"><center><center/></td>
-      <td th:text ="${a.Status}" class="m-n font-thin h4 text-secondary"><center><span></span><center/></td>
-      
+      <td th:switch="${a.Status}">
+		     <span th:case="'Actif'" class="label bg-info pull-center m-t-md" >Actived</span>
+             <span th:case="'Archived'" class="label bg-dark pull-center m-t-md" >Archived</span>
+           </td>
       <td><center><div class="btn-group dropdown"><button class="btn btn-default btn-xs" data-toggle="dropdown"><i class="glyphicon glyphicon-cog"></i> Action <span class="caret"></span></button>
        <ul class="dropdown-menu">
          <li><a th:href="@{updateAseetTypeform(id=${a.AssetType_ID})}"  style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Update</a></li>

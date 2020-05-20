@@ -27,13 +27,13 @@
    
        <label class="col-sm-4 control-label" placeholder="Entry EndSaleDate" for="input-id-1" style="margin-bottom:5px;"><b>Type request</b></label>
           <div class="col-sm-8" style="margin-bottom:5px;">         
-             <input type="text"   class="form-control" placeholder="Entry Type Request"  th:field="${employeeR.typeInternalRequest.NameTypeInternalRequest}"/>
+             <input type="text" class="form-control" placeholder="Entry Type Request"  th:field="${employeeR.typeInternalRequest.NameTypeInternalRequest}"/>
             </div>   
   
          <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b> Description</b></label>
          <div class="col-sm-8" style="margin: 5px 0px;">
-          <input type="text" class="form-control" id="input-id-1"   th:field="${employeeR.Description}" />
-         
+          <input type="text" class="form-control" id="input-id-1" name="desc" />
+       
        </div>
           
           <label class="col-sm-4 control-label"  for="input-id-1" style="margin-bottom:5px;"><b>Commentaire</b></label>

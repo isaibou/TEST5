@@ -26,7 +26,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.example.demo.entities.Customer;
 import com.example.demo.entities.Expenses;
-
+import com.example.demo.entities.RFP;
 import com.example.demo.entities.Task;
 
 import com.example.demo.entities.TypeExpenses;
@@ -68,6 +68,14 @@ public class ExpensesController {
 	    model.addAttribute("typeEx", listExp);
 		model.addAttribute("expense", new Expenses());
 		model.addAttribute("totalExp", listExpenses.size());
+		
+		List<Expenses> expensesWaiting = expensesRepository.findByStatutExpense("Waiting");
+		List<Expenses> expensesAnswered = expensesRepository.findByStatutExpense("Answered");
+		List<Expenses> expensesConfirmed = expensesRepository.findByStatutExpense("Confirmed");
+		
+		model.addAttribute("totalexpensesWaiting", expensesWaiting.size());
+		model.addAttribute("totalexpenAnswered", expensesAnswered.size());
+		model.addAttribute("totalexpenConfirmed", expensesConfirmed.size());
 		
 
 		return "expense";

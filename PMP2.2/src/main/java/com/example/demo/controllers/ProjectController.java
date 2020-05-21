@@ -73,6 +73,12 @@ public class ProjectController {
 			model.addAttribute("TypeProject", typeProjectRepository.findAll());
 			model.addAttribute("listAsset",assetRepository.findAll() );
 			
+			List<Project> projectActif = ProjectRepository.findByStatus("Actif");
+			model.addAttribute("totalprojectActif", projectActif.size());
+			
+			List<Project> projectArchived = ProjectRepository.findByStatus("Archived");
+			model.addAttribute("totalprojectArchived", projectArchived.size());
+			
 			
 		return "projects_manage";
 	}

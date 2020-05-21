@@ -37,7 +37,7 @@ public class Expenses implements Serializable{
 	
 	private Date SubmittedDate;
 	
-	private String StatutExpense;
+	private String statutExpense;
 	
 	private String RejectReason;
 		
@@ -64,7 +64,7 @@ public class Expenses implements Serializable{
 		Description = description;
 		Receipt = receipt;
 		SubmittedDate = submittedDate;
-		StatutExpense = statutExpense;
+		statutExpense = statutExpense;
 		RejectReason = rejectReason;
 	}
 
@@ -120,12 +120,12 @@ public class Expenses implements Serializable{
 
 
 	public String getStatutExpense() {
-		return StatutExpense;
+		return statutExpense;
 	}
 
 
 	public void setStatutExpense(String statutExpense) {
-		StatutExpense = statutExpense;
+		statutExpense = statutExpense;
 	}
 
 

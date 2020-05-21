@@ -538,27 +538,36 @@ document.addEventListener('DOMContentLoaded', function() {
     <div class="bg-light lter b-b wrapper-md"><h1 class="m-n font-bold h3">Technology Partner
     <a  style="margin-top:-5px;" th:href="@{addTechnologyPartner}" class="btn btn-sm btn-primary pull-right"  role="button"><b class="glyphicon-plus pull"> </b>Add Technology Partner</a></h1></div>
 	
-	                 <div class="row text-center" style="margin: 10px 5px;">
-                              <div class="col-sm-6">
-                                <div class="panel padder-v item">
-                                  <div class="h1 count text-info font-thin h1 pull-center" th:text="${totalTechnologyPartner}"></div>
-                                  <span class="text-muted text-xs"><b> Total Technology Partner </b></span>
-                                  <span class="bottom text-right w-full">
-                                    <i class="glyphicon   glyphicon-tower text-muted m-r-sm"></i>
-                                  </span>
-                                </div>
-                              </div>
-
-                              <div class="col-sm-6">
-                                <a href="" class="block panel padder-v bg-primary item">
-                                  <span class="text-white count font-thin h1 block" th:text="${totalTechnologyPartner}"></span>
-                                  <span class="text-muted text-xs"><b> Total Technology Partner </b></span>
-                                  <span class="bottom text-right w-full">
-                                    <i class="glyphicon glyphicon-briefcase text-muted m-r-sm"></i>
-                                  </span>
-                                </a>
-                              </div>
-                            </div>
+	
+	<div class="row" style="margin:5px;background-color:#f0f3f4;">
+     <div class="col-sm-12">              
+	  <div class="row row-sm text-center">
+	   <div class="col-sm-4">
+		<div class="panel padder-v item">
+		 <div class="h1 text-info font-thin h1 pull-center" th:text="${totalTechnologyPartner}"></div>
+		  <span class="text-muted text-xs"><b>Total Technology Partner </b></span>
+		  <span class="bottom text-right w-full"><i class="glyphicon glyphicon-list text-muted m-r-sm"></i></span>
+		 </div>
+		</div>
+		<div class="col-sm-4">
+		 <a href class="block panel padder-v bg-primary item">
+		  <span class="text-white font-thin h1 block" th:text="${totaltechnPartrActif}"></span>
+		  <span class="text-muted text-xs"><b>Total Technology Partner Actif</b></span>
+		  <span class="bottom text-right w-full"><i class="glyphicon glyphicon-list text-muted m-r-sm"></i></span>
+		 </a>
+		</div>
+		<div class="col-sm-4">
+		 <div class="panel padder-v bg-info item">
+		  <div class="h1 text-white font-thin h1 pull-center" th:text="${totaltechnPartrArchived}"></div>
+		   <span class="text-muted text-xs"><b>Total Technology Partner Archived</b></span>
+		   <span class="bottom text-right w-full"><i class="glyphicon glyphicon-list text-muted m-r-sm"></i></span>
+		  </div>
+		 </div>
+		</div>
+	   </div> 
+	</div>
+	 
+	                 
 	 
 	   <div class="table-responsive" style="background-color:white;margin:10px; padding:10px;">
 		<table ui-jq="dataTable" ui-options="{

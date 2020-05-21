@@ -62,7 +62,7 @@ public class Assets implements Serializable{
 	private String LoginAsset;
 	private int PasswordAsset;
 	private Date LastUpdate;
-	private String Status;
+	private String status;
 	
 	
 	@ManyToOne
@@ -155,7 +155,7 @@ public class Assets implements Serializable{
 		LoginAsset = loginAsset;
 		PasswordAsset = passwordAsset;
 		LastUpdate = lastUpdate;
-		this.Status = status;
+		this.status = status;
 	}
 	
 	//public String getAssetsName() {
@@ -167,11 +167,11 @@ public class Assets implements Serializable{
 	//}
 
 	public String getStatus() {
-		return Status;
+		return status;
 	}
 
 	public void setStatus(String status) {
-		Status = status;
+		status = status;
 	}
 
 	public Integer getAssets_ID() {

@@ -676,8 +676,8 @@ document.addEventListener('DOMContentLoaded', function() {
 																					<div class="row row-sm text-center">
 																						<div class="col-xs-4">
 																							<div class="panel padder-v item">
-																								<div class="h1 text-info font-thin h1 count pull-center">521</div>
-																								<span class="text-muted text-xs"><b>Total Ongoing Tickets</b></span>
+																								<div class="h1 text-info font-thin h1 count pull-center" th:text="${totalticket}"></div>
+																								<span class="text-muted text-xs"><b>Total Tickets</b></span>
 																								<span class="bottom text-right w-full">
 																									<i class="glyphicon  glyphicon-tags text-muted m-r-sm"></i>
 																								</span>
@@ -685,8 +685,8 @@ document.addEventListener('DOMContentLoaded', function() {
 																						</div>
 																						<div class="col-xs-4">
 																							<a href class="block panel padder-v bg-primary item">
-																								<span class="text-white font-thin h1 count block">930</span>
-																								<span class="text-muted text-xs"><b>Total Ticket <small>(current week)</small></b></span>
+																								<span class="text-white font-thin h1 count block" th:text="${totalsubmitted}"></span>
+																								<span class="text-muted text-xs"><b>Total Ticket submitted <small></small></b></span>
 																								<span class="bottom text-right w-full">
 																									<i class="glyphicon  glyphicon-tags text-muted m-r-sm"></i>
 																								</span>
@@ -694,8 +694,8 @@ document.addEventListener('DOMContentLoaded', function() {
 																						</div>
 																						<div class="col-xs-4">
 																							<div class="panel padder-v bg-info item">
-																								<div class="h1 text-white font-thin h1 count pull-center">521</div>
-																								<span class="text-muted text-xs"><b>Total Ongoing Tickets</b></span>
+																								<div class="h1 text-white font-thin h1 count pull-center" th:text="${totalclosed}"></div>
+																								<span class="text-muted text-xs"><b>Total Tickets closed</b></span>
 																								<span class="bottom text-right w-full">
 																									<i class="glyphicon  glyphicon-tags text-muted m-r-sm"></i>
 																								</span>
@@ -703,6 +703,46 @@ document.addEventListener('DOMContentLoaded', function() {
 																						</div>
 																					</div>
 																				</div> 
+																				 <div class="col-sm-4">
+	  <a href="" class="block panel padder-v bg-primary item">
+	   <span class="text-white count font-thin h1 block" th:text="${totalwaiting}" ></span>
+	   <span class="text-muted text-xs"><b> Total Tickets waiting </b></span>
+	   <span class="bottom text-right w-full"><i class="glyphicon glyphicon-briefcase text-muted m-r-sm"></i></span>
+	  </a>
+	 </div>
+     <div class="col-sm-4">
+      <div class="panel padder-v item">
+       <div class="h1 count text-info font-thin h1 pull-center" th:text="${totalresolved}"></div>
+
+        <span class="text-muted text-xs"><b> Total Tickets Resolved </b></span>
+        <span class="bottom text-right w-full"><i class="glyphicon glyphicon-tower text-muted m-r-sm"></i></span>
+      </div>
+     </div>
+     <div class="col-sm-4">
+      <a href="" class="block panel padder-v bg-primary item">
+       <span class="text-white count font-thin h1 block" th:text="${totalarchived}"></span>
+
+       <span class="text-muted text-xs"><b> Total Tickets</b></span>
+       <span class="bottom text-right w-full"><i class="glyphicon glyphicon-briefcase text-muted m-r-sm"></i></span>
+      </a>
+     </div>
+     <div class="col-sm-4">
+      <div class="panel padder-v item">
+      <div class="h1 count text-info font-thin h1 pull-center" th:text="${totalaffected}"></div>
+      <span class="text-muted text-xs"><b> Total Tickets Archived </b></span>
+      <span class="bottom text-right w-full"><i class="glyphicon   glyphicon-tower text-muted m-r-sm"></i></span>
+     </div>
+    </div>
+    <div class="col-sm-4">
+     <a href="" class="block panel padder-v bg-primary item">
+      <span class="text-white count font-thin h1 block" th:text="${totalprocessing}"></span>
+
+      <span class="text-muted text-xs"><b> Total Tickets Processing </b></span>
+      <span class="bottom text-right w-full"><i class="glyphicon glyphicon-briefcase text-muted m-r-sm"></i></span>
+     </a>
+    </div>
+
+    </div>
 																				<div class="col-sm-4">
 																				
 																	<thead>

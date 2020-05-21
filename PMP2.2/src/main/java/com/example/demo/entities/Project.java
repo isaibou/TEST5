@@ -79,7 +79,7 @@ public class Project implements Serializable{
 	private String Notes;
 	
 	@Column(name = "Status")
-	private String Status;
+	private String status;
 	
 	@ManyToMany
 	@JoinTable(name="ASSET_PROJECT")
@@ -148,7 +148,7 @@ public class Project implements Serializable{
 		Warranty = warranty;
 		ExecutionTime = executionTime;
 		Notes = notes;
-		Status = status;
+		status = status;
 	}
 	public Project() {
 		super();
@@ -251,10 +251,10 @@ public class Project implements Serializable{
 		Notes = notes;
 	}
 	public String getStatus() {
-		return Status;
+		return status;
 	}
 	public void setStatus(String status) {
-		Status = status;
+		status = status;
 	}
 	
 	public RFP getRfp() {

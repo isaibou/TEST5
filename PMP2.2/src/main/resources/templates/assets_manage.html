@@ -568,7 +568,7 @@ function drawChart() {
 		<div class="row row-sm text-center">
 		 <div class="col-xs-12">
               <div class="panel padder-v item">
-                <div class="h1 text-info font-thin h1 pull-center">521</div>
+                <div class="h1 text-info font-thin h1 pull-center" th:text="${totalAssets}"></div>
                 <span class="text-muted text-xs"><b>Total Assets</b></span>
                  <span class="bottom text-right w-full">
                   <i class="glyphicon  glyphicon-hdd text-muted m-r-sm"></i>
@@ -577,8 +577,8 @@ function drawChart() {
             </div>
             <div class="col-xs-12">
               <a href class="block panel padder-v bg-primary item">
-                <span class="text-white font-thin h1 block">930</span>
-                <span class="text-muted text-xs"><b>Assets out of vendors warranty</b></span>
+                <span class="text-white font-thin h1 block" th:text="${totalassetsActif}"></span>
+                <span class="text-muted text-xs"><b>Total Assets Actif</b></span>
                 <span class="bottom text-right w-full">
                   <i class="glyphicon glyphicon-warning-sign text-muted m-r-sm"></i>
                 </span>
@@ -586,8 +586,8 @@ function drawChart() {
             </div>
 					 <div class="col-xs-12">
               <div class="panel padder-v bg-info item">
-                <div class="h1 text-white font-thin h1 pull-center">20</div>
-                <span class="text-muted text-xs"><b>Assets out of vendors warranty</b></span>
+                <div class="h1 text-white font-thin h1 pull-center" th:text="${totalassetsArchived}"></div>
+                <span class="text-muted text-xs"><b>Total Assets Archived</b></span>
                  <span class="bottom text-right w-full">
                   <i class="glyphicon  glyphicon-hdd text-muted m-r-sm"></i>
                 </span>
@@ -633,6 +633,7 @@ function drawChart() {
       <td th:text ="${a.EndOfVendorWarranty}"><center><span class="label bg-success pull-center m-t-md"></span></center></td>
       <td th:text ="${a.EndPowermWarranty}"><center></center></td>
       <td th:text ="${a.Status}" class="m-n font-thin h4 text-secondary"><center><span></span><center/></td>
+      
      <!-- <td th:text ="${a.SerielNumber}"><center></center></td> -->
       <td><center><div class="btn-group dropdown"><button class="btn btn-default btn-xs" data-toggle="dropdown"><i class="glyphicon glyphicon-cog"></i> Action <span class="caret"></span></button>
        <ul class="dropdown-menu">

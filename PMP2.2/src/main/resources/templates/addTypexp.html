@@ -18,12 +18,15 @@
   <a href="" class="navbar-brand block m-t"><i class="fa fa-power-off"></i> <b>PowerM</b> </a>
   <div class="panel panel-default">
    <div class="panel-heading"> Add Type Expenses </div>
-    <form th:action="@{addTypeExpenses}" th:object=${typeExpenses}>
+    <form th:action="@{addTypeExpenses}" th:object=${typExp}>
    <div class="panel-body">
    <label class="col-sm-4 control-label" for="input-id-1" style="margin:5px 0px;"><b>Name:</b></label>
    <div class="col-sm-8" style="margin:5px 0px;" >
-    <input type="text" placeholder="Entry Nom" class="form-control" id="input-id-1"  th:field="*{NameTypeExpenses}"/>
-    <span class="text-danger" th:errors=*{NameTypeExpenses}></span>
+    <input type="text" placeholder="Entry Nom" class="form-control" id="input-id-1"  th:field="*{NameTypeExpenses}">
+    <span class="text-danger" th:errors=*{NameTypeExpenses}></span> 
+    <div class="text-danger" th:if="${unique}">
+       <div th:text="${unique}"></div>
+    </div>
    </div>
    <div>
     <button style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon pull-right"><a th:href="typeExpenses"><i class="glyphicon glyphicon-remove"></i>Annuler</a></button>

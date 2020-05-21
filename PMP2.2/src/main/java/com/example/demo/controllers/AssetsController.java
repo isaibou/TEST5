@@ -109,8 +109,14 @@ public class AssetsController {
 			model.addAttribute("unique", "must be unique");
 			return "addAssets";
 		}
-		
-		
+
+if (!(file.isEmpty())) {
+			
+	         addAss.setConfigurationFille((file.getOriginalFilename()));
+
+			 file.transferTo(new File(Configurationfille+file.getOriginalFilename()));
+		}
+
 		addAss.setStatus("Actif");
 		
 		
@@ -133,16 +139,16 @@ public class AssetsController {
 	}
 	
 	@RequestMapping(value="/addAssetsFrim" , method= RequestMethod.POST)
-	private String addAssets(Integer id, @RequestParam(name="frim") Frimware frim ) {
+	private String addAssets( Integer id, Model model ,BindingResult bindingResult, @RequestParam(name="frim") Frimware frim ) {
 		 
-		
+		if(bindingResult.hasErrors()) {
+			return "redirect:/assets_manage";
+		}
 		Assets asset = assetRepository.getOne(id);
 		asset.setFrimware(frim);
-		assetRepository.save(asset);
+		assetRepository.save(asset);	
 		
-		
-		return "redirect:/assets_manage"; //$NON-NLS-1$
-		
+		return "redirect:/assets_manage"; //$NON-NLS-1$		
 		
 	}
 	
@@ -160,10 +166,6 @@ public class AssetsController {
 			
 	}
 	
-	
-	
-
-
 	@RequestMapping(value = "/editAssets",method = { RequestMethod.GET, RequestMethod.POST })
 	public String updateAssets(Model model, @Valid Assets asset, BindingResult bindingResult){
        

@@ -24,13 +24,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.example.demo.entities.Customer;
 import com.example.demo.entities.Expenses;
-
 import com.example.demo.entities.Task;
-
 import com.example.demo.entities.TypeExpenses;
-
 import com.example.demo.entities.Users;
 import com.example.demo.repository.ExpensesRepository;
 import com.example.demo.repository.TaskRepository;
@@ -74,10 +70,12 @@ public class ExpensesController {
 	}
 
 	@RequestMapping(value="/addExpenses")
-	public String addExpenses(@Valid @ModelAttribute("expenses") Expenses expense,BindingResult bindingResult, Authentication  auth, 
-			@RequestParam(name="recu")MultipartFile file ) 
-					throws IllegalStateException, IOException {
-	
+	public String addInternalRequest(@Valid @ModelAttribute("exp") Expenses expense,BindingResult bindingResult, Authentication  auth, @RequestParam(name="recu")MultipartFile file ) throws IllegalStateException, IOException {
+		
+		if(bindingResult.hasErrors()) {
+			return "addExp";
+		}
+		
 		String login = auth.getName();
 		Users u =  userRepository.getOne(login);
 		expense.setUser(u);
@@ -129,7 +127,7 @@ public class ExpensesController {
 		  List<Task> tasks = taskRepository.findAll();
 		  System.out.println(tasks);
 	     model.addAttribute("task",tasks);
-
+	     
 		return "addExp";
 	}
 	
@@ -158,5 +156,6 @@ public class ExpensesController {
 		model.addAttribute("ex", ex);
 		return "detailsExpenses";
 	}
-		
+	
 }
+

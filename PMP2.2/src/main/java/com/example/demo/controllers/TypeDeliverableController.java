@@ -49,11 +49,14 @@ public class TypeDeliverableController {
 		return"typeDeliverable";
 	}
 	
-
-	@RequestMapping(value="/SaveTypDeliv")
-	public String addTypeDeliverable(@Valid TypeDeliverable type,BindingResult bindingResult) {
+	@RequestMapping(value="/addTypeDeliverable")
+	public String addTypeDeliverable(Model model, @Valid @ModelAttribute("typDeliv") TypeDeliverable type,BindingResult bindingResult) {
 		
-		
+           if(typeDeliverablerepository.checkTitleExist(type.getNameTypeDeliverable())) {
+			
+			model.addAttribute("unique", "must be unique");
+			return "addTypDeliv";
+		}
 
 		if(bindingResult.hasErrors()) {
 			return "addTypDeliv";
@@ -65,13 +68,15 @@ public class TypeDeliverableController {
 	
 	@RequestMapping(value ="/addTypDeliv")
 	public String addTypDeliv( Model model) {
-		 model.addAttribute("typeDeliverable",new TypeDeliverable());
+		 model.addAttribute("typDeliv",new TypeDeliverable());
 		 
 			return "addTypDeliv";
 	}
 	
 	@RequestMapping(value = "/editTypeDeliverable",method = { RequestMethod.GET, RequestMethod.POST })
 	public String updateTypeDeliverable(Model model, @Valid TypeDeliverable typDeli, BindingResult bindingResult){
+		
+		
 
 		if(bindingResult.hasErrors()) {
 			return "updateTypeDelivForm";

@@ -72,7 +72,7 @@ public class Customer implements Serializable{
 
 	private String Country;
 	
-	private String Status;
+	private String status;
 	
 	@OneToMany
 	private Collection <Purchasing> Purchasing;
@@ -117,7 +117,7 @@ public class Customer implements Serializable{
 		EmailCIO = emailCIO;
 		City = city;
 		Country = country;
-		Status = status;
+		status = status;
 	}
 
 	public Integer getCustomer_ID() {
@@ -209,11 +209,11 @@ public class Customer implements Serializable{
 	}
 
 	public String getStatus() {
-		return Status;
+		return status;
 	}
 
 	public void setStatus(String status) {
-		Status = status;
+		status = status;
 	}
 
 	public String getNomCIO() {
@@ -303,5 +303,10 @@ public class Customer implements Serializable{
 	public void setTickets(Collection<Ticket> tickets) {
 		this.tickets = tickets;
 	}
+
+	/*public Object size() {
+		// TODO Auto-generated method stub
+		return Status;
+	}*/
 		
 }

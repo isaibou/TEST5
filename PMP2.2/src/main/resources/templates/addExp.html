@@ -22,7 +22,7 @@
    <div class="panel-body">
     <label class="col-sm-4 control-label" for="input-id-1" style="margin:5px 0px;"><b>Type Expense :</b></label>
    <div class="col-sm-8" style="margin:5px 0px;" >
-   <select name ="TypeExpenses_ID" class="form-control" th:field="*{typeExpenses}" >
+   <select name ="ypeExpenses_ID" class="form-control" th:field="*{typeExpenses}" >
    <option th:each="t:${type}" th:text="${t.NameTypeExpenses}" th:value="${t.TypeExpenses_ID}" ></option>
    </select>
    </div>

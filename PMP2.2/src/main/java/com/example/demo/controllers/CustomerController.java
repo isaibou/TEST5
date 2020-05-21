@@ -28,6 +28,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import com.example.demo.entities.Customer;
+import com.example.demo.entities.RFP;
 import com.example.demo.entities.Users;
 import com.example.demo.repository.CustomerRepository;
 import com.example.demo.repository.UserRepository;
@@ -58,7 +59,13 @@ public class CustomerController {
 		model.addAttribute("custs", customerrepository.findAll());  
 
 		model.addAttribute("totalCustomer", custs.size());
-
+		
+		List<Customer> customerActif = customerrepository.findByStatus("Actif");
+		model.addAttribute("totalcustomerActif", customerActif.size());
+		
+		List<Customer> customerArchived = customerrepository.findByStatus("Archived");
+		model.addAttribute("totalcustomerArchived", customerArchived.size());
+		
 		return "customer_manage";
 	}
 

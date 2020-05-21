@@ -42,7 +42,14 @@
      <option th:each="r:${rfp}"  th:text="${r.Title}" th:value="${r.RFP_ID}"></option>
      </select>
      </div>
-     
+     <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Assets</b></label>
+          <div class="col-sm-8" style="margin: 5px 0px;">
+            <select name="Assets_ID" class="form-control m-b" th:field=*{assets}>
+	      <option th:each ="a:${assets}" 
+	        th:text="${a.interfaceAasset}"
+	        th:value ="${a.Assets_ID}"></option>
+	      </select>
+     </div>
        <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Technology Partner</b></label>
      <div class="col-sm-8" style="margin:5px 0px;" >
      <select name ="TechnologyPartner_ID" multiple="multiple" class="form-control m-b" th:field="*{technologypartner}">

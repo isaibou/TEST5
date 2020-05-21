@@ -2,77 +2,62 @@
 <html lang="en" class="">
 <head>
   <meta charset="utf-8" />
-  <title>Add Task</title>
+  <title>Add Task Project</title>
   <meta name="description" content="app, web app, responsive, responsive layout, admin, admin panel, admin dashboard, flat, flat ui, ui kit, AngularJS, ui route, charts, widgets, components" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <link rel="stylesheet" href="../libs/assets/animate.css/animate.css" type="text/css" />
   <link rel="stylesheet" href="../libs/assets/font-awesome/css/font-awesome.min.css" type="text/css" />
   <link rel="stylesheet" href="../libs/assets/simple-line-icons/css/simple-line-icons.css" type="text/css" />
   <link rel="stylesheet" href="../libs/jquery/bootstrap/dist/css/bootstrap.css" type="text/css" />
-
   <link rel="stylesheet" href="css/font.css" type="text/css" />
   <link rel="stylesheet" href="css/app.css" type="text/css" />
-
 </head>
 <body>
-<div class="app" >
- <a href="" class="navbar-brand block m-t"><i class="fa fa-power-off"></i> <b>PowerM</b> </a>
- <div>
- <div class="modal-dialog modal-lg" >
-  <div class="modal-content">
-    <h1 class="m-n font-bold h3"> Add Task </h1>
-   </div>
-   <form th:action="@{/saveTaskProject}"    method="post" th:object="${task}">
-   <div class="modal-body">
-  <div class="row">
-  
-  
- 
-  
+<div style="margin:50px;"></div>
+<div class="col-md-6 col-sm-6 col-xs-12 spacer col-md-offset-3">
+  <a href="" class="navbar-brand block m-t"><i class="fa fa-power-off"></i> <b>PowerM</b> </a>
+  <div class="panel panel-default">
+   <div class="panel-heading"> Add Task Project </div>
+   <form th:action="@{/saveTaskProject}" method="post" th:object="${task}">
+   <div class="panel-body">
    <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Project Task</b></label>
-	 <div class="col-sm-8" style="margin: 5px 0px;">
-	  <select name="C" class="form-control m-b" th:field=*{ticket}>
-	   <option th:each ="p:${projectTask}" 
-	   th:text="${p.projATsk.NameProjectTask}+.+${p.project.Name}"
-	   th:value ="${p.Affectaion_Id}"></option>
-	  </select>
-	</div>
+   <div class="col-sm-8" style="margin: 5px 0px;">
+    <select name="C" class="form-control m-b" th:field=*{ticket}>
+     <option th:each ="p:${projectTask}" th:text="${p.projATsk.NameProjectTask}+.+${p.project.Name}" th:value ="${p.Affectaion_Id}"></option>
+    </select>
+   </div>
    <label class="col-sm-4 control-label" for="input-id-1" style="margin:5px 0px;"><b>Task Description</b></label>
    <div class="col-sm-8" style="margin:5px 0px;" >
-    <input type="text" placeholder="Entry Dsecription" class="form-control" id="input-id-1"  required th:field=*{taskDescription}>
+    <input type="text" placeholder="Entry Dsecription" class="form-control" id="input-id-1" th:field=*{taskDescription}/>
    </div>
    <label class="col-sm-4 control-label" for="input-id-1" style="margin:5px 0px;"><b>roadTime:</b></label>
    <div class="col-sm-8" style="margin:5px 0px;" >
-    <input type="number"  class="form-control" id="input-id-1"  required th:field=*{roadTime}>
-   </div>
-   
-     <label class="col-sm-4 control-label" for="input-id-1" style="margin:5px 0px;"><b>percentComplete:</b></label>
+    <input type="number"  class="form-control" id="input-id-1" th:field=*{roadTime}/>
+   </div>  
+  <label class="col-sm-4 control-label" for="input-id-1" style="margin:5px 0px;"><b>percentComplete:</b></label>
    <div class="col-sm-8" style="margin:5px 0px;" >
-    <input type="number"laceholder="Entry CIN" class="form-control" id="input-id-1"  required th:field=*{percentComplete}>
+    <input type="number"laceholder="Entry CIN" class="form-control" id="input-id-1" th:field=*{percentComplete}/>
    </div>
-   
-  
-   
-  
-   
-
-   <option th:each="r:${allRoles}"  th:text="${r.role}" th:value="${r.role}"></option>
-
+   <label class="col-sm-4 control-label" for="input-id-1" style="margin:5px 0px;"><b>Roles:</b></label>
+   <div class="col-sm-8" style="margin:5px 0px;" >
+   <select class="form-control m-b" th:field=*{ticket}>
+    <option th:each="r:${allRoles}"  th:text="${r.role}" th:value="${r.role}"></option>
    </select>
    </div>
+  <div style="margin:5px 0px;">
+   <button style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon pull-right"><a th:href="timesheets"><i class="glyphicon glyphicon-remove"></i>Annuler</a></button>
+   <button style="margin:0px;" class="btn m-b-xs btn-sm btn-primary btn-addon pull-right"><i class="glyphicon glyphicon-ok"></i>Save</button> 
    </div>
-  
-  <div class="modal-footer">
-    <button style="margin:0px;" class="btn m-b-xs btn-sm btn-primary btn-addon"><i class="glyphicon glyphicon-ok"></i>Save</button>
-  <button th:href="@{/users}" style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon" data-dismiss="modal"><i class="glyphicon glyphicon-remove"></i>Annuler</button>
-  
-   </div>
-  </form>
- 
- </div>
   </div>
+  </form>
+  </div>
+<div class="text-center">
+ <p><small class="text-muted">
+  <span class="pull-right">2.2.0 <a href ui-scroll="app" class="m-l-sm text-muted"><i class="fa fa-long-arrow-up"></i></a></span>
+  <span class="pull-left"> &copy; PowerM 2020 Copyright. </span> 
+ </small></p>
 </div>
-
+</div>
 <script src="../libs/jquery/jquery/dist/jquery.js"></script>
 <script src="../libs/jquery/bootstrap/dist/js/bootstrap.js"></script>
 <script src="js/ui-load.js"></script>
@@ -82,9 +67,5 @@
 <script src="js/ui-toggle.js"></script>
 <script src="js/ui-client.js"></script>
 <script src = "js/countries.js"></script>
-<script language="javascript">
-  populateCountries("countryA", "stateA"); // first parameter is id of country drop-down and second parameter is id of state drop-down
-    populateCountries("countryU", "stateU");
-</script>
 </body>
 </html>

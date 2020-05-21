@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 	<head>
-	
-	
 		<meta charset="utf-8" />
 		<title>Technology Partner</title>
 		<meta name="description" content="app, web app, responsive, responsive layout, admin, admin panel, admin dashboard, flat, flat ui, ui kit, AngularJS, ui route, charts, widgets, components" />
@@ -412,11 +410,13 @@ document.addEventListener('DOMContentLoaded', function() {
                   <i class="glyphicon  glyphicon-th"></i>
                   <span>Assets</span>
                 </a>
+
                 <ul class="nav nav-sub dk">
                  <li class="">
                     <a th:href="assets_manage">
                       <span>Manage Assets</span>
                     </a>
+
                   </li>
                   <li>
                     <a th:href="assetstype_manage">
@@ -435,12 +435,12 @@ document.addEventListener('DOMContentLoaded', function() {
                   </li>
                 </ul>
               </li>
-            <!--   <li>
+              <li>
                 <a th:href="tickets_manage">
                   <i class="glyphicon glyphicon-tag"></i>
                   <span>Tickets</span>
                 </a>
-              </li> -->
+              </li>
 			   <li>
                 <a th:href="RFP">
                   <i class="glyphicon glyphicon-tag"></i>
@@ -582,7 +582,10 @@ document.addEventListener('DOMContentLoaded', function() {
 		  <tr data-expanded="true" th:each="t:${techpart}">
 		   <td  th:text ="${t.NameTechnologyPartner}" class="m-n font-thin h4 text-secondary"><center><b></b></center></td> 
 		   <td  th:text ="${t.TechnologyPartnerFile}" class="m-n font-thin h4 text-secondary"><center><b></b></center></td>
-		    <td th:text ="${t.Status}" class="m-n font-thin h4 text-secondary"><center><span></span><center/></td>
+		    <td th:switch="${t.Status}">
+		     <span th:case="'Actif'" class="label bg-info pull-center m-t-md" >Actived</span>
+             <span th:case="'Archived'" class="label bg-dark pull-center m-t-md" >Archived</span>
+           </td>
 		   <td><center><div class="btn-group dropdown"><button class="btn btn-default btn-xs" data-toggle="dropdown">
 		     <i class="glyphicon glyphicon-cog"></i> Action <span class="caret"></span></button>
 		     <ul class="dropdown-menu">

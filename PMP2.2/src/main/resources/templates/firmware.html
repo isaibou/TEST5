@@ -450,11 +450,13 @@
                   <i class="glyphicon  glyphicon-th"></i>
                   <span>Assets</span>
                 </a>
+
                 <ul class="nav nav-sub dk">
                  <li class="">
                     <a th:href="assets_manage">
                       <span>Manage Assets</span>
                     </a>
+
                   </li>
                   <li>
                     <a th:href="assetstype_manage">
@@ -473,12 +475,12 @@
                   </li>
                 </ul>
               </li>
-            <!--   <li>
+              <li>
                 <a th:href="tickets_manage">
                   <i class="glyphicon glyphicon-tag"></i>
                   <span>Tickets</span>
                 </a>
-              </li> -->
+              </li>
 			   <li>
                 <a th:href="RFP">
                   <i class="glyphicon glyphicon-tag"></i>
@@ -650,7 +652,10 @@
 										</button>
 									</p></td>
 								<td th:text="${f.releaseDate}"><center></center></td>
-								<td th:text ="${f.Status}" class="m-n font-thin h4 text-secondary"><center><span></span><center/></td>
+								<td th:switch="${f.Status}">
+		     <span th:case="'Actif'" class="label bg-info pull-center m-t-md" >Actived</span>
+             <span th:case="'Archived'" class="label bg-dark pull-center m-t-md" >Archived</span>
+           </td>
 								<td><center>
 										<div class="btn-group dropdown">
 										 <button class="btn btn-default btn-xs" data-toggle="dropdown">

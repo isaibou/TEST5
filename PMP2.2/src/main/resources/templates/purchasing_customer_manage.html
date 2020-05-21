@@ -398,11 +398,13 @@
                   <i class="glyphicon  glyphicon-th"></i>
                   <span>Assets</span>
                 </a>
+
                 <ul class="nav nav-sub dk">
                  <li class="">
                     <a th:href="assets_manage">
                       <span>Manage Assets</span>
                     </a>
+
                   </li>
                   <li>
                     <a th:href="assetstype_manage">
@@ -421,12 +423,12 @@
                   </li>
                 </ul>
               </li>
-            <!--   <li>
+              <li>
                 <a th:href="tickets_manage">
                   <i class="glyphicon glyphicon-tag"></i>
                   <span>Tickets</span>
                 </a>
-              </li> -->
+              </li>
 			   <li>
                 <a th:href="RFP">
                   <i class="glyphicon glyphicon-tag"></i>
@@ -596,62 +598,6 @@
 </div>
 </div>
 </div>
-<!--  
-<div class="modal fade" role="dialog" id="AddClient" >
- <div class="modal-dialog modal-lg" >
-  <div class="modal-content">
-   <div class="modal-header" style="background-image:url(img/grf-bg.jpg);color:white;">
-	<button type="button" class="close pull-right" data-dismiss="modal">&times;</button>
-    <h1 class="m-n font-bold h3"> <b class="glyphicon-plus pull"> </b> Add Purchasing Customer</h1>
-   </div>
-    <form th:action="@{SavePurchasing}" method ="post" th:object="${purchasing}">
-   <div class="modal-body">
-	<div class="row">
-	<label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b></b></label>
-     <div class="col-sm-8" style="margin: 5px 0px;">
-      <input type="hidden" class="form-control" placeholder="Entry Name of Project" id="input-id-1"  required th:field=*{Purchasing_ID}/>
-      </div>
-	 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Purchasing First Name</b></label>
-     <div class="col-sm-8" style="margin: 5px 0px;" >
-      <input type="text" class="form-control" placeholder="Entry First Name of Purchasing" id="input-id-1" required th:field=*{FirstName}>
-       <span class="text-danger" th:errors=*{FirstName}></span>
-	 </div>
-	 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Purchasing Last Name</b></label>
-     <div class="col-sm-8" style="margin: 5px 0px;" >
-      <input type="text" class="form-control" placeholder="Entry Last Name of Purchasing" id="input-id-1" required th:field=*{LastName}>
-       <span class="text-danger" th:errors=*{LastName}></span>
-	 </div>
-	 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Purchasing Telephone</b></label>
-	 <div class="col-sm-8" style="margin: 5px 0px;">
-	  <input type="text"  class="form-control" placeholder="Entry Telephone of Purchasing"id="input-id-2" required th:field=*{Contact}>
-	  <span class="text-danger" th:errors=*{Contact}></span>
-	 </div>
-     <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Purchasing Email</b></label>
-	 <div class="col-sm-8" style="margin: 5px 0px;">
-	  <input type="text" placeholder="Entry Email of Company" class="form-control" id="input-id-1" required th:field=*{Email}>
-	  <span class="text-danger" th:errors=*{Email}></span>
-	 </div>
-	 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Customer</b></label>
-	 <div class="col-sm-8" style="margin: 5px 0px;">
-	
-	  <select name="Customer_ID" class="form-control m-b" th:field=*{customer}>
-	   <option th:each ="c:${customer}" 
-	   th:text="${c.name}"
-	   th:value ="${c.Customer_ID}"></option>
-	  </select>
-	 </div>
-	 </div>
-	</div>
-	
-	 <div class="modal-footer">
-	<button style="margin:0px;" class="btn m-b-xs btn-sm btn-primary btn-addon"><i class="glyphicon glyphicon-ok"></i>Save</button>
-	<button style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon" data-dismiss="modal"><i class="glyphicon glyphicon-remove"  ></i>Annuler</button>
-   </div>
-   </div>
-  </div>
- </div>
-</div>
--->
 									<!-- /content -->
 
 									<!-- footer -->

@@ -388,13 +388,6 @@
   <div class="bg-light lter b-b wrapper-md">
    <h1 class="m-n font-bold h3">Manage  Expenses   </h1>
   </div>
-  <!-- <div class="panel-heading"><small><a th:href="index">Home</a> </small>><small> Manage users</small> </div>-->
-	<!-- <div class="wrapper bg-white b-b">
-	 <ul class="nav nav-pills nav-sm">
-	  <li class="active"><a href="#tab_default_1" data-toggle="tab">Employee</a></li>
-	  <li><a href="#tab_default_2" data-toggle="tab">Customer</a></li>
-     </ul>
-	</div> -->
   <div class="tab-content" >
    <div class="tab-pane active" id="tab_default_1" >
     <div>
@@ -492,12 +485,12 @@
 		     <ul class="dropdown-menu">
 		     <li>
 		       
-				<a th:href="@{updateExpenses(id=${i.Expenses_ID})}"  style="margin-top:-5px;"   class="btn btn-sm btn-light" role="button">Update</a>						</li>
+				<a th:href="@{updateExpenses(id=${i.Expenses_ID})}"  style="margin-top:-5px;"   class="btn btn-sm btn-light" role="button">Update</a></li>
 																								<li>
 					
-		      <li><a th:href="@{confirmExpenses(id=${i.Expenses_ID})}" style="margin-top:-5px;"  class="btn btn-sm btn-light" role="button">Confirm</a></li>
+		      <li><a th:href="@{confirmExpenses(id=${i.Expenses_ID})}" style="margin-top:-5px;" onClick="Message1()" class="btn btn-sm btn-light" role="button">Confirmed</a></li>
 		           <li>
-		      <li><a th:href="@{answerExpenses(id=${i.Expenses_ID})}" style="margin-top:-5px;"  class="btn btn-sm btn-light" role="button">Answer</a></li>
+		      <li><a th:href="@{answerExpenses(id=${i.Expenses_ID})}" style="margin-top:-5px;" onClick="Message2()"  class="btn btn-sm btn-light" role="button">Answer</a></li>
 		           <li>
 			<a th:href="@{detailsExpenses(id=${i.Expenses_ID})}" style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Details</a>
 																								</li>
@@ -522,6 +515,18 @@
 </footer>
 <!-- / footer -->
 </div>
+<script type="text/javascript">
+   function Message1() {
+       var msg="Expense Confirmed";
+       alert(msg);
+   }
+</script>
+<script type="text/javascript">
+   function Message2() {
+       var msg="Expense Answered";
+       alert(msg);
+   }
+</script>
 <script src="../libs/jquery/jquery/dist/jquery.js"></script>
 <script src="../libs/jquery/bootstrap/dist/js/bootstrap.js"></script>
 <script src="js/ui-load.js"></script>

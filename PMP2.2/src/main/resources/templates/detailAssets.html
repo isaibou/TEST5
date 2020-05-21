@@ -1,9 +1,8 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-
 <head>
   <meta charset="utf-8" />
-  <title>Detail Assets</title>
+  <title>Detail Asset</title>
   <meta name="description" content="app, web app, responsive, responsive layout, admin, admin panel, admin dashboard, flat, flat ui, ui kit, AngularJS, ui route, charts, widgets, components" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <link rel="stylesheet" href="../libs/assets/animate.css/animate.css" type="text/css" />
@@ -14,92 +13,99 @@
   <link rel="stylesheet" href="css/app.css" type="text/css" />
 </head>
 <body>
-<div class="app" >
+<div style="margin:50px;"></div>
+<div class="col-md-6 col-sm-6 col-xs-12 spacer col-md-offset-3">
  <a href="" class="navbar-brand block m-t"><i class="fa fa-power-off"></i> <b>PowerM</b> </a>
  <div th:action="@{detailPurchasing}" method ="post" th:object="${Purchasing}">
-  <div class="modal-dialog modal-lg" >
-   <div class="modal-content">
-    <h1 class="m-n font-bold h3"> Informations Assets </h1>
-   </div>
-   <div  class="modal-body">
+  <div class="panel panel-default">
+   <div class="panel-heading"> Informations Asset </div>
+   <div class="panel-body">
     <div style="background-color:white;margin:10px; padding:10px;">
-	 <table  ui-options="{aoColumns: [
-						    { mData: 'browser' },
-					        { mData: 'action' }
-						   ]}" class="table  b-t b-b">
-	  <thead style="color:#23b7e5;">
-	     <tr>
-		   <th  style="width:20%"><center>Element </center></th>
-		   <th  style="width:80%"><center>Content </center></th>
-		  </tr>
-	  </thead>
-	  <tbody th:each="a:${Assets}">
-		  <tr data-expanded="true">
-		   <td style="color:#23b7e5;"><center>Interface Asset</center></th>
-		   <td th:text ="${a.InterfaceAasset}" class="m-n font-thin h4 text-secondary"><center><b></b></center></td>
-		  </tr>
-		  <tr >
-		   <td style="color:#23b7e5;"><center>Login Asset </center></th>
-		   <td th:text ="${a.LoginAsset}" class="m-n font-thin h4 text-secondary"><center><b></b></center></td>
-		  </tr>
-		   <tr >
-		   <td style="color:#23b7e5;"><center>Password Asset </center></th>
-		   <td th:text ="${a.PasswordAsset}" class="m-n font-thin h4 text-secondary"><center></center></td>
-		   </tr>
-		   
-		   <tr> 
-		   <td style="color:#23b7e5;"><center>Asset Type </center></th>
-		   <!-- Comment j ai appeler  le customer qui j ai choisi a partir du la liste déroulante des customers  -->
-		   <td  th:text="${a.assettype.Name}"  class="m-n font-thin h4 text-secondary"><center></center></td>
-		   </tr> 
-		   
-		    <tr> 
-		   <td style="color:#23b7e5;"><center>Frimware </center></th>
-		   <!-- Comment j ai appeler  le customer qui j ai choisi a partir du la liste déroulante des customers  -->
-		   <td  th:text="${a.frimware.Name}"  class="m-n font-thin h4 text-secondary"><center></center></td>
-		   </tr> 
-		    
-		   <tr >
-		   <td style="color:#23b7e5;"><center>Seriel Number </center></th>
-		   <td th:text ="${a.SerielNumber}" class="m-n font-thin h4 text-secondary"><center><span></span></center></td>
-		   </tr>
-		   <tr >
-		   <td style="color:#23b7e5;"><center>Description </center></th>
-		   <td th:text ="${a.Description}" class="m-n font-thin h4 text-secondary"><center><span></span></center></td>
-		   </tr>
-		   <tr >
-		   <td style="color:#23b7e5;"><center>Configuration File </center></th>
-		   <td th:text ="${a.ConfigurationFille}" class="m-n font-thin h4 text-secondary"><center><span></span></center></td>
-		   </tr>
-		   <tr >
-		   <td style="color:#23b7e5;"><center>Must Gather</center></th>
-		   <td th:text ="${a.MustGather}" class="m-n font-thin h4 text-secondary"><center><span></span></center></td>
-		   </tr>
-		   <tr >
-		   <td style="color:#23b7e5;"><center>End Of Vendor Warranty</center></th>
-		   <td th:text ="${a.EndPowermWarranty}" class="m-n font-thin h4 text-secondary"><center><span></span></center></td>
-		   </tr>
-		   <tr >
-		   <td style="color:#23b7e5;"><center>End PowerM Warranty</center></th>
-		   <td th:text ="${a.EndOfVendorWarranty}" class="m-n font-thin h4 text-secondary"><center><span></span></center></td>
-		   </tr>
-		   <tr >
-		   <td style="color:#23b7e5;"><center>Status </center></th>
-		   <td th:text ="${a.Status}" class="m-n font-thin h4 text-secondary"><center><span></span></center></td>
-		   </tr>
-		   <tr >
-		   <td style="color:#23b7e5;"><center>SLA</center></th>
-		   <td th:text ="${a.SLA}" class="m-n font-thin h4 text-secondary"><center><span></span></center></td>
-		   </tr>
-	  </tbody>
+   <table  ui-options="{aoColumns: [
+                { mData: 'browser' },
+                  { mData: 'action' }
+               ]}" class="table  b-t b-b">
+    <thead style="color:#23b7e5;">
+       <tr>
+       <th  style="width:20%"><center>Element </center></th>
+       <th  style="width:80%"><center>Content </center></th>
+      </tr>
+    </thead>
+    <tbody th:each="a:${Assets}">
+      <tr data-expanded="true">
+       <td style="color:#23b7e5;"><center>Interface Asset</center></th>
+       <td th:text ="${a.InterfaceAasset}" class="m-n font-thin h4 text-secondary"><center><b></b></center></td>
+      </tr>
+      <tr >
+       <td style="color:#23b7e5;"><center>Login Asset </center></th>
+       <td th:text ="${a.LoginAsset}" class="m-n font-thin h4 text-secondary"><center><b></b></center></td>
+      </tr>
+       <tr >
+       <td style="color:#23b7e5;"><center>Password Asset </center></th>
+       <td th:text ="${a.PasswordAsset}" class="m-n font-thin h4 text-secondary"><center></center></td>
+       </tr>
+       
+       <tr> 
+       <td style="color:#23b7e5;"><center>Asset Type </center></th>
+       <!-- Comment j ai appeler  le customer qui j ai choisi a partir du la liste déroulante des customers  -->
+       <td  th:text="${a.assettype.Name}"  class="m-n font-thin h4 text-secondary"><center></center></td>
+       </tr> 
+       
+        <tr> 
+       <td style="color:#23b7e5;"><center>Frimware </center></th>
+       <!-- Comment j ai appeler  le customer qui j ai choisi a partir du la liste déroulante des customers  -->
+       <td  th:text="${a.frimware.Name}"  class="m-n font-thin h4 text-secondary"><center></center></td>
+       </tr> 
+        
+       <tr >
+       <td style="color:#23b7e5;"><center>Seriel Number </center></th>
+       <td th:text ="${a.SerielNumber}" class="m-n font-thin h4 text-secondary"><center><span></span></center></td>
+       </tr>
+       <tr >
+       <td style="color:#23b7e5;"><center>Description </center></th>
+       <td th:text ="${a.Description}" class="m-n font-thin h4 text-secondary"><center><span></span></center></td>
+       </tr>
+       <tr >
+       <td style="color:#23b7e5;"><center>Configuration File </center></th>
+       <td th:text ="${a.ConfigurationFille}" class="m-n font-thin h4 text-secondary"><center><span></span></center></td>
+       </tr>
+       <tr >
+       <td style="color:#23b7e5;"><center>Must Gather</center></th>
+       <td th:text ="${a.MustGather}" class="m-n font-thin h4 text-secondary"><center><span></span></center></td>
+       </tr>
+       <tr >
+       <td style="color:#23b7e5;"><center>End Of Vendor Warranty</center></th>
+       <td th:text ="${a.EndPowermWarranty}" class="m-n font-thin h4 text-secondary"><center><span></span></center></td>
+       </tr>
+       <tr >
+       <td style="color:#23b7e5;"><center>End PowerM Warranty</center></th>
+       <td th:text ="${a.EndOfVendorWarranty}" class="m-n font-thin h4 text-secondary"><center><span></span></center></td>
+       </tr>
+       <tr >
+       <td style="color:#23b7e5;"><center>Status </center></th>
+       <td th:text ="${a.Status}" class="m-n font-thin h4 text-secondary"><center><span></span></center></td>
+       </tr>
+       <tr >
+       <td style="color:#23b7e5;"><center>SLA</center></th>
+       <td th:text ="${a.SLA}" class="m-n font-thin h4 text-secondary"><center><span></span></center></td>
+       </tr>
+    </tbody>
      </table>
-	</div>
+  </div>
+     <div>
+     <button class="btn m-b-xs btn-sm btn-primary btn-addon pull-right"><a th:href="assets_manage">Return</a></button>
    </div>
-   <div class="modal-footer">
-     <button class="btn m-b-xs btn-sm btn-primary btn-addon"><a th:href="assets_manage">Return</a></button>
    </div>
   </div>  
  </div>
+ <div class="text-center">
+    <p>
+  <small class="text-muted">
+      <span class="pull-right">2.2.0 <a href ui-scroll="app" class="m-l-sm text-muted"><i class="fa fa-long-arrow-up"></i></a></span>
+      <span class="pull-left"> &copy; PowerM 2020 Copyright. </span> 
+    </small>
+</p>
+  </div>
 </div>
 <script src="../libs/jquery/jquery/dist/jquery.js"></script>
 <script src="../libs/jquery/bootstrap/dist/js/bootstrap.js"></script>

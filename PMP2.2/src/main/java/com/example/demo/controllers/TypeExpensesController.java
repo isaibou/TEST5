@@ -13,11 +13,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.example.demo.entities.Customer;
-import com.example.demo.entities.TypeDeliverable;
 import com.example.demo.entities.TypeExpenses;
-import com.example.demo.entities.TypeExternalRequest;
-import com.example.demo.entities.TypeInternalRequest;
 import com.example.demo.entities.Users;
 import com.example.demo.repository.TypeExpensesRepository;
 import com.example.demo.repository.TypeExternalRequestRepository;
@@ -47,7 +43,6 @@ public class TypeExpensesController {
 		return"typeExpenses";
 	}
 	
-
 	@RequestMapping(value="/addTypeExpenses")
 	public String addTypeExpenses(@Valid @ModelAttribute("typExp") TypeExpenses type, BindingResult bindingResult, Model model) {
 		
@@ -62,6 +57,7 @@ public class TypeExpensesController {
 		}
 		
 		typeExpensesRepository.save(type);
+		
 		return"redirect:/typeExpenses";
 	}
 	

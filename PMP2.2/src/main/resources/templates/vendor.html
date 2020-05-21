@@ -636,7 +636,7 @@
                                                   <a th:href="@{updateVendor(id=${v.Vendor_ID})}"  style="margin-top:-5px;"   class="btn btn-sm btn-light" role="button">Update</a></li>
                                                 </li>
                                                 <li>
-                                                  <li><a th:href="@{archiverVendor(id=${v.Vendor_ID})}"  style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Archive</a></li>
+                                                  <li><a th:href="@{archiverVendor(id=${v.Vendor_ID})}"  style="margin-top:-5px;" onClick="Message()" class="btn btn-sm btn-light" role="button">Archived</a></li>
                                                 </li>
                                                   <li>
                                                   <li><a th:href="@{'/file/'+${v.PartnershipCertificate}}"  style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Download</a></li>
@@ -697,8 +697,12 @@
 
                 </div>
 
-
-
+<script type="text/javascript">
+   function Message() {
+       var msg="Vendor Archived";
+       alert(msg);
+   }
+</script>
                 <script src="../libs/jquery/jquery/dist/jquery.js"></script>
                 <script src="../libs/jquery/bootstrap/dist/js/bootstrap.js"></script>
                 <script src="js/ui-load.js"></script>

@@ -62,7 +62,7 @@ public class DeliverableController {
 		model.addAttribute("type", listTp);
 		return "deliverable_manage";
 	}
-
+	
 	@RequestMapping(value="/addDeliverable")
 	public String addDelivrable(@Valid @ModelAttribute("deliv") Deliverable deli, BindingResult bindingResult, Model model,
 			@RequestParam(name="fileD") MultipartFile fileD , @RequestParam(name="picture") MultipartFile picture)
@@ -73,11 +73,11 @@ public class DeliverableController {
 			model.addAttribute("unique", "must be unique");
 			return "addDelivP";
 		}
-		
+	
 		if(bindingResult.hasErrors()) {
 			return "addDelivP";
 		}
-		
+
 if (!(fileD.isEmpty())) {
 			
 			deli.setFile((fileD.getOriginalFilename()));
@@ -106,6 +106,7 @@ deliverablerepository.save(deli);
 	
 	@RequestMapping(value ="/addDeliv")
 	public String addDeliv( Model model) {
+
 		 model.addAttribute("deliv",new Deliverable());
 		 model.addAttribute("type", typeDeliverableRepository.findAll());
 		 model.addAttribute("project", projectrepository.findAll());	

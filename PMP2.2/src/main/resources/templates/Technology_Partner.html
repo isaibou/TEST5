@@ -575,7 +575,6 @@ document.addEventListener('DOMContentLoaded', function() {
 															{ mData: 'engine' },
 															{ mData: 'engine1' },
 															{ mData: 'browser' },
-															{ mData: 'astatu' }
 															{ mData: 'action' }
 															]
 															}" class="table  b-t b-b">
@@ -600,7 +599,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		     <ul class="dropdown-menu">
 		     <li><a th:href="@{'/techPartnerFile/'+${t.TechnologyPartnerFile}}"  style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Download TechnologyPartner File</a></li>
 		     <li><a th:href="@{updateTechnologyPartner(id=${t.TechnologyPartner_ID})}"  style="margin-top:-5px;"   class="btn btn-sm btn-light" role="button">Update</a></li>
-		    <li><a th:href="@{archiverTechnologyPartner(id=${t.TechnologyPartner_ID})}"  style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Archive</a></li>
+		    <li><a th:href="@{archiverTechnologyPartner(id=${t.TechnologyPartner_ID})}"  style="margin-top:-5px;" onClick="Message()" class="btn btn-sm btn-light" role="button">Archive</a></li>
      		<li><a th:href="@{detailTechnologyPartner(id=${t.TechnologyPartner_ID})}" style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Detail</a></li></ul></div></center></td>
  		  </tr>
 		 </tbody>
@@ -615,6 +614,12 @@ document.addEventListener('DOMContentLoaded', function() {
   </div>
  </footer><!-- / footer -->
 </div>
+<script type="text/javascript">
+   function Message() {
+       var msg="Technology Partner Archived";
+       alert(msg);
+   }
+</script>
 <script src="../libs/jquery/jquery/dist/jquery.js"></script>
 <script src="../libs/jquery/bootstrap/dist/js/bootstrap.js"></script>
 <script src="js/ui-load.js"></script>

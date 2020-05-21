@@ -24,13 +24,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.example.demo.entities.Customer;
 import com.example.demo.entities.Expenses;
+
 import com.example.demo.entities.RFP;
+
 import com.example.demo.entities.Task;
-
 import com.example.demo.entities.TypeExpenses;
-
 import com.example.demo.entities.Users;
 import com.example.demo.repository.ExpensesRepository;
 import com.example.demo.repository.TaskRepository;
@@ -101,10 +100,6 @@ public class ExpensesController {
 		}
 		expensesRepository.save(expense);
 
-		
-
-			
-
 		return"redirect:/expenses";
 	}
 		
@@ -133,21 +128,17 @@ public class ExpensesController {
 		File f = new File(receipt+id);
 		return  IOUtils.toByteArray(new FileInputStream(f));
 	}
-	
+
 	@RequestMapping(value ="/addExp" )
-	public String addExp(Model model, Authentication auth) {
-		
-		  Users u = userRepository.getOne(auth.getName());
-		  model.addAttribute("exp",  new Expenses());
-		 model.addAttribute("type",  typeExpensesRepository.findAll());
-		  
-		  
+	public String addExp(Model model, Authentication  auth) {
+
+		model.addAttribute("expenses", new Expenses());
+		model.addAttribute("type", typeExpensesRepository.findAll());
+		  	  
 		  List<Task> tasks = taskRepository.findAll();
 		  System.out.println(tasks);
 	     model.addAttribute("task",tasks);
 	     
-		 
-
 		return "addExp";
 	}
 	
@@ -177,23 +168,5 @@ public class ExpensesController {
 		return "detailsExpenses";
 	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 }
+

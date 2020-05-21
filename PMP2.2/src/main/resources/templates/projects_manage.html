@@ -605,7 +605,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		     <li><a th:href="@{affectation(id=${p.Project_ID})}"  style="margin-top:-5px;"   class="btn btn-sm btn-light" role="button">Affectation</a></li>
 		     <li><a th:href="@{listAffectedProj(id=${p.Project_ID})}"  style="margin-top:-5px;"   class="btn btn-sm btn-light" role="button">List Affectation</a></li>
 		     <li><a th:href="@{updateProject(id=${p.Project_ID})}"  style="margin-top:-5px;"   class="btn btn-sm btn-light" role="button">Update</a></li>
-		     <li><a th:href="@{archiverProject(id=${p.Project_ID})}"  style="margin-top:-5px;"  class="btn btn-sm btn-light" role="button">Archive</a></li>
+		     <li><a th:href="@{archiverProject(id=${p.Project_ID})}"  style="margin-top:-5px;" onClick="Message()" class="btn btn-sm btn-light" role="button">Archive</a></li>
 		     <li><a th:href="@{detailProject(id=${p.Project_ID})}" style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Detail</a></li></ul></div></center></td>
 		  </tr>
 		 </tbody>
@@ -620,113 +620,6 @@ document.addEventListener('DOMContentLoaded', function() {
 		<div id='calendar1'></div>
 	</div>	
 
-	 <div th:if="${message}">
-		<h2 th:text="${message}"/>
-	</div>   
-	<div class="modal fade" role="dialog" id="AddProject" >
-	 <div class="modal-dialog modal-lg" >
-	  <div class="modal-content">
-	   <div class="modal-header" style="background-image:url(img/grf-bg.jpg);color:white;">
-	    <button type="button" class="close pull-right" data-dismiss="modal">&times;</button>
-	    <h1 class="m-n font-bold h3"> <b class="glyphicon-plus pull"> </b> Add Project</h1>
-	   </div>	   
-	 <form th:action="@{SaveProject}"   enctype="multipart/form-data" method ="post" th:object="${project}">
-     <div class="modal-body">
-	    <div class="row">
-	     <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b></b></label>
-     <div class="col-sm-8" style="margin: 5px 0px;">
-      <input type="hidden" class="form-control" placeholder="Entry Name of Project" id="input-id-1"  required th:field=*{Project_ID}/>
-      <span class="text-danger" th:errors=*{Name}></span>
-	 </div>
-	     <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Project Name</b></label>
-	     <div class="col-sm-8" style="margin: 5px 0px;" >
-		  <input type="text" class="form-control" placeholder="Entry Name of Project" id="input-id-1" required th:field=*{Name}/>
-		  <span class="text-danger" th:errors=*{Name}></span>
-		 </div>
-			 
-		     <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Type Project</b></label>
-		 <div class="col-sm-8" style="margin:5px 0px;" >
-		 <select name ="role"  class="form-control m-b" th:field="*{typeProject}">
-		 <option th:each="t:${TypeProject}"  th:text="${t.NameType_Project}" th:value="${t.Type_Project_ID}"></option>
-		 </select>
-		 </div>
-		 
-		   <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>RFP</b></label>
-		 <div class="col-sm-8" style="margin:5px 0px;" >
-		 <select name ="role"  class="form-control m-b" th:field="*{rfp}">
-		 <option th:each="r:${rfp}"  th:text="${r.Title}" th:value="${r.RFP_ID}"></option>
-		 </select>
-		 </div>
-		 
-		   <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Technology Partner</b></label>
-		 <div class="col-sm-8" style="margin:5px 0px;" >
-		 <select name ="role"  class="form-control m-b" th:field="*{technologypartner}">
-		 <option th:each="e:${TechnoPart}"  th:text="${e.NameTechnologyPartner}" th:value="${e.TechnologyPartner_ID}"></option>
-		 </select>
-		 </div>
-		 
-		  <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Asset</b></label>
-		 <div class="col-sm-8" style="margin:5px 0px;" >
-		 <select name ="role"  multiple="multiple" class="form-control m-b" th:field="*{assets}">
-		 <option th:each="e:${listAsset}"  th:text="${e.SerielNumber}" th:value="${e.Assets_ID}"></option>
-		 </select>
-		 </div>
-		 
-		 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Amount</b></label>
-		 <div class="col-sm-8" style="margin: 5px 0px;">
-		  <input type="number" placeholder="Entry Amount of Project" class="form-control" id="input-id-1" required th:field=*{Amount}/>
-		  <span class="text-danger" th:errors=*{Amount}></span>
-		 </div>
-		 
-		 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Year</b></label>
-	     <div class="col-sm-8" style="margin: 5px 0px;">
-			  <input type="date" class="form-control" placeholder="YYYY"  required th:field=*{Year}/>
-	     </div>
-		 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Delivery Date</b></label>
-		 <div class="col-sm-8" style="margin: 5px 0px;">
-			  <input type="date" class="form-control" placeholder="MM/DD/YYYY"  required th:field=*{DeliveryDate}/>
-		 </div>
-	     <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Temporary Acceptance Date</b></label>
-		 <div class="col-sm-8" style="margin: 5px 0px;">
-		      <input type="date" class="form-control" placeholder="MM/DD/YYYY"  required th:field=*{TemporayAcceptanceDate}/>
-		      
-		 </div>
-		 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Final Temporary Date</b></label>
-		 <div class="col-sm-8" style="margin: 5px 0px;">
-		      <input type="date" class="form-control"  placeholder="MM/DD/YYYY"  required th:field=*{FinalTemporaryDate}/>
-		 </div>
-		 
-		 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Delivery Certificate</b></label>
-		 <div class="col-sm-8">
-          <input type="file" placeholder="Upload Preview File" name="file" class="form-control" id="input-id-1">
-         </div>
-       
-		 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Warranty</b></label>
-		 <div class="col-sm-8" style="margin: 5px 0px;">
-		  <input type="number" placeholder="Entry Warranty"class="form-control" id="input-id-1" required th:field=*{Warranty}/>
-		 </div>
-		 
-		 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Execution Time</b></label>
-	     <div class="col-sm-8" style="margin: 5px 0px;">
-		  <input type="number" placeholder="Entry Execution Time" class="form-control" id="input-id-1" required th:field=*{ExecutionTime}/>
-		 </div>
-		 
-	     <label class="col-sm-4 control-label" placeholder="Entry Notes" style="margin: 5px 0px;" for="input-id-1"><b>Notes</b></label>
-		  <div class="col-sm-8" style="margin: 5px 0px;">
-			<input type="text" class="form-control" placeholder="Entry ur notes " id="input-id-1" required th:field=*{Notes} />
-          </div>
-          
-		  <div class="modal-footer">
-		   <button style="margin:0px;" class="btn m-b-xs btn-sm btn-primary btn-addon"><i class="glyphicon glyphicon-ok"></i>Save</button>
-		   <button style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon" data-dismiss="modal"><i class="glyphicon glyphicon-remove"></i>Annuler</button>
-		  </div>
-		 </div>
-		</div>
-	    </form>
-	  </div>
-     </div>
-    </div>
-
 </div>
 </div>
   <!-- /content -->
@@ -737,6 +630,12 @@ document.addEventListener('DOMContentLoaded', function() {
   </div>
  </footer><!-- / footer -->
 </div>
+<script type="text/javascript">
+   function Message() {
+       var msg="Project Actived";
+       alert(msg);
+   }
+</script>
 <script src="../libs/jquery/jquery/dist/jquery.js"></script>
 <script src="../libs/jquery/bootstrap/dist/js/bootstrap.js"></script>
 <script src="js/ui-load.js"></script>

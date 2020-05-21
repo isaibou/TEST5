@@ -666,7 +666,7 @@
 												<li>
 												<a th:href="@{updateFrimwareform(id=${f.frimware_ID})}"  style="margin-top:-5px;"   class="btn btn-sm btn-light" role="button">Update</a></li>
 												<li>
-												<a th:href="@{archiverFrimware(id=${f.frimware_ID})}"  style="margin-top:-5px;" data-toggle="modal"  class="btn btn-sm btn-light" role="button">Archive</a>
+												<a th:href="@{archiverFrimware(id=${f.frimware_ID})}"  style="margin-top:-5px;" onClick="Message()"  class="btn btn-sm btn-light" role="button">Archive</a>
 												</li>
 												 <li><a th:href="@{detailFrimware(id=${f.frimware_ID})}" style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Detail</a></li></ul></div></center></td>
 										</div>
@@ -688,6 +688,12 @@
 		</footer>
 		<!-- / footer -->
 	</div>
+	<script type="text/javascript">
+      function Message() {
+       var msg="Frimware Archived";
+       alert(msg);
+      }
+    </script>
 	<script src="../libs/jquery/jquery/dist/jquery.js"></script>
 	<script src="../libs/jquery/bootstrap/dist/js/bootstrap.js"></script>
 	<script src="js/ui-load.js"></script>

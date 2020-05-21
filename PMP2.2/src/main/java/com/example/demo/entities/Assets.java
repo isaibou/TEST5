@@ -62,7 +62,7 @@ public class Assets implements Serializable{
 	private String LoginAsset;
 	private int PasswordAsset;
 	private Date LastUpdate;
-	private String Status;
+	private String status;
 	
 	
 	@ManyToOne
@@ -70,9 +70,9 @@ public class Assets implements Serializable{
 	private AssetType assettype;
 	
 
-	@ManyToMany
+	/*@ManyToMany
 	@JoinTable(name="ASSET_PROJECT")
-	private Collection<Project> project;
+	private Collection<Project> project; */
 	
 	@ManyToOne
 
@@ -155,7 +155,7 @@ public class Assets implements Serializable{
 		LoginAsset = loginAsset;
 		PasswordAsset = passwordAsset;
 		LastUpdate = lastUpdate;
-		this.Status = status;
+		this.status = status;
 	}
 	
 	//public String getAssetsName() {
@@ -167,11 +167,11 @@ public class Assets implements Serializable{
 	//}
 
 	public String getStatus() {
-		return Status;
+		return status;
 	}
 
 	public void setStatus(String status) {
-		Status = status;
+		status = status;
 	}
 
 	public Integer getAssets_ID() {
@@ -274,13 +274,13 @@ public class Assets implements Serializable{
 		this.frimware = frimware;
 	}
 
-	public Collection<Project> getProject() {
+	/*public Collection<Project> getProject() {
 		return project;
 	}
 
 	public void setProject(Collection<Project> project) {
 		this.project = project;
-	}
+	}*/
 
 	public Collection<Ticket> getTicket() {
 		return ticket;

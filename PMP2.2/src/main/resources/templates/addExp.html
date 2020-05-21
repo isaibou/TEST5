@@ -12,27 +12,14 @@
   <link rel="stylesheet" href="css/font.css" type="text/css" />
   <link rel="stylesheet" href="css/app.css" type="text/css" />
 </head>
-<<<<<<< HEAD
-<body>
-<div class="app" >
- <a href="" class="navbar-brand block m-t"><i class="fa fa-power-off"></i> <b>PowerM</b> </a>
- <div class="modal-dialog modal-lg" >
-  <div class="modal-content">
-    <h1 class="m-n font-bold h3"> Add Expense </h1>
-   </div>
-   <form th:action="@{SaveExpenses}"  enctype="multipart/form-data" method="post" th:object=${expenses}>
-   <div class="modal-body">
-  <div class="row">
-=======
 <body>
 <div style="margin:50px;"></div>
 <div class="col-md-6 col-sm-6 col-xs-12 spacer col-md-offset-3">
   <a href="" class="navbar-brand block m-t"><i class="fa fa-power-off"></i> <b>PowerM</b> </a>
   <div class="panel panel-default">
    <div class="panel-heading"> Add Expenses </div>
-    <form th:action="@{addExpenses}"  enctype="multipart/form-data" method="post" th:object=${exp}>
+    <form th:action="@{addExpenses}"  enctype="multipart/form-data" method="post" th:object=${expenses}>
    <div class="panel-body">
->>>>>>> branch 'master' of https://github.com/isaibou/TEST5
     <label class="col-sm-4 control-label" for="input-id-1" style="margin:5px 0px;"><b>Type Expense :</b></label>
    <div class="col-sm-8" style="margin:5px 0px;" >
    <select name ="TypeExpenses_ID" class="form-control" th:field="*{typeExpenses}" >

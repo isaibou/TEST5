@@ -781,51 +781,7 @@
 
       };
 	  
- 
-		</script>
-	<script>
-	/*$(document).ready(function(){
-		$("#simpleUpload").click(function(){
-			$.ajax({
-				url:'/create',
-				success:function(){
-					alert("image upload complete");
-				}
-			});
-		});
-	
-		$("#simpleDownload").click(function(){
-			$.ajax({
-				url:'/download',
-				success:function(){
-					alert("image download complete");
-				}
-			});
-		});
-		
-	    $("#refreshFile").click(function(){
-			$.ajax({
-				url:'/listfiles',	
-			}).done(function(data){
-				console.dir(data);
-				var fileHTML = "";
-				for(file of data) {
-					fileHTML += '<li class="list-group-item"><img src="' + file.thumbnailLink + '">' + file.name + '<button onclick="deleteFile(\'' + file.id + '\')"> Delete</button></li>';
-				}
-				$("#listFiles").html(fileHTML);
-		  });
-	    });
-	
-	});
-	function deleteFile(id){
-		$.ajax({
-			url: '/deletefile/' + id,
-			method: 'DELETE'
-		}).done(function(){
-			alert('File has been deleted. Please refresh the list');
-		});
-	}*/
-	</script>					
+		</script>					
   </body>
  </html>
 						

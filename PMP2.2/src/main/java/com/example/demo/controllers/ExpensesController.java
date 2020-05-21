@@ -73,16 +73,11 @@ public class ExpensesController {
 		return "expense";
 	}
 
-
-	@RequestMapping(value="/SaveExpenses")
-	public String addInternalRequest(@Valid Expenses expense,BindingResult bindingResult, Authentication  auth, 
+	@RequestMapping(value="/addExpenses")
+	public String addExpenses(@Valid @ModelAttribute("expenses") Expenses expense,BindingResult bindingResult, Authentication  auth, 
 			@RequestParam(name="recu")MultipartFile file ) 
 					throws IllegalStateException, IOException {
-
 	
-
-		
-		
 		String login = auth.getName();
 		Users u =  userRepository.getOne(login);
 		expense.setUser(u);
@@ -95,10 +90,6 @@ public class ExpensesController {
 			file.transferTo(new File(receipt+expense.getExpenses_ID()));
 		}
 		expensesRepository.save(expense);
-
-		
-
-			
 
 		return"redirect:/expenses";
 	}
@@ -134,13 +125,7 @@ public class ExpensesController {
 
 		model.addAttribute("expenses", new Expenses());
 		model.addAttribute("type", typeExpensesRepository.findAll());
-
-	
-		  Users u = userRepository.getOne(auth.getName());
-		  model.addAttribute("exp",  new Expenses());
-		 model.addAttribute("type",  typeExpensesRepository.findAll());
-		  
-		  
+		  	  
 		  List<Task> tasks = taskRepository.findAll();
 		  System.out.println(tasks);
 	     model.addAttribute("task",tasks);
@@ -173,24 +158,5 @@ public class ExpensesController {
 		model.addAttribute("ex", ex);
 		return "detailsExpenses";
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+		
 }

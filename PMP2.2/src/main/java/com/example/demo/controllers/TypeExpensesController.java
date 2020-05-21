@@ -47,10 +47,6 @@ public class TypeExpensesController {
 		return"typeExpenses";
 	}
 	
-
-
-	
-
 	@RequestMapping(value="/addTypeExpenses")
 	public String addTypeExpenses(@Valid @ModelAttribute("typExp") TypeExpenses type, BindingResult bindingResult) {
 
@@ -59,6 +55,7 @@ public class TypeExpensesController {
 		}
 		
 		typeExpensesRepository.save(type);
+		
 		return"redirect:/typeExpenses";
 	}
 	

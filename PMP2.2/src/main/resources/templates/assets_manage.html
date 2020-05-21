@@ -1,6 +1,5 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-
 <head>
   <meta charset="utf-8" />
   <title>Manage Assets</title>
@@ -10,7 +9,7 @@
   <link rel="stylesheet" href="../libs/assets/font-awesome/css/font-awesome.min.css" type="text/css" />
   <link rel="stylesheet" href="../libs/assets/simple-line-icons/css/simple-line-icons.css" type="text/css" />
   <link rel="stylesheet" href="../libs/jquery/bootstrap/dist/css/bootstrap.css" type="text/css" />
-
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
   <link rel="stylesheet" href="css/font.css" type="text/css" />
   <link rel="stylesheet" href="css/app.css" type="text/css" />
 					<style>
@@ -25,12 +24,9 @@
     }
 }
 </style>
-	
-  
-  </head>
+</head>
+<body>
 <div class="app app-header-fixed ">
-  
-
     <!-- header -->
  <header id="header" class="app-header navbar" role="menu">
         <!-- navbar header -->
@@ -241,18 +237,6 @@
             <div class="line dk hidden-folded"></div>
           </div>
           <!-- / user -->
-
-
-          <!-- nav -->
-
-
-<nav ui-nav class="navi clearfix">
-
-                 <nav ui-nav class="navi clearfix">
-
-
-          <nav ui-nav class="navi clearfix">
-
           <!-- nav -->
 <nav ui-nav class="navi clearfix">
             <ul class="nav">
@@ -531,6 +515,98 @@
 		
 <center><div id="chart-div"></div></center>
 
+
+	</div>
+	<div class="col-sm-6">
+		<div class="row row-sm text-center">
+		 <div class="col-xs-12">
+              <div class="panel padder-v item">
+                <div class="h1 text-info font-thin h1 pull-center" th:text="${totalAssets}"></div>
+                <span class="text-muted text-xs"><b>Total Assets</b></span>
+                 <span class="bottom text-right w-full">
+                  <i class="glyphicon  glyphicon-hdd text-muted m-r-sm"></i>
+                </span>
+              </div>
+            </div>
+            <div class="col-xs-12">
+              <a href class="block panel padder-v bg-primary item">
+                <span class="text-white font-thin h1 block" th:text="${totalassetsActif}"></span>
+                <span class="text-muted text-xs"><b>Total Assets Actif</b></span>
+                <span class="bottom text-right w-full">
+                  <i class="glyphicon glyphicon-warning-sign text-muted m-r-sm"></i>
+                </span>
+              </a>
+            </div>
+					 <div class="col-xs-12">
+              <div class="panel padder-v bg-info item">
+                <div class="h1 text-white font-thin h1 pull-center" th:text="${totalassetsArchived}"></div>
+                <span class="text-muted text-xs"><b>Total Assets Archived</b></span>
+                 <span class="bottom text-right w-full">
+                  <i class="glyphicon  glyphicon-hdd text-muted m-r-sm"></i>
+                </span>
+              </div>
+            </div>
+			</div>
+	</div>
+<div class="col-sm-12">
+ <div class="card card-body">
+  <div class="table-responsive" style="background-color:white; margin:10px; padding:10px;">
+   <table ui-jq="dataTable" ui-options="{
+                                      aoColumns: [
+                                      { mData: 'engine' },
+                                      { mData: 'engine1' },
+                                      { mData: 'browser' },
+                                      { mData: 'platform' },
+                                      { mData: 'version' },
+                                      { mData: 'version1' },
+                                      { mData: 'grade' },
+                                      { mData: 'action' }
+                                      ]
+                                    }" class="table table-striped b-t b-b">
+    <thead>
+     <tr>
+                                      <th  style="width:15%"><center>Interface Asset</center></th>
+                                      <th  style="width:15%"><center>Seriel Number</center></th>
+                                      <th  style="width:13%"><center>Description</center></th>
+                                      <th  style="width:13%"><center>Must Gather</center></th>
+                                      
+                                      <th  style="width:10%"><center>End Of Vendor Warranty</center></th>
+                                      <th  style="width:10%"><center>End PowerM Warranty</center></th>
+                                      <th  style="width:5%"><center>Status</center></th>
+                                      <th  style="width:14%"><center>Actions</center></th>
+     </tr>
+    </thead>
+    <tbody>
+     <tr data-expanded="true" th:each="a:${asset}" >
+      <td th:text ="${a.InterfaceAasset}"><center></center></td>
+      <td th:text ="${a.SerielNumber}"><center></center></td>
+      <td th:text ="${a.Description}"><center></center></td>
+      <td th:text ="${a.MustGather}"><center></center></td>    
+      <td th:text ="${a.EndOfVendorWarranty}"><center></center></td>
+      <td th:text ="${a.EndPowermWarranty}"><center></center></td>
+      <td th:text ="${a.Status}" class="m-n font-thin h4 text-secondary"><center><span></span><center/></td>
+      <td><center><div class="btn-group dropdown"><button class="btn btn-default btn-xs" data-toggle="dropdown"><i class="glyphicon glyphicon-cog"></i> Action <span class="caret"></span></button>
+       <ul class="dropdown-menu">
+        <li><a th:href="@{updateAssets(id=${a.Assets_ID})}"  style="margin-top:-5px;"   class="btn btn-sm btn-light" role="button">Update</a></li>
+        <li><a th:href="@{archiverAssets(id=${a.Assets_ID})}"  style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Archived</a></li>
+        <li><a th:href="@{detailAssets(id=${a.Assets_ID})}" style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Detail</a></li></ul></div></center></td>
+       </ul></div></center>
+      </td>
+     </tr>
+    </tbody>
+   </table>
+  </div>
+ </div>
+</div>
+  <!-- /content -->    <!-- footer -->
+  <footer id="footer" class="app-footer" role="footer">
+    <div class="wrapper b-t bg-light">
+      <span class="pull-right">2.2.0 <a href ui-scroll="app" class="m-l-sm text-muted"><i class="fa fa-long-arrow-up"></i></a></span>
+      &copy; PowerM 2020 Copyright.
+    </div>
+  </footer>
+  <!-- / footer -->
+</div>
 <script src="https://www.gstatic.com/charts/loader.js"></script>
 
 <script>
@@ -563,194 +639,6 @@ function drawChart() {
   chart.draw(data, options);
 }
 </script>
-	</div>
-	<div class="col-sm-6">
-		<div class="row row-sm text-center">
-		 <div class="col-xs-12">
-              <div class="panel padder-v item">
-                <div class="h1 text-info font-thin h1 pull-center">521</div>
-                <span class="text-muted text-xs"><b>Total Assets</b></span>
-                 <span class="bottom text-right w-full">
-                  <i class="glyphicon  glyphicon-hdd text-muted m-r-sm"></i>
-                </span>
-              </div>
-            </div>
-            <div class="col-xs-12">
-              <a href class="block panel padder-v bg-primary item">
-                <span class="text-white font-thin h1 block">930</span>
-                <span class="text-muted text-xs"><b>Assets out of vendors warranty</b></span>
-                <span class="bottom text-right w-full">
-                  <i class="glyphicon glyphicon-warning-sign text-muted m-r-sm"></i>
-                </span>
-              </a>
-            </div>
-					 <div class="col-xs-12">
-              <div class="panel padder-v bg-info item">
-                <div class="h1 text-white font-thin h1 pull-center">20</div>
-                <span class="text-muted text-xs"><b>Assets out of vendors warranty</b></span>
-                 <span class="bottom text-right w-full">
-                  <i class="glyphicon  glyphicon-hdd text-muted m-r-sm"></i>
-                </span>
-              </div>
-            </div>
-			</div>
-	</div>
-<div class="col-sm-12">
- <div class="card card-body">
-  <div class="table-responsive" style="background-color:white; margin:10px; padding:10px;">
-   <table ui-jq="dataTable" ui-options="{
-                                      aoColumns: [
-                                      { mData: 'engine' },
-                                      { mData: 'engine1' },
-                                      { mData: 'browser' },
-                                      { mData: 'platform' },
-                                      { mData: 'version' },
-                                      { mData: 'grade' },
-                                      { mData: 'grade1' },
-                                      { mData: 'action' }
-                                      ]
-                                    }" class="table table-striped b-t b-b">
-    <thead>
-     <tr>
-                                      <th  style="width:15%"><center>Interface Asset</center></th>
-                                      <th  style="width:15%"><center>Seriel Number</center></th>
-                                      <th  style="width:13%"><center>Description</center></th>
-                                      <th  style="width:13%"><center>Must Gather</center></th>
-                                      
-                                      <th  style="width:10%"><center>End Of Vendor Warranty</center></th>
-                                      <th  style="width:10%"><center>End PowerM Warranty</center></th>
-                                      <th  style="width:5%"><center>Status</center></th>
-                                      <th  style="width:14%"><center>Actions</center></th>
-     </tr>
-    </thead>
-    <tbody>
-     <tr data-expanded="true" th:each="a:${asset}" >
-      <td th:text ="${a.InterfaceAasset}"><center></center></td>
-      <td th:text ="${a.SerielNumber}"><center></center></td>
-      <td th:text ="${a.Description}"><center></center></td>
-      <td th:text ="${a.MustGather}"><center></center></td>    
-      <td th:text ="${a.EndOfVendorWarranty}"><center><span class="label bg-success pull-center m-t-md"></span></center></td>
-      <td th:text ="${a.EndPowermWarranty}"><center></center></td>
-      <td th:text ="${a.Status}" class="m-n font-thin h4 text-secondary"><center><span></span><center/></td>
-     <!-- <td th:text ="${a.SerielNumber}"><center></center></td> -->
-      <td><center><div class="btn-group dropdown"><button class="btn btn-default btn-xs" data-toggle="dropdown"><i class="glyphicon glyphicon-cog"></i> Action <span class="caret"></span></button>
-       <ul class="dropdown-menu">
-        <li><a th:href="@{updateAssets(id=${a.Assets_ID})}"  style="margin-top:-5px;"   class="btn btn-sm btn-light" role="button">Update</a></li>
-        <li><a th:href="@{archiverAssets(id=${a.Assets_ID})}"  style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Archive</a></li>
-        <li><a th:href="@{detailAssets(id=${a.Assets_ID})}" style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Detail</a></li></ul></div></center></td>
-       </ul></div></center>
-      </td>
-     </tr>
-    </tbody>
-   </table>
-  </div>
- </div>
-</div>
-
-
-<div class="modal fade" role="dialog" id="AddClient" >
-  <div class="modal-dialog modal-lg" >
-    <div class="modal-content">
-      <div class="modal-header" style="background-image:url(img/grf-bg.jpg);color:white;">
-        <button type="button" class="close pull-right" data-dismiss="modal">&times;</button>
-          <h1 class="m-n font-bold h3"> <b class="glyphicon-plus pull"> </b> Add Asset</h1>
-      </div>
-       <form th:action="@{SaveAssets}" method ="post" th:object="${assets}">
-      <div class="modal-body">
-        <div class="row">
-        <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b></b></label>
-     <div class="col-sm-8" style="margin: 5px 0px;">
-      <input type="hidden" class="form-control" placeholder="Entry Name of Project" id="input-id-1"  required th:field=*{Assets_ID}/>
-      </div>
-          <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Interface Asset</b></label>
-          <div class="col-sm-8" style="margin: 5px 0px;">
-            <input type="text"  class="form-control" placeholder="Entry Interface Asset"id="input-id-2" required th:field=*{InterfaceAasset}>
-          </div>
-          <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Login Asset</b></label>
-          <div class="col-sm-8" style="margin: 5px 0px;">
-            <input type="text"  class="form-control" placeholder="Entry Login Asset"id="input-id-2" required th:field=*{LoginAsset}>
-          </div>
-          <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Password Asset</b></label>
-          <div class="col-sm-8" style="margin: 5px 0px;">
-             <input type="password" class="form-control" placeholder="Password" id="input-id-2" required th:field=*{PasswordAsset}>
-          </div>
-       
-          <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Asset Type</b></label>
-          <div class="col-sm-8" style="margin: 5px 0px;">
-          <select name="AssetType_ID" class="form-control m-b" th:field=*{assettype}>
-	      <option th:each ="a:${assettype}" 
-	        th:text="${a.name}"
-	        th:value ="${a.AssetType_ID}"></option>
-	         </select>
-	       </div>
-
-          <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Project</b></label>
-          <div class="col-sm-8" style="margin: 5px 0px;">
-          <select name="AssetType_ID" class="form-control m-b" th:field=*{project}>
-	      <option th:each ="p:${project}" 
-	        th:text="${p.name}"
-	        th:value ="${p.Project_ID}"></option>
-	      </select>
-	       </div>
-          -->
-          <label class="col-sm-4 control-label"  style="margin: 5px 0px;" for="input-id-1"><b>Serial Number</b></label>
-          <div class="col-sm-8" style="margin: 5px 0px;">
-            <input type="text"  class="form-control" placeholder="Entry Seriel Number"id="input-id-2" required th:field=*{SerielNumber}>
-          </div>
-          
-         <label class="col-sm-4 control-label" style="margin: 5px 0px;"  for="input-id-1"><b>Description</b></label>
-         <div class="col-sm-8" style="margin: 5px 0px;">
-	        <input type="text" class="form-control" placeholder="Entry Description " id="input-id-1" required th:field=*{Description}/>
-          </div>
-          <label class="col-sm-4 control-label"  style="margin: 5px 0px;" for="input-id-1"><b>Configuration File</b></label>
-          <div class="col-sm-8" style="margin: 5px 0px;">
-            <input type="file" placeholder="Entry Configuration File"class="form-control" id="input-id-1" required th:field=*{ConfigurationFille}/>
-          </div>
- 
-          <label class="col-sm-4 control-label"  style="margin: 5px 0px;" for="input-id-1"><b>Must Gather</b></label>
-          <div class="col-sm-8" style="margin: 5px 0px;">
-	        <input type="text" class="form-control" placeholder="Entry Must Gather " id="input-id-1" required th:field=*{MustGather}/>
-          </div>
-          <label class="col-sm-4 control-label"  style="margin: 5px 0px;" for="input-id-1"><b>End Of Vendor Warranty</b></label>
-           <div class="col-sm-8" style="margin: 5px 0px;">
-             <input type="date" class="form-control" id="input-id-1" required th:field=*{EndPowermWarranty}/>
-           </div>
-          <label class="col-sm-4 control-label"  style="margin: 5px 0px;" for="input-id-1"><b>End PowerM Warranty</b></label>
-          <div class="col-sm-8" style="margin: 5px 0px;">
-             <input type="date" class="form-control" id="input-id-1" required th:field=*{EndOfVendorWarranty}/>
-           </div>
-           <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>SLA</b></label>
-		 <div class="col-sm-8" style="margin: 5px 0px;" >
-		  <select name="account" class="form-control m-b"  required th:field=*{SLA}>
-	       <option th:value ="Platinum24sur7" th:text="Platinum24sur7"></option>
-	       <option th:value ="Gold24sur5" th:text="Gold24sur5"></option>
-	       <option th:value ="Bronze-Ondemand" th:text="Bronze-Ondemand"></option>
-		  </select>
-		 </div>         
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button style="margin:0px;" class="btn m-b-xs btn-sm btn-primary btn-addon"><i class="glyphicon glyphicon-ok"></i>Save</button>
-       <button style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon"  data-dismiss="modal"><i class="glyphicon glyphicon-remove"></i>Annuler</button>
-      </div>
-  </form>
-</div>
-</div>
-</div>
-
-
-  <!-- /content -->
-  
-  <!-- footer -->
-  <footer id="footer" class="app-footer" role="footer">
-    <div class="wrapper b-t bg-light">
-      <span class="pull-right">2.2.0 <a href ui-scroll="app" class="m-l-sm text-muted"><i class="fa fa-long-arrow-up"></i></a></span>
-      &copy; PowerM 2020 Copyright.
-    </div>
-  </footer>
-  <!-- / footer -->
-</div>
-
 <script src="../libs/jquery/jquery/dist/jquery.js"></script>
 <script src="../libs/jquery/bootstrap/dist/js/bootstrap.js"></script>
 <script src="js/ui-load.js"></script>
@@ -759,9 +647,7 @@ function drawChart() {
 <script src="js/ui-nav.js"></script>
 <script src="js/ui-toggle.js"></script>
 <script src="js/ui-client.js"></script>
-
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
 <script>
   $(document).ready(function(){
     var date_input=$('input[name="date"]'); //our date input has the name "date"
@@ -831,11 +717,7 @@ function drawChart() {
     var options = {backgroundColor: '#f0f3f4', colors: ['#6254b2', '#3289c8', '#27c24c','#ffbb3b'],legendTextStyle: { color: 'black' },is3D: true};
       chart.draw(data, options);
     }
-
       };
-    
- 
     </script>
-   
 </body>
 </html>

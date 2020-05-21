@@ -48,11 +48,14 @@ public class TypeExpensesController {
 	}
 	
 
-
-	
-
 	@RequestMapping(value="/addTypeExpenses")
-	public String addTypeExpenses(@Valid @ModelAttribute("typExp") TypeExpenses type, BindingResult bindingResult) {
+	public String addTypeExpenses(@Valid @ModelAttribute("typExp") TypeExpenses type, BindingResult bindingResult, Model model) {
+		
+		if(typeExpensesRepository.checkTitleExist(type.getNameTypeExpenses())) {
+			
+			model.addAttribute("unique", "must be unique");
+			return "addTypExp";
+		}
 
 		if(bindingResult.hasErrors()) {
 			return "addTypExp";
@@ -64,8 +67,7 @@ public class TypeExpensesController {
 	
 	@RequestMapping(value ="/addTypExp")
 	public String addTypExp( Model model) {
-		
-		 model.addAttribute("typeExpenses",new TypeExpenses());
+		 model.addAttribute("typExp",new TypeExpenses());
 		 
 			return "addTypExp";
 	}

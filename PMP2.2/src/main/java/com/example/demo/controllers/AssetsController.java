@@ -34,8 +34,8 @@ public class AssetsController {
 	@Autowired
 	private FrimwareRepository frimwareRepository;
 	
-	@Autowired
-	private ProjetRepository projetRepository;
+	/*@Autowired
+	private ProjetRepository projetRepository;*/
 	
 	@Autowired
 	private AssetTypeRepository assetTypeRepository;
@@ -60,7 +60,7 @@ public class AssetsController {
 		//model.addAttribute("assets", new Assets());
 		
 		model.addAttribute("assettype", assetTypeRepository.findAll());
-		model.addAttribute("project", projetRepository.findAll());
+		//model.addAttribute("project", projetRepository.findAll());
 		model.addAttribute("frimware", frimwareRepository.findAll());
 		/*
 		 * List<RFP> rfpee = (List<RFP>) u.getCustomer().getRfp(); List<Project> proj =
@@ -85,6 +85,7 @@ public class AssetsController {
 		
 		
 		
+		
 if (!(file.isEmpty())) {
 			
 	         addAss.setConfigurationFille((file.getOriginalFilename()));
@@ -95,10 +96,7 @@ if (!(file.isEmpty())) {
 		
 		addAss.setStatus("Actif");
 		
-		if(bindingResult.hasErrors()) {
-		return "addAssets";
 		
-	}
 		assetRepository.save(addAss);
 		AssetType asstype=  addAss.getAssettype();
 		System.out.println(asstype);
@@ -110,14 +108,19 @@ if (!(file.isEmpty())) {
 		System.out.println(i);
 		model.addAttribute("id", i);
 		
+		
+		
 		return "nextAsset"; //$NON-NLS-1$
 		
 		
 	}
 	
 	@RequestMapping(value="/addAssetsFrim" , method= RequestMethod.POST)
-	private String addAssets(Integer id, @RequestParam(name="frim") Frimware frim  ) {
-		
+	private String addAssets( Integer id, Model model ,BindingResult bindingResult, @RequestParam(name="frim") Frimware frim ) {
+		 
+		if(bindingResult.hasErrors()) {
+			return "redirect:/assets_manage";
+		}
 		Assets asset = assetRepository.getOne(id);
 		asset.setFrimware(frim);
 		assetRepository.save(asset);
@@ -135,7 +138,7 @@ if (!(file.isEmpty())) {
 		 model.addAttribute("assets",  assetRepository.findAll());
 		 model.addAttribute("assets", new Assets());
 		 model.addAttribute("assettype", assetTypeRepository.findAll());
-		 model.addAttribute("project", projetRepository.findAll());	
+		 //model.addAttribute("project", projetRepository.findAll());	
 		 
 		
 			return "addAssets";
@@ -162,7 +165,7 @@ if (!(file.isEmpty())) {
 		 model.addAttribute("assets",  assets);
 		 
 		 model.addAttribute("assettype", assetTypeRepository.findAll());
-		 model.addAttribute("project", projetRepository.findAll());	
+		// model.addAttribute("project", projetRepository.findAll());	
 		 
 		 //System.out.println(purchasing.getFirstName());
 		

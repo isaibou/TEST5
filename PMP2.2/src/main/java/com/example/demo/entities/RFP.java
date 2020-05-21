@@ -49,7 +49,7 @@ public class RFP implements Serializable{
 	private String RequestFile;
 	
 	private String ResponseFile;
-	private String StatusRFP;
+	private String statusRFP;
 	
 	@OneToMany(mappedBy = "rfp" , fetch = FetchType.LAZY)
 	private Collection<Project> project;
@@ -98,7 +98,7 @@ public class RFP implements Serializable{
 		RequestOfExecutionDate = requestOfExecutionDate;
 		RequestFile = requestFile;
 		ResponseFile = responseFile;
-		StatusRFP = statusRFP;
+		statusRFP = statusRFP;
 	}
 	public Integer getRFP_ID() {
 		return RFP_ID;
@@ -155,10 +155,10 @@ public class RFP implements Serializable{
 		ResponseFile = responseFile;
 	}
 	public String getStatusRFP() {
-		return StatusRFP;
+		return statusRFP;
 	}
 	public void setStatusRFP(String statusRFP) {
-		StatusRFP = statusRFP;
+		statusRFP = statusRFP;
 	}
 
 	public Collection<Project> getProject() {

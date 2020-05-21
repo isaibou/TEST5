@@ -68,7 +68,6 @@ public class InternalRequestController {
 		
 		return "request";
 	}
-	
 
 	@RequestMapping(value="/addInternalRequest")
 	public String addInternalRequest(@Valid @ModelAttribute("int") InternalRequest internal,BindingResult bindingResult, Authentication  auth ) {
@@ -91,12 +90,7 @@ public class InternalRequestController {
 	@RequestMapping(value ="/addReqEmp" )
 	public String addReqEmp(Model model) {
 		model.addAttribute("int", new InternalRequest());
-
-		model.addAttribute("typeInternal", typeInternalRequestrepository.findAll());
-		model.addAttribute("typeExternal", typeExternalRequestrepository.findAll());
-
 		model.addAttribute("type", typeInternalRequestrepository.findAll());
-
 		return "addReqEmp";
 	}
 	
@@ -132,7 +126,7 @@ public class InternalRequestController {
 	}
 	
 	@RequestMapping(value ="/editEmployeeRequest" )
-	public String editEmployeeRequest(Integer id , Model model, @RequestParam(name="commentaire")String commentaire) {
+	public String editEmployeeRequest(Integer id , Model model, @RequestParam(name="desc")String description, @RequestParam(name="commentaire")String commentaire) {
 		
 	InternalRequest iR = internalRequestrepository.getOne(id);
 	String previousCom= iR.getCommentaire();
@@ -140,6 +134,7 @@ public class InternalRequestController {
 	String com = NomCompany + " :  " + commentaire;
 	String newCom = previousCom + "  ------ " + com; 
 	iR.setCommentaire(newCom);
+	iR.setDescription(description);
 	internalRequestrepository.save(iR);
 	
 		return "redirect:/request";

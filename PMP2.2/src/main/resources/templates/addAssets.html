@@ -49,7 +49,7 @@
 	      </select>
 	       </div>
 
-          <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Project</b></label>
+       <!--     <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Project</b></label>
           <div class="col-sm-8" style="margin: 5px 0px;">
             <select name="Project_ID" class="form-control m-b" th:field=*{project}>
 	      <option th:each ="p:${project}" 
@@ -57,7 +57,8 @@
 	        th:value ="${p.Project_ID}"></option>
 	      </select>
 	      
-          </div>
+          </div> -->
+          
           <label class="col-sm-4 control-label"  style="margin: 5px 0px;" for="input-id-1"><b>Seriel Number</b></label>
           <div class="col-sm-8" style="margin: 5px 0px;">
             <input type="text"  class="form-control" placeholder="Entry Seriel Number"id="input-id-2"  th:field=*{SerielNumber}>
@@ -106,7 +107,7 @@
       </div>
       <div class="modal-footer">
         <button style="margin:0px;" class="btn m-b-xs btn-sm btn-primary btn-addon"><i class="glyphicon glyphicon-ok"></i>Save</button>
-       <button style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon"  data-dismiss="modal"><i class="glyphicon glyphicon-remove"></i>Annuler</button>
+        <button style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon pull-right"><a th:href="assets_manage"><i class="glyphicon glyphicon-remove"></i>Annuler</a></button>
       </div>
       </form>
     </div>

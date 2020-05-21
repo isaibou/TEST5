@@ -57,6 +57,22 @@ public class RFPController {
 		model.addAttribute("rfp", rf);
 		model.addAttribute("rf", new RFP());
 		
+		
+		List<RFP> rfpNew = rfpRepository.findByStatusRFP("New");
+		model.addAttribute("totalRFPNew", rfpNew.size());
+		
+		List<RFP> rfpSubmited = rfpRepository.findByStatusRFP("Submited");
+		model.addAttribute("totalRFPSubmited", rfpSubmited.size());
+		
+		List<RFP> rfpWon = rfpRepository.findByStatusRFP("Won");
+		model.addAttribute("totalRFPWon", rfpWon.size());
+		
+		List<RFP> rfpLost = rfpRepository.findByStatusRFP("Lost");
+		model.addAttribute("totalRFPLost", rfpLost.size());
+		
+		List<RFP> rfpArchived = rfpRepository.findByStatusRFP("Archived");
+		model.addAttribute("totalRFPArchived", rfpArchived.size());
+		
 		//Afficher la liste déroulante pour récupérer la liste des customers
 		model.addAttribute("customer", customerRepository.findAll());
 		model.addAttribute("totalRFP", rf.size());

@@ -44,6 +44,7 @@ public class ProjectController {
 	
 	@Autowired
 	private ProjetRepository ProjectRepository;
+	
 	@Autowired
 	private TypeProjectRepository typeProjectRepository;
 	@Autowired
@@ -113,7 +114,7 @@ if (!(file.isEmpty())) {
 		 model.addAttribute("TechnoPart", technologiepartnerRepository.findAll());
 		 model.addAttribute("rfp",rfprepository.findAll());
 		 model.addAttribute("TypeProject", typeProjectRepository.findAll());
-		 
+		 model.addAttribute("assets",assetRepository.findAll() );
 		 model.addAttribute("TechnologiePartnerRepository", technologiepartnerRepository.findAll());
 
 			return "addProj";
@@ -144,7 +145,7 @@ if (!(file.isEmpty())) {
 		 model.addAttribute("TechnoPart", technologiepartnerRepository.findAll());
 		 model.addAttribute("rfp",rfprepository.findAll());
 		 model.addAttribute("TypeProject", typeProjectRepository.findAll());
-		 
+		 model.addAttribute("assets",assetRepository.findAll() );
 		 model.addAttribute("TechnologiePartnerRepository", technologiepartnerRepository.findAll());
 		 model.addAttribute("type",typeProjectRepository.findAll());
 		 

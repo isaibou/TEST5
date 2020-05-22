@@ -71,10 +71,14 @@ public class AssetTypeController
 		if(assetTypeRepository.checkTitleExist(addAssttyp.getName())) {
 			//System.err.println("checkTitleExist-------------------");
 			model.addAttribute("unique", "must be unique");
+			 model.addAttribute("vendor", vendorRepository.findAll());
+
 			return "addAssetsType";
 		}
 		
 		if(bindingResult.hasErrors()) {
+			 model.addAttribute("vendor", vendorRepository.findAll());
+
 			return "addAssetsType";
 			
 		}
@@ -90,7 +94,6 @@ public class AssetTypeController
 	private String addAssetsType( Model model ) {
 		
 	   
-		 model.addAttribute("assetstype",assetTypeRepository.findAll());
 		 
 		 model.addAttribute("assetType", new AssetType());
 		

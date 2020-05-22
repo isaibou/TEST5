@@ -170,8 +170,10 @@ public class Assets implements Serializable{
 		return status;
 	}
 
+	
+
 	public void setStatus(String status) {
-		status = status;
+		this.status = status;
 	}
 
 	public Integer getAssets_ID() {

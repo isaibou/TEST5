@@ -83,7 +83,7 @@ public class ExpensesController {
 		return "expense";
 	}
 
-	@RequestMapping(value="/addExpenses")
+	@RequestMapping(value="/SaveExpense")
 	public String addInternalRequest(@Valid @ModelAttribute("exp") Expenses expense,BindingResult bindingResult, Authentication  auth, @RequestParam(name="recu")MultipartFile file ) throws IllegalStateException, IOException {
 		
 		if(bindingResult.hasErrors()) {

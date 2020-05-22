@@ -326,7 +326,8 @@ userRepository.save(u);
 	    {
 	        //choisissez un caractére au hasard à partir de cette chaîne
 	        String str = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-	                    + "abcdefghijklmnopqrstuvxyz"; 
+	                    + "abcdefghijklmnopqrstuvxyz" 
+	        		+"0123456789"; 
 	  
 	        StringBuilder s = new StringBuilder(8); 
 	  

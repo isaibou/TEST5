@@ -30,7 +30,7 @@ public class InternalRequest implements Serializable{
 	@NotEmpty
 	private String Description;
 	
-	private String Status; 
+	private String status; 
 
 	@DateTimeFormat()
 	private Date SubmitedDate;
@@ -49,15 +49,7 @@ public class InternalRequest implements Serializable{
 		super();
 	}
 	
-	public InternalRequest(String description, String status, Date submitedDate, String commentaire,
-			TypeInternalRequest typeInternalRequest) {
-		super();
-		Description = description;
-		Status = status;
-		SubmitedDate = submitedDate;
-		Commentaire = commentaire;
-		this.typeInternalRequest = typeInternalRequest;
-	}
+	
 
 
 
@@ -83,9 +75,16 @@ public class InternalRequest implements Serializable{
 	
 
 
+	
+
+
+
+
 	public String getStatus() {
-		return Status;
+		return status;
 	}
+
+
 
 
 
@@ -93,8 +92,10 @@ public class InternalRequest implements Serializable{
 
 
 	public void setStatus(String status) {
-		Status = status;
+		this.status = status;
 	}
+
+
 
 
 

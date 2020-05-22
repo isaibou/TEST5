@@ -11,9 +11,10 @@ import com.example.demo.entities.RFP;
 public interface InternalRequestRepository extends JpaRepository<InternalRequest, Integer>{
 	
 	
-	@Query("select i from InternalRequest i where i.Status =1")
-	public List<InternalRequest> internalRequestWaiting();
+	//@Query("select i from InternalRequest i where i.Status =1")
+	//public List<InternalRequest> internalRequestWaiting();
 	
-	//public List<InternalRequest> findByStatus(String Status);
+   List<InternalRequest> findByStatus(String status);
+
 
 }

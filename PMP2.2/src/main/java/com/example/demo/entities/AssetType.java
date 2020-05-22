@@ -88,16 +88,7 @@ public class AssetType implements Serializable{
 		super();
 	}
 
-	public AssetType(String Name, String brand, Date endOfSuportDate, Date endSaleDate, String fRU, String status) {
-		super();
-		this.AssetType_ID = AssetType_ID;
-		this.Name = Name;
-		this.Brand = brand;
-		this.EndOfSuportDate = endOfSuportDate;
-		this.EndSaleDate = endSaleDate;
-		this.FRU = fRU;
-		this.status = status;
-	}
+	
 
 	public Integer getAssetType_ID() {
 		return AssetType_ID;
@@ -151,8 +142,10 @@ public class AssetType implements Serializable{
 	}
 
 	public void setStatus(String status) {
-		status = status;
+		this.status = status;
 	}
+
+	
 	
 
 	

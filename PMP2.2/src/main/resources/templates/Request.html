@@ -81,7 +81,7 @@
   </li>
   <li class="dropdown">
    	<span class="thumb-sm avatar pull-right m-t-n-sm m-b-n-sm m-l-sm">
-													<img class="img-thumbnail" th:src="@{getPhoto(id=${user.username})}" width="60px" height="60px">
+													<img class="img-thumbnail" th:src="@{getPhoto(id=${user.Picture})}" width="60px" height="60px">
 														<i class="on md b-white bottom"></i>
 													</span>
 													<span th:text ="   ${user.firstName   } + . +  ${user.LastName   }   "></span><b class="caret"></b>
@@ -395,15 +395,15 @@
         <div class="row text-center">
          <div class="col-sm-6">
           <div class="panel padder-v item">
-           <div class="h1 count text-info font-thin h1 pull-center" th:text="${intAll}"></div>
-            <span class="text-muted text-xs"><b> Total Request </b></span>
+           <div class="h1 count text-info font-thin h1 pull-center" th:text="${intWait}"></div>
+            <span class="text-muted text-xs"><b> Total Waiting </b></span>
             <span class="bottom text-right w-full"><i class="glyphicon   glyphicon-tower text-muted m-r-sm"></i> </span>
            </div>
           </div>
           <div class="col-sm-6">
            <a href="" class="block panel padder-v bg-primary item">
-            <span class="text-white count font-thin h1 block" th:text="${intAll}" ></span>
-            <span class="text-muted text-xs"><b> Total Request </b></span>
+            <span class="text-white count font-thin h1 block" th:text="${intConf}" ></span>
+            <span class="text-muted text-xs"><b> Total Request Confirmed  </b></span>
             <span class="bottom text-right w-full"><i class="glyphicon glyphicon-briefcase text-muted m-r-sm"></i></span>
            </a>
           </div>
@@ -471,8 +471,8 @@
          </div>
          <div class="col-sm-6">
           <a href="" class="block panel padder-v bg-primary item">
-           <span class="text-white count font-thin h1 block" th:text="${extAll}" ></span>
-           <span class="text-muted text-xs"><b> Total Request </b></span>
+           <span class="text-white count font-thin h1 block" th:text="${extWait}" ></span>
+           <span class="text-muted text-xs"><b> Total Request Waiting </b></span>
            <span class="bottom text-right w-full"><i class="glyphicon glyphicon-briefcase text-muted m-r-sm"></i> </span>
           </a>
          </div>
@@ -489,15 +489,9 @@
 												{ mData: 'Dema' },
 												
 												{ mData: 'Status' },
-<<<<<<< HEAD
-												{ mData: 'date' },
-												{ mData: 'action' }]
 
-=======
 												{ mData: 'date' },
-												{ mData: 'status' },
 												{ mData: 'action' }]
->>>>>>> branch 'master' of https://github.com/isaibou/TEST5
 											}" class="table  b-t b-b">
 		<thead>
 		 <tr>	    

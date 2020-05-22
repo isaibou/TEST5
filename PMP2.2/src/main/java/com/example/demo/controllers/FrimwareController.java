@@ -71,10 +71,14 @@ public class FrimwareController {
 		if(frimwareRepository.checkTitleExist(addFrim.getName())) {
 			//System.err.println("checkTitleExist-------------------");
 			model.addAttribute("unique", "must be unique");
+			 model.addAttribute("assetType", assetTypeRepository.findAll());
+
 			return "addFirmware";
 		}
 		
 		if(bindingResult.hasErrors()) {
+			 model.addAttribute("assetType", assetTypeRepository.findAll());
+
 			return "addFirmware";
 			
 		}
@@ -91,7 +95,6 @@ public class FrimwareController {
 	private String addFirmware( Model model ) {
 		
 	     
-		 model.addAttribute("frimware",frimwareRepository.findAll());
 		
 		 model.addAttribute("frimware", new Frimware());
 		 
@@ -119,7 +122,6 @@ public class FrimwareController {
 	public String updateFrimware(Model model, Frimware frim){
 	
 		
-	    frim.setStatus("Actif");
 	    System.out.println(frim.getFrimware_ID());
 		frimwareRepository.save(frim);
 		System.out.println(frim.getFrimware_ID());

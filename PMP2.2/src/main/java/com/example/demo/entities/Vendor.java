@@ -64,13 +64,16 @@ public class Vendor implements Serializable{
 	}
 
 
+	
+
+
 	public String getStatus() {
 		return status;
 	}
 
 
 	public void setStatus(String status) {
-		status = status;
+		this.status = status;
 	}
 
 

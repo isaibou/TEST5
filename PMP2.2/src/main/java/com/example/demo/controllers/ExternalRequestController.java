@@ -52,6 +52,11 @@ public class ExternalRequestController {
 		
 		List<InternalRequest> intAll = internalRequestrepository.findAll();
 		List<ExternalRequest> extAll = externalRequestRepository.findAll();
+		//List<ExternalRequest> extWait = externalRequestRepository.findByStatus(false);
+		List<InternalRequest> intWait = internalRequestrepository.findByStatus("Waiting");
+		List<InternalRequest> intConf = internalRequestrepository.findByStatus("Confirmed");
+
+		
 		
 		model.addAttribute("listInt", intAll);
 		model.addAttribute("listExt", extAll);
@@ -61,6 +66,10 @@ public class ExternalRequestController {
 		model.addAttribute("extAll", extAll.size());
 		model.addAttribute("typeInternal", typeInternalRequestrepository.findAll());
 		model.addAttribute("typeExternal", typeExternalRequestRepository.findAll());
+		model.addAttribute("intWait", intWait.size());
+		model.addAttribute("intConf", intConf);
+		//model.addAttribute("extWait", extWait.size() );
+		
 		
 		return "request";
 	}
@@ -111,14 +120,15 @@ public class ExternalRequestController {
 	}
 	
 	@RequestMapping(value ="/editCustomerRequest" )
-	public String editCustomerRequest(Integer id , Model model, @RequestParam(name="commentaire")String commentaire) {
+	public String editCustomerRequest(Integer id , Model model, @RequestParam(name="com")String commentaire) {
 		
 	ExternalRequest eR = externalRequestRepository.getOne(id);
-	String previousCom= eR.getCommentaire();
-	String NomCompany =  eR.getUserCustomer().getCustomer().getName();
-	String com = NomCompany + " :  " + commentaire;
-	String newCom = previousCom + "  -----------   " + com; 
-	eR.setCommentaire(newCom);
+		/*
+		 * String previousCom= eR.getCommentaire(); String NomCompany =
+		 * eR.getUserCustomer().getCustomer().getName(); String com = NomCompany +
+		 * " :  " + commentaire; String newCom = previousCom + "  -----------   " + com;
+		 */ 
+	eR.setCommentaire(commentaire);
 	externalRequestRepository.save(eR);
 		
 		return "redirect:/request";

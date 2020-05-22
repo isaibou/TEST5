@@ -71,15 +71,19 @@ public class ContractController {
 		if(contratrepository.checkTitleExist(addCont.getTitle())) {
 			//System.err.println("checkTitleExist-------------------");
 			model.addAttribute("unique", "must be unique");
+			 model.addAttribute("customer", customerRepository.findAll());	
+			 model.addAttribute("rfp", rfpRepository.findAll());
 			return "addContracts";
 		}
 		if(bindingResult.hasErrors()) {
+			 model.addAttribute("customer", customerRepository.findAll());	
+			 model.addAttribute("rfp", rfpRepository.findAll());
 			return "addContracts";
 			
 		}
 
 		
-if (!(file.isEmpty())) {
+		if (!(file.isEmpty())) {
 			
 			addCont.setContractFille((file.getOriginalFilename()));
 
@@ -91,10 +95,9 @@ if (!(file.isEmpty())) {
 		
 	}
 	@RequestMapping(value ="/addContracts")
-	public String addContracts( Model model, Integer id ) {
+	public String addContracts( Model model ) {
 		
 		
-		 model.addAttribute("contrat",contratrepository.findAll());
 		 model.addAttribute("contrat", new Contrat());
 		 model.addAttribute("customer", customerRepository.findAll());	
 		 model.addAttribute("rfp", rfpRepository.findAll());

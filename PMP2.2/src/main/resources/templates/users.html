@@ -429,7 +429,7 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 		 </tr>
 		</thead>
 		<tbody>
-	 <tr sec:authorize="hasRole('ROLE_ADMIN')" data-expanded="true" th:each="e:${uE}">
+	 <tr sec:authorize="hasRole('ROLE_EMPLOYEE')" data-expanded="true" th:each="e:${uE}">
 	
 		  <td><img class="img-thumbnail" th:src="@{getPhoto(id=${e.Picture})}" width="60px" height="60px"/></td>
           <td th:text ="${e.firstName}+.+${e.lastName}"><center></center></td>
@@ -489,7 +489,7 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 		 </tr>
 		</thead>
 		<tbody>
-	 <tr sec:authorize="hasRole('ROLE_ADMIN')" data-expanded="true" th:each="u:${uC}">
+	 <tr sec:authorize="hasRole('ROLE_EMPLOYEE')" data-expanded="true" th:each="u:${uC}">
 	
           <td th:text ="${u.firstName}+.+${u.lastName}"><center></center></td>
           <td th:text = "${u.username}"><center><center><span class="label bg-danger pull-center m-t-md"></span></center></center></td>

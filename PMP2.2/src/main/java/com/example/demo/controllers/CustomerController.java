@@ -66,6 +66,9 @@ public class CustomerController {
 		List<Customer> customerArchived = customerrepository.findByStatus("Archived");
 		model.addAttribute("totalcustomerArchived", customerArchived.size());
 		
+		List<Customer> vip = customerrepository.findByVip("YES");
+		model.addAttribute("vip", vip.size());
+		
 		return "customer_manage";
 	}
 

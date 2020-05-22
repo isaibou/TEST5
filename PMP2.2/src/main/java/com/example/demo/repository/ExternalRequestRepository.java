@@ -9,5 +9,6 @@ import com.example.demo.entities.ExternalRequest;
 
 public interface ExternalRequestRepository extends JpaRepository<ExternalRequest, Integer>{
 
+	public  List<ExternalRequest> findByStatus(Boolean stat);
 	
 }

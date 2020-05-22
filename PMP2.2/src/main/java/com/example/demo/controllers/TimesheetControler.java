@@ -58,6 +58,7 @@ public class TimesheetControler {
 		 String name = auth.getName();
 		 Users u = userRepository.getOne(name);
 		List<Ticket> tickets = ticketRepository.findByUser(u);
+		
 		model.addAttribute("tickets",  tickets);
 		model.addAttribute("task", new Task());
 		return "addTaskTicket";

@@ -13,12 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.example.demo.entities.ProjectTask;
-import com.example.demo.entities.RFP;
-import com.example.demo.entities.TechnologyPartner;
 import com.example.demo.entities.Users;
-import com.example.demo.entities.Vendor;
 import com.example.demo.repository.ProjectTaskRepository;
-import com.example.demo.repository.TechnologiePartnerRepository;
 import com.example.demo.repository.UserRepository;
 
 @Controller
@@ -44,7 +40,17 @@ public class ProjectTaskController {
 	}
 	
 	@RequestMapping(value="/SaveProjectTask" , method= RequestMethod.POST)
-	private String SaveProjecTask( ProjectTask pt) {
+	private String SaveProjecTask(@Valid ProjectTask pt, BindingResult bindingResult, Model model) {
+		
+		if(projecTaskrepository.checkTitleExist(pt.getNameProjectTask())) {
+			
+			model.addAttribute("unique", "must be unique");
+			return "addProjectTask";
+		}
+		
+		if(bindingResult.hasErrors()) {
+			return "addProjectTask";
+		}
 		
 		projecTaskrepository.save(pt);
 		
@@ -55,7 +61,7 @@ public class ProjectTaskController {
 	@RequestMapping(value ="/addProjectTask")
 	public String addRFP( Model model ) {
 		 
-		model.addAttribute("pTask",new ProjectTask() );
+		model.addAttribute("projectTask",new ProjectTask() );
 		
 			return "addProjectTask";
 			

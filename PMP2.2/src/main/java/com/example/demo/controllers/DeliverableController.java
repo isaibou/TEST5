@@ -20,6 +20,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
@@ -63,12 +64,26 @@ public class DeliverableController {
 		return "deliverable_manage";
 	}
 
+
+	@RequestMapping(value="/SaveDeliverable",  method= RequestMethod.POST)
+	public String addDelivrable(@Valid @ModelAttribute("Deliverable") Deliverable deli, BindingResult bindingResult, 
+			@RequestParam(name="fileD") MultipartFile fileD , Model model, @RequestParam(name="picture") MultipartFile picture)
+            throws IllegalStateException, IOException {
+		
+
+		/*if(deliverablerepository.checkTitleExist(deli.getName())) {
+			
+			model.addAttribute("unique", "must be unique");
+			return "addDelivP";
+		}
+=======
 	@RequestMapping(value="/addDeliverable")
 	public String addDelivrable(@Valid @ModelAttribute("deliv") Deliverable deli, BindingResult bindingResult, @RequestParam(name="fileD") MultipartFile fileD , @RequestParam(name="picture") MultipartFile picture) throws IllegalStateException, IOException {
+>>>>>>> branch 'master' of https://github.com/isaibou/TEST5
 		
 		if(bindingResult.hasErrors()) {
 			return "addDelivP";
-		}
+		}*/
 		
 if (!(fileD.isEmpty())) {
 			
@@ -98,9 +113,11 @@ deliverablerepository.save(deli);
 	
 	@RequestMapping(value ="/addDeliv")
 	public String addDeliv( Model model) {
-		 model.addAttribute("deliv",new Deliverable());
+		
+		 model.addAttribute("Deliverable",new Deliverable());
 		 model.addAttribute("type", typeDeliverableRepository.findAll());
-		 model.addAttribute("project", projectrepository.findAll());	
+		 model.addAttribute("project", projectrepository.findAll());
+		 
 			return "addDelivP";	
 	}
 

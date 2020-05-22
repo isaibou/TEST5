@@ -252,11 +252,13 @@
                   <i class="glyphicon  glyphicon-th"></i>
                   <span>Assets</span>
                 </a>
+
                 <ul class="nav nav-sub dk">
                  <li class="">
                     <a th:href="assets_manage">
                       <span>Manage Assets</span>
                     </a>
+
                   </li>
                   <li>
                     <a th:href="assetstype_manage">
@@ -275,12 +277,12 @@
                   </li>
                 </ul>
               </li>
-            <!--   <li>
+              <li>
                 <a th:href="tickets_manage">
                   <i class="glyphicon glyphicon-tag"></i>
                   <span>Tickets</span>
                 </a>
-              </li> -->
+              </li>
 			   <li>
                 <a th:href="RFP">
                   <i class="glyphicon glyphicon-tag"></i>
@@ -486,42 +488,64 @@
           <table ui-jq="dataTable" ui-options="{ aoColumns: [										
 												{ mData: 'description' },
 												{ mData: 'Demandeur' },
+												{ mData: 'Dema' },
+												
 												{ mData: 'Status' },
 												{ mData: 'date' },
 												{ mData: 'action' }]
-											 }" class="table  b-t b-b">
-		  <thead>
-		   <tr>	
-		    <th  style="width:25%"><center>Company</center></th>    
-		    <th  style="width:30%"><center>Description</center></th>
-	        <th  style="width:15%"><center>Submited Date</center></th>
-	        <th  style="width:15%"><center>Status</center></th>	      
-		    <th  style="width:15%"><center>Actions</center></th>	 
-		   </tr>
-		  </thead>
-		  <tbody>
-	       <tr  data-expanded="true" th:each="e:${listExt}"><!-- <td th:text="${e.typeExternalRequest.NameTypeExternelRequest}"></td> -->
-	       <td  th:text="${e.userCustomer.customer.Name}"><center><center><span class="label bg-danger pull-center m-t-md"></span></center></center></td>		    
-            <td th:text ="${e.Description}"><center></center></td>
-            <td th:text ="${e.SubmitedDate}"><center></center></td>
-		    <td>		  
-		     <span th:if="${e.Status == true}" class="label bg-success pull-center m-t-md">Answered</span>
-   		     <span th:unless="${e.Status == true}" class="label bg-danger pull-center m-t-md">Waiting</span> 
-   		    </td>
-		    <td><center>
-		   	 <div class="btn-group dropdown">
-		      <button class="btn btn-default btn-xs" data-toggle="dropdown"><i class="glyphicon glyphicon-cog"></i> Action <span class="caret"></span> </button>
-		      <ul class="dropdown-menu">
-		       <li><a th:href="@{updateRequestCustomer(id=${e.ExternalRequest_ID})}"  style="margin-top:-5px;"   class="btn btn-sm btn-light" role="button">Update</a></li>
-		       <li><a th:href="@{answerC(id=${e.ExternalRequest_ID})}" style="margin-top:-5px;"  class="btn btn-sm btn-light" role="button">Answer</a></li>		      
-			   <li><a th:href="@{detailsRequestCustomer(id=${e.ExternalRequest_ID})}" style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Details</a></li>
-              </ul>
-		     </div>
-		    </center></td>
-		   </tr>
-	      </tbody>
-	     </table>
-        </div>
+
+											}" class="table  b-t b-b">
+		<thead>
+		 <tr>
+		 
+	    
+          <th  style="width:8%"><center>Type</center></th>
+		  <th  style="width:12%"><center>Description</center></th>
+	      <th  style="width:12%"><center>Company</center></th>
+	      <th  style="width:12%"><center>Submited Date</center></th>
+	      <th  style="width:12%"><center>Status</center></th>
+	      
+		  <th  style="width:15%"><center>Actions</center></th>
+		 
+		 </tr>
+		</thead>
+		
+		
+		<tbody>
+	 <tr  data-expanded="true" th:each="e:${listExt}">
+		  <td th:text="${e.typeExternalRequest.NameTypeExternelRequest}"></td>
+          <td th:text ="${e.Description}"><center></center></td>
+          <td  th:text="${e.userCustomer.customer.Name}"><center><center><span class="label bg-danger pull-center m-t-md">Company</span></center></center></td>
+          <td th:text ="${e.SubmitedDate}"><center></center></td>
+		  		  <td>
+		  
+		   <span th:if="${e.Status == true}" class="label bg-success pull-center m-t-md">Answered</span>
+   		   <span th:unless="${e.Status == true}" class="label bg-danger pull-center m-t-md">Waiting</span> 
+   		   </td>
+
+		  <td>
+		   <center>
+		   	<div class="btn-group dropdown">
+		     <button class="btn btn-default btn-xs" data-toggle="dropdown">
+		      <i class="glyphicon glyphicon-cog"></i> Action <span class="caret"></span>
+		     </button>
+		     <ul class="dropdown-menu">
+		       <li>
+				<a th:href="@{updateRequestCustomer(id=${e.ExternalRequest_ID})}"  style="margin-top:-5px;"   class="btn btn-sm btn-light" role="button">Update</a>						</li>
+																								<li>
+		      <li><a th:href="@{answerC(id=${e.ExternalRequest_ID})}" style="margin-top:-5px;"  class="btn btn-sm btn-light" role="button">Answer</a></li>
+		      <li>
+			<a th:href="@{detailsRequestCustomer(id=${e.ExternalRequest_ID})}" style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Details</a>
+																								</li>
+		     </ul>
+		    </div>
+		   </center>
+		  </td>
+		 </tr>
+	</tbody>
+	   </table>
+    
+		</div>
 	   </div>
 	  </div>
      </div>

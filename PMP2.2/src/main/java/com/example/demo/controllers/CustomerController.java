@@ -89,15 +89,18 @@ public class CustomerController {
 			addCust.setLogo(file.getOriginalFilename());
 			System.out.println(addCust.getLogo());
 
-			file.transferTo(new File(images+addCust.getCustomer_ID()));
+			file.transferTo(new File(images+addCust.getLogo()));
 		}
+		
+		customerrepository.save(addCust);
+
 
 		return "redirect:/customer_manage";
 	}
 	
 	@RequestMapping(value="/getLogo" , produces= MediaType.IMAGE_JPEG_VALUE)
 	@ResponseBody
-	private byte[] getLogo(Integer id) throws  IOException {
+	private byte[] getLogo(String id) throws  IOException {
 		File f = new File(images+id);
 		return  IOUtils.toByteArray(new FileInputStream(f));
 	}
@@ -133,8 +136,11 @@ public class CustomerController {
 				addCust.setLogo(file.getOriginalFilename());
 				System.out.println(addCust.getLogo());
 
-				file.transferTo(new File(images+addCust.getCustomer_ID()));
+				file.transferTo(new File(images+addCust.getLogo()));
 			}
+			
+			customerrepository.save(addCust);
+
 
 			return "redirect:/customer_manage";  
 	  }

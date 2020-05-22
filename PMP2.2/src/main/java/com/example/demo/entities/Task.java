@@ -44,7 +44,8 @@ public class Task implements Serializable{
 	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name="AFFETATIONPROJECT_ID")
 	private AffectationProject affectationProject;
-	
+	@OneToMany(mappedBy = "task" , fetch = FetchType.LAZY)
+	private Collection<Expenses> expense;
 	
 	public Task() {
 		super();
@@ -103,7 +104,14 @@ public class Task implements Serializable{
 	public void setAffectationProject(AffectationProject affectationProject) {
 		this.affectationProject = affectationProject;
 	}
-
+	public Collection<Expenses> getExpense() {
+		return expense;
+	}
+	public void setExpense(Collection<Expenses> expense) {
+		this.expense = expense;
+	}
+	
+	
 	
 	
 }

@@ -22,7 +22,7 @@ public class AffectationProject {
 	private Project project;
 
 	@ManyToOne
-	@JoinColumn(name = "TYPEPROJECT_ID")
+	@JoinColumn(name = "PROJECTTASK_ID")
 	private ProjectTask projATsk;
 	
 	@ManyToOne

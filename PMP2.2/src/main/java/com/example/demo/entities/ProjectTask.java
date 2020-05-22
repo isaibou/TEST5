@@ -9,17 +9,23 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+
+import javax.validation.constraints.NotEmpty;
+
 import javax.persistence.OneToMany;
+
 
 
 @Entity
 public class ProjectTask implements Serializable{
 	
 	@Id
-	
 	@GeneratedValue
+	
 	private Integer ProjectTask_ID;
+	@NotEmpty
 	private String NameProjectTask;
+	
 	@ManyToMany
 	@JoinTable(name="TypeProject_projectTask")
 	private Collection<TypeProject> typeProject;

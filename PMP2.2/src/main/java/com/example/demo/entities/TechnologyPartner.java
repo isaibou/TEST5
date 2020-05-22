@@ -27,7 +27,7 @@ public class TechnologyPartner implements Serializable{
 	private Integer TechnologyPartner_ID;
 	
 	@NotEmpty
-	@Column (name="NameTechnologyPartner",unique=true)
+	@Column (name="NameTechnologyPartner")
 	private String NameTechnologyPartner;
 	
 	private String TechnologyPartnerFile;

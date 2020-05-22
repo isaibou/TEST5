@@ -263,11 +263,13 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
                   <i class="glyphicon  glyphicon-th"></i>
                   <span>Assets</span>
                 </a>
+
                 <ul class="nav nav-sub dk">
                  <li class="">
                     <a th:href="assets_manage">
                       <span>Manage Assets</span>
                     </a>
+
                   </li>
                   <li>
                     <a th:href="assetstype_manage">
@@ -286,12 +288,12 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
                   </li>
                 </ul>
               </li>
-            <!--   <li>
+              <li>
                 <a th:href="tickets_manage">
                   <i class="glyphicon glyphicon-tag"></i>
                   <span>Tickets</span>
                 </a>
-              </li> -->
+              </li>
 			   <li>
                 <a th:href="RFP">
                   <i class="glyphicon glyphicon-tag"></i>
@@ -429,14 +431,14 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 		<tbody>
 	 <tr sec:authorize="hasRole('ROLE_ADMIN')" data-expanded="true" th:each="e:${uE}">
 	
-		  <td><img class="img-thumbnail" th:src="@{getPhoto(id=${e.username})}" width="60px" height="60px"/></td>
+		  <td><img class="img-thumbnail" th:src="@{getPhoto(id=${e.Picture})}" width="60px" height="60px"/></td>
           <td th:text ="${e.firstName}+.+${e.lastName}"><center></center></td>
           <td th:text = "${e.username}"><center><center><span class="label bg-danger pull-center m-t-md"></span></center></center></td>
 		  <td th:text = "${e.CIN}"></td>
 		  <td>
 		  
 		   <span th:if="${e.actived == true}" class="label bg-success pull-center m-t-md">Enabled</span>
-   		   <span th:unless="${e.actived == true}" class="label bg-danger pull-center m-t-md">Disabled</span> </td>
+   		   <span th:unless="${e.actived == true}" class="label bg-danger pull-center m-t-md">Disabled</span> 
 		  
 		  </td>
 		  

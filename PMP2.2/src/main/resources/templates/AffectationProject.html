@@ -3,7 +3,7 @@
 <head>
 
   <meta charset="utf-8" />
-  <title>Choose Frimware</title>
+  <title>Affectation</title>
   <meta name="description" content="app, web app, responsive, responsive layout, admin, admin panel, admin dashboard, flat, flat ui, ui kit, AngularJS, ui route, charts, widgets, components" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <link rel="stylesheet" href="../libs/assets/animate.css/animate.css" type="text/css" />
@@ -14,47 +14,44 @@
   <link rel="stylesheet" href="css/app.css" type="text/css" />
 </head>
 <body>
-<div class="app" >
- <a href="" class="navbar-brand block m-t"><i class="fa fa-power-off"></i> <b>PowerM</b> </a>
- 	<div>
-	 <div class="modal-dialog modal-lg" >
-	 <div class="modal-content">
-      <h1 class="m-n font-bold h3"> Affectation Project task To Employee </h1>
+<div style="margin:50px;"></div>
+<div class="col-md-6 col-sm-6 col-xs-12 spacer col-md-offset-3">
+  <a href="" class="navbar-brand block m-t"><i class="fa fa-power-off"></i> <b>PowerM</b> </a>
+  <div class="panel panel-default">
+   <div class="panel-heading"> Affectation </div>
+    <form th:action="@{affectedProj}" method ="post" th:object="${affectationProj}" >
+     <div class="panel-body">
+      <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b> Project</b></label>
+      <div class="col-sm-8" style="margin: 5px 0px;">
+       <input type="text" class="form-control" id="input-id-1"  th:text="${proj.Name}" th:value="${proj.Project_ID}" name="project"/>
+      </div>
+      <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Project Task</b></label>
+      <div class="col-sm-8" style="margin: 5px 0px;"><!-- ici on met une boucle sur le customer pour avoir récupérer la liste des customer  -->
+       <select name="projTAsk" class="form-control m-b"  th:field="*{projATsk}">
+        <option th:each ="c:${proj.typeProject.projectTask}" th:text="${c.NameProjectTask}" th:value ="${c.ProjectTask_ID}"></option>
+       </select>  
+      </div> 
+      <label class="col-sm-4 control-label" for="input-id-1" style="margin:5px 0px;"><b>Employee :</b></label>
+      <div class="col-sm-8" style="margin:5px 0px;" >
+       <select name ="employee" class="form-control" multiple="multiple" th:field="*{user}" >
+        <option  th:each ="a:${employee}"  th:text="${a.lastName} + .+ ${a.firstName}" th:value="${a.username}" /></option>
+       </select>
+      </div>
+      <div style="margin: 5px 0px;">
+              <button style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon pull-right"><a th:href="projects"><i class="glyphicon glyphicon-remove"></i>Cancel</a></button>
+        <button style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon pull-right"><a th:href="@{affectation(id=${proj.Project_ID})}"><i class="glyphicon glyphicon-ok"></i>Affect</a></button>
+        <button style="margin:0px;" class="btn m-b-xs btn-sm btn-primary btn-addon pull-right"><i class="glyphicon glyphicon-ok"></i>Save</button>
+      </div>  
      </div>
-   <form th:action="@{affectedProj}" method ="post" th:object="${affectationProj}" >
-      <div class="modal-body">
-	    <div class="row">
-	     <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b> Project</b></label>
-     <div class="col-sm-8" style="margin: 5px 0px;">
-      <input type="text" class="form-control" placeholder="Entry Name of Project" id="input-id-1"  th:text="${proj.Name}" th:value="${proj.Project_ID}" name="project"  />
-	 </div>
-	    <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Project Task</b></label>
-	 <div class="col-sm-8" style="margin: 5px 0px;">
-	 <!-- ici on met une boucle sur le customer pour avoir récupérer la liste des customer  -->
-	  <select name="projTAsk" class="form-control m-b"  th:field="*{projATsk}">
-	   <option th:each ="c:${proj.typeProject.projectTask}" 
-	   th:text="${c.NameProjectTask}"
-	   th:value ="${c.ProjectTask_ID}"></option>
-	  </select>
-	  
-	 <label class="col-sm-4 control-label" for="input-id-1" style="margin:5px 0px;"><b>Employee :</b></label>
-	 <div class="col-sm-8" style="margin:5px 0px;" >
-	 <select name ="employee" class="form-control" multiple="multiple" th:field="*{user}" >
-	 <option  th:each ="a:${employee}"  th:text="${a.lastName} + .+ ${a.firstName}" th:value="${a.username}" ></option>
-	 </select>
-	 </div>
-	   
-          </div>
-		  <div class="modal-footer">
-		   <button style="margin:0px;" class="btn m-b-xs btn-sm btn-primary btn-addon"><i class="glyphicon glyphicon-ok"></i>Save</button>
-		   <button style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon"><a th:href="projects"><i class="glyphicon glyphicon-remove"></i>Annuler</a></button>
-		  </div>
-		 </div>
-		</div>
-	    </form>
-		</div>
-	  </div>
-     </div>
+    </form>
+  </div>
+<div class="text-center">
+ <p><small class="text-muted">
+  <span class="pull-right">2.2.0 <a href ui-scroll="app" class="m-l-sm text-muted"><i class="fa fa-long-arrow-up"></i></a></span>
+  <span class="pull-left"> &copy; PowerM 2020 Copyright. </span> 
+ </small></p>
+</div>
+</div>
 <script src="../libs/jquery/jquery/dist/jquery.js"></script>
 <script src="../libs/jquery/bootstrap/dist/js/bootstrap.js"></script>
 <script src="js/ui-load.js"></script>

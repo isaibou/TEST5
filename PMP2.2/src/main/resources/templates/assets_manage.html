@@ -255,7 +255,6 @@
 
           <!-- nav -->
 <nav ui-nav class="navi clearfix">
-
             <ul class="nav">
               <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
                 <span>Main</span>
@@ -296,6 +295,12 @@
                       <span>Purchasing contact</span>
                     </a>
                   </li>
+                  
+                   <li>
+                    <a th:href="dataCenter">
+                      <span>DataCenter</span>
+                    </a>
+                  </li>
                     
                 </ul>
               </li>
@@ -306,14 +311,14 @@
                 </a>
 
               </li>
-            <!--    <li>
+               <li>
 				 <a th:href="timesheets" class="auto">
                   <i class="glyphicon glyphicon-calendar icon"></i>
                   <span>TimeSheet</span>
                 </a>
 
-              </li> -->
-           <!--    <li>
+              </li>
+              <li>
                 <a href class="auto">
                   <span class="pull-right text-muted">
                     <i class="fa fa-fw fa-angle-right text"></i>
@@ -325,22 +330,47 @@
                 </a>
                 <ul class="nav nav-sub dk">
                   <li class="s">
-                    <a th:href="projects_manage">
+                    <a th:href="projects">
                       <span>Manage Project</span>
                     </a>
                   </li>
+                  
+                    <li class="s">
+                    <a th:href="technology">
+                      <span>Technology Partner</span>
+                    </a>
+                  </li>
+                  
+                    <li class="s">
+                    <a th:href="typeProject">
+                      <span>Type Project</span>
+                    </a>
+                  </li>
+                  
+                    <li class="s">
+                    <a th:href="projectTask">
+                      <span> Project Task</span>
+                    </a>
+                  </li>
+                  
                   <li>
-                    <a th:href="deliverable_manage">
+                    <a th:href="deliverable">
                       <span>Manage Deliverable</span>
                     </a>
                   </li>
+                  
+                    <li>
+                    <a th:href="typeDeliverable">
+                      <span>Manage Type Deliverable</span>
+                    </a>
+                  </li>
                   <li>
-                    <a th:href="reference_manage">
+                    <a th:href="reference">
                       <span>Manage Reference</span>
                     </a>
                   </li>
                 </ul>
-              </li> -->
+              </li>
               <li>
                 <a href class="auto">
                   <span class="pull-right text-muted">
@@ -350,11 +380,13 @@
                   <i class="glyphicon  glyphicon-th"></i>
                   <span>Assets</span>
                 </a>
+
                 <ul class="nav nav-sub dk">
-                  <li class="">
+                 <li class="">
                     <a th:href="assets_manage">
                       <span>Manage Assets</span>
                     </a>
+
                   </li>
                   <li>
                     <a th:href="assetstype_manage">
@@ -373,30 +405,53 @@
                   </li>
                 </ul>
               </li>
-            <!--   <li>
+              <li>
                 <a th:href="tickets_manage">
                   <i class="glyphicon glyphicon-tag"></i>
                   <span>Tickets</span>
                 </a>
-              </li> -->
-              <li>
+              </li>
+			   <li>
                 <a th:href="RFP">
                   <i class="glyphicon glyphicon-tag"></i>
                   <span>RFP</span>
                 </a>
               </li>
+
 			  <li>
                 <a th:href="contract_manage">
                   <i class="fa fa-legal"></i></i>
                   <span>Contracts</span>
                 </a>
               </li>
-			<!--   <li>
-                <a th:href="expense">
-                  <i class="glyphicon  glyphicon-usd"></i></i>
+			<li>
+                <a th:href="request_manage" class="auto">
+				<span class="pull-right text-muted">
+                    <i class="fa fa-fw fa-angle-right text"></i>
+                    <i class="fa fa-fw fa-angle-down text-active"></i>
+                  </span>
+                  <i class="glyphicon  glyphicon-save icon"></i>
                   <span>Expenses</span>
                 </a>
-              </li> -->
+                 <ul class="nav nav-sub dk">
+                 
+                   <li class="s">
+                    <a th:href="typeExpenses">
+                      <span> Type  Expenses</span>
+                    </a>
+                  </li>
+                  
+                  <li>
+                    <a th:href="expenses">
+                      <span> Expenses</span>
+                    </a>
+                  </li>
+                 
+                </ul>
+
+               
+              </li>
+
               <li>
                 <a th:href="request_manage" class="auto">
 				<span class="pull-right text-muted">
@@ -619,15 +674,7 @@ function drawChart() {
           <div class="col-sm-8" style="margin: 5px 0px;">
              <input type="password" class="form-control" placeholder="Password" id="input-id-2" required th:field=*{PasswordAsset}>
           </div>
-          <!--  
-          <form role="form" id="sendfrimwares" th:action=@{/getfrimwares}
-		method="post">
-		<select class="form-control" id="target" name="nameOfAssetType">
-			<option value="">Select Frimware</option>
-			<div th:switch="${assettype}">
-				<h2 th:case="null">No assettype yet!</h2>
-				<div th:case="*">
-				-->
+       
           <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Asset Type</b></label>
           <div class="col-sm-8" style="margin: 5px 0px;">
           <select name="AssetType_ID" class="form-control m-b" th:field=*{assettype}>
@@ -637,20 +684,6 @@ function drawChart() {
 	         </select>
 	       </div>
 
-	      <!--  
-	        <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Project</b></label>
-=======
-	       <!--  
-	       <div class="col-sm-8" style="margin: 5px 0px;">
-	       <select id="select" name="nameOfFrimware">
->>>>>>> branch 'master' of https://github.com/isaibou/TEST5
-
-<<<<<<< HEAD
-=======
-		   </select>
-		   </div>
-	       -->
-	       
           <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Project</b></label>
           <div class="col-sm-8" style="margin: 5px 0px;">
           <select name="AssetType_ID" class="form-control m-b" th:field=*{project}>
@@ -660,7 +693,7 @@ function drawChart() {
 	      </select>
 	       </div>
           -->
-          <label class="col-sm-4 control-label"  style="margin: 5px 0px;" for="input-id-1"><b>Seria   l Number</b></label>
+          <label class="col-sm-4 control-label"  style="margin: 5px 0px;" for="input-id-1"><b>Serial Number</b></label>
           <div class="col-sm-8" style="margin: 5px 0px;">
             <input type="text"  class="form-control" placeholder="Entry Seriel Number"id="input-id-2" required th:field=*{SerielNumber}>
           </div>
@@ -704,7 +737,7 @@ function drawChart() {
 </div>
 </div>
 </div>
->>>>>>> branch 'master' of https://github.com/isaibou/TEST5
+
 
   <!-- /content -->
   
@@ -803,33 +836,6 @@ function drawChart() {
     
  
     </script>
-   <!--   <script type="application/javascript" th:src="@{js/jquery.js}"></script>
-
-	<script type="application/javascript">
-		
-	
-	$().ready(function(){
-		function CheckAjaxCall(){
-			var idCountry =  $( "#target" ).val();
-			$.get("getCities?idCountry=" + idCountry,
-				  function(data) {
-				    var sel = $("#select");
-				    sel.empty();
-				    for (var i=0; i<data.length; i++) {
-				      sel.append('<option value="' + data[i].id + '">' + data[i].nameCity + '</option>');
-				    }
-				  }, "json");
-		}
-	
-		$( "#target" ).change(function() {
-			alert( "Handler for .change() called." +  $( "#target" ).val()  );
-			CheckAjaxCall();
-		});
-	});
-
-	
-	
-	</script>
-	-->
+   
 </body>
 </html>

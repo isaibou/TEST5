@@ -253,11 +253,13 @@
                   <i class="glyphicon  glyphicon-th"></i>
                   <span>Assets</span>
                 </a>
+
                 <ul class="nav nav-sub dk">
                  <li class="">
                     <a th:href="assets_manage">
                       <span>Manage Assets</span>
                     </a>
+
                   </li>
                   <li>
                     <a th:href="assetstype_manage">
@@ -276,12 +278,12 @@
                   </li>
                 </ul>
               </li>
-            <!--   <li>
+              <li>
                 <a th:href="tickets_manage">
                   <i class="glyphicon glyphicon-tag"></i>
                   <span>Tickets</span>
                 </a>
-              </li> -->
+              </li>
 			   <li>
                 <a th:href="RFP">
                   <i class="glyphicon glyphicon-tag"></i>
@@ -432,6 +434,9 @@
 												{ mData: 'Demandeur' },
 												{ mData: 'Status' },
 												{ mData: 'Date' },
+																								{ mData: 'Date' },
+											
+												{ mData: 'Receipt' }
 												{ mData: 'action' }]
 											}" class="table  b-t b-b">
 		<thead>
@@ -440,6 +445,7 @@
           <th  style="width:25%"><center>Description</center></th>
 		  <th  style="width:15%"><center>Amount</center></th>
 	      <th  style="width:15%"><center>Submited Date</center></th>
+	      <th  style="width:15%"><center>Receipt</center></th>
 	      <th  style="width:15%"><center>Status</center></th>
 		  <th  style="width:15%"><center>Actions</center></th>
 		 
@@ -451,11 +457,12 @@
 		  <td th:text="${i.Description}" ></td>
           <td th:text ="${i.Amount}"><center></center></td>
           <td th:text ="${i.SubmittedDate}"><center></center></td>
+   			<td>  <img class="img-thumbnail"  th:src="@{getExpenses(id=${i.Receipt})}"  width="50" height="50" > </td>														
 		 
 		 	<td th:switch="${i.StatutExpense}">
     <span th:case="'Answered'" class="label bg-success pull-center m-t-md" >Answered</span>
     <span th:case="'Waiting'" class="label bg-danger pull-center m-t-md" >Waiting </span>
-    <div th:case="'Confirmed'" class="label bg-danger pull-center m-t-md" >Confirmed</div>
+    <div th:case="'Confirmed'" class="label bg-info pull-center m-t-md" >Confirmed</div>
      
 </td>	  
 		  <td>
@@ -475,8 +482,8 @@
 		      <li><a th:href="@{answerExpenses(id=${i.Expenses_ID})}" style="margin-top:-5px;"  class="btn btn-sm btn-light" role="button">Answer</a></li>
 		           <li>
 			<a th:href="@{detailsExpenses(id=${i.Expenses_ID})}" style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Details</a>
-																								</li>
-		      
+					     <li><a th:href="@{'/receipt/'+${i.Receipt}}"  style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Download Receipt</a></li>
+			
 		     </ul>
 		    </div>
 		   </center>

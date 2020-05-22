@@ -27,7 +27,7 @@ public class TypeRequestController {
 	
 	@Autowired
 	TypeInternalRequestRepository typeInternalRequestRepository;
-	
+	  
 	@Autowired
 	TypeExternalRequestRepository typeExternalRequestRepository;
 	@Autowired

@@ -1,5 +1,6 @@
 package com.example.demo.controllers;
 
+import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -8,6 +9,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 import org.apache.commons.io.IOUtils;
@@ -19,6 +21,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -48,7 +51,7 @@ public class ExpensesController {
 	ExpensesRepository expensesRepository;
 	@Autowired
 	TypeExpensesRepository typeExpensesRepository;
-	
+	@Autowired
 	TaskRepository taskRepository;
 
 	DateFormat df = new SimpleDateFormat("yyyy-	MM-dd");
@@ -73,12 +76,15 @@ public class ExpensesController {
 		return "expense";
 	}
 
-	@RequestMapping(value="/addExpenses")
-	public String addInternalRequest(@Valid @ModelAttribute("exp") Expenses expense,BindingResult bindingResult, Authentication  auth, @RequestParam(name="recu")MultipartFile file ) throws IllegalStateException, IOException {
+
+	@RequestMapping(value="/SaveExpenses")
+	public String addInternalRequest(@Valid Expenses expense,BindingResult bindingResult, Authentication  auth, 
+			@RequestParam(name="recu")MultipartFile file ) 
+					throws IllegalStateException, IOException {
+
+	
+
 		
-		if(bindingResult.hasErrors()) {
-			return "addExp";
-		}
 		
 		String login = auth.getName();
 		Users u =  userRepository.getOne(login);
@@ -89,7 +95,7 @@ public class ExpensesController {
 		if (!(file.isEmpty())) 
 		{
 			expense.setReceipt((file.getOriginalFilename()));
-			file.transferTo(new File(receipt+expense.getExpenses_ID()));
+			file.transferTo(new File(receipt+expense.getReceipt()));
 		}
 		expensesRepository.save(expense);
 
@@ -125,20 +131,22 @@ public class ExpensesController {
 		File f = new File(receipt+id);
 		return  IOUtils.toByteArray(new FileInputStream(f));
 	}
-	
+
 	@RequestMapping(value ="/addExp" )
-	public String addExp(Model model, Authentication auth) {
-		
+	public String addExp(Model model, Authentication  auth) {
+
+		model.addAttribute("expenses", new Expenses());
+		//model.addAttribute("type", typeExpensesRepository.findAll());
+
+	
 		  Users u = userRepository.getOne(auth.getName());
 		  model.addAttribute("exp",  new Expenses());
 		 model.addAttribute("type",  typeExpensesRepository.findAll());
 		  
 		  
-		  List<Task> tasks = taskRepository.findAll();
+		  List<Task> tasks = taskRepository.findByUsers(u);
 		  System.out.println(tasks);
 	     model.addAttribute("task",tasks);
-	     
-		 
 
 		return "addExp";
 	}
@@ -171,6 +179,40 @@ public class ExpensesController {
 	
 	
 	
+	
+
+@RequestMapping(value="/receipt/{fileName}")
+@ResponseBody
+public void getReceipt(@PathVariable("fileName")String fileName, HttpServletResponse response) {
+	
+	if (fileName.indexOf(".doc")>-1) response.setContentType("application/msword");
+	if (fileName.indexOf(".docx")>-1) response.setContentType("application/msword");
+	if (fileName.indexOf(".xls")>-1) response.setContentType("application/vnd.ms-excel");
+	if (fileName.indexOf(".csv")>-1) response.setContentType("application/vnd.ms-excel");
+	if (fileName.indexOf(".ppt")>-1) response.setContentType("application/ppt");
+	if (fileName.indexOf(".pdf")>-1) response.setContentType("application/pdf");
+	if (fileName.indexOf(".zip")>-1) response.setContentType("application/zip");
+
+	response.setHeader("Content-Disposition","attachment; filename=" +fileName);
+	response.setHeader("Content-Transfer-Encoding", "binary");
+	
+	try {
+		BufferedOutputStream bos = new BufferedOutputStream(response.getOutputStream());
+		FileInputStream fis = new FileInputStream(receipt+fileName);
+		int len; 
+		byte[] buf = new byte[1024];
+		while ((len = fis.read(buf)) >0) {
+			bos.write(buf,0,len);
+		}
+		bos.close();
+		response.flushBuffer();
+		
+		
+	} catch (IOException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}	
+ }
 	
 	
 	

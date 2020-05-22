@@ -11,6 +11,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotEmpty;
 
+import javax.validation.constraints.NotNull;
+
+
+
 import org.springframework.format.annotation.NumberFormat;
 
 @Entity
@@ -21,19 +25,20 @@ public class Expenses implements Serializable{
 	private Integer Expenses_ID;
 	
 	@NumberFormat(pattern = "#,###,###,###.##")
+	
+	
 	private Double Amount;
 	
 	@NotEmpty
 	private String Description;
 	
-	@NotEmpty
+
 	private String Receipt;
 	
 	private Date SubmittedDate;
 	
 	private String StatutExpense;
 	
-	@NotEmpty
 	private String RejectReason;
 		
 	@ManyToOne
@@ -151,6 +156,16 @@ public class Expenses implements Serializable{
 
 	public void setUser(Users user) {
 		this.user = user;
+	}
+
+
+	public Task getTask() {
+		return task;
+	}
+
+
+	public void setTask(Task task) {
+		this.task = task;
 	}
 	
 	

@@ -22,7 +22,7 @@
       <h1 class="m-n font-bold h3"> Add Assets </h1>
      </div>
 
- <form th:action="@{SaveAssets}" method ="post" th:object="${assets}">
+ <form th:action="@{SaveAssets}" enctype="multipart/form-data" method ="post" th:object="${assets}">
       <div class="modal-body">
         <div class="row">
         
@@ -33,11 +33,11 @@
           </div>
           <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Login Asset</b></label>
           <div class="col-sm-8" style="margin: 5px 0px;">
-            <input type="text"  class="form-control" placeholder="Entry Login Asset"id="input-id-2" required th:field=*{LoginAsset}>
+            <input type="text"  class="form-control" placeholder="Entry Login Asset"id="input-id-2"  th:field=*{LoginAsset}>
           </div>
           <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Password Asset</b></label>
           <div class="col-sm-8" style="margin: 5px 0px;">
-             <input type="password" class="form-control" placeholder="Password" id="input-id-2" required th:field=*{PasswordAsset}>
+             <input type="password" class="form-control" placeholder="Password" id="input-id-2"  th:field=*{PasswordAsset}>
           </div>
        
           <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Asset Type</b></label>
@@ -49,7 +49,6 @@
 	      </select>
 	       </div>
 
-	       
           <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Project</b></label>
           <div class="col-sm-8" style="margin: 5px 0px;">
             <select name="Project_ID" class="form-control m-b" th:field=*{project}>
@@ -59,10 +58,13 @@
 	      </select>
 	      
           </div>
-          <label class="col-sm-4 control-label"  style="margin: 5px 0px;" for="input-id-1"><b>Seriel Number</b></label>
+          <label class="col-sm-4 control-label"  style="margin: 5px 0px;" for="input-id-1"><b>Serial Number</b></label>
           <div class="col-sm-8" style="margin: 5px 0px;">
             <input type="text"  class="form-control" placeholder="Entry Seriel Number"id="input-id-2"  th:field=*{SerielNumber}>
             <span class="text-danger" th:errors=*{SerielNumber}></span>
+              <div class="text-danger" th:if="${unique}">
+		   <div th:text="${unique}"></div>
+		</div> 
           </div>
           
          <label class="col-sm-4 control-label" style="margin: 5px 0px;"  for="input-id-1"><b>Description</b></label>
@@ -84,12 +86,12 @@
           <label class="col-sm-4 control-label"  style="margin: 5px 0px;" for="input-id-1"><b>End Of PowerM Warranty</b></label>
            <div class="col-sm-8" style="margin: 5px 0px;">
              <input type="date" class="form-control" id="input-id-1"  th:field=*{EndPowermWarranty}/>
-             <span class="text-danger" th:errors=*{EndPowermWarranty}></span>
+            
            </div>
           <label class="col-sm-4 control-label"  style="margin: 5px 0px;" for="input-id-1"><b>End Vendor Warranty</b></label>
           <div class="col-sm-8" style="margin: 5px 0px;">
              <input type="date" class="form-control" id="input-id-1"  th:field=*{EndOfVendorWarranty}/>
-              <span class="text-danger" th:errors=*{EndOfVendorWarranty}></span>
+              
            </div>
            <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>SLA</b></label>
 		 <div class="col-sm-8" style="margin: 5px 0px;" >
@@ -103,12 +105,13 @@
         </div>
       </div>
       <div class="modal-footer">
-        <button style="margin:0px;" class="btn m-b-xs btn-sm btn-primary btn-addon"><i class="glyphicon glyphicon-ok"></i>Save</button>
+        <button style="margin:0px;" class="btn m-b-xs btn-sm btn-primary btn-addon"><i class="glyphicon glyphicon-ok"></i>Next</button>
        <button style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon"  data-dismiss="modal"><i class="glyphicon glyphicon-remove"></i>Annuler</button>
       </div>
+      </form>
     </div>
   </div>
-  </form>
+  
 		</div>
 	  </div>
      </div>

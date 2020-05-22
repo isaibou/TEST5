@@ -13,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import javax.persistence.SequenceGenerator;
 
 import org.springframework.format.annotation.NumberFormat;
@@ -21,8 +22,8 @@ import org.springframework.format.annotation.NumberFormat;
 public class Customer implements Serializable{
 		
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "my_seq_id")	
-	@SequenceGenerator(name = "my_seq_id", sequenceName = "my_seq_id", allocationSize = 100)
+	@GeneratedValue	
+	//@SequenceGenerator(name = "my_seq_id", sequenceName = "my_seq_id", allocationSize = 100)
 	private Integer Customer_ID;
 	
 	@NotEmpty
@@ -72,6 +73,8 @@ public class Customer implements Serializable{
 
 	private String Country;
 	
+	
+	@NotNull
 	private String status;
 	
 	@OneToMany

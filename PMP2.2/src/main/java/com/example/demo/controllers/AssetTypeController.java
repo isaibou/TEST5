@@ -52,6 +52,11 @@ public class AssetTypeController
 		
 		model.addAttribute("totalAssetType", assettyp.size());
 		
+		List<AssetType> assetTypeActif = assetTypeRepository.findByStatus("Actif");
+		model.addAttribute("totalassetTypeActif", assetTypeActif.size());
+		
+		List<AssetType> assetTypeArchived = assetTypeRepository.findByStatus("Archived");
+		model.addAttribute("totalassetTypeArchived", assetTypeArchived.size());
 		
 		model.addAttribute("vendor", vendorRepository.findAll());
 		

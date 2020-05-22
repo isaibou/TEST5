@@ -13,20 +13,13 @@
   <link rel="stylesheet" href="css/app.css" type="text/css" />
 </head>
 <body>
-<<<<<<< HEAD
-<div class="app" >
- <a href="" class="navbar-brand block m-t"><i class="fa fa-power-off"></i> <b>PowerM</b> </a>
- 	<div>
-	 <div class="modal-dialog modal-lg" >
-	 <div class="modal-content">
-      <h1 class="m-n font-bold h3"> Add Type Project </h1>
-     </div>
-   <form th:action="@{SaveTypeProject}" method ="post" th:object="${typeProject}">
-      <div class="modal-body">
-	    <div class="row">
-	    
-     
-	
+<div style="margin:50px;"></div>
+<div class="col-md-6 col-sm-6 col-xs-12 spacer col-md-offset-3">
+   <a href="" class="navbar-brand block m-t"><i class="fa fa-power-off"></i> <b>PowerM</b> </a>
+  <div class="panel panel-default">
+   <div class="panel-heading"> Add Type Project </div>
+      <form th:action="@{SaveTypeProject}" method ="post" th:object="${typeProject}">
+      <div class="panel-body">
 	    <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Name Type Project</b></label>
 	     <div class="col-sm-8" style="margin: 5px 0px;" >
 		  <input type="text" class="form-control" placeholder="Entry Name of Project Task" id="input-id-1" th:field=*{NameType_Project}/> 
@@ -34,50 +27,18 @@
 		  <div class="text-danger" th:if="${unique}">
 		   <div th:text="${unique}"></div>
 		</div>
-	</div>
-		 
+	</div>	 
 	  <label class="col-sm-4 control-label" for="input-id-1"  style="margin:5px 0px;"><b>Project Task</b></label>
 	 <div class="col-sm-8" style="margin:5px 0px;" >
 	 <select name ="role" multiple="multiple" class="form-control m-b" th:field="*{projectTask}">
 	 <option th:each="r:${listpt}"  th:text="${r.NameProjectTask}" th:value="${r.ProjectTask_ID}"></option>
 	 </select>
 	 </div>
-		 
-         
-          		 </div>
-		</div>
-		  <div class="modal-footer">
-		   <button style="margin:0px;" class="btn m-b-xs btn-sm btn-primary btn-addon"><i class="glyphicon glyphicon-ok"></i>Save</button>
-		   <button style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon"><a th:href="typeProject"><i class="glyphicon glyphicon-remove"></i>Annuler</a></button>
-		  </div>
-
-	    </form>
-		</div>
-	  </div>
-     </div>
-=======
-<div style="margin:50px;"></div>
-<div class="col-md-6 col-sm-6 col-xs-12 spacer col-md-offset-3">
-   <a href="" class="navbar-brand block m-t"><i class="fa fa-power-off"></i> <b>PowerM</b> </a>
-  <div class="panel panel-default">
-   <div class="panel-heading"> Add Type Project </div>
-    <form th:action="@{SaveTypeProject}" method ="post" th:object="${tProject}">
-      <div class="panel-body">
-      <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Name Type Project</b></label>
-       <div class="col-sm-8" style="margin: 5px 0px;" >
-      <input type="text" class="form-control" placeholder="Entry Name of Project Task" id="input-id-1" th:field=*{NameType_Project}/> 
-  </div>    
-    <label class="col-sm-4 control-label" for="input-id-1"  style="margin:5px 0px;"><b>Project Task</b></label>
-   <div class="col-sm-8" style="margin:5px 0px;" >
-   <select name ="role" multiple="multiple" class="form-control m-b" th:field="*{projectTask}">
-   <option th:each="r:${listpt}"  th:text="${r.NameProjectTask}" th:value="${r.ProjectTask_ID}"></option>
-   </select>
-   </div>
-    <div>
+	<div>
       <button style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon pull-right"><a th:href="typeProject"><i class="glyphicon glyphicon-remove"></i>Annuler</a></button>
        <button style="margin:0px;" class="btn m-b-xs btn-sm btn-primary btn-addon pull-right"><i class="glyphicon glyphicon-ok"></i>Save</button>
-      </div>
- </div>
+      </div> 
+          		 </div>
       </form>
     </div>
 <div class="text-center">
@@ -87,7 +48,6 @@
  </small></p>
 </div>
 </div>
->>>>>>> branch 'master' of https://github.com/isaibou/TEST5
 <script src="../libs/jquery/jquery/dist/jquery.js"></script>
 <script src="../libs/jquery/bootstrap/dist/js/bootstrap.js"></script>
 <script src="js/ui-load.js"></script>

@@ -32,7 +32,7 @@ public class TechnologyPartner implements Serializable{
 	
 	private String TechnologyPartnerFile;
 	
-	private String Status;
+	private String status;
 	
 	
 	@ManyToMany
@@ -61,16 +61,16 @@ public class TechnologyPartner implements Serializable{
 	public TechnologyPartner(String nameTechnologyPartner, String status, String technologyPartnerFile) {
 		super();
 		NameTechnologyPartner = nameTechnologyPartner;
-		Status = status;
+		status = status;
 		TechnologyPartnerFile = technologyPartnerFile;
 	}
 	public String getStatus() {
-		return Status;
+		return status;
 	}
 
 
 	public void setStatus(String status) {
-		Status = status;
+		status = status;
 	}
 
 

@@ -43,7 +43,7 @@ public class AssetType implements Serializable{
 	@Column(name = "FRU")
 	private String FRU;
 	@Column(name = "Status")
-	private String Status;
+	private String status;
 	
 	@OneToMany(mappedBy = "assettype")
 	private Collection <Assets> assets;
@@ -96,7 +96,7 @@ public class AssetType implements Serializable{
 		this.EndOfSuportDate = endOfSuportDate;
 		this.EndSaleDate = endSaleDate;
 		this.FRU = fRU;
-		this.Status = status;
+		this.status = status;
 	}
 
 	public Integer getAssetType_ID() {
@@ -147,11 +147,11 @@ public class AssetType implements Serializable{
 		FRU = fRU;
 	}
 	public String getStatus() {
-		return Status;
+		return status;
 	}
 
 	public void setStatus(String status) {
-		Status = status;
+		status = status;
 	}
 	
 

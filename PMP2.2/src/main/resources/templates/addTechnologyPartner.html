@@ -2,7 +2,6 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="utf-8" />
-  
   <title>Add Technology Partner</title>
   <meta name="description" content="app, web app, responsive, responsive layout, admin, admin panel, admin dashboard, flat, flat ui, ui kit, AngularJS, ui route, charts, widgets, components" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
@@ -14,28 +13,6 @@
   <link rel="stylesheet" href="css/app.css" type="text/css" />
 </head>
 <body>
-<<<<<<< HEAD
-<div class="app" >
- <a href="" class="navbar-brand block m-t"><i class="fa fa-power-off"></i> <b>PowerM</b> </a>
- 	<div>
-	 <div class="modal-dialog modal-lg" >
-	 <div class="modal-content">
-      <h1 class="m-n font-bold h3"> Add Technology Partner </h1>
-     </div>
-   <form th:action="@{SaveTechnologyPartner}" enctype="multipart/form-data" method ="post"  th:object="${technologyPartner}">  
-     <div class="modal-body">
-	    <div class="row">
-	   
-	     <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Name Technology Partner</b></label>
-	     <div class="col-sm-8" style="margin: 5px 0px;" >
-		  <input type="text" class="form-control" placeholder="Entry Name of Technology Partner" id="input-id-1"  th:field=*{NameTechnologyPartner}> 
-		  <span class="text-danger" th:errors=*{NameTechnologyPartner}></span>
-		  <div class="text-danger" th:if="${unique}">
-		   <div th:text="${unique}"></div>
-		</div>
-		  </div>
-	 <label class="col-sm-4 control-label"  style="margin: 5px 0px;" for="input-id-1"><b>TechnologyPartner File</b></label>
-=======
 <div style="margin:50px;"></div>
 <div class="col-md-6 col-sm-6 col-xs-12 spacer col-md-offset-3">
    <a href="" class="navbar-brand block m-t"><i class="fa fa-power-off"></i> <b>PowerM</b> </a>
@@ -47,9 +24,11 @@
        <div class="col-sm-8" style="margin: 5px 0px;" >
       <input type="text" class="form-control" placeholder="Entry Name of Technology Partner" id="input-id-1"  th:field=*{NameTechnologyPartner}/> 
       <span class="text-danger" th:errors=*{NameTechnologyPartner}></span>
+		  <div class="text-danger" th:if="${unique}">
+		   <div th:text="${unique}"></div>
+      </div>
       </div>
    <label class="col-sm-4 control-label"  style="margin: 5px 0px;" for="input-id-1"><b>TechnologyPartner File</b></label>
->>>>>>> branch 'master' of https://github.com/isaibou/TEST5
        <div class="col-sm-8" style="margin: 5px 0px;">
          <input type="file" placeholder="Entry Contract File" class="form-control" name="file" id="input-id-1"/>
        </div>

@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.example.demo.entities.Customer;
 import com.example.demo.entities.Frimware;
 import com.example.demo.entities.Project;
+import com.example.demo.entities.RFP;
 import com.example.demo.entities.Users;
 import com.example.demo.repository.AssetTypeRepository;
 import com.example.demo.repository.FrimwareRepository;
@@ -52,6 +53,12 @@ public class FrimwareController {
 		
 		//cette methode pour claculet le totale de frimware et aprés on ajoute un truc dans la page htlm.
 		model.addAttribute("totalFirmware", frime.size());
+		
+		List<Frimware> frimwareActif = frimwareRepository.findByStatus("Actif");
+		model.addAttribute("totalfrimwareActif", frimwareActif.size());
+		
+		List<Frimware> frimwareArchived = frimwareRepository.findByStatus("Archived");
+		model.addAttribute("totalfrimwareArchived", frimwareArchived.size());
 		
 		model.addAttribute("assettype", assetTypeRepository.findAll());
 		

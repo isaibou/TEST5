@@ -9,6 +9,6 @@ import com.example.demo.entities.*;
 public interface ExpensesRepository extends JpaRepository<Expenses, Integer>{
 	
 	
-	//public List<Expenses> findByStatutExpense(String a);
+	public List<Expenses> findByStatutExpense(String statutExpense);
 	
 }

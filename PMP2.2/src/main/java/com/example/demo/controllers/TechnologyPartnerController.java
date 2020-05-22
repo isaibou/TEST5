@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.example.demo.entities.RFP;
 import com.example.demo.entities.TechnologyPartner;
 import com.example.demo.entities.Vendor;
 import com.example.demo.repository.TechnologiePartnerRepository;
@@ -42,6 +43,12 @@ public class TechnologyPartnerController {
 		model.addAttribute("techpart",technologypartner );
 		//model.addAttribute("technopart", new TechnologyPartner());
 		model.addAttribute("totalTechnologyPartner", technologypartner.size());
+		
+		List<TechnologyPartner> technPartrActif = technologiepartnerRepository.findByStatus("Actif");
+		model.addAttribute("totaltechnPartrActif", technPartrActif.size());
+		
+		List<TechnologyPartner> technPartrArchived = technologiepartnerRepository.findByStatus("Archived");
+		model.addAttribute("totaltechnPartrArchived", technPartrArchived.size());
 	
 		return "Technology_Partner";
 	}

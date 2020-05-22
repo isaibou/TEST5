@@ -511,39 +511,39 @@ document.addEventListener('DOMContentLoaded', function() {
 	 </div>
      <div class="col-sm-4">
       <div class="panel padder-v item">
-       <div class="h1 count text-info font-thin h1 pull-center" th:text="${totalRFP}"></div>
+       <div class="h1 count text-info font-thin h1 pull-center" th:text="${totalRFPNew}"></div>
 
-        <span class="text-muted text-xs"><b> Total RFP </b></span>
+        <span class="text-muted text-xs"><b> Total RFP New </b></span>
         <span class="bottom text-right w-full"><i class="glyphicon glyphicon-tower text-muted m-r-sm"></i></span>
       </div>
      </div><!--th:text="${newRFP}" th:text="${submitedRFP}" th:text="${wonRFP}" th:text="${lostRFP}"  th:text="${archiveRFP}"-->
      <div class="col-sm-4">
       <a href="" class="block panel padder-v bg-primary item">
-       <span class="text-white count font-thin h1 block" th:text="${totalRFP}"></span>
+       <span class="text-white count font-thin h1 block" th:text="${totalRFPSubmited}"></span>
 
-       <span class="text-muted text-xs"><b> Total RFP </b></span>
+       <span class="text-muted text-xs"><b> Total RFP Submited </b></span>
        <span class="bottom text-right w-full"><i class="glyphicon glyphicon-briefcase text-muted m-r-sm"></i></span>
       </a>
      </div>
      <div class="col-sm-4">
       <div class="panel padder-v item">
-      <div class="h1 count text-info font-thin h1 pull-center" th:text="${totalRFP}"></div>
-      <span class="text-muted text-xs"><b> Total RFP </b></span>
+      <div class="h1 count text-info font-thin h1 pull-center" th:text="${totalRFPWon}"></div>
+      <span class="text-muted text-xs"><b> Total RFP Won </b></span>
       <span class="bottom text-right w-full"><i class="glyphicon   glyphicon-tower text-muted m-r-sm"></i></span>
      </div>
     </div>
     <div class="col-sm-4">
      <a href="" class="block panel padder-v bg-primary item">
-      <span class="text-white count font-thin h1 block" th:text="${totalRFP}"></span>
+      <span class="text-white count font-thin h1 block" th:text="${totalRFPLost}"></span>
 
-      <span class="text-muted text-xs"><b> Total RFP </b></span>
+      <span class="text-muted text-xs"><b> Total RFP Lost </b></span>
       <span class="bottom text-right w-full"><i class="glyphicon glyphicon-briefcase text-muted m-r-sm"></i></span>
      </a>
     </div>
     <div class="col-sm-4">
      <div class="panel padder-v item">
-      <div class="h1 count text-info font-thin h1 pull-center" th:text="${totalRFP}"></div>
-       <span class="text-muted text-xs"><b> Total RFP </b></span>
+      <div class="h1 count text-info font-thin h1 pull-center" th:text="${totalRFPArchived}"></div>
+       <span class="text-muted text-xs"><b> Total RFP Archived </b></span>
        <span class="bottom text-right w-full"><i class="glyphicon glyphicon-tower text-muted m-r-sm"></i></span>
       </div>
      </div>
@@ -588,10 +588,10 @@ document.addEventListener('DOMContentLoaded', function() {
 		      <li><a th:href="@{'/rfpfile/'+${r.RequestFile}}"  style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Download RequestFile</a></li>
 	 		  <li><a th:href="@{'/rfpfile/'+${r.ResponseFile}}"  style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Download ResponseFile</a></li>
 			  <li><a th:href="@{updateRFP(id=${r.RFP_ID})}"  style="margin-top:-5px;"   class="btn btn-sm btn-light" role="button">Update</a></li>
-		      <li><a th:href="@{archiverRFP(id=${r.RFP_ID})}"  style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Archived</a></li>
-		      <li><a th:href="@{submitedRFP(id=${r.RFP_ID})}"  style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Submitted</a></li>
-		      <li><a th:href="@{wonRFP(id=${r.RFP_ID})}"  style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Won</a></li>
-		      <li><a th:href="@{lostRFP(id=${r.RFP_ID})}"  style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Lost</a></li>
+		      <li><a th:href="@{archiverRFP(id=${r.RFP_ID})}"  style="margin-top:-5px;" onClick="Message4()" class="btn btn-sm btn-light" role="button">Archived</a></li>
+		      <li><a th:href="@{submitedRFP(id=${r.RFP_ID})}"  style="margin-top:-5px;" onClick="Message1()" class="btn btn-sm btn-light" role="button">Submitted</a></li>
+		      <li><a th:href="@{wonRFP(id=${r.RFP_ID})}"  style="margin-top:-5px;" onClick="Message2()" class="btn btn-sm btn-light" role="button">Won</a></li>
+		      <li><a th:href="@{lostRFP(id=${r.RFP_ID})}"  style="margin-top:-5px;" onClick="Message3()" class="btn btn-sm btn-light" role="button">Lost</a></li>
 		      <li><a th:href="@{detailRFP(id=${r.RFP_ID})}" style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Detail</a></li>
 		      </ul>
 		     </div></center></td>
@@ -612,6 +612,30 @@ document.addEventListener('DOMContentLoaded', function() {
   </div>
     
  </footer><!-- / footer -->
+<script type="text/javascript">
+   function Message1() {
+       var msg="Submitted RFP";
+       alert(msg);
+   }
+</script>
+<script type="text/javascript">
+   function Message2() {
+       var msg="Won RFP";
+       alert(msg);
+   }
+</script>
+<script type="text/javascript">
+   function Message3() {
+       var msg="Lost RFP";
+       alert(msg);
+   }
+</script>
+<script type="text/javascript">
+   function Message4() {
+       var msg="Archived RFP";
+       alert(msg);
+   }
+</script>
 <script src="../libs/jquery/jquery/dist/jquery.js"></script>
 <script src="../libs/jquery/bootstrap/dist/js/bootstrap.js"></script>
 <script src="js/ui-load.js"></script>

@@ -27,13 +27,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.example.demo.entities.Customer;
 import com.example.demo.entities.Expenses;
 
+import com.example.demo.entities.RFP;
+
 import com.example.demo.entities.Task;
-
 import com.example.demo.entities.TypeExpenses;
-
 import com.example.demo.entities.Users;
 import com.example.demo.repository.ExpensesRepository;
 import com.example.demo.repository.TaskRepository;
@@ -72,19 +71,24 @@ public class ExpensesController {
 		model.addAttribute("expense", new Expenses());
 		model.addAttribute("totalExp", listExpenses.size());
 		
+		List<Expenses> expensesWaiting = expensesRepository.findByStatutExpense("Waiting");
+		List<Expenses> expensesAnswered = expensesRepository.findByStatutExpense("Answered");
+		List<Expenses> expensesConfirmed = expensesRepository.findByStatutExpense("Confirmed");
+		
+		model.addAttribute("totalexpensesWaiting", expensesWaiting.size());
+		model.addAttribute("totalexpenAnswered", expensesAnswered.size());
+		model.addAttribute("totalexpenConfirmed", expensesConfirmed.size());
+		
 
 		return "expense";
 	}
 
-
-	@RequestMapping(value="/SaveExpenses")
-	public String addInternalRequest(@Valid Expenses expense,BindingResult bindingResult, Authentication  auth, 
-			@RequestParam(name="recu")MultipartFile file ) 
-					throws IllegalStateException, IOException {
-
-	
-
+	@RequestMapping(value="/addExpenses")
+	public String addInternalRequest(@Valid @ModelAttribute("exp") Expenses expense,BindingResult bindingResult, Authentication  auth, @RequestParam(name="recu")MultipartFile file ) throws IllegalStateException, IOException {
 		
+		if(bindingResult.hasErrors()) {
+			return "addExp";
+		}
 		
 		String login = auth.getName();
 		Users u =  userRepository.getOne(login);
@@ -95,13 +99,10 @@ public class ExpensesController {
 		if (!(file.isEmpty())) 
 		{
 			expense.setReceipt((file.getOriginalFilename()));
+
 			file.transferTo(new File(receipt+expense.getReceipt()));
 		}
-		expensesRepository.save(expense);
-
-		
-
-			
+	expensesRepository.save(expense);
 
 		return"redirect:/expenses";
 	}
@@ -136,6 +137,7 @@ public class ExpensesController {
 	public String addExp(Model model, Authentication  auth) {
 
 		model.addAttribute("expenses", new Expenses());
+
 		//model.addAttribute("type", typeExpensesRepository.findAll());
 
 	
@@ -144,10 +146,12 @@ public class ExpensesController {
 		 model.addAttribute("type",  typeExpensesRepository.findAll());
 		  
 		  
-		  List<Task> tasks = taskRepository.findByUsers(u);
+
+		  	  
+		  List<Task> tasks = taskRepository.findAll();
 		  System.out.println(tasks);
 	     model.addAttribute("task",tasks);
-
+	     
 		return "addExp";
 	}
 	
@@ -177,6 +181,7 @@ public class ExpensesController {
 		return "detailsExpenses";
 	}
 	
+
 	
 	
 	
@@ -231,3 +236,4 @@ public void getReceipt(@PathVariable("fileName")String fileName, HttpServletResp
 	
 	
 }
+

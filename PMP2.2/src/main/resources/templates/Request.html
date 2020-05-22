@@ -122,8 +122,6 @@
 	  <li><a th:href="page_signin">Logout</a></li>
      </ul><!-- / dropdown -->
 	</div>
-
-
 	<div class="line dk hidden-folded"></div>
    </div><!-- / user --><!-- nav -->
 <nav ui-nav class="navi clearfix">
@@ -447,8 +445,8 @@
 		      <button class="btn btn-default btn-xs" data-toggle="dropdown"><i class="glyphicon glyphicon-cog"></i> Action <span class="caret"></span></button>
 		      <ul class="dropdown-menu">
 		       <li><a th:href="@{updateRequestEmployee(id=${i.InternalRequest_ID})}"  style="margin-top:-5px;"   class="btn btn-sm btn-light" role="button">Update</a></li>
-               <li><a th:href="@{confirm(id=${i.InternalRequest_ID})}" style="margin-top:-5px;"  class="btn btn-sm btn-light" role="button">Confirm</a></li>
-		       <li><a th:href="@{answer(id=${i.InternalRequest_ID})}" style="margin-top:-5px;"  class="btn btn-sm btn-light" role="button">Answer</a></li>
+               <li><a th:href="@{confirm(id=${i.InternalRequest_ID})}" style="margin-top:-5px;" onClick="Message1()" class="btn btn-sm btn-light" role="button">Confirm</a></li>
+		       <li><a th:href="@{answer(id=${i.InternalRequest_ID})}" style="margin-top:-5px;" onClick="Message2()" class="btn btn-sm btn-light" role="button">Answer</a></li>
 		       <li><a th:href="@{detailsRequestEmployee(id=${i.InternalRequest_ID})}" style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Details</a></li>
               </ul>
 		     </div>
@@ -491,20 +489,23 @@
 												{ mData: 'Dema' },
 												
 												{ mData: 'Status' },
+<<<<<<< HEAD
 												{ mData: 'date' },
 												{ mData: 'action' }]
 
+=======
+												{ mData: 'date' },
+												{ mData: 'status' },
+												{ mData: 'action' }]
+>>>>>>> branch 'master' of https://github.com/isaibou/TEST5
 											}" class="table  b-t b-b">
 		<thead>
-		 <tr>
-		 
-	    
-          <th  style="width:8%"><center>Type</center></th>
-		  <th  style="width:12%"><center>Description</center></th>
-	      <th  style="width:12%"><center>Company</center></th>
-	      <th  style="width:12%"><center>Submited Date</center></th>
-	      <th  style="width:12%"><center>Status</center></th>
-	      
+		 <tr>	    
+          <th  style="width:15%"><center>Type</center></th>
+		  <th  style="width:25%"><center>Description</center></th>
+	      <th  style="width:15%"><center>Company</center></th>
+	      <th  style="width:15%"><center>Submited Date</center></th>
+	      <th  style="width:15%"><center>Status</center></th>      
 		  <th  style="width:15%"><center>Actions</center></th>
 		 
 		 </tr>
@@ -533,7 +534,7 @@
 		       <li>
 				<a th:href="@{updateRequestCustomer(id=${e.ExternalRequest_ID})}"  style="margin-top:-5px;"   class="btn btn-sm btn-light" role="button">Update</a>						</li>
 																								<li>
-		      <li><a th:href="@{answerC(id=${e.ExternalRequest_ID})}" style="margin-top:-5px;"  class="btn btn-sm btn-light" role="button">Answer</a></li>
+		      <li><a th:href="@{answerC(id=${e.ExternalRequest_ID})}" style="margin-top:-5px;" onClick="Message3()" class="btn btn-sm btn-light" role="button">Answer</a></li>
 		      <li>
 			<a th:href="@{detailsRequestCustomer(id=${e.ExternalRequest_ID})}" style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Details</a>
 																								</li>
@@ -548,6 +549,7 @@
 		</div>
 	   </div>
 	  </div>
+
      </div>
    </div>
 </div>
@@ -562,6 +564,24 @@
 </footer>
 <!-- / footer -->
 </div>
+<script type="text/javascript">
+   function Message1() {
+       var msg="Request Internal Confirmed";
+       alert(msg);
+   }
+</script>
+<script type="text/javascript">
+   function Message2() {
+       var msg="Request Internal Answered";
+       alert(msg);
+   }
+</script>
+<script type="text/javascript">
+   function Message3() {
+       var msg="Request External Answered";
+       alert(msg);
+   }
+</script>
 <script src="../libs/jquery/jquery/dist/jquery.js"></script>
 <script src="../libs/jquery/bootstrap/dist/js/bootstrap.js"></script>
 <script src="js/ui-load.js"></script>

@@ -13,18 +13,6 @@
   <link rel="stylesheet" href="css/app.css" type="text/css" />
 </head>
 <body>
-<<<<<<< HEAD
-<div class="app" >
- <a href="" class="navbar-brand block m-t"><i class="fa fa-power-off"></i> <b>PowerM</b> </a>
- 	<div>
-	 <div class="modal-dialog modal-lg" >
-	 <div class="modal-content">
-      <h1 class="m-n font-bold h3"> Add Type Expenses</h1>
-     </div>
-   <form th:action="@{SaveypeExpenses}" th:object=${typeExpenses}>
-   <div class="modal-body">
-  <div class="row">
-=======
 <div style="margin:50px;"></div>
 <div class="col-md-6 col-sm-6 col-xs-12 spacer col-md-offset-3">
   <a href="" class="navbar-brand block m-t"><i class="fa fa-power-off"></i> <b>PowerM</b> </a>
@@ -32,11 +20,13 @@
    <div class="panel-heading"> Add Type Expenses </div>
     <form th:action="@{addTypeExpenses}" th:object=${typExp}>
    <div class="panel-body">
->>>>>>> branch 'master' of https://github.com/isaibou/TEST5
    <label class="col-sm-4 control-label" for="input-id-1" style="margin:5px 0px;"><b>Name:</b></label>
    <div class="col-sm-8" style="margin:5px 0px;" >
     <input type="text" placeholder="Entry Nom" class="form-control" id="input-id-1"  th:field="*{NameTypeExpenses}">
-    <span class="text-danger" th:errors=*{NameTypeExpenses}></span>
+    <span class="text-danger" th:errors=*{NameTypeExpenses}></span> 
+    <div class="text-danger" th:if="${unique}">
+       <div th:text="${unique}"></div>
+    </div>
    </div>
    <div>
     <button style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon pull-right"><a th:href="typeExpenses"><i class="glyphicon glyphicon-remove"></i>Annuler</a></button>

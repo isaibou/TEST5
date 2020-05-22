@@ -41,7 +41,7 @@ public class Frimware implements Serializable{
 	private Date releaseDate;
 	@NotEmpty
 	private String description;
-	private String Status;
+	private String status;
 	
 	
 	@ManyToMany
@@ -66,7 +66,7 @@ public class Frimware implements Serializable{
 		this.name = name;
 		this.releaseDate = releaseDate;
 		this.description = description;
-		this.Status = status;
+		this.status = status;
 	}
 
 
@@ -103,11 +103,11 @@ public class Frimware implements Serializable{
 		this.description = description;
 	}
 	public String getStatus() {
-		return Status;
+		return status;
 	}
 
 	public void setStatus(String status) {
-		Status = status;
+		status = status;
 	}
 
 

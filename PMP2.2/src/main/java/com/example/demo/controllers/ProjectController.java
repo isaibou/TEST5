@@ -44,6 +44,7 @@ public class ProjectController {
 	
 	@Autowired
 	private ProjetRepository ProjectRepository;
+	
 	@Autowired
 	private TypeProjectRepository typeProjectRepository;
 	@Autowired
@@ -71,6 +72,12 @@ public class ProjectController {
 			model.addAttribute("rfp",rfprepository.findAll() );
 			model.addAttribute("TypeProject", typeProjectRepository.findAll());
 			model.addAttribute("listAsset",assetRepository.findAll() );
+			
+			List<Project> projectActif = ProjectRepository.findByStatus("Actif");
+			model.addAttribute("totalprojectActif", projectActif.size());
+			
+			List<Project> projectArchived = ProjectRepository.findByStatus("Archived");
+			model.addAttribute("totalprojectArchived", projectArchived.size());
 			
 			
 		return "projects_manage";
@@ -113,7 +120,7 @@ if (!(file.isEmpty())) {
 		 model.addAttribute("TechnoPart", technologiepartnerRepository.findAll());
 		 model.addAttribute("rfp",rfprepository.findAll());
 		 model.addAttribute("TypeProject", typeProjectRepository.findAll());
-		 
+		 model.addAttribute("assets",assetRepository.findAll() );
 		 model.addAttribute("TechnologiePartnerRepository", technologiepartnerRepository.findAll());
 
 			return "addProj";
@@ -144,7 +151,7 @@ if (!(file.isEmpty())) {
 		 model.addAttribute("TechnoPart", technologiepartnerRepository.findAll());
 		 model.addAttribute("rfp",rfprepository.findAll());
 		 model.addAttribute("TypeProject", typeProjectRepository.findAll());
-		 
+		 model.addAttribute("assets",assetRepository.findAll() );
 		 model.addAttribute("TechnologiePartnerRepository", technologiepartnerRepository.findAll());
 		 model.addAttribute("type",typeProjectRepository.findAll());
 		 

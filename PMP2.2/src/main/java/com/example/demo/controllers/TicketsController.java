@@ -65,6 +65,8 @@ public class TicketsController {
 		model.addAttribute("ticket", new Ticket());
 		List<Ticket> tickets = ticketRepository.findAll();
 		model.addAttribute("tickets", tickets);
+		model.addAttribute("totalticket", tickets.size());
+		
 		List<Ticket> submitted = ticketRepository.findByStatusTicket("Submitted");
 		List<Ticket> closed = ticketRepository.findByStatusTicket("Closed");
 		List<Ticket> waiting = ticketRepository.findByStatusTicket("Waiting");
@@ -74,13 +76,13 @@ public class TicketsController {
 		List<Ticket> processing = ticketRepository.findByStatusTicket("Processing");
 
 		
-		model.addAttribute("submitted",submitted );
-		model.addAttribute("closed",closed );
-		model.addAttribute("waiting",waiting );
-		model.addAttribute("resolved",resolved );
-		model.addAttribute("archived",archived );
-		model.addAttribute("affected",affected );
-		model.addAttribute("processing",processing );
+		model.addAttribute("totalsubmitted",submitted.size() );
+		model.addAttribute("totalclosed",closed.size() );
+		model.addAttribute("totalwaiting",waiting.size() );
+		model.addAttribute("totalresolved",resolved.size() );
+		model.addAttribute("totalarchived",archived.size() );
+		model.addAttribute("totalaffected",affected.size() );
+		model.addAttribute("totalprocessing",processing.size() );
 
 		return "tickets_manage";
 	}

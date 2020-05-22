@@ -521,16 +521,16 @@
     </div>
     <div class="col-xs-4">
      <a href class="block panel padder-v bg-primary item">
-     <span class="text-white font-thin h1 count block" th:text="${totalAssetType}"></span>
+     <span class="text-white font-thin h1 count block" th:text="${totalassetTypeActif}"></span>
 
-     <span class="text-muted text-xs"><b>Total Asset Type</b></span>
+     <span class="text-muted text-xs"><b>Total Asset Type Actif</b></span>
      <span class="bottom text-right w-full"><i class="glyphicon glyphicon-usd text-muted m-r-sm"></i></span>
      </a>
     </div>
     <div class="col-xs-4">
      <a href class="block panel padder-v item">
-      <div class="h1 text-info font-thin h1 count pull-center" th:text="${totalAssetType}"></div>
-      <span class="text-muted text-xs"><b>Total Asset Type</b></span>
+      <div class="h1 text-info font-thin h1 count pull-center" th:text="${totalassetTypeArchived}"></div>
+      <span class="text-muted text-xs"><b>Total Asset Type Archived</b></span>
       <span class="bottom text-right w-full"><i class="glyphicon glyphicon-usd text-muted m-r-sm"></i></span>
      </a>
     </div>
@@ -577,7 +577,7 @@
        <ul class="dropdown-menu">
          <li><a th:href="@{updateAseetTypeform(id=${a.AssetType_ID})}"  style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Update</a></li>
         
-       <li><a th:href="@{archiverAseetT(id=${a.AssetType_ID})}"  style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Archive</a></li>
+       <li><a th:href="@{archiverAseetT(id=${a.AssetType_ID})}"  style="margin-top:-5px;" onClick="Message()" class="btn btn-sm btn-light" role="button">Archive</a></li>
          <li><a th:href="@{detailAseetType(id=${a.AssetType_ID})}" style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Detail</a></li></ul></div></center></td>
         
        </ul></div>                             
@@ -599,7 +599,12 @@
   </footer>
   <!-- / footer -->
 </div>
-
+<script type="text/javascript">
+   function Message() {
+       var msg="Asset Type Archived";
+       alert(msg);
+   }
+</script>
 <script src="../libs/jquery/jquery/dist/jquery.js"></script>
 <script src="../libs/jquery/bootstrap/dist/js/bootstrap.js"></script>
 <script src="js/ui-load.js"></script>

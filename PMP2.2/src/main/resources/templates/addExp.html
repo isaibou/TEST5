@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="css/font.css" type="text/css" />
   <link rel="stylesheet" href="css/app.css" type="text/css" />
 </head>
+<<<<<<< HEAD
 
 <body>
 <div class="app" >
@@ -32,9 +33,11 @@
    <option th:each="r:${task}" th:text="${r.taskDescription}" th:value="${r.task_ID}" ></option>
    </select>
    </div>
+
+
     <label class="col-sm-4 control-label" for="input-id-1" style="margin:5px 0px;"><b>Type Expense :</b></label>
    <div class="col-sm-8" style="margin:5px 0px;" >
-   <select name ="TypeExpenses_ID" class="form-control" th:field="*{typeExpenses}" >
+   <select name ="ypeExpenses_ID" class="form-control" th:field="*{typeExpenses}" >
    <option th:each="t:${type}" th:text="${t.NameTypeExpenses}" th:value="${t.TypeExpenses_ID}" ></option>
    </select>
    </div>

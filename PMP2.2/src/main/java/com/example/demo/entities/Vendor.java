@@ -30,7 +30,7 @@ public class Vendor implements Serializable{
 	private String Phone;
 	@NotEmpty
 	private String Adress;
-	private String Status;
+	private String status;
 	
 	@ManyToMany
 	private Collection <AssetType> assettype;
@@ -60,17 +60,17 @@ public class Vendor implements Serializable{
 		LogoCompony = logoCompony;
 		Phone = phone;
 		Adress = adress;
-		this.Status = status;
+		this.status = status;
 	}
 
 
 	public String getStatus() {
-		return Status;
+		return status;
 	}
 
 
 	public void setStatus(String status) {
-		Status = status;
+		status = status;
 	}
 
 

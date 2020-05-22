@@ -24,6 +24,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.example.demo.entities.Assets;
 import com.example.demo.entities.Purchasing;
+import com.example.demo.entities.RFP;
 import com.example.demo.entities.Users;
 import com.example.demo.entities.Vendor;
 import com.example.demo.repository.AssetRepository;
@@ -53,6 +54,13 @@ public class VendorController {
 		model.addAttribute("vend",vendo);
 		model.addAttribute("vendor", new Vendor());
 		model.addAttribute("totalVendor", vendo.size());
+		
+		List<Vendor> vendorActif = vendorRepository.findByStatus("Actif");
+		model.addAttribute("totalvendorActif", vendorActif.size());
+		
+		List<Vendor> vendorArchived = vendorRepository.findByStatus("Archived");
+		model.addAttribute("totalvendorArchived", vendorArchived.size());
+		
 		return "vendor";
 	}
 	

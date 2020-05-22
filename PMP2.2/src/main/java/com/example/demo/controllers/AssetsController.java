@@ -14,6 +14,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -34,8 +35,8 @@ public class AssetsController {
 	@Autowired
 	private FrimwareRepository frimwareRepository;
 	
-	@Autowired
-	private ProjetRepository projetRepository;
+	/*@Autowired
+	private ProjetRepository projetRepository;*/
 	
 	@Autowired
 	private AssetTypeRepository assetTypeRepository;
@@ -60,8 +61,16 @@ public class AssetsController {
 		//model.addAttribute("assets", new Assets());
 		
 		model.addAttribute("assettype", assetTypeRepository.findAll());
-		model.addAttribute("project", projetRepository.findAll());
+		//model.addAttribute("project", projetRepository.findAll());
 		model.addAttribute("frimware", frimwareRepository.findAll());
+		
+		model.addAttribute("totalAssets", assets.size());
+		
+		List<Assets> assetsActif = assetRepository.findByStatus("Actif");
+		model.addAttribute("totalassetsActif", assetsActif.size());
+		
+		List<Assets> assetsArchived = assetRepository.findByStatus("Archived");
+		model.addAttribute("totalassetsArchived", assetsArchived.size());
 		/*
 		 * List<RFP> rfpee = (List<RFP>) u.getCustomer().getRfp(); List<Project> proj =
 		 * (List<Project>) ((RFP) rfpee).getProject(); ((Project) proj).getAssets();
@@ -75,7 +84,25 @@ public class AssetsController {
 			@RequestParam(name="ConfigurationFille")MultipartFile file) 
 					throws IllegalStateException, IOException
 	{	 
+		if (!(file.isEmpty())) {
+			
+	         addAss.setConfigurationFille((file.getOriginalFilename()));
+
+			 file.transferTo(new File(Configurationfille+file.getOriginalFilename()));
+		}
+
 		
+		if(bindingResult.hasErrors()) {
+			List<FieldError> errors = bindingResult.getFieldErrors();
+			//System.out.println(addAss.getConfigurationFille());
+		    for (FieldError error : errors ) {
+		    	if(!error.getField().equals("ConfigurationFille"))
+		    		return "addAssets";
+		        //System.out.println (error.getField() + " - " + error.getDefaultMessage());
+		    }
+
+			
+		}
 		
 		if(assetRepository.checkTitleExist(addAss.getSerielNumber())) {
 			
@@ -84,21 +111,9 @@ public class AssetsController {
 		}
 		
 		
-		
-if (!(file.isEmpty())) {
-			
-	         addAss.setConfigurationFille((file.getOriginalFilename()));
-
-			 file.transferTo(new File(Configurationfille+file.getOriginalFilename()));
-		}
-
-		
 		addAss.setStatus("Actif");
 		
-		if(bindingResult.hasErrors()) {
-		return "addAssets";
 		
-	}
 		assetRepository.save(addAss);
 		AssetType asstype=  addAss.getAssettype();
 		System.out.println(asstype);
@@ -110,13 +125,16 @@ if (!(file.isEmpty())) {
 		System.out.println(i);
 		model.addAttribute("id", i);
 		
+		
+		
 		return "nextAsset"; //$NON-NLS-1$
 		
 		
 	}
 	
 	@RequestMapping(value="/addAssetsFrim" , method= RequestMethod.POST)
-	private String addAssets(Integer id, @RequestParam(name="frim") Frimware frim  ) {
+	private String addAssets(Integer id, @RequestParam(name="frim") Frimware frim ) {
+		 
 		
 		Assets asset = assetRepository.getOne(id);
 		asset.setFrimware(frim);
@@ -135,7 +153,7 @@ if (!(file.isEmpty())) {
 		 model.addAttribute("assets",  assetRepository.findAll());
 		 model.addAttribute("assets", new Assets());
 		 model.addAttribute("assettype", assetTypeRepository.findAll());
-		 model.addAttribute("project", projetRepository.findAll());	
+		 //model.addAttribute("project", projetRepository.findAll());	
 		 
 		
 			return "addAssets";
@@ -162,7 +180,7 @@ if (!(file.isEmpty())) {
 		 model.addAttribute("assets",  assets);
 		 
 		 model.addAttribute("assettype", assetTypeRepository.findAll());
-		 model.addAttribute("project", projetRepository.findAll());	
+		// model.addAttribute("project", projetRepository.findAll());	
 		 
 		 //System.out.println(purchasing.getFirstName());
 		

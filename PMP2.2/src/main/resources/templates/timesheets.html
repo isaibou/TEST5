@@ -759,6 +759,71 @@
   </div>
 </div>
 
+				<div class="panel panel-default">
+													<div class="table-responsive" >
+														<table  ui-jq="dataTable" ui-options="{aoColumns: [
+												
+												
+												{ pData: 'Name ' },
+												{ pData: 'Login' },
+													{ pData: 'Login' },
+												{ pData: 'Company' },
+												
+												{ pData: 'actions' }]
+											}" class="table  b-t b-b">
+															<thead>
+																<tr >
+																    <th  style="width:15%"><center>Project Name</center></th>
+																	<th  style="width:25%"><center>Task</center></th>
+																	<th  style="width:25%"><center>Task Description</center></th>
+																	<th  style="width:15%"><center>Percent Complet</center></th>
+																	
+																	<th  sec:authorize="hasRole('ROLE_ADMIN')" style="width:15%"><center>Actions</center></th>
+																</tr>
+															</thead>
+															<tbody>
+																<tr data-expanded="true" th:each="c:${allTask}">
+				 													<td th:text ="${c.affectationProject.project.Name}" class="m-n font-thin h4 text-secondary"> </td>
+																		<td th:text ="${c.affectationProject.projATsk.NameProjectTask}" class="m-n font-thin h4 text-secondary"><center></center></td>
+																		<td th:text ="${c.taskDescription}" class="m-n font-thin h4 text-secondary"><center><center/></td>
+																		<td th:text ="${c.percentComplete}" class="m-n font-thin h4 text-secondary"><center><center/></td>
+		
+     
+</td>
+																				<td>
+																					<center>
+																						<div class="btn-group dropdown">
+																							<button class="btn btn-default btn-xs" data-toggle="dropdown"><i class="glyphicon glyphicon-cog"></i> Action <span class="caret"></span></button>
+																							<ul class="dropdown-menu">
+																								<li>
+																									<a th:href="@{updateCustomerform(id=${c.task_ID})}"  style="margin-top:-5px;"   class="btn btn-sm btn-light" role="button">Update</a>						</li>
+																								<li>
+																									<a th:href="@{archiverCustomer(id=${c.task_ID})}" style="margin-top:-5px;" onClick="Message()"  class="btn btn-sm btn-light" role="button">Archive</a>
+																								</li>
+																								<li>
+																									<a th:href="@{detailCustomer(id=${c.task_ID})}" style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Detail</a>
+																								</li>
+																							</ul>
+																						</div>
+																					</center>
+																				</td>
+																			</tr>
+																							</tbody>
+																				</table>
+
+
+
+																			</div>
+																		
+																		</div >
+
+
+
+																	
+</div>
+</div>
+</div>
+
 
 																
 															</div>

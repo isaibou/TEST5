@@ -102,8 +102,11 @@ if (!(file.isEmpty())) {
 			
 			u.setPicture((file.getOriginalFilename()));
 
-			file.transferTo(new File(images+u.getUsername()));
+			file.transferTo(new File(images+file.getOriginalFilename()));
 		}
+
+userRepository.save(u);	
+
 
 		return "redirect:/users";
 	}
@@ -237,8 +240,11 @@ if (!(file.isEmpty())) {
 			
 			u.setPicture((file.getOriginalFilename()));
 
-			file.transferTo(new File(images+u.getUsername()));
+			file.transferTo(new File(images+file.getOriginalFilename()));
 		}
+
+userRepository.save(u);
+
 		return "redirect:/users";
 	}
 	

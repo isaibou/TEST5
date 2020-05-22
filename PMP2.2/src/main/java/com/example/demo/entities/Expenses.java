@@ -157,6 +157,16 @@ public class Expenses implements Serializable{
 	public void setUser(Users user) {
 		this.user = user;
 	}
+
+
+	public Task getTask() {
+		return task;
+	}
+
+
+	public void setTask(Task task) {
+		this.task = task;
+	}
 	
 	
 

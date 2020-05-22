@@ -38,12 +38,7 @@
    <div class="col-sm-8" style="margin:5px 0px;" >
     <input type="number"laceholder="Entry CIN" class="form-control" id="input-id-1"  required th:field=*{percentComplete}>
    </div>
-   <label class="col-sm-4 control-label" for="input-id-1" style="margin:5px 0px;"><b>Roles:</b></label>
-   <div class="col-sm-8" style="margin:5px 0px;" >
-   <select class="form-control m-b" th:field=*{ticket}>
-   <option th:each="r:${allRoles}"  th:text="${r.role}" th:value="${r.role}"></option>
-   </select>
-   </div> 
+  
   <div>
    <button style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon pull-right"><a th:href="timesheets"><i class="glyphicon glyphicon-remove"></i>Annuler</a></button>
    <button style="margin:0px;" class="btn m-b-xs btn-sm btn-primary btn-addon pull-right"><i class="glyphicon glyphicon-ok"></i>Save</button>

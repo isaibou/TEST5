@@ -450,6 +450,9 @@
 												{ mData: 'Demandeur' },
 												{ mData: 'Status' },
 												{ mData: 'Date' },
+																								{ mData: 'Date' },
+											
+												{ mData: 'Receipt' }
 												{ mData: 'action' }]
 											}" class="table  b-t b-b">
 		<thead>
@@ -458,6 +461,7 @@
           <th  style="width:25%"><center>Description</center></th>
 		  <th  style="width:15%"><center>Amount</center></th>
 	      <th  style="width:15%"><center>Submited Date</center></th>
+	      <th  style="width:15%"><center>Receipt</center></th>
 	      <th  style="width:15%"><center>Status</center></th>
 		  <th  style="width:15%"><center>Actions</center></th>
 		 
@@ -469,6 +473,7 @@
 		  <td th:text="${i.Description}" ></td>
           <td th:text ="${i.Amount}"><center></center></td>
           <td th:text ="${i.SubmittedDate}"><center></center></td>
+   			<td>  <img class="img-thumbnail"  th:src="@{getExpenses(id=${i.Receipt})}"  width="50" height="50" > </td>														
 		 
 		 	<td th:switch="${i.StatutExpense}">
     <span th:case="'Answered'" class="label bg-success pull-center m-t-md" >Answered</span>
@@ -493,8 +498,8 @@
 		      <li><a th:href="@{answerExpenses(id=${i.Expenses_ID})}" style="margin-top:-5px;" onClick="Message2()"  class="btn btn-sm btn-light" role="button">Answer</a></li>
 		           <li>
 			<a th:href="@{detailsExpenses(id=${i.Expenses_ID})}" style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Details</a>
-																								</li>
-		      
+					     <li><a th:href="@{'/receipt/'+${i.Receipt}}"  style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Download Receipt</a></li>
+			
 		     </ul>
 		    </div>
 		   </center>

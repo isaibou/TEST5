@@ -18,7 +18,7 @@
   <a href="" class="navbar-brand block m-t"><i class="fa fa-power-off"></i> <b>PowerM</b> </a>
   <div class="panel panel-default">
    <div class="panel-heading"> Add Ticket </div>
-    <form th:action="@{addTic}"   enctype="multipart/form-data" method ="post" th:object="${tic}">
+    <form th:action="@{addTicket}"   enctype="multipart/form-data" method ="post" th:object="${tic}">
       <div class="panel-body">
        <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Type Ticket</b></label>
           <div class="col-sm-8" style="margin: 5px 0px;" >
@@ -30,7 +30,7 @@
           <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Asset</b></label>
           <div class="col-sm-8" style="margin: 5px 0px;" >
       <select name="AssetType_ID" class="form-control m-b" th:field=*{asset}>
-        <option th:each ="a:${listAsset}" th:text="${a.SerielNumber}" th:value ="${a.Assets_ID}"></option>
+        <option th:each ="a:${asset}" th:text="${a.SerielNumber}" th:value ="${a.Assets_ID}"></option>
         </select>
           </div>
     <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Description</b></label>

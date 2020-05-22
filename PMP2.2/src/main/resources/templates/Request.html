@@ -486,10 +486,18 @@
           <table ui-jq="dataTable" ui-options="{ aoColumns: [										
 												{ mData: 'description' },
 												{ mData: 'Demandeur' },
+												{ mData: 'Dema' },
+												
 												{ mData: 'Status' },
+<<<<<<< HEAD
+												{ mData: 'date' },
+												{ mData: 'action' }]
+
+=======
 												{ mData: 'date' },
 												{ mData: 'status' },
 												{ mData: 'action' }]
+>>>>>>> branch 'master' of https://github.com/isaibou/TEST5
 											}" class="table  b-t b-b">
 		<thead>
 		 <tr>	    
@@ -502,6 +510,8 @@
 		 
 		 </tr>
 		</thead>
+		
+		
 		<tbody>
 	 <tr  data-expanded="true" th:each="e:${listExt}">
 		  <td th:text="${e.typeExternalRequest.NameTypeExternelRequest}"></td>
@@ -535,9 +545,11 @@
 		 </tr>
 	</tbody>
 	   </table>
-        </div>
+    
+		</div>
 	   </div>
 	  </div>
+
      </div>
    </div>
 </div>

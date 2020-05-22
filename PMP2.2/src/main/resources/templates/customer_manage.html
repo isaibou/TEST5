@@ -569,7 +569,7 @@
 																<a href class="block panel padder-v bg-primary item">
 
 																	<div class="h1 count text-white font-thin h1 pull-center" th:text="${totalcustomerActif}"></div>
-																	<span class="text-muted text-xs"><b>Total Customer Actif</b></span>
+																	<span class="text-muted text-xs"><b>Total Actif Customer </b></span>
 					<span class="bottom text-right w-full">
 																		<i class="glyphicon glyphicon-tag text-muted m-r-sm"></i>
 																	</span>
@@ -579,7 +579,7 @@
 															<div class="col-sm-6" >
 																<a href class="block panel padder-v bg-primary item">
 																	<span class="text-white count font-thin h1 block" th:text="${totalcustomerArchived}"></span>
-																	<span class="text-muted text-xs"><b>Total Customer Archived</b></span>
+																	<span class="text-muted text-xs"><b>Total Archived Customer </b></span>
 
 																	<span class="bottom text-right w-full">
 																		<i class="glyphicon glyphicon-briefcase text-muted m-r-sm"></i>
@@ -587,17 +587,17 @@
 																</a>
 															</div>
 
-														<!--  	<div class="col-sm-6" >
+														 	<div class="col-sm-6" >
 																<div class="panel padder-v item">
-																	<span class="text-info count font-thin h1 block" th:text="${totalCustomer}"></span>
-																	<span class="text-muted text-xs"><b>Total Customer</b></span>
+																	<span class="text-info count font-thin h1 block" th:text="${vip}"></span>
+																	<span class="text-muted text-xs"><b>Total VIP Customer</b></span>
 
 																	<span class="bottom text-right w-full">
 																		<i class="glyphicon  glyphicon-tag text-muted m-r-sm"></i>
 																	</span>
 																</div>
 															</div> 
-															-->
+															
 														</div>
 													</div>
 												</div>
@@ -631,11 +631,11 @@
 				 													<td th:text ="${c.Name}" class="m-n font-thin h4 text-secondary"> </td>
 																		<td th:text ="${c.AdressCompany}" class="m-n font-thin h4 text-secondary"><center></center></td>
 																		<td th:text ="${c.Industry}" class="m-n font-thin h4 text-secondary"><center><center/></td>
-																		
-		<td th:switch="${c.Status}">
-    <span th:case="'Actif'" class="label bg-success pull-center m-t-md"  >Actif</span>
-    <span th:case="'Archived'"  class="label bg-danger pull-center m-t-md">Archived </span>
-    <div th:case="** "></div>
+																																					
+																					<td th:switch="${c.Status}">
+																			    <span th:case="'Actif'" class="label bg-success pull-center m-t-md"  >Actif</span>
+																			    <span th:case="'Archived'"  class="label bg-dark pull-center m-t-md">Archived </span>
+																			    <div th:case="** "></div>
      
 </td>
 																				<td>
@@ -649,7 +649,7 @@
 																									<a th:href="@{archiverCustomer(id=${c.Customer_ID})}" style="margin-top:-5px;" onClick="Message()"  class="btn btn-sm btn-light" role="button">Archive</a>
 																								</li>
 																								<li>
-																									<a th:href="@{detailCustomer(id=${c.Customer_ID})}" style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Detail</a>
+																									<a th:href="@{detailCustomer(id=${c.Customer_ID})}" style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Details</a>
 																								</li>
 																							</ul>
 																						</div>

@@ -25,6 +25,11 @@
       <input type="hidden" class="form-control" placeholder="Entry Name of frimware" id="input-id-1"  required th:field=*{frimware_ID}>
       <span class="text-danger" th:errors=*{name}></span>
    </div>
+   <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b></b></label>
+     <div class="col-sm-8" style="margin: 5px 0px;" >
+      <input type="hidden" class="form-control" placeholder="Entry Name of frimware" id="input-id-1"  required th:field=*{status}>
+      <span class="text-danger" th:errors=*{name}></span>
+   </div>
    <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Firmware Name</b></label>
      <div class="col-sm-8" style="margin: 5px 0px;">
       <input type="text" class="form-control" placeholder="Entry Name of frimware" id="input-id-1"  required th:field=*{name}>
@@ -51,13 +56,7 @@
 	    </div>
 	    </div>
 
-      <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Asset Type </b></label>
-     <div class="col-sm-8" style="margin: 5px 0px;">
-   <!-- ici on met une boucle sur le customer pour avoir récupérer la liste des vendor  -->
-       <select name="AssetType_ID" multiple="multiple" class="form-control m-b" th:field=*{assetType}>
-       <option th:each ="a:${assetType}"  th:text="${a.name}"  th:value ="${a.AssetType_ID}"></option>
-       </select>
-      </div>
+   
 
       <div>
   <button style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon pull-right"><a th:href="firmware"><i class="glyphicon glyphicon-remove"></i>Annuler</a></button>

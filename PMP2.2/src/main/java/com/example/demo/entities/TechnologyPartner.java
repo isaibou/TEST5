@@ -58,19 +58,21 @@ public class TechnologyPartner implements Serializable{
 	public TechnologyPartner() {
 		super();
 	}
-	public TechnologyPartner(String nameTechnologyPartner, String status, String technologyPartnerFile) {
-		super();
-		NameTechnologyPartner = nameTechnologyPartner;
-		status = status;
-		TechnologyPartnerFile = technologyPartnerFile;
-	}
+	
+	
+
 	public String getStatus() {
 		return status;
 	}
 
 
 	public void setStatus(String status) {
-		status = status;
+		this.status = status;
+	}
+
+
+	public List<Project> getProject() {
+		return project;
 	}
 
 

@@ -21,7 +21,7 @@ public class ExternalRequest implements Serializable{
 	@NotEmpty
 	private String Description;
 	
-	private Boolean Status; 
+	private Boolean status; 
 	
 	private Date SubmitedDate;
 	
@@ -43,16 +43,6 @@ public class ExternalRequest implements Serializable{
 
 
 
-
-	public ExternalRequest(String description, String commentaire, Boolean status, Date submitedDate) {
-		super();
-		Description = description;
-		Status = status;
-		SubmitedDate = submitedDate;
-		Commentaire = commentaire;
-
-		
-	}
 
 
 
@@ -77,9 +67,20 @@ public class ExternalRequest implements Serializable{
 
 	
 
+	
+
+
+
+
+
 	public Boolean getStatus() {
-		return Status;
+		return status;
 	}
+
+
+
+
+
 
 
 
@@ -87,8 +88,13 @@ public class ExternalRequest implements Serializable{
 
 
 	public void setStatus(Boolean status) {
-		Status = status;
+		this.status = status;
 	}
+
+
+
+
+
 
 
 

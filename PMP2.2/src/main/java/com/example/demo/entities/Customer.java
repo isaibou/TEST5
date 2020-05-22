@@ -43,7 +43,7 @@ public class Customer implements Serializable{
 	private String AdressCompany;
 	
 	@NotEmpty
-	private String Vip;
+	private String vip;
 	
 	@NotEmpty
 	@Column(name="NomTechnical",length=30)
@@ -101,27 +101,7 @@ public class Customer implements Serializable{
 		super();
 	}
 
-	public Customer(String name, String industry, String logo, String phoneCompany, String adressCompany, String vip, 
-			String nomCIO, String phoneCIO, String emailCIO, String nomTechnical, String emailTechnical, String phoneTechnical, String city, String country, String status) {
-		super();
-		Name = name;
-		Industry = industry;
-		Logo = logo;
-		PhoneCompany = phoneCompany;
-		AdressCompany = adressCompany;
-		Vip = vip;
-		
-		NomTechnical = nomTechnical;
-		PhoneTechnical = phoneTechnical;
-		EmailTechnical = emailTechnical;
-		NomCIO = nomCIO;
-		NomCIO= nomCIO;
-		PhoneCIO = phoneCIO;
-		EmailCIO = emailCIO;
-		City = city;
-		Country = country;
-		status = status;
-	}
+	
 
 	public Integer getCustomer_ID() {
 		return Customer_ID;
@@ -187,13 +167,19 @@ public class Customer implements Serializable{
 		AdressCompany = adressCompany;
 	}
 
+	
+
 	public String getVip() {
-		return Vip;
+		return vip;
 	}
 
+
+
 	public void setVip(String vip) {
-		Vip = vip;
+		this.vip = vip;
 	}
+
+
 
 	public String getPhoneCIO() {
 		return PhoneCIO;
@@ -215,9 +201,13 @@ public class Customer implements Serializable{
 		return status;
 	}
 
+
+
 	public void setStatus(String status) {
-		status = status;
+		this.status = status;
 	}
+
+
 
 	public String getNomCIO() {
 		return NomCIO;

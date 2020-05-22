@@ -88,9 +88,13 @@ public class RFPController {
 		if(rfpRepository.checkTitleExist(addRfp.getTitle())) {
 			//System.err.println("checkTitleExist-------------------");
 			model.addAttribute("unique", "must be unique");
+			 model.addAttribute("customer", customerRepository.findAll());	
+
 			return "addRfp";
 		}
 		if(bindingResult.hasErrors()) {
+			 model.addAttribute("customer", customerRepository.findAll());	
+
 			return "addRfp";
 		}
 		addRfp.setStatusRFP("New");

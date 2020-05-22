@@ -17,5 +17,8 @@ public interface CustomerRepository extends JpaRepository<Customer, Integer>{
 	Boolean checkTitleExist(String name);
 	
 	public List<Customer> findByStatus(String status);
+	
+	public List<Customer> findByVip(String vip);
+	
 
 }

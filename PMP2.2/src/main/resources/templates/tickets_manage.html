@@ -889,11 +889,7 @@ document.addEventListener('DOMContentLoaded', function() {
 																												  <li class="divider"></li>
 																												  <li>
 																												<a th:href="@{affectTo(id=${t.Ticket_ID})}"  style="margin-top:-5px;"  class="btn btn-sm btn-light" role="button">Affecte to</a>
-																												<a th:href="@{closed(id=${t.Ticket_ID})}" style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Close</a>
-																												<a th:href="@{resolved(id=${t.Ticket_ID})}"style="margin-top:-5px;"  class="btn btn-sm btn-light" role="button">Resolved</a>
-																												<a th:href="@{archived(id=${t.Ticket_ID})}"style="margin-top:-5px;"  class="btn btn-sm btn-light" role="button">Archived</a>
-																												<a th:href="@{waiting(id=${t.Ticket_ID})}"style="margin-top:-5px;"  class="btn btn-sm btn-light" role="button">Waiting</a>
-																											</li>
+																													</li>
 																										</ul>
 </div>
      </center></td>
@@ -954,13 +950,7 @@ document.addEventListener('DOMContentLoaded', function() {
 																												<a style="margin-top:-5px;" data-toggle="modal"  data-target="#DetailS" class="btn btn-sm btn-light" role="button">Detail</a>
 																												</li>
 																												  <li class="divider"></li>
-																												  <li>
-																												<a th:href="@{processing(id=${a.Ticket_ID})}"  style="margin-top:-5px;"  class="btn btn-sm btn-light" role="button">Processing</a>
-																												<a th:href="@{closed(id=${a.Ticket_ID})}" style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Close</a>
-																												<a th:href="@{resolved(id=${a.Ticket_ID})}"style="margin-top:-5px;"  class="btn btn-sm btn-light" role="button">Resolved</a>
-																												<a th:href="@{archived(id=${a.Ticket_ID})}"style="margin-top:-5px;"  class="btn btn-sm btn-light" role="button">Archived</a>
-																												<a th:href="@{waiting(id=${a.Ticket_ID})}"style="margin-top:-5px;"  class="btn btn-sm btn-light" role="button">Waiting</a>
-																											</li>
+																												
 																										</ul>
 </div>
      </center></td>
@@ -1011,13 +1001,10 @@ document.addEventListener('DOMContentLoaded', function() {
 																												</li>
 																												  <li class="divider"></li>
 																												  <li>
-																												<a th:href="@{processing(id=${p.Ticket_ID})}"  style="margin-top:-5px;"  class="btn btn-sm btn-light" role="button">Affecte to</a>
-																												<a th:href="@{closed(id=${p.Ticket_ID})}" style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Close</a>
 																												<a th:href="@{resolved(id=${p.Ticket_ID})}"style="margin-top:-5px;"  class="btn btn-sm btn-light" role="button">Resolved</a>
 																												<a th:href="@{archived(id=${p.Ticket_ID})}"style="margin-top:-5px;"  class="btn btn-sm btn-light" role="button">Archived</a>
-																												<a th:href="@{waiting(id=${p.Ticket_ID})}"style="margin-top:-5px;"  class="btn btn-sm btn-light" role="button">Waiting</a>
-																											</li>
 																										</ul>
+																											</li>
 </div>
      </center></td>
      </tr>
@@ -1080,8 +1067,8 @@ document.addEventListener('DOMContentLoaded', function() {
      </center></td>
      </tr>
     </tbody>
-   </table>
     </div>
+   </table>
   </div>
   <div class="tab-pane" id="tab_default_5">
       <div class="table-responsive" >
@@ -1113,8 +1100,8 @@ document.addEventListener('DOMContentLoaded', function() {
  
   
   </td>
-   <td th:text="$ {r.OpenedDate}"><center><center/></td>
-   <td th:text="$ {r.LastUpdatedate}"> <center><center/></td>
+   <td th:text="${r.OpenedDate}"><center><center/></td>
+   <td th:text="${r.LastUpdatedate}"> <center><center/></td>
    
     <td><center>
     <div class="btn-group dropdown">

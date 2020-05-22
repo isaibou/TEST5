@@ -87,19 +87,7 @@ public class RFP implements Serializable{
 	public RFP() {
 		super();
 	}
-	public RFP(String title, String description, Date realaseDate, Date reponseDateTime, Date notificationDate,
-			Date requestOfExecutionDate, String requestFile, String responseFile, String statusRFP) {
-		super();
-		Title = title;
-		Description = description;
-		RealaseDate = realaseDate;
-		ReponseDateTime = reponseDateTime;
-		NotificationDate = notificationDate;
-		RequestOfExecutionDate = requestOfExecutionDate;
-		RequestFile = requestFile;
-		ResponseFile = responseFile;
-		statusRFP = statusRFP;
-	}
+	
 	public Integer getRFP_ID() {
 		return RFP_ID;
 	}
@@ -157,8 +145,9 @@ public class RFP implements Serializable{
 	public String getStatusRFP() {
 		return statusRFP;
 	}
+	
 	public void setStatusRFP(String statusRFP) {
-		statusRFP = statusRFP;
+		this.statusRFP = statusRFP;
 	}
 
 	public Collection<Project> getProject() {

@@ -119,13 +119,15 @@ public class Expenses implements Serializable{
 	}
 
 
+
+
 	public String getStatutExpense() {
 		return statutExpense;
 	}
 
 
 	public void setStatutExpense(String statutExpense) {
-		statutExpense = statutExpense;
+		this.statutExpense = statutExpense;
 	}
 
 

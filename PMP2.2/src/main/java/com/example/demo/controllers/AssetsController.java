@@ -91,18 +91,17 @@ public class AssetsController {
 			 file.transferTo(new File(Configurationfille+file.getOriginalFilename()));
 		}
 
-		
-		if(bindingResult.hasErrors()) {
-			List<FieldError> errors = bindingResult.getFieldErrors();
-			//System.out.println(addAss.getConfigurationFille());
-		    for (FieldError error : errors ) {
-		    	if(!error.getField().equals("ConfigurationFille"))
-		    		return "addAssets";
-		        //System.out.println (error.getField() + " - " + error.getDefaultMessage());
-		    }
-
-			
-		}
+		/*
+		 * if(bindingResult.hasErrors()) { List<FieldError> errors =
+		 * bindingResult.getFieldErrors();
+		 * //System.out.println(addAss.getConfigurationFille()); for (FieldError error :
+		 * errors ) { if(!error.getField().equals("ConfigurationFille")) return
+		 * "addAssets"; //System.out.println (error.getField() + " - " +
+		 * error.getDefaultMessage()); }
+		 * 
+		 * 
+		 * }
+		 */
 		
 		if(assetRepository.checkTitleExist(addAss.getSerielNumber())) {
 			
@@ -139,6 +138,7 @@ public class AssetsController {
 		Assets asset = assetRepository.getOne(id);
 		asset.setFrimware(frim);
 		assetRepository.save(asset);
+		System.out.println(asset.getFrimware());
 		
 		
 		return "redirect:/assets_manage"; //$NON-NLS-1$
@@ -169,8 +169,11 @@ public class AssetsController {
        
 		asset.setStatus("Actif");
 		assetRepository.save(asset);
-		
-		return "redirect:/assets_manage";
+		Integer i = asset.getAssets_ID();
+		model.addAttribute("id", i);
+		model.addAttribute("frimware", asset.getAssettype().getFrimware());
+
+		return "nextAsset";
 	}
 	
 	@RequestMapping(value ="/updateAssets")
@@ -205,7 +208,8 @@ public class AssetsController {
 		
 		 Assets	assets = assetRepository.getOne(id);
 		 model.addAttribute("Assets",assets);
-		 assets.getAssettype().getName();
+		 
+		 model.addAttribute("firmware", assets.getFrimware().getName());  
 		
 		 
 		//Affichage du asse type et project qui j ai choisir a partir de la liste dérulante dans détail

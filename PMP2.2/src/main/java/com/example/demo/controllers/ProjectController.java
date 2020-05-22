@@ -237,7 +237,7 @@ if (!(file.isEmpty())) {
 	List<Users> employee = userRepository.findByIsCustomer(false);
 	
 	model.addAttribute("proj", proj);
-	model.addAttribute("projTask", projTask);
+	model.addAttribute("projTaske", projTask);
 	model.addAttribute("employee", employee);
 	model.addAttribute("affectationProj",new AffectationProject());
 		
@@ -258,7 +258,7 @@ e.printStackTrace();		}
 		
 	affectProjRepository.save(afProj);
 		
-			return "redirect:/projects";	
+			return "AffectationProject";	
 	}
 	
 	

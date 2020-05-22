@@ -81,7 +81,7 @@
   </li>
   <li class="dropdown">
    	<span class="thumb-sm avatar pull-right m-t-n-sm m-b-n-sm m-l-sm">
-													<img class="img-thumbnail" th:src="@{getPhoto(id=${user.username})}" width="60px" height="60px">
+													<img class="img-thumbnail" th:src="@{getPhoto(id=${user.Picture})}" width="60px" height="60px">
 														<i class="on md b-white bottom"></i>
 													</span>
 													<span th:text ="   ${user.firstName   } + . +  ${user.LastName   }   "></span><b class="caret"></b>
@@ -397,15 +397,15 @@
         <div class="row text-center">
          <div class="col-sm-6">
           <div class="panel padder-v item">
-           <div class="h1 count text-info font-thin h1 pull-center" th:text="${intAll}"></div>
-            <span class="text-muted text-xs"><b> Total Request </b></span>
+           <div class="h1 count text-info font-thin h1 pull-center" th:text="${intWait}"></div>
+            <span class="text-muted text-xs"><b> Total Waiting </b></span>
             <span class="bottom text-right w-full"><i class="glyphicon   glyphicon-tower text-muted m-r-sm"></i> </span>
            </div>
           </div>
           <div class="col-sm-6">
            <a href="" class="block panel padder-v bg-primary item">
-            <span class="text-white count font-thin h1 block" th:text="${intAll}" ></span>
-            <span class="text-muted text-xs"><b> Total Request </b></span>
+            <span class="text-white count font-thin h1 block" th:text="${intConf}" ></span>
+            <span class="text-muted text-xs"><b> Total Request Confirmed  </b></span>
             <span class="bottom text-right w-full"><i class="glyphicon glyphicon-briefcase text-muted m-r-sm"></i></span>
            </a>
           </div>
@@ -473,8 +473,8 @@
          </div>
          <div class="col-sm-6">
           <a href="" class="block panel padder-v bg-primary item">
-           <span class="text-white count font-thin h1 block" th:text="${extAll}" ></span>
-           <span class="text-muted text-xs"><b> Total Request </b></span>
+           <span class="text-white count font-thin h1 block" th:text="${extWait}" ></span>
+           <span class="text-muted text-xs"><b> Total Request Waiting </b></span>
            <span class="bottom text-right w-full"><i class="glyphicon glyphicon-briefcase text-muted m-r-sm"></i> </span>
           </a>
          </div>
@@ -489,6 +489,7 @@
 												{ mData: 'description' },
 												{ mData: 'Demandeur' },
 												{ mData: 'Status' },
+
 												{ mData: 'date' },
 												{ mData: 'action' }]
 											 }" class="table  b-t b-b">
@@ -524,6 +525,60 @@
 	      </tbody>
 	     </table>
         </div>
+
+
+												{ mData: 'date' },
+												{ mData: 'action' }]
+											}" class="table  b-t b-b">
+		<thead>
+		 <tr>	    
+          <th  style="width:15%"><center>Type</center></th>
+		  <th  style="width:25%"><center>Description</center></th>
+	      <th  style="width:15%"><center>Company</center></th>
+	      <th  style="width:15%"><center>Submited Date</center></th>
+	      <th  style="width:15%"><center>Status</center></th>      
+		  <th  style="width:15%"><center>Actions</center></th>
+		 
+		 </tr>
+		</thead>
+		
+		
+		<tbody>
+	 <tr  data-expanded="true" th:each="e:${listExt}">
+		  <td th:text="${e.typeExternalRequest.NameTypeExternelRequest}"></td>
+          <td th:text ="${e.Description}"><center></center></td>
+          <td  th:text="${e.userCustomer.customer.Name}"><center><center><span class="label bg-danger pull-center m-t-md">Company</span></center></center></td>
+          <td th:text ="${e.SubmitedDate}"><center></center></td>
+		  		  <td>
+		  
+		   <span th:if="${e.Status == true}" class="label bg-success pull-center m-t-md">Answered</span>
+   		   <span th:unless="${e.Status == true}" class="label bg-danger pull-center m-t-md">Waiting</span> 
+   		   </td>
+
+		  <td>
+		   <center>
+		   	<div class="btn-group dropdown">
+		     <button class="btn btn-default btn-xs" data-toggle="dropdown">
+		      <i class="glyphicon glyphicon-cog"></i> Action <span class="caret"></span>
+		     </button>
+		     <ul class="dropdown-menu">
+		       <li>
+				<a th:href="@{updateRequestCustomer(id=${e.ExternalRequest_ID})}"  style="margin-top:-5px;"   class="btn btn-sm btn-light" role="button">Update</a>						</li>
+																								<li>
+		      <li><a th:href="@{answerC(id=${e.ExternalRequest_ID})}" style="margin-top:-5px;" onClick="Message3()" class="btn btn-sm btn-light" role="button">Answer</a></li>
+		      <li>
+			<a th:href="@{detailsRequestCustomer(id=${e.ExternalRequest_ID})}" style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Details</a>
+																								</li>
+		     </ul>
+		    </div>
+		   </center>
+		  </td>
+		 </tr>
+	</tbody>
+	   </table>
+    
+		</div>
+
 	   </div>
 	  </div>
      </div>

@@ -49,25 +49,24 @@ public class InternalRequestController {
 
 	DateFormat df = new SimpleDateFormat("yyyy-	MM-dd");
 	
-	@RequestMapping(value="/request")
-	public String AllCustomer(Model model, Authentication auth) {
-		Users u = userRepository.getOne(auth.getName());
-		model.addAttribute("user", u);
-		
-		List<InternalRequest> intAll = internalRequestrepository.findAll();
-		List<ExternalRequest> extAll = externalRequestrepository.findAll();
-		
-		model.addAttribute("listInt", intAll);
-		model.addAttribute("listExt", extAll);
-		model.addAttribute("internal", new InternalRequest());
-		model.addAttribute("external", new ExternalRequest());
-		model.addAttribute("intAll", intAll.size());
-		model.addAttribute("extAll", extAll.size());
-		model.addAttribute("typeInternal", typeInternalRequestrepository.findAll());
-		model.addAttribute("typeExternal", typeExternalRequestrepository.findAll());
-		
-		return "request";
-	}
+	/*
+	 * @RequestMapping(value="/request") public String AllCustomer(Model model,
+	 * Authentication auth) { Users u = userRepository.getOne(auth.getName());
+	 * model.addAttribute("user", u);
+	 * 
+	 * List<InternalRequest> intAll = internalRequestrepository.findAll();
+	 * List<ExternalRequest> extAll = externalRequestrepository.findAll();
+	 * 
+	 * model.addAttribute("listInt", intAll); model.addAttribute("listExt", extAll);
+	 * model.addAttribute("internal", new InternalRequest());
+	 * model.addAttribute("external", new ExternalRequest());
+	 * model.addAttribute("intAll", intAll.size()); model.addAttribute("extAll",
+	 * extAll.size()); model.addAttribute("typeInternal",
+	 * typeInternalRequestrepository.findAll()); model.addAttribute("typeExternal",
+	 * typeExternalRequestrepository.findAll());
+	 * 
+	 * return "request"; }
+	 */
 
 	@RequestMapping(value="/addInternalRequest")
 	public String addInternalRequest(@Valid @ModelAttribute("int") InternalRequest internal,BindingResult bindingResult, Authentication  auth ) {
@@ -126,15 +125,17 @@ public class InternalRequestController {
 	}
 	
 	@RequestMapping(value ="/editEmployeeRequest" )
-	public String editEmployeeRequest(Integer id , Model model, @RequestParam(name="desc")String description, @RequestParam(name="commentaire")String commentaire) {
+	public String editEmployeeRequest(Integer id  , Model model , @RequestParam(name="com")String commentaire) {
+		 InternalRequest iR = internalRequestrepository.getOne(id);
 		
-	InternalRequest iR = internalRequestrepository.getOne(id);
-	String previousCom= iR.getCommentaire();
-	String NomCompany =  iR.getUserEmployee().getCustomer().getName();
-	String com = NomCompany + " :  " + commentaire;
-	String newCom = previousCom + "  ------ " + com; 
-	iR.setCommentaire(newCom);
-	iR.setDescription(description);
+		/*
+		 * String previousCom= iR.getCommentaire(); //String NomCompany =
+		 * iR.getUserEmployee().getCustomer().getName(); String com = NomCompany +
+		 * " :  " + commentaire; String newCom = previousCom + "  ------ " + com;
+		 */
+		  iR.setCommentaire(commentaire); 
+		 
+		 
 	internalRequestrepository.save(iR);
 	
 		return "redirect:/request";

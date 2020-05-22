@@ -607,7 +607,7 @@ document.addEventListener('DOMContentLoaded', function() {
 																			  <ul class="dropdown-menu">
 																			  <li><a th:href="@{'/DeliverableFile/'+${d.File}}"  style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Download File</a></li>
 																				<li><a th:href="@{updateDeliverable(id=${d.Deliverable_ID})}"  style="margin-top:-5px;"   class="btn btn-sm btn-light" role="button">Update</a></li>
-																	            <li><a th:href="@{deleteReference(id=${d.Deliverable_ID})}"  style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Delete</a></li>
+																	            <li><a th:href="@{deleteDeliverable(id=${d.Deliverable_ID})}"  style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Delete</a></li>
 																	            <li><a th:href="@{detailDeliverable(id=${d.Deliverable_ID})}"  style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Detail</a></li>				  
 																			  </ul>
 																			 </div></center></td>

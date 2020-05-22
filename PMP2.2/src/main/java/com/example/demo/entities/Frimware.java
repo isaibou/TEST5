@@ -102,12 +102,20 @@ public class Frimware implements Serializable{
 	public void setDescription(String description) {
 		this.description = description;
 	}
+	
+
+
+
+
 	public String getStatus() {
 		return status;
 	}
 
+
+
+
 	public void setStatus(String status) {
-		status = status;
+		this.status = status;
 	}
 
 

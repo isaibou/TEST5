@@ -129,27 +129,7 @@ public class Project implements Serializable{
 		//Type =type;
 		//Size = size;
 	}
-	public Project(String name, String typeProject, Double amount, Date year, Date deliveryDate, Date temporayAcceptanceDate,
-			Date finalTemporaryDate, String deliveryCertificate, int warranty,
-			int executionTime, String notes, String status) {
-		super();
-		Name = name;
-		
-		Amount = amount;
-		Year = year;
-		DeliveryDate = deliveryDate;
-		TemporayAcceptanceDate = temporayAcceptanceDate;
-		FinalTemporaryDate = finalTemporaryDate;
-		DeliveryCertificate = deliveryCertificate;
-		//Uri = uri;
-		//Type =type;
-		//Size = size;
-		//TechnologyPartners = technologyPartners;
-		Warranty = warranty;
-		ExecutionTime = executionTime;
-		Notes = notes;
-		status = status;
-	}
+	
 	public Project() {
 		super();
 	}
@@ -250,13 +230,15 @@ public class Project implements Serializable{
 	public void setNotes(String notes) {
 		Notes = notes;
 	}
+	
+	
+	
 	public String getStatus() {
 		return status;
 	}
 	public void setStatus(String status) {
-		status = status;
+		this.status = status;
 	}
-	
 	public RFP getRfp() {
 		return rfp;
 	}

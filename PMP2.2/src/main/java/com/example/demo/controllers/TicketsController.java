@@ -84,6 +84,15 @@ public class TicketsController {
 		model.addAttribute("totalaffected",affected.size() );
 		model.addAttribute("totalprocessing",processing.size() );
 
+		
+		model.addAttribute("submitted",submitted );
+		model.addAttribute("closed",closed );
+		model.addAttribute("waiting",waiting );
+		model.addAttribute("resolved",resolved );
+		model.addAttribute("archived",archived);
+		model.addAttribute("affected",affected );
+		model.addAttribute("processing",processing );
+
 		return "tickets_manage";
 	}
 

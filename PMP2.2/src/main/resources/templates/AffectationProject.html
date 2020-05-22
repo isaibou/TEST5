@@ -25,12 +25,13 @@
       <div class="col-sm-8" style="margin: 5px 0px;">
        <input type="text" class="form-control" id="input-id-1"  th:text="${proj.Name}" th:value="${proj.Project_ID}" name="project"/>
       </div>
-      <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Project Task</b></label>
-      <div class="col-sm-8" style="margin: 5px 0px;"><!-- ici on met une boucle sur le customer pour avoir récupérer la liste des customer  -->
-       <select name="projTAsk" class="form-control m-b"  th:field="*{projATsk}">
-        <option th:each ="c:${proj.typeProject.projectTask}" th:text="${c.NameProjectTask}" th:value ="${c.ProjectTask_ID}"></option>
-       </select>  
-      </div> 
+      <label class="col-sm-4 control-label" for="input-id-1"  style="margin:5px 0px;"><b>Task :</b></label>
+   <div class="col-sm-8" style="margin:5px 0px;" >
+   <select name ="role" class="form-control m-b" th:field="*{projATsk}">
+
+   <option th:each="r:${projTaske}"  th:text="${r.NameProjectTask}" th:value="${r.ProjectTask_ID}"></option>
+   </select>
+   </div>
       <label class="col-sm-4 control-label" for="input-id-1" style="margin:5px 0px;"><b>Employee :</b></label>
       <div class="col-sm-8" style="margin:5px 0px;" >
        <select name ="employee" class="form-control" multiple="multiple" th:field="*{user}" >
@@ -40,7 +41,7 @@
       <div style="margin: 5px 0px;">
               <button style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon pull-right"><a th:href="projects"><i class="glyphicon glyphicon-remove"></i>Cancel</a></button>
         <button style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon pull-right"><a th:href="@{affectation(id=${proj.Project_ID})}"><i class="glyphicon glyphicon-ok"></i>Affect</a></button>
-        <button style="margin:0px;" class="btn m-b-xs btn-sm btn-primary btn-addon pull-right"><i class="glyphicon glyphicon-ok"></i>Save</button>
+        <button style="margin:0px;" class="btn m-b-xs btn-sm btn-primary btn-addon pull-right"><a th:href="projects"><i class="glyphicon glyphicon-ok"></i>Save</a> </button>
       </div>  
      </div>
     </form>

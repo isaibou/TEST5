@@ -74,7 +74,7 @@ public class TicketsController {
 		List<Ticket> archived = ticketRepository.findByStatusTicket("Archived");
 		List<Ticket> affected = ticketRepository.findByStatusTicket("Affected");
 		List<Ticket> processing = ticketRepository.findByStatusTicket("Processing");
-
+		List<Ticket> allTickets = ticketRepository.findAll();
 		
 		model.addAttribute("totalsubmitted",submitted.size() );
 		model.addAttribute("totalclosed",closed.size() );
@@ -92,6 +92,7 @@ public class TicketsController {
 		model.addAttribute("archived",archived);
 		model.addAttribute("affected",affected );
 		model.addAttribute("processing",processing );
+		model.addAttribute("allTicket", allTickets);
 
 		return "tickets_manage";
 	}

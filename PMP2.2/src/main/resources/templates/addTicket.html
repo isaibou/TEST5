@@ -27,15 +27,23 @@
               <option th:value="Type2" th:text="Type2"></option>
             </select>
           </div>
+           <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Priority Ticket</b></label>
+          <div class="col-sm-8" style="margin: 5px 0px;" >
+            <select name="account" class="form-control m-b" th:field=*{PriorityTicket}>
+              <option th:value="Low" th:text="Low"></option>
+              <option th:value="Medium" th:text="Medium"></option>
+              <option th:value="High" th:text="High"></option>
+            </select>
+          </div>
           <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Asset</b></label>
           <div class="col-sm-8" style="margin: 5px 0px;" >
       <select name="AssetType_ID" class="form-control m-b" th:field=*{asset}>
-        <option th:each ="a:${asset}" th:text="${a.SerielNumber}" th:value ="${a.Assets_ID}"></option>
+        <option th:each ="a:${asset}" th:text=" ${a.assettype.Name} +.+${a.SerielNumber}" th:value ="${a.Assets_ID}"></option>
         </select>
           </div>
     <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Description</b></label>
      <div class="col-sm-8" style="margin: 5px 0px;" >
-      <input type="text" class="form-control" placeholder="Entry Name of Company" id="input-id-1" th:field=*{Description}/>
+      <input type="text" class="form-control" placeholder="Entry Name of Company" id="input-id-1"  required th:field=*{Description}/>
       <span class="text-danger" th:errors=*{Description}></span>
    </div>
     <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Log File</b></label>

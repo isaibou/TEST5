@@ -74,7 +74,7 @@ public void notifTaskProject(Users u , AffectationProject afp) throws MailExcept
 		mail.setFrom("suptechmiage2018@gmail.com");
 		mail.setSubject("New Ticket");
 		mail.setText("Bonjour  Mr/Mme "  + u.getLastName()+ " " + u.getFirstName() +
-				" Vous avez affecté à une nouvelle tache de : " + afp.getProjATsk().getNameProjectTask() + ", concernant le projet  "+ 
+				" Vous avez affecté au projet  "+ 
 				afp.getProject().getName()+".");
 		
 		javaMailSender.send(mail);

@@ -105,7 +105,9 @@ public class Project implements Serializable{
 	@OneToMany(mappedBy = "project", fetch = FetchType.LAZY)
 	private Collection<AffectationProject> affectProj;
 	
-	
+	@ManyToMany
+	@JoinTable(name="USERS_PROJECT")
+	private Collection<Users> users;
 	
 	
 	public List<TechnologyPartner> getTechnologypartner() {
@@ -268,6 +270,12 @@ public class Project implements Serializable{
 	}
 	public void setAffectProj(Collection<AffectationProject> affectProj) {
 		this.affectProj = affectProj;
+	}
+	public Collection<Users> getUsers() {
+		return users;
+	}
+	public void setUsers(Collection<Users> users) {
+		this.users = users;
 	}
 	
 	

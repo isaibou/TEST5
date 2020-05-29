@@ -108,7 +108,10 @@ if (!(file.isEmpty())) {
 
 }
 
-
+		Collection<Assets> a  =  addProj.getAssets();
+		for (Assets assets : a) {
+			assets.setStatus("Not Available");
+		}
 		ProjectRepository.save(addProj);
 
 		return "redirect:/projects";	
@@ -117,11 +120,11 @@ if (!(file.isEmpty())) {
 	@RequestMapping(value ="/addProject")
 	public String addProject( Model model ) {
 		 model.addAttribute("project",new Project());
-		 model.addAttribute("TechnoPart", technologiepartnerRepository.findAll());
-		 model.addAttribute("rfp",rfprepository.findAll());
+		 model.addAttribute("TechnoPart", technologiepartnerRepository.findByStatus("Actif"));
+		 model.addAttribute("rfp",rfprepository.findByStatusRFP("Won"));
 		 model.addAttribute("TypeProject", typeProjectRepository.findAll());
-		 model.addAttribute("assets",assetRepository.findAll() );
-		 model.addAttribute("TechnologiePartnerRepository", technologiepartnerRepository.findAll());
+		 model.addAttribute("assets",assetRepository.findByStatus("Actif") );
+		 model.addAttribute("TechnologiePartnerRepository", technologiepartnerRepository.findByStatus("Actif"));
 
 			return "addProj";
 			
@@ -233,13 +236,9 @@ if (!(file.isEmpty())) {
 	private String affect( Model model, Integer id ) {
 	
 	Project proj = ProjectRepository.getOne(id);
-	Collection<ProjectTask> projTask = proj.getTypeProject().getProjectTask();
 	List<Users> employee = userRepository.findByIsCustomer(false);
-	
 	model.addAttribute("proj", proj);
-	model.addAttribute("projTaske", projTask);
 	model.addAttribute("employee", employee);
-	model.addAttribute("affectationProj",new AffectationProject());
 		
 			return "AffectationProject";	
 	}
@@ -247,18 +246,19 @@ if (!(file.isEmpty())) {
 	
 
 	@RequestMapping(value ="/affectedProj" )
-	private String affectProj( Model model, AffectationProject afProj, @RequestParam(name="project")Integer projID ) {
-	  Project proj = ProjectRepository.getOne(projID);
-		afProj.setProject(proj);
-		 Users u = afProj.getUser();
+	private String affectProj( Model model, Users user, Integer id ) {
+		Project proj = ProjectRepository.getOne(id);
+	//	proj.setUsers(user);
 		 try {
-			 notif.notifTaskProject(u, afProj);
+		//	 notif.notifTaskProject(u, afProj);
 		} catch (MailException e) {
-e.printStackTrace();		}
+			e.printStackTrace();		}
 		
-	affectProjRepository.save(afProj);
+	model.addAttribute("proj", proj);
+	model.addAttribute("affectationProj", new AffectationProject());
+	model.addAttribute("employee", userRepository.findByIsCustomer(false));
 		
-			return "AffectationProject";	
+			return "redirect:/affectation";	
 	}
 	
 	

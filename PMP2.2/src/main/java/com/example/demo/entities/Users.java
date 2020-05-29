@@ -66,6 +66,9 @@ public class Users implements Serializable {
 	@OneToMany(mappedBy = "users", fetch = FetchType.LAZY)
 	private Collection<Task> tasks;
 	
+	@ManyToMany
+	private Collection<Project> project;
+	
 	public Users() {
 		super();
 		// TODO Auto-generated constructor stub

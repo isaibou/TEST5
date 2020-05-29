@@ -70,7 +70,7 @@ public class TimesheetControler {
 		  String name = auth.getName(); 
 		  Users u = userRepository.getOne(name); 
 	 
-	  Collection<AffectationProject> aff = afp.findByUser(u);	  
+	  Collection<AffectationProject> aff = afp.findByUser(u);
 	  model.addAttribute("projectTask", aff ); 
 	  model.addAttribute("task",  new Task());
 	  return "addTaskProject";

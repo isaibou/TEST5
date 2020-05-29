@@ -182,10 +182,10 @@
 												<div class="dropdown wrapper">
 													<a href="app.page.profile">
 														<span class="thumb-lg w-auto-folded avatar m-t-sm">
-															<img class="img-thumbnail" th:src="@{getPhoto(id=${user.username})}" width="60px" height="60px">
+															<img class="img-thumbnail" th:src="@{getPhoto(id=${user.Picture})}" width="60px" height="60px">
 															</span>
 														</a>
-														<img class="img-thumbnail" th:src="@{getPhoto(id=${user.username})}" width="60px" height="60px">
+														<img class="img-thumbnail" th:src="@{getPhoto(id=${user.Picture})}" width="60px" height="60px">
 															<span class="clear">
 																<span class="block m-t-sm">
 																	<strong class="font-bold text-lt" th:text ="   ${user.firstName   } + . +  ${user.LastName   }   "></strong> 
@@ -566,12 +566,12 @@
 																			
 																	
 																			<button id="btnsave" style="margin-top:12px;" class="btn m-b-xs btn-sm btn-primary btn-addon pull-right invisible" onclick=""><i class="glyphicon   glyphicon-floppy-save"></i> Save</button>
+																
+																			<button  th:href="@{/profile}" id="btncancel" style="margin-top:12px;margin-left:5px;" class="btn m-b-xs btn-sm btn-secondry btn-addon pull-right invisible"><i class="glyphicon glyphicon-floppy-remove"></i> Cancel</button>
 																			
-
 
 																</div>
 																</form>
-																	<button  th:href="@{/profile}" id="btncancel" style="margin-top:12px;margin-left:5px;" class="btn m-b-xs btn-sm btn-secondry btn-addon pull-right invisible"><i class="glyphicon glyphicon-floppy-remove"></i> Cancel</button>
 																
 																	<button id="btnupdt" style="margin-top:12px;margin-left:5px;" class="btn m-b-xs btn-sm btn-info btn-addon pull-right" onclick=""><i class="glyphicon  glyphicon-cog"></i> Update</button> 
 																

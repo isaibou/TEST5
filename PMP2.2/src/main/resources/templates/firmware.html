@@ -13,6 +13,7 @@
 <link href='/../libs/packages/daygrid/main.css' rel='stylesheet' />
 <link href='/../libs/packages/timegrid/main.css' rel='stylesheet' />
 <link href='/../libs/packages/list/main.css' rel='stylesheet' />
+<link rel="stylesheet"	href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css" />
 <script src='/../libs/packages/core/main.js'></script>
 <script src='/../libs/packages/interaction/main.js'></script>
 <script src='/../libs/packages/daygrid/main.js'></script>
@@ -20,7 +21,6 @@
 <script src='/../libs/packages/list/main.js'></script>
 <link rel="stylesheet" href="/css/font.css" type="text/css" />
 <link rel="stylesheet" href="/css/app.css" type="text/css" />
-
 <script>
 	document
 			.addEventListener(
@@ -169,60 +169,14 @@
 					</a>
 				</div>
 				<!-- / buttons -->
-
-				<!-- link and dropdown -->
-				<ul class="nav navbar-nav hidden-sm">
-					<li class="dropdown"><a href="#" data-toggle="dropdown"
-						class="dropdown-toggle"> <span
-							translate="header.navbar.new.NEW"></span> <span
-							class="fa fa-moon-o lb-warning"></span>
-					</a>
-						<ul class="dropdown-menu" role="menu">
-							<li>
-								<button type="button" name="button" id="darkmode"
-									onclick="changecolor()">
-									<span translate="header.navbar.new.TASK">ON</span>
-								</button>
-							</li>
-							<li>
-								<button type="button" name="button" id="lightmode"
-									onclick="lightmode()">
-									<span translate="header.navbar.new.TASK">OFF</span>
-								</button>
-							</li>
-
-						</ul></li>
-				</ul>
-				<!-- / link and dropdown -->
-
-				<!-- search form -->
-				<form class="navbar-form navbar-form-sm navbar-left shift"
-					ui-shift="prependTo" data-target=".navbar-collapse" role="search"
-					ng-controller="TypeaheadDemoCtrl">
-					<div class="form-group">
-						<div class="input-group">
-							<input type="text" ng-model="selected"
-								typeahead="state for state in states | filter:$viewValue | limitTo:8"
-								class="form-control input-sm bg-light no-border rounded padder"
-								placeholder="Search projects..."> <span
-								class="input-group-btn">
-								<button type="submit" class="btn btn-sm bg-light rounded">
-									<i class="fa fa-search"></i>
-								</button>
-							</span>
-						</div>
-					</div>
-				</form>
-				<!-- / search form -->
-
-				<!-- nabar right -->
+	<!-- nabar right -->
 				<ul class="nav navbar-nav navbar-right">
-					<li class="dropdown"><a href="#" data-toggle="dropdown"
+					<!-- <li class="dropdown"><a href="#" data-toggle="dropdown"
 						class="dropdown-toggle"> <i class="icon-bell fa-fw"></i> <span
 							class="visible-xs-inline">Notifications</span> <span
 							class="badge badge-sm up bg-danger pull-right-xs">2</span>
-					</a> <!-- dropdown -->
-						<div class="dropdown-menu w-xl animated fadeInUp">
+					</a>  --><!-- dropdown -->
+					<!-- 	<div class="dropdown-menu w-xl animated fadeInUp">
 							<div class="panel bg-white">
 								<div class="panel-heading b-light bg-light">
 									<strong>You have <span>2</span> notifications
@@ -248,15 +202,15 @@
 										all the notifications</a>
 								</div>
 							</div>
-						</div> <!-- / dropdown --></li>
+						</div>  --><!-- / dropdown --><!-- </li> -->
 					<li class="dropdown">
 						<span class="thumb-sm avatar pull-right m-t-n-sm m-b-n-sm m-l-sm">
 													<img class="img-thumbnail" th:src="@{getPhoto(id=${user.username})}" width="60px" height="60px">
 														<i class="on md b-white bottom"></i>
 													</span>
 													<span th:text ="   ${user.firstName   } + . +  ${user.LastName   }   "></span> <b
-						class="caret"></b> </a> <!-- dropdown -->
-						<ul class="dropdown-menu animated fadeInRight w">
+						class="caret"></b> <!-- dropdown -->
+						<!-- <ul class="dropdown-menu animated fadeInRight w">
 							<li class="wrapper b-b m-b-sm bg-light m-t-n-xs">
 								<div>
 									<p>300mb of 500mb used</p>
@@ -276,7 +230,7 @@
 							</a></li>
 							<li class="divider"></li>
 							<li><a ui-sref="access.signin">Logout</a></li>
-						</ul> <!-- / dropdown --></li>
+						</ul> --> <!-- / dropdown --></li>
 				</ul>
 				<!-- / navbar right -->
 			</div>
@@ -291,14 +245,18 @@
 					<div class="clearfix hidden-xs text-center hide" id="aside-user">
 						<div class="dropdown wrapper">
 							<a href="app.page.profile"><span
-								class="thumb-lg w-auto-folded avatar m-t-sm"><img
-									src="img/a0.jpg" class="img-full" alt="..."></span></a><a href="#"
+								class="thumb-lg w-auto-folded avatar m-t-sm">
+						<img class="img-thumbnail" th:src="@{getPhoto(id=${user.username})}" width="60px" height="60px">
+														<i class="on md b-white bottom"></i>
+													</span>
+													</a><a href="#"
 								data-toggle="dropdown" class="dropdown-toggle hidden-folded"><span
 								class="clear"><span class="block m-t-sm"><strong
-										class="font-bold text-lt">Walid.Largou</strong><b
+										class="font-bold text-lt"><span th:text ="   ${user.firstName   } + . +  ${user.LastName   }   ">
+								</span></strong><b
 										class="caret"></b></span><span class="text-muted text-xs block">Manager</span></span></a>
 							<!-- dropdown -->
-							<ul class="dropdown-menu animated fadeInRight w hidden-folded">
+						<!-- 	<ul class="dropdown-menu animated fadeInRight w hidden-folded">
 								<li class="wrapper b-b m-b-sm bg-info m-t-n-xs"><span
 									class="arrow top hidden-folded arrow-info"></span>
 									<div>
@@ -313,7 +271,7 @@
 								<li><a href><span class="badge bg-danger pull-right">3</span>Notifications</a></li>
 								<li class="divider"></li>
 								<li><a th:href="page_signin">Logout</a></li>
-							</ul>
+							</ul> -->
 							<!-- / dropdown -->
 						</div>
 						<div class="line dk hidden-folded"></div>
@@ -585,7 +543,7 @@
 					</h1>
 				</div>
 
-				<div class="row" style="margin: 5px; background-color: #f0f3f4;"></div>
+				<div class="row" style="margin:5px;background-color:#f0f3f4;"></div>
 
 <div class="col-sm-12">
 					<div class="row row-sm text-center">
@@ -702,10 +660,8 @@
 	<script src="js/ui-nav.js"></script>
 	<script src="js/ui-toggle.js"></script>
 	<script src="js/ui-client.js"></script>
-	<script type="text/javascript"
-		src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
-	<link rel="stylesheet"
-		href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css" />
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+	
 	<script>
 		$(document).ready(
 				function() {
@@ -719,100 +675,6 @@
 						autoclose : true,
 					})
 				})
-	</script>
-	<script>
-		$('.count').each(function() {
-			$(this).prop('Counter', 0).animate({
-				Counter : $(this).text()
-			}, {
-				duration : 1500,
-				easing : 'linear',
-				step : function(now) {
-					$(this).text(Math.ceil(now));
-				}
-			});
-		});
-	</script>
-	<script type="text/javascript">
-		function changecolor() {
-			$(
-					'body,.wrapper,.content,.panel-default,.panel-heading,#content-h,#header,.modal-content')
-					.css("background-color", "#3a3f51");
-			$('.wrapper,.content,.panel-default,.panel-heading,#content-h')
-					.css("border-color", "#313639");
-			$('.h3,.h5,.wrapper,panel-default,#content-b,.panel-heading').css(
-					"color", "white");
-			$('.panel-default,#content-b').css("background-color", "#3a3f51");
-
-			google.charts.load('current', {
-				packages : [ 'corechart' ]
-			});
-			google.charts.setOnLoadCallback(drawChart);
-
-			function drawChart() {
-				// Define the chart to be drawn.
-				var data = new google.visualization.DataTable();
-				data.addColumn('string', 'Element');
-				data.addColumn('number', 'Percentage');
-				data.addRows([ [ 'Configuration', 0.68 ],
-						[ 'Documentation', 0.11 ], [ 'Maintenance', 0.11 ],
-						[ 'Installation', 0.10 ] ]);
-
-				// Instantiate and draw the chart.
-				var chart = new google.visualization.PieChart(document
-						.getElementById('myPieChart'));
-				var options = {
-					backgroundColor : '#3a3f51',
-					colors : [ '#6254b2', '#3289c8', '#27c24c', '#ffbb3b' ],
-					legendTextStyle : {
-						color : '#FFF'
-					},
-					is3D : true
-				};
-				chart.draw(data, options);
-			}
-
-		};
-
-		function lightmode() {
-			$(
-					'.wrapper,.content,.panel-heading,#content-h,#header,.modal-content')
-					.css("background-color", "#f0f3f4");
-			$('.panel-default,#content-b').css("background-color", "#f0f3f4");
-			$('.wrapper,.content,.panel-default,.panel-heading,#content-h')
-					.css("border-color", "#dee5e7");
-			$('.h3,.h5,.wrapper,panel-default,#content-b,.panel-heading').css(
-					"color", "#58666e");
-
-			google.charts.load('current', {
-				packages : [ 'corechart' ]
-			});
-			google.charts.setOnLoadCallback(drawChart);
-
-			function drawChart() {
-				// Define the chart to be drawn.
-				var data = new google.visualization.DataTable();
-				data.addColumn('string', 'Element');
-				data.addColumn('number', 'Percentage');
-				data.addRows([ [ 'Configuration', 0.68 ],
-						[ 'Documentation', 0.11 ], [ 'Maintenance', 0.11 ],
-						[ 'Installation', 0.10 ] ]);
-
-				// Instantiate and draw the chart.
-				var chart = new google.visualization.PieChart(document
-						.getElementById('myPieChart'));
-				var options = {
-					backgroundColor : '#f0f3f4',
-					colors : [ '#6254b2', '#3289c8', '#27c24c', '#ffbb3b' ],
-					legendTextStyle : {
-						color : 'black'
-					},
-					is3D : true
-				};
-				chart.draw(data, options);
-			}
-
-		};
 	</script>
 </body>
 </html>

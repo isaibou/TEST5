@@ -587,6 +587,7 @@
       <td th:text ="${a.Status}" class="m-n font-thin h4 text-secondary"><center><span></span><center/></td>
       <td><center><div class="btn-group dropdown"><button class="btn btn-default btn-xs" data-toggle="dropdown"><i class="glyphicon glyphicon-cog"></i> Action <span class="caret"></span></button>
        <ul class="dropdown-menu">
+       <li><a th:href="@{'/Configurationfille/'+${a.ConfigurationFille}}"  style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Download Configuration Fille</a></li>
         <li><a th:href="@{updateAssets(id=${a.Assets_ID})}"  style="margin-top:-5px;"   class="btn btn-sm btn-light" role="button">Update</a></li>
         <li><a th:href="@{archiverAssets(id=${a.Assets_ID})}"  style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Archived</a></li>
         <li><a th:href="@{detailAssets(id=${a.Assets_ID})}" style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Detail</a></li></ul></div></center></td>

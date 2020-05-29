@@ -45,6 +45,10 @@
           <label class="col-sm-4 control-label" placeholder="Entry Seriel Number" style="margin: 5px 0px;" for="input-id-1"><b>Seriel Number</b></label>
           <div class="col-sm-8" style="margin: 5px 0px;">
             <input type="text"  class="form-control" placeholder="Entry Seriel Number"id="input-id-2" th:field=*{SerielNumber}/>
+            <span class="text-danger" th:errors=*{SerielNumber}></span>
+              <div class="text-danger" th:if="${unique}">
+		   <div th:text="${unique}"></div>
+		</div> 
           </div>       
          <label class="col-sm-4 control-label" style="margin: 5px 0px;" placeholder="Entry Description" for="input-id-1"><b>Description</b></label>
          <div class="col-sm-8" style="margin: 5px 0px;">
@@ -66,10 +70,15 @@
           <div class="col-sm-8" style="margin: 5px 0px;">
              <input type="date" class="form-control" id="input-id-1" th:field=*{EndOfVendorWarranty}/>
            </div>
-          <label class="col-sm-4 control-label" placeholder="Entry SLA" style="margin: 5px 0px;" for="input-id-1"><b>SLA</b></label>
-          <div class="col-sm-8" style="margin: 5px 0px;">
-            <input type="text" placeholder="Entry SLA"class="form-control" id="input-id-1" th:field=*{SLA}/>
-          </div>         
+          <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>SLA</b></label>
+		 <div class="col-sm-8" style="margin: 5px 0px;" >
+		  <select name="account" class="form-control m-b"   th:field=*{SLA}>
+	       <option th:value ="Platinum24sur7" th:text="Platinum24sur7"></option>
+	       <option th:value ="Gold24sur5" th:text="Gold24sur5"></option>
+	       <option th:value ="Bronze-Ondemand" th:text="Bronze-Ondemand"></option>
+		  </select>
+		 
+		 </div>          
     <div>
      <button style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon pull-right"><a th:href="assets_manage"><i class="glyphicon glyphicon-remove"></i>Annuler</a></button>
      <button style="margin:0px;" class="btn m-b-xs btn-sm btn-primary btn-addon pull-right"><i class="glyphicon glyphicon-ok"></i>Save</button>

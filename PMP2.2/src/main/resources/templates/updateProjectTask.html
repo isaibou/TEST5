@@ -18,16 +18,20 @@
    <a href="" class="navbar-brand block m-t"><i class="fa fa-power-off"></i> <b>PowerM</b> </a>
   <div class="panel panel-default">
    <div class="panel-heading"> Add Project Task </div>
-      <form th:action="@{editProjectTask}" method ="post" th:object="${pTask}">
+      <form th:action="@{editProjectTask}" method ="post" th:object="${ptask}">
       <div class="panel-body">
        <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b></b></label>
      <div class="col-sm-8" style="margin: 5px 0px;">
       <input type="hidden" class="form-control" placeholder="Entry Name of Technology Partner" id="input-id-1" th:field=*{ProjectTask_ID}/>
-    
+    <span class="text-danger" th:errors=*{NameProjectTask}></span>
    </div> 
        <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Name Project Task</b></label>
        <div class="col-sm-8" style="margin: 5px 0px;" >
-      <input type="text" class="form-control" placeholder="Entry Name of Project Task" id="input-id-1" th:field=*{NameProjectTask}/> 
+      <input type="text" class="form-control" placeholder="Entry Name of Project Task" id="input-id-1" th:field=*{NameProjectTask}/>
+      <span class="text-danger" th:errors=*{NameProjectTask}></span>
+      <div class="text-danger" th:if="${unique}">
+		   <div th:text="${unique}"></div>
+		</div> 
   </div>
       <div>
        <button style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon pull-right"><a th:href="typeProject"><i class="glyphicon glyphicon-remove"></i>Annuler</a></button>

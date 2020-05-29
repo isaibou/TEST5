@@ -39,6 +39,9 @@
 	 <div class="col-sm-8" style="margin:5px 0px;" >
 	  <input type="email" placeholder="Entry Login" class="form-control" id="input-id-1" th:field=*{username}>
 	   <span class="text-danger" th:errors=*{username}></span>
+	   <div class="text-danger" th:if="${unique}">
+		   <div th:text="${unique}"></div>
+		</div>
 	 </div>	 
 	  <label class="col-sm-4 control-label" for="input-id-1" style="margin:5px 0px;"><b>Company :</b></label>
 	 <div class="col-sm-8" style="margin:5px 0px;" >

@@ -52,9 +52,17 @@ public class PurchasingController {
 	}
 	
 	@RequestMapping(value="/SavePurchasing" , method= RequestMethod.POST)
-	private String SavePurchasing(@Valid Purchasing addPur, BindingResult bindingResult) {
+	private String SavePurchasing(@Valid Purchasing addPur, BindingResult bindingResult,Model model) {
+		
+		if(purchisingRepository.checkTitleExist(addPur.getEmail())) {
+			model.addAttribute("customer", customerRepository.findAll());
+			
+			model.addAttribute("unique", "must be unique");
+			return "addpurchasing";
+		}
 		
 		if(bindingResult.hasErrors()) {
+			model.addAttribute("customer", customerRepository.findAll());
 			return "addpurchasing";
 			
 		}
@@ -79,6 +87,14 @@ public class PurchasingController {
 	
 	@RequestMapping(value = "/editPurchasing",method = { RequestMethod.GET, RequestMethod.POST })
 	public String updatePurchasing(Model model, @Valid Purchasing purch, BindingResult bindingResult){
+		
+		if(purchisingRepository.checkTitleExist(purch.getEmail())) {
+			
+			model.addAttribute("customer", customerRepository.findAll());	
+			
+			model.addAttribute("unique", "must be unique");
+			return "updatePurchasingtForm";
+		}
 
 		purchisingRepository.save(purch);
 		

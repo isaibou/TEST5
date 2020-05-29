@@ -18,7 +18,7 @@
    <a href="" class="navbar-brand block m-t"><i class="fa fa-power-off"></i> <b>PowerM</b> </a>
   <div class="panel panel-default">
    <div class="panel-heading"> Update RFP </div>
-    <form th:action="@{editRFP}"   enctype="multipart/form-data"  method ="post" th:object="${rfp}">
+    <form th:action="@{editRFP}"   enctype="multipart/form-data"  method ="post" th:object="${RFP}">
    <div class="panel-body">
     <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b></b></label>
      <div class="col-sm-8" style="margin: 5px 0px;" >
@@ -39,6 +39,10 @@
    <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Title</b></label>
        <div class="col-sm-8" style="margin: 5px 0px;" >
       <input type="text" class="form-control" placeholder="Entry Name of RFP" id="input-id-1" th:field=*{Title}/> 
+      <span class="text-danger" th:errors=*{Title}></span>
+      <div class="text-danger" th:if="${unique}">
+       <div th:text="${unique}"></div>
+    </div>
      </div>
        <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Customer</b></label>
        <div class="col-sm-8" style="margin: 5px 0px;">
@@ -72,12 +76,12 @@
      <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Request File</b></label>
      <div class="col-sm-8" style="margin: 5px 0px;">
           <input type="file" placeholder="Upload Preview File" name="request" class="form-control" id="input-id-1"  /> 
-          <span th:text ="${rfp.RequestFile}" class="m-n font-thin h4 text-secondary"></span>
+          <span th:text ="${RFP.RequestFile}" class="m-n font-thin h4 text-secondary"></span>
          </div>
      <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Response File</b></label>
      <div class="col-sm-8" style="margin: 5px 0px;">
           <input type="file" placeholder="Upload Preview File" class="form-control" name="response" id="input-id-1"  />
-          <span th:text ="${rfp.ResponseFile}" class="m-n font-thin h4 text-secondary"></span>
+          <span th:text ="${RFP.ResponseFile}" class="m-n font-thin h4 text-secondary"></span>
          </div>
     <div>
      <button style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon pull-right"><a th:href="RFP"><i class="glyphicon glyphicon-remove"></i>Annuler</a></button>

@@ -52,7 +52,13 @@ public class TypeRequestController {
 	}
 	
 	@RequestMapping(value="/addTypeInternalRequest")
-	public String addTypeInternalRequest(@Valid @ModelAttribute("typint") TypeInternalRequest internal, BindingResult bindingResult) {
+	public String addTypeInternalRequest(@Valid @ModelAttribute("typint") TypeInternalRequest internal, BindingResult bindingResult,Model model) {
+		
+		if(typeInternalRequestRepository.checkTitleExist(internal.getNameTypeInternalRequest())) {
+			
+			model.addAttribute("unique", "must be unique");
+			return "addTypIntReq";
+		}
 		
 		if(bindingResult.hasErrors()) {
 			return "addTypIntReq";
@@ -70,6 +76,12 @@ public class TypeRequestController {
 	
 	@RequestMapping(value = "/editTypeInternalRequest",method = { RequestMethod.GET, RequestMethod.POST })
 	public String updateTypeInternalRequest(Model model, @Valid TypeInternalRequest typInReq, BindingResult bindingResult){
+        
+if(typeInternalRequestRepository.checkTitleExist(typInReq.getNameTypeInternalRequest())) {
+			
+			model.addAttribute("unique", "must be unique");
+			return "updateTypeIntReqForm";
+		}
 
 		typeInternalRequestRepository.save(typInReq);
 		
@@ -86,8 +98,14 @@ public class TypeRequestController {
 	}
 
 	@RequestMapping(value="/addTypeExternalRequest")
-	public String addTypeExternalRequest(@Valid @ModelAttribute("typext") TypeExternalRequest external, BindingResult bindingResult) {
+	public String addTypeExternalRequest(@Valid @ModelAttribute("typext") TypeExternalRequest external, BindingResult bindingResult, Model model) {
 		
+if(typeExternalRequestRepository.checkTitleExist(external.getNameTypeExternelRequest())) {
+			
+			model.addAttribute("unique", "must be unique");
+			return "addTypExtReq";
+		}
+
 		if(bindingResult.hasErrors()) {
 			return "addTypExtReq";
 		}
@@ -105,6 +123,11 @@ public class TypeRequestController {
 	@RequestMapping(value = "/editTypeExternalRequest",method = { RequestMethod.GET, RequestMethod.POST })
 	public String updateTypeExternalRequest(Model model, @Valid TypeExternalRequest typExReq, BindingResult bindingResult){
 
+if(typeExternalRequestRepository.checkTitleExist(typExReq.getNameTypeExternelRequest())) {
+			
+			model.addAttribute("unique", "must be unique");
+			return "updateTypeExtReqForm";
+		}
 		typeExternalRequestRepository.save(typExReq);
 		
 		return "redirect:/typeRequest";

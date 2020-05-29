@@ -69,7 +69,7 @@ public class FrimwareController {
 	private String SaveFrimware(@Valid Frimware addFrim, BindingResult bindingResult, Model model) {
 		
 		if(frimwareRepository.checkTitleExist(addFrim.getName())) {
-			//System.err.println("checkTitleExist-------------------");
+			
 			model.addAttribute("unique", "must be unique");
 			 model.addAttribute("assetType", assetTypeRepository.findAll());
 
@@ -108,6 +108,8 @@ public class FrimwareController {
 	@RequestMapping(value ="/updateFrimwareform" )
 	private String updateFrimwareform( Model model, Integer id ) {
 		
+		
+		
 	     Frimware	frimware = frimwareRepository.getOne(id);
 		 model.addAttribute("frimware",frimware);
 		 System.out.println(frimware.getName());
@@ -120,6 +122,14 @@ public class FrimwareController {
 	
 	@RequestMapping(value = "/editFrimware",method= RequestMethod.POST)
 	public String updateFrimware(Model model, Frimware frim){
+		
+if(frimwareRepository.checkTitleExist(frim.getName())) {
+			
+			model.addAttribute("unique", "must be unique");
+			 model.addAttribute("assetType", assetTypeRepository.findAll());
+
+			return "updateFrimwareForm";
+		}
 	
 		
 	    System.out.println(frim.getFrimware_ID());

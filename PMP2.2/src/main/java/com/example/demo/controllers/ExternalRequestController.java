@@ -75,9 +75,10 @@ public class ExternalRequestController {
 	}
 	
 	@RequestMapping(value="/addExternalRequest")
-	public String addInternalRequest(@Valid @ModelAttribute("ext") ExternalRequest external,BindingResult bindingResult, Authentication  auth ) {
+	public String addInternalRequest(@Valid @ModelAttribute("ext") ExternalRequest external,BindingResult bindingResult,Model model,  Authentication  auth ) {
 		
 		 if(bindingResult.hasErrors()) {
+			 model.addAttribute("type", typeExternalRequestRepository.findAll());
 		 
 			return "addReqCust";
 		}

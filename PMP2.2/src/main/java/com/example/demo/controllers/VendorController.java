@@ -108,6 +108,12 @@ if (!(file.isEmpty())) {
 	@RequestMapping(value = "/editVendor",method = { RequestMethod.GET, RequestMethod.POST })
 	public String updateVendor(Model model, @Valid Vendor vend, BindingResult bindingResult, @RequestParam(name="certificate")MultipartFile file) throws IllegalStateException, IOException{
         
+if(vendorRepository.checkTitleExist(vend.getNameVendor())) {
+			
+			model.addAttribute("unique", "must be unique");
+			return "updateVendorForm";
+		}
+
 		vend.setStatus("Actif");
 		
 		

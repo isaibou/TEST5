@@ -86,7 +86,7 @@ public class RFPController {
 			@RequestParam(name="response") MultipartFile responseFile  ) throws IllegalStateException, IOException {
 	
 		if(rfpRepository.checkTitleExist(addRfp.getTitle())) {
-			//System.err.println("checkTitleExist-------------------");
+			
 			model.addAttribute("unique", "must be unique");
 			 model.addAttribute("customer", customerRepository.findAll());	
 
@@ -131,7 +131,13 @@ if (!(responseFile.isEmpty())) {
 	@RequestMapping(value = "/editRFP",method = { RequestMethod.GET, RequestMethod.POST })
 	public String updateRFP(Model model, @Valid RFP RFP, BindingResult bindingResult,@RequestParam(name="response") MultipartFile responseFile, @RequestParam(name="request")MultipartFile requestFile) throws IllegalStateException, IOException{
 		
-		
+if(rfpRepository.checkTitleExist(RFP.getTitle())) {
+			
+			model.addAttribute("unique", "must be unique");
+			 model.addAttribute("customer", customerRepository.findAll());	
+
+			return "updateRFPForm";
+		}
 		
 		
 if (!(requestFile.isEmpty())) {
@@ -157,7 +163,7 @@ if (!(responseFile.isEmpty())) {
 	public String updateRFPForm( Model model, Integer id ) {
 		
 		 RFP	rfp = rfpRepository.getOne(id);
-		 model.addAttribute("rfp",rfp);
+		 model.addAttribute("RFP",rfp);
 		 
 		 model.addAttribute("customer", customerRepository.findAll());	
 		 System.out.println(rfp.getTitle());

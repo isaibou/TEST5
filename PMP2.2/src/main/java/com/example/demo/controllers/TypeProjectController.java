@@ -55,11 +55,16 @@ public class TypeProjectController {
 		
 		if(typeProjectRepository.checkTitleExist(addtypeP.getNameType_Project())) {
 			
+			 List<ProjectTask> listpt = projectTaskrepository.findAll();
+			 model.addAttribute("listpt", listpt); 
+			 
 			model.addAttribute("unique", "must be unique");
 			return "addTypeProj";
 		}
 		
 		if(bindingResult.hasErrors()) {
+			List<ProjectTask> listpt = projectTaskrepository.findAll();
+			model.addAttribute("listpt", listpt); 
 			return "addTypeProj";
 		}
 		
@@ -84,7 +89,14 @@ public class TypeProjectController {
 	
 	@RequestMapping(value = "/editTypeProject",method = { RequestMethod.GET, RequestMethod.POST })
 	public String updateTypeProject(@Valid  TypeProject addtypeP, BindingResult bindingResult, Model model ){
-        
+		if(typeProjectRepository.checkTitleExist(addtypeP.getNameType_Project())) {
+			
+			 List<ProjectTask> listpt = projectTaskrepository.findAll();
+			 model.addAttribute("listpt", listpt); 
+			 
+			model.addAttribute("unique", "must be unique");
+			return "updateTypeProject";
+		}
 		typeProjectRepository.save(addtypeP);
 				
 		return "redirect:/typeProject";

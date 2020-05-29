@@ -130,8 +130,13 @@ public class CustomerController {
 		}
 	  
 	  @RequestMapping(value = "/editCustomer",method= RequestMethod.POST) 
-	  private String updateCustomer(@Valid Customer addCust, BindingResult bindingResult, @RequestParam(name="photo")MultipartFile file) throws Exception, IOException {
-	  
+	  private String updateCustomer(@Valid Customer addCust,Model model, BindingResult bindingResult, @RequestParam(name="photo")MultipartFile file) throws Exception, IOException {
+	   
+		  if(customerrepository.checkTitleExist(addCust.getName())) {
+				
+				model.addAttribute("unique", "must be unique");
+				return "updateCustomerForm";
+			}
 
 			if (!(file.isEmpty())) {
 				addCust.setLogo(file.getOriginalFilename());

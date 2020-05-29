@@ -30,19 +30,19 @@ public class Customer implements Serializable{
 	@Column(name="Name",length=30)
 	private String Name;
 	
-	@NotEmpty
+	
 	private String Industry;
 	
 	private String Logo;
 
-	@NotEmpty
+	
 	@NumberFormat(pattern = "##########")
 	private String PhoneCompany;
 	
 	@NotEmpty
 	private String AdressCompany;
 	
-	@NotEmpty
+	
 	private String vip;
 	
 	@NotEmpty
@@ -61,11 +61,11 @@ public class Customer implements Serializable{
 	@Column(name="NomCIO",length=30)
 	private String NomCIO;
 	
-	@NotEmpty
+	
 	@NumberFormat(pattern = "##########")
 	private String PhoneCIO;
 	
-	@NotEmpty
+	
 	@Email(message="Email invalid")
 	private String EmailCIO;
 
@@ -74,7 +74,7 @@ public class Customer implements Serializable{
 	private String Country;
 	
 	
-	@NotNull
+	
 	private String status;
 	
 	@OneToMany

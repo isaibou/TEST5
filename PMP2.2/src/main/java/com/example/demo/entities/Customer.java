@@ -30,7 +30,7 @@ public class Customer implements Serializable{
 	@Column(name="Name",length=30)
 	private String Name;
 	
-	
+
 	private String Industry;
 	
 	private String Logo;
@@ -42,7 +42,7 @@ public class Customer implements Serializable{
 	@NotEmpty
 	private String AdressCompany;
 	
-	
+
 	private String vip;
 	
 	@NotEmpty
@@ -72,9 +72,7 @@ public class Customer implements Serializable{
 	private String City;
 
 	private String Country;
-	
-	
-	
+
 	private String status;
 	
 	@OneToMany

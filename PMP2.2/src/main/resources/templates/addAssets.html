@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-
   <meta charset="utf-8" />
   <title>Add Assets</title>
   <meta name="description" content="app, web app, responsive, responsive layout, admin, admin panel, admin dashboard, flat, flat ui, ui kit, AngularJS, ui route, charts, widgets, components" />
@@ -16,83 +15,68 @@
 <body>
 <div style="margin:50px;"></div>
 <div class="col-md-6 col-sm-6 col-xs-12 spacer col-md-offset-3">
-	 <a href="" class="navbar-brand block m-t"><i class="fa fa-power-off"></i> <b>PowerM</b> </a>
-	<div class="panel panel-default">
-	 <div class="panel-heading"> Add Assets </div>
 
- <form th:action="@{SaveAssets}" enctype="multipart/form-data" method ="post" th:object="${assets}">
-      <div class="modal-body">
-        <div class="row">
-        
+   <a href="" class="navbar-brand block m-t"><i class="fa fa-power-off"></i> <b>PowerM</b> </a>
+  <div class="panel panel-default">
+   <div class="panel-heading"> Add Asset </div>
+    <form th:action="@{SaveAssets}" enctype="multipart/form-data" method ="post" th:object="${assets}">
+      <div class="panel-body">
+
           <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Interface Asset</b></label>
           <div class="col-sm-8" style="margin: 5px 0px;">
-            <input type="text"  class="form-control" placeholder="Entry Interface Asset"id="input-id-2"  th:field=*{InterfaceAasset}>
+            <input type="text"  class="form-control" placeholder="Entry Interface Asset"id="input-id-2"  th:field=*{InterfaceAasset}/>
             <span class="text-danger" th:errors=*{InterfaceAasset}></span>
           </div>
           <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Login Asset</b></label>
           <div class="col-sm-8" style="margin: 5px 0px;">
-            <input type="text"  class="form-control" placeholder="Entry Login Asset"id="input-id-2"  th:field=*{LoginAsset}>
+            <input type="text"  class="form-control" placeholder="Entry Login Asset"id="input-id-2"  th:field=*{LoginAsset}/>
           </div>
           <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Password Asset</b></label>
           <div class="col-sm-8" style="margin: 5px 0px;">
-             <input type="password" class="form-control" placeholder="Password" id="input-id-2"  th:field=*{PasswordAsset}>
-          </div>
-       
+             <input type="password" class="form-control" placeholder="Password" id="input-id-2"  th:field=*{PasswordAsset}/>
+          </div>  
           <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Asset Type</b></label>
           <div class="col-sm-8" style="margin: 5px 0px;">
           <select name="AssetType_ID" class="form-control m-b" th:field=*{assettype}>
-	      <option th:each ="a:${assettype}" 
-	        th:text="${a.name}"
-	        th:value ="${a.AssetType_ID}"></option>
-	      </select>
-	       </div>
 
-       <!--     <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Project</b></label>
-          <div class="col-sm-8" style="margin: 5px 0px;">
-            <select name="Project_ID" class="form-control m-b" th:field=*{project}>
-	      <option th:each ="p:${project}" 
-	        th:text="${p.name}"
-	        th:value ="${p.Project_ID}"></option>
-	      </select>
-	      
-          </div> -->
-          
-          <label class="col-sm-4 control-label"  style="margin: 5px 0px;" for="input-id-1"><b>Seriel Number</b></label>
+        <option th:each ="a:${assettype}" 
+          th:text="${a.name}"
+          th:value ="${a.AssetType_ID}"></option>
+        </select>
+         </div>
+          <label class="col-sm-4 control-label"  style="margin: 5px 0px;" for="input-id-1"><b>Serial Number</b></label>
+
           <div class="col-sm-8" style="margin: 5px 0px;">
             <input type="text"  class="form-control" placeholder="Entry Seriel Number"id="input-id-2"  th:field=*{SerielNumber}>
             <span class="text-danger" th:errors=*{SerielNumber}></span>
               <div class="text-danger" th:if="${unique}">
-		   <div th:text="${unique}"></div>
-		</div> 
-          </div>
-          
+       <div th:text="${unique}"></div>
+    </div> 
+          </div>         
          <label class="col-sm-4 control-label" style="margin: 5px 0px;"  for="input-id-1"><b>Description</b></label>
          <div class="col-sm-8" style="margin: 5px 0px;">
-	        <input type="text" class="form-control" placeholder="Entry Description " id="input-id-1"  th:field=*{Description}/>
-	        <span class="text-danger" th:errors=*{Description}></span>
+          <input type="text" class="form-control" placeholder="Entry Description " id="input-id-1"  th:field=*{Description}/>
+          <span class="text-danger" th:errors=*{Description}></span>
           </div>
           <label class="col-sm-4 control-label"  style="margin: 5px 0px;" for="input-id-1"><b>Configuration File</b></label>
           <div class="col-sm-8" style="margin: 5px 0px;">
-            <input type="file" placeholder="Entry Configuration File"class="form-control" id="input-id-1"  th:field=*{ConfigurationFille}/>
-          
+            <input type="file" placeholder="Entry Configuration File"class="form-control" id="input-id-1"  th:field=*{ConfigurationFille}/>     
           </div>
- 
           <label class="col-sm-4 control-label"  style="margin: 5px 0px;" for="input-id-1"><b>Must Gather</b></label>
           <div class="col-sm-8" style="margin: 5px 0px;">
-	        <input type="text" class="form-control" placeholder="Entry Must Gather " id="input-id-1"  th:field=*{MustGather}/>
-	        <span class="text-danger" th:errors=*{MustGather}></span>
+          <input type="text" class="form-control" placeholder="Entry Must Gather " id="input-id-1"  th:field=*{MustGather}/>
+          <span class="text-danger" th:errors=*{MustGather}></span>
           </div>
           <label class="col-sm-4 control-label"  style="margin: 5px 0px;" for="input-id-1"><b>End Of PowerM Warranty</b></label>
            <div class="col-sm-8" style="margin: 5px 0px;">
-             <input type="date" class="form-control" id="input-id-1"  th:field=*{EndPowermWarranty}/>
-            
+             <input type="date" class="form-control" id="input-id-1"  th:field=*{EndPowermWarranty}/>          
            </div>
           <label class="col-sm-4 control-label"  style="margin: 5px 0px;" for="input-id-1"><b>End Vendor Warranty</b></label>
           <div class="col-sm-8" style="margin: 5px 0px;">
-             <input type="date" class="form-control" id="input-id-1"  th:field=*{EndOfVendorWarranty}/>
-              
+             <input type="date" class="form-control" id="input-id-1"  th:field=*{EndOfVendorWarranty}/>           
            </div>
            <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>SLA</b></label>
+
 		 <div class="col-sm-8" style="margin: 5px 0px;" >
 		  <select name="account" class="form-control m-b"   th:field=*{SLA}>
 	       <option th:value ="Platinum24sur7" th:text="Platinum24sur7"></option>
@@ -104,16 +88,21 @@
         </div>
       </div>
       <div class="modal-footer">
-        <button style="margin:0px;" class="btn m-b-xs btn-sm btn-primary btn-addon"><i class="glyphicon glyphicon-ok"></i>Save</button>
-        <button style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon pull-right"><a th:href="assets_manage"><i class="glyphicon glyphicon-remove"></i>Annuler</a></button>
+  
+      <button style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon pull-right"><a th:href="assets_manage"><i class="glyphicon glyphicon-remove"></i>Annuler</a></button>
+      <button style="margin:0px;" class="btn m-b-xs btn-sm btn-info btn-addon pull-right"><i class="glyphicon glyphicon-ok"></i>Next</button>
+      </div>         
+
       </div>
       </form>
     </div>
-  </div>
-  
-		</div>
-	  </div>
-     </div>
+<div class="text-center">
+ <p><small class="text-muted">
+  <span class="pull-right">2.2.0 <a href ui-scroll="app" class="m-l-sm text-muted"><i class="fa fa-long-arrow-up"></i></a></span>
+  <span class="pull-left"> &copy; PowerM 2020 Copyright. </span> 
+ </small></p>
+</div>
+</div>    
 <script src="../libs/jquery/jquery/dist/jquery.js"></script>
 <script src="../libs/jquery/bootstrap/dist/js/bootstrap.js"></script>
 <script src="js/ui-load.js"></script>

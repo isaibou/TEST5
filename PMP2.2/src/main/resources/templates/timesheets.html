@@ -13,6 +13,7 @@
 		<link href='../libs/packages/daygrid/main.css' rel='stylesheet' />
 		<link href='../libs/packages/timegrid/main.css' rel='stylesheet' />
 		<link href='../libs/packages/list/main.css' rel='stylesheet' />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
 		<script src='../libs/packages/core/main.js'></script>
 		<script src='../libs/packages/interaction/main.js'></script>
 		<script src='../libs/packages/daygrid/main.js'></script>
@@ -156,53 +157,16 @@
 						</a>
 					</div>
 					<!-- / buttons -->
-
-					<!-- link and dropdown -->
-					<ul class="nav navbar-nav hidden-sm">
-						<li class="dropdown">
-							<a href="#" data-toggle="dropdown" class="dropdown-toggle">
-								<span translate="header.navbar.new.NEW"></span> <span class="fa fa-moon-o lb-warning"></span>	
-							</a>
-							<ul class="dropdown-menu" role="menu">
-								<li>
-									<button type="button" name="button" id="darkmode" onclick="changecolor()">
-										<span translate="header.navbar.new.TASK">ON</span>
-									</button>
-								</li>
-								<li>
-									<button  type="button" name="button" id="lightmode" onclick="lightmode()">
-										<span translate="header.navbar.new.TASK">OFF</span>
-									</button>
-								</li>
-								
-							</ul>
-						</li>
-					</ul>
-					<!-- / link and dropdown -->
-
-					<!-- search form -->
-					<form class="navbar-form navbar-form-sm navbar-left shift" ui-shift="prependTo" data-target=".navbar-collapse" role="search" ng-controller="TypeaheadDemoCtrl">
-						<div class="form-group">
-							<div class="input-group">
-								<input type="text" ng-model="selected" typeahead="state for state in states | filter:$viewValue | limitTo:8" class="form-control input-sm bg-light no-border rounded padder" placeholder="Search projects...">
-									<span class="input-group-btn">
-										<button type="submit" class="btn btn-sm bg-light rounded"><i class="fa fa-search"></i></button>
-									</span>
-								</div>
-							</div>
-						</form>
-						<!-- / search form -->
-
 						<!-- nabar right -->
 						<ul class="nav navbar-nav navbar-right">
-							<li class="dropdown">
+							<!-- <li class="dropdown">
 								<a href="#" data-toggle="dropdown" class="dropdown-toggle">
 									<i class="icon-bell fa-fw"></i>
 									<span class="visible-xs-inline">Notifications</span>
 									<span class="badge badge-sm up bg-danger pull-right-xs">2</span>
-								</a>
+								</a> -->
 								<!-- dropdown -->
-								<div class="dropdown-menu w-xl animated fadeInUp">
+								<!-- <div class="dropdown-menu w-xl animated fadeInUp">
 									<div class="panel bg-white">
 										<div class="panel-heading b-light bg-light">
 											<strong>You have <span>2</span> notifications</strong>
@@ -229,19 +193,17 @@
 														<a href="#notes" data-toggle="class:show animated fadeInRight">See all the notifications</a>
 													</div>
 												</div>
-											</div>
+											</div> -->
 											<!-- / dropdown -->
-										</li>
+								<!-- 		</li> -->
 										<li class="dropdown">
-											
-												<span class="thumb-sm avatar pull-right m-t-n-sm m-b-n-sm m-l-sm">
-													<img src="img/user.png" alt="...">
-														<i class="on md b-white bottom"></i>
-													</span>
-													<span class="hidden-sm hidden-md">Walid.largou</span> <b class="caret"></b>
-												</a>
+									<span class="thumb-sm avatar pull-right m-t-n-sm m-b-n-sm m-l-sm">
+                          <img src="img/user.png" alt="...">
+                            <i class="on md b-white bottom"></i>
+                          </span>
+                          <span class="hidden-sm hidden-md"></span> <b class="caret"></b>
 												<!-- dropdown -->
-												<ul class="dropdown-menu animated fadeInRight w">
+											<!-- 	<ul class="dropdown-menu animated fadeInRight w">
 													<li class="wrapper b-b m-b-sm bg-light m-t-n-xs">
 														<div>
 															<p>300mb of 500mb used</p>
@@ -269,7 +231,7 @@
 													<li>
 														<a ui-sref="access.signin">Logout</a>
 													</li>
-												</ul>
+												</ul> -->
 												<!-- / dropdown -->
 											</li>
 										</ul>
@@ -289,20 +251,21 @@
             <div class="dropdown wrapper">
               <a href="app.page.profile">
                 <span class="thumb-lg w-auto-folded avatar m-t-sm">
-                  <img src="img/a0.jpg" class="img-full" alt="...">
-                </span>
+                 <img src="img/user.png" alt="..."/>
+														<i class="on md b-white bottom"></i>
+													</span>
               </a>
               <a href="#" data-toggle="dropdown" class="dropdown-toggle hidden-folded">
                 <span class="clear">
                   <span class="block m-t-sm">
-                    <strong class="font-bold text-lt">Walid.Largou</strong> 
+                    <strong class="font-bold text-lt">Walid LARGOU</strong> 
                     <b class="caret"></b>
                   </span>
                   <span class="text-muted text-xs block">Manager</span>
                 </span>
               </a>
               <!-- dropdown -->
-              <ul class="dropdown-menu animated fadeInRight w hidden-folded">
+          <!--     <ul class="dropdown-menu animated fadeInRight w hidden-folded">
                 <li class="wrapper b-b m-b-sm bg-info m-t-n-xs">
                   <span class="arrow top hidden-folded arrow-info"></span>
                   <div>
@@ -328,7 +291,7 @@
                 <li>
                   <a th:href="page_signin">Logout</a>
                 </li>
-              </ul>
+              </ul> -->
               <!-- / dropdown -->
             </div>
             <div class="line dk hidden-folded"></div>
@@ -593,29 +556,23 @@
 
 
 									<!-- content -->
-									<div id="content" class="app-content" role="main">
-										<div id="content-b" class="app-content-body ">
-
-											<div id="content-h" class="bg-light lter b-b wrapper-md">
-												<h1 class="m-n font-bold h3">Manage TimeSheet
-                        <a style="margin-top:-5px;" th:href="@{addTaskTicket}" class="btn btn-sm btn-primary pull-right"  role="button"><b class="glyphicon-plus pull"> </b>Add task Ticket</a> 
-                        <a style="margin-top:-5px;" th:href="@{addTaskProject}" class="btn btn-sm btn-primary pull-right"  role="button"><b class="glyphicon-plus pull"> </b>Add task Project</a> 
-                       
-                        </h1>
-											</div>
-<div id="panel-default" class="panel panel-default" style="background-color: #f0f3f4;"><!--<div class="panel-heading">
-<small><a th:href="index">Home</a> </small>><small> Manage Timesheets</small>	</div>-->
- <div class="row" style="margin:5px;" >
-  <div class="col-sm-6 col-xs-12">
-	 <div id='calendar'></div>
-  </div>
-  <div class="col-sm-6">              
-   <center><h3 class="m-n font-bold h5">TimeSheet Vs Task Chart</h3></center>
-   <div class="panel-body text-center">              
-   <center><div  id="myPieChart"></div></center>
-  </div>
-  <div class="row row-sm text-center">
-   <div class="col-xs-6">
+<div id="content" class="app-content" role="main">
+ <div id="content-b" class="app-content-body ">
+   <div id="content-h" class="bg-light lter b-b wrapper-md">
+	 <h1 class="m-n font-bold h3">Manage TimeSheet
+      <a style="margin-top:-5px;" th:href="@{addTaskTicket}" class="btn btn-sm btn-primary pull-right"  role="button"><b class="glyphicon-plus pull"> </b>Add task Ticket</a> 
+      <a style="margin-top:-5px;" th:href="@{addTaskProject}" class="btn btn-sm btn-primary pull-right"  role="button"><b class="glyphicon-plus pull"> </b>Add task Project</a> 
+     </h1>
+   </div>
+   <div id="panel-default" class="panel panel-default" style="background-color: #f0f3f4;">
+    <div class="row" style="margin:5px;" >
+    <div class="col-sm-6 col-xs-12">
+	  <div id='calendar'></div>
+     </div> 
+     <div class="col-sm-1"></div> 
+     <div class="col-sm-4" >              
+      <div class="row row-sm text-center" >
+       <div class="col-sm-12">
 		<div class="panel padder-v item">
 		 <div class="h1 text-info font-thin h1 pull-center">521</div>
 			<span class="text-muted text-xs"><b>Total Road Time <small>(current week)</small></b></span>
@@ -624,7 +581,7 @@
 			</span>
 		 </div>
 		</div>
-		<div class="col-xs-6">
+		<div class="col-sm-12">
 		 <a href class="block panel padder-v bg-primary item">
 		 <span class="text-white font-thin h1 block">930</span>
 	   <span class="text-muted text-xs"><b>Total Tasks <small>(current week)</small></b></span>
@@ -634,214 +591,58 @@
 		 </a>
 		</div>
 	 </div>
+	 <center><h3 class="m-n font-bold h5">TimeSheet Vs Task Chart</h3></center>
+      <div class="panel-body text-center">              
+       <center><div  id="myPieChart"></div></center>
+      </div>
 	</div>   
  </div>
 </div>
-<div class="modal fade" role="dialog" id="AddClient" >
-  <div class="modal-dialog modal-lg" >
-    <div class="modal-content">
-      <div class="modal-header" style="background-image:url(img/grf-bg.jpg);color:white;">
-        <button type="button" class="close pull-right" data-dismiss="modal">&times;</button>
-          <h1 class="m-n font-bold h3"> <b class="glyphicon-plus pull"> </b> Add Task</h1>
-      </div>
-      <div class="modal-body">
-        <div class="row">
-          <label class="col-sm-4 control-label"  for="input-id-1"><b>Ticket</b></label>
-          <div class="col-sm-8"  >
-            <select name="account" class="form-control m-b">
-              <option>Ticket1</option>
-              <option>Ticket2</option>
-            </select>
-          </div>
-          <label class="col-sm-4 control-label"  for="input-id-1"><b>Project</b></label>
-          <div class="col-sm-8"  >
-            <select name="account" class="form-control m-b">
-              <option>Project1</option>
-              <option>Project2</option>
-            </select>
-          </div>
-          <label class="col-sm-4 control-label" placeholder="Entry Description" for="input-id-1"><b>Description</b></label>
-          <div class="col-sm-8">
-            <div class="form-group">
-            <div class="btn-toolbar m-b-sm btn-editor" data-role="editor-toolbar" data-target="#editor">
-              <div class="btn-group dropdown" dropdown="">
-                <a class="btn btn-default" dropdown-toggle="" tooltip="Font"><i class="fa fa-font"></i><b class="caret"></b></a>
-                <ul class="dropdown-menu">
-                  <li><a href="" data-edit="fontName Serif" style="font-family:'Serif'">Serif</a></li> 
-                  <li><a href="" data-edit="fontName Sans" style="font-family:'Sans'">Sans</a></li>
-                  <li><a href="" data-edit="fontName Arial" style="font-family:'Arial'">Arial</a></li></ul>
-              </div>
-              <div class="btn-group dropdown" dropdown="">
-                <a class="btn btn-default" dropdown-toggle="" data-toggle="dropdown" tooltip="Font Size">
-                	<i class="fa fa-text-height"></i>&nbsp;<b class="caret"></b>
-                </a>
-                <ul class="dropdown-menu">
-                  <li><a href="" data-edit="fontSize 5" style="font-size:24px">Huge</a></li>
-                  <li><a href="" data-edit="fontSize 3" style="font-size:18px">Normal</a></li>
-                  <li><a href="" data-edit="fontSize 1" style="font-size:14px">Small</a></li>
-                </ul>
-              </div>
-              <div class="btn-group">
-                <a class="btn btn-default" data-edit="bold" tooltip="Bold (Ctrl/Cmd+B)"><i class="fa fa-bold"></i></a>
-                <a class="btn btn-default" data-edit="italic" tooltip="Italic (Ctrl/Cmd+I)"><i class="fa fa-italic"></i></a>
-                <a class="btn btn-default" data-edit="strikethrough" tooltip="Strikethrough"><i class="fa fa-strikethrough"></i></a>
-                <a class="btn btn-default" data-edit="underline" tooltip="Underline (Ctrl/Cmd+U)"><i class="fa fa-underline"></i></a>
-              </div>
-              <div class="btn-group">
-                <a class="btn btn-default" data-edit="insertunorderedlist" tooltip="Bullet list"><i class="fa fa-list-ul"></i></a>
-                <a class="btn btn-default" data-edit="insertorderedlist" tooltip="Number list"><i class="fa fa-list-ol"></i></a>
-                <a class="btn btn-default" data-edit="outdent" tooltip="Reduce indent (Shift+Tab)"><i class="fa fa-dedent"></i></a>
-                <a class="btn btn-default" data-edit="indent" tooltip="Indent (Tab)"><i class="fa fa-indent"></i></a>
-              </div>
-              <div class="btn-group">
-                <a class="btn btn-default btn-info" data-edit="justifyleft" tooltip="Align Left (Ctrl/Cmd+L)"><i class="fa fa-align-left"></i></a>
-                <a class="btn btn-default" data-edit="justifycenter" tooltip="Center (Ctrl/Cmd+E)"><i class="fa fa-align-center"></i></a>
-                <a class="btn btn-default" data-edit="justifyright" tooltip="Align Right (Ctrl/Cmd+R)"><i class="fa fa-align-right"></i></a>
-                <a class="btn btn-default" data-edit="justifyfull" tooltip="Justify (Ctrl/Cmd+J)"><i class="fa fa-align-justify"></i></a>
-              </div>
-              <div class="btn-group dropdown" dropdown="">
-                <a class="btn btn-default" dropdown-toggle="" tooltip="Hyperlink"><i class="fa fa-link"></i></a>
-                <div class="dropdown-menu">
-                  <div class="input-group m-l-xs m-r-xs">
-                    <input class="form-control input-sm" id="LinkInput" placeholder="URL" type="text" data-edit="createLink">
-                    <div class="input-group-btn">
-                      <button class="btn btn-sm btn-default" type="button">Add</button>
-                    </div>
-                  </div>
-                </div>
-                <a class="btn btn-default" data-edit="unlink" tooltip="Remove Hyperlink"><i class="fa fa-cut"></i></a>
-              </div>
-              
-              <div class="btn-group">
-                <a class="btn btn-default" tooltip="Insert picture (or just drag &amp; drop)" id="pictureBtn"><i class="fa fa-picture-o"></i></a>
-                <input type="file" data-edit="insertImage" style="position:absolute; opacity:0; width:41px; height:34px">
-              </div>
-              <div class="btn-group">
-                <a class="btn btn-default" data-edit="undo" tooltip="Undo (Ctrl/Cmd+Z)"><i class="fa fa-undo"></i></a>
-                <a class="btn btn-default" data-edit="redo" tooltip="Redo (Ctrl/Cmd+Y)"><i class="fa fa-repeat"></i></a>
-              </div>
-            </div>
-            <div ui-jq="wysiwyg" class="form-control" style="overflow:scroll;height:200px;max-height:200px" contenteditable="true">
-              Go ahead…
-            </div>
-          </div>
-        </div>
-          <label class="col-sm-4 control-label" placeholder="Entry DateTime" for="input-id-1"><b>DateTime</b></label>
-          <div class="col-sm-8">
-            <form action="https://formden.com/post/MlKtmY4x/" class="form-horizontal" method="post">
-            <div class="form-group ">
-            <div class="col-sm-12">
-            <div class="input-group">
-            <div class="input-group-addon">
-              <i class="fa fa-calendar"></i>
-            </div>
-            <input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" type="text"/>
-            </div>
-            </div>
-            </div>
-            </form>
-          </div>
-          <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Road Time</b></label>
-          <div class="col-sm-8" style="margin: 5px 0px;">
-            <input type="text"  class="form-control" placeholder="Entry Road Time"id="input-id-2">
-          </div>
-          <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Percent Complet</b></label>
-          <div class="col-sm-8" style="margin: 5px 0px;">
-            <input type="text"  class="form-control" placeholder="Entry Interface Asset"id="input-id-2">
-          </div>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button style="margin:0px;" class="btn m-b-xs btn-sm btn-primary btn-addon"><i class="glyphicon glyphicon-ok"></i>Save</button>
-       <button style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon" data-dismiss="modal" ><i class="glyphicon glyphicon-remove"></i>Annuler</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-				<div class="panel panel-default">
-													<div class="table-responsive" >
-														<table  ui-jq="dataTable" ui-options="{aoColumns: [
-												
-												
-												{ pData: 'Name ' },
-												{ pData: 'Login' },
-													{ pData: 'Login' },
-												{ pData: 'Company' },
-												
-												{ pData: 'actions' }]
-											}" class="table  b-t b-b">
-															<thead>
-																<tr >
-																    <th  style="width:15%"><center>Project Name</center></th>
-																	<th  style="width:25%"><center>Task</center></th>
-																	<th  style="width:25%"><center>Task Description</center></th>
-																	<th  style="width:15%"><center>Percent Complet</center></th>
-																	
-																	<th  sec:authorize="hasRole('ROLE_ADMIN')" style="width:15%"><center>Actions</center></th>
-																</tr>
-															</thead>
-															<tbody>
-																<tr data-expanded="true" th:each="c:${allTask}">
-				 													<td th:text ="${c.affectationProject.project.Name}" class="m-n font-thin h4 text-secondary"> </td>
-																		<td th:text ="${c.affectationProject.projATsk.NameProjectTask}" class="m-n font-thin h4 text-secondary"><center></center></td>
-																		<td th:text ="${c.taskDescription}" class="m-n font-thin h4 text-secondary"><center><center/></td>
-																		<td th:text ="${c.percentComplete}" class="m-n font-thin h4 text-secondary"><center><center/></td>
-		
-     
-</td>
-																				<td>
-																					<center>
-																						<div class="btn-group dropdown">
-																							<button class="btn btn-default btn-xs" data-toggle="dropdown"><i class="glyphicon glyphicon-cog"></i> Action <span class="caret"></span></button>
-																							<ul class="dropdown-menu">
-																								<li>
-																									<a th:href="@{updateCustomerform(id=${c.task_ID})}"  style="margin-top:-5px;"   class="btn btn-sm btn-light" role="button">Update</a>						</li>
-																								<li>
-																									<a th:href="@{archiverCustomer(id=${c.task_ID})}" style="margin-top:-5px;" onClick="Message()"  class="btn btn-sm btn-light" role="button">Archive</a>
-																								</li>
-																								<li>
-																									<a th:href="@{detailCustomer(id=${c.task_ID})}" style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Detail</a>
-																								</li>
-																							</ul>
-																						</div>
-																					</center>
-																				</td>
-																			</tr>
-																							</tbody>
-																				</table>
-
-
-
-																			</div>
-																		
-																		</div >
-
-
-
-																	
-</div>
-</div>
-</div>
-
-
-																
-															</div>
-															<!-- /content -->
-
-															<!-- footer -->
-															<footer id="footer" class="app-footer" role="footer">
-																<div class="wrapper b-t bg-light">
-																	<span class="pull-right">2.2.0 <a href ui-scroll="app" class="m-l-sm text-muted"><i class="fa fa-long-arrow-up"></i></a></span>
+<div class="panel panel-default">
+ <div class="table-responsive" >
+  <table  ui-jq="dataTable" ui-options="{aoColumns: [{ pData: 'Name ' },
+												     { pData: 'Login' },
+													 { pData: 'Login' },
+												    { pData: 'Company' },								
+												    { pData: 'actions' }]
+											       }" class="table  b-t b-b">
+    <thead>
+	  <tr >
+	   <th  style="width:15%"><center>Project Name</center></th>
+	   <th  style="width:25%"><center>Task</center></th>
+	   <th  style="width:25%"><center>Task Description</center></th>
+	   <th  style="width:15%"><center>Percent Complet</center></th>
+	   <th  sec:authorize="hasRole('ROLE_ADMIN')" style="width:15%"><center>Actions</center></th>
+	 </tr>
+    </thead>
+    <tbody>
+	 <tr data-expanded="true" th:each="c:${allTask}">
+	   <td th:text ="${c.affectationProject.project.Name}" class="m-n font-thin h4 text-secondary"> </td>
+	   <td th:text ="${c.affectationProject.projATsk.NameProjectTask}" class="m-n font-thin h4 text-secondary"><center></center></td>
+	   <td th:text ="${c.taskDescription}" class="m-n font-thin h4 text-secondary"><center><center/></td>
+	   <td th:text ="${c.percentComplete}" class="m-n font-thin h4 text-secondary"><center><center/></td>	
+	   <td><center><div class="btn-group dropdown">
+		<button class="btn btn-default btn-xs" data-toggle="dropdown"><i class="glyphicon glyphicon-cog"></i> Action <span class="caret"></span></button>
+	    <ul class="dropdown-menu">
+		 <li><a th:href="@{updateCustomerform(id=${c.task_ID})}"  style="margin-top:-5px;"   class="btn btn-sm btn-light" role="button">Update</a></li>
+		 <li><a th:href="@{archiverCustomer(id=${c.task_ID})}" style="margin-top:-5px;" onClick="Message()"  class="btn btn-sm btn-light" role="button">Archive</a></li>
+         <li><a th:href="@{detailCustomer(id=${c.task_ID})}" style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Detail</a></li>
+		</ul>
+	   </div></center></td>
+	  </tr>
+	 </tbody>
+	</table>
+   </div>
+  </div >																	
+ </div>
+</div><!-- /content --><!-- footer -->
+<footer id="footer" class="app-footer" role="footer">
+ <div class="wrapper b-t bg-light">
+  <span class="pull-right">2.2.0 <a href ui-scroll="app" class="m-l-sm text-muted"><i class="fa fa-long-arrow-up"></i></a></span>
       &copy; PowerM 2020 Copyright.
-																</div>
-															</footer>
-															<!-- / footer -->
-
-
-
-														</div>
-
+  </div>
+</footer><!-- / footer -->
+</div>
 														<script src="../libs/jquery/jquery/dist/jquery.js"></script>
 														<script src="../libs/jquery/bootstrap/dist/js/bootstrap.js"></script>
 														<script src="js/ui-load.js"></script>
@@ -850,82 +651,9 @@
 														<script src="js/ui-nav.js"></script>
 														<script src="js/ui-toggle.js"></script>
 														<script src="js/ui-client.js"></script>
-																<script type="text/javascript">
-  function changecolor() {
-       $('body,.wrapper,.content,.panel-default,.panel-heading,#content-h,#header,.modal-content').css("background-color", "#3a3f51");
-       $('.wrapper,.content,.panel-default,.panel-heading,#content-h').css("border-color", "#313639");
-		$('.h3,.h5,.wrapper,panel-default,#content-b,.panel-heading').css("color", "white");
-		          $('.panel-default,#content-b').css("background-color", "#3a3f51");
-
-	google.charts.load('current', {packages: ['corechart']});
-    google.charts.setOnLoadCallback(drawChart);
-
-    function drawChart() {
-      // Define the chart to be drawn.
-      var data = new google.visualization.DataTable();
-      data.addColumn('string', 'Element');
-      data.addColumn('number', 'Percentage');
-      data.addRows([
-        ['Configuration', 0.68],
-        ['Documentation', 0.11],
-        ['Maintenance', 0.11],
-        ['Installation', 0.10]
-      ]);
-
-      // Instantiate and draw the chart.
-      var chart = new google.visualization.PieChart(document.getElementById('myPieChart'));
-	  var options = {backgroundColor: '#3a3f51', colors: ['#6254b2', '#3289c8', '#27c24c','#ffbb3b'],legendTextStyle: { color: '#FFF' },is3D: true};
-      chart.draw(data, options);
-    }
-
-      };
-	  
-	    function lightmode() {
-       $('.wrapper,.content,.panel-heading,#content-h,#header,.modal-content').css("background-color", "#f0f3f4");
-          $('.panel-default,#content-b').css("background-color", "#f0f3f4");
-       $('.wrapper,.content,.panel-default,.panel-heading,#content-h').css("border-color", "#dee5e7");
-		$('.h3,.h5,.wrapper,panel-default,#content-b,.panel-heading').css("color", "#58666e");
-
-	google.charts.load('current', {packages: ['corechart']});
-    google.charts.setOnLoadCallback(drawChart);
-
-    function drawChart() {
-      // Define the chart to be drawn.
-      var data = new google.visualization.DataTable();
-      data.addColumn('string', 'Element');
-      data.addColumn('number', 'Percentage');
-      data.addRows([
-        ['Configuration', 0.68],
-        ['Documentation', 0.11],
-        ['Maintenance', 0.11],
-        ['Installation', 0.10]
-      ]);
-
-      // Instantiate and draw the chart.
-      var chart = new google.visualization.PieChart(document.getElementById('myPieChart'));
-	  var options = {backgroundColor: '#f0f3f4', colors: ['#6254b2', '#3289c8', '#27c24c','#ffbb3b'],legendTextStyle: { color: 'black' },is3D: true};
-      chart.draw(data, options);
-    }
-
-      };
-	  
- 
-		</script>
+																
 		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
-<script>
-  $(document).ready(function(){
-    var date_input=$('input[name="date"]'); //our date input has the name "date"
-    var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
-    date_input.datepicker({
-      format: 'mm/dd/yyyy',
-      container: container,
-      todayHighlight: true,
-      autoclose: true,
-    })
-  })
-</script>
-</script>
+
 													</body>
 												</html>
 												

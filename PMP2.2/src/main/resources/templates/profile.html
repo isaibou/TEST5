@@ -16,8 +16,6 @@
 	</head>
 	<body>
 		<div class="app app-header-fixed ">
-
-
 			<!-- header -->
 			<header id="header" class="app-header navbar" role="menu">
         <!-- navbar header -->
@@ -50,53 +48,16 @@
             </a>
           </div>
           <!-- / buttons -->
-
-          <!-- link and dropdown -->
-          <ul class="nav navbar-nav hidden-sm">
-            <li class="dropdown">
-              <a href="#" data-toggle="dropdown" class="dropdown-toggle">
-                <span translate="header.navbar.new.NEW"></span> <span class="fa fa-moon-o lb-warning"></span> 
-              </a>
-              <ul class="dropdown-menu" role="menu">
-                <li>
-                  <button type="button" name="button" id="darkmode" onclick="changecolor()">
-                    <span translate="header.navbar.new.TASK">ON</span>
-                  </button>
-                </li>
-                <li>
-                  <button  type="button" name="button" id="lightmode" onclick="lightmode()">
-                    <span translate="header.navbar.new.TASK">OFF</span>
-                  </button>
-                </li>
-                
-              </ul>
-            </li>
-          </ul>
-          <!-- / link and dropdown -->
-
-          <!-- search form -->
-          <form class="navbar-form navbar-form-sm navbar-left shift" ui-shift="prependTo" data-target=".navbar-collapse" role="search" ng-controller="TypeaheadDemoCtrl">
-            <div class="form-group">
-              <div class="input-group">
-                <input type="text" ng-model="selected" typeahead="state for state in states | filter:$viewValue | limitTo:8" class="form-control input-sm bg-light no-border rounded padder" placeholder="Search projects...">
-                  <span class="input-group-btn">
-                    <button type="submit" class="btn btn-sm bg-light rounded"><i class="fa fa-search"></i></button>
-                  </span>
-                </div>
-              </div>
-            </form>
-            <!-- / search form -->
-
-            <!-- nabar right -->
+  <!-- nabar right -->
             <ul class="nav navbar-nav navbar-right">
-              <li class="dropdown">
+            <!--   <li class="dropdown">
                 <a href="#" data-toggle="dropdown" class="dropdown-toggle">
                   <i class="icon-bell fa-fw"></i>
                   <span class="visible-xs-inline">Notifications</span>
                   <span class="badge badge-sm up bg-danger pull-right-xs">2</span>
-                </a>
+                </a> -->
                 <!-- dropdown -->
-                <div class="dropdown-menu w-xl animated fadeInUp">
+<!--                 <div class="dropdown-menu w-xl animated fadeInUp">
                   <div class="panel bg-white">
                     <div class="panel-heading b-light bg-light">
                       <strong>You have <span>2</span> notifications</strong>
@@ -123,18 +84,17 @@
                             <a href="#notes" data-toggle="class:show animated fadeInRight">See all the notifications</a>
                           </div>
                         </div>
-                      </div>
+                      </div> -->
                       <!-- / dropdown -->
-                    </li>
+<!--                     </li> -->
                     <li class="dropdown">
                         <span class="thumb-sm avatar pull-right m-t-n-sm m-b-n-sm m-l-sm">
                           <img class="img-thumbnail" th:src="@{getPhoto(id=${user.username})}" width="60px" height="60px">
                             <i class="on md b-white bottom"></i>
                           </span>
                           <span class="hidden-sm hidden-md"th:text ="   ${user.firstName   } + . +  ${user.LastName   }   "></span> <b class="caret"></b>
-                        </a>
                         <!-- dropdown -->
-                        <ul class="dropdown-menu animated fadeInRight w">
+                     <!--    <ul class="dropdown-menu animated fadeInRight w">
                           <li class="wrapper b-b m-b-sm bg-light m-t-n-xs">
                             <div>
                               <p>300mb of 500mb used</p>
@@ -162,7 +122,7 @@
                           <li>
                             <a ui-sref="access.signin">Logout</a>
                           </li>
-                        </ul>
+                        </ul> -->
                         <!-- / dropdown -->
                       </li>
                     </ul>
@@ -185,7 +145,6 @@
 															<img class="img-thumbnail" th:src="@{getPhoto(id=${user.username})}" width="60px" height="60px">
 															</span>
 														</a>
-														<img class="img-thumbnail" th:src="@{getPhoto(id=${user.username})}" width="60px" height="60px">
 															<span class="clear">
 																<span class="block m-t-sm">
 																	<strong class="font-bold text-lt" th:text ="   ${user.firstName   } + . +  ${user.LastName   }   "></strong> 
@@ -193,9 +152,8 @@
 																</span>
 																<span class="text-muted text-xs block">Manager</span>
 															</span>
-														</a>
 														<!-- dropdown -->
-														<ul class="dropdown-menu animated fadeInRight w hidden-folded">
+													<!-- 	<ul class="dropdown-menu animated fadeInRight w hidden-folded">
 															<li class="wrapper b-b m-b-sm bg-info m-t-n-xs">
 																<span class="arrow top hidden-folded arrow-info"></span>
 																<div>
@@ -221,7 +179,7 @@
 															<li>
 																<a th:href="page_signin">Logout</a>
 															</li>
-														</ul>
+														</ul> -->
 														<!-- / dropdown -->
 													</div>
 													<div class="line dk hidden-folded"></div>
@@ -644,67 +602,6 @@
 														
 															});
 														</script>
-<script type="text/javascript">
-  function changecolor() {
-       $('body,.wrapper,.content,.panel-default,.panel-heading,#content-h,#header,.modal-content').css("background-color", "#3a3f51");
-       $('.wrapper,.content,.panel-default,.panel-heading,#content-h').css("border-color", "#313639");
-    $('.h3,.h5,.wrapper,panel-default,#content-b,.panel-heading').css("color", "white");
-              $('.panel-default,#content-b').css("background-color", "#3a3f51");
-
-  google.charts.load('current', {packages: ['corechart']});
-    google.charts.setOnLoadCallback(drawChart);
-
-    function drawChart() {
-      // Define the chart to be drawn.
-      var data = new google.visualization.DataTable();
-      data.addColumn('string', 'Element');
-      data.addColumn('number', 'Percentage');
-      data.addRows([
-        ['Configuration', 0.68],
-        ['Documentation', 0.11],
-        ['Maintenance', 0.11],
-        ['Installation', 0.10]
-      ]);
-
-      // Instantiate and draw the chart.
-      var chart = new google.visualization.PieChart(document.getElementById('myPieChart'));
-    var options = {backgroundColor: '#3a3f51', colors: ['#6254b2', '#3289c8', '#27c24c','#ffbb3b'],legendTextStyle: { color: '#FFF' },is3D: true};
-      chart.draw(data, options);
-    }
-
-      };
-    
-      function lightmode() {
-       $('.wrapper,.content,.panel-heading,#content-h,#header,.modal-content').css("background-color", "#f0f3f4");
-          $('.panel-default,#content-b').css("background-color", "#f0f3f4");
-       $('.wrapper,.content,.panel-default,.panel-heading,#content-h').css("border-color", "#dee5e7");
-    $('.h3,.h5,.wrapper,panel-default,#content-b,.panel-heading').css("color", "#58666e");
-
-  google.charts.load('current', {packages: ['corechart']});
-    google.charts.setOnLoadCallback(drawChart);
-
-    function drawChart() {
-      // Define the chart to be drawn.
-      var data = new google.visualization.DataTable();
-      data.addColumn('string', 'Element');
-      data.addColumn('number', 'Percentage');
-      data.addRows([
-        ['Configuration', 0.68],
-        ['Documentation', 0.11],
-        ['Maintenance', 0.11],
-        ['Installation', 0.10]
-      ]);
-
-      // Instantiate and draw the chart.
-      var chart = new google.visualization.PieChart(document.getElementById('myPieChart'));
-    var options = {backgroundColor: '#f0f3f4', colors: ['#6254b2', '#3289c8', '#27c24c','#ffbb3b'],legendTextStyle: { color: 'black' },is3D: true};
-      chart.draw(data, options);
-    }
-
-      };
-    
- 
-    </script>
 														</body>
 													</html>
 													

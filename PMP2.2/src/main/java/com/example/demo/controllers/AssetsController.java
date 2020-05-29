@@ -35,9 +35,6 @@ public class AssetsController {
 	@Autowired
 	private FrimwareRepository frimwareRepository;
 	
-	/*@Autowired
-	private ProjetRepository projetRepository;*/
-	
 	@Autowired
 	private AssetTypeRepository assetTypeRepository;
 	

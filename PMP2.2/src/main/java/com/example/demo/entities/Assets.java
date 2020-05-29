@@ -25,8 +25,6 @@ import javax.validation.constraints.NotEmpty;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-
-
 @Entity
 public class Assets implements Serializable{
 	
@@ -37,7 +35,6 @@ public class Assets implements Serializable{
 	
 	@NotEmpty
 	@Column (name="SerielNumber")
-
 	private String SerielNumber;
 	
 	@NotEmpty
@@ -69,11 +66,6 @@ public class Assets implements Serializable{
 	@JoinColumn
 	private AssetType assettype;
 	
-
-	/*@ManyToMany
-	@JoinTable(name="ASSET_PROJECT")
-	private Collection<Project> project; */
-	
 	@ManyToOne
 
 	@JoinColumn(name = "CUSTOMER_ID")
@@ -86,43 +78,10 @@ public class Assets implements Serializable{
 	@OneToMany(mappedBy = "asset" , fetch = FetchType.LAZY)
 	private Collection<Ticket> ticket;
 	
-	// a supprimer 
-	//@ManyToOne
-	//@JoinColumn
-	//private Frimware frimware;
-	
-	
-	//public Frimware getFrimware() {
-		//return frimware;
-	//}
-
-
-
-	/*@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-	private List<Frimware> frimwares = new ArrayList<>();
-	
-
-	
-<<<<<<< HEAD
-=======
-	public List<Frimware> getFrimwares() {
-		return frimwares;
-	}
-
-	public void setFrimwares(List<Frimware> frimwares) {
-		this.frimwares = frimwares;
-	}*/
-	
-	
-	
 	public Assets(AssetType assettype) {
 		super();
 		this.assettype = assettype;
 	}
-	
-	//attribut customer de type Customer 
-	//private Customer customer;
-	//private Project project;
 	
 	
 	public AssetType getAssettype() {
@@ -158,13 +117,6 @@ public class Assets implements Serializable{
 		this.status = status;
 	}
 	
-	//public String getAssetsName() {
-		//return AssetsName;
-//	}
-
-	//public void setAssetsName(String assetsName) {
-		//AssetsName = assetsName;
-	//}
 
 	public String getStatus() {
 		return status;
@@ -276,14 +228,6 @@ public class Assets implements Serializable{
 		this.frimware = frimware;
 	}
 
-	/*public Collection<Project> getProject() {
-		return project;
-	}
-
-	public void setProject(Collection<Project> project) {
-		this.project = project;
-	}*/
-
 	public Collection<Ticket> getTicket() {
 		return ticket;
 	}
@@ -291,9 +235,5 @@ public class Assets implements Serializable{
 	public void setTicket(Collection<Ticket> ticket) {
 		this.ticket = ticket;
 	}
-
-	
-
-	
 
 }

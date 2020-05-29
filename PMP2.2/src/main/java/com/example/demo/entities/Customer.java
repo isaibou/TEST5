@@ -299,5 +299,6 @@ public class Customer implements Serializable{
 		// TODO Auto-generated method stub
 		return Status;
 	}*/
-		
+	
+	
 }

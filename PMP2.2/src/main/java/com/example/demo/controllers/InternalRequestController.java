@@ -69,9 +69,10 @@ public class InternalRequestController {
 	 */
 
 	@RequestMapping(value="/addInternalRequest")
-	public String addInternalRequest(@Valid @ModelAttribute("int") InternalRequest internal,BindingResult bindingResult, Authentication  auth ) {
+	public String addInternalRequest(@Valid @ModelAttribute("int") InternalRequest internal,BindingResult bindingResult,Model model,  Authentication  auth ) {
 		
 		 if(bindingResult.hasErrors()) {
+			 model.addAttribute("type", typeInternalRequestrepository.findAll());
 		 
 			return "addReqEmp";
 		}

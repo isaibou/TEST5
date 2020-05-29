@@ -76,9 +76,9 @@ public class TypeDeliverableController {
 	@RequestMapping(value = "/editTypeDeliverable",method = { RequestMethod.GET, RequestMethod.POST })
 	public String updateTypeDeliverable(Model model, @Valid TypeDeliverable typDeli, BindingResult bindingResult){
 		
-		
-
-		if(bindingResult.hasErrors()) {
+if(typeDeliverablerepository.checkTitleExist(typDeli.getNameTypeDeliverable())) {
+			
+			model.addAttribute("unique", "must be unique");
 			return "updateTypeDelivForm";
 		}
 		

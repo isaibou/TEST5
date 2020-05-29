@@ -27,6 +27,10 @@
    <label class="col-sm-4 control-label" for="input-id-1" style="margin:5px 0px;"><b>Name:</b></label>
    <div class="col-sm-8" style="margin:5px 0px;" >
     <input type="text" placeholder="Entry Nom" class="form-control" id="input-id-1"  th:field="*{NameTypeDeliverable}">
+    <span class="text-danger" th:errors=*{NameTypeDeliverable}></span>
+     <div class="text-danger" th:if="${unique}">
+		   <div th:text="${unique}"></div>
+		</div>
    </div>
    <div>
     <button style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon pull-right"><a th:href="typeDeliverable"><i class="glyphicon glyphicon-remove"></i>Annuler</a></button>

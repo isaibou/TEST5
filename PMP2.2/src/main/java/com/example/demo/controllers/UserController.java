@@ -79,11 +79,25 @@ public class UserController {
 	}
 	
 	@RequestMapping(value ="/saveUsers" )
-	public String addUsers(@Valid @ModelAttribute("userE") Users u ,BindingResult bindingResult,@RequestParam(name = "photo") MultipartFile file ) throws Exception, IOException {
+	public String addUsers(@Valid @ModelAttribute("userE") Users u ,BindingResult bindingResult,Model model, @RequestParam(name = "photo") MultipartFile file ) throws Exception, IOException {
 		
-		if(bindingResult.hasErrors()) {
-			return "addUserEmp";
-		}
+		
+		  if(userRepository.checkTitleExist(u.getUsername())) {
+		  
+		  model.addAttribute("unique", "must be unique");
+		  model.addAttribute("customer", customerRepository.findAll());
+		  model.addAttribute("allRoles", roleRepository.findAll()); 
+		  return "addUserEmp"; 
+		  }
+		 
+		
+		
+		  if(bindingResult.hasErrors()) { 
+			  model.addAttribute("customer",customerRepository.findAll()); 
+			  model.addAttribute("allRoles",roleRepository.findAll());
+			  return "addUserEmp"; 
+			  }
+		 
 		
 		String pass=  getRandomStr();
 		u.setPassword(pass);
@@ -122,11 +136,23 @@ userRepository.save(u);
 	}
 	
 	@RequestMapping(value ="/saveUsersC" )
-	public String addUsersC(@Valid @ModelAttribute("userC") Users u,BindingResult bindingResult ) throws Exception, IOException {
+	public String addUsersC(@Valid @ModelAttribute("userC") Users u,BindingResult bindingResult,Model model ) throws Exception, IOException {
 		
-		if(bindingResult.hasErrors()) {
-			return "addUserCust";
-		}
+		
+		 if(userRepository.checkTitleExist(u.getUsername())) {
+				
+				model.addAttribute("unique", "must be unique");
+				model.addAttribute("customer", customerRepository.findAll());
+				model.addAttribute("allRoles", roleRepository.findAll());	
+				return "addUserCust";
+			} 
+		 
+		  if(bindingResult.hasErrors()) { 
+			  model.addAttribute("customer",customerRepository.findAll()); 
+			  model.addAttribute("allRoles", roleRepository.findAll()); 
+			  return "addUserCust"; 
+			  }
+		 
 		
 		String pass=  getRandomStr();
 		u.setPassword(pass);
@@ -145,6 +171,7 @@ userRepository.save(u);
 	
 	@RequestMapping(value ="/addUserC", method = RequestMethod.GET )
 	public String addUserC(Model model) {
+		Users u = new Users();
 		model.addAttribute("customer", customerRepository.findAll());
 		model.addAttribute("allRoles", roleRepository.findAll());
 		model.addAttribute("userC", new Users());
@@ -232,6 +259,8 @@ userRepository.save(u);
 	@RequestMapping(value ="/editUsers" )
 	public String editUsers(Users u, Model model,@RequestParam(name = "photo") MultipartFile file) throws IllegalStateException, IOException {
 		
+        
+        
 		u.setActived(true);
 		u.setIsCustomer(false);
 		userRepository.save(u);

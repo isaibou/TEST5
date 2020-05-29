@@ -70,11 +70,16 @@ public class DeliverableController {
 		
 		if(deliverablerepository.checkTitleExist(deli.getName())) {
 			
+		 model.addAttribute("type", typeDeliverableRepository.findAll());
+		 model.addAttribute("project", projectrepository.findAll());	
+			
 			model.addAttribute("unique", "must be unique");
 			return "addDelivP";
 		}
 	
 		if(bindingResult.hasErrors()) {
+			model.addAttribute("type", typeDeliverableRepository.findAll());
+			 model.addAttribute("project", projectrepository.findAll());	
 			return "addDelivP";
 		}
 
@@ -123,7 +128,17 @@ deliverablerepository.save(deli);
 	}
 
 	@RequestMapping(value="/editDeliverable")
-	public String editDeliverable(Model model, Deliverable deli, @RequestParam(name="fileD") MultipartFile fileD , @RequestParam(name="picture") MultipartFile picture) throws IllegalStateException, IOException {
+	public String editDeliverable(Model model, Deliverable deli, @RequestParam(name="fileD") MultipartFile fileD ,BindingResult bindingResult,
+			@RequestParam(name="picture") MultipartFile picture) throws IllegalStateException, IOException {
+		
+		if(deliverablerepository.checkTitleExist(deli.getName())) {
+			
+			 model.addAttribute("type", typeDeliverableRepository.findAll());
+			 model.addAttribute("project", projectrepository.findAll());	
+				
+				model.addAttribute("unique", "must be unique");
+				return "updateDeliverable";
+			}
 		
 if (!(fileD.isEmpty())) {
 			

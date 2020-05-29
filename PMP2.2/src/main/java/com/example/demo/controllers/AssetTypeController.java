@@ -69,7 +69,6 @@ public class AssetTypeController
 	private String saveAssetType(@Valid AssetType addAssttyp, BindingResult bindingResult, Model model) {
 		
 		if(assetTypeRepository.checkTitleExist(addAssttyp.getName())) {
-			//System.err.println("checkTitleExist-------------------");
 			model.addAttribute("unique", "must be unique");
 			 model.addAttribute("vendor", vendorRepository.findAll());
 
@@ -120,7 +119,14 @@ public class AssetTypeController
 	}
 	
 	@RequestMapping(value = "/editAseetType",method= RequestMethod.POST)
-	public String updateAseetType(Model model, AssetType assetT){
+	public String updateAseetType(@Valid Model model, AssetType assetT, BindingResult bindingResult){
+		
+		if(assetTypeRepository.checkTitleExist(assetT.getName())) {
+			model.addAttribute("unique", "must be unique");
+			 model.addAttribute("vendor", vendorRepository.findAll());
+
+			return "updateAseetTypeForm";
+		}
 		
 		assetT.setStatus("Actif");
 		assetTypeRepository.save(assetT);

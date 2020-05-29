@@ -35,6 +35,10 @@
    <label class="col-sm-4 control-label" for="input-id-1" style="margin:5px 0px;"><b>Name</b></label>
     <div class="col-sm-8" style="margin:5px 0px;" >
      <input type="text" placeholder="Entry Name" class="form-control" id="input-id-1" th:field="*{Name}">
+     <span class="text-danger" th:errors=*{Name}></span>
+      <div class="text-danger" th:if="${unique}">
+       <div th:text="${unique}"></div>
+    </div>
     </div>
     <label class="col-sm-4 control-label" for="input-id-1" style="margin-bottom:5px;"><b>Version</b></label>
     <div class="col-sm-8" style="margin-bottom:5px;">

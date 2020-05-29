@@ -82,9 +82,8 @@ public class TechnologyPartnerController {
 		
 	}
 	@RequestMapping(value ="/addTechnologyPartner")
-	public String addTechnologyPartne( Model model, Integer id ) {
+	public String addTechnologyPartne( Model model) {
 		
-		 model.addAttribute("technologyPartner",technologiepartnerRepository.findAll());
 		 model.addAttribute("technologyPartner", new TechnologyPartner());
 		
 			return "addTechnologyPartner";
@@ -92,7 +91,17 @@ public class TechnologyPartnerController {
 	}
 	
 	@RequestMapping(value = "/editTechnologyPartner",method = { RequestMethod.GET, RequestMethod.POST })
-	public String updateTechnologyPartner(Model model, @Valid TechnologyPartner technologypart, BindingResult bindingResult, @RequestParam(name="file")MultipartFile file) throws IllegalStateException, IOException{
+	public String updateTechnologyPartner(Model model, @Valid TechnologyPartner technologypart, BindingResult bindingResult, 
+			@RequestParam(name="file")MultipartFile file) throws IllegalStateException, IOException{
+		
+		/*
+		 * if(technologiepartnerRepository.checkTitleExist(technologypart.
+		 * getNameTechnologyPartner())) {
+		 * 
+		 * model.addAttribute("unique", "must be unique"); return
+		 * "updateTechnPartnForm"; }
+		 */
+
 		technologypart.setStatus("Actif");
 if (!(file.isEmpty())) {
 			
@@ -110,7 +119,7 @@ if (!(file.isEmpty())) {
 	public String updateTechnologyPartnerForm( Model model, Integer id ) {
 		
 		 TechnologyPartner	technologypartner = technologiepartnerRepository.getOne(id);
-		 model.addAttribute("techpar",technologypartner);
+		 model.addAttribute("techparp",technologypartner);
 		 
 		
 			return "updateTechnPartnForm";

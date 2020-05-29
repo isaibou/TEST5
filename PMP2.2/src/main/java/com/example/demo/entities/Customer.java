@@ -30,17 +30,19 @@ public class Customer implements Serializable{
 	@Column(name="Name",length=30)
 	private String Name;
 	
+
 	private String Industry;
 	
 	private String Logo;
 
-	@NotEmpty
+	
 	@NumberFormat(pattern = "##########")
 	private String PhoneCompany;
 	
 	@NotEmpty
 	private String AdressCompany;
 	
+
 	private String vip;
 	
 	@NotEmpty
@@ -59,18 +61,18 @@ public class Customer implements Serializable{
 	@Column(name="NomCIO",length=30)
 	private String NomCIO;
 	
-	@NotEmpty
+	
 	@NumberFormat(pattern = "##########")
 	private String PhoneCIO;
 	
-	@NotEmpty
+	
 	@Email(message="Email invalid")
 	private String EmailCIO;
 
 	private String City;
 
 	private String Country;
-	
+
 	private String status;
 	
 	@OneToMany
@@ -297,5 +299,5 @@ public class Customer implements Serializable{
 		// TODO Auto-generated method stub
 		return Status;
 	}*/
-		
+	
 }

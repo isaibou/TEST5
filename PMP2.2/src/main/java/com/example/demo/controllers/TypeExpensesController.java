@@ -69,9 +69,15 @@ public class TypeExpensesController {
 	}
 	
 	@RequestMapping(value = "/editTypeExpenses",method = { RequestMethod.GET, RequestMethod.POST })
-	public String updateTypeExpenses(Model model, @Valid TypeExpenses typeEx, BindingResult bindingResult){
+	public String updateTypeExpenses(Model model, @Valid TypeExpenses typeExe, BindingResult bindingResult){
+        
+   if(typeExpensesRepository.checkTitleExist(typeExe.getNameTypeExpenses())) {
+			
+			model.addAttribute("unique", "must be unique");
+			return "updateTypeExpForm";
+		} 
 
-		typeExpensesRepository.save(typeEx);
+		typeExpensesRepository.save(typeExe);
 		
 		return "redirect:/typeExpenses";
 	}

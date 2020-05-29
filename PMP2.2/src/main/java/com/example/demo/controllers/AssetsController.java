@@ -1,10 +1,13 @@
 package com.example.demo.controllers;
 
+import java.io.BufferedOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,9 +19,11 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.example.demo.entities.*;
@@ -88,19 +93,17 @@ public class AssetsController {
 			 file.transferTo(new File(Configurationfille+file.getOriginalFilename()));
 		}
 
-		/*
-		 * if(bindingResult.hasErrors()) { List<FieldError> errors =
-		 * bindingResult.getFieldErrors();
-		 * //System.out.println(addAss.getConfigurationFille()); for (FieldError error :
-		 * errors ) { if(!error.getField().equals("ConfigurationFille")) return
-		 * "addAssets"; //System.out.println (error.getField() + " - " +
-		 * error.getDefaultMessage()); }
-		 * 
-		 * 
-		 * }
-		 */
+		if(bindingResult.hasErrors()) {
+			List<FieldError> errors = bindingResult.getFieldErrors();
+			//System.out.println(addAss.getConfigurationFille());
+		    for (FieldError error : errors ) {
+		    	if(!error.getField().equals("ConfigurationFille"))
+		    		return "addAssets";
+		        //System.out.println (error.getField() + " - " + error.getDefaultMessage());
+		    }
 		
 		if(assetRepository.checkTitleExist(addAss.getSerielNumber())) {
+			model.addAttribute("assettype", assetTypeRepository.findAll());
 			
 			model.addAttribute("unique", "must be unique");
 			return "addAssets";
@@ -121,7 +124,7 @@ public class AssetsController {
 		System.out.println(i);
 		model.addAttribute("id", i);
 		
-		
+		}
 		
 		return "nextAsset"; //$NON-NLS-1$
 		
@@ -163,6 +166,13 @@ public class AssetsController {
 
 	@RequestMapping(value = "/editAssets",method = { RequestMethod.GET, RequestMethod.POST })
 	public String updateAssets(Model model, @Valid Assets asset, BindingResult bindingResult){
+		
+		if(assetRepository.checkTitleExist(asset.getSerielNumber())) {
+			model.addAttribute("assettype", assetTypeRepository.findAll());
+			
+			model.addAttribute("unique", "must be unique");
+			return "updateAssetsForm";
+		}
        
 		asset.setStatus("Actif");
 		assetRepository.save(asset);
@@ -217,6 +227,43 @@ public class AssetsController {
 			return "detailAssets";
 			
 	}
+	
+	@RequestMapping(value="/Configurationfille/{fileName}")
+	@ResponseBody
+	public void getdeliveryCertificate(@PathVariable("fileName")String fileName, HttpServletResponse response) {
+		
+		if (fileName.indexOf(".doc")>-1) response.setContentType("application/msword");
+		if (fileName.indexOf(".docx")>-1) response.setContentType("application/msword");
+		if (fileName.indexOf(".xls")>-1) response.setContentType("application/vnd.ms-excel");
+		if (fileName.indexOf(".csv")>-1) response.setContentType("application/vnd.ms-excel");
+		if (fileName.indexOf(".ppt")>-1) response.setContentType("application/ppt");
+		if (fileName.indexOf(".pdf")>-1) response.setContentType("application/pdf");
+		if (fileName.indexOf(".zip")>-1) response.setContentType("application/zip");
+
+		response.setHeader("Content-Disposition","attachment; filename=" +fileName);
+		response.setHeader("Content-Transfer-Encoding", "binary");
+		
+		try {
+			BufferedOutputStream bos = new BufferedOutputStream(response.getOutputStream());
+			FileInputStream fis = new FileInputStream(Configurationfille+fileName);
+			int len; 
+			byte[] buf = new byte[1024];
+			while ((len = fis.read(buf)) >0) {
+				bos.write(buf,0,len);
+			}
+			bos.close();
+			response.flushBuffer();
+			
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+
+
+
 	
 	
 }

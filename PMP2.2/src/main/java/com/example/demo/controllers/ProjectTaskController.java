@@ -67,24 +67,32 @@ public class ProjectTaskController {
 			
 	}
 	
+	@RequestMapping(value ="/updateProjecttask")
+	public String updateTechnologyPartnerForm( Model model, Integer id ) {
+		
+		ProjectTask	pt = projecTaskrepository.getOne(id);
+		 model.addAttribute("ptask",pt);
+		 
+		
+			return "updateProjectTask";
+			
+	}
+	
 	@RequestMapping(value = "/editProjectTask",method = {  RequestMethod.POST })
-	public String updateTechnologyPartner(Model model, ProjectTask pt ){
+	public String updateTechnologyPartner(Model model, ProjectTask pt, BindingResult bindingResult ){
+		
+    if(projecTaskrepository.checkTitleExist(pt.getNameProjectTask())) {
+			
+			model.addAttribute("unique", "must be unique");
+			return "updateProjectTask";
+		}
         
 		projecTaskrepository.save(pt);
 				
 		return "redirect:/projectTask";
 	}
 	
-	@RequestMapping(value ="/updateProjecttask")
-	public String updateTechnologyPartnerForm( Model model, Integer id ) {
-		
-		ProjectTask	pt = projecTaskrepository.getOne(id);
-		 model.addAttribute("pTask",pt);
-		 
-		
-			return "updateProjectTask";
-			
-	}
+	
 	
 	
 	

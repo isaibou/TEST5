@@ -15,11 +15,13 @@
 <body>
 <div style="margin:50px;"></div>
 <div class="col-md-6 col-sm-6 col-xs-12 spacer col-md-offset-3">
+
    <a href="" class="navbar-brand block m-t"><i class="fa fa-power-off"></i> <b>PowerM</b> </a>
   <div class="panel panel-default">
    <div class="panel-heading"> Add Asset </div>
     <form th:action="@{SaveAssets}" enctype="multipart/form-data" method ="post" th:object="${assets}">
       <div class="panel-body">
+
           <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Interface Asset</b></label>
           <div class="col-sm-8" style="margin: 5px 0px;">
             <input type="text"  class="form-control" placeholder="Entry Interface Asset"id="input-id-2"  th:field=*{InterfaceAasset}/>
@@ -36,12 +38,14 @@
           <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Asset Type</b></label>
           <div class="col-sm-8" style="margin: 5px 0px;">
           <select name="AssetType_ID" class="form-control m-b" th:field=*{assettype}>
+
         <option th:each ="a:${assettype}" 
           th:text="${a.name}"
           th:value ="${a.AssetType_ID}"></option>
         </select>
          </div>
           <label class="col-sm-4 control-label"  style="margin: 5px 0px;" for="input-id-1"><b>Serial Number</b></label>
+
           <div class="col-sm-8" style="margin: 5px 0px;">
             <input type="text"  class="form-control" placeholder="Entry Seriel Number"id="input-id-2"  th:field=*{SerielNumber}>
             <span class="text-danger" th:errors=*{SerielNumber}></span>
@@ -72,17 +76,23 @@
              <input type="date" class="form-control" id="input-id-1"  th:field=*{EndOfVendorWarranty}/>           
            </div>
            <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>SLA</b></label>
-     <div class="col-sm-8" style="margin: 5px 0px;" >
-      <select name="account" class="form-control m-b"   th:field=*{SLA}>
-         <option th:value ="Platinum24sur7" th:text="Platinum24sur7"></option>
-         <option th:value ="Gold24sur5" th:text="Gold24sur5"></option>
-         <option th:value ="Bronze-Ondemand" th:text="Bronze-Ondemand"></option>
-      </select>   
-     </div>
-    <div>
+
+		 <div class="col-sm-8" style="margin: 5px 0px;" >
+		  <select name="account" class="form-control m-b"   th:field=*{SLA}>
+	       <option th:value ="Platinum24sur7" th:text="Platinum24sur7"></option>
+	       <option th:value ="Gold24sur5" th:text="Gold24sur5"></option>
+	       <option th:value ="Bronze-Ondemand" th:text="Bronze-Ondemand"></option>
+		  </select>
+		  
+		 </div>         
+        </div>
+      </div>
+      <div class="modal-footer">
+  
       <button style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon pull-right"><a th:href="assets_manage"><i class="glyphicon glyphicon-remove"></i>Annuler</a></button>
       <button style="margin:0px;" class="btn m-b-xs btn-sm btn-info btn-addon pull-right"><i class="glyphicon glyphicon-ok"></i>Next</button>
       </div>         
+
       </div>
       </form>
     </div>

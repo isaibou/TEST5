@@ -69,7 +69,7 @@ public class ContractController {
 			@RequestParam(name="contractFile")MultipartFile file) throws IllegalStateException, IOException
 	{	
 		if(contratrepository.checkTitleExist(addCont.getTitle())) {
-			//System.err.println("checkTitleExist-------------------");
+			
 			model.addAttribute("unique", "must be unique");
 			 model.addAttribute("customer", customerRepository.findAll());	
 			 model.addAttribute("rfp", rfpRepository.findAll());
@@ -108,6 +108,14 @@ public class ContractController {
 	
 	@RequestMapping(value = "/editContrat",method = { RequestMethod.GET, RequestMethod.POST })
 	public String updateContrat(Model model, @Valid Contrat con, BindingResult bindingResult, @RequestParam(name="contractFile")MultipartFile file) throws IllegalStateException, IOException{
+
+if(contratrepository.checkTitleExist(con.getTitle())) {
+			
+			model.addAttribute("unique", "must be unique");
+			 model.addAttribute("customer", customerRepository.findAll());	
+			 model.addAttribute("rfp", rfpRepository.findAll());
+			return "updateContratForm";
+		}
 
 if (!(file.isEmpty())) {
 			

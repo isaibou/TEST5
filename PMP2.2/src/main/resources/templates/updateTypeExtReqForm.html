@@ -25,12 +25,16 @@
 	<div class="row">
     <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b></b></label>
      <div class="col-sm-8" style="margin: 5px 0px;" >
-      <input type="hidden" class="form-control" placeholder="Entry Name of Type Deliverable" id="input-id-1"  required th:field=*{TypeExternelRequest_ID}/>
-     
+      <input type="hidden" class="form-control" placeholder="Entry Name of Type Deliverable" id="input-id-1" th:field=*{TypeExternelRequest_ID}/>
+     <span class="text-danger" th:errors=*{NameTypeExternelRequest}></span>
 	 </div>
 	  <label class="col-sm-4 control-label" for="input-id-1" style="margin:5px 0px;"><b>Name:</b></label>
 	 <div class="col-sm-8" style="margin:5px 0px;" >
 	  <input type="text" placeholder="Entry Nom" class="form-control" id="input-id-1"  th:field="*{NameTypeExternelRequest}">
+	  <span class="text-danger" th:errors=*{NameTypeExternelRequest}></span>
+	  <div class="text-danger" th:if="${unique}">
+       <div th:text="${unique}"></div>
+    </div>
 	 </div>
 	 </div>
 		</div>

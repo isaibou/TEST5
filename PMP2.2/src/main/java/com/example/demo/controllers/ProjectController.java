@@ -90,6 +90,12 @@ public class ProjectController {
 		
 		if(ProjectRepository.checkTitleExist(addProj.getName())) {
 			
+			 model.addAttribute("TechnoPart", technologiepartnerRepository.findAll());
+			 model.addAttribute("rfp",rfprepository.findAll());
+			 model.addAttribute("TypeProject", typeProjectRepository.findAll());
+			 model.addAttribute("assets",assetRepository.findAll() );
+			 model.addAttribute("TechnologiePartnerRepository", technologiepartnerRepository.findAll());
+			
 			model.addAttribute("unique", "must be unique");
 			return "addProj";
 		}
@@ -141,6 +147,17 @@ if (!(file.isEmpty())) {
 
 			file.transferTo(new File(projectFile+file.getOriginalFilename()));
 		}
+if(ProjectRepository.checkTitleExist(proj.getName())) {
+	
+	 model.addAttribute("TechnoPart", technologiepartnerRepository.findAll());
+	 model.addAttribute("rfp",rfprepository.findAll());
+	 model.addAttribute("TypeProject", typeProjectRepository.findAll());
+	 model.addAttribute("assets",assetRepository.findAll() );
+	 model.addAttribute("TechnologiePartnerRepository", technologiepartnerRepository.findAll());
+	
+	model.addAttribute("unique", "must be unique");
+	return "updateProj";
+}
 		ProjectRepository.save(proj);
 		
 		return "redirect:/projects";

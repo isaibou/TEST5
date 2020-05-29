@@ -21,6 +21,10 @@
 	 <form th:action="@{/editUsers}"  enctype="multipart/form-data"  method="post" th:object="${user}">  
    <div class="panel-body">
 	 <input type="hidden" placeholder="Entry Login" class="form-control" id="input-id-1"    th:field=*{username}/>
+	  <span class="text-danger" th:errors=*{username}></span>
+    <div class="text-danger" th:if="${unique}">
+		   <div th:text="${unique}"></div>
+		</div>
 	<label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Picture</b></label>
      <div class="col-sm-8" style="margin: 5px 0px;">
         <input type="file"  name="photo" class="form-control" id="input-id-1" >

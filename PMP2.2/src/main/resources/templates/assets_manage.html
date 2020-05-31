@@ -546,7 +546,10 @@
       <td th:text ="${a.MustGather}"><center></center></td>    
       <td th:text ="${a.EndOfVendorWarranty}"><center></center></td>
       <td th:text ="${a.EndPowermWarranty}"><center></center></td>
-      <td th:text ="${a.Status}" class="m-n font-thin h4 text-secondary"><center><span></span><center/></td>
+      <td th:switch="${a.Status}">
+		     <span th:case="'Actif'" class="label bg-info pull-center m-t-md" >Actived</span>
+             <span th:case="'Archived'" class="label bg-dark pull-center m-t-md" >Archived</span>
+           </td>
       <td><center><div class="btn-group dropdown"><button class="btn btn-default btn-xs" data-toggle="dropdown"><i class="glyphicon glyphicon-cog"></i> Action <span class="caret"></span></button>
        <ul class="dropdown-menu">
        <li><a th:href="@{'/Configurationfille/'+${a.ConfigurationFille}}"  style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Download Configuration Fille</a></li>

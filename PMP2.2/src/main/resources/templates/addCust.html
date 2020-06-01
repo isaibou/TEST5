@@ -22,13 +22,12 @@
      <form th:action="@{SaveCustomer}" enctype="multipart/form-data" method ="post" th:object="${customer}">
      <div class="panel-body">
      <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Company Logo</b></label>
-     <div class="bootstrap-filestyle input-group col-sm-8">
-      <input type="file"  name="picture" class="form-control "> 
-      <span class="group-span-filestyle input-group-btn" >
-        <label for="filestyle-0" class="btn btn-primary ">Choose file</label>
-      </span>
-     </div>
-     <!-- <div class="col-sm-8" style="margin: 5px 0px;">
+     <div class="form-group">
+          <div class="col-sm-8" style="margin: 5px 0px;">
+            <input ui-jq="filestyle" name="picture" ui-options="{icon: false, buttonName: 'btn-primary'}" type="file"/>
+          </div>
+        </div>
+     <!-- <div class="col-sm-8" >
         <input type="file"  name="picture" class="form-control" id="input-id-1" >
      </div> -->
 	 <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Company Name</b></label>

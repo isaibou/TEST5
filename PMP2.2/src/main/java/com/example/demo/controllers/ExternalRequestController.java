@@ -67,7 +67,7 @@ public class ExternalRequestController {
 		model.addAttribute("typeInternal", typeInternalRequestrepository.findAll());
 		model.addAttribute("typeExternal", typeExternalRequestRepository.findAll());
 		model.addAttribute("intWait", intWait.size());
-		model.addAttribute("intConf", intConf);
+		model.addAttribute("intConf", intConf.size());
 		//model.addAttribute("extWait", extWait.size() );
 		
 		

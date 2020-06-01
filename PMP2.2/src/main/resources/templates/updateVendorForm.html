@@ -65,10 +65,12 @@
     <span class="text-danger" th:errors=*{Industry}></span>
    </div>
    <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Partnership Certificate</b></label>
-  <div class="col-sm-8" style="margin: 5px 0px;">
-    <input type="file" name="certificate" class="form-control" id="input-id-1" />
-    <span th:text ="${vendor.PartnershipCertificate}" class="m-n font-thin h4 text-secondary"></span>
-  </div>
+   <div class="form-group">
+          <div class="col-sm-8" style="margin: 5px 0px;">
+            <input ui-jq="filestyle" name="certificate" ui-options="{icon: false, buttonName: 'btn-primary'}" type="file"/>
+            <span th:text ="${vendor.PartnershipCertificate}" class="m-n font-thin h4 text-secondary"></span>
+          </div>
+        </div>
   <div >
   <button style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon pull-right"><a th:href="vendor"><i class="glyphicon glyphicon-remove"></i>Annuler</a></button>
   <button style="margin:0px;" class="btn m-b-xs btn-sm btn-primary btn-addon pull-right"><i class="glyphicon glyphicon-ok"></i>Save</button>

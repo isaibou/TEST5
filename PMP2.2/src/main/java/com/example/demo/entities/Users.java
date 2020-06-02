@@ -76,9 +76,8 @@ public class Users implements Serializable {
 	
 	@OneToMany(mappedBy = "users", fetch = FetchType.LAZY)
 	private Collection<Task> tasks;
-	
-	@ManyToMany
-	private Collection<Project> project;
+	@OneToMany(mappedBy = "user" , fetch = FetchType.LAZY)
+	private Collection<ProjectUser> projUser;
 	
 	public Users() {
 		super();
@@ -265,8 +264,16 @@ public class Users implements Serializable {
 		this.tasks = tasks;
 	}
 
-	
+	public Collection<ProjectUser> getProjUser() {
+		return projUser;
+	}
 
+	public void setProjUser(Collection<ProjectUser> projUser) {
+		this.projUser = projUser;
+	}
+
+	
+	
 	
 	
 	

@@ -29,6 +29,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.example.demo.entities.*;
 import com.example.demo.repository.AffectationProjectRepository;
 import com.example.demo.repository.AssetRepository;
+import com.example.demo.repository.ProjectUserrepository;
 import com.example.demo.repository.ProjetRepository;
 import com.example.demo.repository.RFPRepository;
 import com.example.demo.repository.TechnologiePartnerRepository;
@@ -55,6 +56,8 @@ public class ProjectController {
 	private AffectationProjectRepository affectProjRepository;
 	@Autowired
 	private UserRepository userRepository;
+	@Autowired
+	private ProjectUserrepository projUserRepository;
 	@Autowired
 	NotificationMail notif;
 	
@@ -105,7 +108,7 @@ public class ProjectController {
 		}
 		
 		addProj.setStatus("Actif");
-
+		addProj.getRfp().setStatusRFP("Archived");
 if (!(file.isEmpty())) {
 			
 			addProj.setDeliveryCertificate((file.getOriginalFilename()));
@@ -130,7 +133,6 @@ if (!(file.isEmpty())) {
 		 model.addAttribute("rfp",rfprepository.findByStatusRFP("Won"));
 		 model.addAttribute("TypeProject", typeProjectRepository.findAll());
 		 model.addAttribute("assets",assetRepository.findByStatus("Actif") );
-		 model.addAttribute("TechnologiePartnerRepository", technologiepartnerRepository.findByStatus("Actif"));
 
 			return "addProj";
 			
@@ -256,6 +258,7 @@ if(ProjectRepository.checkTitleExist(proj.getName())) {
 	List<Users> employee = userRepository.findByIsCustomer(false);
 	model.addAttribute("proj", proj);
 	model.addAttribute("employee", employee);
+	model.addAttribute("projectUser", new ProjectUser());
 		
 			return "AffectationProject";	
 	}
@@ -263,19 +266,20 @@ if(ProjectRepository.checkTitleExist(proj.getName())) {
 	
 
 	@RequestMapping(value ="/affectedProj" )
-	private String affectProj( Model model, Users user, Integer id ) {
+	private String affectProj( Model model, @RequestParam(name="projectibe")Integer id , ProjectUser projUser) {
 		Project proj = ProjectRepository.getOne(id);
-	//	proj.setUsers(user);
+		projUser.setProject(proj);
+		projUserRepository.save(projUser);
 		 try {
-		//	 notif.notifTaskProject(u, afProj);
+		 notif.notifProject(projUser);
 		} catch (MailException e) {
 			e.printStackTrace();		}
 		
 	model.addAttribute("proj", proj);
-	model.addAttribute("affectationProj", new AffectationProject());
+	model.addAttribute("projectUser", new ProjectUser());
 	model.addAttribute("employee", userRepository.findByIsCustomer(false));
 		
-			return "redirect:/affectation";	
+			return "AffectationProject";	
 	}
 	
 	

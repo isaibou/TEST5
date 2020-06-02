@@ -105,32 +105,10 @@ public class Project implements Serializable{
 	@OneToMany(mappedBy = "project", fetch = FetchType.LAZY)
 	private Collection<AffectationProject> affectProj;
 	
-	@ManyToMany
-	@JoinTable(name="USERS_PROJECT")
-	private Collection<Users> users;
+	@OneToMany(mappedBy = "project" , fetch = FetchType.LAZY)
+	private Collection<ProjectUser> projUser;
 	
 	
-	public List<TechnologyPartner> getTechnologypartner() {
-		return technologypartner;
-	}
-	public void setTechnologypartner(List<TechnologyPartner> technologypartner) {
-		this.technologypartner = technologypartner;
-	}
-	public Collection<Assets> getAssets() {
-	   return assets;
-   }
-	public void setAssets(Collection<Assets> assets) {
-		this.assets = assets;
-	}
-	
-	public Project(String deliveryCertificate, String uri, String type, long size) {
-
-		super();
-		DeliveryCertificate = deliveryCertificate;
-		//Uri = uri;
-		//Type =type;
-		//Size = size;
-	}
 	
 	public Project() {
 		super();
@@ -148,29 +126,6 @@ public class Project implements Serializable{
 		Name = name;
 	}
 
-	//public String getUri() {
-		//return Uri;
-	//}
-
-	//public void setUri(String uri) {
-		//this.Uri = uri;
-	//}
-
-	//public String getType() {
-		//return Type;
-	//}
-
-	//public void setType(String type) {
-		//this.Type = type;
-	//}
-
-	//public long getSize() {
-		//return Size;
-	//}
-
-	//public void setSize(long size) {
-		//this.Size = size;
-	//}
 	
 	public Double getAmount() {
 		return Amount;
@@ -247,6 +202,18 @@ public class Project implements Serializable{
 	public void setRfp(RFP rfp) {
 		this.rfp = rfp;
 	}
+	public List<TechnologyPartner> getTechnologypartner() {
+		return technologypartner;
+	}
+	public void setTechnologypartner(List<TechnologyPartner> technologypartner) {
+		this.technologypartner = technologypartner;
+	}
+	public Collection<Assets> getAssets() {
+	   return assets;
+   }
+	public void setAssets(Collection<Assets> assets) {
+		this.assets = assets;
+	}
 	public void setTypeProject(TypeProject typeProject) {
 		this.typeProject = typeProject;
 	}
@@ -271,12 +238,13 @@ public class Project implements Serializable{
 	public void setAffectProj(Collection<AffectationProject> affectProj) {
 		this.affectProj = affectProj;
 	}
-	public Collection<Users> getUsers() {
-		return users;
+	public Collection<ProjectUser> getProjUser() {
+		return projUser;
 	}
-	public void setUsers(Collection<Users> users) {
-		this.users = users;
+	public void setProjUser(Collection<ProjectUser> projUser) {
+		this.projUser = projUser;
 	}
+	
 	
 	
 	

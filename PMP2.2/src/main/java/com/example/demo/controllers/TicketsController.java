@@ -25,12 +25,14 @@ import com.example.demo.entities.Assets;
 import com.example.demo.entities.Customer;
 import com.example.demo.entities.DataCenter;
 import com.example.demo.entities.Expenses;
+import com.example.demo.entities.Frimware;
 import com.example.demo.entities.Project;
 import com.example.demo.entities.RFP;
 import com.example.demo.entities.Task;
 import com.example.demo.entities.Ticket;
 import com.example.demo.entities.Users;
 import com.example.demo.repository.AssetRepository;
+import com.example.demo.repository.AssetTypeRepository;
 import com.example.demo.repository.TicketRepository;
 import com.example.demo.repository.TypeProjectRepository;
 import com.example.demo.repository.UserRepository;
@@ -44,6 +46,8 @@ public class TicketsController {
 	private UserRepository userRepository;
 	@Autowired
 	private TicketRepository ticketRepository;
+	@Autowired
+	private AssetTypeRepository assetTypeRepository;
 	@Autowired
 	private AssetRepository assetRepository;
 	
@@ -303,11 +307,73 @@ Tic.setLastUpdatedate(new Date());
 		
 	}
 	
+	@RequestMapping(value ="/detailTicketS")
+	public String detailS( Model model, Integer id ) {	
+		 Ticket ticket = ticketRepository.getOne(id);
+		 model.addAttribute("ticket",ticket);
+		 model.addAttribute("assettype", assetTypeRepository.findAll());
+		
+			return "detailTicketS";
+			
+	}
 	
+	@RequestMapping(value ="/detailTicketA")
+	public String detailA( Model model, Integer id ) {	
+		 Ticket ticket = ticketRepository.getOne(id);
+		 model.addAttribute("ticke",ticket);
+		 model.addAttribute("assettype", assetTypeRepository.findAll());
+		
+			return "detailTicketA";
+			
+	}
 	
+	@RequestMapping(value ="/detailTicketP")
+	public String detailP( Model model, Integer id ) {	
+		 Ticket ticket = ticketRepository.getOne(id);
+		 model.addAttribute("tick",ticket);
+		 model.addAttribute("assettype", assetTypeRepository.findAll());
+		
+			return "detailTicketP";
+			
+	}
 	
+	@RequestMapping(value ="/detailTicketW")
+	public String detailW( Model model, Integer id ) {	
+		 Ticket ticket = ticketRepository.getOne(id);
+		 model.addAttribute("tic",ticket);
+		 model.addAttribute("assettype", assetTypeRepository.findAll());
+		
+			return "detailTicketW";
+			
+	}
 	
+	@RequestMapping(value ="/detailTicketR")
+	public String detailR( Model model, Integer id ) {	
+		 Ticket ticket = ticketRepository.getOne(id);
+		 model.addAttribute("ti",ticket);
+		 model.addAttribute("assettype", assetTypeRepository.findAll());
+		
+			return "detailTicketR";
+			
+	}
 	
+	@RequestMapping(value ="/detailTicketC")
+	public String detailC( Model model, Integer id ) {	
+		 Ticket ticket = ticketRepository.getOne(id);
+		 model.addAttribute("tck",ticket);
+		 model.addAttribute("assettype", assetTypeRepository.findAll());
+		
+			return "detailTicketC";
+			
+	}
 	
-	
+	@RequestMapping(value ="/detailTicketAr")
+	public String detailAr( Model model, Integer id ) {	
+		 Ticket ticket = ticketRepository.getOne(id);
+		 model.addAttribute("tkt",ticket);
+		 model.addAttribute("assettype", assetTypeRepository.findAll());
+		
+			return "detailTicketAr";
+			
+	}
 }

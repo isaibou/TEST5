@@ -168,8 +168,6 @@ if (!(file.isEmpty())) {
 			
 	}
 	
-	
-	
 	@RequestMapping(value="/contratfile/{fileName}")
 	@ResponseBody
 	public void getFileContrat(@PathVariable("fileName")String fileName, HttpServletResponse response) {
@@ -203,25 +201,5 @@ if (!(file.isEmpty())) {
 		}
 		
 	}
-	
-
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 }

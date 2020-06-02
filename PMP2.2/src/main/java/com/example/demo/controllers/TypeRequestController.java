@@ -121,7 +121,7 @@ if(typeExternalRequestRepository.checkTitleExist(external.getNameTypeExternelReq
 	}
 	
 	@RequestMapping(value = "/editTypeExternalRequest",method = { RequestMethod.GET, RequestMethod.POST })
-	public String updateTypeExternalRequest(Model model, @Valid TypeExternalRequest typExReq, BindingResult bindingResult){
+	public String updateTypeExternalRequest(Model model, @Valid @ModelAttribute("typExReq") TypeExternalRequest typExReq, BindingResult bindingResult){
 
 if(typeExternalRequestRepository.checkTitleExist(typExReq.getNameTypeExternelRequest())) {
 			

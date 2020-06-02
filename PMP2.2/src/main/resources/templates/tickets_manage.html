@@ -635,56 +635,56 @@ document.addEventListener('DOMContentLoaded', function() {
 	   <div class="block panel padder-v bg-primary item">
 		<span class="text-white font-thin h1 count block" th:text="${totalticket}" ></span>
 		<span class="text-muted text-xs"><b> Total Tickets <small></small></b></span>
-		<span class="bottom text-right w-full"><i class="glyphicon  glyphicon-tags text-muted m-r-sm"></i></span>
+		<span class="bottom text-right w-full"><i class="glyphicon  glyphicon-list text-muted m-r-sm"></i></span>
 	   </div>
 	  </div>
 	  <div class="col-xs-3">
 	   <div class="panel padder-v item">
 		<div class="h1 text-info font-thin h1 count pull-center" th:text="${totalsubmitted}"></div>
 		<span class="text-muted text-xs"><b> Total Ticket submitted </b></span>
-		<span class="bottom text-right w-full"><i class="glyphicon  glyphicon-tags text-muted m-r-sm"></i></span>
+		<span class="bottom text-right w-full"><i class="glyphicon  glyphicon-list text-muted m-r-sm"></i></span>
 	   </div>
 	  </div>
 	  <div class="col-xs-3">
 	   <div class="panel padder-v bg-primary item">
 		<div class="h1 text-white font-thin h1 count pull-center" th:text="${totalclosed}"></div>
 		<span class="text-muted text-xs"><b>Total Tickets closed</b></span>
-		<span class="bottom text-right w-full"><i class="glyphicon  glyphicon-tags text-muted m-r-sm"></i></span>
+		<span class="bottom text-right w-full"><i class="glyphicon  glyphicon-list text-muted m-r-sm"></i></span>
 	   </div>
 	  </div>
 	 <div class="col-sm-3">
       <div class="panel padder-v item">
       <div class="h1 count text-info font-thin h1 pull-center" th:text="${totalwaiting}" ></div>
       <span class="text-muted text-xs"><b> Total Tickets waiting </b></span>
-      <span class="bottom text-right w-full"><i class="glyphicon   glyphicon-tower text-muted m-r-sm"></i></span>
+      <span class="bottom text-right w-full"><i class="glyphicon   glyphicon-list text-muted m-r-sm"></i></span>
      </div>
     </div>
 	 <div class="col-sm-3">
       <div class="panel padder-v item">
        <div class="h1 count text-info font-thin h1 pull-center" th:text="${totalresolved}"></div>
         <span class="text-muted text-xs"><b> Total Tickets Resolved </b></span>
-        <span class="bottom text-right w-full"><i class="glyphicon glyphicon-tower text-muted m-r-sm"></i></span>
+        <span class="bottom text-right w-full"><i class="glyphicon glyphicon-list text-muted m-r-sm"></i></span>
       </div>
      </div>
      <div class="col-sm-3">
       <div class="block panel padder-v bg-primary item">
        <span class="text-white count font-thin h1 block" th:text="${totalarchived}"></span>
-       <span class="text-muted text-xs"><b> Total Tickets</b></span>
-       <span class="bottom text-right w-full"><i class="glyphicon glyphicon-briefcase text-muted m-r-sm"></i></span>
+       <span class="text-muted text-xs"><b> Total Tickets Archived</b></span>
+       <span class="bottom text-right w-full"><i class="glyphicon glyphicon-list text-muted m-r-sm"></i></span>
       </div>
      </div>
      <div class="col-sm-3">
       <div class="panel padder-v item">
       <div class="h1 count text-info font-thin h1 pull-center" th:text="${totalaffected}"></div>
-      <span class="text-muted text-xs"><b> Total Tickets Archived </b></span>
-      <span class="bottom text-right w-full"><i class="glyphicon   glyphicon-tower text-muted m-r-sm"></i></span>
+      <span class="text-muted text-xs"><b> Total Tickets Affected </b></span>
+      <span class="bottom text-right w-full"><i class="glyphicon   glyphicon-list text-muted m-r-sm"></i></span>
      </div>
     </div>
     <div class="col-sm-3">
      <div class="block panel padder-v bg-primary item">
       <span class="text-white count font-thin h1 block" th:text="${totalprocessing}"></span>
       <span class="text-muted text-xs"><b> Total Tickets Processing </b></span>
-      <span class="bottom text-right w-full"><i class="glyphicon glyphicon-briefcase text-muted m-r-sm"></i></span>
+      <span class="bottom text-right w-full"><i class="glyphicon glyphicon-list text-muted m-r-sm"></i></span>
      </div>
     </div>
 	 </div>
@@ -700,62 +700,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	</div> -->
 	</div>    
     </div>
-    
-	<!-- <div class="col-sm-4">
-																				
-																	<thead>
-																		<tr>
-																			<center><h3 class="m-n font-bold h4">Recent Tickets</h3></center><br>
-																			<table style="background-color:white;" class="table table-striped m-b-none">
-          <thead>
-            <tr>
-              <th><center>Title</center></th>                    
-              <th><center>Customer</center></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>                    
-              <td><b><a>Instalation issue IBM server</a></b><br><small> <i class="glyphicon glyphicon-time" style="font-size:10px;"></i> 2 days</small></td>
-              <td class="text-info">
-                <center><b>Attijariwafabank</b></center>
-              </td>
-            </tr>
-             <tr>                    
-              <td><b><a>Logs issue IBM server</a></b><br><small> <i class="glyphicon glyphicon-time" style="font-size:10px;"></i> 1 Semaine</small></td>
-              <td class="text-info">
-                <center><b>Bank Populaire </b></center>
-              </td>
-            </tr>
-			  <tr>                    
-              <td><b><a>Hardware installation issue</a></b><br><small> <i class="glyphicon glyphicon-time" style="font-size:10px;"></i> 1 Semaine</small></td>
-              <td class="text-info">
-                <center><b>CFG Bank </b></center>
-              </td>
-            </tr>
-			<tr>
-			<td  colspan="2">
-		  <span class="pull-right">View More</span>
-		  </td>
-
-			</tr>
-          </tbody>
-		
-		  
-        </table>
-																			
-																		</tr>
-																	</thead>
-																	<tbody>
-																		<tr data-expanded="true">
-																			<td><td>
-																			</tr>
-																			</tbody>
-																			</table>
-																			
-																				
-																				</div> -->
-																				
-	<div class="col-sm-12" style="background-color:white;margin-bottom:20px;">  
+<div class="col-sm-12" style="background-color:white;margin-bottom:20px;">  
  <div class="tabbable-line">
   <ul class="nav nav-tabs ">
     <li class="active">
@@ -800,8 +745,8 @@ document.addEventListener('DOMContentLoaded', function() {
     <thead>
      <tr>
 	    <th  style="width:20%"><center>Customer</center></th>
-	    <th  style="width:45%"><center>Description</center></th>
-	    <th  style="width:5%"><center>priority</center></th>
+	    <th  style="width:40%"><center>Description</center></th>
+	    <th  style="width:10%"><center>priority</center></th>
 	    <th  style="width:15%"><center>Opened Date</center></th>
 	    <th  style="width:15%"><center>Statut</center></th>
      </tr>
@@ -810,13 +755,21 @@ document.addEventListener('DOMContentLoaded', function() {
      <tr data-expanded="true" th:each="i:${allTicket}">
     <td th:text = "${i.customer.Name}"><center></center></td>
     <td th:text = "${i.Description}"></td>
-	 <td th:switch="${i.PriorityTicket}">
-             <span th:case="'Medium'" class="label bg- pull-center m-t-md" >Medium</span>
-             <span th:case="'High'" class="label bg-danger pull-center m-t-md" >High </span>
-             <span th:case="'Low'" class="label bg-info pull-center m-t-md" >Low</span>
-            </td>   
+	<td th:switch="${i.PriorityTicket}">
+         <span th:case="'Medium'" class="label bg-warning pull-center m-t-md" >Medium</span>
+         <span th:case="'High'" class="label bg-danger pull-center m-t-md" >High </span>
+         <span th:case="'Low'" class="label bg-info pull-center m-t-md" >Low</span>
+    </td>   
     <td th:text = "${i.OpenedDate}"><center></center></td>
-    <td th:text = "${i.statusTicket}" ><center> </center></td>
+    <td th:switch="${i.statusTicket}">
+		<span th:case="'Submitted'" class="label bg-info pull-center m-t-md" >Submitted</span>
+        <span th:case="'Affected'" class="label bg-dark text-warning pull-center m-t-md" >Affected</span>
+        <span th:case="'Processing'" class="label bg-primary pull-center m-t-md" >Processing</span>
+        <span th:case="'Waiting'" class="label bg-warning pull-center m-t-md" >Waiting</span>
+        <span th:case="'Resolved'" class="label bg-success pull-center m-t-md" >Resolved</span>
+        <span th:case="'Closed'" class="label bg-dark text-danger pull-center m-t-md" >Closed</span>
+        <span th:case="'Archived'" class="label bg-dark pull-center m-t-md" >Archived</span>
+    </td>
      </tr>
     </tbody>
    </table>
@@ -851,7 +804,7 @@ document.addEventListener('DOMContentLoaded', function() {
     <td th:text = "${t.customer.Name}"><center></center></td>
     <td th:text = "${t.Description}"><center></center></td>
 	<td th:switch="${t.PriorityTicket}">
-             <span th:case="'Medium'" class="label bg- pull-center m-t-md" >Medium</span>
+             <span th:case="'Medium'" class="label bg-warning pull-center m-t-md" >Medium</span>
              <span th:case="'High'" class="label bg-danger pull-center m-t-md" >High </span>
              <span th:case="'Low'" class="label bg-info pull-center m-t-md" >Low</span>
     </td>     
@@ -861,9 +814,7 @@ document.addEventListener('DOMContentLoaded', function() {
 																										<button class="btn btn-default btn-xs" data-toggle="dropdown"><i class="glyphicon glyphicon-cog"></i> Action <span class="caret"></span></button>
 																										<ul class="dropdown-menu">
 																											
-																											<li>
-																												<a style="margin-top:-5px;" data-toggle="modal"  data-target="#DetailS" class="btn btn-sm btn-light" role="button">Detail</a>
-																												</li>
+<li><a th:href="@{detailTicketS(id=${t.Ticket_ID})}" style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Detail</a></li>
 																												  <li class="divider"></li>
 																												  <li>
 																												<a th:href="@{affectTo(id=${t.Ticket_ID})}"  style="margin-top:-5px;"  class="btn btn-sm btn-light" role="button">Affecte to</a>
@@ -924,9 +875,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                                     <button class="btn btn-default btn-xs" data-toggle="dropdown"><i class="glyphicon glyphicon-cog"></i> Action <span class="caret"></span></button>
                                                    <ul class="dropdown-menu">
 																											
-																											<li>
-																												<a style="margin-top:-5px;" data-toggle="modal"  data-target="#DetailS" class="btn btn-sm btn-light" role="button">Detail</a>
-																												</li>
+<li><a th:href="@{detailTicketA(id=${a.Ticket_ID})}" style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Detail</a></li>
 																												  <li class="divider"></li>
 																												
 																										</ul>
@@ -973,10 +922,7 @@ document.addEventListener('DOMContentLoaded', function() {
     <div class="btn-group dropdown">
                                                     <button class="btn btn-default btn-xs" data-toggle="dropdown"><i class="glyphicon glyphicon-cog"></i> Action <span class="caret"></span></button>
                                                    <ul class="dropdown-menu">
-																											
-																											<li>
-																												<a style="margin-top:-5px;" data-toggle="modal"  data-target="#DetailS" class="btn btn-sm btn-light" role="button">Detail</a>
-																												</li>
+<li><a th:href="@{detailTicketP(id=${p.Ticket_ID})}" style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Detail</a></li>
 																												  <li class="divider"></li>
 																												  <li>
 																												<a th:href="@{resolved(id=${p.Ticket_ID})}"style="margin-top:-5px;"  class="btn btn-sm btn-light" role="button">Resolved</a>
@@ -1019,7 +965,7 @@ document.addEventListener('DOMContentLoaded', function() {
     <td th:text="${w.customer.Name}"><center></center></td>
     <td th:text="${w.Description}" ></td>
 	<td th:switch="${w.PriorityTicket}">
-             <span th:case="'Medium'" class="label bg- pull-center m-t-md" >Medium</span>
+             <span th:case="'Medium'" class="label bg-warning pull-center m-t-md" >Medium</span>
              <span th:case="'High'" class="label bg-danger pull-center m-t-md" >High </span>
              <span th:case="'Low'" class="label bg-info pull-center m-t-md" >Low</span>
             </td>    
@@ -1030,10 +976,7 @@ document.addEventListener('DOMContentLoaded', function() {
     <div class="btn-group dropdown">
                                                     <button class="btn btn-default btn-xs" data-toggle="dropdown"><i class="glyphicon glyphicon-cog"></i> Action <span class="caret"></span></button>
                                                    <ul class="dropdown-menu">
-																											
-																											<li>
-																												<a style="margin-top:-5px;" data-toggle="modal"  data-target="#DetailS" class="btn btn-sm btn-light" role="button">Detail</a>
-																												</li>
+<li><a th:href="@{detailTicketW(id=${w.Ticket_ID})}" style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Detail</a></li>
 																												  <li class="divider"></li>
 																												  <li>
 																												<a th:href="@{affectTo(id=${w.Ticket_ID})}"  style="margin-top:-5px;"  class="btn btn-sm btn-light" role="button">Affecte to</a>
@@ -1088,10 +1031,7 @@ document.addEventListener('DOMContentLoaded', function() {
     <div class="btn-group dropdown">
                                                     <button class="btn btn-default btn-xs" data-toggle="dropdown"><i class="glyphicon glyphicon-cog"></i> Action <span class="caret"></span></button>
                                                    <ul class="dropdown-menu">
-																											
-																											<li>
-																												<a style="margin-top:-5px;" data-toggle="modal"  data-target="#DetailS" class="btn btn-sm btn-light" role="button">Detail</a>
-																												</li>
+<li><a th:href="@{detailTicketR(id=${r.Ticket_ID})}" style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Detail</a></li>
 																												  <li class="divider"></li>
 																												  <li>
 																												  <a th:href="@{'/getSolution/'+${r.SolutionDescription}}"  style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Download Solution Description</a>
@@ -1145,10 +1085,7 @@ document.addEventListener('DOMContentLoaded', function() {
     <div class="btn-group dropdown">
 																										<button class="btn btn-default btn-xs" data-toggle="dropdown"><i class="glyphicon glyphicon-cog"></i> Action <span class="caret"></span></button>
 																									<ul class="dropdown-menu">
-																											
-																											<li>
-																												<a style="margin-top:-5px;" data-toggle="modal"  data-target="#DetailS" class="btn btn-sm btn-light" role="button">Detail</a>
-																												</li>
+<li><a th:href="@{detailTicketC(id=${c.Ticket_ID})}" style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Detail</a></li>
 																												  <li class="divider"></li>
 																												  <li>
 																												   <a th:href="@{'/getSolution/'+${c.SolutionDescription}}"  style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Download Solution Description</a>
@@ -1202,10 +1139,7 @@ document.addEventListener('DOMContentLoaded', function() {
     <div class="btn-group dropdown">
 																										<button class="btn btn-default btn-xs" data-toggle="dropdown"><i class="glyphicon glyphicon-cog"></i> Action <span class="caret"></span></button>
 																										<ul class="dropdown-menu">
-																											
-																											<li>
-																												<a style="margin-top:-5px;" data-toggle="modal"  data-target="#DetailS" class="btn btn-sm btn-light" role="button">Detail</a>
-																												</li>
+<li><a th:href="@{detailTicketAr(id=${a.Ticket_ID})}" style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Detail</a></li>
 																												  <li class="divider"></li>
 																												  <li>
 																												   <a th:href="@{'/getSolution/'+${a.SolutionDescription}}"  style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Download Solution Description</a>
@@ -1245,309 +1179,6 @@ document.addEventListener('DOMContentLoaded', function() {
   </div>
  </div>
 </div>	
-
-<div class="modal fade" role="dialog" id="Close" >
- <div class="modal-dialog modal-lg" >
-  <div class="modal-content">
-   <div class="modal-header" style="background-image:url(img/grf-bg.jpg);color:white;">
-  <button type="button" class="close pull-right" data-dismiss="modal">&times;</button>
-     <h1 class="m-n font-bold h3">Close Ticket</h1>
-   </div>
-   <div class="modal-body">
-    Do you want to Close this Ticket ? 
-   </div>
-    <div class="modal-footer">
-   <button class="btn m-b-xs btn-sm btn-primary btn-addon"><i class="glyphicon glyphicon-ok"></i>Yes</button>
-   <button class="btn m-b-xs btn-sm btn-default btn-addon" data-dismiss="modal"><i class="glyphicon glyphicon-remove"></i>No</button>
-  </div>
-  </div>  
-</div>
-</div>
-
-<div class="modal fade" role="dialog" id="Affected" >
- <div class="modal-dialog modal-lg" >
-  <div class="modal-content">
-   <div class="modal-header" style="background-image:url(img/grf-bg.jpg);color:white;">
-  <button type="button" class="close pull-right" data-dismiss="modal">&times;</button>
-  <h1 class="m-n font-bold h3"> Affected Employe</h1>
-   </div>
-   <div class="modal-body">
-  <div class="row">
-   <label class="col-sm-4 control-label" for="input-id-1" style="margin:5px 0px;"><b>Employes :</b></label>
-   <div class="col-sm-8">
-    <input type="text" data-role="tagsinput"  placeholder="enter les Employes" class="form-control" id="input-id-1">
-   </div>
-  </div>
-   </div>
-   <div class="modal-footer">
-  <button style="margin:0px;" class="btn m-b-xs btn-sm btn-primary btn-addon"><i class="glyphicon glyphicon-ok"></i>Save</button>
-  <button style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon" data-dismiss="modal"><i class="glyphicon glyphicon-remove"></i>Annuler</button>
-   </div>
-  </div>
- </div>
-</div>
-
-<div class="modal fade" role="dialog" id="Archived" >
- <div class="modal-dialog modal-lg" >
-  <div class="modal-content">
-   <div class="modal-header" style="background-image:url(img/grf-bg.jpg);color:white;">
-  <button type="button" class="close pull-right" data-dismiss="modal">&times;</button>
-     <h1 class="m-n font-bold h3">Archived Ticket</h1>
-   </div>
-   <div class="modal-body">
-    Do you want to Archived this Ticket ? 
-   </div>
-    <div class="modal-footer">
-   <button class="btn m-b-xs btn-sm btn-primary btn-addon"><i class="glyphicon glyphicon-ok"></i>Yes</button>
-   <button class="btn m-b-xs btn-sm btn-default btn-addon" data-dismiss="modal"><i class="glyphicon glyphicon-remove"></i>No</button>
-  </div>
-  </div>  
-</div>
-</div>
-
-<div class="modal fade" role="dialog" id="DetailS" >
- <div class="modal-dialog modal-lg" >
-  <div class="modal-content">
-   <div class="modal-header" style="background-image:url(img/grf-bg.jpg);color:white;">
-  <button type="button" class="close pull-right" data-dismiss="modal">&times;</button>
-     <h1 class="m-n font-bold h3">Information Ticket</h1>
-   </div>
-   <div class="modal-body">
-          <p>
-            <span class="m-n font-thin h3 text-black" >Ticket Title:</span>
-            <span ng-repeat="nom in ticket"> {{ ticket.nomTicket }} </br></span>
-            <span class="m-n font-thin h3 text-black">Customer Name:</span>
-            <span ng-repeat="nom in customer"> {{ customer.nomCustomer }}</span></br>
-            <span class="m-n font-thin h3 text-black">Description :</span>
-            <span ng-repeat="description in ticket"> {{ ticket.descriptionTicket }}</span></br>
-            <span class="m-n font-thin h3 text-black" >Priority :</span>
-            <span ng-repeat="priority in tcket"> {{ ticket.priorityTicket }} </br></span>
-            <span class="m-n font-thin h3 text-black">Opened Date :</span>
-            <span ng-repeat="openedDate in ticket"> {{ ticket.openedDateTicket }}</span></br>
-          </p> 
-   </div>
-   <div class="modal-footer">
-   <button class="btn m-b-xs btn-sm btn-primary btn-addon" data-dismiss="modal">Return</button>
-  </div>
-  </div>  
-</div>
-</div>
-
-<div class="modal fade" role="dialog" id="DetailA" >
- <div class="modal-dialog modal-lg" >
-  <div class="modal-content">
-   <div class="modal-header" style="background-image:url(img/grf-bg.jpg);color:white;">
-    <button type="button" class="close pull-right" data-dismiss="modal">&times;</button>
-    <h1 class="m-n font-bold h3">Information Ticket</h1>
-   </div>
-   <div class="modal-body">
-          <p>
-            <span class="m-n font-thin h3 text-black" >Ticket Title:</span>
-            <span ng-repeat="nom in ticket"> {{ ticket.nomTicket }} </br></span>
-            <span class="m-n font-thin h3 text-black">Customer Name:</span>
-            <span ng-repeat="nom in customer"> {{ customer.nomCustomer }}</span></br>
-            <span class="m-n font-thin h3 text-black">Description :</span>
-            <span ng-repeat="description in ticket"> {{ ticket.descriptionTicket }}</span></br>
-            <span class="m-n font-thin h3 text-black" >Priority :</span>
-            <span ng-repeat="priority in tcket"> {{ ticket.priorityTicket }} </br></span>
-            <span class="m-n font-thin h3 text-black">Opened Date :</span>
-            <span ng-repeat="openedDate in ticket"> {{ ticket.openedDateTicket }}</span></br>
-            <span class="m-n font-thin h3 text-black">Asset Name:</span>
-            <span ng-repeat="nom in asset"> {{ asset.nomAsset }}</span></br>
-            <span class="m-n font-thin h3 text-black" >Employe Affected:</span>
-            <span ng-repeat="nom in employe"> {{ ticket.nomEmploye }} </br></span>
-            <span class="m-n font-thin h3 text-black" >Log File:</span>
-            <a href="http://localhost:8082/download/{{ticket.logFileTicket}}" target="_blank"><span class="m-n font-thin h3 text-black"> file </span></a></br>
-          </p> 
-   </div>
-   <div class="modal-footer">
-    <button class="btn m-b-xs btn-sm btn-primary btn-addon" data-dismiss="modal">Return</button>
-   </div>
-  </div>  
- </div>
-</div>
-
-<div class="modal fade" role="dialog" id="DetailP" >
- <div class="modal-dialog modal-lg" >
-  <div class="modal-content">
-   <div class="modal-header" style="background-image:url(img/grf-bg.jpg);color:white;">
-    <button type="button" class="close pull-right" data-dismiss="modal">&times;</button>
-    <h1 class="m-n font-bold h3">Information Ticket</h1>
-   </div>
-   <div class="modal-body">
-          <p>
-            <span class="m-n font-thin h3 text-black" >Ticket Title:</span>
-            <span ng-repeat="nom in ticket"> {{ ticket.nomTicket }} </br></span>
-            <span class="m-n font-thin h3 text-black">Customer Name:</span>
-            <span ng-repeat="nom in customer"> {{ customer.nomCustomer }}</span></br>
-            <span class="m-n font-thin h3 text-black">Description :</span>
-            <span ng-repeat="description in ticket"> {{ ticket.descriptionTicket }}</span></br>
-            <span class="m-n font-thin h3 text-black" >Priority :</span>
-            <span ng-repeat="priority in tcket"> {{ ticket.priorityTicket }} </br></span>
-            <span class="m-n font-thin h3 text-black">Opened Date :</span>
-            <span ng-repeat="openedDate in ticket"> {{ ticket.openedDateTicket }}</span></br>
-            <span class="m-n font-thin h3 text-black">Asset Name:</span>
-            <span ng-repeat="nom in asset"> {{ asset.nomAsset }}</span></br>
-            <span class="m-n font-thin h3 text-black" >Employe Affected:</span>
-            <span ng-repeat="nom in employe"> {{ ticket.nomEmploye }} </br></span>
-            <span class="m-n font-thin h3 text-black" >Log File:</span>
-            <a href="http://localhost:8082/download/{{ticket.logFileTicket}}" target="_blank"><span class="m-n font-thin h3 text-black"> file </span></a></br>
-          </p> 
-   </div>
-   <div class="modal-footer">
-    <button class="btn m-b-xs btn-sm btn-primary btn-addon" data-dismiss="modal">Return</button>
-   </div>
-  </div>  
- </div>
-</div>
-
-<div class="modal fade" role="dialog" id="DetailW" >
- <div class="modal-dialog modal-lg" >
-  <div class="modal-content">
-   <div class="modal-header" style="background-image:url(img/grf-bg.jpg);color:white;">
-    <button type="button" class="close pull-right" data-dismiss="modal">&times;</button>
-    <h1 class="m-n font-bold h3">Information Ticket</h1>
-   </div>
-   <div class="modal-body">
-          <p>
-            <span class="m-n font-thin h3 text-black" >Ticket Title:</span>
-            <span ng-repeat="nom in ticket"> {{ ticket.nomTicket }} </br></span>
-            <span class="m-n font-thin h3 text-black">Customer Name:</span>
-            <span ng-repeat="nom in customer"> {{ customer.nomCustomer }}</span></br>
-            <span class="m-n font-thin h3 text-black">Description :</span>
-            <span ng-repeat="description in ticket"> {{ ticket.descriptionTicket }}</span></br>
-            <span class="m-n font-thin h3 text-black" >Priority :</span>
-            <span ng-repeat="priority in tcket"> {{ ticket.priorityTicket }} </br></span>
-            <span class="m-n font-thin h3 text-black">Opened Date :</span>
-            <span ng-repeat="openedDate in ticket"> {{ ticket.openedDateTicket }}</span></br>
-            <span class="m-n font-thin h3 text-black">Asset Name:</span>
-            <span ng-repeat="nom in asset"> {{ asset.nomAsset }}</span></br>
-            <span class="m-n font-thin h3 text-black" >Employe Affected:</span>
-            <span ng-repeat="nom in employe"> {{ ticket.nomEmploye }} </br></span>
-            <span class="m-n font-thin h3 text-black" >Log File:</span>
-            <a href="http://localhost:8082/download/{{ticket.logFileTicket}}" target="_blank"><span class="m-n font-thin h3 text-black"> file </span></a></br>
-          </p> 
-   </div>
-   <div class="modal-footer">
-    <button class="btn m-b-xs btn-sm btn-primary btn-addon" data-dismiss="modal">Return</button>
-   </div>
-  </div>  
- </div>
-</div>
-
-<div class="modal fade" role="dialog" id="DetailR" >
- <div class="modal-dialog modal-lg" >
-  <div class="modal-content">
-   <div class="modal-header" style="background-image:url(img/grf-bg.jpg);color:white;">
-    <button type="button" class="close pull-right" data-dismiss="modal">&times;</button>
-    <h1 class="m-n font-bold h3">Information Ticket</h1>
-   </div>
-   <div class="modal-body">
-          <p>
-            <span class="m-n font-thin h3 text-black" >Ticket Title:</span>
-            <span ng-repeat="nom in ticket"> {{ ticket.nomTicket }} </br></span>
-            <span class="m-n font-thin h3 text-black">Customer Name:</span>
-            <span ng-repeat="nom in customer"> {{ customer.nomCustomer }}</span></br>
-            <span class="m-n font-thin h3 text-black">Description :</span>
-            <span ng-repeat="description in ticket"> {{ ticket.descriptionTicket }}</span></br>
-            <span class="m-n font-thin h3 text-black" >Priority :</span>
-            <span ng-repeat="priority in tcket"> {{ ticket.priorityTicket }} </br></span>
-            <span class="m-n font-thin h3 text-black">Opened Date :</span>
-            <span ng-repeat="openedDate in ticket"> {{ ticket.openedDateTicket }}</span></br>
-            <span class="m-n font-thin h3 text-black">Asset Name:</span>
-            <span ng-repeat="nom in asset"> {{ asset.nomAsset }}</span></br>
-            <span class="m-n font-thin h3 text-black" >Employe Affected:</span>
-            <span ng-repeat="nom in employe"> {{ ticket.nomEmploye }} </br></span>
-            <span class="m-n font-thin h3 text-black" >Log File:</span>
-            <a href="http://localhost:8082/download/{{ticket.logFileTicket}}" target="_blank"><span class="m-n font-thin h3 text-black"> file </span></a></br>
-            <span class="m-n font-thin h3 text-black" >Solution Description:</span>
-            <a href="http://localhost:8082/download/{{ticket.solutionDescriptionTicket}}" target="_blank"><span class="m-n font-thin h3 text-black"> file </span></a></br>
-          </p> 
-   </div>
-   <div class="modal-footer">
-    <button class="btn m-b-xs btn-sm btn-primary btn-addon" data-dismiss="modal">Return</button>
-   </div>
-  </div>  
- </div>
-</div>
-
-<div class="modal fade" role="dialog" id="DetailC" >
- <div class="modal-dialog modal-lg" >
-  <div class="modal-content">
-   <div class="modal-header" style="background-image:url(img/grf-bg.jpg);color:white;">
-    <button type="button" class="close pull-right" data-dismiss="modal">&times;</button>
-    <h1 class="m-n font-bold h3">Information Ticket</h1>
-   </div>
-   <div class="modal-body">
-          <p>
-            <span class="m-n font-thin h3 text-black" >Ticket Title:</span>
-            <span ng-repeat="nom in ticket"> {{ ticket.nomTicket }} </br></span>
-            <span class="m-n font-thin h3 text-black">Customer Name:</span>
-            <span ng-repeat="nom in customer"> {{ customer.nomCustomer }}</span></br>
-            <span class="m-n font-thin h3 text-black">Description :</span>
-            <span ng-repeat="description in ticket"> {{ ticket.descriptionTicket }}</span></br>
-            <span class="m-n font-thin h3 text-black" >Priority :</span>
-            <span ng-repeat="priority in tcket"> {{ ticket.priorityTicket }} </br></span>
-            <span class="m-n font-thin h3 text-black">Opened Date :</span>
-            <span ng-repeat="openedDate in ticket"> {{ ticket.openedDateTicket }}</span></br>
-            <span class="m-n font-thin h3 text-black">Asset Name:</span>
-            <span ng-repeat="nom in asset"> {{ asset.nomAsset }}</span></br>
-            <span class="m-n font-thin h3 text-black" >Employe Affected:</span>
-            <span ng-repeat="nom in employe"> {{ ticket.nomEmploye }} </br></span>
-            <span class="m-n font-thin h3 text-black" >Log File:</span>
-            <a href="http://localhost:8082/download/{{ticket.logFileTicket}}" target="_blank"><span class="m-n font-thin h3 text-black"> file </span></a></br>
-            <span class="m-n font-thin h3 text-black" >Solution Description:</span>
-            <a href="http://localhost:8082/download/{{ticket.solutionDescriptionTicket}}" target="_blank"><span class="m-n font-thin h3 text-black"> file </span></a></br>
-            <span class="m-n font-thin h3 text-black">Closed Date :</span>
-            <span ng-repeat="closedDate in ticket"> {{ ticket.closedDateTicket }}</span></br>
-          </p> 
-   </div>
-   <div class="modal-footer">
-    <button class="btn m-b-xs btn-sm btn-primary btn-addon" data-dismiss="modal">Return</button>
-   </div>
-  </div>  
- </div>
-</div>
-
-<div class="modal fade" role="dialog" id="DetailAT" >
- <div class="modal-dialog modal-lg" >
-  <div class="modal-content">
-   <div class="modal-header" style="background-image:url(img/grf-bg.jpg);color:white;">
-    <button type="button" class="close pull-right" data-dismiss="modal">&times;</button>
-    <h1 class="m-n font-bold h3">Information Ticket</h1>
-   </div>
-   <div class="modal-body">
-          <p>
-            <span class="m-n font-thin h3 text-black" >Ticket Title:</span>
-            <span ng-repeat="nom in ticket"> {{ ticket.nomTicket }} </br></span>
-            <span class="m-n font-thin h3 text-black">Customer Name:</span>
-            <span ng-repeat="nom in customer"> {{ customer.nomCustomer }}</span></br>
-            <span class="m-n font-thin h3 text-black">Description :</span>
-            <span ng-repeat="description in ticket"> {{ ticket.descriptionTicket }}</span></br>
-            <span class="m-n font-thin h3 text-black" >Priority :</span>
-            <span ng-repeat="priority in tcket"> {{ ticket.priorityTicket }} </br></span>
-            <span class="m-n font-thin h3 text-black">Opened Date :</span>
-            <span ng-repeat="openedDate in ticket"> {{ ticket.openedDateTicket }}</span></br>
-            <span class="m-n font-thin h3 text-black">Asset Name:</span>
-            <span ng-repeat="nom in asset"> {{ asset.nomAsset }}</span></br>
-            <span class="m-n font-thin h3 text-black" >Employe Affected:</span>
-            <span ng-repeat="nom in employe"> {{ ticket.nomEmploye }} </br></span>
-            <span class="m-n font-thin h3 text-black" >Log File:</span>
-            <a href="http://localhost:8082/download/{{ticket.logFileTicket}}" target="_blank"><span class="m-n font-thin h3 text-black"> file </span></a></br>
-            <span class="m-n font-thin h3 text-black" >Solution Description:</span>
-            <a href="http://localhost:8082/download/{{ticket.solutionDescriptionTicket}}" target="_blank"><span class="m-n font-thin h3 text-black"> file </span></a></br>
-            <span class="m-n font-thin h3 text-black">Closed Date :</span>
-            <span ng-repeat="closedDate in ticket"> {{ ticket.closedDateTicket }}</span></br>
-          </p> 
-   </div>
-   <div class="modal-footer">
-    <button class="btn m-b-xs btn-sm btn-primary btn-addon" data-dismiss="modal">Return</button>
-   </div>
-  </div>  
- </div>
-</div>
-
-
 
 																			<!-- /content -->
 

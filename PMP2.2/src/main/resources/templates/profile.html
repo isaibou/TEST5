@@ -445,6 +445,7 @@
 
 
 									<!-- content -->
+<<<<<<< HEAD
 									<div id="content" class="app-content" role="main">
 										<div class="app-content-body ">
 
@@ -571,6 +572,90 @@
 
 
 															</div>
+=======
+<div id="content" class="app-content" role="main">
+ <div class="app-content-body ">
+  <div class="hbox hbox-auto-xs hbox-auto-sm">
+   <div class="col">
+	<div class="text-white" style="background:url(img/grf-bg.jpg) center center; background-size:cover;">
+	 <div class="wrapper-lg">
+	  <div class="row m-t">
+	   <div class="col-sm-7">
+		<a href class="thumb-lg pull-left m-r">
+		 <img  th:src="@{getPhoto(id=${user.username})}"  class="img-circle">
+		</a>
+		<div class="">
+		 <div class="m-b m-t-sm" style="padding-top:20px;">
+		  <span class="h3 text-white" th:text ="   ${user.firstName   } + . +  ${user.LastName   }   " ></span>
+		  <p><small class="m-l"  ></small></p>
+		 </div>
+		</div>
+	   </div>
+	   <div class="col-sm-5">
+		<div class="pull-right pull-none-xs text-center">
+		 <a href class="m-b-md inline m">
+		  <span class="h3 block font-bold">22</span><small>Projects</small>
+		 </a>
+		 <a href class="m-b-md inline m">
+		  <span class="h3 block font-bold">10</span><small>Request</small>
+		 </a>
+        </div>
+	   </div>
+      </div>
+	 </div>
+	</div>
+	<!-- <div class="wrapper bg-white b-b">
+	 <ul class="nav nav-pills nav-sm">
+	  <li class="active"><a href="#tab_default_1" data-toggle="tab">Settings</a></li>
+	  <li><a href="#tab_default_2" data-toggle="tab">Messages</a></li> 
+	 </ul>
+	</div> -->
+<div class="col-md-6 col-sm-6 col-xs-12 spacer col-md-offset-3">
+	<div class="padder " style="margin:50px;" >      
+	 <div class="panel panel-default" >
+      <div class="panel-heading"> Update Password </div>
+	  <form th:action="@{changePassword(id=${user.password},phone=${user.Phone})}" th:object="${user}">
+	   <div class="panel-body">
+		<div class="col-xs-4" ><label ><b>Login</b></label></div>
+		 <div class="col-sm-8"  >
+		  <input type="text" class="form-control"   disabled  th:field="*{username}"/>
+		 </div>
+         <div class="col-xs-4" ><label ><b>Phone</b></label></div>
+		 <div class="col-sm-8"  >
+		  <input type ="text" class="form-control" name="Phone" id="input-pass"  th:field="*{Phone}"/>
+		 </div>
+		 <div class="col-xs-4"><label >Password</label></div>
+		 <div class="col-sm-8">
+		  <input class="form-control"  type="password"  id="input-phone" name="pass"  th:field="*{password}"/>
+		 </div>
+		 <div class="col-xs-4"><label >Confirm Password</label></div>
+		 <div class="col-sm-8">
+		  <input class="form-control"  type="password"   id="input-phone"  name="confirm"/>
+		 </div>
+		 <div style="margin: 5px 0px;">
+         <button id="btnsave" style="margin-top:12px;" class="btn m-b-xs btn-sm btn-primary btn-addon pull-right invisible" onclick=""><i class="glyphicon   glyphicon-floppy-save"></i> Save</button>
+         <button  th:href="@{/profile}" id="btncancel" style="margin-top:12px;margin-left:5px;" class="btn m-b-xs btn-sm btn-secondry btn-addon pull-right invisible"><i class="glyphicon glyphicon-floppy-remove"></i> Cancel</button>
+	     <button id="btnupdt" style="margin-top:12px;margin-left:5px;" class="btn m-b-xs btn-sm btn-info btn-addon pull-right" onclick=""><i class="glyphicon  glyphicon-cog"></i> Update</button>   
+	   </div>
+	    </div>
+       </form> 
+       </div>
+      </div>
+	 </div>
+	</div>
+   </div>
+  </div>
+ </div>
+<!-- /content -->	<!-- footer -->
+<footer id="footer" class="app-footer" role="footer">
+  <div class="wrapper b-t bg-light">
+	<span class="pull-right">2.2.0 <a href ui-scroll="app" class="m-l-sm text-muted"><i class="fa fa-long-arrow-up"></i></a></span>
+      &copy; 2020 Copyright.
+  </div>
+</footer>
+<!-- / footer -->
+</div>
+>>>>>>> branch 'master' of https://github.com/isaibou/TEST5
 
 															<script src="../libs/jquery/jquery/dist/jquery.js"></script>
 															<script src="../libs/jquery/bootstrap/dist/js/bootstrap.js"></script>

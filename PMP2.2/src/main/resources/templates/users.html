@@ -375,6 +375,26 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 	 
 	 <a style="margin-top:-5px;" th:href="@{addUserE}" class="btn btn-sm btn-primary pull-right"  role="button"><b class="glyphicon-plus pull"> </b> Add Employee </a></h1>
 	</div><!-- <div class="panel-heading"><small><a th:href="index">Home</a> </small>><small> Manage users</small> </div>-->
+<div class="row" style="margin:5px;background-color:#f0f3f4;"> </div>	
+<div class="col-sm-12">              
+ <div class="row row-sm text-center">
+  <div class="col-sm-6">
+   <div class="panel padder-v item">
+    <div class="h1 text-info font-thin h1 pull-center" th:text="${totalEmp}"></div>
+    <span class="text-muted text-xs"><b> Total Employees </b></span>
+    <span class="bottom text-right w-full"><i class="glyphicon glyphicon-list text-muted m-r-sm"></i></span>
+   </div>
+  </div>
+  <div class="col-sm-6">
+   <div class="block panel padder-v bg-primary item">
+      <span class="text-white font-thin h1 block" th:text="${totalCust}"></span>
+      <span class="text-muted text-xs"><b> Total Customers </b></span>
+      <span class="bottom text-right w-full"><i class="glyphicon glyphicon-list text-muted m-r-sm"></i></span>
+   </div>
+  </div>
+ </div>
+</div>	
+<div class="row" style="margin:5px;background-color:#f0f3f4;"> </div>	
 	<div class="wrapper bg-white b-b">
 	 <ul class="nav nav-pills nav-sm">
 	  <li class="active"><a href="#tab_default_1" data-toggle="tab">Employee</a></li>

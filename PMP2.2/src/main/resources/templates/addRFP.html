@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="utf-8" />
-  <title>Update RFP</title>
+  <title>Add RFP</title>
   <meta name="description" content="app, web app, responsive, responsive layout, admin, admin panel, admin dashboard, flat, flat ui, ui kit, AngularJS, ui route, charts, widgets, components" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <link rel="stylesheet" href="../libs/assets/animate.css/animate.css" type="text/css" />
@@ -17,28 +17,12 @@
 <div class="col-md-6 col-sm-6 col-xs-12 spacer col-md-offset-3">
    <a href="" class="navbar-brand block m-t"><i class="fa fa-power-off"></i> <b>PowerM</b> </a>
   <div class="panel panel-default">
-   <div class="panel-heading"> Update RFP </div>
-    <form th:action="@{editRFP}"   enctype="multipart/form-data"  method ="post" th:object="${RFP}">
-   <div class="panel-body">
-    <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b></b></label>
-     <div class="col-sm-8" style="margin: 5px 0px;" >
-      <input type="hidden" class="form-control" placeholder="Entry Name of RFP" id="input-id-1" th:field=*{RFP_ID}/>   
-   </div>
-   <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b></b></label>
-     <div class="col-sm-8" style="margin: 5px 0px;" >
-      <input type="hidden" class="form-control" placeholder="Entry Name of RFP" id="input-id-1" th:field=*{RequestFile}/>   
-   </div>
-   <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b></b></label>
-     <div class="col-sm-8" style="margin: 5px 0px;" >
-      <input type="hidden" class="form-control" placeholder="Entry Name of RFP" id="input-id-1" th:field=*{ResponseFile}/>   
-   </div>
-     <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b></b></label>
-     <div class="col-sm-8" style="margin: 5px 0px;" >
-      <input type="hidden" class="form-control" placeholder="Entry Name of RFP" id="input-id-1" th:field=*{StatusRFP}/>   
-   </div>
-   <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Title</b></label>
+   <div class="panel-heading"> Add RFP </div>
+       <form th:action="@{SaveRFP}" enctype="multipart/form-data"   method ="post" th:object="${RFP}"> 
+     <div class="panel-body">
+       <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Title</b></label>
        <div class="col-sm-8" style="margin: 5px 0px;" >
-      <input type="text" class="form-control" placeholder="Entry Name of RFP" id="input-id-1" th:field=*{Title}/> 
+      <input type="text" class="form-control" placeholder="Entry Name of RFP" id="input-id-1"  th:field=*{Title}/> 
       <span class="text-danger" th:errors=*{Title}></span>
       <div class="text-danger" th:if="${unique}">
        <div th:text="${unique}"></div>
@@ -51,47 +35,50 @@
            <option th:each ="c:${customer}" 
                    th:text="${c.name}"
                    th:value ="${c.Customer_ID}"></option>
-        </select>
+        </select>      
        </div>
      <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Description</b></label>
      <div class="col-sm-8" style="margin: 5px 0px;">
-        <input type="text" class="form-control" placeholder="Entry Description " id="input-id-1" th:field=*{Description}/>
+     <input type="text" class="form-control" placeholder="Entry Description " id="input-id-1"  th:field=*{Description}/>
+     <span class="text-danger" th:errors=*{Description}></span>
        </div>
      <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Realase Date</b></label>
        <div class="col-sm-8" style="margin: 5px 0px;">
-            <input type="date" class="form-control" id="input-id-1" th:field=*{RealaseDate}/> 
+            <input type="date" class="form-control" id="input-id-1"  th:field=*{RealaseDate}/> 
+            <span class="text-danger" th:errors=*{RealaseDate}></span>
          </div>
      <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Reponse Date Time</b></label>
      <div class="col-sm-8" style="margin: 5px 0px;">
             <input type="date" class="form-control" id="input-id-1" th:field=*{ReponseDateTime}/>
+            <span class="text-danger" th:errors=*{ReponseDateTime}></span>
          </div>
        <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Notification Date</b></label>
      <div class="col-sm-8" style="margin: 5px 0px;">
-            <input type="date" class="form-control" id="input-id-1" th:field=*{NotificationDate}/>
+            <input type="date" class="form-control" id="input-id-1"  th:field=*{NotificationDate}/>
+            <span class="text-danger" th:errors=*{NotificationDate}></span>
          </div>
      <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Request Of Execution Date</b></label>
      <div class="col-sm-8" style="margin: 5px 0px;">
             <input type="date" class="form-control" id="input-id-1" th:field=*{RequestOfExecutionDate}/>
+            <span class="text-danger" th:errors=*{RequestOfExecutionDate}></span>
          </div>
      <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Request File</b></label>
      <div class="form-group">
           <div class="col-sm-8" style="margin: 5px 0px;">
             <input ui-jq="filestyle" name="request" ui-options="{icon: false, buttonName: 'btn-primary'}" type="file"/>
-            <span th:text ="${RFP.RequestFile}" class="m-n font-thin h4 text-secondary"></span>
           </div>
         </div>
      <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Response File</b></label>
      <div class="form-group">
           <div class="col-sm-8" style="margin: 5px 0px;">
             <input ui-jq="filestyle" name="response" ui-options="{icon: false, buttonName: 'btn-primary'}" type="file"/>
-            <span th:text ="${RFP.ResponseFile}" class="m-n font-thin h4 text-secondary"></span>
           </div>
         </div>
-    <div>
-     <button style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon pull-right"><a th:href="RFP"><i class="glyphicon glyphicon-remove"></i>Annuler</a></button>
-     <button style="margin:0px;" class="btn m-b-xs btn-sm btn-primary btn-addon pull-right"><i class="glyphicon glyphicon-ok"></i>Save</button>
-      </div>
-       </div>   
+        <div>
+       <button style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon pull-right"><a th:href="RFP"><i class="glyphicon glyphicon-remove"></i>Annuler</a></button>
+       <button style="margin:0px;" class="btn m-b-xs btn-sm btn-primary btn-addon pull-right"><i class="glyphicon glyphicon-ok"></i>Save</button>
+       </div> 
+       </div>  
       </form>
     </div>
 <div class="text-center">

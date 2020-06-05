@@ -19,6 +19,7 @@ public interface ProjetRepository extends JpaRepository<Project, Integer>{
 	Boolean checkTitleExist(String name);
 	public List<Project> findByStatus(String status);  
 	
+	
 
 	@Query("select e from Project e where e.Name = ?1")
 	List<Project> searchByName(String name);

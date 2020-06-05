@@ -465,7 +465,7 @@
 
 			  <li>
                 <a th:href="contract_manage">
-                  <i class="fa fa-legal"></i></i>
+                  <i class="fa fa-legal"></i>
                   <span>Contracts</span>
                 </a>
               </li>
@@ -553,8 +553,6 @@
       </div>
   </aside>
 									<!-- / aside -->
-
-
 									<!-- content -->
 <div id="content" class="app-content" role="main">
  <div id="content-b" class="app-content-body ">
@@ -608,10 +606,10 @@
 											       }" class="table  b-t b-b">
     <thead>
 	  <tr >
-	   <th  style="width:15%"><center>Project Name</center></th>
-	   <th  style="width:25%"><center>Task</center></th>
-	   <th  style="width:25%"><center>Task Description</center></th>
-	   <th  style="width:15%"><center>Percent Complet</center></th>
+	   <th  style="width:13%"><center>Project Name</center></th>
+	   <th  style="width:20%"><center>Task</center></th>
+	   <th  style="width:30%"><center>Task Description</center></th>
+	   <th  style="width:18%"><center>Percent Complet</center></th>
 	   <th  sec:authorize="hasRole('ROLE_ADMIN')" style="width:15%"><center>Actions</center></th>
 	 </tr>
     </thead>
@@ -643,6 +641,12 @@
   </div>
 </footer><!-- / footer -->
 </div>
+<script type="text/javascript">
+   function Message() {
+       var msg="The timesheet Archived";
+       alert(msg);
+   }
+</script>
 														<script src="../libs/jquery/jquery/dist/jquery.js"></script>
 														<script src="../libs/jquery/bootstrap/dist/js/bootstrap.js"></script>
 														<script src="js/ui-load.js"></script>

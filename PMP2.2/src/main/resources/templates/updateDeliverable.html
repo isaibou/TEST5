@@ -60,15 +60,19 @@
         <div class="col-sm-8" style="margin: 5px 0px;">
        <input type="date" class="form-control" placeholder="MM/DD/YYYY"  required th:field=*{Date}/>
     </div>
-         <label class="col-sm-4 control-label" for="input-id-1"  style="margin-bottom:5px;" ><b>Preview File</b></label>
-    <div class="col-sm-8" style="margin: 5px 0px;">
-     <input type="file"  class="form-control" name="picture" id="input-id-1" />
-     <span th:text ="${del.PreviewFile}" class="m-n font-thin h4 text-secondary"></span>
+    <label class="col-sm-4 control-label" for="input-id-1"  style="margin-bottom:5px;" ><b>Preview File</b></label>
+    <div class="form-group">
+     <div class="col-sm-8" style="margin: 5px 0px;">
+       <input ui-jq="filestyle" name="picture" ui-options="{icon: false, buttonName: 'btn-primary'}" type="file"/>
+       <span th:text ="${del.PreviewFile}" class="m-n font-thin h4 text-secondary"></span>
+     </div>
     </div>          
     <label class="col-sm-4 control-label"  for="input-id-1" ><b>File</b></label>
-    <div class="col-sm-8" style="margin: 5px 0px;">
-      <input type="file"  class="form-control" name="fileD" id="input-id-1" />
-      <span th:text ="${del.File}" class="m-n font-thin h4 text-secondary"></span>
+    <div class="form-group">
+     <div class="col-sm-8" style="margin: 5px 0px;">
+       <input ui-jq="filestyle" name="fileD" ui-options="{icon: false, buttonName: 'btn-primary'}" type="file"/>
+       <span th:text ="${del.File}" class="m-n font-thin h4 text-secondary"></span>
+     </div>
     </div>
     <div >
        <button style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon pull-right"><a th:href="deliverable"><i class="glyphicon glyphicon-remove"></i>Annuler</a></button>
@@ -81,6 +85,7 @@
     <span class="pull-right">2.2.0 <a href ui-scroll="app" class="m-l-sm text-muted"><i class="fa fa-long-arrow-up"></i></a></span>
     <span class="pull-left"> &copy; PowerM 2020 Copyright. </span> 
    </small></p>
+  </div>
   </div>
 </div>
 <script src="../libs/jquery/jquery/dist/jquery.js"></script>

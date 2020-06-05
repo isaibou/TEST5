@@ -9,6 +9,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -89,7 +90,7 @@ public class TypeProjectController {
 	}
 	
 	@RequestMapping(value = "/editTypeProject",method = { RequestMethod.GET, RequestMethod.POST })
-	public String updateTypeProject(@Valid  TypeProject addtypeP, BindingResult bindingResult, Model model ){
+	public String updateTypeProject(@Valid @ModelAttribute("pTask") TypeProject addtypeP, BindingResult bindingResult, Model model ){
 		if(typeProjectRepository.checkTitleExist(addtypeP.getNameType_Project())) {
 		
 			  	List<TypeProject> typeprojectDouble = typeProjectRepository.searchByName(addtypeP.getNameType_Project());

@@ -26,12 +26,12 @@
 		   <div th:text="${unique}"></div>
 		</div>
 	<label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Picture</b></label>
-     <div class="col-sm-8" style="margin: 5px 0px;">
-        <input type="file"  name="photo" class="form-control" id="input-id-1" >
-        <img class="img-thumbnail" th:src="@{getPhoto(id=${user.username})}" width="60px" height="60px"/>
-     
-     </div>
-	
+	<div class="form-group">
+   <div class="col-sm-8" style="margin: 5px 0px;">
+    <input ui-jq="filestyle" name="photo" ui-options="{icon: false, buttonName: 'btn-primary'}" type="file"/>
+    <img class="img-thumbnail" th:src="@{getPhoto(id=${user.username})}" width="60px" height="60px"/>
+   </div>
+  </div> 
 	 <label class="col-sm-4 control-label" for="input-id-1" style="margin:5px 0px;"><b>Nom :</b></label>
 	 <div class="col-sm-8" style="margin:5px 0px;" >
 	  <input type="text" placeholder="Entry Nom" class="form-control" id="input-id-1"   th:field=*{lastName}>

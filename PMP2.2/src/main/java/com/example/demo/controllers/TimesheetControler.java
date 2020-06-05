@@ -14,12 +14,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.example.demo.entities.AffectationProject;
+import com.example.demo.entities.Project;
 import com.example.demo.entities.ProjectTask;
+import com.example.demo.entities.ProjectUser;
 import com.example.demo.entities.Task;
 import com.example.demo.entities.Ticket;
 import com.example.demo.entities.Users;
 import com.example.demo.repository.AffectationProjectRepository;
 import com.example.demo.repository.ProjectTaskRepository;
+import com.example.demo.repository.ProjectUserrepository;
 import com.example.demo.repository.TaskRepository;
 import com.example.demo.repository.TicketRepository;
 import com.example.demo.repository.UserRepository;
@@ -37,6 +40,8 @@ public class TimesheetControler {
 	private ProjectTaskRepository projectTaskRepository;
 	@Autowired
 	private AffectationProjectRepository afp;
+	@Autowired
+	private ProjectUserrepository projUserRepository;
 	
 	
 	@RequestMapping(value="/timesheets")
@@ -70,8 +75,17 @@ public class TimesheetControler {
 		  String name = auth.getName(); 
 		  Users u = userRepository.getOne(name); 
 	 
-	  Collection<AffectationProject> aff = afp.findByUser(u);	  
-	  model.addAttribute("projectTask", aff ); 
+	  Collection<AffectationProject> aff = afp.findByUser(u);
+	  List<ProjectUser> projUser = projUserRepository.findByUser(u);
+	  
+	  for (ProjectUser proj : projUser) {
+		Project projet= proj.getProject();
+		List<Project> listProject = new ArrayList<>();
+		listProject.add(projet);
+		
+	}
+	  
+	  model.addAttribute("projUser", projUser ); 
 	  model.addAttribute("task",  new Task());
 	  return "addTaskProject";
 	  }

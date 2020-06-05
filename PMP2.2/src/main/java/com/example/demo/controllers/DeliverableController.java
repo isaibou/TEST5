@@ -128,7 +128,7 @@ deliverablerepository.save(deli);
 	}
 
 	@RequestMapping(value="/editDeliverable")
-	public String editDeliverable(Model model, Deliverable deli, @RequestParam(name="fileD") MultipartFile fileD ,BindingResult bindingResult,
+	public String editDeliverable(Model model, @ModelAttribute("del") Deliverable deli, @RequestParam(name="fileD") MultipartFile fileD ,BindingResult bindingResult,
 			@RequestParam(name="picture") MultipartFile picture) throws IllegalStateException, IOException {
 		
 		if(deliverablerepository.checkTitleExist(deli.getName())) {

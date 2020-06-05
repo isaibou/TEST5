@@ -183,7 +183,7 @@ public class AssetsController {
 		Integer i = asset.getAssets_ID();
 		model.addAttribute("id", i);
 		model.addAttribute("frimware", asset.getAssettype().getFrimware());
-
+		
 		return "nextAsset";
 	}
 	

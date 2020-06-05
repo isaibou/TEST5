@@ -69,6 +69,9 @@ public class UserController {
 		model.addAttribute("uE",uE);
 		model.addAttribute("uC",uC);
 		
+		model.addAttribute("totalCust", uC.size());
+		model.addAttribute("totalEmp", uE.size());
+		
 	model.addAttribute("users",users);
 	model.addAttribute("addUser",new Users());
 	model.addAttribute("addUserC",new Users());

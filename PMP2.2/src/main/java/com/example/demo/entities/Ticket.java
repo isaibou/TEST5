@@ -9,6 +9,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
@@ -28,6 +30,9 @@ public class Ticket implements Serializable{
 	private String PriorityTicket;
 	private String TypeTicket;
 	
+	@ManyToMany
+	@JoinTable(name="ASSETTYPE_TICKET")
+	private Collection<AssetType> assetType;
 	@ManyToOne
 	@JoinColumn(name="ASSET_ID")
 	private Assets asset;
@@ -200,14 +205,12 @@ public class Ticket implements Serializable{
 		this.task = task;
 	}
 
+	public Collection<AssetType> getAssetType() {
+		return assetType;
+	}
 
-
+	public void setAssetType(Collection<AssetType> assetType) {
+		this.assetType = assetType;
+	}
 	
-
-
-	
-
-
-	
-
 }

@@ -547,28 +547,36 @@
 
 <div class="col-sm-12">
 					<div class="row row-sm text-center">
-						<div class="col-sm-6">
+						<div class="col-sm-4">
 							<div class="panel padder-v item">
 								<div class="h1 count text-info font-thin h1 pull-center"
-									th:text="${totalFirmware}"></div>
-								<span class="text-muted text-xs"><b> Total Firmware </b></span>
+									th:text="${totalfrimwareActif}"></div>
+								<span class="text-muted text-xs"><b> Total Actived Firmware </b></span>
 								<span class="bottom text-right w-full"><i
 									class="glyphicon glyphicon-list text-muted m-r-sm"></i></span>
 							</div>
 						</div>
-						<div class="col-sm-6">
-							<a href class="block panel padder-v bg-primary item"> <span
+						<div class="col-sm-4">
+							<div class="block panel padder-v bg-primary item"> <span
 								class="h1 count text-white font-thin h1 block" th:text="${totalFirmware}"></span> <span
 								class="text-muted text-xs"><b> Total Firmware
 								</b></span> <span class="bottom text-right w-full"><i
 									class="glyphicon glyphicon-list text-muted m-r-sm"></i></span>
-							</a>
+							</div>
+						</div>
+						<div class="col-sm-4">
+							<div class="panel padder-v item">
+								<div class="h1 count text-info font-thin h1 pull-center"
+									th:text="${totalfrimwareArchived}"></div>
+								<span class="text-muted text-xs"><b> Total Archived Firmware </b></span>
+								<span class="bottom text-right w-full"><i
+									class="glyphicon glyphicon-list text-muted m-r-sm"></i></span>
+							</div>
 						</div>
 					</div>
 				</div>
-
-				<div class="table-responsive"
-					style="background-color: white; margin: 10px; padding: 10px;">
+<div class="row" style="margin:5px;background-color:#f0f3f4;"> </div>
+	<div class="table-responsive" style="background-color: white; margin: 10px; padding: 10px;">
 					<table ui-jq="dataTable"
 						ui-options="{
 															aoColumns: [

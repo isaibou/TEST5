@@ -10,6 +10,7 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.entities.AffectationProject;
+import com.example.demo.entities.ProjectUser;
 import com.example.demo.entities.Ticket;
 import com.example.demo.entities.Users;
 
@@ -67,15 +68,15 @@ public void notifTicket(Ticket ticket) throws MailException {
 	javaMailSender.send(mail);
 }
 
-public void notifTaskProject(Users u , AffectationProject afp) throws MailException {
+	public void notifProject(ProjectUser projUser ) throws MailException {
 	//for (Users u : users) {
 		SimpleMailMessage mail = new SimpleMailMessage();
-		mail.setTo(u.getUsername());
+		mail.setTo(projUser.getUser().getUsername());
 		mail.setFrom("suptechmiage2018@gmail.com");
-		mail.setSubject("New Ticket");
-		mail.setText("Bonjour  Mr/Mme "  + u.getLastName()+ " " + u.getFirstName() +
-				" Vous avez affecté à une nouvelle tache de : " + afp.getProjATsk().getNameProjectTask() + ", concernant le projet  "+ 
-				afp.getProject().getName()+".");
+		mail.setSubject("New  Project affectation");
+		mail.setText("Bonjour  Mr/Mme "  + projUser.getUser().getLastName()+ " " + projUser.getUser().getFirstName() +
+				" Vous avez affecté au projet  "+ 
+				projUser.getProject().getName()+".");
 		
 		javaMailSender.send(mail);
 	//}

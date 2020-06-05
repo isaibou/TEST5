@@ -50,23 +50,29 @@
 		   <div th:text="${unique}"></div>
 		</div> 
           </div>       
-         <label class="col-sm-4 control-label" style="margin: 5px 0px;" placeholder="Entry Description" for="input-id-1"><b>Description</b></label>
+         <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Description</b></label>
          <div class="col-sm-8" style="margin: 5px 0px;">
 	        <input type="text" class="form-control" placeholder="Entry Description " id="input-id-1" th:field=*{Description}/>
           </div>
-          <label class="col-sm-4 control-label" placeholder="Entry Configuration File" style="margin: 5px 0px;" for="input-id-1"><b>Configuration File</b></label>
+          <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Configuration File</b></label>
+          <div class="form-group">
           <div class="col-sm-8" style="margin: 5px 0px;">
-            <input type="file" placeholder="Entry Configuration File"class="form-control" id="input-id-1" th:field=*{ConfigurationFille}/>
+            <input ui-jq="filestyle" ui-options="{icon: false, buttonName: 'btn-primary'}" type="file" th:field=*{ConfigurationFille}/>
+            <span th:text="${assets.ConfigurationFille}" class="m-n font-thin h4 text-secondary"></span>
           </div>
-          <label class="col-sm-4 control-label" placeholder="Entry MustGather" style="margin: 5px 0px;" for="input-id-1"><b>Must Gather</b></label>
+        </div>
+<!--           <div class="col-sm-8" style="margin: 5px 0px;">
+            <input type="file" placeholder="Entry Configuration File"class="form-control" id="input-id-1" />
+          </div> -->
+          <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Must Gather</b></label>
           <div class="col-sm-8" style="margin: 5px 0px;">
 	        <input type="text" class="form-control" placeholder="Entry Must Gather " id="input-id-1" th:field=*{MustGather}/>
           </div>
-          <label class="col-sm-4 control-label" placeholder="Entry EndOfVendorWarranty" style="margin: 5px 0px;" for="input-id-1"><b>End Of Vendor Warranty</b></label>
+          <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>End Of Vendor Warranty</b></label>
            <div class="col-sm-8" style="margin: 5px 0px;">
              <input type="date" class="form-control" id="input-id-1" th:field=*{EndPowermWarranty}/>
            </div>
-          <label class="col-sm-4 control-label" placeholder="Entry EndPowermWarranty" style="margin: 5px 0px;" for="input-id-1"><b>End PowerM Warranty</b></label>
+          <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>End PowerM Warranty</b></label>
           <div class="col-sm-8" style="margin: 5px 0px;">
              <input type="date" class="form-control" id="input-id-1" th:field=*{EndOfVendorWarranty}/>
            </div>

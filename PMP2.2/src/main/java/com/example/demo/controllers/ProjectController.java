@@ -29,6 +29,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.example.demo.entities.*;
 import com.example.demo.repository.AffectationProjectRepository;
 import com.example.demo.repository.AssetRepository;
+import com.example.demo.repository.ProjectUserrepository;
 import com.example.demo.repository.ProjetRepository;
 import com.example.demo.repository.RFPRepository;
 import com.example.demo.repository.TechnologiePartnerRepository;
@@ -55,6 +56,8 @@ public class ProjectController {
 	private AffectationProjectRepository affectProjRepository;
 	@Autowired
 	private UserRepository userRepository;
+	@Autowired
+	private ProjectUserrepository projUserRepository;
 	@Autowired
 	NotificationMail notif;
 	
@@ -105,7 +108,7 @@ public class ProjectController {
 		}
 		
 		addProj.setStatus("Actif");
-
+		addProj.getRfp().setStatusRFP("Archived");
 if (!(file.isEmpty())) {
 			
 			addProj.setDeliveryCertificate((file.getOriginalFilename()));
@@ -114,7 +117,10 @@ if (!(file.isEmpty())) {
 
 }
 
-
+		Collection<Assets> a  =  addProj.getAssets();
+		for (Assets assets : a) {
+			assets.setStatus("Not Available");
+		}
 		ProjectRepository.save(addProj);
 
 		return "redirect:/projects";	
@@ -123,11 +129,10 @@ if (!(file.isEmpty())) {
 	@RequestMapping(value ="/addProject")
 	public String addProject( Model model ) {
 		 model.addAttribute("project",new Project());
-		 model.addAttribute("TechnoPart", technologiepartnerRepository.findAll());
-		 model.addAttribute("rfp",rfprepository.findAll());
+		 model.addAttribute("TechnoPart", technologiepartnerRepository.findByStatus("Actif"));
+		 model.addAttribute("rfp",rfprepository.findByStatusRFP("Won"));
 		 model.addAttribute("TypeProject", typeProjectRepository.findAll());
-		 model.addAttribute("assets",assetRepository.findAll() );
-		 model.addAttribute("TechnologiePartnerRepository", technologiepartnerRepository.findAll());
+		 model.addAttribute("assets",assetRepository.findByStatus("Actif") );
 
 			return "addProj";
 			
@@ -256,13 +261,10 @@ if (!(file.isEmpty())) {
 	private String affect( Model model, Integer id ) {
 	
 	Project proj = ProjectRepository.getOne(id);
-	Collection<ProjectTask> projTask = proj.getTypeProject().getProjectTask();
 	List<Users> employee = userRepository.findByIsCustomer(false);
-	
 	model.addAttribute("proj", proj);
-	model.addAttribute("projTaske", projTask);
 	model.addAttribute("employee", employee);
-	model.addAttribute("affectationProj",new AffectationProject());
+	model.addAttribute("projectUser", new ProjectUser());
 		
 			return "AffectationProject";	
 	}
@@ -270,16 +272,18 @@ if (!(file.isEmpty())) {
 	
 
 	@RequestMapping(value ="/affectedProj" )
-	private String affectProj( Model model, AffectationProject afProj, @RequestParam(name="project")Integer projID ) {
-	  Project proj = ProjectRepository.getOne(projID);
-		afProj.setProject(proj);
-		 Users u = afProj.getUser();
+	private String affectProj( Model model, @RequestParam(name="projectibe")Integer id , ProjectUser projUser) {
+		Project proj = ProjectRepository.getOne(id);
+		projUser.setProject(proj);
+		projUserRepository.save(projUser);
 		 try {
-			 notif.notifTaskProject(u, afProj);
+		 notif.notifProject(projUser);
 		} catch (MailException e) {
-e.printStackTrace();		}
+			e.printStackTrace();		}
 		
-	affectProjRepository.save(afProj);
+	model.addAttribute("proj", proj);
+	model.addAttribute("projectUser", new ProjectUser());
+	model.addAttribute("employee", userRepository.findByIsCustomer(false));
 		
 			return "AffectationProject";	
 	}

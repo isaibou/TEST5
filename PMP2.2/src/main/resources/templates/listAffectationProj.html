@@ -36,7 +36,8 @@
       <tr data-expanded="true">
        <td style="color:#23b7e5;"><center>Project Name </center></th>
        <td th:text ="${p.project.Name}" class="m-n font-thin h4 text-secondary"></td>
-      </tr>     
+      </tr> 
+      <tr>    
         <td style="color:#23b7e5;"><center>Project Name </center></th>
        <td th:text ="${p.projATsk.NameProjectTask}" class="m-n font-thin h4 text-secondary"></td>
       </tr>
@@ -47,7 +48,7 @@
        <option   th:each="t:${p.user}"   th:text="${t.firstName}" class="m-n font-thin h4 text-secondary"></option>
        </select>
        </td>
-        </tr>        
+        </tr>                 
     </tbody>
      </table>
   </div>

@@ -48,13 +48,17 @@
       <span class="text-danger" th:errors=*{SignedBy}></span>
     </div>
     <label class="col-sm-4 control-label" for="input-id-1"  style="margin-bottom:5px;" ><b>Preview File</b></label>
-    <div class="col-sm-8" style="margin: 5px 0px;">
-         <input type="file"  class="form-control" placeholder="Entry picture File" name="picture" id="input-id-1"/>
-       </div>           
+    <div class="form-group">
+          <div class="col-sm-8" style="margin: 5px 0px;">
+            <input ui-jq="filestyle" name="picture" ui-options="{icon: false, buttonName: 'btn-primary'}" type="file"/>
+          </div>
+        </div>           
     <label class="col-sm-4 control-label" for="input-id-1" ><b> File </b></label>
-    <div class="col-sm-8" style="margin: 5px 0px;">
-         <input type="file" placeholder="Entry File" class="form-control" name="file" id="input-id-1"/>
-     </div> 
+    <div class="form-group">
+          <div class="col-sm-8" style="margin: 5px 0px;">
+            <input ui-jq="filestyle" name="file" ui-options="{icon: false, buttonName: 'btn-primary'}" type="file"/>
+          </div>
+        </div>
      <div>
        <button style="margin:0px;" class="btn m-b-xs btn-sm btn-default btn-addon pull-right"><a th:href="reference"><i class="glyphicon glyphicon-remove"></i>Annuler</a></button>
        <button style="margin:0px;" class="btn m-b-xs btn-sm btn-primary btn-addon pull-right"><i class="glyphicon glyphicon-ok"></i>Save</button>

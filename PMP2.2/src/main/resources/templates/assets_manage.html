@@ -369,7 +369,7 @@
 
 			  <li>
                 <a th:href="contract_manage">
-                  <i class="fa fa-legal"></i></i>
+                  <i class="fa fa-legal"></i>
                   <span>Contracts</span>
                 </a>
               </li>
@@ -483,29 +483,23 @@
 		<div class="row row-sm text-center">
 		 <div class="col-xs-12">
               <div class="panel padder-v item">
-                <div class="h1 text-info font-thin h1 pull-center" th:text="${totalAssets}"></div>
-                <span class="text-muted text-xs"><b>Total Assets</b></span>
-                 <span class="bottom text-right w-full">
-                  <i class="glyphicon  glyphicon-hdd text-muted m-r-sm"></i>
-                </span>
+                <div class="h1 text-info font-thin h1 pull-center" th:text="${totalassetsActif}"></div>
+                <span class="text-muted text-xs"><b> Total Assets Actif </b></span>
+                <span class="bottom text-right w-full"><i class="glyphicon glyphicon-list text-muted m-r-sm"></i></span>
               </div>
             </div>
             <div class="col-xs-12">
-              <a href class="block panel padder-v bg-primary item">
-                <span class="text-white font-thin h1 block" th:text="${totalassetsActif}"></span>
-                <span class="text-muted text-xs"><b>Total Assets Actif</b></span>
-                <span class="bottom text-right w-full">
-                  <i class="glyphicon glyphicon-warning-sign text-muted m-r-sm"></i>
-                </span>
-              </a>
+              <div class="block panel padder-v bg-primary item">
+                <span class="text-white font-thin h1 block" th:text="${totalAssets}"></span>
+                <span class="text-muted text-xs"><b> Total Assets </b></span>
+                <span class="bottom text-right w-full"><i class="glyphicon glyphicon-list text-muted m-r-sm"></i></span>
+              </div>
             </div>
 					 <div class="col-xs-12">
               <div class="panel padder-v item">
                 <div class="h1 text-info font-thin h1 pull-center" th:text="${totalassetsArchived}"></div>
                 <span class="text-muted text-xs"><b>Total Assets Archived</b></span>
-                 <span class="bottom text-right w-full">
-                  <i class="glyphicon  glyphicon-hdd text-muted m-r-sm"></i>
-                </span>
+                <span class="bottom text-right w-full"><i class="glyphicon glyphicon-list text-muted m-r-sm"></i></span>
               </div>
             </div>
 			</div>
@@ -546,7 +540,10 @@
       <td th:text ="${a.MustGather}"><center></center></td>    
       <td th:text ="${a.EndOfVendorWarranty}"><center></center></td>
       <td th:text ="${a.EndPowermWarranty}"><center></center></td>
-      <td th:text ="${a.Status}" class="m-n font-thin h4 text-secondary"><center><span></span><center/></td>
+      <td th:switch="${a.Status}">
+		     <span th:case="'Actif'" class="label bg-info pull-center m-t-md" >Actived</span>
+             <span th:case="'Archived'" class="label bg-dark pull-center m-t-md" >Archived</span>
+           </td>
       <td><center><div class="btn-group dropdown"><button class="btn btn-default btn-xs" data-toggle="dropdown"><i class="glyphicon glyphicon-cog"></i> Action <span class="caret"></span></button>
        <ul class="dropdown-menu">
        <li><a th:href="@{'/Configurationfille/'+${a.ConfigurationFille}}"  style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Download Configuration Fille</a></li>

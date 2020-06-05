@@ -89,13 +89,18 @@ public class PurchasingController {
 	public String updatePurchasing(Model model, @Valid Purchasing purch, BindingResult bindingResult){
 		
 		if(purchisingRepository.checkTitleExist(purch.getEmail())) {
+
+			model.addAttribute("customer", customerRepository.findAll());
 			
-			model.addAttribute("customer", customerRepository.findAll());	
+			List<Purchasing> purchasingDouble = purchisingRepository.searchByEmail(purch.getEmail());
+	  		if(purch.getPurchasing_ID().equals(purchasingDouble.get(0).getPurchasing_ID())) {
+	  			System.out.println("edited name is the same old email");
+	  		}else {
 			
 			model.addAttribute("unique", "must be unique");
 			return "updatePurchasingtForm";
 		}
-
+		}
 		purchisingRepository.save(purch);
 		
 		return "redirect:/purchasing_customer_manage";

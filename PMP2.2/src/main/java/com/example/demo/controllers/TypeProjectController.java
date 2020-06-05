@@ -12,6 +12,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.example.demo.entities.Customer;
 import com.example.demo.entities.ProjectTask;
 import com.example.demo.entities.RFP;
 import com.example.demo.entities.TechnologyPartner;
@@ -90,22 +91,30 @@ public class TypeProjectController {
 	@RequestMapping(value = "/editTypeProject",method = { RequestMethod.GET, RequestMethod.POST })
 	public String updateTypeProject(@Valid  TypeProject addtypeP, BindingResult bindingResult, Model model ){
 		if(typeProjectRepository.checkTitleExist(addtypeP.getNameType_Project())) {
+		
+			  	List<TypeProject> typeprojectDouble = typeProjectRepository.searchByName(addtypeP.getNameType_Project());
+		  		if(addtypeP.getType_Project_ID().equals(typeprojectDouble.get(0).getType_Project_ID())) {
+		  			System.out.println("edited name is the same old name");
+		  		}else {
 			
 			 List<ProjectTask> listpt = projectTaskrepository.findAll();
 			 model.addAttribute("listpt", listpt); 
 			 
+			TypeProject	tP = typeProjectRepository.getOne(addtypeP.getType_Project_ID());
+			model.addAttribute("pTask",tP);
+			
 			model.addAttribute("unique", "must be unique");
 			return "updateTypeProject";
 		}
 		typeProjectRepository.save(addtypeP);
-				
+		}
 		return "redirect:/typeProject";
 	}
 	
 	@RequestMapping(value ="/updatTypeProject")
 	public String updateTechnologyPartnerForm( Model model, Integer id ) {
 		
-		TypeProject	tP = typeProjectRepository.getOne(id);
+		 TypeProject	tP = typeProjectRepository.getOne(id);
 		 model.addAttribute("pTask",tP);
 		 
 		 List<ProjectTask> listpt = projectTaskrepository.findAll();

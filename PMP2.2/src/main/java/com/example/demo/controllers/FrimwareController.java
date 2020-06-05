@@ -123,14 +123,19 @@ public class FrimwareController {
 	@RequestMapping(value = "/editFrimware",method= RequestMethod.POST)
 	public String updateFrimware(Model model, Frimware frim){
 		
-if(frimwareRepository.checkTitleExist(frim.getName())) {
+   if(frimwareRepository.checkTitleExist(frim.getName())) {
+	
+	    List<Frimware> frimwareDouble = frimwareRepository.searchByName(frim.getName());
+		if(frim.getFrimware_ID().equals(frimwareDouble.get(0).getFrimware_ID())) {
+			System.out.println("edited name is the same old name");
+		}else {
 			
-			model.addAttribute("unique", "must be unique");
+			 model.addAttribute("unique", "must be unique");
 			 model.addAttribute("assetType", assetTypeRepository.findAll());
 
 			return "updateFrimwareForm";
 		}
-	
+   }
 		
 	    System.out.println(frim.getFrimware_ID());
 		frimwareRepository.save(frim);

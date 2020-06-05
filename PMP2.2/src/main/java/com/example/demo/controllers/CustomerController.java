@@ -5,6 +5,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.List;
+import java.util.Optional;
 
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -133,9 +134,13 @@ public class CustomerController {
 	  private String updateCustomer(@Valid Customer addCust,Model model, BindingResult bindingResult, @RequestParam(name="photo")MultipartFile file) throws Exception, IOException {
 	   
 		  if(customerrepository.checkTitleExist(addCust.getName())) {
-				
-				model.addAttribute("unique", "must be unique");
-				return "updateCustomerForm";
+			  	List<Customer> customerDouble = customerrepository.searchByName(addCust.getName());
+		  		if(addCust.getCustomer_ID().equals(customerDouble.get(0).getCustomer_ID())) {
+		  			System.out.println("edited name is the same old name");
+		  		}else {
+		  			model.addAttribute("unique", "must be unique");
+					return "updateCustomerForm";
+		  		}
 			}
 
 			if (!(file.isEmpty())) {

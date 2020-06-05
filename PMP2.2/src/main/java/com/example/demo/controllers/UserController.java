@@ -307,28 +307,28 @@ userRepository.save(u);
 	}
 	
 	@RequestMapping(value ="/changePassword" )
-	public String changePassword(String password ,@RequestParam(name="Phone") String phone, @RequestParam(name="confirm") String confirm,@RequestParam(name="pass") String pass, Authentication auth) {
-	 String  login = 	auth.getName(); 
+	public String changePassword(String password ,@RequestParam(name="Phone") String phone, 
+			@RequestParam(name="confirm") String confirm,@RequestParam(name="password") String pass, Authentication auth
+			,Model model) {
+		String login = auth.getName(); 
+		System.out.println("confirm " + confirm + " password" + pass + "phone" + phone);
 		Users u = userRepository.getOne(login);
-		if(confirm.isEmpty()) {
-
-			u.setPassword(encoder.encode(password));
-		}
 		
-		if(!confirm.isEmpty()& !pass.isEmpty()) {
-			
-			if (confirm == pass) {
-				u.setPassword(encoder.encode(password));
-
+		if(!confirm.isEmpty()&& !pass.isEmpty()) {
+			if (confirm.equals(pass)) {
+				u.setPassword(encoder.encode(pass));
+			}else { 
+				model.addAttribute("user",u);
+				model.addAttribute("error", "Password and Confirm Password must be Equal");
+				return "profile";	
 			}
-			else  { 
-				return "redirect:/profile";
-				
-			}
+		}else {
+			model.addAttribute("user",u);
+			model.addAttribute("error", "Password and Confirm Password must not be Empty");
+			return "profile";
 		}
 		
 		u.setPhone(phone);
-	
 		userRepository.save(u);
 		return "redirect:/profile";
 	}

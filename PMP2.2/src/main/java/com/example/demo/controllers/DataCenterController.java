@@ -65,8 +65,9 @@ public class DataCenterController {
 	}
 	
 	@RequestMapping(value = "/editDataCenter",method = RequestMethod.POST )
-	public String updatePurchasing(@Valid DataCenter data,BindingResult bindingResult){
+	public String updatePurchasing(@Valid DataCenter data,BindingResult bindingResult,Model model){
 		if(bindingResult.hasErrors()) {
+			model.addAttribute("customer", customerRepository.findAll());
 			return "updateDataCenter";
 		}
 		dataCenterRepository.save(data);	

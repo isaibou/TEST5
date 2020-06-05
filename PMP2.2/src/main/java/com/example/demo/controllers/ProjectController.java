@@ -144,7 +144,12 @@ if (!(file.isEmpty())) {
 
 			file.transferTo(new File(projectFile+file.getOriginalFilename()));
 		}
-if(ProjectRepository.checkTitleExist(proj.getName())) {
+    if(ProjectRepository.checkTitleExist(proj.getName())) {
+	
+	    List<Project> projctDouble = ProjectRepository.searchByName(proj.getName());
+		if(proj.getProject_ID().equals(projctDouble.get(0).getProject_ID())) {
+	    System.out.println("edited name is the same old name");
+		}else {
 	
 	 model.addAttribute("TechnoPart", technologiepartnerRepository.findAll());
 	 model.addAttribute("rfp",rfprepository.findAll());
@@ -154,6 +159,7 @@ if(ProjectRepository.checkTitleExist(proj.getName())) {
 	
 	model.addAttribute("unique", "must be unique");
 	return "updateProj";
+}
 }
 		ProjectRepository.save(proj);
 		

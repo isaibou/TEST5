@@ -495,8 +495,10 @@
 																<div class="tab-pane active" id="tab_default_1" style="height:180px;padding:20px 15px;border-top:2px #19a9d5 solid;background-color:white;">
 																
 																
-																																
-																			
+																<div class="text-danger" th:if="${error}">
+		   															<div th:text="${error}"></div>
+																</div>
+																	
 																
 																						<div class="col-xs-4" ><label ><b>Login</b></label></div>
 																	<div class="col-sm-8"  >

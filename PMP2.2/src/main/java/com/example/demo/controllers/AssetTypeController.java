@@ -122,12 +122,21 @@ public class AssetTypeController
 	public String updateAseetType(@Valid Model model, AssetType assetT, BindingResult bindingResult){
 		
 		if(assetTypeRepository.checkTitleExist(assetT.getName())) {
+			
+			List<AssetType> assettypeDouble = assetTypeRepository.searchByName(assetT.getName());
+	  		if(assetT.getAssetType_ID().equals(assettypeDouble.get(0).getAssetType_ID())) {
+	  			System.out.println("edited name is the same old name");
+	  		}else {
+			
+			 AssetType	assettype = assetTypeRepository.getOne(assetT.getAssetType_ID());
+			 model.addAttribute("assetstype",assettype);
+			 
 			model.addAttribute("unique", "must be unique");
 			 model.addAttribute("vendor", vendorRepository.findAll());
 
 			return "updateAseetTypeForm";
 		}
-		
+		}
 		assetT.setStatus("Actif");
 		assetTypeRepository.save(assetT);
 		

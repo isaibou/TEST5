@@ -18,7 +18,7 @@
    <a href="" class="navbar-brand block m-t"><i class="fa fa-power-off"></i> <b>PowerM</b> </a>
   <div class="panel panel-default">
    <div class="panel-heading"> Update Technology Partner </div>
-      <form th:action="@{editTechnologyPartner}" method ="post" enctype="multipart/form-data" th:object="${techparp}">
+      <form th:action="@{editTechnologyPartner}" method ="post" enctype="multipart/form-data" th:object="${techpar}">
       <div class="panel-body">
        <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b></b></label>
      <div class="col-sm-8" style="margin: 5px 0px;">
@@ -32,10 +32,9 @@
        <label class="col-sm-4 control-label" style="margin: 5px 0px;" for="input-id-1"><b>Name Technology Partner</b></label>
        <div class="col-sm-8" style="margin: 5px 0px;" >
       <input type="text" class="form-control" placeholder="Entry Name of Technology Partner" id="input-id-1" th:field=*{NameTechnologyPartner}/>
-     <span class="text-danger" th:errors=*{NameTechnologyPartner}></span>
-     <!--  <div class="text-danger" th:if="${unique}">
-		   <div th:text="${unique}"></div>
-		</div> -->
+     <div class="text-danger" th:if="${unique}">
+       <div th:text="${unique}"></div>
+    </div>
      </div>
       <label class="col-sm-4 control-label"  style="margin: 5px 0px;" for="input-id-1"><b>TechnologyPartner File</b></label>
       <div class="col-sm-8" style="margin: 5px 0px;">

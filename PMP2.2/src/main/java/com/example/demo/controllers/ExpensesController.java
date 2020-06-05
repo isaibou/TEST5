@@ -143,7 +143,7 @@ public class ExpensesController {
 	
 		  Users u = userRepository.getOne(auth.getName());
 		  model.addAttribute("exp",  new Expenses());
-		 model.addAttribute("type",  typeExpensesRepository.findAll());
+		  model.addAttribute("type",  typeExpensesRepository.findAll());
 		  
 		  
 

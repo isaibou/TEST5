@@ -1,5 +1,6 @@
 package com.example.demo.repository;
 
+import java.util.Collection;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -16,10 +17,11 @@ public interface TicketRepository extends JpaRepository<Ticket, Integer>{
 	public List<Ticket> findByUser(Users user);
 	
 	@Query("SELECT u FROM Ticket u WHERE u.statusTicket = :status and u.user = :user")
-	
 	public List<Ticket> findByStatusAndUser(
-	  @Param("status") Integer status, 
+	  @Param("status") String status, 
 	  @Param("user") Users user);
 	
+	
+	 List<Ticket> findByStatusTicketNotIn(Collection<Ticket> collec);
 	
 }

@@ -12,5 +12,7 @@ public interface ProjectUserrepository extends JpaRepository<ProjectUser, Long> 
 	
 	
 	public List<ProjectUser> findByUser(Users u);
+	
+	
 
 }

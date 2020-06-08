@@ -1,5 +1,6 @@
 package com.example.demo.repository;
 
+import java.util.Collection;
 import java.util.List;
 
 import org.apache.catalina.User;
@@ -8,6 +9,8 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import com.example.demo.entities.Project;
+import com.example.demo.entities.Ticket;
+import com.example.demo.entities.Users;
 
 public interface ProjetRepository extends JpaRepository<Project, Integer>{
 	 
@@ -18,7 +21,21 @@ public interface ProjetRepository extends JpaRepository<Project, Integer>{
 	Boolean checkTitleExist(String name);
 	public List<Project> findByStatus(String status);  
 	
-	// List<Project> findByStatusAndName(String status,String name);
+	
+	
+	
+	
+	
+	//public List<Project> findByStatusAndUser(
+	//		  @Param("status") String status, 
+		//	  @Param("user") Users user);
+			
+			// List<Ticket> findByStatusTicketNotIn(Collection<Ticket> status);
+			
+	
+	// List<Project> findByStatusIn(String status,String name);
+	 
+	 
 	
 	
 	//@Query("SELECT a FROM List a WHERE a.status = statusProject ")

@@ -875,8 +875,11 @@ document.addEventListener('DOMContentLoaded', function() {
                                                     <button class="btn btn-default btn-xs" data-toggle="dropdown"><i class="glyphicon glyphicon-cog"></i> Action <span class="caret"></span></button>
                                                    <ul class="dropdown-menu">
 																											
-<li><a th:href="@{detailTicketA(id=${a.Ticket_ID})}" style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Detail</a></li>
+<li><a th:href="@{detailTicketA(id=${a.Ticket_ID})}" style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Details</a></li>
 																												  <li class="divider"></li>
+																										<li><a th:href="@{processing(id=${a.Ticket_ID})}" style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Processing</a></li>
+																										<li><a th:href="@{waiting(id=${a.Ticket_ID})}" style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Waiting</a></li>
+																										<li><a th:href="@{resolved(id=${a.Ticket_ID})}" style="margin-top:-5px;" class="btn btn-sm btn-light" role="button">Resolved</a></li>
 																												
 																										</ul>
 </div>

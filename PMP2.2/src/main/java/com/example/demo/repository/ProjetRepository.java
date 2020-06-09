@@ -8,6 +8,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
+import com.example.demo.entities.Customer;
 import com.example.demo.entities.Project;
 import com.example.demo.entities.Ticket;
 import com.example.demo.entities.Users;
@@ -19,23 +20,19 @@ public interface ProjetRepository extends JpaRepository<Project, Integer>{
 	
 	@Query("select count(e)>0 from Project e where e.Name = ?1")
 	Boolean checkTitleExist(String name);
+	
 	public List<Project> findByStatus(String status);  
 	
 	
+
+
+	@Query("select e from Project e where e.Name = ?1")
+	List<Project> searchByName(String name);
 	
-	
-	
-	
-	//public List<Project> findByStatusAndUser(
-	//		  @Param("status") String status, 
-		//	  @Param("user") Users user);
-			
-			// List<Ticket> findByStatusTicketNotIn(Collection<Ticket> status);
-			
-	
-	// List<Project> findByStatusIn(String status,String name);
-	 
-	 
+	//public List<Project> findByStatus(String status);
+
+
+	// List<Project> findByStatusAndName(String status,String name);
 	
 	
 	//@Query("SELECT a FROM List a WHERE a.status = statusProject ")
@@ -58,4 +55,5 @@ public interface ProjetRepository extends JpaRepository<Project, Integer>{
 	 
 	
 	 
+
 }

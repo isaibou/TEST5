@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.example.demo.entities.Assets;
+import com.example.demo.entities.Customer;
 import com.example.demo.entities.Purchasing;
 import com.example.demo.entities.RFP;
 import com.example.demo.entities.Users;
@@ -109,11 +110,16 @@ if (!(file.isEmpty())) {
 	public String updateVendor(Model model, @Valid Vendor vend, BindingResult bindingResult, @RequestParam(name="certificate")MultipartFile file) throws IllegalStateException, IOException{
         
 if(vendorRepository.checkTitleExist(vend.getNameVendor())) {
+	
+	    List<Vendor> vendorDouble = vendorRepository.searchByName(vend.getNameVendor());
+		if(vend.getVendor_ID().equals(vendorDouble.get(0).getVendor_ID())) {
+			System.out.println("edited name is the same old name");
+		}else {
 			
 			model.addAttribute("unique", "must be unique");
 			return "updateVendorForm";
 		}
-
+}
 		vend.setStatus("Actif");
 		
 		

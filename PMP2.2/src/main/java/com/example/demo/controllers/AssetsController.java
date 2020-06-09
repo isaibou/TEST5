@@ -169,11 +169,15 @@ public class AssetsController {
 		
 		if(assetRepository.checkTitleExist(asset.getSerielNumber())) {
 			model.addAttribute("assettype", assetTypeRepository.findAll());
+			List<Assets> assetsDouble = assetRepository.searchByName(asset.getSerielNumber());
+	  		if(asset.getAssets_ID().equals(assetsDouble.get(0).getAssets_ID())) {
+	  			System.out.println("edited name is the same old name");
+	  		}else {
 			
 			model.addAttribute("unique", "must be unique");
 			return "updateAssetsForm";
 		}
-       
+		}
 		asset.setStatus("Actif");
 		assetRepository.save(asset);
 		Integer i = asset.getAssets_ID();

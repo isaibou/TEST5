@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.example.demo.entities.AssetType;
+import com.example.demo.entities.Customer;
 import com.example.demo.entities.Frimware;
 import com.example.demo.entities.Purchasing;
 import com.example.demo.entities.RFP;
@@ -132,6 +133,11 @@ if (!(responseFile.isEmpty())) {
 	public String updateRFP(Model model, @Valid RFP RFP, BindingResult bindingResult,@RequestParam(name="response") MultipartFile responseFile, @RequestParam(name="request")MultipartFile requestFile) throws IllegalStateException, IOException{
 		
 if(rfpRepository.checkTitleExist(RFP.getTitle())) {
+	
+	    List<RFP> rfpDouble = rfpRepository.searchByName(RFP.getTitle());
+		if(RFP.getRFP_ID().equals(rfpDouble.get(0).getRFP_ID())) {
+			System.out.println("edited name is the same old name");
+		}else {
 			
 			model.addAttribute("unique", "must be unique");
 			 model.addAttribute("customer", customerRepository.findAll());	
@@ -139,7 +145,7 @@ if(rfpRepository.checkTitleExist(RFP.getTitle())) {
 			return "updateRFPForm";
 		}
 		
-		
+}
 if (!(requestFile.isEmpty())) {
 			
 			RFP.setRequestFile((requestFile.getOriginalFilename()));

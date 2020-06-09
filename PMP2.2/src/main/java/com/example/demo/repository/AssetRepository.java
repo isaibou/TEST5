@@ -8,11 +8,16 @@ import org.springframework.data.jpa.repository.Query;
 
 import com.example.demo.entities.AssetType;
 import com.example.demo.entities.Assets;
+import com.example.demo.entities.Customer;
 import com.example.demo.entities.RFP;
 
 public interface AssetRepository extends JpaRepository<Assets, Integer>{
+	
 	@Query("select count(e)>0 from Assets e where e.SerielNumber = ?1")
 	Boolean checkTitleExist(String serielNumber);
+	
+	@Query("select e from Assets e where e.SerielNumber = ?1")
+	List<Assets> searchByName(String serielNumber);
 	
 	public List<Assets> findByStatus(String status);
 

@@ -72,7 +72,9 @@ public class TypeExpensesController {
 	public String updateTypeExpenses(Model model, @Valid TypeExpenses typeExe, BindingResult bindingResult){
         
    if(typeExpensesRepository.checkTitleExist(typeExe.getNameTypeExpenses())) {
-			
+	   //j ai ajouter c 'est deux ligne la 
+	   		TypeExpenses	typeExpenses = typeExpensesRepository.getOne(typeExe.getTypeExpenses_ID());
+	   		model.addAttribute("typeEx", typeExpenses);
 			model.addAttribute("unique", "must be unique");
 			return "updateTypeExpForm";
 		} 

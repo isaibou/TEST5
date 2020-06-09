@@ -133,12 +133,22 @@ deliverablerepository.save(deli);
 		
 		if(deliverablerepository.checkTitleExist(deli.getName())) {
 			
+			  	List<Deliverable> deliverableDouble = deliverablerepository.searchByName(deli.getName());
+		  		if(deli.getDeliverable_ID().equals(deliverableDouble.get(0).getDeliverable_ID())) {
+		  			System.out.println("edited name is the same old name");
+		  		}else {
+			
 			 model.addAttribute("type", typeDeliverableRepository.findAll());
 			 model.addAttribute("project", projectrepository.findAll());	
+			 
+			 Deliverable	del = deliverablerepository.getOne(deli.getDeliverable_ID());
+			 model.addAttribute("del",del);
 				
 				model.addAttribute("unique", "must be unique");
 				return "updateDeliverable";
 			}
+		  		
+		}
 		
 if (!(fileD.isEmpty())) {
 			

@@ -70,8 +70,8 @@ public class ProjectTaskController {
 	@RequestMapping(value ="/updateProjecttask")
 	public String updateTechnologyPartnerForm( Model model, Integer id ) {
 		
-		ProjectTask	pt = projecTaskrepository.getOne(id);
-		 model.addAttribute("ptask",pt);
+		 ProjectTask	projecttask = projecTaskrepository.getOne(id);
+		 model.addAttribute("ptask",projecttask);
 		 
 		
 			return "updateProjectTask";
@@ -82,6 +82,9 @@ public class ProjectTaskController {
 	public String updateTechnologyPartner(Model model, ProjectTask pt, BindingResult bindingResult ){
 		
     if(projecTaskrepository.checkTitleExist(pt.getNameProjectTask())) {
+    	
+    	    ProjectTask	projecttask = projecTaskrepository.getOne(pt.getProjectTask_ID());
+		    model.addAttribute("ptask",projecttask);
 			
 			model.addAttribute("unique", "must be unique");
 			return "updateProjectTask";

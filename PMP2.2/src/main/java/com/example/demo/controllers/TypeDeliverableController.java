@@ -77,7 +77,10 @@ public class TypeDeliverableController {
 	public String updateTypeDeliverable(Model model, @Valid TypeDeliverable typDeli, BindingResult bindingResult){
 		
 if(typeDeliverablerepository.checkTitleExist(typDeli.getNameTypeDeliverable())) {
-			
+	
+	        TypeDeliverable	typeDeliverable = typeDeliverablerepository.getOne(typDeli.getTypeDeliverable_ID());
+	        model.addAttribute("typDelv",typeDeliverable);
+	 
 			model.addAttribute("unique", "must be unique");
 			return "updateTypeDelivForm";
 		}

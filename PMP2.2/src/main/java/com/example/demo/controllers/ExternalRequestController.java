@@ -52,12 +52,12 @@ public class ExternalRequestController {
 		
 		List<InternalRequest> intAll = internalRequestrepository.findAll();
 		List<ExternalRequest> extAll = externalRequestRepository.findAll();
-		//List<ExternalRequest> extWait = externalRequestRepository.findByStatus(false);
+		List<ExternalRequest> extWait = externalRequestRepository.findByStatus(true);
+		List<ExternalRequest> extAns = externalRequestRepository.findByStatus(true);
 		List<InternalRequest> intWait = internalRequestrepository.findByStatus("Waiting");
 		List<InternalRequest> intConf = internalRequestrepository.findByStatus("Confirmed");
-
-		
-		
+		List<InternalRequest> intAns = internalRequestrepository.findByStatus("Answered");
+	
 		model.addAttribute("listInt", intAll);
 		model.addAttribute("listExt", extAll);
 		model.addAttribute("internal", new InternalRequest());
@@ -68,8 +68,9 @@ public class ExternalRequestController {
 		model.addAttribute("typeExternal", typeExternalRequestRepository.findAll());
 		model.addAttribute("intWait", intWait.size());
 		model.addAttribute("intConf", intConf.size());
-		//model.addAttribute("extWait", extWait.size() );
-		
+		model.addAttribute("intAns", intAns.size());
+		model.addAttribute("extWait", extWait.size());
+		model.addAttribute("extAns", extAns.size());
 		
 		return "request";
 	}

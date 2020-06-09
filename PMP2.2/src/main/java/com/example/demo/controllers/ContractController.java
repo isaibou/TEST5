@@ -110,12 +110,18 @@ public class ContractController {
 	public String updateContrat(Model model, @Valid Contrat con, BindingResult bindingResult, @RequestParam(name="contractFile")MultipartFile file) throws IllegalStateException, IOException{
 
 if(contratrepository.checkTitleExist(con.getTitle())) {
+	
+	    List<Contrat> contratDouble = contratrepository.searchByName(con.getTitle());
+		if(con.getContrat_ID().equals(contratDouble.get(0).getContrat_ID())) {
+			System.out.println("edited name is the same old name");
+		}else {
 			
-			model.addAttribute("unique", "must be unique");
+			 model.addAttribute("unique", "must be unique");
 			 model.addAttribute("customer", customerRepository.findAll());	
 			 model.addAttribute("rfp", rfpRepository.findAll());
 			return "updateContratForm";
 		}
+}
 
 if (!(file.isEmpty())) {
 			
@@ -127,6 +133,7 @@ if (!(file.isEmpty())) {
 		
 		return "redirect:/contract_manage";
 	}
+	
 	
 	@RequestMapping(value ="/updateContrat")
 	public String updateContratForm( Model model, Integer id ) {
